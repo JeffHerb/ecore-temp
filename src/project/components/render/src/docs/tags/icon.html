@@ -1,0 +1,189 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Icon Tag -")-->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Icon Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    This custom tag is used to add visual icon based flags.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+<pre class="code">
+&lt;E2:Icon icon="checkmark" title="Checked!" />
+</pre>
+
+                <h3>Sample JSON</h3>
+<pre class="code">
+{
+    "template": "icon",
+    "attributes": {
+        "title": "Checked!"
+    },
+    "icon": "checkmark"
+}
+</pre>
+
+                <p>
+                    <code>E2:Icon</code> tag is used to provide developers with a way to add icons and accessible text in places were controls dont normally exist.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                icon
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Name of the icon that needs to be displayed
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                text
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Additional hidden accessibility text for a screen reader
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Text value for this icon.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> (link) tag (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Row Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "icon",
+                                        "attributes": {
+                                            "title": "Checked!"
+                                        },
+                                        "icon": "checkmark"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'modal', 'domReady!'], function(render, modal) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var linkExample = document.getElementById("link-example");
+
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    render.page(linkExample, link, function() {
+
+                        console.log("Link Done");
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,32 @@
+{{! Check parent container to see if its a section an not pageinfo}}
+{{#ifCond v1=this.parentObj.type op="===" v2="section"~}}
+    <div class="emp-asof-section">
+        <div class="emp-asof">
+            <div id="form_asof" class="emp-asof-col">
+                {{#if this.previous~}}
+                    {{~> _button this.previous.input section="asof-previous" ~}}
+                {{/if~}}
+                <div id="E_AS_OF">As of:
+                    <time>{{~this.datetime~}}</time>
+                </div>
+                {{#if this.next~}}
+                    {{~> _button this.next.input section="asof-next" ~}}
+                {{/if~}}
+            </div>
+        </div>
+    </div>
+{{~else~}}
+    <div class="emp-asof">
+        <div id="form_asof" class="emp-asof-col">
+            {{#if this.previous~}}
+                {{~> _button this.previous.input section="asof-previous" ~}}
+            {{/if~}}
+            <div id="E_AS_OF">As of:
+                <time>{{~this.datetime~}}</time>
+            </div>
+            {{#if this.next~}}
+                {{~> _button this.next.input section="asof-next" ~}}
+            {{/if~}}
+        </div>
+    </div>
+{{/ifCond~}}

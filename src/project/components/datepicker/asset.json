@@ -1,0 +1,5 @@
+{
+    "name": "datepicker",
+    "lazy": false,
+    "sources": ["script", "style"]
+}

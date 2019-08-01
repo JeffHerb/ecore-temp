@@ -1,0 +1,94 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Removed the html 5 shiv for testing purposes -->
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+</body>
+<script>
+    var fwData = {
+        "page": {
+            "contents": [
+                // Basic button
+                {
+                    "type": "row",
+                    "template": "grid",
+                    "contents": [
+                        {
+                            "type": "column",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "E_TEST_BUTTON",
+                                            "type": "button",
+                                            "onclick": "emp.functionCall(event, 'testFetch', [])"
+                                        },
+                                        "text": "Button"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+
+    function testFetch() {
+
+        var reqObj = {
+            url: 'http://dvm.int.nystax.gov/SMARTWS/rs/gateway/FWK150J/sendEmail.json',
+            data: {
+                "toAddress": ["jeffrey.herb@its.ny.gov"],
+                "fromAddress": "jeffrey.herb@its.ny.gov",
+                "subjectLine": "Test Email",
+                "emailBody": "Here are body contents"
+            },
+            forceMethod: 'POST',
+            // json: true,
+            // forceCORS: true,
+            // basicAuth: 'TEST:test10234'
+            headers: {
+                'content-type': 'application/json',
+                'authorization': 'Basic VEVTVDp0ZXN0MTAyMzQ='
+            }
+        };
+
+        var resObj = {
+            done: function(res) {
+                console.log("done");
+            },
+            fail: function(err) {
+                console.log("failed");
+            }
+        };
+
+        emp.fw.request(reqObj, resObj, true);
+    }
+
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

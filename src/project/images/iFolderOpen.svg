@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="42" height="42" viewBox="0 0 42 42" enable-background="new 0 0 42 42" xml:space="preserve">
+  <path fill="#FFFFFF" d="M4.7 10h6.6l-0.4-2H3.8l-0.7 2.6C3.8 10.3 4.7 10 4.7 10z"/>
+  <path fill="none" d="M10.5 10l-0.3-2H3.8l-0.6 2.6C3.8 10.3 4.6 10 4.6 10H10.5z"/>
+  <polygon fill="none" points="3 34 3 34 3 33.5 "/>
+  <path fill="#FFFFFF" d="M30.2 11.8C29.8 11.3 28.7 11 28.7 11H10.9h-0.3H5 4.6c0 0-0.8 0.3-1.3 0.8C3.1 12 3 13.2 3 13.5v20L3 34H31V13.5C31 13.5 30.7 12.3 30.2 11.8z"/>
+  <polyline fill="none" stroke="#0A557F" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" points="2 11.9 2 11.6 2 11.6 "/>
+  <path fill="#0A557F" d="M30.9 11.2C30.4 10.6 28.7 10 28.7 10H11.5l-0.9-3H3.4l-1.3 4.4C2 11.3 2 12 2 11.9v19.7V35h29.4H32v-3.4V13.6C32 13.6 31.7 12.2 30.9 11.2zM3.8 8h6.4l0.3 2H4.6c0 0-0.8 0.3-1.4 0.6L3.8 8zM3 34H3v-0.5V13.5c0-0.3 0.1-1.5 0.3-1.7C3.8 11.3 4.6 11 4.6 11h0.4 5.7 0.3H28.7c0 0 1.1 0.3 1.5 0.8C30.7 12.3 31 13.5 31 13.5V34H3z"/>
+  <path fill="#FFFFFF" stroke="#0A557F" stroke-miterlimit="10" d="M15.2 11.5c0 0-1.3 0-2 0.5 -0.3 0.2-0.9 0.5-1 0.8l-0.2 0.7L3.1 34.5h28.5l8.8-21.1c0 0 0.5-1 0.2-1.5 -0.2-0.4-0.9-0.5-0.9-0.5H21.1 15.2z"/>
+</svg>

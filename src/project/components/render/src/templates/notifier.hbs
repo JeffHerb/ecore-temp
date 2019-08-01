@@ -1,0 +1,56 @@
+{{! Check the type of notifier being declared }}
+{{#ifCond v1=this.type op="===" v2="static"~}}
+    {{#if this.scope~}}
+
+        {{!-- Notifiers in table columns --}}
+        {{#ifCond v1=this.scope op="===" v2="table-column"~}}
+            <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' notifierLengthClass=this.text scope="notifier" federal=this.federal notifierColor=this.color section=this.section style=style title=this.attributes.alt)) }}>
+                {{~this.text~}}
+            </span>
+        {{/ifCond~}}
+
+        {{!-- Notifiers in the globalHeader --}}
+        {{#ifCond v1=this.scope op="===" v2="globalHeader"}}
+            <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' notifierLengthClass=this.attributes.alt scope="notifier" federal=this.federal notifierColor=this.color section=this.section style=style)) }}>
+                <span class="notifier-text">{{~this.text~}}</span>
+            </span>
+
+        {{/ifCond~}}
+
+        {{#ifCond v1=this.scope op="===" v2="formLineNotifier"}}
+
+            <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' notifierLengthClass=this.text scope="notifier" federal=this.federal notifierColor=this.color section=this.section style=style title=this.attributes.alt)) }}>
+                {{~this.text~}}
+            </span>
+        {{/ifCond}}
+
+    {{~else~}}
+
+        {{!-- Handle notifiers in any other section of the page --}}
+        <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="notifier" notifierLengthClass=this.text federal=this.federal section=this.section notifierColor=this.color style=style title=this.attributes.alt)) }}>
+            {{~this.text~}}
+        </span>
+    {{/if~}}
+
+
+{{~else~}}
+
+    {{#ifCond v1=this.scope op="===" v2="globalHeader"~}}
+
+        <a {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"role": "button", "className": "emp-header-popup"}' scope="notifier" federal=this.federal notifierColor=this.color section=this.section popup=this.popup notifierLengthClass=this.attributes.alt style=style)) }}>
+            <span class="notifier-text">{{~this.text~}}</span>
+            {{#if this.popup~}}
+                {{~> _popup this scope="link"~}}
+            {{/if~}}
+        </a>
+    {{~else~}}
+
+        <a {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="notifier" federal=this.federal section=this.section notifierColor=this.color popup=this.popup style=style)) }}>
+            {{~this.text~}}
+            {{#if this.popup~}}
+                {{~> _popup this scope="link"~}}
+            {{/if~}}
+        </a>
+    {{/ifCond~}}
+
+{{/ifCond~}}

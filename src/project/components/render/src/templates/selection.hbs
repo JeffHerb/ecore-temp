@@ -1,0 +1,11 @@
+{{#ifCond v1=this.type op='===' v2="link"~}}
+
+    <a tabindex="1" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"role": "button", "className": "emp-selection-popup"}' scope="selectionPopup" iconClass=this.icon )) }}>
+        {{~this.text~}}
+    </a>
+{{~else~}}
+
+    <button tabindex="1" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"type": "button", "className": "emp-selection-popup"}' scope="selectionPopup" iconClass=this.icon )) }}>
+        {{~this.text~}}
+    </button>
+{{/ifCond~}}

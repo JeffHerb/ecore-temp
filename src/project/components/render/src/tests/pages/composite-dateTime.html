@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire - Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!--
+===============================================================================
+eMPIRE2 | Empire - Template - Core UI
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+08/08/2018  JM        Page created.
+===============================================================================
+-->
+</head>
+
+<body>
+    <div id="body-wrapper">
+        <main role="main">
+            <!-- ==================== -->
+            <!-- PAGE CONTENT         -->
+            <!-- ==================== -->
+            <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+                <!-- ==================== -->
+                <!-- SECTIONS             -->
+                <!-- ==================== -->
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Date Time Composite</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="cui-row">
+                        <div class="emp-full">
+                            <fieldset class="emp-composite emp-date-time-composite">
+                                <div class="cui-label">
+                                    <legend>Date/Time:</legend>
+                                </div>
+                                <div class="cui-data">
+                                    <div class="emp-input-collection">
+                                        <div class="emp-field">
+                                            <label class="cui-hide-from-screen" for="E_DATE">Date</label>
+                                            <input type="text" id="E_DATE" class="emp-date" value="09/09/9009" size="13" maxlength="10" tabindex="1">
+                                            <button type="button" id="dp_E_DATE" class="cui-icon cui-c-datepicker" title="Select Date" tabindex="1">Date Picker</button>
+                                        </div>
+                                        <div class="emp-field">
+                                            <label class="cui-hide-from-screen" for="E_HOUR">Hour:</label>
+                                            <select id="E_HOUR">
+                                                <option value="0"></option>
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                                <option value="4">04</option>
+                                                <option value="5" selected="selected">05</option>
+                                                <option value="6">06</option>
+                                                <option value="7">07</option>
+                                                <option value="8">08</option>
+                                                <option value="9">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                        <div class="emp-field">
+                                            <label class="cui-hide-from-screen" for="E_MINUTE">Minute:</label>
+                                            <select id="E_MINUTE">
+                                                <option value="0"></option>
+                                                <option value="1">00</option>
+                                                <option value="2">05</option>
+                                                <option value="3">10</option>
+                                                <option value="4">15</option>
+                                                <option value="5">20</option>
+                                                <option value="6" selected="selected">25</option>
+                                                <option value="7">30</option>
+                                                <option value="8">35</option>
+                                                <option value="9">40</option>
+                                                <option value="10">45</option>
+                                                <option value="11">50</option>
+                                                <option value="12">55</option>
+                                            </select>
+                                        </div>
+                                        <div class="emp-field">
+                                            <label class="cui-hide-from-screen" for="E_AM_PM">AM/PM:</label>
+                                            <select id="E_AM_PM">
+                                                <option value="0">AM</option>
+                                                <option value="1" selected="selected">PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                </section>
+            </form>
+        </main>
+        </div>
+
+        <script>
+            var fwData = {
+                "page": {
+                    "contents": [{
+                        "template": "pagebody",
+                        "contents": [{
+                            "type": "section",
+                            "contents": [{
+                                    "template": "group",
+                                    "title": "Date Time Composite",
+                                    "type": "header"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [{
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [{
+                                            "type": "dateTime",
+                                            "template": "composite",
+                                            "parts": {
+                                                "date": {
+                                                    "type": "date",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DATE"
+                                                        },
+                                                        "text": "Date:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "text",
+                                                            "name": "E_DATE",
+                                                            "id": "E_DATE",
+                                                            "value": "09/09/9009",
+                                                            "maxlength": "10"
+                                                        }
+                                                    }
+                                                },
+                                                "hour": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_HOUR"
+                                                        },
+                                                        "text": "Hour:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_HOUR"
+                                                        },
+                                                        "options": [{
+                                                                "value": "0",
+                                                                "text": "01"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "02"
+                                                            },
+                                                            {
+                                                                "value": "2",
+                                                                "text": "03"
+                                                            },
+                                                            {
+                                                                "value": "3",
+                                                                "text": "04"
+                                                            },
+                                                            {
+                                                                "value": "4",
+                                                                "text": "05"
+                                                            },
+                                                            {
+                                                                "value": "5",
+                                                                "text": "06"
+                                                            },
+                                                            {
+                                                                "value": "6",
+                                                                "text": "07"
+                                                            },
+                                                            {
+                                                                "value": "7",
+                                                                "text": "08"
+                                                            },
+                                                            {
+                                                                "value": "8",
+                                                                "text": "09"
+                                                            },
+                                                            {
+                                                                "value": "9",
+                                                                "text": "10"
+                                                            },
+                                                            {
+                                                                "value": "10",
+                                                                "text": "11"
+                                                            },
+                                                            {
+                                                                "value": "11",
+                                                                "text": "12"
+                                                            }
+                                                        ],
+                                                        "value": "4",
+                                                        "noBlankOption": true
+                                                    }
+                                                },
+                                                "minute": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_MINUTE"
+                                                        },
+                                                        "text": "Minute:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_MINUTE"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "0",
+                                                                "text": "00"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "05"
+                                                            },
+                                                            {
+                                                                "value": "2",
+                                                                "text": "10"
+                                                            },
+                                                            {
+                                                                "value": "3",
+                                                                "text": "15"
+                                                            },
+                                                            {
+                                                                "value": "4",
+                                                                "text": "20"
+                                                            },
+                                                            {
+                                                                "value": "5",
+                                                                "text": "25"
+                                                            },
+                                                            {
+                                                                "value": "6",
+                                                                "text": "30"
+                                                            },
+                                                            {
+                                                                "value": "7",
+                                                                "text": "35"
+                                                            },
+                                                            {
+                                                                "value": "8",
+                                                                "text": "40"
+                                                            },
+                                                            {
+                                                                "value": "9",
+                                                                "text": "45"
+                                                            },
+                                                            {
+                                                                "value": "10",
+                                                                "text": "50"
+                                                            },
+                                                            {
+                                                                "value": "11",
+                                                                "text": "55"
+                                                            }
+                                                        ],
+                                                        "value": "5",
+                                                        "noBlankOption": true
+                                                    }
+                                                },
+                                                "period": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_AM_PM"
+                                                        },
+                                                        "text": "AM/PM:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_AM_PM"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "0",
+                                                                "text": "AM"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "PM"
+                                                            }
+                                                        ],
+                                                        "value": "1",
+                                                        "noBlankOption": true
+                                                    }
+                                                }
+                                            },
+                                            "properties": {
+                                                "legend": "Date/Time:"
+                                            }
+                                        }]
+                                    }]
+                                }
+                            ]
+                        }]
+                    }]
+                }
+            };
+        </script>
+        <script id="require" src="../../../dist/js/main.js"></script>
+        <script>
+            require(['jquery', 'emp', 'uimockup', 'domReady!'], function ($, emp, uiMockup) {
+                // Elements in the page that need to be turned into a data store
+                uiMockup.createPageDataStore(function (results) {
+                    emp.init();
+                });
+            });
+        </script>
+</body>
+
+</html>

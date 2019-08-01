@@ -1,0 +1,295 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Message Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Message Custom Tag</h1>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Message&gt;</code> tag is used to style messages for information, error, warning and success purposes.
+                </p>
+
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Message text="This is a simple message!" />
+&lt;E2:Message text="This is a simple error message!" type="error" />
+&lt;E2:Message text="This is a simple success message!" type="success" />
+&lt;E2:Message text="This is a simple warning message!" type="warning" />
+</pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "info",
+    "template": "message",
+    "text": "This is a simple message!"
+}</pre>
+                <p>
+                    Messages are a nice way to give a specific piece of information more prominent on a page. By default, all message will appear as blue informational messages. To change this, define the <code>type</code> attribute with one of the acceptable values listed in the table below.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                text
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Text that will be displayed.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                list
+                            </th>
+                            <td>
+                                Key-Value
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Key value pair for each of the messages that should appear in the message block.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                type
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                dentifies the type of style that message will appear as. If this is not given the type will default to <code>info<code>. Accepts only the following values
+                                <ul>
+                                    <li><strong>info</strong> - Informational - Blue</li>
+                                    <li><strong>warn</strong> - Warnings - Orange</li>
+                                    <li><strong>error</strong> - Error - Red</li>
+                                    <li><strong>success</strong> - Success - Green</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;div&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Message list="<%$= listOfMessages %>" />
+</pre>
+
+                <h3>Sample JSON</h3>
+<pre class="code">
+{
+    "template": "message",
+    "list": [
+        {
+            "type": "info",
+            "text": "This is a simple info message!"
+        },
+        {
+            "type": "error",
+            "text": "This is a simple error message!"
+        },
+        {
+            "type": "success",
+            "text": "This is a simple success message!"
+        },
+        {
+            "type": "warn",
+            "text": "This is a simple warning message!"
+        }
+    ]
+}                    
+</pre>
+                <p>
+                    If there are a list of messages that are related and need to be dislplayed, developers can pass in an array of object. For each message the developer must define a <code>type</code> and <code>text</code> value to use.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="list-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type":"row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "info",
+                                        "template": "message",
+                                        "text": "This is a simple message!"
+                                    },
+                                    {
+                                        "type": "error",
+                                        "template": "message",
+                                        "text": "This is a simple error message!"
+                                    },
+                                    {
+                                        "type": "success",
+                                        "template": "message",
+                                        "text": "This is a simple success message!"
+                                    },
+                                    {
+                                        "type": "warn",
+                                        "template": "message",
+                                        "text": "This is a simple warning message!"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var list = {
+                title: "list example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type":"row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "message",
+                                        "list": [
+                                            {
+                                                "type": "info",
+                                                "text": "This is a simple info message!"
+                                            },
+                                            {
+                                                "type": "error",
+                                                "text": "This is a simple error message!"
+                                            },
+                                            {
+                                                "type": "success",
+                                                "text": "This is a simple success message!"
+                                            },
+                                            {
+                                                "type": "warn",
+                                                "text": "This is a simple warning message!"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var listExample = document.getElementById("list-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    render.page(listExample, list, function() {
+
+                        console.log("List Done");
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

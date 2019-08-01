@@ -1,0 +1,554 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CM0040SOrganizationDefinition</title>
+<link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+<!--
+===============================================================================
+eMPIRE2 | CM0040S Organization Definition
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+09/10/2015  JJ        Page Created
+09/29/2015  DB        This page is registered.
+10/23/2015  DB        Changing Default Display Type from 10 to 30 per Bill Carey.
+10/29/2015  JJ        Result Set Cleaned Up
+11/13/2015  DB        Adding Update Parent button to the Organization Details,
+                      moving the child inside the parent section, and removing
+                      Reset and Submit.
+06/18/2016  DB        Removing the Default Display Type from the Organization Details.
+06/22/2016  DB        Removing the Default Display Type from the Organization Details
+                      AGAIN!!!!!!! 
+===============================================================================
+-->
+</head>
+
+<body>
+<div id="body-wrapper"> 
+  <!-- ==================== --> 
+  <!-- ACCESSIBILITY CUES   --> 
+  <!-- ==================== -->
+  <div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+  <!-- ==================== --> 
+  <!-- GLOBAL HEADER        --> 
+  <!-- ==================== -->
+  <header> 
+    <!-- Logo and main menu -->
+    <div class="emp-header-row-first">
+      <div class="emp-header-logo"> Empire </div>
+      <nav id="emp-header-menu-main"> Main Menu </nav>
+      <div id="emp-header-favorites"> &#9734; </div>
+    </div>
+    <!-- Title, notifiers and secondary menu -->
+    <div class="emp-header-row-second">
+      <div class="emp-header-tabset-title">
+        <button type="button" class="emp-tabset-toggle" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+        <h1>Tabset menu title</h1>
+      </div>
+      <ul class="emp-header-links">
+        <li class="emp-header-employee"><a role="button">Employee</a></li>
+        <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+        <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+        <li class="emp-header-help"><a role="button">Help</a></li>
+      </ul>
+    </div>
+  </header>
+  <!-- ==================== --> 
+  <!-- TABSET               --> 
+  <!-- ==================== -->
+  <ul class="emp-tabset emp-collapse">
+    <li><a href="#" title="Taxpayer Summary" tabindex="1">TP Sum</a></li>
+    <li><a href="#" title="Search by Name" tabindex="1">Srch by Name</a></li>
+    <li class="emp-selected"><a href="#" title="AMP Org Def" tabindex="1">AMP Org Def/a></a></li>
+    <li><a href="#" title="AMP Org Def" tabindex="1"></a><a href="#" title="Address Summary" tabindex="1">Address Sum</a></li>
+    <li><a href="#" title="Check Digit" tabindex="1">Check Digit</a></li>
+    <li><a href="#" title="Old ID Search" tabindex="1">Old ID Search</a></li>
+    <li><a href="#" title="Current ID Search" tabindex="1">Current ID Search</a></li>
+    <li><a href="#" title="Multiple 9-Character IDs" tabindex="1">Multi 9-Char ID</a></li>
+    <li><a href="#" title="CT Sub Profile" tabindex="1">CT Sub Profile</a></li>
+    <li><a href="#" title="ST Profile" tabindex="1">ST Profile</a></li>
+    <li><a href="#" title="Multi State" tabindex="1">Multi State</a></li>
+    <li><a href="#" title="Pymt Search" tabindex="1">Pymt Search</a></li>
+    <li><a href="#" title="Trnsfr Return" tabindex="1">Trnsfr Return</a></li>
+    <li><a href="#" title="Transfer In" tabindex="1">Transfer In</a></li>
+    <li><a href="#" title="Transfer In/Out" tabindex="1">Transfer In/Out</a></li>
+    <li><a href="#" title="TFA Details" tabindex="1">TFA Details</a></li>
+    <li><a href="#" title="Events" tabindex="1">Events</a></li>
+    <li><a href="#" title="Correspondence" tabindex="1">Correspondence</a></li>
+  </ul>
+  <!-- ==================== --> 
+  <!-- PAGE TITLE           --> 
+  <!-- ==================== -->
+  <div class="emp-page-title"> 
+    <!-- Page title -->
+    <div class="emp-text">
+      <h2>Organization Definition <span>Page mode</span></h2>
+    </div>
+    <!-- Page actions -->
+    <ul class="emp-actions">
+      <li>
+        <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+      </li>
+      <li>
+        <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+      </li>
+      <li>
+        <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+      </li>
+    </ul>
+  </div>
+  <!-- ==================== --> 
+  <!-- SEARCH BOX           --> 
+  <!-- ==================== --> 
+  <!-- Use class="emp-search-box-collapsed" to hide search box -->
+  <form name="form_search" id="form_search" class="emp-search-box emp-collapse" action="http://www.tax.ny.gov" method="post">
+    <div class="emp-search-fields">
+      <div class="cui-row">
+        <div class="emp-search-box-field">
+          <div class="emp-field cui-required">
+            <div class="cui-label">
+              <label for="ORGANIZATION_TYPE">Organization Type:</label>
+            </div>
+             <div class="cui-data">
+              <select id="ORGANIZATION_TYPE" tabindex="1">
+                <option value="AU" selected="selected">Audit</option>
+                <option value="CI">Criminal Investigations Division</option>
+                <option value="BC">BCMS</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cui-row">
+        <div class="emp-search-box-field">
+          <div class="emp-field">
+            <div class="cui-label">
+              <label for="S_ORGANIZATION_ID">Organization ID:</label>
+            </div>
+            <div class="cui-data">
+              <input type="text" id="S_ORGANIZATION_ID" value="" aria-required="true" size="6" maxlength="6" tabindex="1">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cui-row">
+        <div class="emp-search-box-field">
+          <div class="emp-field">
+            <div class="cui-data">
+              <input type="checkbox" id="S_SHOW_SUBORDINATES" tabindex="1">
+            </div>
+            <div class="cui-label">
+              <label for="S_SHOW_SUBORDINATES">Show Subordinates</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons -->
+    <div class="emp-search-buttons">
+      <div class="cui-row">
+        <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+      </div>
+      <div class="cui-row">
+        <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+        <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+      </div>
+      <div class="cui-row"> <a role="button" class="emp-button-get-id" id="btn_get_id" tabindex="1">Get ID</a> </div>
+    </div>
+    <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+  </form>
+  <!-- ####################### --> 
+  <!-- DEVELOPER'S CODE (JSP)  --> 
+  <!-- ####################### -->
+  <main role="main">
+    <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+      <!-- ++++++++++++++++++++++++++++++++ --> 
+      <!-- SECTION: .Organization Details   --> 
+      <!-- ++++++++++++++++++++++++++++++++ -->
+      <section>
+        <header>
+          <div class="emp-section-title">
+            <h3>Organization Details</h3>
+          </div>
+          <div class="emp-section-controls">
+            <ul>
+              <li>
+                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Organization Type:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_ORGANIZATION_TYPE">Audit</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Organization Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_ORGANIZATION_NAME">Section 1</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Organization ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_ORGANIZATION_ID">0077</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Legacy Org Unit ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_LEGACY_ORG_UNIT_ID">WWA</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Billing Org Unit ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_BILLING_ORG_UNIT_ID">WWA</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Parent Organization ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_PARENT_ORGANIZATION_ID">0062</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Parent Organization Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_PARENT_ORGANIZATION_NAME">Income Franchise</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_NEW_PARENT_ORGANIZATION_ID">New Parent Organization ID:</label>
+              </div>
+              <div class="cui-data">
+                <input type="text" id="E_NEW_PARENT_ORGANIZATION_ID" size="4" maxlength="4" value="" tabindex="1">
+                <button type="button" id="E_BTN_GO" value="1" tabindex="1">Go</button>
+              </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">New Parent Organization Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_NEW_PARENT_ORGANIZATION_NAME"></span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half cui-data-left">
+            <div class="emp-field">
+              <div class="cui-data"> <i class="emp-icon-stop">Not applicable</i> </div>
+              <div class="cui-label"> <span class="emp-label" id="E_ACCEPT_INVENTORY">Accept Inventory</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Level:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_LEVEL">5</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="emp-button-row">
+          <div class="emp-col-full cui-align-right">
+            <button type="button" name="E_BTN_UPD_PARENT" class="cui-button-primary" tabindex="1">Update Parent</button>
+          </div>
+        </div>
+        
+        <!-- ++++++++++++++++++++++++++++++++++++ --> 
+        <!-- SECTION: .Child Organization Details --> 
+        <!-- ++++++++++++++++++++++++++++++++++++ -->
+        <section>
+          <header>
+            <div class="emp-section-title">
+              <h3>Child Organization Details </h3>
+            </div>
+            <div class="emp-section-field">
+              <div class="emp-section-header-field">
+                <input type="checkbox" id="E_RETAIN_DATA" value="true" tabindex="1">
+                <label for="E_RETAIN_DATA">Retain Data<span class="cui-hide-from-screen"> for this section</span></label>
+              </div>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-field cui-required">
+                <div class="cui-label">
+                  <label for="E_ORGANIZATION_NAME">Organization Name:</label>
+                </div>
+                <div class="cui-data">
+                  <input type="text" id="E_ORGANIZATION_NAME" value="" aria-required="true" size="30" maxlength="30" tabindex="1">
+                </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Organization ID:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_ORGANIZATION_ID">012</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-field cui-required">
+                <div class="cui-label">
+                  <label for="E_LEGACY_ORG_UNIT_ID">Legacy Org Unit ID:</label>
+                </div>
+                <div class="cui-data">
+                  <input type="text" id="E_LEGACY_ORG_UNIT_ID" value="" aria-required="true" size="4" maxlength="4" tabindex="1">
+                </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label">
+                  <label for="E_BILLING_ORG_UNIT_ID">Billing Org Unit ID:</label>
+                </div>
+                <div class="cui-data">
+                  <input type="text" id="E_BILLING_ORG_UNIT_ID" value="" aria-required="true" size="4" maxlength="4" tabindex="1">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half cui-data-left">
+              <div class="emp-field">
+                <div class="cui-data">
+                  <input type="checkbox" id="E_ACCEPT_INVENTORY" tabindex="1">
+                </div>
+                <div class="cui-label">
+                  <label for="E_ACCEPT_INVENTORY">Accept Inventory</label>
+                </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Level:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_LEVEL">6</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="emp-button-row">
+            <div class="emp-col-full cui-align-right">
+              <button type="button" name="E_BTN_CLEAR" tabindex="1">Clear</button>
+              <button type="button" name="E_BTN_ADD_UPD_CHILD" class="cui-button-primary" tabindex="1">Add/Update Child</button>
+            </div>
+          </div>
+          
+          <!-- Table 1 Child Organization Details Section -->
+          <div class="emp-table">
+            <table id="table_my_table_1">
+              <thead>
+                <tr>
+                  <th data-sort="alpha" data-table-column-priority="1"> Organization Name </th>
+                  <th data-sort="alpha" data-table-column-priority="2"> Organization ID</th>
+                  <th data-sort="alpha"> Parent Organization Name </th>
+                  <th data-sort="alpha"> Legacy Org Unit ID </th>
+                  <th data-sort="alpha"> Billing Org Unit ID </th>
+                  <th data-sort="alpha"> Level </th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Go to Employee Maintenance">Employee Maintenance</span> </th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Go to Employee Maintenance Audit Supervisors &amp; Managers">Employee Maintenance Audit Supervisors &amp; Managers</span> </th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Delete">Delete</span> </th>
+                  <th data-type="button" class="emp-min-width" data-table-primary-button="true"> <span class="cui-hide-from-screen" title="Edit/View Details">Edit/View Details</span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Team E</td>
+                  <td class="cui-no-wrap">0242</td>
+                  <td class="cui-no-wrap">Section 1</td>
+                  <td>731</td>
+                  <td>WWA</td>
+                  <td>6</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors & Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td>Team K</td>
+                  <td class="cui-no-wrap">00261</td>
+                  <td class="cui-no-wrap">Section 1</td>
+                  <td>BAH</td>
+                  <td>WWA</td>
+                  <td>6</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors & Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td>Team O</td>
+                  <td class="cui-no-wrap">0332</td>
+                  <td class="cui-no-wrap">Section 1</td>
+                  <td>H15</td>
+                  <td>WWA</td>
+                  <td>6</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors & Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <!-- ++++++++++++++++++++++++++++++++ --> 
+      <!-- SECTION: Organization Summary    --> 
+      <!-- ++++++++++++++++++++++++++++++++ -->
+      <section>
+        <header>
+          <div class="emp-section-title">
+            <h3>Organization Summary</h3>
+          </div>
+          <div class="emp-section-controls">
+            <ul>
+              <li>
+                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+              </li>
+            </ul>
+          </div>
+        </header>
+    <!-- Table 2 Organization Summary Section -->
+          <div class="emp-table">
+            <table id="table_my_table_2">
+              <thead>
+                <tr>
+                  <th data-sort="alpha" data-table-column-priority="1"> Organization Name </th>
+                  <th data-sort="alpha" data-table-column-priority="2"> Organization ID</th>
+                  <th data-sort="alpha"> Parent Organization Name </th>
+                  <th data-sort="alpha"> Legacy Org Unit ID </th>
+                  <th data-sort="alpha"> Billing Org Unit ID </th>
+                  <th data-sort="alpha"> Level </th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Go to Employee Maintenance">Employee Maintenance</span> </th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Go to Employee Maintenance Audit Supervisors &amp; Managers">Employee Maintenance Audit Supervisors &amp; Managers</span> </th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Delete">Delete</span> </th>
+                  <th data-type="button" class="emp-min-width" data-table-primary-button="true"> <span class="cui-hide-from-screen" title="Edit/View Details">Edit/View Details</span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Audit Division Directors</a></td>
+                  <td class="cui-no-wrap">0002</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Audit</a></td>
+                  <td>301</td>
+                  <td></td>
+                  <td>2</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors &amp; Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Capital Region Office</a></td>
+                  <td class="cui-no-wrap">0004</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Audit Division Directors</a></td>
+                  <td>BAF</td>
+                  <td></td>
+                  <td>3</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors &amp; Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Income Franchise</a></td>
+                  <td class="cui-no-wrap">0062</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Capital Region Office</a></td>
+                  <td>WWA</td>
+                  <td>WWA</td>
+                  <td>4</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors &amp; Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr class="emp-highlight-row">
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Section 1</a></td>
+                  <td class="cui-no-wrap">0077</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Income Franchise</a></td>
+                  <td>WWA</td>
+                  <td>WWA</td>
+                  <td>5</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors &amp; Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Team E</a></td>
+                  <td class="cui-no-wrap">0242</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Section 1</a></td>
+                  <td>731</td>
+                  <td>WWA</td>
+                  <td>6</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors & Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Team K</a></td>
+                  <td class="cui-no-wrap">0261</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Section 1</a></td>
+                  <td>BAH</td>
+                  <td>WWA</td>
+                  <td>6</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors & Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+                <tr>
+                  <td><a href="#" tabindex="1" title="Go to Organization Definition">Team O</a></td>
+                  <td class="cui-no-wrap">0332</td>
+                  <td class="cui-no-wrap"><a href="#" tabindex="1" title="Go to Organization Definition">Section 1</a></td>
+                  <td>H15</td>
+                  <td>WWA</td>
+                  <td>6</td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance" tabindex="1">Employee Maintenance</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="Go to Employee Maintenance Audit Supervisors & Managers" tabindex="1">Employee Maintenance Audit Supervisors & Managers</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete" tabindex="1">Delete</button></td>
+                  <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+      </section>
+    </form>
+  </main>
+</div>
+<script id="require" src="../../../dist/js/main.js"></script> 
+<script>
+       require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            uiMockup.createPageDataStore(function(results) {
+                emp.init();
+            });
+    });
+</script>
+</body>
+</html>

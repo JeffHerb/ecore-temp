@@ -1,0 +1,8 @@
+{
+    "name": "editor",
+    "lazy": false,
+    "sources": [
+        "script",
+        "style"
+    ]
+}

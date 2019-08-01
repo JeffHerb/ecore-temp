@@ -1,0 +1,872 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Border light background
+                    // {
+                    //     "template": "table",
+                    //     "title": "Borders with light background",
+                    //     "attributes": {
+                    //         "id": "border-light-background",
+                    //         "className": 'emp-border-color'
+                    //     },
+                    //     "selectable": true,
+                    //     "selectionType": "mulitple",
+                    //     "head": {
+                    //         "rows": [
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 1"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 2"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 3"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 4"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 5"
+                    //                     }
+                    //                 ]
+                    //             }
+                    //         ]
+                    //     },
+                    //     "body": {
+                    //         "rows": [
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 1"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 2"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 3"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 4"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 5"
+                    //                     }
+                    //                 ],
+                    //                 "key": "0"
+                    //             },
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 6"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 7"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 8"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 9"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 10"
+                    //                     }
+                    //                 ],
+                    //                 "key": "1"
+                    //             },
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 11"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 12"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 13"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 14"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 15"
+                    //                     }
+                    //                 ],
+                    //                 "key": "2"
+                    //             },
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 16"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 17"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 18"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 19"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 20"
+                    //                     }
+                    //                 ],
+                    //                 "key": "3"
+                    //             }
+
+                    //         ]
+                    //     },
+                    //     "preselected": ['1', '2']
+                    // },
+                    // // Border with no background
+                    // {
+                    //     "template": "table",
+                    //     "title": "Borders with no background",
+                    //     "attributes": {
+                    //         "id": "border-no-background",
+                    //         "className": 'emp-border-color-no-background'
+                    //     },
+                    //     "selectable": true,
+                    //     "selectionType": "mulitple",
+                    //     "head": {
+                    //         "rows": [
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 1"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 2"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 3"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 4"
+                    //                     },
+                    //                     {
+                    //                         "type": "header",
+                    //                         "text": "Column 5"
+                    //                     }
+                    //                 ]
+                    //             }
+                    //         ]
+                    //     },
+                    //     "body": {
+                    //         "rows": [
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 1"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 2"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 3"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 4"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 5"
+                    //                     }
+                    //                 ],
+                    //                 "key": "0"
+                    //             },
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 6"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 7"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 8"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 9"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 10"
+                    //                     }
+                    //                 ],
+                    //                 "key": "1"
+                    //             },
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 11"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 12"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 13"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 14"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 15"
+                    //                     }
+                    //                 ],
+                    //                 "key": "2"
+                    //             },
+                    //             {
+                    //                 "columns": [
+                    //                     {
+                    //                         "text": "Data 16"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 17"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 18"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 19"
+                    //                     },
+                    //                     {
+                    //                         "text": "Data 20"
+                    //                     }
+                    //                 ],
+                    //                 "key": "3"
+                    //             }
+
+                    //         ]
+                    //     },
+                    //     "preselected": ['1', '2']
+                    // },
+                    // Border with no background
+                    {
+                        "template": "table",
+                        "title": "Inset Select",
+                        "attributes": {
+                            "id": "border-no-background",
+                            "className": 'emp-inset-select'
+                        },
+                        "selectable": true,
+                        "selectionType": "mulitple",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 1"
+                                        },
+                                        {
+                                            "text": "Data 2"
+                                        },
+                                        {
+                                            "text": "Data 3"
+                                        },
+                                        {
+                                            "text": "Data 4"
+                                        },
+                                        {
+                                            "text": "Data 5"
+                                        }
+                                    ],
+                                    "key": "0"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 6"
+                                        },
+                                        {
+                                            "text": "Data 7"
+                                        },
+                                        {
+                                            "text": "Data 8"
+                                        },
+                                        {
+                                            "text": "Data 9"
+                                        },
+                                        {
+                                            "text": "Data 10"
+                                        }
+                                    ],
+                                    "key": "1"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 11"
+                                        },
+                                        {
+                                            "text": "Data 12"
+                                        },
+                                        {
+                                            "text": "Data 13"
+                                        },
+                                        {
+                                            "text": "Data 14"
+                                        },
+                                        {
+                                            "text": "Data 15"
+                                        }
+                                    ],
+                                    "key": "2"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 16"
+                                        },
+                                        {
+                                            "text": "Data 17"
+                                        },
+                                        {
+                                            "text": "Data 18"
+                                        },
+                                        {
+                                            "text": "Data 19"
+                                        },
+                                        {
+                                            "text": "Data 20"
+                                        }
+                                    ],
+                                    "key": "3"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 16"
+                                        },
+                                        {
+                                            "text": "Data 17"
+                                        },
+                                        {
+                                            "text": "Data 18"
+                                        },
+                                        {
+                                            "text": "Data 19"
+                                        },
+                                        {
+                                            "text": "Data 20"
+                                        }
+                                    ],
+                                    "key": "4"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 16"
+                                        },
+                                        {
+                                            "text": "Data 17"
+                                        },
+                                        {
+                                            "text": "Data 18"
+                                        },
+                                        {
+                                            "text": "Data 19"
+                                        },
+                                        {
+                                            "text": "Data 20"
+                                        }
+                                    ],
+                                    "key": "5"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 16"
+                                        },
+                                        {
+                                            "text": "Data 17"
+                                        },
+                                        {
+                                            "text": "Data 18"
+                                        },
+                                        {
+                                            "text": "Data 19"
+                                        },
+                                        {
+                                            "text": "Data 20"
+                                        }
+                                    ],
+                                    "key": "6"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 16"
+                                        },
+                                        {
+                                            "text": "Data 17"
+                                        },
+                                        {
+                                            "text": "Data 18"
+                                        },
+                                        {
+                                            "text": "Data 19"
+                                        },
+                                        {
+                                            "text": "Data 20"
+                                        }
+                                    ],
+                                    "key": "7"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Data 16"
+                                        },
+                                        {
+                                            "text": "Data 17"
+                                        },
+                                        {
+                                            "text": "Data 18"
+                                        },
+                                        {
+                                            "text": "Data 19"
+                                        },
+                                        {
+                                            "text": "Data 20"
+                                        }
+                                    ],
+                                    "key": "8"
+                                }
+                            ]
+                        },
+                        "preselected": ['1', '2', "5", "7"]
+                    },
+                    {
+                        "template": "table",
+                        "title": "Selectionless tables",
+                        "attributes": {
+                            "id": "edit-button-test",
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Liability Period",
+                                            "attributes": {
+                                                "data-type": "dateRange",
+                                                "data-colmap": "edit-button-test_liabilityPeriod"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Joint Liability Period Exists",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_jointLiabilityPeriodExists"
+                                            },
+                                            "style": "min-width",
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Audit Ownership",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_auditOwnership"
+                                            },
+                                            "style": "min-width",
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Score",
+                                            "attributes": {
+                                                "data-type": "numeric",
+                                                "data-colmap": "edit-button-test_score"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Tax Type/Sub Type",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_taxTypeSubType"
+                                            },
+                                            "style": "no-wrap"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Return Status",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_returnStatus"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Return Status Date",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_returnStatusDate"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Amount ($)",
+                                            "attributes": {
+                                                "data-type": "numeric",
+                                                "data-colmap": "edit-button-test_amount"
+                                            },
+                                            "style": "currency"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Review details",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_reviewDetails"
+                                            },
+                                            "style": "min-width",
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "TFA Details",
+                                            "style": "min-width",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "{Page}",
+                                            "style": "min-width",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Delete row",
+                                            "style": "min-width",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Edit record",
+                                            "style": "min-width",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "responsive": {
+                                                "primaryButton": true
+                                            },
+                                            "hideLabel": true
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Hidden Column 1",
+                                            "attributes": {
+                                                "data-type": "alpha",
+                                                "data-colmap": "edit-button-test_hiddenColumn1"
+                                            },
+                                            "visibility": "hidden"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "01/01/2011 - 12/31/2011"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))",
+                                                    },
+                                                    "text": "J",
+                                                }
+                                            ],
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "text": "80"
+                                        },
+                                        {
+                                            "text": "CORP - CT-3, 3S, CT-4, 4S",
+                                            "style": "no-wrap"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#"
+                                                    },
+                                                    "text": "Not filed"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "text": "04/15/2012"
+                                        },
+                                        {
+                                            "text": "1,750.00",
+                                            "style": "currency"
+                                        },
+                                        {
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "BTN_GOTO_1",
+                                                        },
+                                                        "icon": "view-details",
+                                                        "text": "Go To"
+                                                    },
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "BTN_DELETE_1",
+                                                        },
+                                                        "icon": "delete",
+                                                        "text": "Delete"
+                                                    },
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "BTN_EDIT_SELECTIONLESS_1",
+                                                            "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.referenceCall', args:['tables', 'edit-button-test', 'setCurrentIndex', []] }})"
+                                                        },
+                                                        "icon": "edit",
+                                                        "text": "Edit"
+                                                    },
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "text": "01",
+                                            "visibility": "hidden"
+                                        }
+                                    ],
+                                    "key": "edit-test-0"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "01/01/2012 - 12/31/2012"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))",
+                                                    },
+                                                    "text": "J",
+                                                }
+                                            ],
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "text": "90"
+                                        },
+                                        {
+                                            "text": "CORP - CT-3, 3S, CT-4",
+                                            "style": "no-wrap"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#"
+                                                    },
+                                                    "text": "Not filed"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "text": "04/10/2013"
+                                        },
+                                        {
+                                            "text": "125.00",
+                                            "style": "currency"
+                                        },
+                                        {
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "BTN_GOTO_1",
+                                                        },
+                                                        "icon": "view-details",
+                                                        "text": "Go To"
+                                                    },
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "BTN_DELETE_1",
+                                                        },
+                                                        "icon": "delete",
+                                                        "text": "Delete"
+                                                    },
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "BTN_EDIT_SELECTIONLESS_2",
+                                                            "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.referenceCall', args:['tables', 'edit-button-test', 'setCurrentIndex', []] }})"
+                                                        },
+                                                        "icon": "edit",
+                                                        "text": "Edit"
+                                                    },
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "text": "02",
+                                            "visibility": "hidden"
+                                        }
+                                    ],
+                                    "key": "edit-test-1"
+                                }
+                            ]
+                        },
+                        "preselected": ['edit-test-1']
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

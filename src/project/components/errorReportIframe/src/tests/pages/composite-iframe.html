@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    
+    <div id="body-wrapper"></div>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "iframe",
+                                        "template": "composite",
+                                        "properties": {
+                                            "src": "about:blank",
+                                            "id": "E_TEST_ERROR_REPORT_IFRAME",
+                                            "width": "500",
+                                            "height": "500"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "testErrorReportData": {  
+                "page":{  
+                    "contents":[  
+                        {  
+                            "template":"globalHeader",
+                            "accounts":"false",
+                            "search":{  
+                            "row":[  
+                                {  
+                                    "fields":[  
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_REPORT_PERIOD_BEGIN_MONTH_YEAR",
+                                                "title":"Report Period Begin Mo\/Yr",
+                                                "maxlength":7,
+                                                "name":"S_REPORT_PERIOD_BEGIN_MONTH_YEAR",
+                                                "type":"text",
+                                                "aria-required":"true",
+                                                "size":7
+                                            },
+                                            "required":"true"
+                                        },
+                                        "label":{  
+                                            "text":"Report Period Begin Mo\/Yr:",
+                                            "attributes":{  
+                                                "for":"S_REPORT_PERIOD_BEGIN_MONTH_YEAR"
+                                            }
+                                        },
+                                        "type":"text"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_REPORT_PERIOD_END_MONTH_YEAR",
+                                                "title":"Report Period End Mo\/Yr",
+                                                "maxlength":7,
+                                                "name":"S_REPORT_PERIOD_END_MONTH_YEAR",
+                                                "type":"text",
+                                                "aria-required":"true",
+                                                "size":7
+                                            },
+                                            "required":"true"
+                                        },
+                                        "label":{  
+                                            "text":"Report Period End Mo\/Yr:",
+                                            "attributes":{  
+                                                "for":"S_REPORT_PERIOD_END_MONTH_YEAR"
+                                            }
+                                        },
+                                        "type":"text"
+                                        }
+                                    ]
+                                },
+                                {  
+                                    "fields":[  
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_FILER_TYPE",
+                                                "title":"Filer Type",
+                                                "maxlength":20,
+                                                "name":"S_FILER_TYPE",
+                                                "type":"text"
+                                            },
+                                            "options":[  
+                                                {  
+                                                    "text":"Annual",
+                                                    "value":"A"
+                                                },
+                                                {  
+                                                    "text":"Monthly",
+                                                    "value":"M"
+                                                },
+                                                {  
+                                                    "text":"Not Required to File",
+                                                    "value":"N"
+                                                },
+                                                {  
+                                                    "text":"Quarterly",
+                                                    "value":"Q"
+                                                }
+                                            ]
+                                        },
+                                        "label":{  
+                                            "text":"Filer Type:",
+                                            "attributes":{  
+                                                "for":"S_FILER_TYPE"
+                                            }
+                                        },
+                                        "type":"select"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_CERTIFICATION_TYPE",
+                                                "title":"Certification Type",
+                                                "maxlength":40,
+                                                "name":"S_CERTIFICATION_TYPE",
+                                                "type":"text"
+                                            },
+                                            "options":[  
+                                                {  
+                                                    "text":"Administrative Charges",
+                                                    "value":"04"
+                                                },
+                                                {  
+                                                    "text":"Early Draw",
+                                                    "value":"01"
+                                                },
+                                                {  
+                                                    "text":"Early Draw (2)",
+                                                    "value":"09"
+                                                },
+                                                {  
+                                                    "text":"Early Draw Including New York State",
+                                                    "value":"51"
+                                                },
+                                                {  
+                                                    "text":"Final Draw",
+                                                    "value":"02"
+                                                },
+                                                {  
+                                                    "text":"Final Draw Including New York State",
+                                                    "value":"52"
+                                                },
+                                                {  
+                                                    "text":"Final Draw after Admin Charges",
+                                                    "value":"05"
+                                                },
+                                                {  
+                                                    "text":"LGAT Fund Admin Charges",
+                                                    "value":"24"
+                                                },
+                                                {  
+                                                    "text":"LGAT Fund after Admin Charges",
+                                                    "value":"26"
+                                                },
+                                                {  
+                                                    "text":"Local Government Assistance Tax Fund",
+                                                    "value":"23"
+                                                },
+                                                {  
+                                                    "text":"Nassau Final Draw after Admin Charges",
+                                                    "value":"15"
+                                                },
+                                                {  
+                                                    "text":"Nassau Interim Finance Admin Charges",
+                                                    "value":"14"
+                                                },
+                                                {  
+                                                    "text":"Nassau Interim Finance Early Draw",
+                                                    "value":"11"
+                                                },
+                                                {  
+                                                    "text":"Nassau Interim Finance Early Draw (2)",
+                                                    "value":"19"
+                                                },
+                                                {  
+                                                    "text":"Nassau Interim Finance Final Draw",
+                                                    "value":"12"
+                                                },
+                                                {  
+                                                    "text":"Nassau Interim Finance Total Draw",
+                                                    "value":"13"
+                                                },
+                                                {  
+                                                    "text":"Nassau Total Draw after Admin Charges",
+                                                    "value":"16"
+                                                },
+                                                {  
+                                                    "text":"New York State Early Draw",
+                                                    "value":"41"
+                                                },
+                                                {  
+                                                    "text":"New York State Final Draw",
+                                                    "value":"42"
+                                                },
+                                                {  
+                                                    "text":"Sales Tax Bond Fund",
+                                                    "value":"33"
+                                                },
+                                                {  
+                                                    "text":"Total Draw",
+                                                    "value":"03"
+                                                },
+                                                {  
+                                                    "text":"Total Draw after Admin Charges",
+                                                    "value":"06"
+                                                }
+                                            ]
+                                        },
+                                        "label":{  
+                                            "text":"Certification Type:",
+                                            "attributes":{  
+                                                "for":"S_CERTIFICATION_TYPE"
+                                            }
+                                        },
+                                        "type":"select"
+                                        }
+                                    ]
+                                },
+                                {  
+                                    "fields":[  
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_RESIDENTIAL_ENERGY",
+                                                "title":"Residential Energy",
+                                                "name":"S_RESIDENTIAL_ENERGY",
+                                                "value":"Y",
+                                                "type":"checkbox"
+                                            }
+                                        },
+                                        "label":{  
+                                            "text":"Residential Energy",
+                                            "attributes":{  
+                                                "for":"S_RESIDENTIAL_ENERGY"
+                                            }
+                                        },
+                                        "type":"checkbox"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_MOTOR_FUEL",
+                                                "title":"Motor Fuel",
+                                                "name":"S_MOTOR_FUEL",
+                                                "value":"Y",
+                                                "type":"checkbox"
+                                            }
+                                        },
+                                        "label":{  
+                                            "text":"Motor Fuel",
+                                            "attributes":{  
+                                                "for":"S_MOTOR_FUEL"
+                                            }
+                                        },
+                                        "type":"checkbox"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_FORM_TYPE_ST",
+                                                "title":"Form",
+                                                "maxlength":20,
+                                                "name":"S_FORM_TYPE_ST",
+                                                "type":"text"
+                                            },
+                                            "options":[  
+                                                {  
+                                                    "text":"MAIN",
+                                                    "value":"MAIN"
+                                                },
+                                                {  
+                                                    "text":"PRORATION CODES",
+                                                    "value":"Proration Codes"
+                                                },
+                                                {  
+                                                    "text":"SCHEDA",
+                                                    "value":"schedA"
+                                                },
+                                                {  
+                                                    "text":"SCHEDB",
+                                                    "value":"schedB"
+                                                },
+                                                {  
+                                                    "text":"SCHEDBATT",
+                                                    "value":"schedBATT"
+                                                },
+                                                {  
+                                                    "text":"SCHEDFR",
+                                                    "value":"schedFR"
+                                                },
+                                                {  
+                                                    "text":"SCHEDH",
+                                                    "value":"schedH"
+                                                },
+                                                {  
+                                                    "text":"SCHEDN",
+                                                    "value":"schedN"
+                                                },
+                                                {  
+                                                    "text":"SCHEDQ",
+                                                    "value":"schedQ"
+                                                },
+                                                {  
+                                                    "text":"SCHEDT",
+                                                    "value":"schedT"
+                                                },
+                                                {  
+                                                    "text":"SCHEDTATT",
+                                                    "value":"schedTATT"
+                                                },
+                                                {  
+                                                    "text":"SCHEDU",
+                                                    "value":"schedU"
+                                                },
+                                                {  
+                                                    "text":"SCHEDW",
+                                                    "value":"schedW"
+                                                }
+                                            ]
+                                        },
+                                        "label":{  
+                                            "text":"Form:",
+                                            "attributes":{  
+                                                "for":"S_FORM_TYPE_ST"
+                                            }
+                                        },
+                                        "type":"select"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_FORM_PART",
+                                                "title":"Form Part",
+                                                "maxlength":2,
+                                                "name":"S_FORM_PART",
+                                                "type":"text"
+                                            },
+                                            "options":[  
+                                                {  
+                                                    "text":"No Part",
+                                                    "value":"0"
+                                                },
+                                                {  
+                                                    "text":"Part 1",
+                                                    "value":"1"
+                                                },
+                                                {  
+                                                    "text":"Part 1B",
+                                                    "value":"1B"
+                                                },
+                                                {  
+                                                    "text":"Part 2",
+                                                    "value":"2"
+                                                },
+                                                {  
+                                                    "text":"Part 3",
+                                                    "value":"3"
+                                                },
+                                                {  
+                                                    "text":"Part 3A",
+                                                    "value":"3A"
+                                                },
+                                                {  
+                                                    "text":"Part 4",
+                                                    "value":"4"
+                                                },
+                                                {  
+                                                    "text":"Part 4A",
+                                                    "value":"4A"
+                                                },
+                                                {  
+                                                    "text":"Part 5",
+                                                    "value":"5"
+                                                },
+                                                {  
+                                                    "text":"Part 6",
+                                                    "value":"6"
+                                                },
+                                                {  
+                                                    "text":"Part 8",
+                                                    "value":"8"
+                                                }
+                                            ]
+                                        },
+                                        "label":{  
+                                            "text":"Form Part:",
+                                            "attributes":{  
+                                                "for":"S_FORM_PART"
+                                            }
+                                        },
+                                        "type":"select"
+                                        }
+                                    ]
+                                },
+                                {  
+                                    "fields":[  
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_JURISDICTION_GROUP_TYPE",
+                                                "title":"Jurisdiction Group Type",
+                                                "maxlength":20,
+                                                "name":"S_JURISDICTION_GROUP_TYPE",
+                                                "type":"text"
+                                            },
+                                            "options":[  
+                                                {  
+                                                    "text":"City",
+                                                    "value":"10"
+                                                },
+                                                {  
+                                                    "text":"County",
+                                                    "value":"20"
+                                                },
+                                                {  
+                                                    "text":"Other",
+                                                    "value":"99"
+                                                },
+                                                {  
+                                                    "text":"School District",
+                                                    "value":"30"
+                                                }
+                                            ]
+                                        },
+                                        "label":{  
+                                            "text":"Jurisdiction Group Type:",
+                                            "attributes":{  
+                                                "for":"S_JURISDICTION_GROUP_TYPE"
+                                            }
+                                        },
+                                        "type":"select"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "readOnly":true,
+                                            "attributes":{  
+                                                "id":"S_JURISDICTION_GROUP_DISPLAY",
+                                                "title":"Jurisdiction Group",
+                                                "maxlength":25,
+                                                "name":"S_JURISDICTION_GROUP_DISPLAY",
+                                                "type":"text",
+                                                "size":25
+                                            }
+                                        },
+                                        "label":{  
+                                            "text":"Jurisdiction Group:",
+                                            "attributes":{  
+                                                "for":"S_JURISDICTION_GROUP"
+                                            }
+                                        },
+                                        "type":"text"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_BORROWER_JURISDICTION_GROUP",
+                                                "name":"S_BORROWER_JURISDICTION_GROUP",
+                                                "type":"hidden"
+                                            }
+                                        },
+                                        "type":"hidden"
+                                        },
+                                        {  
+                                        "template":"selection",
+                                        "icon":"popup",
+                                        "text":"Popup Icon",
+                                        "attributes":{  
+                                            "id":"STDG_4_button",
+                                            "onclick":"emp.functionCall(event, 'emp.selectionPopup', [{'request':{'url':'\/empr2-st\/gateway\/ACERTINQST.tabset\/MC3171S_framework_rtpopup\/rtpopup', 'data':{'popupId':'STDG_4','pageId':'MC3171S'}},'mapping':{'S_BORROWER_JURISDICTION_GROUP':'2','S_JURISDICTION_GROUP':'1'},'selectReturn':'false'}])"
+                                        }
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_LINE_CODE",
+                                                "title":"Line Code",
+                                                "maxlength":5,
+                                                "name":"S_LINE_CODE",
+                                                "type":"text",
+                                                "size":5
+                                            }
+                                        },
+                                        "label":{  
+                                            "text":"Line Code:",
+                                            "attributes":{  
+                                                "for":"S_LINE_CODE"
+                                            }
+                                        },
+                                        "type":"text"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_SPLIT_CODE",
+                                                "title":"Split Code",
+                                                "maxlength":5,
+                                                "name":"S_SPLIT_CODE",
+                                                "type":"text",
+                                                "size":5
+                                            }
+                                        },
+                                        "label":{  
+                                            "text":"Split Code:",
+                                            "attributes":{  
+                                                "for":"S_SPLIT_CODE"
+                                            }
+                                        },
+                                        "type":"text"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"!S_RESIDENTIAL_ENERGY",
+                                                "name":"!S_RESIDENTIAL_ENERGY",
+                                                "value":"N",
+                                                "type":"hidden",
+                                                "defaultValue":"N"
+                                            }
+                                        },
+                                        "type":"hidden"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"!S_MOTOR_FUEL",
+                                                "name":"!S_MOTOR_FUEL",
+                                                "value":"N",
+                                                "type":"hidden",
+                                                "defaultValue":"N"
+                                            }
+                                        },
+                                        "type":"hidden"
+                                        },
+                                        {  
+                                        "template":"field",
+                                        "input":{  
+                                            "attributes":{  
+                                                "id":"S_JURISDICTION_GROUP",
+                                                "name":"S_JURISDICTION_GROUP",
+                                                "type":"hidden"
+                                            }
+                                        },
+                                        "type":"hidden"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "url":"\/empr2-st\/gateway\/ACERTINQST.tabset\/MC3171S\/search"
+                            },
+                            "page":{  
+                            "title":"Sales Tax Certification Distribution By Collection Period"
+                            },
+                            "tabsets":{  
+                            "template":"lists",
+                            "title":"Certification Inquiry - ST",
+                            "attributes":{  
+                                "className":"emp-tabset"
+                            },
+                            "type":"unordered",
+                            "options":[  
+                                {  
+                                    "template":"link",
+                                    "selected":true,
+                                    "text":"ST Cert Dist by Collection Prd",
+                                    "attributes":{  
+                                        "href":"\/empr2-st\/gateway\/ACERTINQST.tabset\/MC3171S"
+                                    }
+                                },
+                                {  
+                                    "template":"link",
+                                    "text":"ST Cert Dist by Liability Prd",
+                                    "attributes":{  
+                                        "href":"\/empr2-st\/gateway\/ACERTINQST.tabset\/MC3172S"
+                                    }
+                                },
+                                {  
+                                    "template":"link",
+                                    "text":"ST Cert Jur Dist",
+                                    "attributes":{  
+                                        "href":"\/empr2-st\/gateway\/ACERTINQST.tabset\/MC3175S"
+                                    }
+                                }
+                            ],
+                            "collapse":"true"
+                            }
+                        },
+                        {  
+                            "template":"pagebody",
+                            "readOnly":true,
+                            "contents":[  
+                            {  
+                                "readOnly":true,
+                                "attributes":{  
+                                    "id":"form_content",
+                                    "name":"form_content",
+                                    "action":"\/empr2-st\/gateway\/ACERTINQST.tabset\/MC3171S",
+                                    "method":"post"
+                                },
+                                "type":"form"
+                            }
+                            ]
+                        }
+                    ]
+                },
+                "assetsPath":{  
+                    "js":"js\/main.js",
+                    "domain":"\/emp\/",
+                    "cid":"01052018",
+                    "css":"css\/main.css",
+                    "version":"v1.3"
+                }
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+</body>
+</html>

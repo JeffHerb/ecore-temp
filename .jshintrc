@@ -1,0 +1,17 @@
+{
+    // Supported options: http://jshint.com/docs/
+    // Help with debugging common error messages: http://jslinterrors.com/
+    "browser": true,
+    "curly": true,
+    "eqeqeq": true,
+    "quotmark": true,
+    "unused": "vars",
+    "loopfunc": true,
+    "globals": {
+        "require": false,
+        "module": true,
+        "exports": true,
+        "Buffer": true,
+        "console": false
+    }
+}

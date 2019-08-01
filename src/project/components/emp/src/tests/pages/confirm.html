@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "form",
+                                "contents": [
+                                    {
+                                        "template": "table",
+                                        "title": "Confirm Test",
+                                        "attributes": {
+                                            "id": "confirm-test",
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Liability Period",
+                                                            "attributes": {
+                                                                "data-type": "dateRange",
+                                                                "data-colmap": "confirm-test_liabilityPeriod"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Joint Liability Period Exists",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_jointLiabilityPeriodExists"
+                                                            },
+                                                            "style": "min-width",
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Audit Ownership",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_auditOwnership"
+                                                            },
+                                                            "style": "min-width",
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Score",
+                                                            "attributes": {
+                                                                "data-type": "numeric",
+                                                                "data-colmap": "confirm-test_score"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Tax Type/Sub Type",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_taxTypeSubType"
+                                                            },
+                                                            "style": "no-wrap"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Return Status",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_returnStatus"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Return Status Date",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_returnStatusDate"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Amount ($)",
+                                                            "attributes": {
+                                                                "data-type": "numeric",
+                                                                "data-colmap": "confirm-test_amount"
+                                                            },
+                                                            "style": "currency"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Review details",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_reviewDetails"
+                                                            },
+                                                            "style": "min-width",
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "TFA Details",
+                                                            "style": "min-width",
+                                                            "attributes": {
+                                                                "data-type": "button"
+                                                            },
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "{Page}",
+                                                            "style": "min-width",
+                                                            "attributes": {
+                                                                "data-type": "button"
+                                                            },
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Delete row",
+                                                            "style": "min-width",
+                                                            "attributes": {
+                                                                "data-type": "button"
+                                                            },
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Edit record",
+                                                            "style": "min-width",
+                                                            "attributes": {
+                                                                "data-type": "button"
+                                                            },
+                                                            "responsive": {
+                                                                "primaryButton": true
+                                                            },
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Hidden Column 1",
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "confirm-test_hiddenColumn1"
+                                                            },
+                                                            "visibility": "hidden"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "01/01/2011 - 12/31/2011"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "static",
+                                                                    "template": "notifier",
+                                                                    "attributes": {
+                                                                        "alt": "Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))",
+                                                                    },
+                                                                    "text": "J",
+                                                                }
+                                                            ],
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "text": "80"
+                                                        },
+                                                        {
+                                                            "text": "CORP - CT-3, 3S, CT-4, 4S",
+                                                            "style": "no-wrap"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "template": "link",
+                                                                    "attributes": {
+                                                                        "href": "#"
+                                                                    },
+                                                                    "text": "Not filed"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text": "04/15/2012"
+                                                        },
+                                                        {
+                                                            "text": "1,750.00",
+                                                            "style": "currency"
+                                                        },
+                                                        {
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "BTN_GOTO_1",
+                                                                        },
+                                                                        "icon": "view-details",
+                                                                        "text": "Go To"
+                                                                    },
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "BTN_DELETE_1",
+                                                                        },
+                                                                        "icon": "delete",
+                                                                        "text": "Delete"
+                                                                    },
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "edit-1",
+                                                                            "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.confirm', args:['Are you sure you want to edit this record?']}, 1: { 'function': 'emp.referenceCall', args:['tables', 'confirm-test', 'setFocus', []] }})",
+                                                                            "type": "button"
+                                                                        },
+                                                                        "icon": "edit",
+                                                                        "text": "Edit"
+                                                                    },
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                        {
+                                                            "text": "01",
+                                                            "visibility": "hidden"
+                                                        }
+                                                    ],
+                                                    "key": "edit-test-0"
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "01/01/2012 - 12/31/2012"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "static",
+                                                                    "template": "notifier",
+                                                                    "attributes": {
+                                                                        "alt": "Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))",
+                                                                    },
+                                                                    "text": "J",
+                                                                }
+                                                            ],
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "text": "90"
+                                                        },
+                                                        {
+                                                            "text": "CORP - CT-3, 3S, CT-4",
+                                                            "style": "no-wrap"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "template": "link",
+                                                                    "attributes": {
+                                                                        "href": "#"
+                                                                    },
+                                                                    "text": "Not filed"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text": "04/10/2013"
+                                                        },
+                                                        {
+                                                            "text": "125.00",
+                                                            "style": "currency"
+                                                        },
+                                                        {
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "style": "min-width"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "BTN_GOTO_2",
+                                                                        },
+                                                                        "icon": "view-details",
+                                                                        "text": "Go To"
+                                                                    },
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "BTN_DELETE_2",
+                                                                        },
+                                                                        "icon": "delete",
+                                                                        "text": "Delete"
+                                                                    },
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "edit-2",
+                                                                            "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.confirm', 'args':['Are you sure you want to edit this record?']}, 1: { 'function': 'emp.referenceCall', 'args':['tables', 'confirm-test', 'setFocus', []] }})",
+                                                                            "type": "button"
+                                                                        },
+                                                                        "icon": "edit",
+                                                                        "text": "Edit"
+                                                                    },
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                        {
+                                                            "text": "02",
+                                                            "visibility": "hidden"
+                                                        }
+                                                    ],
+                                                    "key": "edit-test-1"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                ]
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        }
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

@@ -1,0 +1,21 @@
+<div class="emp-page-info">
+    {{#if this.asof~}}
+        {{~> _composite this.asof parentObj=this.parentObj~}}
+    {{/if~}}
+
+    {{#if this.notifiers~}}
+        {{~> _notifierGroup this.notifiers~}}
+    {{/if~}}
+    
+    {{#if this.pagetitle}}  
+        {{~> _pageTitle}}
+    {{/if}}
+   
+    {{#if this.pageinstructions}}  
+        {{~> _pageInstructions}}
+    {{/if}}
+   
+    {{#if this.pagelegend}}  
+        {{~> _pageLegend}}
+    {{/if}}
+</div>

@@ -1,0 +1,679 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Empire - CISS45S Dependent Verification</title>
+<link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+<!--
+===============================================================================
+eMPIRE2 | Empire  - CISS45S Dependent Verification
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+03/30/2016  DB        This page has been created in E2.
+===============================================================================
+-->
+</head>
+<body>
+<div id="body-wrapper">
+  <!-- Accessibility cues -->
+  <div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+  <!-- ==================== -->
+  <!-- GLOBAL HEADER        -->
+  <!-- ==================== -->
+  <header>
+    <!-- Logo and main menu -->
+    <div class="emp-header-row-first">
+      <div class="emp-header-logo"> Empire </div>
+      <nav id="emp-header-menu-main"> Main Menu </nav>
+      <div id="emp-header-favorites"> &#9734; </div>
+    </div>
+    <!-- Title, notifiers and secondary menu -->
+    <div class="emp-header-row-second">
+      <div class="emp-header-tabset-title">
+        <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+        <h1>Tabset menu title</h1>
+      </div>
+      <ul class="emp-header-links">
+        <li class="emp-header-employee"><a role="button">Employee</a></li>
+        <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+        <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+        <li class="emp-header-help"><a role="button">Help</a></li>
+      </ul>
+    </div>
+  </header>
+  <!-- ==================== -->
+  <!-- TABSET               -->
+  <!-- ==================== -->
+  <ul class="emp-tabset emp-collapse">
+    <li class="emp-selected"><a href="#" title="Dependent Verification" tabindex="1">Dependent Verification</a></li>
+  </ul>
+  <!-- ==================== -->
+  <!-- PAGE TITLE           -->
+  <!-- ==================== -->
+  <div class="emp-page-title">
+    <div class="emp-text">
+      <h2>Dependent Verification <span>Page mode</span></h2>
+    </div>
+    <ul class="emp-actions">
+      <li>
+        <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+      </li>
+      <li>
+        <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+      </li>
+      <li>
+        <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+      </li>
+    </ul>
+  </div>
+  <!-- ==================== -->
+  <!-- SEARCH BOX           -->
+  <!-- ==================== -->
+  <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+  <form name="form_search" id="form_search" class="emp-search-box emp-collapse" action="http://www.tax.ny.gov" method="post">
+    <div class="emp-search-fields">
+      <div class="cui-row">
+        <div class="emp-search-box-field">
+          <div class="emp-field">
+            <div class="cui-label">
+              <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+              <select id="HEADER_ID_TYPE" tabindex="1">
+                <option value="DN" selected="selected">DLN</option>
+                <option value="IN">Individual Name</option>
+                <option value="IT">Individual Taxpayer ID</option>
+              </select>
+            </div>
+            <div class="cui-data">
+              <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+              <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cui-row">
+        <div class="emp-search-box-field">
+          <div class="emp-field">
+            <div class="cui-label">
+              <label for="S_TAX_YEAR_AUDIT">Tax Year:</label>
+            </div>
+            <div class="cui-data">
+              <select id="S_TAX_YEAR_AUDIT" tabindex="1" sel="0" aria-required="true">
+                <option selected="selected">2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons -->
+    <div class="emp-search-buttons">
+      <div class="cui-row">
+        <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+      </div>
+      <div class="cui-row">
+        <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+        <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+      </div>
+      <div class="cui-row"> <a role="button" class="emp-button-get-id" name="E_BTN_get_id" tabindex="1">Get ID</a> </div>
+    </div>
+    <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+  </form>
+  <!-- ==================== -->
+  <!-- PAGE MESSAGES        -->
+  <!-- ==================== -->
+  <ul class="cui-messages emp-messages cui-hidden">
+    <li class="cui-error">
+      <p>Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</p>
+    </li>
+    <li class="cui-warning">
+      <p>Warning message. Displays information about certain things that need to be considered before continuing.</p>
+    </li>
+    <li class="cui-informational">
+      <p>Informational message. Provide some information to assist in making the right decisions or something.</p>
+    </li>
+    <li class="cui-success">
+      <p>Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this type of message shows per page submission.</p>
+    </li>
+  </ul>
+  <!-- ####################### -->
+  <!-- DEVELOPER'S CODE (JSP)  -->
+  <!-- ####################### -->
+  <main role="main">
+    <div class="emp-page-info"></div>
+    <!-- ==================== -->
+    <!-- PAGE CONTENT         -->
+    <!-- ==================== -->
+    <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+      <!-- ==================== -->
+      <!-- SECTIONS             -->
+      <!-- ==================== -->
+      <!-- +++++++++++++++++++++ -->
+      <!-- SECTION: .Return Data -->
+      <!-- +++++++++++++++++++++ -->
+      <section>
+        <header>
+          <div class="emp-section-title">
+            <h3>Return Data
+              <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">View image</button>
+            </h3>
+          </div>
+          <div class="emp-section-controls">
+            <ul>
+              <li>
+                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Taxpayer ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_TAXPAYER_ID_WITH_ID_TYPE">000-82-1236 (IND)</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Dependent Rating:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_RATING">+1</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_SHORT_NAME">Micky Mouse</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Town:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_TOWN">Albany</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Form:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_FORM">IT-201</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Filing Status:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_FILING_STATUS">Married Filing Separate</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Paid Preparer ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_PAID_PREPARER_ID">123456789</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="emp-button-row">
+          <div class="emp-col-half">
+            <button type="button" name="E_BTN_VIEW_RETURN" tabindex="1" title="Popup CT View Return"> View Return <span class="emp-popup" title="Popup CT View Return"></span> </button>
+          </div>
+        </div>
+      </section>
+      <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+      <!-- SECTION: .Dependent Data Claimed By Year -->
+      <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+      <section>
+        <header>
+          <div class="emp-section-title">
+            <h3>Dependent Data Claimed By Year</h3>
+          </div>
+          <div class="emp-section-controls">
+            <ul>
+              <li>
+                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="emp-button-row">
+          <div class="emp-col-full cui-align-right">
+            <button type="button" name="E_BTN_PREVOUS_YEAR" tabindex="1" title="Previous Year">Previous Year</button>
+            <button type="button" name="E_BTN_NEXT_YEAR" tabindex="1" title="Next Year">Next Year</button>
+          </div>
+        </div>
+        <div class="emp-table">
+          <table id="table_dependent_claimed_by_year">
+            <thead>
+              <tr data-key="table-row">
+                <th data-sort="alpha" data-table-column-priority="1" class="emp-sortable">Taxpayer ID</th>
+                <th data-sort="alpha" class="emp-sortable">Taxpayer Name</th>
+                <th data-sort="alpha" class="emp-sortable">Joint Taxpayer ID</th>
+                <th data-sort="alpha" class="emp-sortable">Joint Taxpayer Name</th>
+                <th data-sort="alpha" class="emp-sortable">Tax Year 2013</th>
+                <th data-sort="alpha" class="emp-sortable">Tax Year 2014</th>
+                <th data-sort="alpha" class="emp-sortable">Tax Year 2015</th>
+                <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="View Image">View Image</span> </th>
+                <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="View Image">View Image</span> </th>
+                <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="View Image">View Image</span> </th>
+                <th data-type="button" class="emp-min-width" data-table-primary-button="true"> <span class="cui-hide-from-screen" Title="Drill Down to More Details"> Drill Down to More Details </span> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>000-82-1236 (IND)</td>
+                <td>Mickey Mouse</td>
+                <td>000-80-4839 (IND)</td>
+                <td>Minnie Mouse</td>
+                <td><span title="Married Filing Jointly, FAGI: $24,000.00" class="emp-tooltip">1,2,3</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image for Tax Year 2013" tabindex="1" name="E_BTN_IMAGE">View Image for Tax Year 2013<span class="emp-popup"></span></button></td>
+                <td class="emp-min-width"><button class="emp-icon-drill-down" title="Drill Down to More Details" tabindex="1" name="E_BTN_DRILLDOWN">Drill Down to More Details</button></td>
+              </tr>
+              <tr>
+                <td>000-80-4839 (IND)</td>
+                <td>Minnie Mouse</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span title="Married Filing Separate, FAGI: $15,000.00" class="emp-tooltip">1,4</span></td>
+                <td><span title="Single, FAGI $15,000.00" class="emp-tooltip">1,2,4</span></td>
+                <td></td>
+                <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image for Tax Year 2014" tabindex="1" name="E_BTN_IMAGE">View Image for Tax Year 2014<span class="emp-popup"></span></button></td>
+                <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image for Tax Year 2015" tabindex="1" name="E_BTN_IMAGE">View Image for Tax Year 2015<span class="emp-popup"></span></button></td>
+                <td class="emp-min-width"><button class="emp-icon-drill-down" title="Drill Down to More Details" tabindex="1" name="E_BTN_DRILLDOWN">Drill Down to More Details</button></td>
+              </tr>
+              <tr>
+                <td>000-82-1236 (IND)</td>
+                <td>Mickey Mouse</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span title="Married Filing Separate, FAGI: $24,000.00" class="emp-tooltip">2,3</span></td>
+                <td>Not Filed</td>
+                <td></td>
+                <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image for Tax Year 2014" tabindex="1" name="E_BTN_IMAGE">View Image for Tax Year 2014<span class="emp-popup"></span></button></td>
+                <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image for Tax Year 2015" tabindex="1" name="E_BTN_IMAGE">View Image for Tax Year 2015<span class="emp-popup"></span></button></td>
+                <td class="emp-min-width"><button class="emp-icon-drill-down" title="Drill Down to More Details" tabindex="1" name="E_BTN_DRILLDOWN">Drill Down to More Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- ++++++++++++++++++++++ -->
+        <!-- SECTION: .Address Data -->
+        <!-- ++++++++++++++++++++++ -->
+        <section>
+          <header>
+            <div class="emp-section-title">
+              <h3>Address Data</h3>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="emp-button-row">
+            <div class="emp-col-full cui-align-right">
+              <button type="button" name="E_BTN_PREVOUS_YEAR" tabindex="1" title="Previous Year">Previous Year</button>
+              <button type="button" name="E_BTN_NEXT_YEAR" tabindex="1" title="Next Year">Next Year</button>
+            </div>
+          </div>
+          <div class="emp-table">
+            <table id="table_address_data">
+              <thead>
+                <tr data-key="table-row">
+                  <th data-sort="alpha" data-table-column-priority="1" class="emp-sortable">Taxpayer ID</th>
+                  <th data-sort="alpha" class="emp-sortable">Taxpayer Name</th>
+                  <th data-sort="alpha" class="emp-sortable">Joint Taxpayer ID</th>
+                  <th data-sort="alpha" class="emp-sortable">Joint Taxpayer Name</th>
+                  <th data-sort="alpha" class="emp-sortable">Tax Year 2013</th>
+                  <th data-sort="alpha" class="emp-sortable">Tax Year 2014</th>
+                  <th data-sort="alpha" class="emp-sortable">Tax Year 2015</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>000-82-1236 (IND)</td>
+                  <td>Mickey Mouse</td>
+                  <td>000-80-4839 (IND)</td>
+                  <td>Minnie Mouse</td>
+                  <td>123 Disney Lane,<br/>Albany, NY 12205</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>000-80-4839 (IND)</td>
+                  <td>Minnie Mouse</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>589 Donald Duck Lane, Albany, NY 12205</td>
+                  <td>589 Donald Duck Lane, Albany, NY 12205</td>
+                </tr>
+                <tr>
+                  <td>000-82-1236 (IND)</td>
+                  <td>Mickey Mouse</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>136 Pluto Lane, Apt. 2B, Albany, NY 12205</td>
+                  <td>136 Pluto Lane, Apt. 2B, Albany, NY 12205</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- +++++++++++++++++++++++ -->
+        <!-- SECTION: .Preparer Data -->
+        <!-- +++++++++++++++++++++++ -->
+        <section>
+          <header>
+            <div class="emp-section-title">
+              <h3>Preparer Data</h3>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="emp-button-row">
+            <div class="emp-col-full cui-align-right">
+              <button type="button" name="E_BTN_PREVOUS_YEAR" tabindex="1" title="Previous Year">Previous Year</button>
+              <button type="button" name="E_BTN_NEXT_YEAR" tabindex="1" title="Next Year">Next Year</button>
+            </div>
+          </div>
+          <div class="emp-table">
+            <table id="table_preparer_data">
+              <thead>
+                <tr data-key="table-row">
+                  <th data-sort="alpha" data-table-column-priority="1" class="emp-sortable">Taxpayer ID</th>
+                  <th data-sort="alpha" class="emp-sortable">Taxpayer Name</th>
+                  <th data-sort="alpha" class="emp-sortable">Joint Taxpayer ID</th>
+                  <th data-sort="alpha" class="emp-sortable">Joint Taxpayer Name</th>
+                  <th data-sort="alpha" class="emp-sortable">Tax Year 2013</th>
+                  <th data-sort="alpha" class="emp-sortable">Tax Year 2014</th>
+                  <th data-sort="alpha" class="emp-sortable">Tax Year 2015</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>000-82-1236 (IND)</td>
+                  <td>Mickey Mouse</td>
+                  <td>000-80-4839 (IND)</td>
+                  <td>Minnie Mouse</td>
+                  <td>P123456789</br>
+                    John Champion</br>
+                    H&R Block</br>
+                    258 State Street</br>
+                    Albany, NY 12205</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>000-80-4839 (IND)</td>
+                  <td>Minnie Mouse</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>P123456789</br>
+                    John Champion</br>
+                    H&R Block</br>
+                    258 State Street</br>
+                    Albany, NY 12205</td>
+                  <td>P123456789</br>
+                    Jane Hamilton</br>
+                    H&R Block</br>
+                    258 State Street</br>
+                    Albany, NY 12205</td>
+                </tr>
+                <tr>
+                  <td>000-82-1236 (IND)</td>
+                  <td>Mickey Mouse</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>559-23-4672 (IND)</br>
+                    William Wright</br>
+                    Liberty Tax</br>
+                    8669 Quail Street</br>
+                    Albany, NY 12205</td>
+                  <td>403-32-7881 (IND)</br>
+                    Ryan Herald</br>
+                    Herald CPA</br>
+                    78 Mason Street</br>
+                    Albany, NY 12205</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- ++++++++++++++++++++++++ -->
+        <!-- SECTION: .Filing Details -->
+        <!-- ++++++++++++++++++++++++ -->
+        <section>
+          <header>
+            <div class="emp-section-title">
+              <h3>Filing Details</h3>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <!-- ++++++++++++++++++++++ -->
+          <!-- SECTION: .Dependent 1  -->
+          <!-- ++++++++++++++++++++++ -->
+          <section>
+            <header>
+              <div class="emp-section-title">
+                <h3>Dependent 1</h3>
+              </div>
+              <div class="emp-section-controls">
+                <ul>
+                  <li>
+                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                  </li>
+                </ul>
+              </div>
+            </header>
+            <div class="cui-row">
+              <div class="emp-col-half">
+                <div class="emp-field">
+                  <div class="cui-label"> <span class="emp-label">Dependent ID:</span> </div>
+                  <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_ID">000-86-5223</span> </div>
+                </div>
+              </div>
+              <div class="emp-col-half">
+                <div class="emp-field">
+                  <div class="cui-label"> <span class="emp-label">Dependent Age:</span> </div>
+                  <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_AGE">12</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="cui-row">
+              <div class="emp-col-full">
+                <div class="emp-field">
+                  <div class="cui-label"> <span class="emp-label">Dependent Name:</span> </div>
+                  <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_NAME">Pico Mouse</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="emp-button-row">
+              <table id="table_dependent_1">
+                <thead>
+              <div class="emp-col-half">
+                <button type="button" name="E_BTN_DEPENDENT_INFO" tabindex="1" title="Dependent Information">Dependent Information</button>
+              </div>
+              <div class="emp-col-half cui-align-right">
+                <button type="button" name="E_BTN_PREVOUS_YEAR" tabindex="1" title="Previous Year">Previous Year</button>
+                <button type="button" name="E_BTN_NEXT_YEAR" tabindex="1" title="Next Year">Next Year</button>
+              </div>
+            </div>
+            <div class="emp-table">
+                  <tr data-key="table-row">
+                    <th data-sort="alpha" data-table-column-priority="1" class="emp-sortable">Taxpayer ID</th>
+                    <th data-sort="alpha" class="emp-sortable">Taxpayer Name</th>
+                    <th data-sort="alpha" class="emp-sortable">Joint Taxpayer ID</th>
+                    <th data-sort="alpha" class="emp-sortable">Joint Taxpayer Name</th>
+                    <th data-sort="alpha" class="emp-sortable">Tax Year 2013</th>
+                    <th data-sort="alpha" class="emp-sortable">Tax Year 2014</th>
+                    <th data-sort="alpha" class="emp-sortable">Tax Year 2015</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-82-1236 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Mickey Mouse</td>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-80-4839 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Minnie Mouse</td>
+                    <td><span class="emp-indicator-3" alt="Invalid - Manual">INM</span>Son</br><span class="emp-indicator-3" alt="Dependent Care Credit">DCC</span><span class="emp-indicator-3" alt="Earned Income Credit">EIC</span><span class="emp-indicator-3" alt="Empire State Child Care Credit">ESC</span></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-80-4839 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Minnie Mouse</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Son</br><span class="emp-indicator-3" alt="Dependent Care Credit">DCC</span><span class="emp-indicator-3" alt="Earned Income Credit">EIC</span><span class="emp-indicator-3" alt="Empire State Child Care Credit">ESC</span></td>
+                    <td><span class="emp-indicator-3" alt="Invalid - System">INS</span>Son</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <!-- +++++++++++++++++++++++ -->
+          <!-- SECTION: .Dependent 2   -->
+          <!-- +++++++++++++++++++++++ -->
+          <section>
+            <header>
+              <div class="emp-section-title">
+                <h3>Dependent 2</h3>
+              </div>
+              <div class="emp-section-controls">
+                <ul>
+                  <li>
+                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                  </li>
+                </ul>
+              </div>
+            </header>
+            <div class="cui-row">
+              <div class="emp-col-half">
+                <div class="emp-field">
+                  <div class="cui-label"> <span class="emp-label">Dependent ID:</span> </div>
+                  <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_ID">000-86-3605</span> </div>
+                </div>
+              </div>
+              <div class="emp-col-half">
+                <div class="emp-field">
+                  <div class="cui-label"> <span class="emp-label">Dependent Age:</span> </div>
+                  <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_AGE">10</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="cui-row">
+              <div class="emp-col-full">
+                <div class="emp-field">
+                  <div class="cui-label"> <span class="emp-label">Dependent Name:</span> </div>
+                  <div class="cui-data"> <span class="emp-data" id="E_DEPENDENT_NAME">Bit Mouse</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="emp-button-row">
+              <div class="emp-col-half">
+                <button type="button" name="E_BTN_DEPENDENT_INFO" tabindex="1" title="Dependent Information">Dependent Information</button>
+              </div>
+              <div class="emp-col-half cui-align-right">
+                <button type="button" name="E_BTN_PREVOUS_YEAR" tabindex="1" title="Previous Year">Previous Year</button>
+                <button type="button" name="E_BTN_NEXT_YEAR" tabindex="1" title="Next Year">Next Year</button>
+              </div>
+            </div>
+            <div class="emp-button-row">
+              <div class="emp-col-full cui-align-right">
+                <button type="button" name="E_BTN_PREVOUS_YEAR" tabindex="1" title="Previous Year">Previous Year</button>
+                <button type="button" name="E_BTN_NEXT_YEAR" tabindex="1" title="Next Year">Next Year</button>
+              </div>
+            </div>
+            <div class="emp-table">
+              <table id="table_dependent_2">
+                <thead>
+                  <tr data-key="table-row">
+                    <th data-sort="alpha" data-table-column-priority="1" class="emp-sortable">Taxpayer ID</th>
+                    <th data-sort="alpha" class="emp-sortable">Taxpayer Name</th>
+                    <th data-sort="alpha" class="emp-sortable">Joint Taxpayer ID</th>
+                    <th data-sort="alpha" class="emp-sortable">Joint Taxpayer Name</th>
+                    <th data-sort="alpha" class="emp-sortable">Tax Year 2013</th>
+                    <th data-sort="alpha" class="emp-sortable">Tax Year 2014</th>
+                    <th data-sort="alpha" class="emp-sortable">Tax Year 2015</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-82-1236 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Mickey Mouse</td>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-80-4839 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Minnie Mouse</td>
+                    <td>Disable, Student, Son</br><span class="emp-indicator-3" alt="Dependent Care Credit">DCC</span><span class="emp-indicator-3" alt="Earned Income Credit">EIC</span><span class="emp-indicator-3" alt="Empire State Child Care Credit">ESC</span></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-82-1236 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Mickey Mouse</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Disable, Student, Son</br><span class="emp-indicator-3" alt="Dependent Care Credit">DCC</span><span class="emp-indicator-3" alt="Earned Income Credit">EIC</span><span class="emp-indicator-3" alt="Empire State Child Care Credit">ESC</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="cui-no-wrap"><a href="#" tabindex="1" title="Popup Dependent Information">000-80-4839 (IND)<span class="emp-popup"></span> </a></td>
+                    <td>Minnie Mouse</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Disable, Student, Son</br><span class="emp-indicator-3" alt="Dependent Care Credit">DCC</span><span class="emp-indicator-3" alt="Earned Income Credit">EIC</span><span class="emp-indicator-3" alt="Empire State Child Care Credit">ESC</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+    </form>
+  </main>
+</div>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+        // Elements in the page that need to be turned into a data store
+        uiMockup.createPageDataStore(function(results) {
+            emp.init();
+        });
+    });
+    </script>
+</body>
+</html>

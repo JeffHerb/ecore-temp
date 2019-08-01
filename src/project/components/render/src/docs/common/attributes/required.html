@@ -1,0 +1,351 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="required Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>required</h2>
+
+                <p>
+                    The <code>required</code> attribute is used to signify that said input must be filled in, in order for the user to submit a specific web form.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Example</h2>
+                <h3>Example JSP Tag</h3>
+                <pre class="code">
+&lt;E2:Text type="text" viewKey="demo" required="true" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    {
+        "type": "text",
+        "template": "field",
+        "label": {
+            "text": "Required Text Label",
+            "attributes": {
+                "for": "demo"
+            }
+        },
+        "input": {
+            "attributes": {
+                "name": "demo",
+                "id": "demo",
+                "type": "text",
+                "aria-required": "true"
+            },
+            "required": true
+        }
+    }
+}</pre>
+                <p>
+                    For the purposes of this example we are using a <code>text</code> field. For the full <a href="#required-support">support list</a> see below. We are also assuming that in this case, the page loaded in <em>update mode</em>.
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <p>
+                    The required attribute used on a custom tag actual means that an additional sub property of <code>required</code> will be added to the input JSON object. This will also add a new property to the input attributes object of "aria-required" and it must have a value of <em>true</em>.
+                </p>
+
+                <section id="required-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+
+                <ul id="required-support">
+                    <li><a href="../../tags/date.html">Date</a></li>
+                    <li><a href="../../tags/selectBox.html">SelectBox</a></li>
+                    <li><a href="../../tags/textArea.html">Textarea</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Required Group</h2>
+                <h3>Example JSP Tag</h3>
+                <pre class="code">
+&lt;E2:InputGroup legend="Name" required="true">
+    &lt;E2:Text type="text" viewKey="fname" required="true" />
+    &lt;E2:Text type="text" viewKey="mname" />
+    &lt;E2:Text type="text" viewKey="lname" required="true" />
+&lt;/E2:InputGroup></pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "inputs",
+    "template": "inputGroup",
+    "legend": "Full Name",
+    "options": [
+        {
+            "type": "text",
+            "template": "field",
+            "label": {
+                "text": "First Name",
+                "attributes": {
+                    "for": "fname"
+                },
+                "visibility": "hidden",
+                "hasLayout": false
+            },
+            "input": {
+                "attributes": {
+                    "name": "fname",
+                    "id": "fname",
+                    "type": "text",
+                    "value": "",
+                    "aria-required": "true"
+                },
+                "required": true
+            }
+        },
+        {
+            "type": "text",
+            "template": "field",
+            "label": {
+                "text": "Middle Initial",
+                "attributes": {
+                    "for": "mname"
+                },
+                "visibility": "hidden",
+                "hasLayout": false
+            },
+            "input": {
+                "attributes": {
+                    "name": "mname",
+                    "id": "mname",
+                    "type": "text",
+                    "value": "",
+                    "size": 1
+                }
+            }
+        },
+        {
+            "type": "text",
+            "template": "field",
+            "label": {
+                "text": "Last Name",
+                "attributes": {
+                    "for": "lanme"
+                },
+                "visibility": "hidden",
+                "hasLayout": false
+            },
+            "input": {
+                "attributes": {
+                    "name": "lanme",
+                    "id": "lanme",
+                    "type": "text",
+                    "value": "",
+                    "aria-required": "true"
+                },
+                "required": true
+            }
+        }
+    ]
+}
+</pre>
+                <p>
+                    For the purposes of this example we are using a <code>&lt;E2:InputGroup&gt;</code>. For the full <a href="#requiredGroup-support">support list</a> below. We are also assuming that in this case, the page loaded in <em>update mode</em>.
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <p>
+                    The required attribute does not need to be defined on input groups. This is because required asterisks will only appear on an input group when the input contents are all or partially marked as required and the individual input labels are marked as hidden (the exception being for radio and checkboxes). In the example below, the first and the last name inputs are marked as required fields. The middle initial is not required. But since all three have hidden labels, it is assumed that the individual input do not require additional explination and that the require asterisk can safely be placed on the input group legend.
+                </p>
+
+                <section id="requiredGroup-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+
+                <ul id="requiredGroup-support">
+                    <li><a href="../../tags/checkBoxGroup.html">CheckBoxGroup</a></li>
+                    <li><a href="../../tags/inputGroup.html">InputGroup</a></li>
+                    <li><a href="../../tags/radioGroup.html">RadioGroup</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <script>
+            var requiredScript = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Required Text Label",
+                                            "attributes": {
+                                                "for": "demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "aria-required": "true"
+                                            },
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Required example
+            var requiredGroupScript = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "inputs",
+                                        "template": "inputGroup",
+                                        "legend": "Full Name",
+                                        "options": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "First Name",
+                                                    "attributes": {
+                                                        "for": "fname"
+                                                    },
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "fname",
+                                                        "id": "fname",
+                                                        "type": "text",
+                                                        "value": "",
+                                                        "aria-required": "true"
+                                                    },
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Middle Initial",
+                                                    "attributes": {
+                                                        "for": "mname"
+                                                    },
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "mname",
+                                                        "id": "mname",
+                                                        "type": "text",
+                                                        "value": "",
+                                                        "size": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Last Name",
+                                                    "attributes": {
+                                                        "for": "lanme"
+                                                    },
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "lanme",
+                                                        "id": "lanme",
+                                                        "type": "text",
+                                                        "value": "",
+                                                        "aria-required": "true"
+                                                    },
+                                                    "required": true
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- pag``e script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var requiredExample = document.getElementById("required-example");
+                var requiredGroupExample = document.getElementById("requiredGroup-example");
+
+                // Create the generic example
+                render.page(requiredExample, requiredScript, function() {
+
+                    console.log("Required Done");
+
+                    render.page(requiredGroupExample, requiredGroupScript, function() {
+
+                        console.log("Required Group Done");
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

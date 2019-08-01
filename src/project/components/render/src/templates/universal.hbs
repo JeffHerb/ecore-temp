@@ -1,0 +1,62 @@
+{{#if this.wrapper}}
+
+    {{#ifCond v1=this.type op="===" v2="section"}}
+        <div class="emp-section-in-section-container">
+    {{/ifCond}}
+
+{{/if}}
+
+    {{#if type~}}
+
+        <{{type}} {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' addClass=this.addClass style=this.style collapse=this.collapse)) }}>
+    {{~else~}}
+        <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' addClass=this.addClass style=this.style collapse=this.collapse)) }}>
+    {{/if~}}
+
+        {{! In the event both exist only execute the template code}}
+        {{#ifCond v1=this.text op="&&" v2=this.template~}}
+
+            {{! Check to make sure its not calling itself. }}
+            {{#ifCond v1=this.template op="===" v2="universal"~}}
+
+                {{~this.text~}}
+
+            {{~else~}}
+
+                {{~> (getPartialName this.template) this ~}}
+
+            {{/ifCond~}}
+
+        {{~else~}}
+
+            {{! Check for text}}
+            {{#if this.text~}}
+
+                {{~this.text~}}
+
+            {{~else~}}
+
+                {{~#ifCond v1=this.template op="!==" v2="universal"~}}
+
+                    {{~> (getPartialName this.template) this ~}}
+
+                {{/ifCond~}}
+
+            {{/if~}}
+
+        {{/ifCond~}}
+
+    {{#if type~}}
+        </{{type}} }}>
+    {{~else~}}
+        </div>
+    {{/if~}}
+
+{{#if this.wrapper}}
+
+    {{#ifCond v1=this.type op="===" v2="section"}}
+        </div>
+    {{/ifCond}}
+
+{{/if}}
+

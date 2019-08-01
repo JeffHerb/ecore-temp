@@ -1,0 +1,2889 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--  Global Page Imports -->
+<!-- UseBeans Go Here -->
+<!-- Jsp Scriplets to get data for jsp goes here -->
+<script>
+menuArray = [
+    [menu_1 = [
+            ['menu_1_1'],
+            ['Inquire On Client', '#', 1]
+        ],
+        [
+            ['menu_1_1_1'],
+            ['Business Summary', 'CBUSII01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_2'],
+            ['Assessments Receivable Inq', 'CASSEI01.gateway?jadeAction=TB0600N_CLNT_SRCH_BY_NAME_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_3'],
+            ['Assessments Receivable Inq', 'CASSEI02.gateway?jadeAction=TB0060N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_4'],
+            ['Bank Business Profile Inquiry', 'CBUSII03.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_5'],
+            ['Business Profile Inq', 'CBUSII04.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_6'],
+            ['Individual Profile Inq', 'CPERSI01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_7'],
+            ['Individual Profile Inq', 'CPERSI02.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8'],
+            ['Tax Type Profile Inq', '#', 1]
+        ],
+        [
+            ['menu_1_1_8_1'],
+            ['Corporation Inq', 'CCORPI01.gateway?jadeAction=TB0720N_CORP_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_2'],
+            ['Corporation Inq', 'CCORPI02.gateway?jadeAction=TB0720N_CORP_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_3'],
+            ['Sales Inq', 'CSALEI01.gateway?jadeAction=TB0730N_SALES_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_4'],
+            ['Sales Inq', 'CSALEI03.gateway?jadeAction=TB0730N_SALES_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_5'],
+            ['Withholding/ Unemployment Inq', 'CWITHI01.gateway?jadeAction=TB0710N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_6'],
+            ['Withholding/ Unemployment Inq', 'CWITHI03.gateway?jadeAction=TB0709N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_7'],
+            ['Highway Use Inq', 'CHIGHI01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_8'],
+            ['Petroleum Inq', 'CPETRI01.gateway?jadeAction=TB0796N_PBT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_9'],
+            ['Cigarette/Tobacco Inq', 'CCIGAI01.gateway?jadeAction=TB0750N_RETRIEVE_CIG_TOB_PROFILE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_10'],
+            ['Limited Liability (LLC/LLP) Inq', 'CLIMII01.gateway?jadeAction=TB0717N_LLC_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_11'],
+            ['IFTA Inq', 'CIFTAI01.gateway?jadeAction=TB0784N_IFTA_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_12'],
+            ['Alcoholic Beverage Inq', 'CALCOI01.gateway?jadeAction=TB0770N_ABT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_13'],
+            ['Partnership Inq', 'CPARTI01.gateway?jadeAction=TB0755N_PARTNERSHIP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_14'],
+            ['Real Property Transfer Inq', 'CREALI01.gateway?jadeAction=TB0745N_RPT_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_15'],
+            ['Hazardous Waste Inq', 'CHAZAI01.gateway?jadeAction=TB0765N_HAZARDOUS_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_16'],
+            ['Boxing/Wrestling/Taxicab Inq', 'CBOXII01.gateway?jadeAction=TB0760N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_8_17'],
+            ['Generic Inq', 'CGENERI01.gateway?jadeAction=TI0800S_PROFILE_INFORMATION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_9'],
+            ['Address Inq', 'CADDRI01.gateway?jadeAction=TB0411N_TAXPAYER_ADDRESS_INQUIRY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_10'],
+            ['Address Inq', 'CADDRI03.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_11'],
+            ['Exempt Organization Inq', 'CEXEMI01.gateway?jadeAction=TB0920N_EXEMPT_ORGANIZATION_SEARCH&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_12'],
+            ['TF Number Inq', 'CTFNUI01.gateway?jadeAction=TB0180N_RETRIEVE_TF_NUMBERS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_13'],
+            ['Representatives/ Associations Inq', 'CREPRI01.gateway?jadeAction=CHPA01S_RETRIEVE_LEGAL_REPS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_14'],
+            ['Representatives/ Associations Inq', 'CREPRI02.gateway?jadeAction=TB0300N_REPRESENTATIVE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_15'],
+            ['Check Digit Inq', 'CCHECI01.gateway?jadeAction=TB0699N_CHECK_DIGIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_16'],
+            ['Check Digit Inq', 'CCHECI03.gateway?jadeAction=TB0699N_CHECK_DIGIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_17'],
+            ['NAICS/SIC Inq', 'CNAICI01.gateway?jadeAction=TB0714N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_18'],
+            ['Geographic Codes Inq', 'CGEOGI01.gateway?jadeAction=TB0736N_GEOCODE_RETRIEVE_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_19'],
+            ['Geographic Code Inq', 'CGEOGI02.gateway?jadeAction=TB0736N_GEOCODE_RETRIEVE_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_20'],
+            ['Cig Vend Mach Stickers Inq', 'CCIGVI01.gateway?jadeAction=TB0471N_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_21'],
+            ['PIN/Password Inq', 'CPINPI01.gateway?jadeAction=TB0622N_PIN_PASSWORD_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_22'],
+            ['Corporation Sub Profile Inq', 'CSECOI02.gateway?jadeAction=TB0728N_CORPSUBPROFILE_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_23'],
+            ['Federal EIN/Name Search', 'CFEINI01.gateway?jadeAction=FB5000S_EIN_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_24'],
+            ['HUT Permits Inquiry', '#', 1]
+        ],
+        [
+            ['menu_1_1_24_1'],
+            ['HUT Permits Inq', 'CPERMI01.gateway?jadeAction=HP0099S_VEHICLE_PERMIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_24_2'],
+            ['HUT Permit Renewal Inq', 'CPEREI01.gateway?jadeAction=HP0103S_RETRIEVE_CONTRACT_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_25'],
+            ['Tax Type profile 1', '#', 1]
+        ],
+        [
+            ['menu_1_1_25_1'],
+            ['Corp', 'TB0720TS01.gateway?jadeAction=TB0720N_CORP_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_26'],
+            ['Tax Preparer Registration Inq', 'CTPREGI01.gateway?jadeAction=TI0002S_RETRIEVE_TAXPREP&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_1_27'],
+            ['Data Linkage', 'CDATALINK.gateway?jadeAction=IIV001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2'],
+            ['Maintain Client', '#', 1]
+        ],
+        [
+            ['menu_1_2_1'],
+            ['Business', 'CBUSIU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_2'],
+            ['Business', 'CBUSIU02.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_3'],
+            ['Business', 'CBUSIU03.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_4'],
+            ['Business', 'CBUSIU04.gateway?jadeAction=TB0120N_RETRIEVE_BUS_PROF_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_5'],
+            ['Business Profile', 'CBUSIU05.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_6'],
+            ['Business', 'CBUSIU06.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_7'],
+            ['Address', 'CADDRU01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_8'],
+            ['Address', 'CADDRU02.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_9'],
+            ['Individual', 'CINDIU01.gateway?jadeAction=TB0505N_PIT_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_10'],
+            ['Individual', 'CINDIU02.gateway?jadeAction=TB0505N_PIT_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_11'],
+            ['Individual', 'CINDIU03.gateway?jadeAction=TB0505N_PIT_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_12'],
+            ['Individual', 'CINDIU05.gateway?jadeAction=TB0505N_PIT_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_13'],
+            ['Individual Header', 'CINDHU01.gateway?jadeAction=RP0001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14'],
+            ['Tax Type Profile', '#', 1]
+        ],
+        [
+            ['menu_1_2_14_1'],
+            ['Corporation', 'CCORPU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_2'],
+            ['Corporation', 'CCORPU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_3'],
+            ['Sales', 'CSALEU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_4'],
+            ['Sales', 'CSALEU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_5'],
+            ['Withholding/ Unemployment', 'CWITHU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_6'],
+            ['Withholding/ Unemployment', 'CWITHU02.gateway?jadeAction=TB0120N_RETRIEVE_BUS_PROF_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_7'],
+            ['Withholding/Unemployment', 'CWITHU03.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_8'],
+            ['Highway Use', 'CHIGHU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_9'],
+            ['Highway Use', 'CHIGHU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_10'],
+            ['Petroleum', 'CPETRU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_11'],
+            ['Petroleum', 'CPETRU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_12'],
+            ['Petroleum', 'CPETRU03.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_13'],
+            ['Cigarette/Tobacco', 'CCIGAU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_14'],
+            ['Cigarette/Tobacco', 'CCIGAU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_15'],
+            ['Limited Liability (LLC/LLP)', 'CLIMIU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_16'],
+            ['Limited Liability (LLC/LLP)', 'CLIMIU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_17'],
+            ['IFTA', 'CIFTAU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_18'],
+            ['IFTA', 'CIFTAU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_19'],
+            ['Alcoholic Beverage', 'CALCOU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_20'],
+            ['Alcoholic Beverage', 'CALCOU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_21'],
+            ['Partnership', 'CPARTU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_22'],
+            ['Partnership', 'CPARTU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_23'],
+            ['Real Property Transfer', 'CREALU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_24'],
+            ['Real Property Transfer', 'CREALU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_25'],
+            ['Hazardous Waste', 'CHAZAU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_26'],
+            ['Hazardous Waste', 'CHAZAU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_27'],
+            ['Boxing/Wrestling/Taxicab', 'CBOXIU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_28'],
+            ['Boxing/Wrestling/Taxicab', 'CBOXIU02.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_14_29'],
+            ['Generic', 'CGENERU01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_15'],
+            ['IDs', '#', 1]
+        ],
+        [
+            ['menu_1_2_15_1'],
+            ['Change DOS ID', 'CDOSIU01.gateway?jadeAction=TB0725N_RETRIEVE_CHANGE_DOS_ID&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_15_2'],
+            ['DOL ER', 'CDOLEU01.gateway?jadeAction=TB0711N_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_16'],
+            ['Assign TF Numbers', 'CTFNUU01.gateway?jadeAction=TB0180N_RETRIEVE_TF_NUMBERS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_17'],
+            ['Representatives/ Associations', 'CREPRU01.gateway?jadeAction=TB0300N_REPRESENTATIVE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_18'],
+            ['Legal Rep', 'CLGRPU01.gateway?jadeAction=CHPA01S_RETRIEVE_LEGAL_REPS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_19'],
+            ['Representatives/ Associations', 'CREPRU02.gateway?jadeAction=TB0300N_REPRESENTATIVE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_20'],
+            ['Special Processing Indicators', 'CSPECU01.gateway?jadeAction=TB0116N_DISASTER_DATA_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_21'],
+            ['NAICS/SIC', 'CNAICU01.gateway?jadeAction=TB0714N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_22'],
+            ['Registrations', '#', 1]
+        ],
+        [
+            ['menu_1_2_22_1'],
+            ['ST Reg Incomplete', 'CSTREU01.gateway?jadeAction=TI1710S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_22_2'],
+            ['Tax Preparer Registration', 'CTPREGU01.gateway?jadeAction=TI0002S_RETRIEVE_TAXPREP&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_23'],
+            ['COA', 'CSALEU03.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_24'],
+            ['Geographic Codes', 'CGEOGU01.gateway?jadeAction=TB0736N_GEOCODE_RETRIEVE_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_25'],
+            ['Sensitive Taxpayer', 'CSENSU01.gateway?jadeAction=TB1001N_SENSITIVE_TP_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_26'],
+            ['Electronic Funds Transfer', 'CEFTU01.gateway?jadeAction=TB0798N_EFT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_27'],
+            ['Cigarette Vending Machine Stickers', 'CCIGVU01.gateway?jadeAction=TB0471N_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_28'],
+            ['Pin/Password', 'CPINPU01.gateway?jadeAction=TB0622N_PIN_PASSWORD_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_29'],
+            ['Corporation Sub Profile', 'CSECOU01.gateway?jadeAction=TB0728N_CORPSUBPROFILE_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_30'],
+            ['PIT Refund Offset', 'CPITRU01.gateway?jadeAction=TB0840N_RETRIEVE_PIT_REF_OFFSET_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_31'],
+            ['HUT Permits', '#', 1]
+        ],
+        [
+            ['menu_1_2_31_1'],
+            ['HUT Permits', 'CPERMU01.gateway?jadeAction=HP0100S_VEHICLE_PERMIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_31_2'],
+            ['HUT Permits', 'CPERMU02.gateway?jadeAction=HP0100S_VEHICLE_PERMIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_31_3'],
+            ['HUT Permits', 'CPERMU03.gateway?jadeAction=HP0100S_VEHICLE_PERMIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_31_4'],
+            ['HUT Permit Renewal', 'CPEREU03.gateway?jadeAction=HP0103S_RETRIEVE_CONTRACT_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_31_5'],
+            ['Permit Range', 'CPERRU01.gateway?jadeAction=HP0200S_RETRIEVE_TEMP_PERMITS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_31_6'],
+            ['Print Request', 'CPRINU01.gateway?jadeAction=HP0700S_RETRIEVE_ONLINE_TRANSCRIPT_REQUEST_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_32'],
+            ['Business', '#', 1]
+        ],
+        [
+            ['menu_1_2_32_1'],
+            ['Business Profile', 'TB0110TS01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_32_2'],
+            ['Secondary FCC', 'TB0728TS01.gateway?jadeAction=TB0728N_CORPSUBPROFILE_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_32_3'],
+            ['Primary FCC', 'TB0135TS01.gateway?jadeAction=TB0135N_RETRIEVE_PFCC_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_32_4'],
+            ['LL', 'TB0717TS01.gateway?jadeAction=TB0717N_LLC_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_2_33'],
+            ['QEZE', 'AQEZEU01.gateway?jadeAction=TI0810S_QEZE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_3'],
+            ['Search for Client', 'CSEARI01.gateway?jadeAction=TB0600N_CLNT_SRCH_BY_NAME_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_4'],
+            ['Search for Client', 'CSEARI02.gateway?jadeAction=TB0600N_CLNT_SRCH_BY_NAME_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_5'],
+            ['Event Management', 'CEVENU01.gateway?jadeAction=CE9810S_RETRIEVAL_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_6'],
+            ['Event Management', 'CEVENU02.gateway?jadeAction=CE9810S_RETRIEVAL_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_7'],
+            ['Request Withholding/ UI Tax Forms', 'CREQUU01.gateway?jadeAction=TB2050N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_8'],
+            ['Inquire on Account Build 1', '#', 1]
+        ],
+        [
+            ['menu_1_8_1'],
+            ['Inquire on Account Test Build 1', 'TTII1101.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_9'],
+            ['Inquire on Account Build 2', '#', 1]
+        ],
+        [
+            ['menu_1_9_1'],
+            ['Test Tab Build 2', 'TTII1201.gateway?jadeAction=TB0710N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_10'],
+            ['Inquire on Account Build 3', '#', 1]
+        ],
+        [
+            ['menu_1_10_1'],
+            ['Test Tab Build 3', 'TTII1301.gateway?jadeAction=TB0784N_IFTA_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_11'],
+            ['Inquire on Account Build 4', '#', 1]
+        ],
+        [
+            ['menu_1_11_1'],
+            ['Inquire on Account Test Tab Build 4', 'TTII1401.gateway?jadeAction=TB0125N_SEARCH_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_12'],
+            ['Inquire on Account Build 5', '#', 1]
+        ],
+        [
+            ['menu_1_12_1'],
+            ['Test Tab Build 5', 'TTII1501.gateway?jadeAction=TB0826N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_13'],
+            ['Inquire on Account Build 5 DOL', '#', 1]
+        ],
+        [
+            ['menu_1_13_1'],
+            ['Test Tab DOL Build 5', 'TTII1502.gateway?jadeAction=TB1600N_CLNT_SRCH_BY_NAME_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_14'],
+            ['Inquire on Account Build6X', '#', 1]
+        ],
+        [
+            ['menu_1_14_1'],
+            ['NAICS/SIC Test', 'TTIIX.gateway?jadeAction=TB0714N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_15'],
+            ['Inquire on Account Build 6A', '#', 1]
+        ],
+        [
+            ['menu_1_15_1'],
+            ['Inquire On Account Build 6 A', 'TTII1601.gateway?jadeAction=TB0709N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_16'],
+            ['Inquire on Account Build 6B', '#', 1]
+        ],
+        [
+            ['menu_1_16_1'],
+            ['Inquire on Accounet Build 6B', 'TTII1602.gateway?jadeAction=TB0471N_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_17'],
+            ['Inquire on Account Build 7', '#', 1]
+        ],
+        [
+            ['menu_1_17_1'],
+            ['Inquire on Account Build 7', 'TTII1701.gateway?jadeAction=TB1001N_SENSITIVE_TP_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_18'],
+            ['Inquire on Account Build 7 for DOL', '#', 1]
+        ],
+        [
+            ['menu_1_18_1'],
+            ['Inquire on Account for DOL', 'TTII1702.gateway?jadeAction=TB1699N_CHECK_DIGIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_19'],
+            ['Maintain Account Build 1', '#', 1]
+        ],
+        [
+            ['menu_1_19_1'],
+            ['Maintain Account Test Build 1', 'TTIU1101.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_20'],
+            ['Maintain Account Build 2', '#', 1]
+        ],
+        [
+            ['menu_1_20_1'],
+            ['Maintain Account Test Tab Build 2', 'TTIU1201.gateway?jadeAction=TB0710N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_21'],
+            ['Maintain Account Build 3', '#', 1]
+        ],
+        [
+            ['menu_1_21_1'],
+            ['Test Tab Build 3', 'TTIU1301.gateway?jadeAction=TB0784N_IFTA_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_22'],
+            ['Maintain Account Build 4', '#', 1]
+        ],
+        [
+            ['menu_1_22_1'],
+            ['Maintain Account Test Tab  Build 4', 'TTIU1401.gateway?jadeAction=TB0125N_SEARCH_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_23'],
+            ['Maintain Account Build 5', '#', 1]
+        ],
+        [
+            ['menu_1_23_1'],
+            ['Test Tab Build 5', 'TTIU1501.gateway?jadeAction=TB0826N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_24'],
+            ['Maintain Account Build 6X', '#', 1]
+        ],
+        [
+            ['menu_1_24_1'],
+            ['NAICS/SIC Test', 'TTIUX.gateway?jadeAction=TB0714N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_25'],
+            ['Maintain Account Build 6A', '#', 1]
+        ],
+        [
+            ['menu_1_25_1'],
+            ['Maintain Account Build 6A', 'TTIU1601.gateway?jadeAction=TB0709N_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_26'],
+            ['Maintain Account Build 6B', '#', 1]
+        ],
+        [
+            ['menu_1_26_1'],
+            ['Maintain Account Build 6B', 'TTIU1602.gateway?jadeAction=TB0131N_SEARCH_TAXPAYER_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_27'],
+            ['Maintain Account Build 7', '#', 1]
+        ],
+        [
+            ['menu_1_27_1'],
+            ['Maintain Account Build 7', 'TTIU1701.gateway?jadeAction=TB1001N_SENSITIVE_TP_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_28'],
+            ['Release 2 Build 3 Temp Tabset', 'R2B3TEMP.gateway?jadeAction=TB0770N_ABT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_29'],
+            ['Release 2 Build 3 Temp Tabset 01', 'R2BETEMP01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_30'],
+            ['Business Profile Inquiry', 'CBUSII02.gateway?jadeAction=TB1822N_BUSINESS_SUMMARY_DOL_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_31'],
+            ['Address Inq', 'CADDRI02.gateway?jadeAction=TB1411N_TAXPAYER_ADDRESS_INQUIRY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_32'],
+            ['Check Digit Inq', 'CCHECI02.gateway?jadeAction=TB1699N_CHECK_DIGIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_33'],
+            ['DOL Bank Training', 'CDOLXI01.gateway?jadeAction=TB0210N_ASSOCIATIONS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_1_34'],
+            ['Data LInkage Federal', 'CDLINKFED.gateway?jadeAction=IIV010S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_2 = [
+            ['menu_2_1'],
+            ['Inquire on Account', '#', 1]
+        ],
+        [
+            ['menu_2_1_1'],
+            ['Conversion Inq', 'ACONVI01.gateway?jadeAction=NAT496S_CORPCONVINQ_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_2'],
+            ['Accounting Inq', '#', 1]
+        ],
+        [
+            ['menu_2_1_2_1'],
+            ['Accounting General Inq', 'AACTGI01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_2_2'],
+            ['Accounting General Inq - ST', 'AACTGI01S.gateway?jadeAction=VN1641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_2_3'],
+            ['Certification Inq - ST', 'ACERTINQST.gateway?jadeAction=MC3171S_MC_CERT_DIST_BY_COLLECTION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_3'],
+            ['Taxpayer Account Inq', 'ATPAI01.gateway?jadeAction=NAT141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_4'],
+            ['Taxpayer Account Inq - Corp', 'ATPAI01C.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_5'],
+            ['Taxpayer Account Inq - Corp', 'ATPAI02C.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_6'],
+            ['Taxpayer Account Inq IF Field', 'ATPAI01IF.gateway?jadeAction=NAT141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_7'],
+            ['Taxpayer Account Inq - ST', 'ATPAI03S.gateway?jadeAction=MC0141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_8'],
+            ['Taxpayer Account Inquiry (CC)', 'ATPAI02.gateway?jadeAction=NAT141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_9'],
+            ['Returns Inq', 'ARETUI01.gateway?jadeAction=NRP641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_10'],
+            ['Returns Inq - Corp', 'ARETUI01C.gateway?jadeAction=NRP640S_SEARCH_LIABLITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_11'],
+            ['Returns Inq - ST', 'ARETUI02S.gateway?jadeAction=VN1641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_12'],
+            ['Return Inq Audit - RETT', 'ARIAUDRETT.gateway?jadeAction=JE0001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_13'],
+            ['Returns Inq - Taxicab', 'ARETUI02T.gateway?jadeAction=MT0001S_RETRIEVE_ACTION_HANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_14'],
+            ['ABT Return Inq', 'AABTRI01.gateway?jadeAction=MA0300S_FILING_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_15'],
+            ['HUT Return Inq', 'AHRETI01.gateway?jadeAction=HR0100S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_16'],
+            ['Payment Inq', 'APAYMI01.gateway?jadeAction=NAT154S_PAYMENT_SEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_17'],
+            ['Payment Inq - ST', 'APAYMI02S.gateway?jadeAction=MC1154S_PAYMENTSEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_18'],
+            ['Refunds & Overpayments Inq', '#', 1]
+        ],
+        [
+            ['menu_2_1_18_1'],
+            ['Refund Inq', 'AREFUI01.gateway?jadeAction=NAT141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_18_2'],
+            ['Refund Inq - Corp', 'AREFUI01C.gateway?jadeAction=NAT352S_RETRIEVE_REFUNDS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_18_3'],
+            ['Refund Inq - Corp', 'AREFUI02C.gateway?jadeAction=NAT352S_RETRIEVE_REFUNDS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_18_4'],
+            ['Refund Inq - ST', 'AREFUI03S.gateway?jadeAction=MC0352S_MCTMT_RETRIEVE_REFUND_SEARCH&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_18_5'],
+            ['Refund Inq - CARTS', 'AREFCARI01.gateway?jadeAction=AR0200S_CARTS_OVERPAYMENT_REFUNDS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_18_6'],
+            ['APAC Refund Claim Inquiry', 'WAPACRCINQ.gateway?jadeAction=JR0050S_CLAIM_HISTORY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_19'],
+            ['OSC Inq', 'AOSCI01.gateway?jadeAction=NAT338S_OSC_REFUND_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_20'],
+            ['EPAY Inq', 'AEPAYI01.gateway?jadeAction=IE3070S_ELECTRONIC_PAYMENT_DEL_REQ_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_21'],
+            ['Audit Screening', '#', 1]
+        ],
+        [
+            ['menu_2_1_21_1'],
+            ['Filing Summary', 'AFISUI01.gateway?jadeAction=NRP741S_CT34S_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_21_2'],
+            ['Filing Summary', 'AFISUI02.gateway?jadeAction=NRP741S_CT34S_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_21_3'],
+            ['CARTS Audit Case History', 'ACACHI01.gateway?jadeAction=CF4500S_AUDIT_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_21_4'],
+            ['Assessments', 'AASSEI01.gateway?jadeAction=NRP741S_CT34S_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_22'],
+            ['PIT Audit Analysis', 'AAIFI01.gateway?jadeAction=AIF100S_RETRIEVE_INFORMATION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_23'],
+            ['Corp Audit Analysis', 'AACTI01.gateway?jadeAction=NRP741S_CT34S_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_24'],
+            ['ST Audit Analysis', 'AASTI01.gateway?jadeAction=TB0730N_SALES_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_25'],
+            ['Associations', 'AAUDASI01.gateway?jadeAction=JA0001S_ASSOCIATIONS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_26'],
+            ['OSC Misc Inq', 'AOSCI02M.gateway?jadeAction=MC0338S_RETRIEVE_OSC_REFUND&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_27'],
+            ['Associations', 'AAUDASI02.gateway?jadeAction=JA0002S_ASSOCIATIONS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_28'],
+            ['Bankruptcy Inq', 'ABANKRI01.gateway?jadeAction=CH2630Z_RETRIEVE_BANKRUPTCY_ACTION_HANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_29'],
+            ['Fed Filing Sum Inq', 'AFEDFSUI01.gateway?jadeAction=FBUSXXS_FEDERALFILING_SUMMAY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_30'],
+            ['Collection Inq', 'ACREPI01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_31'],
+            ['Beverage Container Inq', 'ABCREGI01.gateway?jadeAction=MBC001S_BC_REGISTRATION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_32'],
+            ['WT NYS-1 Coupon Inq', 'AWTNYS1I01.gateway?jadeAction=NAT859S_SINGLETON_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_33'],
+            ['MCTMT Inq', 'AMCTMTI01.gateway?jadeAction=MC0100S_RETRIEVE_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_34'],
+            ['IPA Inq', 'ACOLIPAI01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_35'],
+            ['Income Tax Desk Audit Programs', '#', 1]
+        ],
+        [
+            ['menu_2_1_35_1'],
+            ['Income Tax Desk Audit Federal', 'AITAUFED.gateway?jadeAction=EP0250S_RETRIEVE_PENSIONS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_35_2'],
+            ['Income Tax Desk Audit Federal Bypass', 'AITAUFEDBY.gateway?jadeAction=EP0100S_RETRIEVE_CONTRIBUTIONS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_36'],
+            ['Audit Activity Management', '#', 1]
+        ],
+        [
+            ['menu_2_1_36_1'],
+            ['Casual Sales Tracking', 'WCASSTTR.gateway?jadeAction=JC0100S_RET_CASUAL_SALE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_36_2'],
+            ['Bulk Sales Inq', 'WBLKSALESI.gateway?jadeAction=EB0050S_RETRIEVE_BULK_SALE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_37'],
+            ['BCMS Protest', 'ABCMSPROT.gateway?jadeAction=MDZ350S_BCMS_CASE_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_1_38'],
+            ['BCMS Inq', 'ABCMSINQ.gateway?jadeAction=MDZ350S_BCMS_CASE_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2'],
+            ['Maintain Account', '#', 1]
+        ],
+        [
+            ['menu_2_2_1'],
+            ['Conversion', 'ACONVU01.gateway?jadeAction=NAT491S_CORPTAX_CONVONDEMAND_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_2'],
+            ['DLN Cross Reference', 'ADLNCU01.gateway?jadeAction=NRD500S_DLN_CROSS_REF_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3'],
+            ['Accounting', '#', 1]
+        ],
+        [
+            ['menu_2_2_3_1'],
+            ['Accounting General', 'AACTGU01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_2'],
+            ['Bank Adjustment', 'ABANKU01.gateway?jadeAction=NAT117S_RETRIEVE_PAYMENT_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_3'],
+            ['Accounting General - ST', 'AACTGU01S.gateway?jadeAction=VN1641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_4'],
+            ['Certifications', 'ACERTU01.gateway?jadeAction=NAR100S_RETRIEVE_GIFT_CERT_DETAILS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_5'],
+            ['COGNOS Cube Refresh', 'ACGCBREFU.gateway?jadeAction=NAR0010S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_6'],
+            ['Bank Adjustment - MCTMT', 'ABANKU02M.gateway?jadeAction=MC0710S_RETERIVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_7'],
+            ['Bank Adjustment - ST', 'ABANKU01S.gateway?jadeAction=MC1117S_BANK_ADJUSTMENT_II_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_8'],
+            ['PIT Sales and Use', 'APITSAUS01.gateway?jadeAction=NRP641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_9'],
+            ['Jurisdiction Payment Plan', 'AJURPYPLAN.gateway?jadeAction=MC3155S_ST_PYMT_PLAN_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_3_10'],
+            ['Reconciliation - ST', 'SRECONCILL.gateway?jadeAction=MC3152S_ST_CARTS_RES_DIST_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4'],
+            ['Returns', '#', 1]
+        ],
+        [
+            ['menu_2_2_4_1'],
+            ['Return Adj', 'ARETAU01.gateway?jadeAction=NRP641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_2'],
+            ['Return Adj - Corp', 'ARETAU01C.gateway?jadeAction=NRP640S_SEARCH_LIABLITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_3'],
+            ['Return Adj - Corp - Protest', 'ARETAU03C.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_4'],
+            ['Return Adj - Corp - Exceptions', 'ARETAU04C.gateway?jadeAction=NRD300S_LIABILITY_PERIOD_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_5'],
+            ['Return Adj - ST', 'ARETAU07S.gateway?jadeAction=VN1641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_6'],
+            ['Return Adj - ST Exceptions', 'ARETAU08S.gateway?jadeAction=TB0730N_SALES_TAX_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_7'],
+            ['Corporate Tax ID Exceptions', 'ACTIDU01C.gateway?jadeAction=NDD181S1_RETRIEVE_DOCUMENT_SEARCH_RESULTS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_8'],
+            ['Return Adj - Taxicab', 'ARETAU05T.gateway?jadeAction=MT0001S_RETRIEVE_ACTION_HANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_9'],
+            ['Return Adj - MCTMT', 'ARETAU06M.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_10'],
+            ['Return Adj Audit', 'ARETAU02.gateway?jadeAction=NAT141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_11'],
+            ['Return Adj Audit - Corp', 'ARETAU02C.gateway?jadeAction=CE9800S_RETRIEVE_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_12'],
+            ['Return Adjust Audit - RETT', 'ARAUDRETT.gateway?jadeAction=JE0001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_13'],
+            ['Return Adj Audit - ST', 'ARETAU02S.gateway?jadeAction=VN1641S_RETRIEVE_LIABILITY_PERIOD&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_4_14'],
+            ['PIT Excep Attachmate', 'ARPITU01.gateway?jadeAction=RP2006S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_5'],
+            ['HUT Return', 'AHRETU01.gateway?jadeAction=TB0786N_RETRIEVE_HUT_PROFILE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_6'],
+            ['HUT Return', 'AHRETU02.gateway?jadeAction=HR0100S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_7'],
+            ['HUT Return', 'AHRETU03.gateway?jadeAction=HR0350S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_8'],
+            ['HUT Return Resolution', 'AHREREU01.gateway?jadeAction=TB0786N_RETRIEVE_HUT_PROFILE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_9'],
+            ['Penalty and Interest', 'APENAU01.gateway?jadeAction=NAT542S_RETRIEVE_PENALTY_INTEREST_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_10'],
+            ['Penalty and Interest - ST', 'APENAU03S.gateway?jadeAction=MC0542S_PENALTY_INTEREST_II&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_11'],
+            ['Penalty and Interest Audit', 'APENAU02.gateway?jadeAction=NAT415S_AUDIT_CASE_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_12'],
+            ['Penalty and Interest Audit - ST', 'APENAU02S.gateway?jadeAction=CF4500S_AUDIT_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_13'],
+            ['Money Transfers/Retargets', 'AMONEU01.gateway?jadeAction=NAT154S_PAYMENT_SEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_14'],
+            ['Money Transfers/Retargets - Corp', 'AMONEU01C.gateway?jadeAction=NAT154S_PAYMENT_SEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_15'],
+            ['Money Transfers/Retargets - ST', 'AMONEU02S.gateway?jadeAction=MC1154S_PAYMENTSEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16'],
+            ['Refunds & Overpayments', '#', 1]
+        ],
+        [
+            ['menu_2_2_16_1'],
+            ['Special Refund Processing', 'ASPECU01.gateway?jadeAction=NAT560S_RETRIEVE_LIABILITY_PERIOD_DATA&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_2'],
+            ['Refund Processing Audit - ST', 'ARFPRAUU01.gateway?jadeAction=MC0141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_3'],
+            ['DTF Expedite Refund', 'AEXPRFU01.gateway?jadeAction=NAT260S_RETRIEVE_EXPEDITE_REFUND&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_4'],
+            ['DTF Expedite Refund - ST', 'AEXPRFU02S.gateway?jadeAction=MC0260S_RETRIEVE_EXPEDITE_REFUND&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_5'],
+            ['DTF Void Refund', 'ADTFVU01.gateway?jadeAction=NAT556S_DTF_VOID_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_6'],
+            ['SWOP Offsets', 'ASWOPU01.gateway?jadeAction=NRD300S_LIABILITY_PERIOD_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_7'],
+            ['Internal Offsets', 'AINTOU01.gateway?jadeAction=NAT169S_RETRIEVE_INTERNAL_OFFSET&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_8'],
+            ['Internal Offsets - ST', 'AINTOU02S.gateway?jadeAction=MC0169S_RETRIEVE_INTERNAL_OFFSET&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_9'],
+            ['ACH Refund Maintenance', 'ADDEPU01.gateway?jadeAction=NAT397S_DIRECT_DEPOSIT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_10'],
+            ['ACH Refund Maintenance', 'ADDEPU02.gateway?jadeAction=NAT352S_RETRIEVE_REFUNDS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_11'],
+            ['MCTMT Offsets', 'AMCOFFU01.gateway?jadeAction=MC0203S_RETRIEVE_IND_SWOP_OFFSET_DATA&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_12'],
+            ['SCOP Offsets', 'ASCOPOFU01.gateway?jadeAction=OC0400S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_13'],
+            ['APAC Special Handling', 'WAPACSPECH.gateway?jadeAction=JR2000S_SPECIAL_HANDLING_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_14'],
+            ['APAC Refund Claim - Audit', 'WAPACRCA.gateway?jadeAction=JR0010S_REFUND_CLAIM_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_16_15'],
+            ['APAC Refund Claim Adjust', 'WAPACRCLAD.gateway?jadeAction=JR0015S_REFUND_CLAIM_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_17'],
+            ['Refund Claim', '#', 1]
+        ],
+        [
+            ['menu_2_2_17_1'],
+            ['APAC Refund Claim', 'WAPACRCDM.gateway?jadeAction=JR0010S_REFUND_CLAIM_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_17_2'],
+            ['APAC Refund Claim - Non Audit', 'WAPACRCNA.gateway?jadeAction=JR0010S_REFUND_CLAIM_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_18'],
+            ['OSC', 'AOSCU01.gateway?jadeAction=NAT338S_OSC_REFUND_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_19'],
+            ['OSC Payment', 'AOSCPU01.gateway?jadeAction=NAT368S_OSC_PAYMENT_CRITERIA_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_20'],
+            ['OSC Misc', 'AOSCU02M.gateway?jadeAction=MC0338S_RETRIEVE_OSC_REFUND&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_21'],
+            ['Bankruptcy', 'ABANKRU01.gateway?jadeAction=CH2630Z_RETRIEVE_BANKRUPTCY_ACTION_HANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_22'],
+            ['Bankruptcy', 'ABANKRU02.gateway?jadeAction=CH2630Z_RETRIEVE_BANKRUPTCY_ACTION_HANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_23'],
+            ['OTE Restrictions', 'AOTERU01.gateway?jadeAction=NAT402S_RETRIEVE_TAXPAYER_RESTRICTIONS_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24'],
+            ['Collections', '#', 1]
+        ],
+        [
+            ['menu_2_2_24_1'],
+            ['Collection Clerical', 'ACCLEU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_2'],
+            ['Collection Rep/Agent', 'ACREPU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_3'],
+            ['Collection Child Support', 'ACCHILDU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_4'],
+            ['Collection Management', 'ACMANU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_5'],
+            ['Collection EFW', 'ACEFWU01.gateway?jadeAction=IE3080S_VIEW_PAY_BILL_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_6'],
+            ['Paid', 'ACPAIDU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_7'],
+            ['Collection IPA', 'ACIPAU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_8'],
+            ['IE Atty Approval', 'AIEATTU01.gateway?jadeAction=CH6150S_RETRIEVE_IE_ATTRNY_APPROVAL_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_9'],
+            ['Collection IPA Approval', 'ACIPAAPU01.gateway?jadeAction=CH7195S_RETRIEVE_IPA_APPROVAL_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_10'],
+            ['OIC', 'AOICU01.gateway?jadeAction=CH2930S_RETRIEVE_OFFERS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_11'],
+            ['Offer in Compromise (OIC) Inquiry', 'AOICI01.gateway?jadeAction=CH2930S_RETRIEVE_OFFERS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_12'],
+            ['Collection Returns/Refunds/Offsets Inq', 'ACRROI01.gateway?jadeAction=NAT141S_RETRIEVE_TAXPAYER_LP_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_13'],
+            ['CCED CISS Resource', 'ACISSRESO.gateway?jadeAction=COP700S_RETRIEVE_RESOURCE_CONSTRAINTS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_24_14'],
+            ['CISS Collections Resources', 'ACCEDRSU01.gateway?jadeAction=COP700S_RETRIEVE_RESOURCE_CONSTRAINTS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_25'],
+            ['EPAY', 'AEPAYU01.gateway?jadeAction=IE3070S_ELECTRONIC_PAYMENT_DEL_REQ_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_26'],
+            ['Large Filer NAICS', 'ALFNAIU01.gateway?jadeAction=NAR426S_RETRIEVE_CT_LARGE_FILER_INVENTORY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_27'],
+            ['PIT Large Filers', 'APILGFU01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_28'],
+            ['Beverage Container', 'ABCREGU01.gateway?jadeAction=MBC001S_BC_REGISTRATION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_29'],
+            ['MCTMT Data Entry', 'AMTADEU01.gateway?jadeAction=MC0105S_RETRIEIVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_30'],
+            ['CISS Audit', 'ACISSAUU01.gateway?jadeAction=CISS50S_RETRIEVE_CISS_SEARCH_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_31'],
+            ['Assessments - CC', 'AASSEU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_32'],
+            ['ACH Credit Bank Info', 'AACHCRU01.gateway?jadeAction=NRD300S_LIABILITY_PERIOD_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_33'],
+            ['Individual Taxpayer Account Consolidate', 'ACONSOLU01.gateway?jadeAction=TB0505N_PIT_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_34'],
+            ['Payment Transfer', 'ATRANSU01.gateway?jadeAction=NAT165S_TRANSFER_IN_PAYMENT_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_35'],
+            ['PIT Data Entry Header Only', 'APIDEHOU01.gateway?jadeAction=NRP101S_RETREIVE_ACTION_HANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_36'],
+            ['OTRA', 'AOTRAU01.gateway?jadeAction=CH2120S_TP_DATA_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_37'],
+            ['Real Estate Transfer Tax', 'ARETTU01.gateway?jadeAction=JE0001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_38'],
+            ['Audit Activity Management', '#', 1]
+        ],
+        [
+            ['menu_2_2_38_1'],
+            ['Bulk Sales', 'WBLKSALES.gateway?jadeAction=EB0050S_RETRIEVE_BULK_SALE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_38_2'],
+            ['Casual Sale', 'WCASSTTRU.gateway?jadeAction=JC0100S_RET_CASUAL_SALE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_39'],
+            ['RETT Data Entry', 'ARETTDE.gateway?jadeAction=JE0001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_40'],
+            ['RETT Data Entry Inq', 'ARETTDEI.gateway?jadeAction=JE0001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_41'],
+            ['Unauthorized Access', 'AUNAUTHAC.gateway?jadeAction=TI1900S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_42'],
+            ['Threatening TP', 'ATHREATTP.gateway?jadeAction=TI1800S_RETRIVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_2_43'],
+            ['Medical Marijuana', 'AMEDMARU01.gateway?jadeAction=MM0120S_RETRIEVE_MEDICAL_MARIJUANA_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_3'],
+            ['Search on Account', 'ASEARI01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_4'],
+            ['Search on Account', 'ASEARI02.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_5'],
+            ['Collection Agency', 'ACOLLU01.gateway?jadeAction=CA0525S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_2_6'],
+            ['Collection Agency', 'ACOLLU02.gateway?jadeAction=IE3080S_VIEW_PAY_BILL_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_3 = [
+            ['menu_3_1'],
+            ['Worklist Management', 'BABEWLST_T.gateway?jadeAction=BABEWLST_WORK_MANGEMENT_LOAD_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_3_2'],
+            ['Work Item Search', 'BABEWSCH_T.gateway?jadeAction=BABEWISCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_3_3'],
+            ['Organization Management', '#', 1]
+        ],
+        [
+            ['menu_3_3_1'],
+            ['Staffing Management', 'WSTAFFMAN.gateway?jadeAction=CM0040S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_4 = [
+            ['menu_4_1'],
+            ['Reporting', 'http://ers-dm.int.nystax.gov/cognos10/cgi-bin/cognos.cgi?b_action=xts.run&m=portal/cc.xts&m_tab=w', -1]
+        ],
+        [
+            ['menu_4_2'],
+            ['EDMS', 'SEDMSI01.gateway?jadeAction=NDD181S1_RETRIEVE_DOCUMENT_SEARCH_RESULTS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_3'],
+            ['Reference Tables', '#', 1]
+        ],
+        [
+            ['menu_4_3_1'],
+            ['Reference Tables Inq', 'SREFEI01.gateway?jadeAction=NDR620S_SEARCH_REFERENCE_TABLES_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_4'],
+            ['Order Forms', 'CORDFU01.gateway?jadeAction=TB0411N_TAXPAYER_ADDRESS_INQUIRY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_5'],
+            ['X Tools', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=http://dvm.int.nystax.gov/XTOO/xtooStart&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_6'],
+            ['STAR', '#', 1]
+        ],
+        [
+            ['menu_4_6_1'],
+            ['STAR Exemption Inq', 'SSTAREXI01.gateway?jadeAction=RS6001S_RETRIEVE_RESIDENTIAL_PROPERTY_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_2'],
+            ['2008', '#', 1]
+        ],
+        [
+            ['menu_4_6_2_1'],
+            ['MC STAR Rebate Inq', 'SMCSTI01.gateway?jadeAction=RS1001S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_2_2'],
+            ['MC STAR Rebate', 'SMCSTU01.gateway?jadeAction=RS1000S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_2_3'],
+            ['MC STAR Check Issue', 'SMCSTCK01.gateway?jadeAction=RS1010S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_3'],
+            ['2007/2006', '#', 1]
+        ],
+        [
+            ['menu_4_6_3_1'],
+            ['STAR Local Property Tax Rebate Inq', 'SSTARI01.gateway?jadeAction=RS0300S_STAR_APPLICATION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_3_2'],
+            ['STAR Local Property Tax Rebate App', 'SSTARU01.gateway?jadeAction=RS0300S_STAR_APPLICATION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_4'],
+            ['STAR Registration', 'SSTARREG.gateway?jadeAction=RS6007S_RETRIEVE_STAR_REGISTRATION_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_6_5'],
+            ['STAR Registration TCC', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=http://dvm.int.nystax.gov/STRP/strpHome&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=IsTaxpayerRequired&EMPR_AUTH_ATTRIBUTE_VALUE_1=N&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=STAR_RESOURCE&EMPR_AUTH_ATTRIBUTE_VALUE_3=TCC&EMPR_AUTH_ATTRIBUTE_NAME_4=EmpId&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EMP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_5=OrgInfo&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_ORG_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_6=USER_ID&EMPR_AUTH_ATTRIBUTE_VALUE_6={SWAN_USER_ID}', -1]
+        ],
+        [
+            ['menu_4_7'],
+            ['DEM', '#', 1]
+        ],
+        [
+            ['menu_4_7_1'],
+            ['DEM Data Exchange Management', 'SDEMU01.gateway?jadeAction=NDX100S_PROCESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_7_2'],
+            ['DEM Data Exchange Management', 'SDEMU02.gateway?jadeAction=NDX130S_FILE_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_7_3'],
+            ['DEM Data Exchange Management Inq', 'SDEMI01.gateway?jadeAction=NDX130S_FILE_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_7_4'],
+            ['DEM Data Exchange Management Inq', 'SDEMI02.gateway?jadeAction=NDX130S_FILE_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8'],
+            ['Tools', '#', 1]
+        ],
+        [
+            ['menu_4_8_1'],
+            ['Data Definition Set Up Tool Inq', 'SDATAI02.gateway?jadeAction=NRD340S_SOURCE_FILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_2'],
+            ['Data Definition Set Up Tool', 'SDATAU02.gateway?jadeAction=NRD340S_SOURCE_FILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_3'],
+            ['Data Definition Set Up Tool Inq - Corp', 'SDATAI01.gateway?jadeAction=NRD340S_SOURCE_FILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_4'],
+            ['Data Definition Set Up Tool - Corp', 'SDATAU01.gateway?jadeAction=NRD340S_SOURCE_FILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_5'],
+            ['Form Definition Presentation Inq', 'SFDFUI01.gateway?jadeAction=NRF001S_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_6'],
+            ['Form Definition Presentation', 'SFDFUU01.gateway?jadeAction=NRF003S_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_7'],
+            ['Refund Scheduling Inq', 'SREFSI01.gateway?jadeAction=NAT340S_SCHEDULE_TYPE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_8'],
+            ['Refund Scheduling', 'SREFSU01.gateway?jadeAction=NAT340S_SCHEDULE_TYPE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_9'],
+            ['ST Refund Scheduling Inq', 'SSTREFSCHI.gateway?jadeAction=MC0562S_RETRIEVE_REFUND_SCHEDULING_LIMIT&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_10'],
+            ['ST Refund Scheduling', 'SSTREFSCH.gateway?jadeAction=MC0562S_RETRIEVE_REFUND_SCHEDULING_LIMIT&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_11'],
+            ['RAM Inq', 'SRAMI01.gateway?jadeAction=NDP100S_GROUPS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_12'],
+            ['RAM', 'SRAMU01.gateway?jadeAction=NDP100S_GROUPS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_13'],
+            ['RAM - PIT Inq', 'SRAMI02.gateway?jadeAction=NDP101S_GROUPS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_14'],
+            ['RAM - PIT', 'SRAMU04.gateway?jadeAction=NDP101S_GROUPS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_15'],
+            ['Controlled Restrictions', 'SCONTU01.gateway?jadeAction=NAT410S_RETRIEVE_CONTROL_RESTRICTIONS_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_16'],
+            ['Sales Tax e-filing', 'SSTEFU01.gateway?jadeAction=VT0125S_RETRIEVE_CONTRACT_ACTIONHANDLER&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_17'],
+            ['Controlled Restrictions II', 'SCONTU02.gateway?jadeAction=MC0410S_RETRIEVE_RESTRICTIONS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_8_18'],
+            ['eFiling Errors', 'SEFERU01.gateway?jadeAction=CSELF01S_RETRIEVE_ERROR_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_9'],
+            ['Filing Rereleaser', 'SFILRRU01.gateway?jadeAction=NRD230S_DLN_SUBMIT_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_10'],
+            ['Software Vendor', 'SSOFTVEND.gateway?jadeAction=NRP415S_SW_VEND_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_11'],
+            ['RP Statistics', 'SRPSTAT01.gateway?jadeAction=NRP412S_RETRIEVE_PROCESS_STATS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_12'],
+            ['RP Holds', 'SRPGHOLDS.gateway?jadeAction=NRP822S_GLOBAL_HOLD_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_13'],
+            ['ST RP Stats', 'SSTRPSTAT.gateway?jadeAction=VN1412S_RETRIEVE_PROCESS_STATS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_14'],
+            ['HUT System Monitoring', 'SHSYSI01.gateway?jadeAction=HP0073S_PERMIT_TRANSACTION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_15'],
+            ['Online Tax Center', '#', 1]
+        ],
+        [
+            ['menu_4_15_1'],
+            ['Online Tax Center', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.int.nystax.gov/webapp/wcs/stores/servlet/DTFLogon&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_3=10151&EMPR_AUTH_ATTRIBUTE_NAME_4=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10001', -1]
+        ],
+        [
+            ['menu_4_15_2'],
+            ['OTC Manual Registration', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.int.nystax.gov/webapp/wcs/stores/servlet/ManualRegistration&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10151&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10001&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_15_3'],
+            ['Pin on Demand', 'SPINU01.gateway?jadeAction=OTCPINS_RETRIEVE_POD_PIN_ON_DEMAND&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_15_4'],
+            ['DOL Troubleshooter', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.int.nystax.gov/webapp/wcs/stores/servlet/DTFLogon&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_15_5'],
+            ['DOL Manual Registration', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.int.nystax.gov/webapp/wcs/stores/servlet/ManualRegistration&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_15_6'],
+            ['Message/Email History', 'SOLSEMLI01.gateway?jadeAction=MDZ004S_RETRIEVE_USERDATA_INFORMATION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_15_7'],
+            ['DOL Troubleshooter (DTF)', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.int.nystax.gov/webapp/wcs/stores/servlet/DTFLogon&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_15_8'],
+            ['DOL Manual Registration (DTF)', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.int.nystax.gov/webapp/wcs/stores/servlet/ManualRegistration&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_16'],
+            ['OSCAR HUT Renewal', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=http://localhost:9080/OSCR/OSCRIntHUTRenewal&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=IsTaxpayerRequired&EMPR_AUTH_ATTRIBUTE_VALUE_2=Y&EMPR_AUTH_ATTRIBUTE_NAME_3=EmpId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EMP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_4=12345678912345&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5=Oscar Hut', -1]
+        ],
+        [
+            ['menu_4_17'],
+            ['Reporting', '#', 1]
+        ],
+        [
+            ['menu_4_17_1'],
+            ['Maintain Account Build 1', 'TSTTBSETB1.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_17_2'],
+            ['Framework Demo1', 'EFDM001_T.gateway?jadeAction=EFDM001_RETRIEVE_ADDRESS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_17_3'],
+            ['Work Item Search', 'BABEWSCH_T.gateway?jadeAction=BABEWISCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_18'],
+            ['Online Tax Center - DOL', '#', 1]
+        ],
+        [
+            ['menu_4_18_1'],
+            ['DOL Troubleshooter', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.tax.state.nyenet/webapp/wcs/stores/servlet/DTFLogon&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_18_2'],
+            ['Manual Registration', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https://otcdvm.tax.state.nyenet/webapp/wcs/stores/servlet/ManualRegistration&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1', -1]
+        ],
+        [
+            ['menu_4_19'],
+            ['NYS-1, NYS-45 & MCTMT', '#', 1]
+        ],
+        [
+            ['menu_4_19_1'],
+            ['NYS-1, NYS-45 and MCTMT Inq', 'SNYS1I01.gateway?jadeAction=NAT851S_NYS1_UPLOAD_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_19_2'],
+            ['NYS-1, NYS-45 and MCTMT', 'SNYS1U01.gateway?jadeAction=NAT851S_NYS1_UPLOAD_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_19_3'],
+            ['DOL NYS-45 Inq', 'SDOL45I01.gateway?jadeAction=NAT229S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_19_4'],
+            ['RPC Check Process', 'SCHKPROC01.gateway?jadeAction=NAT852S_RETRIEVE_CHECK_PROCESS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_19_5'],
+            ['FSET Transmissions & Submissions', 'SFSETTSI01.gateway?jadeAction=WFTSUMS_RETRIEVE_TRANSMISSIONS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_19_6'],
+            ['FSET Vendor Certs', 'SFSETVCERT.gateway?jadeAction=WFVCERS_RETRIEVE_VENDORS_SUMMARY_RESULTS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_19_7'],
+            ['START-UP NY', 'SSTARTUPNY.gateway?jadeAction=WR0001S_SNER_PROGRAM_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_20'],
+            ['Printer ID Association', 'SPRIDA01.gateway?jadeAction=PRNTASOC_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_21'],
+            ['Statement of Estimated Income Tax', '#', 1]
+        ],
+        [
+            ['menu_4_21_1'],
+            ['ET Individual - Tax Year 2007', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://dvmv6.int.nystax.gov/PIES_SWAN/piesHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_6=PIES_TAX_YEAR&EMPR_AUTH_ATTRIBUTE_VALUE_6=2007&EMPR_AUTH_ATTRIBUTE_NAME_7=PIES_INDIVIDUAL_OR_FIDUCIARY_INDICATOR&EMPR_AUTH_ATTRIBUTE_VALUE_7=I', -1]
+        ],
+        [
+            ['menu_4_21_2'],
+            ['ET Individual - Tax Year 2006', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://dvmv6.int.nystax.gov/PIES_SWAN/piesHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_6=PIES_TAX_YEAR&EMPR_AUTH_ATTRIBUTE_VALUE_6=2006&EMPR_AUTH_ATTRIBUTE_NAME_7=PIES_INDIVIDUAL_OR_FIDUCIARY_INDICATOR&EMPR_AUTH_ATTRIBUTE_VALUE_7=I', -1]
+        ],
+        [
+            ['menu_4_21_3'],
+            ['ET Individual - Tax Year 2005', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://DVMV6.int.nystax.gov/PIES_SWAN/piesHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_6=PIES_TAX_YEAR&EMPR_AUTH_ATTRIBUTE_VALUE_6=2005&EMPR_AUTH_ATTRIBUTE_NAME_7=PIES_INDIVIDUAL_OR_FIDUCIARY_INDICATOR&EMPR_AUTH_ATTRIBUTE_VALUE_7=I', -1]
+        ],
+        [
+            ['menu_4_21_4'],
+            ['ET Fiduciary - Tax Year 2007', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://devmv6.int.nystax.gov/PIES_SWAN/piesHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_6=PIES_TAX_YEAR&EMPR_AUTH_ATTRIBUTE_VALUE_6=2007&EMPR_AUTH_ATTRIBUTE_NAME_7=PIES_INDIVIDUAL_OR_FIDUCIARY_INDICATOR&EMPR_AUTH_ATTRIBUTE_VALUE_7=F', -1]
+        ],
+        [
+            ['menu_4_21_5'],
+            ['ET Fiduciary - Tax Year 2006', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://devmv6.int.nystax.gov/PIES_SWAN/piesHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_6=PIES_TAX_YEAR&EMPR_AUTH_ATTRIBUTE_VALUE_6=2006&EMPR_AUTH_ATTRIBUTE_NAME_7=PIES_INDIVIDUAL_OR_FIDUCIARY_INDICATOR&EMPR_AUTH_ATTRIBUTE_VALUE_7=F', -1]
+        ],
+        [
+            ['menu_4_21_6'],
+            ['ET Fiduciary - Tax Year 2005', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://dvmv6.int.nystax.gov/PIES_SWAN/piesHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_6=PIES_TAX_YEAR&EMPR_AUTH_ATTRIBUTE_VALUE_6=2005&EMPR_AUTH_ATTRIBUTE_NAME_7=PIES_INDIVIDUAL_OR_FIDUCIARY_INDICATOR&EMPR_AUTH_ATTRIBUTE_VALUE_7=F', -1]
+        ],
+        [
+            ['menu_4_22'],
+            ['Sales Tax No Tax Due', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&TARGET=http://dvmv6.int.nystax.gov/STNT_SWAN/stntHome&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_3=ExternalTaxpayerID&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_4=ExternalTaxpayerType&EMPR_AUTH_ATTRIBUTE_VALUE_4={SWAN_EXT_TP_TYPE}&EMPR_AUTH_ATTRIBUTE_NAME_5=TaxpayerName&EMPR_AUTH_ATTRIBUTE_VALUE_5={SWAN_TP_NAME}', -1]
+        ],
+        [
+            ['menu_4_23'],
+            ['ST Upload and Download an Address File', 'SAUDTU01.gateway?jadeAction=TAUD001S_LOAD_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_24'],
+            ['Procurement Fee', 'SPRFEEU01.gateway?jadeAction=PF0100S_TRANSFER_ESDAPP_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_25'],
+            ['ReReg NON-Responders', '/EMPIRE/STRG001J.gateway?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&EMPR_AUTH_USER_ID={SWAN_USER_ID}&E_TAXPAYER_ID_WITH_ID_TYPE=SWAN_INT_TP_ID&InternalTaxpayerId={SWAN_INT_TP_ID}&E_MEDIUM_NAME=SWAN_TP_NAME&TaxpayerName={SWAN_TP_NAME}&OrgInfo={SWAN_ORG_TYPE}&EmpId={SWAN_EMP_ID}&UserName={SWAN_USER_NAME}&jadeAction=FWRKWICS_RETRIEVE_ACTION&fwFromNav=Y', -1]
+        ],
+        [
+            ['menu_4_26'],
+            ['Procurement Fee External', 'SPRFEEEX.gateway?jadeAction=PF0100S_TRANSFER_ESDAPP_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_27'],
+            ['Fix Program File View', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=http://udmwas01.int.nystax.gov:20181/FWFV/fwfvGateway&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=IsTaxpayerRequired&EMPR_AUTH_ATTRIBUTE_VALUE_1=N&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}', -1]
+        ],
+        [
+            ['menu_4_28'],
+            ['ACH File Unlock', 'SACHFLU01.gateway?jadeAction=FWKFP1S_RETRIEVE_FILE_PROC_LOCKED&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_29'],
+            ['Data Fix Facility', 'jsp/FWRK/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=http://dvm.int.nystax.gov/FWDATAFX/fixController&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=IsTaxpayerRequired&EMPR_AUTH_ATTRIBUTE_VALUE_1=N&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}', -1]
+        ],
+        [
+            ['menu_4_30'],
+            ['Framework Tabset', 'FWRKTS.gateway?jadeAction=FWTEST_RET_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_31'],
+            ['Backout Queue Message Copying Facility', 'http://uprutl01.int.nystax.gov:20581/BQMCPY/DTFMTF.jsp?65E20073=6c5e3bf1', -1]
+        ],
+        [
+            ['menu_4_32'],
+            ['Production Control', 'PRCTRLU01.gateway?jadeAction=PACTTOOL_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_33'],
+            ['PIT Manual Drain', 'SPIMANU01.gateway?jadeAction=NRP840S_SUBMIT_MANUAL_DRAIN&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_34'],
+            ['Indian Exempt Cig Quant', 'SINDCIGU01.gateway?jadeAction=MDZ002S_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_35'],
+            ['1099G', 'S1099GU01.gateway?jadeAction=NAT761S_RETRIEVE_1099G_STATEMENT_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_36'],
+            ['Message Ctr Templates', 'SMSSCTRTMP.gateway?jadeAction=MDZ003S_RETRIEVE_TEMPLATE_INFORMATION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_37'],
+            ['GEO Code Address Look-up', 'SADDLKUP01.gateway?jadeAction=ARGC001S_ADDRESS_LOOKUP&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_38'],
+            ['Audit Selection Maintenance', 'SAUDSPMTNC.gateway?jadeAction=CM0040S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_39'],
+            ['ST Rate Chg', 'SSTRATECHG.gateway?jadeAction=MC3161S_RETRIEVE_ST_SPLIT_CODE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_40'],
+            ['ST Data Repair', 'SSTDATARP.gateway?jadeAction=VN1865S_RETRIEVE_EVENTS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_41'],
+            ['MDAS', 'SMDASU01.gateway?jadeAction=ASL200S_RETRIEVE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_42'],
+            ['MDAS Rescore', 'SMDASRSCR.gateway?jadeAction=ASL100S_RETRIEVE_SUB_CATEGORY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_43'],
+            ['Correspondence Tracking', 'SCORRTRACK.gateway?jadeAction=NDC300S_RETRIEVE_CORRESPONDENCE_TRACKING&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_44'],
+            ['Family Tax Credit Inquiry', 'SFAMTAXINQ.gateway?jadeAction=NAF700S_RETRIEVE_NAF700S_FTC_SUMMARY_DATA&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_45'],
+            ['Family Tax Credit', 'SFAMTAXCR.gateway?jadeAction=NAF700S_RETRIEVE_NAF700S_FTC_SUMMARY_DATA&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_46'],
+            ['Family Tax Credit - OSC', 'SFTCOSC.gateway?jadeAction=NAF770S_RETRIEVE_NAF770S_FTC_OSC_HOLD_RELEASE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_47'],
+            ['PIT Data Capture', 'SPITDATCAP.gateway?jadeAction=NRP900S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_48'],
+            ['Remittance Tracking Inq', 'SRMTTRKINQ.gateway?jadeAction=AR0310S_REMITTANCE_SEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_49'],
+            ['Remittance Tracking', 'SREMITTRAC.gateway?jadeAction=AR0310S_REMITTANCE_SEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_50'],
+            ['Remittance Tracking Approval', 'SREMITTAPR.gateway?jadeAction=AR0310S_REMITTANCE_SEARCH_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_51'],
+            ['Audit Trail Application Details', 'SAUDTRDU01.gateway?jadeAction=MDZ800S_RETRIEVE_APP_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_52'],
+            ['Audit Trail Application Details Inq', 'SAUDTRDI01.gateway?jadeAction=MDZ800S_RETRIEVE_APP_DETAILS&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_53'],
+            ['Inquiry for External Bank Users', 'SBANKI01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_54'],
+            ['Preparer Complaint', 'SPREPCOMP.gateway?jadeAction=NME001S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_55'],
+            ['Vendor XML Inquiry', 'SVENXMLINQ.gateway?jadeAction=NDP160S_RETRIEVE_VENDOR_XML&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_56'],
+            ['Property Tax Freeze', 'SPROPTAX.gateway?jadeAction=RS7001S_RETRIEVE_PTF_CREDIT_SCHEDULE&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_57'],
+            ['Property Tax Freeze Inquiry', 'SPROPTINQ.gateway?jadeAction=RS7003S_PRPTY_TAX_CREDIT_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_58'],
+            ['Property Tax Freeze Data Upload', 'SPTFDATAUP.gateway?jadeAction=RS7020S_RETRIEVE_ORPS_UPLOAD_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_59'],
+            ['Property Tax Freeze Data Upload Admin', 'SPTFDATUPA.gateway?jadeAction=RS7020S_RETRIEVE_ORPS_UPLOAD_SUMMARY&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_60'],
+            ['START-UP NY Inq', 'SSTUPNYINQ.gateway?jadeAction=WR0001S_SNER_PROGRAM_DETAILS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_61'],
+            ['Electronic Payment Admin', 'https://fed1qa.firstdata.com/sp/startSSO.ping?PartnerIdpId=https://stgasc.nyenet.state.ny.us', -1]
+        ],
+        [
+            ['menu_4_62'],
+            ['Electronic Payment Inquiry', 'https://fed1qa.firstdata.com/sp/startSSO.ping?PartnerIdpId=https://stgasc.nyenet.state.ny.us', -1]
+        ],
+        [
+            ['menu_4_63'],
+            ['PIT ET Bulk Upload', '#', 1]
+        ],
+        [
+            ['menu_4_63_1'],
+            ['PIT ET Bulk Upload Inquiry RPC', 'SPBKINQRPC.gateway?jadeAction=NAT752S_RETRIEVE_CHECK_PROCESS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_63_2'],
+            ['PIT ET Bulk Upload Update RPC', 'SPBUPDRPC.gateway?jadeAction=NAT751S_PIT_BULK_FILER_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_63_3'],
+            ['PIT ET Bulk Upload Inquiry', 'SPETBKINQ.gateway?jadeAction=NAT751S_PIT_BULK_FILER_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_63_4'],
+            ['PIT ET Bulk Upload Update', 'SPETBKUPD.gateway?jadeAction=NAT751S_PIT_BULK_FILER_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_64'],
+            ['RETT DPR', 'SRETTDPR.gateway?jadeAction=JE0010S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_65'],
+            ['RETT DPR Inquiry', 'SRETDPRINQ.gateway?jadeAction=JE0010S_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_66'],
+            ['Create Test Payment - UTM', 'SCARTS01.gateway?jadeAction=CAAR01S_RETRIEVE_PAYMENTS_TEST_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_4_67'],
+            ['Mapper Tools', 'SMAPTOOLS.gateway?jadeAction=NDP170S_TEMPLATE_GENERATION_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_5 = [
+            ['menu_5_1'],
+            ['Tax Profile', '#', 1]
+        ],
+        [
+            ['menu_5_1_1'],
+            ['Maintain Corp Tax Profile', 'EFDMTS02.gateway?jadeAction=EFDM001_RETRIEVE_ADDRESS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_5_1_2'],
+            ['Maintain PIT Tax Profile', 'EFDMTS02.gateway?jadeAction=EFDM001_RETRIEVE_ADDRESS_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_6 = [
+            ['menu_6_1'],
+            ['Account Maintenance', '#', 1]
+        ],
+        [
+            ['menu_6_1_1'],
+            ['Business Summary', '#', 1]
+        ],
+        [
+            ['menu_6_1_1_1'],
+            ['Corporation', 'NRD155TS01.gateway?jadeAction=NRD155S_TARGET_RECORDS_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_7 = [
+            ['menu_7_1'],
+            ['Address', '#', 1]
+        ],
+        [
+            ['menu_7_1_1'],
+            ['Taxpayer Address', 'EFDMTS01.gateway?jadeAction=EFDM_ADDRESS_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['menu_7_1_2'],
+            ['Taxpayer Information', 'EFDMTS02.gateway?jadeAction=EFDM001_RETRIEVE_ADDRESS_ACTION&amp;fwFromNav=Y', 0]
+        ]
+    ],
+    [menu_8 = [
+        ['menu_8_1'],
+        ['EDMS', 'SEDMSI01.gateway?jadeAction=NDD181S1_RETRIEVE_DOCUMENT_SEARCH_RESULTS&amp;fwFromNav=Y', 0]
+    ]]
+];
+</script>
+<script>
+favsArray = [
+    [favs_1 = [
+            ['favs_1_1'],
+            ['Add Favorite...', 'PUBLIC.gateway?jadeAction=EMPIRE_LOAD_ADD_FAVORITE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['favs_1_2'],
+            ['Organize Favorites...', 'PUBLIC.gateway?jadeAction=EMPIRE_LOAD_ORG_FOLDERS_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['favs_1_3'],
+            ['Preferences...', 'PUBLIC.gateway?jadeAction=EMPIRE_PREFERENCES_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['favs_1_4'],
+            ['Update Employee List...', 'PUBLIC.gateway?jadeAction=FWRKEMLS_UPDATE_EMPLOYEE_LIST_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['favs_1_5'],
+            ['Individual Taxpayer Profile Inquiry', 'CPERSI01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['favs_1_6'],
+            ['Business Profile Inquiry', 'CBUSII01.gateway?jadeAction=TB0110N_BUSINESS_TP_PROFILE_RETRIEVE_ACTION&amp;fwFromNav=Y', 0]
+        ],
+        [
+            ['favs_1_7'],
+            ['EDMS', 'SEDMSI01.gateway?jadeAction=NDD181S1_RETRIEVE_DOCUMENT_SEARCH_RESULTS&amp;fwFromNav=Y', 0]
+        ]
+    ]
+];
+var orgFavURL = 'PUBLIC.gateway?jadeAction=EMPIRE_LOAD_ORG_FOLDERS_ACTION&amp;fwFromNav=Y'
+</script>
+<!-- Global JSP Page Beginning -->
+
+<head>
+    <title>e-MPIRE | EMPIRE | HOMEPAGE | udmwas01_E_1 | MI01CJP | 12/30/2015 09:28:52</title>
+    <meta name="description" content="e-Managed Processes for an Integrated Revenue Enterprise for the State of New York Tax and Finance Department." />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <!-- Style Sheet and JavaScript include -->
+    <script language='javascript'>
+    var webroot = "http://dvm.int.nystax.gov/EMPIRE";
+    var modalPopupWindow;
+
+    //---------- Closing popup windows  ---------//
+
+
+    //---------- Opens RT Popup /Selection Popup ----------//
+    function openPopup(url, width, height, reSizable) {
+        var left = Math.floor((screen.width - width) / 2);
+        var top = Math.floor((screen.height - height) / 2);
+
+        window.open(url, '', 'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left + ',resizable=' + reSizable);
+    }
+
+    //---------- Hiding Screen Block on Parent, when Popup is closed. ----------//
+    function hideScreenBlockOnParent() {
+        var isPopup = false;
+        if (false == true) isPopup = true;;
+        var isReadOnly = false;
+        if (false == true) isReadOnly = true;
+
+        try {
+            if (!opener.closed) {
+                var parentWinName = (opener) ? opener.document.getElementById("fwModalChildPopupName").innerText : "";
+                var windowName = self.name;
+                if (window.event.clientX < 0 && window.event.clientY < 0 && !opener.closed && opener.document.getElementById("screenOverlay") && opener.document.getElementById("screenOverlay").style.visibility == "visible" && parentWinName == windowName) {
+                    opener.screenBlockToggle("hide");
+                }
+            }
+        } catch (error) {}
+    }
+
+    //------------------------ Favorites Related Script -----------------------//
+    function setTabsetToFavoriteURL(location) {
+        var left = Math.floor((screen.width - 700) / 2);
+        var top = Math.floor((screen.height - 342) / 2);
+
+        var tabsetID = "EMPIRE";
+        var buildURL = location + "&TABSET_ID=" + tabsetID;
+
+        window.open(buildURL, 'favorites', 'width=700,height=342,top=' + top + ',left=' + left);
+    }
+    //------------------------ External Links Related Script -----------------------//
+    function openExternalLink(strURL) {
+        if (strURL == null && strURL.trim() == "") return;
+        var parameterMappings = strURL.substring(strURL.indexOf("?") + 1);
+        var swanFormName = "frmSwan";
+        var windowName = "swanLink";
+        if (parameterMappings.indexOf('{') != -1 && parameterMappings.indexOf('}') != -1) {
+            strURL = buildExternalLinkUrl(strURL);
+            var frm = createDynamicForm(swanFormName, strURL);
+            window.open('', windowName, 'width=995, height=700, left=75, top=75, resizable=yes, scrollbars=yes');
+            frm.target = windowName;
+            frm.submit();
+        } else {
+            window.open(strURL, 'externalLinks', 'width=995, height=700, left=75, top=75, resizable=yes, scrollbars=yes');
+        }
+    }
+
+    function openExternalLinkInIFrame(srcForm, sourceMappingParameters, frameName, strURL) {
+
+        if (strURL == null && strURL.trim() == "") return;
+        var parameterMappings = strURL.substring(strURL.indexOf("?") + 1);
+        if (parameterMappings.indexOf('{') != -1 && parameterMappings.indexOf('}') != -1) {
+            strURL = EL_openExternalLink(srcForm, sourceMappingParameters, null, strURL, true);
+        }
+        frames[frameName].location.href = strURL;
+    }
+
+    function buildExternalLinkUrl(strURL) {
+
+        var parameterMappingStr = strURL.substring(strURL.indexOf("?") + 1);
+        var parameterMappings = parameterMappingStr.match(/{(\w|\s)*}/g);
+
+        for (i = 0; i < parameterMappings.length; i++) {
+            var fldName = parameterMappings[i].substring(1, parameterMappings[i].length - 1);
+            fldName = fldName.replace(/^\s+/g, '').replace(/\s+$/g, '');
+            var fldRef = eval("document.elForm." + fldName);
+            var fldValue = "";
+            if (fldRef != null && fldRef != 'undefined') {
+                fldValue = fldRef.value;
+            }
+            parameterMappingStr = parameterMappingStr.replace(/{(\w|\s)*}/, fldValue);
+        }
+        return (strURL.substring(0, strURL.indexOf("?") + 1) + parameterMappingStr);
+    }
+
+    /*
+     * Create form
+     *  - Use previously gathered parameters and values
+     *  - One line of HTML for each set of data
+     *  - POST method
+     *
+     */
+    function createDynamicForm(targetFormName, strUrl) {
+
+        var input;
+        var targetForm = document.createElement('form');
+        var frmAction = strUrl.substring(0, strUrl.indexOf("?"));
+        var urlParamList = strUrl.substring(strUrl.indexOf("?") + 1).split("&");
+
+        // Reset & empty the form object
+        while (targetForm.hasChildNodes()) {
+            targetForm.removeChild(targetForm.firstChild);
+        }
+
+        // Set up the form
+        targetForm.setAttribute("name", targetFormName);
+        targetForm.setAttribute("method", 'post');
+        targetForm.setAttribute("target", 'newwindow');
+        targetForm.setAttribute("action", frmAction);
+
+        //create <input>s and set attributes
+        if (urlParamList != null && urlParamList.length >= 1) {
+            for (i = 0; i < urlParamList.length; i++) {
+                var paramMapping = urlParamList[i];
+                var paramName = paramMapping.substring(0, paramMapping.indexOf('='));
+                var paramVal = paramMapping.substring(paramMapping.indexOf('=') + 1);
+
+                if (paramName != null) {
+                    paramName = paramName.replace(/^\s+/g, '').replace(/\s+$/g, '');
+                    if (paramName.length <= 0) continue;
+                    input = document.createElement('input');
+                    input.setAttribute('name', paramName);
+                    input.setAttribute('value', paramVal);
+                    input.setAttribute('type', 'hidden');
+                    targetForm.appendChild(input);
+                    input = null;
+                }
+            }
+        }
+
+        //append the form to the document
+        document.body.appendChild(targetForm);
+        return targetForm;
+    }
+
+
+    //------------------------ TabNav Popup Submit Script -----------------------//
+    function submitAsPopup(form, action, name, features, modal, readOnly) {
+        form.jadeAction.value = action;
+        form.fwTabNavSubmitIndicator.value = "Y";
+        form.fwFromNav.value = "N";
+        form.fwIsPopupIndicator.value = "true";
+        form.fwIsPopupReadOnly.value = readOnly;
+        form.fwPopupWindowName.value = name;
+        form.fwIsPopupInit.value = "true";
+
+        var _bPopupWindow = window.open('', name, features);
+        if (modal) {
+            screenBlockToggle("show");
+            document.getElementById("fwModalChildPopupName").innerText = name;
+            modalPopupWindow = _bPopupWindow;
+            winWatchModalPopup();
+        }
+        _bPopupWindow.document.write("Loading ................");
+        form.target = name;
+        var frmRptAction = form.action;
+        form.action = form.action + '?FWRK_EMPR_RPT_POST_ACTION=' + action;
+        form.submit();
+        form.action = frmRptAction;
+        // Added to fix the defect # CQDTF00007425
+        form.target = "";
+        form.fwIsPopupIndicator.value = "false";
+        form.fwIsPopupReadOnly.value = "false";
+        form.fwPopupWindowName.value = "";
+        form.fwIsPopupInit.value = "false";
+    }
+
+    //------------------------ Watch Child Modal Popup -----------------------//
+    function winWatchModalPopup() {
+        try {
+            if (modalPopupWindow.closed) {
+                if (document.getElementById("screenOverlay") && document.getElementById("screenOverlay").style.visibility == "visible") {
+                    screenBlockToggle("hide");
+                }
+            } else {
+                setTimeout("winWatchModalPopup()", 500);
+            }
+        } catch (e) {
+            if (document.getElementById("screenOverlay") && document.getElementById("screenOverlay").style.visibility == "visible") {
+                screenBlockToggle("hide");
+            }
+        }
+    }
+
+    //------------------------ TabNav Button Submit Script -----------------------//
+    function submitButton(form, action, tnindicator, fnindicator, validate, buttonTagId) {
+        form.jadeAction.value = action;
+        form.fwTabNavSubmitIndicator.value = tnindicator;
+        form.fwFromNav.value = fnindicator;
+        form.fwIsPopupIndicator.value = "false";
+        form.fwIsPopupReadOnly.value = "false";
+        form.fwPopupWindowName.value = "";
+        form.fwIsPopupInit.value = "false";
+        form.fwButtonTagId.value = buttonTagId;
+
+        form.target = "";
+
+        var frmRptAction = form.action;
+        form.action = form.action + '?FWRK_EMPR_RPT_POST_ACTION=' + action;
+        if (!validate || preValidate(form)) {
+            form.submit();
+        }
+        form.action = frmRptAction;
+
+    }
+
+    //------------------------ Setting Popup Indicators -----------------------//
+    function setPopupIndicators(formName) {
+        var formObj = document.forms[formName];
+        formObj.fwIsPopupIndicator.value = "false";
+        formObj.fwIsPopupReadOnly.value = "false";
+        formObj.fwPopupWindowName.value = "";
+        formObj.fwIsPopupInit.value = "false";
+    }
+
+    function validateSearchForm() {
+        document.SearchForm.jadeAction.value = "EMPIRE_HOME_ACTION";
+        document.SearchForm.fwIsPopupIndicator.value = "false";
+        document.SearchForm.fwIsPopupReadOnly.value = "false";
+        document.SearchForm.fwPopupWindowName.value = "";
+        document.SearchForm.fwIsPopupInit.value = "false";
+
+        if (preValidate(document.SearchForm)) {
+            // To prevent repetitive submission of Search Form
+            if (document.getElementById('focusTop') != null) {
+                document.getElementById('focusTop').focus();
+            }
+            screenblock();
+            return true;
+        }
+        return false;
+    }
+
+    function setRefreshAgent(form, agent) {
+
+        form.FW_REFRESH_AGENT.value = agent;
+    }
+
+    function Map() {
+        this.aname = new Array();
+        this.avalue = new Array();
+        this.asize = -1;
+
+        /**
+         * adds a name value pair
+         */
+        this.put = function(nkey, nvalue) {
+            //if this value is already in here
+            //remove it
+            if (this.contains(nkey)) {
+                //remove the old value
+                this.remove(nkey);
+            }
+            //increase to add to the end
+            this.asize++;
+
+            this.aname[this.asize] = nkey;
+            this.avalue[this.asize] = nvalue;
+        }
+
+        /**
+         * gets all the keys from this map
+         * as an array
+         */
+        this.getKeysAsArray = function() {
+            return this.aname;
+        }
+
+        /**
+         * Gets a value from a key
+         */
+        this.get = function(keyname) {
+            var m_x = 0;
+            for (; m_x < this.size(); m_x++) {
+                if (this.aname[m_x] == keyname) {
+                    return this.avalue[m_x];
+                }
+            }
+            return null
+        }
+
+        /**
+         * Removes the first occurrence in this map of the specified key
+         */
+        this.remove = function(key) {
+            var idx = this.indexOf(key);
+            this.removeByIndex(idx);
+        };
+
+        /**
+         * see if keyname is already in this map
+         * lame algorithm
+         */
+        this.contains = function(keyname) {
+            var s = this.size();
+            var m_i = 0;
+            for (; m_i < s; m_i++) {
+                if (this.aname[m_i] == keyname) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Returns the index the key or -1 if this map does not contain
+         * the key
+         * int
+         */
+        this.indexOf = function(key) {
+            var l_x = 0;
+            for (; l_x < this.size(); l_x++) {
+                if (this.aname[l_x] == key) {
+                    return l_x;
+                }
+            }
+
+            return -1;
+        };
+
+        /**
+         * Removes the element at the specified position in this list (optional operation).
+         * Object
+         */
+        this.removeByIndex = function(index) {
+            if (index > this.asize)
+                throw new Error(
+                    "Map remove index is > size can't remove key/value"
+                );
+            //this is IE 5.5 and higher... write my own?
+            this.aname.splice(index, 1);
+            this.avalue.splice(index, 1);
+            this.asize--;
+        };
+
+        /**
+         * gets the size of this map object 2
+         */
+        this.size = function() {
+            return this.asize + 1;
+        }
+
+        /**
+         * the ol'toString
+         */
+        this.toString = function() {
+            var str = "[";
+
+            if (this.size() > 0) {
+                var m_x = 0;
+                for (; m_x < this.size(); m_x++) {
+                    str += this.aname[m_x] + "=" + this.avalue[m_x] + ",";
+                }
+                //remove that last comma
+                str = str.substring(0, str.length - 1);
+
+            } else {
+                str += "empty"
+            }
+
+            str += "]";
+
+            return str;
+        }
+    }
+
+    function BABEObject() {
+        this.babeFormAction = "";
+        this.babeJadeAction = "";
+        this.babeLocation = "";
+        this.babeAction = "";
+        this.babeOid = "";
+        this.babePIName = "";
+        this.babeWFKey = "";
+        this.babeActivityId = "";
+        this.babeUICtrlNo = "";
+        this.isCommentsReq = false;
+        this.isCompCriteriaReq = false;
+
+
+        this.load = function(aformaction, ajadeaction, ababelocation, ababeaction, aoid, avu, aactivityid, auictrlno, aCommentsReq, aCompCriteriaReq, aPIName) {
+
+            this.babeFormAction = aformaction;
+            this.babeJadeAction = ajadeaction;
+            this.babeLocation = ababelocation;
+            this.babeAction = ababeaction;
+            this.babeOid = aoid;
+            this.babePIName = aPIName;
+            this.babeWFKey = avu;
+            this.babeActivityId = aactivityid;
+            this.babeUICtrlNo = auictrlno;
+            this.isCommentsReq = aCommentsReq;
+
+            this.isCompCriteriaReq = aCompCriteriaReq;
+        }
+
+        this.getBabeFormAction = function() {
+            return this.babeFormAction;
+        }
+        this.getBabeJadeAction = function() {
+            return this.babeJadeAction;
+        }
+        this.getBabeLocation = function() {
+            return this.babeLocation;
+        }
+
+        this.getBabeAction = function() {
+            return this.babeAction;
+        }
+        this.getBabeOid = function() {
+            return this.babeOid;
+        }
+        this.getBabePIName = function() {
+            return this.babePIName;
+        }
+        this.getBabeWFKey = function() {
+            return this.babeWFKey;
+        }
+        this.getBabeActivityId = function() {
+            return this.babeActivityId;
+        }
+        this.getBabeUICtrlNo = function() {
+            return this.babeUICtrlNo;
+        }
+        this.getCompCriteriaReq = function() {
+            return this.isCompCriteriaReq;
+        }
+        this.getCommentsReq = function() {
+            return this.isCommentsReq;
+        }
+    }
+
+    var headerDropdownMap = new Map();
+
+    function setHeaderDropDownValue() {
+        clearHeaderId();
+        var headerIdType = document.SearchForm.HEADER_ID_TYPE.value;
+        var headerIdValue = headerDropdownMap.get(headerIdType);
+
+        if (headerIdType == "IN" || headerIdType == "BN" || headerIdType == "AN" || headerIdType == "RN") {
+            setHeaderName(headerIdValue);
+        } else
+        if (headerIdType == "BA" || headerIdType == "IA") {
+            setHeaderAddress(headerIdValue);
+        } else {
+            if (headerIdValue == null) headerIdValue = "";
+            document.SearchForm.HEADER_ID_NUMBER.value = headerIdValue;
+        }
+
+    }
+
+    function setHeaderName(aMap) {
+        if (aMap == null) aMap = new Map();
+
+        var lastName = aMap.get("HEADER_LAST_NAME");
+        var firstName = aMap.get("HEADER_FIRST_NAME");
+        var middleInt = aMap.get("HEADER_MIDDLE_INITIAL");
+
+        var lastNameObj = document.SearchForm.HEADER_LAST_NAME;
+        var firstNameObj = document.SearchForm.HEADER_FIRST_NAME;
+        var middleIntObj = document.SearchForm.HEADER_MIDDLE_INITIAL;
+
+        var streetObj = document.SearchForm.HEADER_STREET;
+        var cityObj = document.SearchForm.HEADER_CITY;
+        var stateObj = document.SearchForm.HEADER_STATE;
+        var zipObj = document.SearchForm.HEADER_ZIP;
+        var countryObj = document.SearchForm.HEADER_COUNTRY;
+
+
+        if (lastName == null) lastName = "";
+        if (firstName == null) firstName = "";
+        if (middleInt == null) middleInt = "";
+
+        if (lastNameObj != null) lastNameObj.value = lastName;
+        if (firstNameObj != null) firstNameObj.value = firstName;
+        if (middleIntObj != null) middleIntObj.value = middleInt;
+    }
+
+
+    function setHeaderAddress(aMap) {
+        if (aMap == null) aMap = new Map();
+
+        var street = aMap.get("HEADER_STREET");
+        var city = aMap.get("HEADER_CITY");
+        var state = aMap.get("HEADER_STATE");
+        var zip = aMap.get("HEADER_ZIP");
+        var country = aMap.get("HEADER_COUNTRY");
+
+
+
+        var streetObj = document.SearchForm.HEADER_STREET;
+        var cityObj = document.SearchForm.HEADER_CITY;
+        var stateObj = document.SearchForm.HEADER_STATE;
+        var zipObj = document.SearchForm.HEADER_ZIP;
+        var countryObj = document.SearchForm.HEADER_COUNTRY;
+
+
+        if (street == null) street = "";
+        if (city == null) city = "";
+        if (zip == null) zip = "";
+        if (state == null) state = "";
+        if (country == null) country = "";
+
+
+        if (streetObj != null) streetObj.value = street;
+        if (cityObj != null) cityObj.value = city;
+        if (stateObj != null) stateObj.value = state;
+        if (zipObj != null) zipObj.value = zip;
+        if (countryObj != null) countryObj.value = country;
+
+    }
+
+
+    function clearHeaderId() {
+        var lastName = document.SearchForm.HEADER_LAST_NAME;
+        var firstName = document.SearchForm.HEADER_FIRST_NAME;
+        var middleInt = document.SearchForm.HEADER_MIDDLE_INITIAL;
+        var idNum = document.SearchForm.HEADER_ID_NUMBER;
+        var street = document.SearchForm.HEADER_STREET;
+        var city = document.SearchForm.HEADER_CITY;
+        var state = document.SearchForm.HEADER_STATE;
+        var zip = document.SearchForm.HEADER_ZIP;
+        var country = document.SearchForm.HEADER_COUNTRY;
+
+
+
+
+
+        if (idNum != null) idNum.value = "";
+        if (lastName != null) lastName.value = "";
+        if (firstName != null) firstName.value = "";
+        if (middleInt != null) middleInt.value = "";
+
+
+
+        if (street != null) street.value = "";
+        if (city != null) city.value = "";
+        if (state != null) state.value = "";
+        if (zip != null) zip.value = "";
+        if (country != null) country.value = "";
+    }
+
+    function doOnCollapseAll() {
+        try {
+            setExceptionOpenState("COLLAPSE_ALL");
+        } catch (error) {}
+    }
+
+    function doOnExpandAll() {
+        try {
+            setExceptionOpenState("EXPAND_ALL");
+        } catch (error) {}
+    }
+    </script>
+    <link href="ui/css/menuNew.css?cid=20150528" rel="stylesheet" type="text/css" />
+    <link href="ui/css/general.css?cid=20150528" rel="stylesheet" type="text/css" />
+    <link href="ui/css/generalBlue.css?cid=20150528" rel="stylesheet" type="text/css" />
+    <link href="ui/css/generalBrown.css?cid=20150528" rel="alternate stylesheet" type="text/css" />
+    <link href="ui/css/generalGreen.css?cid=20150528" rel="alternate stylesheet" type="text/css" />
+    <link href="ui/css/resultset.css?cid=20150528" rel="stylesheet" type="text/css" />
+    <link href="ui/css/print.css?cid=20150528" rel="stylesheet" type="text/css" media="print" />
+    <script type="text/javascript" src="ui/js/general.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/menuCreateNew.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/menuControlNew.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/resultset.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/events.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/calendar.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/globalErrorCodes.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/globalErrors.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/globalUtilities.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/globalValidator.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/dynamicDropDown.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/RoboHelp_CSH.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/winDependent.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/imageviewer.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/xmlhttp.js?cid=20150528"></script>
+    <script type="text/javascript" src="ui/js/ajax.js?cid=20150528"></script>
+    <!--[if IE 8]>
+<script type="text/javascript" src="ui/js/ie8.js?cid=20150528"></script>
+<link href="ui/css/ie8.css?cid=20150528" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+
+<body onload="initPage();updateDropDowns();tbs();initFocus();handleUndo();">
+    <div id="screenOverlayShield" class="screenOverlayShield" style="visibility: hidden;">
+        <table width="975" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="center" valign="middle">&nbsp; &nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <div id="screenOverlay" class="screenOverlay" style="visibility: hidden;">
+        <table width="975" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="center" valign="middle">
+                    <div id="screenOverlayText" class="screenOverlayText">
+                        <br /> PLEASE WAIT
+                        <br />
+                        <br />
+                        <img src="ui/images/loading.gif" width="200" height="14" />
+                        <br />
+                        <br/>&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+    screenBlockLoad();
+    if (window.setResultsetFocus) {
+        window.attachEvent('onload', setResultsetFocus);
+    }
+    </script>
+    <script>
+    document.getElementsByTagName('body').item(0).className = "low";
+    document.body.style.fontSize = "11px";
+    </script>
+    <!-- The Header Include Files Go Here -->
+    <script language='javascript'>
+    function submitEmployeeDetails() {
+
+        var winName = 'winEmployeeDetails';
+        var features = 'width=995, height=700, left=75, top=75, resizable=yes, scrollbars=yes';
+
+        document.employeeBtnForm.jadeAction.value = "NDO375S_RETRIEVE_EMPLOYEE_DETAILS";
+        document.employeeBtnForm.fwTabNavSubmitIndicator.value = "Y";
+        document.employeeBtnForm.fwFromNav.value = "N";
+        document.employeeBtnForm.fwIsPopupIndicator.value = "true";
+        document.employeeBtnForm.fwPopupWindowName.value = winName;
+        document.employeeBtnForm.fwIsPopupInit.value = "true";
+        document.employeeBtnForm.fwIsPopupReadOnly.value = "true";
+
+        var _bPopupWindow = window.open('', winName, features);
+        _bPopupWindow.document.write("Loading ................");
+        document.employeeBtnForm.target = winName;
+        document.employeeBtnForm.submit();
+    }
+    </script>
+    <!--BEGIN Global Navigation include -->
+    <div id="global_head">
+        <div class="mast">
+            <div id="global_head-left">
+                <h1>e-MPIRE</h1>
+            </div>
+            <div id="global_head-right">
+                <div id="navi">
+                    <ul>
+                        <li><a id='menuButton_1' onclick="javascript:menuButtonToggle('menu_1',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_1',this.id);" href="#">Client Information</a></li>
+                        <li><a id='menuButton_2' onclick="javascript:menuButtonToggle('menu_2',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_2',this.id);" href="#">Account Information</a></li>
+                        <li><a id='menuButton_3' onclick="javascript:menuButtonToggle('menu_3',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_3',this.id);" href="#">Work Management</a></li>
+                        <li><a id='menuButton_4' onclick="javascript:menuButtonToggle('menu_4',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_4',this.id);" href="#">Special Services</a></li>
+                        <li><a id='menuButton_5' onclick="javascript:menuButtonToggle('menu_5',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_5',this.id);" href="#">Document Processing</a></li>
+                        <li><a id='menuButton_6' onclick="javascript:menuButtonToggle('menu_6',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_6',this.id);" href="#">Accounting</a></li>
+                        <li><a id='menuButton_7' onclick="javascript:menuButtonToggle('menu_7',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_7',this.id);" href="#">User Services</a></li>
+                        <li><a id='menuButton_8' onclick="javascript:menuButtonToggle('menu_8',this.id);return false;" onmouseenter="javascript:menuButtonOver('menu_8',this.id);" href="#">EDMS</a></li>
+                    </ul>
+                </div>
+                <div id="tabset_title">
+                    <div class="float-left">
+                        <h2> EMPIRE-Empire Home</h2>
+                    </div>
+                    <div class="float-right">
+                        <form name="employeeBtnForm" action="EMPIRE.gateway" method="post">
+                            <input type="hidden" name="jadeAction" value="" />
+                            <input type="hidden" name="fwTabNavSubmitIndicator" value="" />
+                            <input type="hidden" name="fwFromNav" value="" />
+                            <input type="hidden" name="fwIsPopupIndicator" value="" />
+                            <input type="hidden" name="fwPopupWindowName" value="" />
+                            <input type="hidden" name="fwIsPopupInit" value="" />
+                            <input type="hidden" name="fwIsPopupReadOnly" value="" />
+                        </form>
+                        <a href="#" onclick="javascript:menuButtonToggle('favs_1',this.id);return false;" class="hard_button" id="button-favorites" title="Open the Favorites Menu">Favorites</a>
+                        <form name="FWhelpform">
+                            <input type="hidden" name="FWhelpID" value="22" />
+                            <a href="#" class="hard_button" id="button-help" title="Help..." onclick="callhelp();return false;">Help</a>
+                        </form>
+                    </div>
+                    <!--
+        <div class="float-right">
+            <a href="#" onclick="changebg('high');return false;" id="contrast-high" title="Click for High Contrast Settings">High Contrast</a>
+            <a href="#" onclick="changebg('low');return false;" id="contrast-low" title="Click for Low Contrast Settings">Low Contrast</a>
+            <a href="#" onclick="changebg('mono');return false;" id="contrast-mono" title="Click for Monotone/Grayscale Settings">Grayscale</a>
+        </div>
+-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END Global Navigation Include-->
+    <!-- Main Page Form and Hidden Fields Go Here -->
+    <script language='javascript'>
+    function submitCaseContact() {
+
+        var winName = 'winCaseContact';
+        var features = 'width=995, height=700, left=75, top=75, resizable=yes, scrollbars=yes';
+
+        document.indicatorForm.jadeAction.value = "CE9810S_RETRIEVAL_ACTION";
+        document.indicatorForm.fwTabNavSubmitIndicator.value = "Y";
+        document.indicatorForm.fwFromNav.value = "N";
+        document.indicatorForm.fwIsPopupIndicator.value = "true";
+        document.indicatorForm.fwPopupWindowName.value = winName;
+        document.indicatorForm.fwIsPopupInit.value = "true";
+
+        screenBlockToggle("show");
+        document.getElementById("fwModalChildPopupName").innerText = winName;
+
+        modalPopupWindow = window.open('', winName, features);
+        winWatchModalPopup();
+        modalPopupWindow.document.write("Loading ................");
+        document.indicatorForm.target = winName;
+        document.indicatorForm.submit();
+
+        //Setting target back to parent window.
+        document.indicatorForm.target = "";
+    }
+
+    function submitPopupReq(action, winName, switchFlag) {
+
+        //var winName = 'winPopup';
+        var features = 'width=995, height=700, left=75, top=75, resizable=yes, scrollbars=yes';
+
+        document.indicatorForm.jadeAction.value = action;
+        document.indicatorForm.fwTabNavSubmitIndicator.value = "Y";
+        document.indicatorForm.fwFromNav.value = "N";
+        document.indicatorForm.fwIsPopupIndicator.value = "true";
+        document.indicatorForm.fwPopupWindowName.value = winName;
+        document.indicatorForm.fwIsPopupInit.value = "true";
+        if (switchFlag) {
+            document.indicatorForm.fwAssocSwitchInd.value = "Y";
+        }
+
+        screenBlockToggle("show");
+        document.getElementById("fwModalChildPopupName").innerText = winName;
+
+        modalPopupWindow = window.open('', winName, features);
+        winWatchModalPopup();
+        modalPopupWindow.document.write("Loading ................");
+        document.indicatorForm.target = winName;
+        document.indicatorForm.submit();
+
+        //Setting target back to parent window.
+        document.indicatorForm.target = "";
+    }
+
+    function submitAssocReq() {
+
+    }
+
+    function submitHeaderForSwitch(action) {
+
+        document.indicatorForm.fwTabNavSubmitIndicator.value = "N";
+        document.indicatorForm.fwFromNav.value = "N";
+        document.indicatorForm.fwIsPopupIndicator.value = "false";
+        document.indicatorForm.fwIsPopupReadOnly.value = "false";
+        document.indicatorForm.fwPopupWindowName.value = "";
+        document.indicatorForm.fwIsPopupInit.value = "false";
+
+        document.indicatorForm.jadeAction.value = action;
+        document.indicatorForm.fwAssocSwitchInd.value = "Y";
+        document.indicatorForm.submit();
+    }
+    </script>
+    <form name="elForm">
+        <input type="hidden" name="SWAN_USER_IP_ADDR" value="10.108.255.5" />
+        <input type="hidden" name="SWAN_USER_ID" value="MI01CJP" />
+        <input type="hidden" name="SWAN_EXT_TP_ID" value="" />
+        <input type="hidden" name="SWAN_EXT_TP_TYPE" value="" />
+        <input type="hidden" name="SWAN_INT_TP_ID" value="" />
+        <input type="hidden" name="SWAN_TP_NAME" value="" />
+        <input type="hidden" name="SWAN_ORG_TYPE" value="DTF" />
+        <input type="hidden" name="SWAN_EMP_ID" value="53860" />
+        <input type="hidden" name="SWAN_USER_NAME" value="Craig Patik" />
+    </form>
+    <!-- GENERAL HEAD SECTION -->
+    <div id="general_head">
+        <div class="mast">
+            <!------- Begin Indicator form ----->
+            <form name="indicatorForm" action="EMPIRE.gateway" method="post">
+                <input type="hidden" name="jadeAction" value="" />
+                <input type="hidden" name="fwTabNavSubmitIndicator" value="" />
+                <input type="hidden" name="fwFromNav" value="" />
+                <input type="hidden" name="fwIsPopupIndicator" value="" />
+                <input type="hidden" name="fwPopupWindowName" value="" />
+                <input type="hidden" name="fwIsPopupInit" value="" />
+                <input type="hidden" name="fwIsPopupReadOnly" value="" />
+                <input type="hidden" name="fwAssocSwitchInd" value="N" />
+                <!-- Data divided in two sections 50% each -->
+            </form>
+            <!------- End of Indicator form ----->
+        </div>
+    </div>
+    <!--tabs BEGIN-->
+    <!-- The Tab and Title of the Page Tables Go Here -->
+    <!-- The Tabs Go Here -->
+    <div id="tabset">
+        <div class="mast">
+            <div id="tab-container">
+                &nbsp;
+                <a href="#" class="tab-current" tabindex="1">EmpireHome</a>
+            </div>
+            <div class="float-right">
+            </div>
+        </div>
+    </div>
+    <!----- Modal Popup window name is stored in the below span. ----->
+    <span id="fwModalChildPopupName" class="hidden"></span>
+    <script language="javascript">
+    function setSBFocus() {
+
+    }
+    </script>
+    <!-- Displays messages -->
+    <!--Message Table BEGIN-->
+    <input type="text" id="focusTop" />
+    <div id="errorTableClient" style="display:none;">
+        <span id="errorSpanClient" class="error">
+
+
+
+    </span>
+    </div>
+    <br />
+    <div id="page_title">
+        <div class="mast">
+            <div class="float-left">
+                <h3>Empire HomePage</h3>
+            </div>
+            <div class="float-right">
+                <ul class="list-icons">
+                    <li><a href="#" class="icon" id="icon-print" title="Print this Page">Print</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script language="JavaScript">
+    function initPage() {
+        winSetName("empireParent");
+    }
+    </script>
+    <style type="text/css">
+    div.group h4.noShowHide,
+    div.group div.group h4.noShowHide {
+        padding-left: 5px;
+        cursor: default;
+        behavior: none;
+        background: #CCCCCC !important;
+    }
+
+    .cr {
+        padding: 0px 5px;
+    }
+    </style>
+    <div id="page_body">
+        <div class="mast">
+            <form name="form1" action="EMPIRE.gateway" method="post" autocomplete="off">
+                <!-- Page Body Section [Start] -->
+                <div id="homepage_body">
+                    <div class="homepageWarningContainer">
+                        <h4 class="homepageWarningHeader">Note</h4>
+                        <div class="homepageWarningBody">
+                            <span>Warning!</span> This NYS Tax Dept (DTF) system contains government information, including confidential federal and state tax information, subject to strict laws governing inspection and disclosure. See Memo E-141. Do not access or use data on this system except for official assigned DTF duties. Employee actions are logged and monitored. Unauthorized use is a crime which can result in discipline, as well as federal and state civil and criminal prosecution. By logging in, you signify your understanding and agreement with this Notice.
+                        </div>
+                    </div>
+                </div>
+                <!-- Page Body Section [End] -->
+                <script language='javascript'>
+                function handleUndo() {}
+
+                function turnOffValidation() {
+                    document.form1.fwValidationFlag.value = 'N';
+                }
+
+                function turnOnValidation() {
+                    document.form1.fwValidationFlag.value = 'Y';
+                }
+
+                function updateDropDowns() {}
+
+                function getArray(arrayname) {
+                    return eval(arrayname);
+                }
+                </script>
+                <input type="text" style='width:0px;border:0;background-color:transparent;position:absolute;top:0px;left 0px;' name="EMP_FW_CM_DUMMY_XYZ" disabled="disabled" />
+                <input type="hidden" name="fwButtonTagId" value="empty" />
+                <input type="hidden" name="fwTabNavSubmitIndicator" value="N" />
+                <input type="hidden" name="fwIsPopupInit" value="false" />
+                <input type="hidden" name="fwIsPopupIndicator" value="false" />
+                <input type="hidden" name="fwFromNav" value="N" />
+                <input type="hidden" name="fwIsPopupReadOnly" value="false" />
+                <input type="hidden" name="FW_REFRESH_AGENT" />
+                <input type="hidden" name="fwValidationFlag" value="Y" />
+                <input type="hidden" name="fwPopupWindowName" />
+                <input type="hidden" name="F7F8" />
+                <input type="hidden" name="jadeAction" />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

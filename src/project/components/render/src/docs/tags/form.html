@@ -1,0 +1,183 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="From Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Form Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    All fields on a page are contained inside <code>form</code> tags.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Form>
+&lt;/E2:Form></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "form",
+    "attributes": {
+        "name": "form1",
+        "method": "POST",
+        "action": "http://www.ny.gov"
+    },
+    contents: []
+}</pre>
+
+                <p>
+                    <code>&lt;E2:Form&gt;</code> tags are container elements that developers should use to wrap all of their input fields. The only required attribute is the <code>name</code> attribute. Since a page can have more than one form on it, the form names must be unique.
+                </p>
+                <p>
+                    While Java developers only need to name the form on the page, the JSON append additional attributes needed for the form to properly function. For example, all forms need <code>method</code> and <code>action</code> attributes. These attributes should be handled by framework and developer can override using the <code>htmlAttributes</code> attribute.
+                </p>
+
+                <h2>Default example</h2>
+                <p>
+                    By default forms render no visible content. Use the browser development tool on the box below to see the rendered output.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+                <form method="POST" id="test" action="test.com">
+                    <button type="submit" onclick="emp.functionCall(event, 'emp.form.submit',[{'action':'http://google.com'}])">Change action!</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                name
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Specifies the <code>name</code> and <code>id</code> attributes for the <code>&lt;form&gt;</code> HTML element. If this is not set it will default to <code>form1</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;div&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScripts
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that needs to be executed. The string must include both event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Deprecated Attributes -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+              <h2>Deprecated Attributes</h2>
+
+              <h3>main</h3>
+              <p>
+                  There was no documentation describing the purpose of what <code>main</code> was doing to the developer page in Empire 1.
+              </p>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Form Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "form",
+                        "attributes": {
+                            "name": "form1",
+                            "method": "POST",
+                            "action": "http://www.ny.gov",
+                        },
+                        "contents": []
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                });
+
+            });
+        </script>
+<!--(bake ../includes/footer.html)-->

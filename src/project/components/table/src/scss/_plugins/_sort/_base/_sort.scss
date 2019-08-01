@@ -1,0 +1,204 @@
+.emp-table {
+
+    table {
+
+        // Normal Tables
+        thead {
+
+            th[data-sort],
+            th.emp-sortable {
+                background-clip: padding-box;
+                position: relative;
+                padding-left: 18px;
+                cursor: pointer;
+
+                &:before,
+                &:after {
+                    content: "";
+                    display: table-cell;
+                    position: absolute;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+
+                &:before {
+                    border-left: 4.5px solid transparent;
+                    border-right: 4.5px solid transparent;
+                    border-top: 4.5px solid #84827B;
+
+                    left: $emp-table-header-cell-padding-top - 2px;
+                    top: $emp-table-header-cell-padding-top + 8px;
+                }
+
+                &:after {
+                    border-left: 4.5px solid transparent;
+                    border-right: 4.5px solid transparent;
+                    border-bottom: 4.5px solid #84827B;
+
+                    left: $emp-table-header-cell-padding-top - 2px;
+                    top: $emp-table-header-cell-padding-top + 2px;
+                }
+
+                &.table-structure-cell {
+                    padding: 0;
+                }
+            }
+
+        }
+
+        // Sticky Tables
+        &.sticky {
+
+            th[data-sort],
+            .emp-sortable {
+                cursor: inherit;
+                padding: $emp-table-header-cell-padding;
+                position: initial;
+                z-index: 1;
+
+                &:before,
+                &:after {
+                    content: none;
+                }
+
+                .sticky-cell {
+                    padding-left: 18px !important;
+                    cursor: pointer;
+
+                    &:before,
+                    &:after {
+                        content: "";
+                        display: table-cell;
+                        position: absolute;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+
+                    &:before {
+                        border-left: 4.5px solid transparent;
+                        border-right: 4.5px solid transparent;
+                        border-top: 4.5px solid #84827B;
+                        left: $emp-table-header-cell-padding-top - 2px;
+                        top: $emp-table-header-cell-padding-top + 8px;
+                    }
+
+                    &:after {
+                        border-left: 4.5px solid transparent;
+                        border-right: 4.5px solid transparent;
+                        border-bottom: 4.5px solid #84827B;
+
+                        left: $emp-table-header-cell-padding-top - 2px;
+                        top: $emp-table-header-cell-padding-top + 2px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.emp-orpts-subtheme{ 
+    .emp-table {
+
+        table {
+    
+            // Normal Tables
+            thead {
+    
+                th[data-sort],
+                th.emp-sortable {
+
+                	//Non-sticky header does not add span so adding entire padding to th.
+                	padding-left: 28px;
+
+                    span{
+                        padding-left: 10px;
+                    }
+    
+                    &:before {
+                        border-left: 7.5px solid transparent;
+                        border-right: 7.5px solid transparent;
+                        border-top: 7.5px solid #84827B;
+    
+                        left: $emp-table-header-cell-padding-top - 2px;
+                        top: $emp-table-header-cell-padding-top + 10px;
+                    }
+    
+                    &:after {
+                        border-left: 7.5px solid transparent;
+                        border-right: 7.5px solid transparent;
+                        border-bottom: 7.5px solid #84827B;
+    
+                        left: $emp-table-header-cell-padding-top - 2px;
+                        top: $emp-table-header-cell-padding-top;
+                    }
+    
+                    &.table-structure-cell {
+                        padding: 0;
+                    }
+                }
+
+                th[data-sortdir="ASC"] {                    
+                    &:after {
+                        border-bottom-color: #007681 !important;
+                    }
+                }
+
+                th[data-sortdir="DESC"] {
+                    &:before {
+                        border-top-color: #007681 !important;
+                    }                    
+                }    
+            }
+    
+            // Sticky Tables
+            &.sticky {
+    
+                th[data-sort],
+                .emp-sortable {    
+                    .sticky-cell {
+
+                    	padding-left:18px;
+
+                        span{
+                            padding-left: 10px;
+                        }
+    
+                        &:before {
+                            border-left: 7.5px solid transparent;
+                            border-right: 7.5px solid transparent;
+                            border-top: 7.5px solid #84827B;
+                            left: $emp-table-header-cell-padding-top - 2px;
+                            top: $emp-table-header-cell-padding-top + 10px;
+                        }
+    
+                        &:after {
+                            border-left: 7.5px solid transparent;
+                            border-right: 7.5px solid transparent;
+                            border-bottom: 7.5px solid #84827B;
+    
+                            left: $emp-table-header-cell-padding-top - 2px;
+                            top: $emp-table-header-cell-padding-top;
+                        }
+                    }
+                }
+
+                th[data-sortdir="ASC"] {
+                    .sticky-cell {
+                        &:after {
+                            border-bottom-color: #007681 !important;
+                        }
+                    }
+
+                }
+
+                th[data-sortdir="DESC"] {
+                    .sticky-cell {
+                        &:before {
+                            border-top-color: #007681 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

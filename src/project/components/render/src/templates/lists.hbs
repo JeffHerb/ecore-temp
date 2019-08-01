@@ -1,0 +1,65 @@
+{{#ifCond v1=this op='missingProperty' v2='skipOrderTag' ~}}
+
+    {{#ifCond v1=this.type op='==' v2='ordered'~}}
+        <ol {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults="{}" collapse=this.collapse section=this.section scope=this.scope visibility=this.visibility)) }}>
+    {{~else~}}
+
+        <ul {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults="{}" collapse=this.collapse section=this.section scope=this.scope visibility=this.visibility)) }}>
+    {{/ifCond~}}
+
+{{/ifCond~}}
+
+    {{#each this.options~}}
+
+        <li {{attribute (mergeAttributes this.listAttributes defaults=(extendDefaults defaults="{}" selected=this.selected style=this.style)) }}>
+        {{#if this.contents~}}
+
+            {{#each this.contents~}}
+
+                {{#if this.template~}}
+
+                    {{~> (getPartialName this.template) this~}}
+                {{~else~}}
+
+                    {{~this.text~}}
+                {{/if~}}
+
+            {{/each~}}
+
+        {{~else~}}
+
+            {{#ifCond v1=../style op="===" v2="key-value"}}
+
+                <div><strong>{{~@key~}}</strong> <span>{{~this.text~}}</span></div>
+            {{~else~}}
+
+                {{! Check to see if the option object has its own template, if so call the partial. }}
+                {{#if this.template~}}
+                    {{~> (getPartialName this.template) this scope=../scope style=../style ~}}
+                {{~else~}}
+
+                    {{#if this.text}}
+                        {{! No specific template for the option, just assume the contents are text in a text prooperty }}
+                        {{~this.text~}}
+                    {{else}}
+
+                        {{this}}
+
+                    {{/if}}
+
+                {{/if~}}
+
+            {{/ifCond~}}
+
+        {{/if~}}
+
+        </li>
+    {{/each~}}
+
+{{#ifCond v1=this.skipOrderTag op='!==' v2=undefined ~}}
+    {{#ifCond v1=this.type op='==' v2='ordered'~}}
+        </ol>
+    {{~else~}}
+        </ul>
+    {{/ifCond~}}
+{{/ifCond~}}

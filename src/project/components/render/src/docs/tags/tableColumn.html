@@ -1,0 +1,1460 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Table Column Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Tables Column Custom Tag</h1>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:TableColumn&gt;</code> defines the type of column data (header or data) and the whether it should be rendered or not.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table>
+    &lt;E2:TableColumn dataType="alpha" label="Header" />
+    &lt;E2:TableColumn dataType="alpha" label="Header" />
+&lt;/E2:Table>
+                </pre>
+
+                <p>
+
+                </p>
+
+                <h3>Sample JSON</h3>
+
+                <pre class="code">
+{
+    "template": "table",
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "type": "header",
+                        "text": "Header",
+                        "attribute": {
+                            "data-type": "alpha"
+                        }
+                    },
+                    {
+                        "type": "header",
+                        "text": "Header",
+                        "attribute": {
+                            "data-type": "alpha"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "body": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "text": "Value"
+                    },
+                    {
+                        "text": "Value"
+                    }
+                ]
+            }
+        ]
+    }
+}</pre>
+
+                <p>
+                    When defining columns, the <code>E2:TableColumn</code> makes assumptions and provided hooks that allow developer to control a columns content and context based on different rendering nead. In its most basic form when creating a column developers need to define the minimal requirements of <code>label</code>, which will be the table column headers visual label. <code>dataType</code> which explains the type of data that the column should contain, or be treaded as when its rendered in the table body (<code>tbody</code>). Lastly, <code>property</code> which represents the basic mapping to the tables defined <code>data</code> attribute collection.
+                </p>
+
+                <p>
+                    When converted to JSON, columns may appear slightly different depending on the rendered section. In the example above, note how the <code>label</code> attribute changes to <code>text</code> when it is found in the <code>head</code> object. Also the additional <code>type</code> propetry. This property simply toggles the table cell to render as a <code>th</code> <eM>table header</eM> instead of the default <code>td</code> <em>table data</em> cell used mainly in the bottom. The biggest thing to note, the <code>attributes</code> object found out this level directly affect the table cell itself unless the contents contain another set of JSON markup for a different type or renderable element. This can be seen when looking at the <code>dataType</code> JSP attributed is added turned into the <code>data-type</code> HTML attribute that only appears in the table header (<code>thead</code>) section.
+                </p>
+
+                <p>
+                    At times its possible that developes might need to place more than text or a control inside of a table cell. When this happens the cell definition changes slightly to include the <code>contents</code> array property. In the example below it show a "Select all" checkbox header cell. Since the text still needs to be rendered with the inclusion of the the actual control, the base sell definition has been moved to the contents approach.
+                </p>
+
+                <pre class="code">
+{
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "type": "header",
+                        "attribute": {
+                            "data-type": "alpha"
+                        },
+                        "contents": [
+                            {
+                                "text": "Select All"
+                            },
+                            {
+                               "type": "checkbox",
+                                "template":"field",
+                                "label": {
+                                    "text": "Select all rows",
+                                    "attributes": {
+                                        "for": "multi-selection_all"
+                                    },
+                                    "visibility": "hidden",
+                                    "hasLayout": false
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "type": "checkbox",
+                                        "id": "multi-selection_all",
+                                        "name": "multi-selection_all",
+                                        "value": "all"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                ]
+            }
+        ]
+    }
+}</pre>
+
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                dataType
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Defines the type of data that will be found in the column. Currently supported data types include:
+                                <ul>
+                                    <li>alpha</li>
+                                    <li>date</li>
+                                    <li>numeric</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                label
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                The visual or screen readable text that explains the contents of the column. This attribute only works when it appears inside of the <code>&lt;E2:TableHead&gt;</code> tag.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Specifies the getter method that needs to be invoked on the data object to fill the columns contents. It should be a field/property name ion the data/domain oject. Column tag preforms the following operations if property is specified.
+                                <ol>
+                                    <li>Column tag invokes `getXxx` method on the date object where `xxx` ia rhw apwxidiws property. The returned value will fill the columns contents. In the JSON this becomes the <code>text</code> property.</li>
+                                    <li>If the above step fails because the method `getXxx` does not exist, it will try to invoke the `isXxx` method to populate the column with the returned value.</li>
+                                    <li>If the above step fails because the method `isXxx` does not exist, it would try to access the property/fields drirteclty and populate the column accordingly.</li>
+                                    <li>If all the above mentioned methods fail, throw a runtime exception.</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                hideLabel
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicate that the header label for a column should be hidden visually on the table but still be accessible to screen readers.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular column (<a href="../common/attributes/visibility.html">more details</a>).
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_COLUMN</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                style
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Add specific style to a element or a group of elements (<a href="../common/attributes/style.html">more details</a>).
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                format
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Describes how data should be appear when rendered to the screen. For <a href="../common/attributes/format.html">more details</a>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                sort
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicate that this column can sorted on click.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                aggregate
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to create footer rows that that will aggregate its value from the body columns specified above. Supported Aggregates: <br>
+                                <ul>
+                                    <li><strong>Sum</strong> - Totals all of the columns into a single sum</li>
+                                    <li><strong>Average</strong> - Create an average amount based on the number of rows</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Data Type Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= arrayList3x3 %>">
+    &lt;E2:TableColumn label="Row Index" />
+    &lt;E2:TableColumn dataType="alpha" label="1" />
+    &lt;E2:TableColumn dataType="alpha" label="2" />
+    &lt;E2:TableColumn dataType="alpha" label="3" />
+&lt;/E2:Table>
+                </pre>
+
+                <p>
+                    Every column defined in the <code>&lt;E2:TableHead&gt;</code> can also declare its own data type. This additional information is used by interactive components like sort to provide clientside interactive functionality.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+                <pre class="code">
+{
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "type": "header",
+                        "text": "Username"
+                    },
+                    {
+                        "type": "header",
+                        "text": "Username",
+                        "attribute": {
+                            "data-type": "alpha"
+                        }
+                    },
+                    {
+                        "type": "header",
+                        "text": "Username",
+                        "attribute": {
+                            "data-type": "alpha"
+                        }
+                    },
+                    {
+                        "type": "header",
+                        "text": "Action",
+                        "attribute": {
+                            "data-type": "alpha"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+                </pre>
+
+                <p>
+                    When <code>type</code> is converted to JSON it will appear inside the columns object as a sub-property of the columns <code>attributes</code> object. The property name will be <code>data-type</code> and its value will be based on the tables contents. Special columns that contain controls such as buttons or inputs do not need this attribute defined.
+                </p>
+
+                <section id="dataType-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Hide Label -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Hide Label Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= selectableData %>" id="hideLableTable">
+    &lt;E2:TableColumn dataType="alpha" label="First Name" property="fname"  />
+    &lt;E2:TableColumn dataType="alpha" label="Last Name" property="lname" />
+    &lt;E2:TableColumn dataType="alpha" label="Address" property="address" />
+    &lt;E2:TableColumn dataType="alpha" label="Address Issue" property="address" style="min-width" hideLabel="true" />
+&lt;/E2:Table>
+                </pre>
+
+                <p>
+                    The <code>hideLabel</code> attribute is used to accessibiliy hide header label text. This attribute will only affect table columns located in the <code>&lt;E2:TableHead&gt;</code>.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+                <pre class="code">
+{
+    "template": "table",
+    "caption": "Generic Table",
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "type": "header",
+                        "text": "First Name",
+                        "attributes": {
+                            "data-type": "alpha"
+                        }
+                    },
+                    {
+                        "type": "header",
+                        "text": "Last Name",
+                        "attributes": {
+                            "data-type": "alpha"
+                        }
+                    },
+                    {
+                        "type": "header",
+                        "text": "Address",
+                        "attributes": {
+                            "data-type": "alpha"
+                        }
+                    },
+                ]
+            }
+        ]
+    },
+    "body": {
+        ... Omitted Body Content ...
+    }
+}
+                </pre>
+
+                <p>
+                    When this attribute is used, columns found inside of the <code>head</code> object will have the additional <code>hideLabel</code> attribute set to the value of <code>true</code>.
+                </p>
+
+                <section id="hideLabel-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Sortable -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Sort Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= selectableData %>" id="hideLableTable">
+    &lt;E2:TableColumn dataType="alpha" label="First Name" property="fname" sort="true"  />
+    &lt;E2:TableColumn dataType="alpha" label="Last Name" property="lname" sort="true" />
+    &lt;E2:TableColumn dataType="alpha" label="Address" property="address" sort="true" />
+    &lt;E2:TableColumn dataType="alpha" label="Address Issue" property="address" style="min-width" hideLabel="true">
+        &lt;E2:Notifier />
+    &lt;/E2:TableColumn>
+&lt;/E2:Table>
+                </pre>
+
+                <p>
+                    The <code>sort</code> attribute is used to identify what columns developer want end users to have the ability to on-click sort data. This only works on with contents loaded on the screen.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+                <pre class="code">
+{
+    "template": "table",
+    "caption": "Generic Table",
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "type": "header",
+                        "text": "First Name",
+                        "attributes": {
+                            "data-type": "alpha"
+                        },
+                        "sort": true
+                    },
+                    {
+                        "type": "header",
+                        "text": "Last Name",
+                        "attributes": {
+                            "data-type": "alpha"
+                        },
+                        "sort": true
+                    },
+                    {
+                        "type": "header",
+                        "text": "Address",
+                        "attributes": {
+                            "data-type": "alpha"
+                        },
+                        "sort": true
+                    },
+                ]
+            }
+        ]
+    },
+    "body": {
+        ... Omitted Body Content ...
+    }
+}
+                </pre>
+
+                <p>
+                    Sort is a simple attribute flag. By adding the attribute to the custom tag with a value of true, will cause the property to be included on the render JSON. As shown in the example above, this will only add the sort property to the table header columns that contain the corresponding attribute.
+                </p>
+
+                <div class="cui-messages">
+                    <p class="cui-warning">This functionality is still being worked on. The example will be updated once the scripts have been finished!</p>
+                </div>
+
+                <section id="sort-example">
+                </section>
+
+            </div>
+        </div>
+
+
+        <!-- Aggregate -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Aggregate Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= selectableData %>" id="hideLableTable">
+    &lt;E2:TableColumn dataType="alpha" label="City" property="fname" />
+    &lt;E2:TableColumn dataType="alpha" label="Country" property="lname" />
+    &lt;E2:TableColumn dataType="alpha" label="Population" property="address" aggregate="sum" format="quality" />
+&lt;/E2:Table>
+                </pre>
+
+                <p>
+                    When using the aggregate function, you are really creating a table footer (<code>tfoot</code>) section of a table. By default for each aggregate column use the tfoot will contain 1 table footer column.
+                </p>
+
+                <p>
+                    Developers can also use the <code>footerLabel</code> and <code>footerInitialSpan</code> attributes on the table header to add special footer label column. For more information on these attributes see the <a href="table.html"><code>E2:Table</code> documentation</a>.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+                <pre class="code">
+"footer": {
+    "rows": [
+        {
+            "columns": [
+                {
+                    ... Omitted footerLabel example ...
+                },
+                {
+                    "text": "1,000,000"
+                }
+            ]
+        }
+    ]
+}
+                </pre>
+
+                <p>
+                    When turned into JSON, the table footer section appears much like every other table section. There are <code>rows</code> and <code>column</code> breakdowns. But in the example above, the last column of the only row is what the <code>aggregate</code> function created. Aggregate rows look just like regular column. Since the values are simply static text the value render inside of the <code>text</code> property. Through it is important to note, if a column has any special <code>style</code> attribute applied to it, the style attribute will be passed along to the aggregate column as well.
+                </p>
+
+                <section id="aggregate-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Table Buttons -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Button Columns</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= selectableData %>" id="hideLableTable">
+    &lt;E2:TableColumn dataType="alpha" label="City" property="fname" />
+    &lt;E2:TableColumn dataType="alpha" label="Country" property="lname" />
+    &lt;E2:TableColumn dataType="alpha" label="Population" property="lname" />
+    &lt;E2:TableColumn dataType="alpha" label="Edit">
+        &lt;E2:Button viewKey="BTN_EDIT" eventScript={} />
+    &lt;/E2:TableColumn>
+&lt;/E2:Table>
+                </pre>
+
+                <p>
+                    In the past developers needed to create an assign button definitons directly on the table. Going forward table buttons will now appear inside of the table directly using and developers declaring event scripts and apply attributes that will use new global functions.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+                <pre class="code">
+{
+    "columns": [
+        {
+            "text": "Albany"
+        },
+        {
+            "text": "Albany"
+        },
+        {
+            "text": "500,000"
+        },
+        {
+            "text": "0.9",
+            "visibility": "hidden"
+        },
+        {
+            "contents": [
+                {
+                    "type": "button",
+                    "template": "field",
+                    "input": {
+                        "attributes": {
+                            "id": "btn_edit_1",
+                            "onclick": "emp.functionCall(event, 'emp.processMap', [{'E_CITY':0, 'E_COUNTY':1, 'E_POPULATION':2, 'E_TAXRATE':3 }, ])",
+                        },
+                        "text": "Edit"
+                    }
+                }
+            ]
+        }
+    ]
+}
+                </pre>
+
+                <p>
+                    When any <code>E2:TableColumn</code> contains another <code>E2</code> tag, the contents of that tag should be placed inside of a <code>contents</code> array. In the example above, we create a button that should appear inside of this row. When this happens the normal button definition is process and its contents are added as a sub-object to the column <code>contents</code> array.
+                </p>
+
+                <section id="rsMapping-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Value"
+                                        },
+                                        {
+                                            "text": "Value"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var dataType = {
+                title: "Data Type",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row Index",
+                                            "skip": "soft",
+                                            "attributes": {
+                                                "data-type": "numeric"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "1",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "2",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "3",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "1"
+                                        },
+                                        {
+                                            "text": "1,1"
+                                        },
+                                        {
+                                            "text": "1,2"
+                                        },
+                                        {
+                                            "text": "1,3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "2,1"
+                                        },
+                                        {
+                                            "text": "2,2"
+                                        },
+                                        {
+                                            "text": "2,3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "3"
+                                        },
+                                        {
+                                            "text": "3,1"
+                                        },
+                                        {
+                                            "text": "3,2"
+                                        },
+                                        {
+                                            "text": "3,3"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var hideLabel = {
+                title: "Hide Column",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "caption": "Generic Table",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "First Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Last Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Address",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Address Issue",
+                                            "style": "min-width",
+                                            "hideLabel": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "John"
+                                        },
+                                        {
+                                            "text": "Doe"
+                                        },
+                                        {
+                                            "text": "123 Fake Street"
+                                        },
+                                        {
+                                            "type": "static",
+                                            "template": "notifier",
+                                            "attributes": {
+                                                "alt": "Address Issue",
+                                            },
+                                            "text": "AI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Matt"
+                                        },
+                                        {
+                                            "text": "Smith"
+                                        },
+                                        {
+                                            "text": "2500 State Street"
+                                        },
+                                        {}
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Homer"
+                                        },
+                                        {
+                                            "text": "Simpson"
+                                        },
+                                        {
+                                            "text": "13 Main Drive"
+                                        },
+                                        {
+                                            "type": "static",
+                                            "template": "notifier",
+                                            "attributes": {
+                                                "alt": "Address Issue",
+                                            },
+                                            "text": "AI"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var sort = {
+                title: "Sortable Table Contents",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "caption": "Generic Table",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "First Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            },
+                                            "sort": true,
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Last Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            },
+                                            "sort": true,
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Address",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            },
+                                            "sort": true,
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Address Issue",
+                                            "style": "min-width",
+                                            "hideLabel": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "John"
+                                        },
+                                        {
+                                            "text": "Doe"
+                                        },
+                                        {
+                                            "text": "123 Fake Street"
+                                        },
+                                        {
+                                            "type": "static",
+                                            "template": "notifier",
+                                            "attributes": {
+                                                "alt": "Address Issue",
+                                            },
+                                            "text": "AI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Matt"
+                                        },
+                                        {
+                                            "text": "Smith"
+                                        },
+                                        {
+                                            "text": "2500 State Street"
+                                        },
+                                        {}
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Homer"
+                                        },
+                                        {
+                                            "text": "Simpson"
+                                        },
+                                        {
+                                            "text": "13 Main Drive"
+                                        },
+                                        {
+                                            "type": "static",
+                                            "template": "notifier",
+                                            "attributes": {
+                                                "alt": "Address Issue",
+                                            },
+                                            "text": "AI"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var aggregate = {
+                title: "Footer Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Footer Example",
+                        "attributes": {
+                            "id": "footer-example"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "City",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "County",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Population",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Albany"
+                                        },
+                                        {
+                                            "text": "Albany"
+                                        },
+                                        {
+                                            "text": "500,000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Schenectady"
+                                        },
+                                        {
+                                            "text": "Schenetady"
+                                        },
+                                        {
+                                            "text": "250,000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Troy"
+                                        },
+                                        {
+                                            "text": "Rensselaer"
+                                        },
+                                        {
+                                            "text": "250,000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "footer": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "span": 2,
+                                            "text": "Grand Total",
+                                            "footerLabel": true
+                                        },
+                                        {
+                                            "text": "1,000,000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var rsMapping = {
+                title: "Footer Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+
+                    {
+                        "type":"row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_CITY"
+                                            },
+                                            "text": "City:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "type":"text",
+                                                "id": "E_CITY",
+                                                "name": "E_CITY"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_COUNTY"
+                                            },
+                                            "text": "County:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "type":"text",
+                                                "id": "E_COUNTY",
+                                                "name": "E_COUNTY"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type":"row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_POPULATION"
+                                            },
+                                            "text": "Population:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "type":"text",
+                                                "id": "E_POPULATION",
+                                                "name": "E_POPULATION"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TAXRATE"
+                                            },
+                                            "text": "Tax Rate:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "type":"text",
+                                                "id": "E_TAXRATE",
+                                                "name": "E_TAXRATE"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type":"row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "table",
+                                        "title": "Button Examples",
+                                        "attributes": {
+                                            "id": "mapping-example"
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "text": "City",
+                                                            "attributes": {
+                                                                "data-type": "alpha"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "County",
+                                                            "attributes": {
+                                                                "data-type": "alpha"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Population",
+                                                            "attributes": {
+                                                                "data-type": "alpha"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Tax Rate",
+                                                            "attributes": {
+                                                                "data-type": "alpha"
+                                                            },
+                                                            "visibility": "hidden"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Edit"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Albany"
+                                                        },
+                                                        {
+                                                            "text": "Albany"
+                                                        },
+                                                        {
+                                                            "text": "500,000"
+                                                        },
+                                                        {
+                                                            "text": "0.9",
+                                                            "visibility": "hidden"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "btn_edit_1",
+                                                                            "onclick": "emp.functionCall(event, 'emp.processMap', [{'E_CITY':0, 'E_COUNTY':1, 'E_POPULATION':2, 'E_TAXRATE':3 }, ])",
+                                                                        },
+                                                                        "text": "Edit"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Schenectady"
+                                                        },
+                                                        {
+                                                            "text": "Schenetady"
+                                                        },
+                                                        {
+                                                            "text": "250,000"
+                                                        },
+                                                        {
+                                                            "text": "0.75",
+                                                            "visibility": "hidden"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "btn_edit_2",
+                                                                            "onclick": "emp.functionCall(event, 'emp.processMap', [{'E_CITY':0, 'E_COUNTY':1, 'E_POPULATION':2, 'E_TAXRATE':3 }])",
+                                                                        },
+                                                                        "text": "Edit"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Troy"
+                                                        },
+                                                        {
+                                                            "text": "Rensselaer"
+                                                        },
+                                                        {
+                                                            "text": "250,000"
+                                                        },
+                                                        {
+                                                            "text": "0.35",
+                                                            "visibility": "hidden"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "btn_edit_3",
+                                                                            "onclick": "emp.functionCall(event, 'emp.processMap', [{'E_CITY':0, 'E_COUNTY':1, 'E_POPULATION':2, 'E_TAXRATE':3 }])",
+                                                                        },
+                                                                        "text": "Edit"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "table", "domReady!"], function (render, table) {
+
+                // // Examples
+                var defaultExample = document.getElementById("default-example");
+                var dataTypeExample = document.getElementById("dataType-example");
+                var hideLabelExample = document.getElementById("hideLabel-example");
+                var aggregateExample = document.getElementById("aggregate-example");
+                var rsMappingExample = document.getElementById("rsMapping-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    render.page(dataTypeExample, dataType, function() {
+
+                        console.log("Datatype Done");
+
+                        render.page(hideLabelExample, hideLabel, function () {
+
+                            console.log("Hide Label Done");
+
+                            render.page(aggregateExample, aggregate, function() {
+
+                                console.log("Aggregate Done");
+
+                                render.page(rsMappingExample, rsMapping, function() {
+
+                                    console.log("RSMapping Done");
+
+                                    $('#mapping-example').table();
+
+                                });
+
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,118 @@
+<!--(bake ../includes/header.html coreUIPath="../../../dist/" docCSS="../css/" title="Deprecation Notes -")-->
+
+    <div class="cui-row">
+        <div class="cui-col-small-12">
+            <h1>Deprecation Notes</h1>
+        </div>
+    </div>
+
+    <div class="cui-row">
+
+        <div class="cui-col-small-12">
+            <h2>Custom Tags</h2>
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>ET:List and ET:Combo</h3>
+
+            <p>
+                We have combinded the functionality of these to tags into <code>&lt;E2:OptionList&gt;</code>.
+            </p>
+
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>ET:JSButton</h3>
+
+            <p>
+                Developers should instead use the nearly-identical <code>&lt;E2:Button&gt;</code> custom tag and leverage its <code>eventScript</code> and <code>preSubmitScript</code> attributes as needed.
+            </p>
+
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>ET:DynaTabNavButton and ET:DynaTabNavList</h3>
+
+            <p>
+                There are no pages using this functionality at this time and the custom tag will not be replicated at this time.
+            </p>
+
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>Primary Button</h3>
+
+            <p>
+                The main difference between this button and a regular button was its inherit look and feel. This button has been deprecated adn the primary button styles can now be achived by using a normal <code>&lt;E2:Button&gt;</code> with the
+            </p>
+
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>ET:Output</h3>
+
+            <p>
+                It did not appear to be used in Empire 1 and no documentation could be found.
+            </p>
+
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>ET:TabNavPopup</h3>
+
+            <p>
+                The same functionality is now covered by <code>&lt;E2:TabNavButton&gt;</code> or <code>&lt;E2:TabNavLink&gt;</code>.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="cui-row">
+
+        <div class="cui-col-small-12">
+            <h2>Attributes</h2>
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3>ButtonTagId, pageElementName, notifierId</h3>
+
+            <p>
+                It appears that many people are using the same term <code>viewKey</code> for all of the listed above. For consistency all custom tags now use <code>viewKey</code> instead.
+            </p>
+
+        </div>
+
+        <div class="cui-col-small-12">
+            <h3><code>validate</code></h3>
+            <p>
+                Starting with Empire 2 all validation related to a field is controlled via the custom tag's <code>viewKey</code>. This means that only fields that have been properly registered via the Framework Registration Tool will receive validation. The JSON will contain an additional <code>data-validation</code> property in the <code>attributes</code> object, whose value is a comma-separated string of function names; and an additional <code>className</code> of <code>cui-validation-field</code>. See example below for more details:
+            </p>
+            <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Validatin Field",
+        "attributes": {
+            "for": "validationDemo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "validationDemo",
+            "id": "validationDemo",
+            "class": "cui-validation-field",
+            "type": "text",
+            "value": "",
+            "data-validation": "test1,test2,test3"
+        }
+    }
+}</pre>
+        </div>
+    </div>
+
+    <!--(bake ../includes/scripts.html jsPath="../../../dist/")-->s
+
+<!--(bake ../includes/footer.html)-->

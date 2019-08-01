@@ -1,0 +1,26 @@
+<section {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tabs"}'))}}>
+    <header>
+        {{#each this.tabs~}}
+            <a tabindex="1" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tab-item emp-header-tab emp-tab-control", "role":"button"}' selected=this.selected
+            tabIndex=@index scope="tab-control")) skip="id"}}>
+                {{~this.title~}}
+            </a>
+        {{/each~}}
+    </header>
+        <div class="emp-tab-container">
+            {{#each this.tabs~}}
+
+                <div {{attribute (mergeAttributes false defaults=(extendDefaults defaults='{"className": "emp-tab"}' state=this.selected tabState=this scope="tab-container"))}}>
+
+                    <a tabindex="1" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tab-item emp-accordion-tab emp-tab-control", "role":"button"}' tabIndex=@index selected=this.selected scope="tab-control" )) skip="id"}}>
+                        {{~this.title~}}
+                    </a>
+
+                    <div {{attribute (mergeAttributes false defaults=(extendDefaults defaults='{"className": "emp-tab-contents"}' state=this.selected contentState=this scope="tab-contents"))}}>
+                            {{#rendererHook this.container "tabs"}}{{/rendererHook}}
+                    </div>
+                </div>
+
+            {{/each~}}
+        </div>
+</section>

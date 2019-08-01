@@ -1,0 +1,49 @@
+{{#if this.readOnly}}
+    {{log this}}
+    <div class="emp-field">
+        <div class="cui-label">
+            <span class="emp-label">{{this.legend}}</span>
+        </div>
+        <div class="cui-data">
+            {{#if this.yes.input.attributes.checked}}
+                {{#if this.yes.label}}
+                    <span class="emp-data">{{this.yes.label.text}}</span>
+                {{else}}
+                    <span class="emp-data">Yes</span>
+                {{/if}}
+            {{else}}
+                {{#if this.no.label}}
+                    <span class="emp-data">{{this.no.label.text}}</span>
+                {{else}}
+                    <span class="emp-data">No</span>
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+{{else}}
+    <fieldset class="emp-yes-no-component emp-boolean-input-group">
+        <div class="cui-label">
+            <legend>{{this.legend}}</legend>
+        </div>
+        <div class="cui-data">
+            <div class="emp-input-collection">
+                <div class="emp-field cui-data-left">
+                    {{> _booleanInput this.yes noWrap=true}}
+                    {{#if this.yes.label}}
+                        {{> _label this.yes.label noWrap=true}}
+                    {{else}}
+                        <label for="{{this.yes.input.attributes.id}}">Yes</label>
+                    {{/if}}
+                </div>
+                <div class="emp-field cui-data-left">
+                    {{> _booleanInput this.no noWrap=true}}
+                    {{#if this.no.label}}
+                        {{> _label this.no.label noWrap=true}}
+                    {{else}}
+                        <label for="{{this.no.input.attributes.id}}">No</label>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </fieldset>
+{{/if}}

@@ -1,0 +1,42 @@
+<header {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-form-lines-header"}') ) }}>
+    <div class="emp-extended-header-row">
+        <div class="emp-section-title">
+            <h3>
+                <span>{{this.title}}</span>
+                {{#if this.titleControls~}}
+                    {{#each this.titleControls}}
+                        {{~> (getPartialName this.template) this ~}}
+                    {{/each}}
+                {{/if~}}
+            </h3>
+        </div>
+        <div class="form-lines-extension">
+            <div class="emp-section-field form-lines-tax-due">
+                <div class="emp-field">
+                    <div class="cui-label"> <span>{{#if this.currencyLabel}}{{this.currencyLabel}}{{else}}Tax Due ($){{/if}}:</span> </div>
+                    <div class="cui-data cui-currency"> <span class="emp-data {{#ifCond v1=this.style op="===" v2="negative"}}emp-negative-number{{/ifCond}}">{{this.taxDue}}</span> </div>
+                </div>
+            </div>
+            <div class="form-lines-notifiers">
+                {{#if this.notifiers}}
+                    {{~> (getPartialName this.notifiers.template) this.notifiers ~}}
+                {{/if}}
+            </div>
+            <div class="form-lines-buttons">
+                {{#if this.delete}}
+                    {{~> (getPartialName this.delete.template) this.delete ~}}
+                {{/if}}
+                {{#if this.edit}}
+                    {{~> (getPartialName this.edit.template) this.edit ~}}
+                {{/if}}
+            </div>
+        </div>
+        <div class="emp-section-controls">
+            <ul>
+                <li>
+                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

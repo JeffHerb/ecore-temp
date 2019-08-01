@@ -1,0 +1,266 @@
+//   ========================================================
+// * @name       _text.scss
+// * @desc       Empire text styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Text styles
+// * --------------------------------------------------------
+
+// Font family
+body,
+input,
+select,
+textarea,
+button {
+    font-family: $cui-font-family;
+}
+
+// Font size
+
+body {
+    // Just the one size, no other options (i.e. user prefs) because we don't want to affect the value of 1em and change the way all dimensions on the page are calculated
+    font-size: $cui-font-size;
+}
+
+input,
+select,
+textarea,
+button {
+    @include fontSize($cui-font-size);
+}
+
+.emp-negative-number {
+    color: $cui-color-error-text !important;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        color: $cui-color-error-text;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        color: $cui-color-error-text;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        color: $cui-color-error-text;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        color: $cui-color-error-text;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        color: $cui-color-error-text;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        color: $cui-color-error-text;
+    }
+}
+
+.emp-section-instructions {
+}
+
+
+// * @section    Text size and font family
+// * --------------------------------------------------------
+
+.emp-search-box,
+#form_workflow,
+.emp-tp-info,
+section,
+section .cui-data {
+    label,
+    .cui-label legend,
+    .cui-label .cui-legend,
+    .cui-label span,
+    input,
+    input:not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]),
+    button,
+    select,
+    textarea,
+    .cui-data input,
+    .cui-data button,
+    .cui-data select,
+    .cui-data textarea {
+        @include fontSize($cui-text-size);
+    }
+}
+
+p,
+td,
+th,
+.emp-asof form div,
+.emp-label,
+.cui-label .cui-legend,
+.emp-data,
+ol,
+ul {
+    @include fontSize($cui-text-size);
+}
+
+label,
+input,
+button,
+select,
+textarea,
+th,
+td,
+p,
+.emp-asof form div,
+.cui-label,
+.cui-label legend,
+.cui-label .cui-legend,
+.emp-label,
+.emp-data {
+    font-family: $cui-text-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.cui-message p {
+    font-family: $cui-font-family;
+}
+
+// "Data" elements
+.cui-data input,
+.cui-data select,
+.cui-data textarea,
+.cui-data label, // e.g. updatable radio buttons
+.cui-data-left .cui-label, // e.g. read-only radio buttons
+.emp-data {
+    font-weight: $emp-data-font-weight;
+}
+
+// * @section    H1-H6
+// * -------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    color: $cui-heading-color;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        color: $cui-heading-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        color: $cui-heading-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        color: $cui-heading-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        color: $cui-heading-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        color: $cui-heading-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        color: $cui-heading-color;
+    }
+}
+
+h1 {
+    font-weight: 600;
+    @include fontSize($emp-h1-font-size);
+}
+
+h2 {
+    padding: 0;
+    font-weight: 600;
+    @include fontSize($emp-h2-font-size);
+}
+
+h3 {
+}
+
+h4 {
+    @include fontSize($emp-h4-font-size);
+}
+
+h3,
+h4 {
+    padding-bottom: 1px;
+    margin-bottom: 0.5em;
+}
+
+h5,
+h6 {
+    @include fontSize($emp-header-font-size);
+    color: $cui-heading-color-alt;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        color: $cui-heading-color-alt;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        color: $cui-heading-color-alt;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        color: $cui-heading-color-alt;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        color: $cui-heading-color-alt;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        color: $cui-heading-color-alt;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        color: $cui-heading-color-alt;
+    }
+}
+
+.emp-italic {
+    font-style: italic;
+}
+
+.emp-tooltip-style{
+    position: absolute;
+}
+
+.emp-bold {
+    font-weight: 600;
+}
+
+.emp-force-uppercase {
+    text-transform: uppercase;
+}

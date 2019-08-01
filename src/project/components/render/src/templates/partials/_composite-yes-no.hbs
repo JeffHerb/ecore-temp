@@ -1,0 +1,30 @@
+    {{log this}}
+    <!-- Unapproved temporary fix!!!! -->
+    <fieldset class="emp-yes-no-component emp-boolean-input-group">
+        <div class="cui-label">
+            <legend>{{this.legend.label.text}}</legend>
+        </div>
+        <div class="cui-data">
+            <div class="emp-input-collection">
+                <div class="emp-field cui-data-left">
+                    {{> _booleanInput this.yes noWrap=true}}
+                    {{#if this.yes.label}}
+                        {{> _label this.yes.label noWrap=true}}
+                    {{else}}
+                        <label for="{{this.yes.input.attributes.id}}">Yes</label>
+                    {{/if}}
+                </div>
+                <div class="emp-field cui-data-left">
+                    {{> _booleanInput this.no noWrap=true}}
+                    {{#if this.no.label}}
+                        {{> _label this.no.label noWrap=true}}
+                    {{else}}
+                        <label for="{{this.no.input.attributes.id}}">No</label>
+                    {{/if}}
+                </div>
+            </div>
+            {{#if this.no.help}}
+                {{> _itag this.no.help}}
+            {{/if}}
+        </div>
+    </fieldset>

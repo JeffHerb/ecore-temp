@@ -1,0 +1,647 @@
+// Core settings
+@import "../../../../../cui/scss/_settings";
+@import "../../../../../cui/scss/_utilities/_mixins";
+
+// Project settings
+@import "../../../../scss/_settings";
+@import "../../../../scss/_utilities/_mixins";
+
+// Implementer settings
+@import "../../_settings";
+
+// Component Styles
+
+// Calendar icon
+.calendar {
+    display: inline-block;
+    width: 20px;
+    height: 19px;
+    border: 1px solid transparent;
+    vertical-align: middle;
+    border-radius: 4px;
+    margin: 0;
+    text-indent: 9999em;
+    overflow: hidden;
+
+    &:hover {
+        border: 1px solid #BDDBFF;
+        background-color: #FFFBFF;
+    }
+}
+
+// Main
+.dp {
+    position: absolute;
+    overflow: visible;
+    min-width: 16.5em;
+    white-space: nowrap;
+    z-index: 120; // Higher than `.emp-tablefilter-optionpane`, needed when using the date picker while filtering a table column by date
+}
+
+.dpCalWrap {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    box-shadow: 2px 2px 2px #444;
+}
+
+.dpCal {
+    font-size: 14px !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px solid #C6D5E8;
+    background-color: #FFF;
+    z-index: 2;
+    min-width: 260px;
+}
+
+.emp-orpts-subtheme{
+    .dpCal{
+        min-width: 275px;
+
+        a, button{
+            font-size: 16px;
+        }
+    }
+}
+
+// General
+.dp {
+    a,
+    img {
+        border: 0;
+    }
+
+    ul {
+        list-style: none;
+        overflow: visible;
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// Header
+.dpHead {
+    position: relative;
+    clear: both;
+    padding: 0;
+    margin: 0;
+    background-color: #F1F5FB;
+    border-bottom: 1px solid #C6D5E8;
+    overflow: hidden;
+    text-align: center;
+
+    ul {
+        position: absolute;
+        top: 0;
+        height: 100%;
+    }
+
+    .lIcons {
+        left: 0.2em;
+    }
+
+    .rIcons {
+        right: 0.2em;
+    }
+
+    li {
+        float: left;
+        padding: 0.25em 0.1em 0 0.1em;
+    }
+
+    li a,
+    .grayedOut {
+        float: left;
+        line-height: 1.25em;
+        height: 1.25em;
+        padding: 0 0.25em;
+    }
+
+    .fastNavPrevQtr,
+    .navPrevMon,
+    .navNextMon,
+    .fastNavNextQtr {
+        border: 1px solid #F1F5FB;
+        position: relative;
+        text-indent: -9999px;
+        width: 30px;
+
+        &:hover {
+            border: 1px solid #BBCADB;
+            background-color: #DDE6EF;
+            border-radius: 3px;
+        }
+    }
+
+    .fastNavPrevQtr {
+        &:before,
+        &:after {
+            display: block;
+            content: "";
+            position: absolute;
+            @include triangle("left", 5px);
+            top: 4px;
+            left: 8px
+        }
+
+        &:after {
+            left: 13px;
+        }
+    }
+
+    .navPrevMon {
+        &:before {
+            display: block;
+            content: "";
+            position: absolute;
+            @include triangle("left", 5px);
+            top: 4px;
+            left: 11px;
+        }
+    }
+
+    .navNextMon {
+        &:before {
+            display: block;
+            content: "";
+            position: absolute;
+            @include triangle("right", 5px);
+            top: 4px;
+            right: 11px;
+        }
+    }
+
+    .fastNavNextQtr {
+        &:before,
+        &:after {
+            display: block;
+            content: "";
+            position: absolute;
+            @include triangle("right", 5px);
+            top: 4px;
+            right: 8px
+        }
+
+        &:after {
+            right: 13px;
+        }
+    }
+
+    // Theme colors for triangles
+    .fastNavPrevQtr,
+    .navPrevMon {
+        &:before,
+        &:after {
+            .theme-cobalt & {
+                @import "../../../../scss/_theme_cobalt";
+                @include triangle("left", 5px, $emp-grey-3);
+            }
+
+            .theme-eggplant & {
+                @import "../../../../scss/_theme_eggplant";
+                @include triangle("left", 5px, $emp-grey-3);
+            }
+
+            .theme-lilypad & {
+                @import "../../../../scss/_theme_lilypad";
+                @include triangle("left", 5px, $emp-grey-3);
+            }
+
+            .theme-teal & {
+                @import "../../../../scss/_theme_teal";
+                @include triangle("left", 5px, $emp-grey-3);
+            }
+
+            .theme-hazel & {
+                @import "../../../../scss/_theme_hazel";
+                @include triangle("left", 5px, $emp-grey-3);
+            }
+
+            .theme-contrast & {
+                @import "../../../../scss/_theme_hazel";
+                @include triangle("left", 5px, $emp-grey-3);
+            }
+        }
+    }
+
+    .navNextMon,
+    .fastNavNextQtr {
+        &:before,
+        &:after {
+            .theme-cobalt & {
+                @import "../../../../scss/_theme_cobalt";
+                @include triangle("right", 5px, $emp-grey-3);
+            }
+
+            .theme-eggplant & {
+                @import "../../../../scss/_theme_eggplant";
+                @include triangle("right", 5px, $emp-grey-3);
+            }
+
+            .theme-lilypad & {
+                @import "../../../../scss/_theme_lilypad";
+                @include triangle("right", 5px, $emp-grey-3);
+            }
+
+            .theme-teal & {
+                @import "../../../../scss/_theme_teal";
+                @include triangle("right", 5px, $emp-grey-3);
+            }
+
+            .theme-hazel & {
+                @import "../../../../scss/_theme_hazel";
+                @include triangle("right", 5px, $emp-grey-3);
+            }
+
+            .theme-contrast & {
+                @import "../../../../scss/_theme_hazel";
+                @include triangle("right", 5px, $emp-grey-3);
+            }
+        }
+    }
+
+    img {
+        padding-top: 2px;
+    }
+
+    .title {
+        line-height: 1.75em;
+        width: 100%;
+    }
+
+    .monthYear {
+        font-size: 14px;
+        position: relative;
+        top: 0px;
+        color: #333;
+        padding: 0 0.7em 2px 0.7em;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .monthYear:hover {
+        color: #CC6633;
+        text-decoration: underline;
+    }
+}
+
+// Body
+.dpBody {
+    background-color: #FFF;
+}
+
+.dpDayDesc,
+.dpWeekNbrDays {
+    clear: both;
+    overflow: hidden;
+}
+
+.dpDayDesc {
+    background-color: #E7EBF6;
+    border-top: 1px solid #E7EBF6;
+    line-height: 1.5em;
+
+    ul { // week number
+        overflow: hidden;
+        margin-left: 15px;
+    }
+
+    li {
+        float: left;
+        margin: 0;
+        padding: 2px 0 3px 0;
+        width: 2.3em;
+        text-align: center;
+    }
+}
+
+.dpWeekNbr,
+.dpDays {
+    float: left;
+}
+
+.dpDays {
+    margin-left: 15px;
+}
+
+.dpWeekNbr {
+    background-color: #E7EBF6;
+    width: 2.15em;
+    text-align: center;
+    color: #4C607A;
+}
+
+.dpWeekNbr li,
+.dpDays a,
+.dpDays .disabled {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.dpWeekNbr li {
+    padding: 1px 0 2px 0;
+    border-color: #E7EBF6;
+}
+
+.dpDays li {
+    float: left;
+    width: 2.3em;
+    text-align: right;
+    padding-bottom: 1px;
+}
+
+.dpDays .prevMonthDay a,
+.dpDays .nextMonthDay a,
+.dpDays .disabled,
+.dpMon .disabled,
+.dpYr .disabled {
+    color: #999999 !important;
+}
+
+.dpDays {
+    a,
+    a:visited,
+    .disabled {
+        color: #333;
+        margin-left: 1px;
+        width: 2.25em;
+        line-height: 1.5em;
+        text-decoration: none;
+        border-color: #FFF;
+        border-radius: 4px;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .today a {
+        border: 1px solid transparent;
+        background-color: none;
+        color: #C30;
+    }
+
+    a:hover,
+    li.selectedDay a:hover,
+    .today a:hover {
+        border: 1px solid #8FB0D6;
+        color: #4C607A;
+        background-color: #EFF3F7;
+    }
+
+    .today a:hover {
+        color: #C60;
+    }
+
+    li.selectedDay a {
+        border: 1px solid #8FB0D6;
+        color: #4C607A;
+        background-color: #D0E4FC;
+    }
+}
+
+// Footer
+.dpFoot {
+    display: flex;
+    background-color: #E7EBF6; // Same as `.dpDayDesc`
+    border-top: 1px solid #C6D5E8; // Same as `.dpHead`
+    line-height: 1.75em; // Same as `.dpHead .title`, gives the footer the same height (30px)
+}
+
+.dpFootLeft {
+    flex: 0 1 50%;
+}
+
+.dpFootRight {
+    flex: 0 1 50%;
+    text-align: right;
+}
+
+// Quick date buttons
+.dpPrevYear {
+    button {
+        border: 1px solid transparent; // Placeholder border so that the button doesn't change size when hovered
+        text-decoration: none;
+        @include fontSize(14px);
+        padding: 6px 8px;
+        background: transparent;
+        color: $cui-link-color;
+
+        .theme-cobalt & {
+            @import "../../../../scss/_theme_cobalt";
+            color: $cui-link-color;
+        }
+
+        .theme-eggplant & {
+            @import "../../../../scss/_theme_eggplant";
+            color: $cui-link-color;
+        }
+
+        .theme-lilypad & {
+            @import "../../../../scss/_theme_lilypad";
+            color: $cui-link-color;
+        }
+
+        .theme-teal & {
+            @import "../../../../scss/_theme_teal";
+            color: $cui-link-color;
+        }
+
+        .theme-hazel & {
+            @import "../../../../scss/_theme_hazel";
+            color: $cui-link-color;
+        }
+
+        .theme-contrast & {
+            @import "../../../../scss/_theme_hazel";
+            color: $cui-link-color;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid #8FB0D6; // Same as `.dpDays a:hover`
+            color: #4C607A; // Same as `.dpDays a:hover`
+        }
+    }
+
+    .dpPrevYearJan1 {
+    }
+
+    .dpPrevYearDec31 {
+    }
+}
+
+// Select
+.dpOptWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #BBB;
+    color: #333;
+    background-color: #FFF;
+    z-index: 3;
+    box-shadow: 2px 2px 2px #444;
+}
+
+.dpOpt {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 13.2em;
+    overflow: hidden;
+    padding: 0.3em 0.25em 0.35em 0.3em;
+    background-color: #FFF;
+    z-index: 5;
+
+    li {
+        float: left;
+    }
+}
+
+.dpMon,
+.dpYr {
+    float: left;
+    color: #333;
+}
+
+.dpMon {
+    width: 6em;
+    border-right: 1px solid #E1E1E1;
+    padding-right: 0.2em;
+    margin-right: 0.35em;
+}
+
+.dpYr {
+    width: 6.25em;
+}
+
+.dpMon li,
+.dpYr li {
+    margin: 0.25em 0.25em 0 0.2em;
+    text-align: center;
+}
+
+.dpMon li {
+    width: 2.4em;
+}
+
+.dpYr li {
+    width: 2.6em;
+}
+
+.dpMon a,
+.dpMon a:visited,
+.dpMon .disabled,
+.dpYr a,
+.dpYr a:visited,
+.dpYr .disabled,
+.dpYr .grayedOut {
+    display: inline-block;
+    line-height: 1.45em;
+    width: 100%;
+    color: #333;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.dpMon li a:hover,
+.dpMon li.selected a:hover,
+.dpYr li a:hover,
+.dpYr li.selected a:hover {
+    border: 1px solid #8FB0D6;
+    color: #4C607A;
+    background-color: #EFF3F7;
+}
+
+.dpMon li.selected a,
+.dpYr li.selected a {
+    color: #4A617B;
+    border-color: #8CB2D6;
+    background-color: #CEE3FF;
+}
+
+.dpMon li.selected .disabled {
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+}
+
+.dpYr .fastNavPrevYrs,
+.dpYr .fastNavNextYrs {
+    width: 60%;
+    height: 1.45em;
+}
+
+.dpYr .fastNavPrevYrs,
+.dpYr .fastNavNextYrs,
+.dpYr .grayedOut {
+    img {
+        margin: 0.25em 0 0 -0.1em;
+    }
+}
+
+.dpOther {
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+.dpOtherL,
+.dpOtherR {
+    float: left;
+}
+
+.dpOtherL {
+    width: 40%;
+}
+
+.dpOtherR {
+    width: 60%;
+    text-align: right;
+}
+
+.dpOtherL a,
+.dpOtherL a:visited,
+.dpOtherR a,
+.dpOtherR a:visited {
+    display: inline-block;
+    padding: 0.2em 0.4em;
+    margin: 0.2em 0.2em 0 0.2em;
+    color: #0059C6;
+    text-decoration: underline;
+}
+
+.dpOtherL a:hover,
+.dpOtherR a:hover {
+    color: #CC6633;
+}
+
+// Misc
+.dp .newLine {
+    clear: left !important;
+}
+
+.dp .grayedOut {
+    border: 1px solid transparent;
+
+    img {
+        opacity: 0.3;
+    }
+}
+
+.invalidDate {
+    color: #B32D34;
+    border-color: #D18185;
+}
+
+
+
+//TEMP! Remove all this once Core styles are in place (CP 1/29/15)
+.hidden {
+    color: red !important
+}

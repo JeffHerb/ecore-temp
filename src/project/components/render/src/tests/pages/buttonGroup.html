@@ -1,0 +1,108 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Left aligned button group
+                    {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "buttonGroup",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "E_LEFT_BUTTON",
+                                                "type": "button"
+                                            },
+                                            "text": "Left",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Right aligned button group
+                    {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "buttonGroup",
+                                "align": "right",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "E_RIGHT_BUTTON",
+                                                "type": "button"
+                                            },
+                                            "text": "Left",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Center aligned button group
+                    {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "buttonGroup",
+                                "align": "center",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "E_CENTER_BUTTON",
+                                                "type": "button"
+                                            },
+                                            "text": "Left",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

@@ -1,0 +1,63 @@
+<fieldset {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-search-composite emp-employee-search"}') }}>
+	<div class="cui-label">
+        <legend>
+            Employee Search By:
+        </legend>
+    </div>
+    <div class="cui-data emp-search">
+		<div class="emp-input-collection">
+			<div class="emp-field">
+				<label class="cui-hide-from-screen" for="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-select{{#if this.suffix}}-{{this.suffix}}{{/if}}">Search By:</label>
+                <select id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-select{{#if this.suffix}}-{{this.suffix}}{{/if}}" name="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-select{{#if this.suffix}}-{{this.suffix}}{{/if}}" class="employee-search-select">
+                	<option value="id">ID</option>
+                	<option value="name">Name</option>
+                </select>
+			</div>
+            <div class="emp-id-lookup-container">
+    			<div class="emp-field emp-id-search">
+                    <label class="cui-hide-from-screen" for="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-id{{#if this.suffix}}-{{this.suffix}}{{/if}}">ID</label>
+                    <input name="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-id{{#if this.suffix}}-{{this.suffix}}{{/if}}" id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-id{{#if this.suffix}}-{{this.suffix}}{{/if}}" type="text">
+                </div>
+            </div>
+            <div class="emp-name-lookup-container cui-hidden">
+    			<div class="emp-field emp-name-search">
+                    <label class="cui-hide-from-screen" for="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-fname{{#if this.suffix}}-{{this.suffix}}{{/if}}">First Name</label>
+                    <input name="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-fname{{#if this.suffix}}-{{this.suffix}}{{/if}}" id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-fname{{#if this.suffix}}-{{this.suffix}}{{/if}}" type="text">
+                </div>
+                <div class="emp-field emp-name-search">
+                    <label class="cui-hide-from-screen" for="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-mname{{#if this.suffix}}-{{this.suffix}}{{/if}}">Middle Initial</label>
+                    <input name="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-mname{{#if this.suffix}}-{{this.suffix}}{{/if}}" id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-mname{{#if this.suffix}}-{{this.suffix}}{{/if}}" type="text" size="1">
+                </div>
+                <div class="emp-field emp-name-search">
+                    <label class="cui-hide-from-screen" for="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-lname{{#if this.suffix}}-{{this.suffix}}{{/if}}">Last Name</label>
+                    <input name="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-lname{{#if this.suffix}}-{{this.suffix}}{{/if}}" id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-lname{{#if this.suffix}}-{{this.suffix}}{{/if}}" type="text">
+                </div>
+            </div>
+            {{!-- <div class="emp-field">
+                {{> (getPartialName this.button.template) this.button noWrap=true }}
+            </div> --}}
+        </div>
+    </div>
+</fieldset>
+<div class="emp-search-results">
+    <div class="emp-col-half emp-remove-padding">
+        <div class="emp-field">
+            <div class="cui-label">
+                <span class="emp-label">Employee ID:</span>
+            </div>
+            <div class="cui-data">
+                <span class="emp-data employee-search-readonly-id" id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-readonly-id{{#if this.suffix}}-{{this.suffix}}{{/if}}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="emp-col-half emp-remove-padding">
+        <div class="emp-field">
+            <div class="cui-label">
+                <span class="emp-label">Employee Name:</span>
+            </div>
+            <div class="cui-data">
+                <span class="emp-data employee-search-readonly-name" id="{{#if this.prefix}}{{this.prefix}}-{{/if}}employee-search-readonly-name{{#if this.suffix}}-{{this.suffix}}{{/if}}"></span>
+            </div>
+        </div>
+    </div>
+</div>

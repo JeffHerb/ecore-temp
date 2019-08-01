@@ -1,0 +1,12 @@
+<div class="emp-composite emp-selection-list-field-header">
+	{{#if this.field.template}}
+		{{~> (getPartialName this.field.template) this.field scope="selectionListField-header"~}}
+	{{/if}}
+</div>
+<div class="emp-composite emp-selection-list-field-body emp-region {{#ifCond v1=this.field.input.attributes.checked op='boolCheck' v2=true}}{{~else~}}emp-collapse{{/ifCond}} emp-expandable-region" id="{{#if this.field.input.expands}}{{this.field.input.expands}}{{/if}}">
+	{{#each this.container}}
+		{{#if this.template}}	        
+	        {{#rendererHook this ""}}{{/rendererHook}}
+	    {{/if}}		
+	{{/each}}
+</div>

@@ -1,0 +1,163 @@
+<div class="emp-table" {{#ifCond v1=this.type op="===" v2="css"}}id="{{this.attributes.id}}_table_root"{{/ifCond}}>
+
+    <div class="emp-table-wrapper">
+
+        {{#if this.headerControls~}}
+            <div class="emp-table-controls">
+                <div class="emp-header-controls">
+                    {{#each this.headerControls.contents~}}
+                        {{#rendererHook this "table-header-controls"}}{{/rendererHook}}
+                    {{/each~}}
+
+                </div>
+            </div>
+        {{/if~}}
+
+        {{#if this.title}}
+            <div class="emp-sticky-caption">{{this.title}}</div>
+        {{/if}}
+
+        {{#unless this.noControls}}
+
+            {{#if this.paging}}
+
+                {{#ifCond v1=this.paging op="emptyObject"}}
+
+                    <div class="table-control-row emp-table-no-paging">
+                        <div class="emp-table-client-side-controls">
+                            {{#tableClientSideControls this.attributes }}{{/tableClientSideControls}}
+                        </div>
+                    </div>
+                {{else}}
+
+                    <div class="table-control-row">
+                        {{#if this.paging}}
+                            {{#ifCond v1=this.paging op="hasAnyProperties" v2="first,last"}}
+
+                                <div class="emp-paging-container-advance emp-table-pagination">
+                                    {{#if this.paging.first}}
+                                        {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
+                                    {{/if}}
+                                    {{#if this.paging.previous}}
+                                        {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                                    {{/if}}
+                                    <span class="emp-page-cursor">
+                                        {{this.pagingText}}
+                                    </span>
+                                    {{#if this.paging.next}}
+                                        {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                                    {{/if}}
+                                    {{#if this.paging.last}}
+                                        {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
+                                    {{/if}}
+                                </div>
+
+                            {{else}}
+                                <div class="emp-table-pagination">
+                                    {{#if this.paging.previous}}
+                                        {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                                    {{/if}}
+                                    {{#if this.paging.next}}
+                                        {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                                    {{/if}}
+                                </div>
+                            {{/ifCond}}
+                        {{/if}}
+                        <div class="emp-table-client-side-controls">
+                            {{#tableClientSideControls this.attributes }}{{/tableClientSideControls}}
+                        </div>
+                    </div>
+                {{/ifCond}}
+
+            {{else}}
+
+                <div class="table-control-row emp-table-no-paging">
+                    <div class="emp-table-client-side-controls">
+                        {{#tableClientSideControls this.attributes }}{{/tableClientSideControls}}
+                    </div>
+                </div>
+            {{/if}}
+
+        {{/unless}}
+
+        {{#ifCond v1=this.attributes.data-sticky op="===" v2="false"}}
+            <div class="view-wrapper emp-remove-overflow">
+        {{else}}
+            <div class="view-wrapper">
+        {{/ifCond}}
+
+            {{#ifCond v1=this.selectable op="boolCheck" v2="true"~}}
+                <table {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-table-selectable"}' scope="table" validationTable=this.selectionRequired style=this.style ) ) }}>
+            {{~else~}}
+                <table {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="table" style=this.style ) ) }}>
+            {{/ifCond~}}
+
+            </table>
+
+            {{#ifCond v1=this.type op="===" v2="order"~}}
+                <input type="hidden" id="{{this.attributes.id}}_indexOrder" name="{{this.attributes.id}}_indexOrder" />
+            {{/ifCond}}
+
+            {{! If this table is marked as selectable, then we need to generate hidden inputs }}
+            {{#ifCond v1=this.selectable op="boolCheck" v2=true~}}
+                {{~> _tableHiddenInputs this id=this.attributes.id~}}
+            {{~else~}}
+
+                {{! Its possible that we may need input as well when it comes to buttons. So using a partial we will loop through the table body looking for buttons}}
+                {{~#if (tableButtons this)~}}
+
+                    <!-- Button inputs-->
+                    {{~> _tableHiddenInputs this id=this.attributes.id~}}
+
+                {{/if~}}
+
+
+            {{/ifCond~}}
+
+        </div>
+
+        {{#if this.paging}}
+            {{#ifCond v1=this.paging op="hasAnyProperties" v2="first,last"}}
+
+                <div class="emp-paging-container-advance emp-table-pagination">
+                    {{#if this.paging.first}}
+                        {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_footer"}}
+                    {{/if}}
+                    {{#if this.paging.previous}}
+                        {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_footer"}}
+                    {{/if}}
+                    <span>
+                        {{this.pagingText}}
+                    </span>
+                    {{#if this.paging.next}}
+                        {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_footer"}}
+                    {{/if}}
+                    {{#if this.paging.last}}
+                        {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_footer"}}
+                    {{/if}}
+                </div>
+
+            {{else}}
+                <div class="table-paging-control-row">
+                    <div class="emp-table-pagination">
+                        {{#if this.paging.previous}} {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous"
+                        idSuffix="_footer"}} {{/if}} {{#if this.paging.next}} {{> (getPartialName this.paging.next.template) this.paging.next
+                        specialIcon="next" idSuffix="_footer"}} {{/if}}
+                    </div>
+                </div>
+            {{/ifCond}}
+        {{/if}}
+
+        {{#if this.footerControls~}}
+            <div class="emp-table-controls">
+                <div class="emp-footer-controls">
+                    {{#each this.footerControls.contents~}}
+                        {{#rendererHook this "table-column"}}{{/rendererHook}}
+                    {{/each~}}
+                </div>
+            </div>
+        {{else}}
+
+        {{/if~}}
+    </div>
+</div>

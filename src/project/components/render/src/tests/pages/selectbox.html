@@ -1,0 +1,551 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Default Selectbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT",
+                                                "id": "E_TEST_SELECT",
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ],
+                                            value: "blue",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Selectbox without a blank option
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_NO_BLANK"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_NO_BLANK",
+                                                "id": "E_TEST_SELECT_NO_BLANK",
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ],
+                                            value: "blue",
+                                            "noBlankOption": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Readonly select box
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_READONLY"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_READONLY",
+                                                "id": "E_TEST_SELECT_READONLY",
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ],
+                                            value: "red",
+                                            readOnly: true
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Selectbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_REQUIRED"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_REQUIRED",
+                                                "id": "E_TEST_SELECT_REQUIRED",
+                                                "aria-required": true
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ],
+                                            value: "red",
+                                            required: true
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Readonly Required Selectbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_READONLY_REQUIRED"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_READONLY_REQUIRED",
+                                                "id": "E_TEST_SELECT_READONLY_REQUIRED",
+                                                "aria-required": true
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ],
+                                            "value": "red",
+                                            "required": true,
+                                            "readOnly": true
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Selectbox Hidden Label with space
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_HIDDEN_LABEL"
+                                            },
+                                            "visibility": "hidden"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_HIDDEN_LABEL",
+                                                "id": "E_TEST_SELECT_HIDDEN_LABEL"
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ]
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Selectbox Hidden Label without space
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_HIDDEN_LABEL_NO_SPACE"
+                                            },
+                                            "visibility": "hidden",
+                                            "hasLayout": false,
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_HIDDEN_LABEL_NO_SPACE",
+                                                "id": "E_TEST_SELECT_HIDDEN_LABEL_NO_SPACE"
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ]
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Selectbox Error 
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_ERROR"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_ERROR",
+                                                "id": "E_TEST_SELECT_ERROR"
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ]
+                                        },
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This field is required!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Selectbox Federal
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_SELECT_FEDERAL"
+                                            },
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_SELECT_FEDERAL",
+                                                "id": "E_TEST_SELECT_FEDERAL"
+                                            },
+                                            "options": [
+                                                {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                },
+                                                {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                },
+                                                {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                },
+                                            ],
+                                            "federal": true
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Selectbox with option groups
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "E_TEST_OPTION_GROUP_SELECT"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_OPTION_GROUP_SELECT",
+                                                "id": "E_TEST_OPTION_GROUP_SELECT",
+                                            },
+                                            "options": [
+                                                {
+                                                    "type": "optgroup",
+                                                    "text": "Blues",
+                                                    "options": [                                            
+                                                        {
+                                                            "text": "Blue",
+                                                            "value": "blue",
+                                                        },
+                                                        {
+                                                            "text": "Dark Blue",
+                                                            "value": "dark-blue",
+                                                        },
+                                                        ,
+                                                        {
+                                                            "text": "Light Blue",
+                                                            "value": "light-blue",
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "optgroup",
+                                                    "text": "Reds",
+                                                    "options": [                                            
+                                                        {
+                                                            "text": "Red",
+                                                            "value": "red",
+                                                        },
+                                                        {
+                                                            "text": "Dark Red",
+                                                            "value": "dark-red",
+                                                        },
+                                                        ,
+                                                        {
+                                                            "text": "Light Red",
+                                                            "value": "light-red",
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            value: "blue",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_STATE"
+                                            },
+                                            "text": "State:"
+                                        },
+                                        "input": {
+                                            "multiple": "true",
+                                            "attributes": {
+                                                "size": "24",
+                                                "aria-required": false,
+                                                "name": "stateList",
+                                                "id": "E_STATE"
+                                            },
+                                            "noBlankOption": true,
+                                            "options": [{
+                                                "value": "NY",
+                                                "text": "New York"
+                                            }, {
+                                                "value": "NJ",
+                                                "text": "New Jersey"
+                                            }
+                                            ]
+                                        },
+                                        "template": "field",
+                                        "type": "select"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

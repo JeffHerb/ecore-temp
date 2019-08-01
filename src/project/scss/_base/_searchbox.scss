@@ -1,0 +1,706 @@
+//   ========================================================
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Search box
+// * --------------------------------------------------------
+[class*="emp-search-box"] {
+    @include clearfix;
+    position: relative;
+    padding: $emp-search-box-padding;
+    margin-bottom: 10px;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        padding: $emp-search-box-padding;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        padding: $emp-search-box-padding;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        padding: $emp-search-box-padding;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        padding: $emp-search-box-padding;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        padding: $emp-search-box-padding;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        padding: $emp-search-box-padding;
+    }
+
+    &.emp-collapse {
+    }
+
+    .cui-label,
+    .cui-data {
+        float: none;
+        display: inline-table;
+    }
+
+    .cui-label {
+        margin-left: 1em;
+
+        span {
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+    }
+
+    .cui-data {
+        span {
+            display: inline-block;
+            margin-top: 8px;
+        }
+    }
+
+    .emp-boolean-input .cui-label {
+        margin-left: 0;
+    }
+
+    .emp-composite.emp-search-composite {
+        flex-flow: row nowrap;
+
+        & .cui-label {
+            flex: 0 0 auto;
+            margin-left: 16px !important;
+            width: auto !important;
+        }
+
+        button {
+            margin-top: 5px;
+        }
+    }
+
+    .cui-data-left & .cui-label {
+        margin-left: 0;
+    }
+
+    .cui-data-left & .cui-data {
+        margin-left: 1em;
+    }
+
+    .emp-search-toggle {
+        background: url($emp-images-path +"emp-triangle.svg") no-repeat 0px -6px transparent;
+        background-size: 24px 24px;
+        position: absolute;
+        bottom: 13px;
+        right: 17px; // Line up with the group toggle icons
+        margin: 0;
+        text-indent: -9999px;
+
+        width: $emp-search-box-toggle-icon-width;
+        height: $emp-search-box-toggle-icon-height;
+        padding: 0;
+
+        // Override default search button styles
+        min-height: $emp-search-box-toggle-icon-height;
+        background-color: transparent;
+        border-color: transparent;
+        // border-radius: 0;
+
+        &:hover {
+            background-color: transparent;
+            border-color: transparent; // Override `.theme-teal button:hover`
+        }
+
+        @media print {
+            .ie & {
+                background: url($emp-images-path +"emp-triangle.png") no-repeat 0 0 transparent;
+                background-size: contain;
+            }
+        }
+    }
+
+    &.emp-collapse {
+        .emp-search-toggle {
+            background-position: 0px -3px;
+            transform: rotate(180deg);
+
+            @media print {
+                .ie & {
+                    background: url($emp-images-path +"emp-triangle.png") no-repeat 0 3px transparent;
+                    background-size: contain;
+                }
+            }
+        }
+    }
+}
+
+#form_search { // This is also matched abovee by `[class*="emp-search-box"]`
+    position: relative;
+    padding: 0;
+    min-height: $emp-search-box-min-height;
+    background-color: $emp-search-box-bg-color;
+    border-radius: $cui-border-radius-small;
+
+    @include pointbreak($cui-bp-medium) {
+        @include row;
+    }
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $emp-search-box-bg-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $emp-search-box-bg-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $emp-search-box-bg-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $emp-search-box-bg-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $emp-search-box-bg-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $emp-search-box-bg-color;
+    }
+
+    // Collapsed
+    &.emp-collapse {
+        border-top: $emp-search-box-collapsed-border;
+        border-bottom: $emp-search-box-collapsed-border;
+        background-color: $emp-search-box-collapsed-bg-color;
+        height: $emp-search-box-toggle-icon-height + $cui-grid-gutter-width + 2;
+        min-height: $emp-search-box-toggle-icon-height + $cui-grid-gutter-width + 2;
+        cursor: pointer;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-top: $emp-search-box-collapsed-border;
+            border-bottom: $emp-search-box-collapsed-border;
+            background-color: $emp-search-box-collapsed-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-top: $emp-search-box-collapsed-border;
+            border-bottom: $emp-search-box-collapsed-border;
+            background-color: $emp-search-box-collapsed-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-top: $emp-search-box-collapsed-border;
+            border-bottom: $emp-search-box-collapsed-border;
+            background-color: $emp-search-box-collapsed-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-top: $emp-search-box-collapsed-border;
+            border-bottom: $emp-search-box-collapsed-border;
+            background-color: $emp-search-box-collapsed-bg-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-top: $emp-search-box-collapsed-border;
+            border-bottom: $emp-search-box-collapsed-border;
+            background-color: $emp-search-box-collapsed-bg-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-top: $emp-search-box-collapsed-border;
+            border-bottom: $emp-search-box-collapsed-border;
+            background-color: $emp-search-box-collapsed-bg-color;
+        }
+
+        // Hide everything except the toggle button
+        & > *:not(.emp-search-toggle) {
+            display: none;
+        }
+    }
+
+    &:after {
+        width: 0; // Avoid the 1px clearfix gap in Chrome produced by `content: "";` (MF)
+    }
+
+    .cui-row {
+        margin: $emp-search-box-row-margin;
+    }
+
+    .emp-search-fields {
+        @include box-sizing;
+        padding: $emp-search-box-search-fields-padding;
+
+        // Thin border on small screens
+        border-top: 1px solid $emp-search-box-search-fields-border-color;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-top: 1px solid $emp-search-box-search-fields-border-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-top: 1px solid $emp-search-box-search-fields-border-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-top: 1px solid $emp-search-box-search-fields-border-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-top: 1px solid $emp-search-box-search-fields-border-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-top: 1px solid $emp-search-box-search-fields-border-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-top: 1px solid $emp-search-box-search-fields-border-color;
+        }
+
+        // Thick border and flex box for medium and larger screens
+        //@include pointbreak($cui-bp-medium) {
+        @media (min-width: $cui-bp-medium) {
+            flex: 0 1 100%;
+            border-top: $emp-search-box-search-fields-border-top;
+            border-right: $emp-search-box-search-fields-border-right;
+            border-bottom: $emp-search-box-search-fields-border-bottom;
+            border-left: $emp-search-box-search-fields-border-left;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                border-top: $emp-search-box-search-fields-border-top;
+                border-right: $emp-search-box-search-fields-border-right;
+                border-bottom: $emp-search-box-search-fields-border-bottom;
+                border-left: $emp-search-box-search-fields-border-left;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                border-top: $emp-search-box-search-fields-border-top;
+                border-right: $emp-search-box-search-fields-border-right;
+                border-bottom: $emp-search-box-search-fields-border-bottom;
+                border-left: $emp-search-box-search-fields-border-left;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                border-top: $emp-search-box-search-fields-border-top;
+                border-right: $emp-search-box-search-fields-border-right;
+                border-bottom: $emp-search-box-search-fields-border-bottom;
+                border-left: $emp-search-box-search-fields-border-left;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                border-top: $emp-search-box-search-fields-border-top;
+                border-right: $emp-search-box-search-fields-border-right;
+                border-bottom: $emp-search-box-search-fields-border-bottom;
+                border-left: $emp-search-box-search-fields-border-left;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                border-top: $emp-search-box-search-fields-border-top;
+                border-right: $emp-search-box-search-fields-border-right;
+                border-bottom: $emp-search-box-search-fields-border-bottom;
+                border-left: $emp-search-box-search-fields-border-left;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                border-top: $emp-search-box-search-fields-border-top;
+                border-right: $emp-search-box-search-fields-border-right;
+                border-bottom: $emp-search-box-search-fields-border-bottom;
+                border-left: $emp-search-box-search-fields-border-left;
+            }
+        }
+
+        // No flex box on small screens
+        @include pointbreak($cui-bp-large, true) {
+            & .cui-row {
+                display: block;
+            }
+        }
+
+        // Right-align contents
+        @include pointbreak($cui-bp-large) {
+            & .cui-row {
+                justify-content: flex-end;
+            }
+        }
+
+        .static-value {
+            font-weight: bold;
+        }
+
+        .emp-search-box-field {
+            @include pointbreak($cui-bp-large, true) {
+                width: 100%;
+            }
+
+            @include pointbreak($cui-bp-large) {
+                @include inline-col;
+            }
+
+            margin: 0 0 5px 0;
+
+            @include pointbreak($cui-bp-large) {
+                margin: 0;
+            }
+
+            .cui-c-datepicker {
+                margin-top: -4px;
+            }
+
+            .emp-composite {
+
+                .emp-label {
+                    display: inline-block;
+                    margin-top: 4px;
+                    padding-right: 2px;
+                }
+
+                &.cui-required {
+
+                    .emp-label:after {
+                        right: -6px;
+                    }
+                }
+            }
+
+            & > .cui-data {
+                margin-left: 6px;
+            }
+
+            .emp-field {
+
+                .cui-label {
+                    padding-right: 7px;
+                }
+
+                .emp-label,
+                .emp-data {
+                    display: inline-block;
+                    margin-top: 8px;
+                }
+
+            }
+
+            .emp-field .cui-data-left {
+
+                margin-top: 6px;
+
+                .cui-data {
+                    display: inline-block !important;
+                    margin-top: 1px;
+                    width: auto;
+                }
+
+                .cui-label {
+                    display: inline-block;
+                    margin-left: 0;
+                    font-weight: normal;
+                }
+            }
+
+            .emp-field.cui-required,
+            .emp-composite.cui-required {
+                .cui-label label:after,
+                .emp-label:after {
+                    font-size: 12px;
+                }
+            }
+
+            .emp-field.cui-required {
+
+                .cui-label label:after {
+
+                    right: -7px;
+                }
+            }
+        }
+
+    }
+
+    .emp-search-buttons {
+        flex: 0 1 100%;
+
+        @include pointbreak($cui-bp-medium) {
+            flex: 0 1 $emp-search-box-button-area-width;
+        }
+
+        padding: $emp-search-box-button-area-padding;
+        min-width: $emp-search-box-button-area-width;
+        background-color: $emp-search-box-button-area-bg-color;
+        text-align: $emp-search-box-button-text-align;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            background-color: $emp-search-box-button-area-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            background-color: $emp-search-box-button-area-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            background-color: $emp-search-box-button-area-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            background-color: $emp-search-box-button-area-bg-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            background-color: $emp-search-box-button-area-bg-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            background-color: $emp-search-box-button-area-bg-color;
+        }
+
+        @include pointbreak($cui-bp-medium) {
+            min-height: $emp-search-box-min-height;
+            padding-left: 0;
+        }
+
+        button {
+            font-family: $emp-search-box-button-font;
+            margin: $emp-search-box-button-margin;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        // Rows that wrap the buttons
+        .cui-row {
+            margin-bottom: 0.4em;
+
+            // Retrive button row
+            &:first-child {
+                margin-top: 0.2em;
+                text-align: center;
+
+                button { // Same as `.emp-search-retrieve`
+                    @include fontSize(16px);
+                    width: 100%;
+                    background-color: $emp-search-box-button-retrieve-bg-color;
+                    box-shadow: $emp-search-box-button-retrieve-shadow;
+                    color: $emp-search-box-button-retrieve-color;
+
+                    .theme-teal & {
+                        @import "../_theme_teal.scss";
+                        background-color: $emp-search-box-button-retrieve-bg-color;
+                        box-shadow: $emp-search-box-button-retrieve-shadow;
+                        color: $emp-search-box-button-retrieve-color;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../_theme_lilypad.scss";
+                        background-color: $emp-search-box-button-retrieve-bg-color;
+                        box-shadow: $emp-search-box-button-retrieve-shadow;
+                        color: $emp-search-box-button-retrieve-color;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../_theme_eggplant.scss";
+                        background-color: $emp-search-box-button-retrieve-bg-color;
+                        box-shadow: $emp-search-box-button-retrieve-shadow;
+                        color: $emp-search-box-button-retrieve-color;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../_theme_cobalt.scss";
+                        background-color: $emp-search-box-button-retrieve-bg-color;
+                        box-shadow: $emp-search-box-button-retrieve-shadow;
+                        color: $emp-search-box-button-retrieve-color;
+                    }
+
+                    .theme-hazel & {
+                        @import "../_theme_hazel.scss";
+                        background-color: $emp-search-box-button-retrieve-bg-color;
+                        box-shadow: $emp-search-box-button-retrieve-shadow;
+                        color: $emp-search-box-button-retrieve-color;
+                    }
+
+                    .theme-contrast & {
+                        @import "../_theme_contrast.scss";
+                        background-color: $emp-search-box-button-retrieve-bg-color;
+                        box-shadow: $emp-search-box-button-retrieve-shadow;
+                        color: $emp-search-box-button-retrieve-color;
+                    }
+
+                    &:hover {
+                        background-color: $emp-search-box-button-retrieve-bg-color-hover;
+
+                        .theme-teal & {
+                            @import "../_theme_teal.scss";
+                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                        }
+
+                        .theme-lilypad & {
+                            @import "../_theme_lilypad.scss";
+                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                        }
+
+                        .theme-eggplant & {
+                            @import "../_theme_eggplant.scss";
+                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                        }
+
+                        .theme-cobalt & {
+                            @import "../_theme_cobalt.scss";
+                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                        }
+
+                        .theme-hazel & {
+                            @import "../_theme_hazel.scss";
+                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                        }
+
+                        .theme-contrast & {
+                            @import "../_theme_contrast.scss";
+                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                        }
+                    }
+                }
+            }
+
+            // Clear buttons row
+            &:nth-child(2) {
+                // The buttons need to appear to be segmented and smushed together
+                button {
+                    flex: 1 1 auto;
+                }
+
+                // "Clear" button
+                button:first-child {
+                    margin-right: 0;
+                    border-right-width: 0; // Avoid a double border between the buttons
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+
+                // "Clear All" button
+                button:last-child {
+                    margin-left: 0;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+
+            // Get ID button and toggler row
+            &:last-child {
+                position: relative; // For the toggle button
+
+                // "Get ID" button. Also has the class `.emp-button-get-id`
+                a {
+                    color: $emp-search-box-sendid-color;
+                    font-weight: $emp-search-box-sendid-font-weight;
+                    text-decoration: $emp-search-box-sendid-underline;
+                    cursor: pointer;
+                    @include fontSize($emp-em-size);
+
+                    .theme-teal & {
+                        @import "../_theme_teal.scss";
+                        color: $emp-search-box-sendid-color;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../_theme_lilypad.scss";
+                        color: $emp-search-box-sendid-color;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../_theme_eggplant.scss";
+                        color: $emp-search-box-sendid-color;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../_theme_cobalt.scss";
+                        color: $emp-search-box-sendid-color;
+                    }
+
+                    .theme-hazel & {
+                        @import "../_theme_hazel.scss";
+                        color: $emp-search-box-sendid-color;
+                    }
+
+                    .theme-contrast & {
+                        @import "../_theme_contrast.scss";
+                        color: $emp-search-box-sendid-color;
+                    }
+
+                    // Make it line up with the toggle button
+                    display: block;
+                    height: 32px;
+                    line-height: 48px;
+
+                    &:hover {
+                        text-decoration: $emp-search-box-sendid-underline-hover;
+                    }
+                }
+            }
+
+            &.emp-get-id-row {
+                min-height: 30px;
+            }
+        }
+    }
+
+    .emp-search-fields button {
+        vertical-align: middle;
+    }
+
+    // When the search box is collapsed
+    &.emp-collapse {
+        button.emp-search-toggle {
+            bottom: 0;
+
+            img {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @media print{
+        display: grid;
+        grid-template-columns: 85% 15%;
+    }
+
+}
+
+

@@ -1,0 +1,65 @@
+{{#if this.specificSection~}}
+
+    {{#ifCond v1=this.specificSection op="===" v2="head"~}}
+        <thead>
+            {{#each this.head.rows ~}}
+                {{~> _row this rowLoc="head" tableData=../this ~}}
+            {{/each~}}
+        </thead>
+    {{/ifCond~}}
+
+{{~else~}}
+
+    <thead>
+        {{#each this.head.rows ~}}
+            {{~> _row this rowLoc="head" tableData=../this ~}}
+        {{/each~}}
+    </thead>
+    {{! Check fo the table footer}}
+    {{#if this.footer~}}
+        <tfoot>
+            {{#each this.footer.rows~}}
+                {{~> _row this rowLoc="footer" tableData=../this ~}}
+            {{/each~}}
+        </tfoot>
+    {{/if~}}
+
+    <tbody>
+        {{#ifCond v1=this.optimize op="boolCheck" v2=false~}}
+
+            {{#each this.body.rows~}}
+
+                {{! Test to see if rows this needs to be skipped based on the skip tag}}
+                {{#if this.skip~}}
+
+                    {{#ifCond v1=this.skip op="boolCheck" v2=false~}}
+
+                        {{~> _row this rowLoc="body" tableData=../this rowIndex=@index ~}}
+
+                    {{/ifCond~}}
+
+                {{~else~}}
+
+                    {{~> _row this rowLoc="body" tableData=../this rowIndex=@index ~}}
+
+                {{/if~}}
+
+            {{/each~}}
+
+        {{~else~}}
+
+            {{! Check to see if we need to do some special logic for selected rows.}}
+            {{#tableIter this.body.rows limit=this.body.limit start=this.body.start~}}
+
+                {{#ifCond v1=@rendered op="<=" v2=@limit~}}
+
+                    {{~> _row this rowLoc="body" tableData=../this rowIndex=@index ~}}
+
+                {{/ifCond~}}
+
+            {{/tableIter~}}
+
+        {{/ifCond~}}
+
+    </tbody>
+{{/if~}}

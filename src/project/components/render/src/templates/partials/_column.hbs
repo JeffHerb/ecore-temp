@@ -1,0 +1,45 @@
+{{#unless this.skipRender~}}
+
+    {{#ifCond v1=this.type op="===" v2="header"~}}
+
+        {{! Check and handle the }}
+        {{#if this.contents~}}
+
+            {{#each contents~}}
+
+                {{#if this.text~}}
+
+                    <th {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="table-column" visibility=this.visibility style=this.style sortable=this.sortable responsive=this.responsive colIndex=this.colIndex ) ) }}>
+                {{/if~}}
+
+            {{/each~}}
+
+        {{~else~}}
+
+            <th {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="table-column" visibility=this.visibility style=this.style sortable=this.sortable colIndex=this.colIndex ) ) }}>
+        {{/if~}}
+
+
+    {{~else~}}
+        <td {{attribute (mergeAttributes false defaults=(extendDefaults defaults='{}' scope="table-column" visibility=this.visibility style=this.style cellSearch=this.contents) ) }}>
+    {{/ifCond~}}
+
+        {{#if this.contents~}}
+
+            {{#each this.contents~}}
+
+                {{#rendererHook this "table-column"}}{{/rendererHook~}}
+
+            {{/each~}}
+
+        {{~else~}}
+
+            {{~> _columnContents this hideLabel=this.hideLabel ~}}
+        {{/if~}}
+
+    {{#ifCond v1=this.type op="==" v2="header"~}}
+        </th>
+    {{~else~}}
+        </td>
+    {{/ifCond~}}
+{{/unless~}}

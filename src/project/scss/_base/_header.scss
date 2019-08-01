@@ -1,0 +1,1347 @@
+//   ========================================================
+// * @name       _header.scss
+// * @desc       Empire H1-H6 default styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+#body-wrapper,
+main {
+    @media print {
+        min-width: 1024px;
+    }
+}
+
+// * @section    <header>
+// * --------------------------------------------------------
+#header-wrapper > header,
+#body-wrapper > header {
+    min-height: $emp-header-min-height;
+    border: $emp-header-border;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        border: $emp-header-border;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        border: $emp-header-border;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        border: $emp-header-border;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        border: $emp-header-border;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        border: $emp-header-border;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        border: $emp-header-border;
+    }
+
+    .emp-header-row-first,
+    .emp-header-row-second {
+        @include row;
+    }
+
+    .emp-header-row-second {
+        flex-wrap: wrap;
+    }
+
+    .emp-header-row-first {
+        background-color: $emp-menu-bg-color;
+
+        display: block;
+
+        // Different layout on small screens
+        @include pointbreak($cui-bp-medium) {
+            display: flex;
+            flex-direction: row;
+            position: relative; // For positioning the Favorites star
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            background-color: $emp-menu-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            background-color: $emp-menu-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            background-color: $emp-menu-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            background-color: $emp-menu-bg-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            background-color: $emp-menu-bg-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            background-color: $emp-menu-bg-color;
+        }
+    }
+
+    .emp-header-row-second {
+        background-color: $emp-header-bg-color;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            background-color: $emp-header-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            background-color: $emp-header-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            background-color: $emp-header-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            background-color: $emp-header-bg-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            background-color: $emp-header-bg-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            background-color: $emp-header-bg-color;
+        }
+    }
+
+    // First row contents
+    // Flex layout: 120px for the logo, 60px for favorites, and 100% (i.e. the remaining space) for the menu
+
+    .emp-header-logo {
+        @include col-fluid($width: 120px);
+        min-height: $emp-header-min-height;
+        @include fontSize($emp-header-logo-font-size);
+        line-height: $emp-header-min-height;
+        color: $emp-header-logo-color;
+        font-weight: $emp-header-logo-font-weight;
+        background-color: $emp-header-logo-bg-color;
+        text-align: $emp-header-logo-text-align;
+        cursor: default; // Looks strange having a text selection cursor
+
+        // Place it next to the Favorites star on small screens
+        @include pointbreak($cui-bp-medium, true) {
+            order: 1;
+            min-width: 100%;
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            color: $emp-header-logo-color;
+            background-color: $emp-header-logo-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            color: $emp-header-logo-color;
+            background-color: $emp-header-logo-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            color: $emp-header-logo-color;
+            background-color: $emp-header-logo-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            color: $emp-header-logo-color;
+            background-color: $emp-header-logo-bg-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            color: $emp-header-logo-color;
+            background-color: $emp-header-logo-bg-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            color: $emp-header-logo-color;
+            background-color: $emp-header-logo-bg-color;
+        }
+
+        // Render text case as `eMPIRE`
+        text-transform: uppercase;
+
+        &::first-letter {
+            text-transform: lowercase;
+        }
+    }
+
+    #emp-header-menu-main { // `<nav>`
+        @include col-fluid($width: 100%);
+        min-height: $cui-touch-min-height;
+        line-height: $cui-touch-min-height;
+        border: $emp-menu-border;
+        background-color: $emp-menu-bg-color;
+        color: $cui-color-white;
+
+        // Place it below the logo and Favorites star on small screens
+        @include pointbreak($cui-bp-medium, true) {
+            order: 2;
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border: $emp-menu-border;
+            background-color: $emp-menu-bg-color;
+            color: $cui-color-white;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border: $emp-menu-border;
+            background-color: $emp-menu-bg-color;
+            color: $cui-color-white;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border: $emp-menu-border;
+            background-color: $emp-menu-bg-color;
+            color: $cui-color-white;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border: $emp-menu-border;
+            background-color: $emp-menu-bg-color;
+            color: $cui-color-white;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border: $emp-menu-border;
+            background-color: $emp-menu-bg-color;
+            color: $cui-color-white;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border: $emp-menu-border;
+            background-color: $emp-menu-bg-color;
+            color: $cui-color-white;
+        }
+    }
+
+    #emp-header-favorites {
+        // Place it next to the logo and above the menu on small screens
+        @include pointbreak($cui-bp-medium, true) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            order: 1;
+
+            // Same background color as the logo, otherwise it looks like the star goes with the main menu
+            // Must be transparent so that it's not noticeable when the star spins (when clicked)
+            background-color: transparent;
+
+            .theme-teal &,
+            .theme-lilypad &,
+            .theme-eggplant &,
+            .theme-cobalt &,
+            .theme-hazel &,
+            .theme-contrast & {
+                background-color: transparent;
+            }
+        }
+    }
+
+    #emp-header-error-report {
+        flex: 0 1 60px;
+        position: relative;
+
+        i {
+            left: 50%;
+            height: 32px;
+            position: absolute;
+            top: 53%;
+            transform-origin: center;
+            transform: translate(-50%, -50%) rotate(0deg);
+            width: 32px;
+        }
+
+        @include pointbreak($cui-bp-medium, true) {
+            position: absolute;
+            top: 26px;
+            right: 60px;
+            order: 1;
+
+            // Same background color as the logo, otherwise it looks like the star goes with the main menu
+            // Must be transparent so that it's not noticeable when the star spins (when clicked)
+            background-color: transparent;
+
+            .theme-teal &,
+            .theme-lilypad &,
+            .theme-eggplant &,
+            .theme-cobalt &,
+            .theme-hazel &,
+            .theme-contrast & {
+                background-color: transparent;
+            }
+        }
+    }
+
+    // Tabset title
+    .emp-header-tabset-title {
+        // @include col-fluid($width: 100%);
+        // @include col-fluid($width: 100%, $breakpointName: "medium");
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1 1 100%;
+
+        @include pointbreak($cui-bp-large) {
+            flex: 2 1 50%;
+        }
+
+        padding: 0; // Override grid column's left padding
+        min-height: $cui-touch-min-height;
+        cursor: pointer;
+
+        @include pointbreak($cui-bp-medium) {
+            padding-right: 10px; // Gap between tabset title and links
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            min-height: $cui-touch-min-height;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            min-height: $cui-touch-min-height;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            min-height: $cui-touch-min-height;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            min-height: $cui-touch-min-height;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            min-height: $cui-touch-min-height;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            min-height: $cui-touch-min-height;
+        }
+
+        // Tabset title
+        h1 {
+            display: inline-block;
+            line-height: ($cui-touch-min-height - $emp-tabset-title-padding-top);
+            padding: $emp-tabset-title-padding-top 0 0 0;
+            margin: $emp-tabset-title-margin;
+        }
+    }
+
+    .emp-header-links {
+        //@include col-fluid($width: 700px, $breakpointName: "medium");
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1 1 100%;
+
+        list-style: none outside none;
+        padding-left: 10px; // For small screens only
+
+        @include pointbreak($cui-bp-medium, true) {
+            display: flex;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            flex: 1 1 350px;
+            justify-content: flex-end;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 1em;
+            padding: 8px 5px 8px 0; // For small screens only
+            position: relative;
+
+            &[role="button"] {
+                cursor: pointer;
+            }
+
+            // Stacking for small screens
+            @include pointbreak($cui-bp-medium) {
+                padding: 0;
+            }
+
+            @include pointbreak($cui-bp-medium, true) {
+                flex: 1 1 100%;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            @include pointbreak($cui-bp-large, true) {
+                @include fontSize(14px);
+            }
+
+            // Vertical centering on medium and larger screens
+            @include pointbreak($cui-bp-medium) {
+                line-height: $cui-touch-min-height;
+            }
+
+            // Links
+            a {
+                // Smaller font on small/medium screens
+                @include pointbreak($cui-bp-large, true) {
+                    @include fontSize($cui-text-size);
+                }
+
+                color: $emp-header-links-color;
+
+                .theme-teal & {
+                    @import "../_theme_teal";
+                    color: $emp-header-links-color;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad";
+                    color: $emp-header-links-color;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant";
+                    color: $emp-header-links-color;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt";
+                    color: $emp-header-links-color;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel";
+                    color: $emp-header-links-color;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast";
+                    color: $emp-header-links-color;
+                }
+
+                &:hover {
+                    color: $emp-header-links-color-hover;
+
+                    .theme-teal & {
+                        @import "../_theme_teal";
+                        color: $emp-header-links-color-hover;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../_theme_lilypad";
+                        color: $emp-header-links-color-hover;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../_theme_eggplant";
+                        color: $emp-header-links-color-hover;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../_theme_cobalt";
+                        color: $emp-header-links-color-hover;
+                    }
+
+                    .theme-hazel & {
+                        @import "../_theme_hazel";
+                        color: $emp-header-links-color-hover;
+                    }
+
+                    .theme-contrast & {
+                        @import "../_theme_contrast";
+                        color: $emp-header-links-color-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    .cui-row {
+        margin: 0;
+    }
+}
+
+
+// * @section    Page title
+// * --------------------------------------------------------
+.emp-page-title {
+    @include pointbreak($cui-bp-medium) {
+        @include row;
+    }
+    padding: $emp-page-title-padding;
+    font-family: $cui-font-heading;
+
+    .emp-text {
+        @include grid-col(12);
+        @include col-fluid($width: auto, $breakpointName: "medium");
+
+        // Title text container
+        h2 {
+            // A `<span>` is used to render a separator between the page title and page mode
+            // Only create the pseudo-element if one has been defind
+            @if $emp-page-title-separator-content != "" {
+                span:before {
+                    content: "\00BB";
+                    margin: $emp-page-title-separator-margin;
+                }
+            }
+        }
+    }
+
+    .emp-actions {
+        @include grid-col(12);
+        @include col-fluid($width: 8em, $breakpointName: "medium");
+        list-style: none outside none;
+        text-align: right;
+
+        @include pointbreak($cui-bp-medium-minus, true) {
+            @include hide-voluntary;
+        }
+
+        li {
+            display: inline-block;
+            @include fontSize($emp-h2-font-size);
+
+            button {
+                vertical-align: text-bottom;
+            }
+        }
+    }
+}
+
+
+// * @section    General header
+// * --------------------------------------------------------
+.emp-tp-header { // This is `<form id="form_tp_info">`
+    display: flex;
+    position: relative;
+    @include clearfix;
+    margin-bottom: 0;
+    padding: $emp-tp-header-padding;
+    background-color: $emp-tp-header-bg-color;
+
+    .emp-tp-info {
+        width: 100%;
+
+        @include pointbreak($cui-bp-large) {
+            @include row;
+            flex-direction: row;
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal";
+            padding: $emp-tp-header-padding;
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad";
+            padding: $emp-tp-header-padding;
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant";
+            padding: $emp-tp-header-padding;
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt";
+            padding: $emp-tp-header-padding;
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel";
+            padding: $emp-tp-header-padding;
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast";
+            padding: $emp-tp-header-padding;
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        // Shared styles between main and joint
+        .emp-tp-info-main,
+        .emp-tp-info-joint {
+            flex: 1 1;
+            @include clearfix;
+
+            .cui-row {
+                &,
+                & .cui-label,
+                & .cui-data {
+                    min-height: 1.5em;
+                    line-height: 1.5em;
+                }
+            }
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                padding: $emp-padding;
+                padding-top: $emp-tp-header-separator-padding-top-small;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                padding: $emp-padding;
+                padding-top: $emp-tp-header-separator-padding-top-small;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                padding: $emp-padding;
+                padding-top: $emp-tp-header-separator-padding-top-small;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                padding: $emp-padding;
+                padding-top: $emp-tp-header-separator-padding-top-small;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                padding: $emp-padding;
+                padding-top: $emp-tp-header-separator-padding-top-small;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                padding: $emp-padding;
+                padding-top: $emp-tp-header-separator-padding-top-small;
+            }
+        }
+
+        .emp-tp-info-main {
+            border-top: $emp-tp-info-main-border-top;
+            margin: 0;
+
+            .emp-tp-id,
+            .emp-tp-name,
+            .emp-tp-address {
+                &.emp-federal-data:before {
+                    @include federal-badge;
+                }
+            }
+
+            .emp-button-send-id {
+                color: $emp-search-box-sendid-color;
+                font-weight: $emp-search-box-sendid-font-weight;
+                text-decoration: $emp-search-box-sendid-underline;
+                cursor: pointer;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    color: $emp-search-box-sendid-color;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    color: $emp-search-box-sendid-color;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    color: $emp-search-box-sendid-color;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    color: $emp-search-box-sendid-color;
+                }
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    color: $emp-search-box-sendid-color;
+                }
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    color: $emp-search-box-sendid-color;
+                }
+
+                &:hover {
+                    text-decoration: $emp-search-box-sendid-underline-hover;
+                }
+            }
+
+            @include pointbreak($cui-bp-large) {
+                border-top-width: 0;
+            }
+
+            .theme-contrast & {
+                @include pointbreak($cui-bp-large) {
+                    border-top-width: 1px;
+                }
+            }
+
+        }
+
+        &.emp-railroad-header {
+            .emp-tp-info-main {
+                padding: 10px 10px 10px 20px;
+
+                .emp-label {
+                    font-size: 16px;
+                }
+                .emp-data {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .emp-tp-info-joint {
+            background-color: $emp-tp-info-joint-bg-color;
+            border-bottom: $emp-tp-info-joint-border-bottom;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                background-color: $emp-tp-info-joint-bg-color;
+                border-top: $emp-tp-info-joint-border;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                background-color: $emp-tp-info-joint-bg-color;
+                border-top: $emp-tp-info-joint-border;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                background-color: $emp-tp-info-joint-bg-color;
+                border-top: $emp-tp-info-joint-border;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                background-color: $emp-tp-info-joint-bg-color;
+                border-top: $emp-tp-info-joint-border;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                background-color: $emp-tp-info-joint-bg-color;
+                border-top: $emp-tp-info-joint-border;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                background-color: $emp-tp-info-joint-bg-color;
+                border-top: $emp-tp-info-joint-border;
+            }
+
+            .emp-tp-indicators {
+                // Vertically align with the data side
+                @include fontSize(16px); // The margin will be a value in EMs so the font size needs to match the data below so that the margin resolves to the same pixel value
+            }
+
+            .emp-field {
+
+                .cui-label,
+                .cui-data {
+                    float: left;
+                }
+
+                .cui-data {
+                    padding-left: 5px;
+                }
+            }
+
+            .emp-field.emp-federal-data {
+                .cui-label:before {
+                    @include federal-badge;
+                }
+            }
+
+            //@include pointbreak($cui-bp-large) {
+            @media (min-width: $cui-bp-large) {
+                border-top-color: transparent !important; // Remove the top boarder only on the large screen
+                border-left: $emp-tp-info-joint-border;
+                border-bottom: $emp-tp-info-joint-border;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    border-left: $emp-tp-info-joint-border;
+                    border-bottom: $emp-tp-info-joint-border;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    border-left: $emp-tp-info-joint-border;
+                    border-bottom: $emp-tp-info-joint-border;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    border-left: $emp-tp-info-joint-border;
+                    border-bottom: $emp-tp-info-joint-border;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    border-left: $emp-tp-info-joint-border;
+                    border-bottom: $emp-tp-info-joint-border;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    border-left: $emp-tp-info-joint-border;
+                    border-bottom: $emp-tp-info-joint-border;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    border-left: $emp-tp-info-joint-border;
+                    border-bottom: $emp-tp-info-joint-border;
+                }
+
+                .cui-row {
+                    padding-left: 40px;
+                }
+            }
+        }
+    }
+
+    .emp-tp-header-buttons {
+        position: absolute;
+        right: 0.5em;
+        top: 50%;
+
+        @include pointbreak($cui-bp-large) {
+            right: auto;
+            left: 50%;
+            top: 37%;
+
+            .emp-button-switch {
+                margin-left: calc(100% / 2 * -1)
+            }
+        }
+    }
+}
+
+
+// * @section    Workflow
+// * --------------------------------------------------------
+.emp-workflow { // This is `<form id="form_workflow">`
+    margin-bottom: 0;
+    background-color: $emp-workflow-bg-color;
+    padding: 5px 0.5em 5px 0;
+    min-height: 36px;
+
+    // Use flex box for medium and larger screens
+    @include pointbreak($cui-bp-medium) {
+        @include row;
+        justify-content: flex-end;
+    }
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $emp-workflow-bg-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $emp-workflow-bg-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $emp-workflow-bg-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $emp-workflow-bg-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $emp-workflow-bg-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $emp-workflow-bg-color;
+    }
+
+    .emp-workflow-options,
+    .emp-workflow-actions {}
+
+    @include pointbreak($cui-bp-large) {
+        @include align-right;
+    }
+
+    select {
+        margin-top: 2px;
+    }
+
+    button {
+        vertical-align: middle;
+        margin: $emp-tp-header-workflow-button-margin;
+    }
+
+    #btn_workFlow_go {
+        margin-left: $emp-tp-header-workflow-go-margin-left;
+
+        //TEMP, the button is too big and misaligned, but the code below is just a quick and dirty fix
+        @include fontSize(12px);
+    }
+}
+
+
+// * @section    Tabset
+// * --------------------------------------------------------
+.emp-tabset { // `<ul>`
+    @include clearfix;
+
+    // Set large css grid
+    @include pointbreak($cui-bp-large) {
+        display: -ms-grid;
+        display: grid;
+
+        -ms-grid-columns: calc(25% - 11px) calc(25% - 11px) calc(25% - 11px) calc(25% - 11px) 44px;
+        grid-template-columns: calc(25% - 11px) calc(25% - 11px) calc(25% - 11px) calc(25% - 11px) 44px;
+    }
+
+    list-style: none;
+
+    li {
+
+        @include pointbreak($cui-bp-medium) {
+            float: left;
+            width: 50%;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            float: none;
+            width: auto;
+        }
+
+        &:hover {
+            background-color: $emp-tabset-bg-color-hover;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                background-color: $emp-tabset-bg-color-hover;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                background-color: $emp-tabset-bg-color-hover;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                background-color: $emp-tabset-bg-color-hover;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                background-color: $emp-tabset-bg-color-hover;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                background-color: $emp-tabset-bg-color-hover;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                background-color: $emp-tabset-bg-color-hover;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        a,
+        a:link,
+        a:active,
+        a:focus,
+        a:visited {
+            display: inline-block;
+            min-height: $emp-tabset-item-anchor-height;
+            padding: $emp-tabset-item-anchor-padding;
+            font-weight: $emp-link-font-weight;
+            vertical-align: bottom;
+            color: $emp-tabset-color;
+            text-decoration: $emp-tabset-item-text-decoration;
+            width: 100%;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $emp-tabset-color;
+                padding: $emp-tabset-item-anchor-padding;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $emp-tabset-color;
+                padding: $emp-tabset-item-anchor-padding;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $emp-tabset-color;
+                padding: $emp-tabset-item-anchor-padding;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $emp-tabset-color;
+                padding: $emp-tabset-item-anchor-padding;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $emp-tabset-color;
+                padding: $emp-tabset-item-anchor-padding;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $emp-tabset-color;
+                padding: $emp-tabset-item-anchor-padding;
+            }
+
+            &.emp-selected {
+                border: $emp-tabset-item-border-selected;
+                background-color: $emp-tabset-item-bg-color-selected;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    border: $emp-tabset-item-border-selected;
+                    background-color: $emp-tabset-item-bg-color-selected;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    border: $emp-tabset-item-border-selected;
+                    background-color: $emp-tabset-item-bg-color-selected;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    border: $emp-tabset-item-border-selected;
+                    background-color: $emp-tabset-item-bg-color-selected;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    border: $emp-tabset-item-border-selected;
+                    background-color: $emp-tabset-item-bg-color-selected;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    border: $emp-tabset-item-border-selected;
+                    background-color: $emp-tabset-item-bg-color-selected;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    border: $emp-tabset-item-border-selected;
+                    background-color: $emp-tabset-item-bg-color-selected;
+                }
+
+            }
+
+            &.emp-selected,
+            &:hover {
+                border: $emp-tabset-item-border-selected;
+                background-color: $emp-tabset-item-bg-color-selected;
+                color: $emp-tabset-color-hover;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    color: $emp-tabset-color-hover;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    color: $emp-tabset-color-hover;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    color: $emp-tabset-color-hover;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    color: $emp-tabset-color-hover;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    color: $emp-tabset-color-hover;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    color: $emp-tabset-color-hover;
+                }
+            }
+        }
+
+    }
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    &.emp-collapse {
+        display: none;
+    }
+}
+
+// Tabset buttons
+.emp-tabset-pin,
+.emp-tabset-toggle {
+    border: 0;
+    border-color: transparent;
+    float: left;
+    height: 44px;
+    width: 48px;
+    color: transparent;
+    text-shadow: none;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 2;
+
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: center center;
+    background-color: $emp-tabset-bg-color;
+    padding: 0;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $emp-tabset-bg-color;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover { // Override standard `button:hover` styles
+        background-color: $emp-tabset-toggle-bg-color-hover;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            background-color: $emp-tabset-toggle-bg-color-hover;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            background-color: $emp-tabset-toggle-bg-color-hover;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            background-color: $emp-tabset-toggle-bg-color-hover;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            background-color: $emp-tabset-toggle-bg-color-hover;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            background-color: $emp-tabset-toggle-bg-color-hover;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            background-color: $emp-tabset-toggle-bg-color-hover;
+        }
+    }
+}
+
+.emp-tabset-pin {
+    background-color: transparent;
+    width: 44px;
+}
+
+// Tabset toggle
+.emp-tabset-toggle { // This element is a `<button>`
+    background: url($emp-images-path + "emp-triangle-tabset-toggle-light.svg") no-repeat 50% 50% transparent;
+    background-size: 32px;
+    position: relative;
+
+    @media print {
+        .ie & {
+            background: url($emp-images-path + "emp-triangle-tabset-toggle-light.png") no-repeat 50% 50% transparent;
+        }
+    }
+
+    .theme-contrast & {
+        background-image: url($emp-images-path + "emp-hc-triangle-light.svg");
+    }
+
+    &.emp-collapse {
+        background: url($emp-images-path + "emp-triangle-tabset-toggle.svg") no-repeat 50% 50% transparent;
+        background-size: 32px;
+        transform: rotate(180deg);
+
+        @media print {
+            .ie & {
+                background: url($emp-images-path + "emp-triangle-tabset-toggle.png") no-repeat 50% 50% transparent;
+            }
+        }
+
+        & + .emp-tabset-pin {
+            display: none;
+        }
+    }
+}
+
+// Tabset pin
+.emp-tabset-pin, // This element is a `<button>`
+.emp-tabset-pin.emp-selected { // We need to include `.emp-selected` to give specificity over the styles meant for the `<li>` inside the tabset
+    // border-top: 1px solid rgba(255, 255, 255, 0.25);
+    // border-left: 1px solid rgba(255, 255, 255, 0.25);
+    float: right;
+
+    .emp-tabset &:hover { // `.emp-tabset` for specificity over themed `button:hover` styles
+        //background-color: rgba(255, 255, 255, 0.2); // Override default `button:hover` style
+    }
+}
+
+.emp-tabset-pin {
+    background-image: url($emp-images-path + "emp-pushpin-outline.svg");
+
+    .theme-contrast & {
+        background-image: url($emp-images-path + "emp-hc-pushpin-outline.svg");
+        background-size: 36px;
+    }
+
+    .emp-tabset &.emp-selected { // `.emp-tabset` is to give specificity over `.theme-xyz .emp-tabset .emp-selected` style for `background-color` which is meant for `<li>` elements
+        background-image: url($emp-images-path + "emp-pushpin-filled.svg");
+        background-color: transparent;
+
+        .theme-contrast & {
+             background-image: url($emp-images-path + "emp-hc-pushpin-filled.svg");
+             background-color: transparent;
+             background-size: 36px;
+        }
+
+        // When the pin is already selected and the user hovers over it
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}
+
+.emp-tp-info .emp-tp-indicators {
+    a.emp-header-popup.emp-indicator-1,
+    a.emp-header-popup.emp-indicator-2,
+    a.emp-header-popup.emp-indicator-3 {
+        display: inline-block;
+
+        span.link-icon {
+            display: none !important;
+        }
+    }
+}

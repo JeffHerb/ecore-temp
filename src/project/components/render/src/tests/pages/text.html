@@ -1,0 +1,360 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Editable Text Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT",
+                                                "id": "E_TEST_TEXT",
+                                                "type": "text",
+                                                "value": "editable value"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // ReadOnly Text Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_READONLY"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_READONLY",
+                                                "id": "E_TEST_TEXT_READONLY",
+                                                "type": "text",
+                                                "value": "readonly value"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Text Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_REQUIRED"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_REQUIRED",
+                                                "id": "E_TEST_TEXT_REQUIRED",
+                                                "type": "text",
+                                                "value": "required value",
+                                                "aria-required": "true"
+                                            },
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Text Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_READONLY_REQUIRED"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_READONLY_REQUIRED",
+                                                "id": "E_TEST_TEXT_READONLY_REQUIRED",
+                                                "type": "text",
+                                                "value": "readonly required value",
+                                                "aria-required": "true"
+                                            },
+                                            "readOnly": true,
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Hidden Text Label Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_HIDDEN_LABEL"
+                                            },
+                                            "text": "Test Text:",
+                                            "visibility": "hidden"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_HIDDEN_LABEL",
+                                                "id": "E_TEST_TEXT_HIDDEN_LABEL",
+                                                "type": "text",
+                                                "value": "hidden label with space value"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Hidden Text Label With No Space Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_HIDDEN_LABEL_NO_SPACE"
+                                            },
+                                            "text": "Test Text:",
+                                            "visibility": "hidden",
+                                            "hasLayout": false
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_HIDDEN_LABEL_NO_SPACE",
+                                                "id": "E_TEST_TEXT_HIDDEN_LABEL_NO_SPACE",
+                                                "type": "text",
+                                                "value": "hidden label without space value"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Error Message Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_ERROR"
+                                            },
+                                            "text": "Test Text:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_ERROR",
+                                                "id": "E_TEST_TEXT_ERROR",
+                                                "type": "text",
+                                                "value": "Invalid Value"
+                                            },
+                                            "required": true
+                                        },
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This field is required!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Federal Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXT_FEDERAL"
+                                            },
+                                            "text": "Test Text:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXT_FEDERAL",
+                                                "id": "E_TEST_TEXT_FEDERAL",
+                                                "type": "text",
+                                                "value": "Federal Value"
+                                            },
+                                            "federal": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Data-title Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATA-TITLE_READONLY"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATA-TITLE_READONLY",
+                                                "id": "E_TEST_DATA-TITLE_READONLY",
+                                                "type": "text",
+                                                "value": "readonly value",
+                                                "data-title": "readonly hover text value"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Max Character Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_MAX_LENGTH"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_MAX_LENGTH",
+                                                "id": "E_TEST_MAX_LENGTH",
+                                                "type": "text",
+                                                "max-length": 15,
+                                                "value": "Max length value",
+                                            },
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

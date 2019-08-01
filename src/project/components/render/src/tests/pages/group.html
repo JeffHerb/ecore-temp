@@ -1,0 +1,136 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Editable Date Input Example
+                    {
+                        "type": "section",
+                        "attributes": {
+                            "id": "E_TEST_GROUP"
+                        },
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "template": "output",
+                                                "text": "Test section."
+                                            },
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "section",
+                                "attributes": {
+                                    "id": "E_TEST_NESTED_GROUP"
+                                },
+                                "contents": [
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "output",
+                                                        "text": "Nested Section."
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "section",
+                                "attributes": {
+                                    "id": "E_FEDERAL_TEST"
+                                },
+                                "federal": true,
+                                "contents": [
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "output",
+                                                        "text": "Federal Print Only test message no header!"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "section",
+                                "attributes": {
+                                    "id": "E_FEDERAL_TEST_WITH_HEADER"
+                                },
+                                "federal": true,
+                                "contents": [
+                                    {
+                                        "type": "header",
+                                        "template": "group",
+                                        "title": "Federal with header"
+                                    },
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "output",
+                                                        "text": "Federal Print Only test with header!"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

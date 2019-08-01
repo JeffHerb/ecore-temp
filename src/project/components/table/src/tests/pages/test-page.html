@@ -1,0 +1,62 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+        <div id="body-wrapper"></div>
+    </body>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        var fwData =
+
+
+    </script>
+    <script>
+
+        function searchParagraph() {
+
+            try {
+                var sUniqueName = emp.getCookie("JSESSIONID") || "",
+                    sWindowName = "paragraph_search_" + sUniqueName.replace(/\W/g,''),
+                    width = 990;
+
+                    // Create the window
+                    sURL = "http://taxportal/empiresearch/pages/ecpsresults.aspx?k=ANY(" + encodeURIComponent(document.form1.E_SEARCH_TEXT.value) + ")";
+
+                // Window size
+                if (screen.width >= 1124) {
+
+                  // This size is preferable for avoiding horizontal scrollbars, but the screen must be large enough to fit it
+                  width = '1124';
+                }
+                else if (screen.width > 1 && screen.width < 990) {
+
+                  // Check screen.width>1 to make sure it's returning a real value
+                  // Make sure the window still fits on smaller screens
+                  width = (screen.width - 20);
+                }
+
+                // Open the window
+                emp.openWindow(sURL, sWindowName, "width=" + width + ",resizable=yes");
+            }
+            catch (e) {
+
+                console.log(e);
+            }
+
+        }
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

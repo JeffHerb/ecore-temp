@@ -1,0 +1,88 @@
+//   ========================================================
+// * @name       _global.scss
+// * @desc       Empire global styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    General styles
+// * --------------------------------------------------------
+body {
+    color: $cui-text-color;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        color: $cui-text-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        color: $cui-text-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        color: $cui-text-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        color: $cui-text-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        color: $cui-text-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        color: $cui-text-color;
+    }
+}
+
+.emp-confirm-modal .cui-modal-footer-content button {
+    float: right;
+    margin-left: 10px;
+}
+
+.emp-ui-mockup-table-print-header {
+    margin-bottom: 10px;
+}
+
+html {
+
+    @for $i from 16 through 32 {
+        @if $i % 2 == 0 {
+            &.emp-fontsize-#{$i} body {
+
+                .dpCal li {
+                    font-size: 14px !important;
+                }
+
+            }
+        }
+    }
+}
+
+.cui-modal-body-content .cui-row {
+    margin-bottom: 10px;
+}
+
+.cui-modal-body-content .cui-row:last-child {
+    margin-bottom: 0;
+}
+
+.emp-region {
+
+	& > .cui-row{
+		padding:0 10px 0 10px;
+		margin:0;
+	}	
+
+    &.emp-collapse {
+        display: none;
+    }
+}

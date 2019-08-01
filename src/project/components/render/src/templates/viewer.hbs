@@ -1,0 +1,9 @@
+<section {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-document-viewer"}' viewerSize=this.size) ) }}>
+    {{#ifCond v1=this op="hasProperty" v2="index"~}}
+
+        {{~> _viewerContents (viewerContents controls=this.controls contents=this.window index=this.index)~}}
+    {{~else~}}
+
+        {{~> _viewerContents (viewerContents controls=this.controls contents=this.window index=this.index)~}}
+    {{/ifCond~}}
+</section>

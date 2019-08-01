@@ -1,0 +1,424 @@
+// Main `<ul>` elements
+.emp-faves-link-list,
+.emp-faves-control-list {
+    li {
+        color: #373a3c;
+        cursor: pointer;
+        line-height: 1.5;
+        background-color: transparent;
+    }
+}
+
+// Links
+
+.emp-faves-link-item { // `<li>`
+    position: relative;
+    border-top: 1px solid transparent;
+    transition: background-color $emp-faves-transition-duration ease-in,
+                border $emp-faves-transition-duration ease;
+
+    // Flex box wrapper for all elements except any child `<ul>`
+    .emp-faves-link-wrapper {
+        display: flex;
+        padding: ($emp-faves-item-padding-top / 2) $emp-faves-item-padding-sides ($emp-faves-item-padding-top / 2) $emp-faves-item-padding-sides;
+
+        .emp-faves-editmode & {
+            // Remove left/right padding to let the controls sit closer to the edge of the popover
+            padding: ($emp-faves-item-padding-top / 2) 0 ($emp-faves-item-padding-top / 2) 0;
+        }
+
+        &:hover {
+            background-color: #f5f5f5;
+            outline: none;
+        }
+
+        a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-decoration: underline;
+
+            // Hover color
+            // Keep the same color since we're changing the background of the container and the underline. If we let the default link hover color take effect the contrast is too low.
+            &,
+            &:hover,
+            &:visited:hover {
+                color: $cui-link-color;
+
+
+                .theme-teal & {
+                    @import "../../../../../scss/_theme_teal.scss";
+                    color: $cui-link-color;
+                }
+
+                .theme-lilypad & {
+                    @import "../../../../../scss/_theme_lilypad.scss";
+                    color: $cui-link-color;
+                }
+
+                .theme-eggplant & {
+                    @import "../../../../../scss/_theme_eggplant.scss";
+                    color: $cui-link-color;
+                }
+
+                .theme-cobalt & {
+                    @import "../../../../../scss/_theme_cobalt.scss";
+                    color: $cui-link-color;
+                }
+                .theme-hazel & {
+                    @import "../../../../../scss/_theme_hazel.scss";
+                    color: $cui-link-color;
+                }
+                .theme-contrast & {
+                    @import "../../../../../scss/_theme_contrast.scss";
+                    color: $cui-link-color;
+                }
+            }
+
+            .emp-faves-editmode & {
+                text-decoration: none;
+                padding-left: 5px;
+            }
+        }
+
+        &:focus a,
+        &:hover a {
+            outline: none;
+            text-decoration: none;
+        }
+
+        // Set all children elements to z-index 2...
+        & > * {
+            z-index: 2;
+        }
+
+        // ...except the undo button which should remain underneath...
+        & > .emp-faves-undo {
+            z-index: 1;
+        }
+    }
+
+    // `<li>` during Edit Mode
+    .emp-faves-editmode & {
+        border-top-color: #D9D9D9;
+        padding: $emp-faves-item-padding-top 0;
+
+        &:first-child {
+            border-top-color: transparent;
+        }
+    }
+
+    // When the item is being dragged around
+    &.sortable-chosen {
+        background-color: $emp-tp-header-bg-color;
+
+
+        .theme-teal & {
+            @import "../../../../../scss/_theme_teal.scss";
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../../../../../scss/_theme_lilypad.scss";
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../../../../../scss/_theme_eggplant.scss";
+            background-color: $emp-tp-header-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../../../../../scss/_theme_cobalt.scss";
+            background-color: $emp-tp-header-bg-color;
+        }
+        .theme-hazel & {
+            @import "../../../../../scss/_theme_hazel.scss";
+            background-color: $emp-tp-header-bg-color;
+        }
+        .theme-contrast & {
+            @import "../../../../../scss/_theme_contrast.scss";
+            background-color: $emp-tp-header-bg-color;
+        }
+    }
+}
+
+// // Last top-level item
+// .emp-faves-wrapper > .emp-faves-link-list > .emp-faves-link-item:last-child {
+//     border-bottom: 1px solid #D9D9D9;
+// }
+
+.emp-faves-move { // `<button>`
+    display: none;
+    flex: 0 1 36px;
+    position: relative;
+    left: 0;
+    opacity: 1;
+    transition: opacity $emp-faves-transition-duration ease-in-out;
+
+    // Re-order icon
+    @include hide-text;
+    background-image: url($emp-images-path + "emp-reorder.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: -webkit-grab;
+    cursor:         grab;
+
+    &:active {
+        outline: none; // The outline is distracting when you're dragging an item
+    }
+
+    .emp-faves-editmode & {
+        display: block;
+        margin-left: 2px;
+        margin-right: 8px;
+    }
+
+    .emp-faves-removed > div > & {
+        opacity: 0;
+    }
+}
+
+.emp-faves-link { // `<a>`
+    flex: 0 1 100%;
+    position: relative;
+    left: 0;
+    @include user-select;
+    opacity: 1;
+    transition: opacity $emp-faves-transition-duration ease-in-out;
+
+    .emp-faves-editmode & {
+        display: none;
+    }
+
+    .emp-faves-removed > div > & {
+        opacity: 0;
+    }
+}
+
+.emp-faves-input {
+    flex: 0 1 100%;
+    display: none;
+    position: relative;
+    left: 0;
+    opacity: 1;
+    transition: opacity $emp-faves-transition-duration ease-in-out;
+    margin-left: 5px;
+
+    .emp-faves-editmode & {
+        display: block;
+    }
+
+    .emp-faves-removed > div > & {
+        opacity: 0;
+    }
+}
+
+.emp-faves-remove { // `<button>`
+    display: none;
+    flex: 0 1 36px;
+    position: relative;
+    left: 0;
+    opacity: 1;
+    transition: opacity $emp-faves-transition-duration ease-in-out;
+
+    // Trash can icon
+    @include hide-text;
+    background-image: url($emp-images-path + "emp-trash-can.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    .emp-faves-editmode & {
+        display: block;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .emp-faves-removed > div > & {
+        opacity: 0;
+    }
+}
+
+.emp-faves-undo {
+    background-color: $emp-faves-undo-bg-color;
+    text-align: center;
+    line-height: 50px; // Semi-magic number: this happens to be the full height of the list item
+    opacity: 0;
+    transition: opacity $emp-faves-transition-duration ease-in-out;
+
+    // Make it fill up the list item
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    .emp-faves-removed > .emp-faves-link-wrapper > & {
+        opacity: 1;
+        z-index: 3; // Layer it above the other controls so that it can be clicked
+    }
+
+    .emp-faves-folder-header > & {
+        line-height: 38px; // Semi-magic number: this happens to be the full height of the list item
+    }
+}
+
+// Folders
+
+.emp-faves-folder { // `<li>`
+    position: relative; // For the "empty" placeholder
+
+    ul {
+        display: none;
+        margin-left: 32px;
+
+        .emp-faves-editmode & {
+            min-height: 45px; // The list needs to maintain some height when empty so that there is a place to drag bookmarks into
+        }
+    }
+
+    .emp-faves-editmode &,
+    &.emp-faves-folder-open {
+        ul {
+            display: block;
+        }
+    }
+
+    // &.emp-faves-folder-open.emp-faves-removed {
+    //     ul {
+    //         background: $emp-faves-undo-bg-color;
+    //     }
+    // }
+
+    // Child items during edit mode
+    .emp-faves-editmode & .emp-faves-link-item {
+        // Make the controls line up with items that are not in folders
+        padding-left: 0;
+        padding-right: 0;
+
+        &:last-child {
+            padding-bottom: 0; // Less space between this item and the top-level item or folder below it
+        }
+    }
+
+    // Sub-folders
+    // Since sub-folders are not allowed, these styles will only apply while the user is attempting to drag one folder into another
+    .emp-faves-folder {
+        &,
+        .emp-faves-move {
+            cursor: no-drop !important;
+        }
+    }
+}
+
+.emp-faves-folder-header { // `<div>`
+    position: relative;
+
+    // Folder icon
+    &:before {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 7px;
+        width: 28px;
+        height: 28px;
+        background-image: url($emp-images-path + "emp-folder-close-teal.svg");
+        background-size: 24px 24px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        opacity: 1;
+        transition: opacity $emp-faves-transition-duration ease-in-out;
+
+        .emp-faves-editmode & {
+            top: $emp-faves-item-padding-top / 2;
+            left: 5px;
+            border-right: 1px solid $cui-input-border-color;
+            width: 32px;
+            height: 32px;
+            z-index: 3; // So it overlays the input field
+
+            .theme-teal & {
+                @import "../../../../../scss/_theme_teal.scss";
+                border-color: $cui-input-border-color;
+            }
+
+            .theme-lilypad & {
+                @import "../../../../../scss/_theme_lilypad.scss";
+                border-color: $cui-input-border-color;
+            }
+
+            .theme-eggplant & {
+                @import "../../../../../scss/_theme_eggplant.scss";
+                border-color: $cui-input-border-color;
+            }
+
+            .theme-cobalt & {
+                @import "../../../../../scss/_theme_cobalt.scss";
+                border-color: $cui-input-border-color;
+            }
+
+            .theme-hazel & {
+                @import "../../../../../scss/_theme_hazel.scss";
+                border-color: $cui-input-border-color;
+            }
+
+            .theme-contrast & {
+                @import "../../../../../scss/_theme_contrast.scss";
+                border-color: $cui-input-border-color;
+            }
+        }
+    }
+
+    // Folder is open, or edit mode is enabled, and folder is empty
+    .emp-faves-folder-open &:before,
+    .emp-faves-editmode &:before {
+        background-image: url($emp-images-path + "emp-folder-open-teal.svg");
+    }
+
+    // Folder is open, or edit mode is enabled, and folder is not empty
+    .emp-faves-folder-open.emp-faves-folder-has-links &:before,
+    .emp-faves-editmode .emp-faves-folder-has-links &:before {
+        background-image: url($emp-images-path + "emp-folder-open-filled-teal.svg");
+    }
+
+    // Folder is marked for removal
+    .emp-faves-removed > &:before {
+        opacity: 0;
+    }
+
+    a.emp-faves-link { // Tag name needed for `text-decoration` specificity over `.emp-faves-link-item .emp-faves-link-wrapper a`
+        padding-left: 30px; // Leave space for the folder icon
+        text-decoration: none;
+    }
+
+    .emp-faves-editmode & {
+        .emp-faves-input {
+            padding-left: 36px; // Allow room for the folder icon
+        }
+    }
+}
+
+// Dummy items in folders
+.emp-faves-folder-info-isempty {
+    display: none;
+    position: absolute;
+    top: 42px;
+    left: 64px;
+    right: 60px;
+    height: 51px;
+    line-height: 51px;
+    font-style: italic;
+    text-align: center;
+
+    // Show it only during Edit Mode...
+    .emp-faves-editmode & {
+        display: block;
+    }
+
+    // ...unless the folder has links or was removed
+    .emp-faves-folder-has-links &,
+    .emp-faves-removed & {
+        display: none;
+    }
+}

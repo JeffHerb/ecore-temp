@@ -1,0 +1,429 @@
+// Core settings
+@import "../../../../../../../cui/scss/_settings";
+@import "../../../../../../../cui/scss/_utilities/_mixins";
+
+// Implementer settings
+//@import "../../../../_settings";
+
+// Project settings
+@import "../../../../../../scss/_settings";
+@import "../../../../../../scss/_utilities/_mixins";
+
+// Component settings
+//@import "_utilities/_mixins";
+
+// Default style settings that a consumer of this component might change
+
+// Main styles
+$emp-tablefilter-color: #5bc0de !default;
+$emp-tablefilter-wrapper-bg-color: lighten($emp-tablefilter-color, 35%) !default;
+$emp-tablefilter-wrapper-bg-color-hover: lighten($emp-tablefilter-color, 30%) !default;
+$emp-tablefilter-cell-bg-color-applied: lighten($emp-tablefilter-color, 20%) !default;
+$emp-tablefilter-toggle-icon: "emp-filter.svg" !default;
+
+// Option panes
+$emp-tablefilter-optionpane-item-padding: 3px 10px !default;
+$emp-tablefilter-optionpane-item-button-padding: 5px 5px 5px 15px !default;
+
+$emp-tablefilter-optionpane-color: #373a3c !default;
+$emp-tablefilter-optionpane-color-hover: #2b2d2f !default;
+$emp-tablefilter-optionpane-selected-bullet-color: lighten($emp-tablefilter-optionpane-color, 20%) !default;
+
+$emp-tablefilter-optionpane-option-bg-color: transparent !default;
+$emp-tablefilter-optionpane-option-bg-color-hover: #f5f5f5 !default;
+$emp-tablefilter-optionpane-option-bg-color-selected: #f5f5f5 !default;
+$emp-tablefilter-optionpane-option-bg-color-selected-hover: darken($emp-tablefilter-optionpane-option-bg-color-selected, 5%) !default;
+$emp-tablefilter-optionpane-option-border: 1px solid rgba(0, 0, 0, 0.15) !default;
+
+$emp-tablefilter-optionpane-close-color:    #fff !default;
+$emp-tablefilter-optionpane-close-bg-color: #ccc !default;
+$emp-tablefilter-optionpane-close-bg-color-hover: #ddd !default;
+
+.emp-icon-table-filter-toggle {
+    background: url($emp-images-path + "emp-filter.svg") no-repeat 0px 1px transparent;
+    display: inline-block;
+}
+
+@media print {
+    .ie .emp-icon-table-filter-toggle {
+        background: url($emp-images-path + "emp-filter.png") no-repeat 2px 2px transparent;
+    }
+}
+
+.emp-tablefilter-wrapper {
+    background-color: $emp-tablefilter-wrapper-bg-color;
+
+    &:hover {
+        background-color: $emp-tablefilter-wrapper-bg-color-hover;
+    }
+
+    &.emp-collapse {
+        td.emp-tablefilter-cell {
+            height: 0;
+            line-height: 0;
+            padding-top: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            padding-left: 0;
+            border-bottom: none !important; // We're using `!important` here to override `.emp-table .emp-table-wrapper .view-wrapper table.sticky tbody tr td` (CP 11/02/2015)
+
+            // Completely hide cell contents
+            * {
+                display: none;
+            }
+        }
+    }
+
+    td.emp-tablefilter-cell {
+        padding-left: 1px;
+        padding-right: 1px;
+        overflow: hidden; // Prevents inputs from breaking out of the cell and affecting the table's layout
+        text-align: center;
+
+        &.emp-tablefilter-applied {
+            background-color: $emp-tablefilter-cell-bg-color-applied;
+        }
+
+        // Dropdowns
+        select{
+            // Shrink the padding and tighten the font size so the dropdowns don't expand wider than the table cell would normally be and so as much of the text inside them as possible is visible
+            padding-top: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            padding-left: 0;
+            font-size: 12px;
+            min-height: 26px;
+
+            // Hide the native arrow/triangle control:
+
+            // Non-IE browsers (including Edge)
+            -webkit-appearance: none;
+               -moz-appearance: none;
+                    appearance: none;
+
+            // IE 10-11
+            &::-ms-expand {
+                display: none;
+                //FIXME: Instead of hiding the arrow completely, try to minimize its real estate using some of the properties here: https://msdn.microsoft.com/en-us/library/windows/apps/hh465742.aspx
+            }
+        }
+
+        input, button{
+            min-height: 26px;
+        }
+    }
+
+    // No spinners on number inputs
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+}
+
+// Inputs
+.emp-tablefilter-input {
+    width: calc(100% - 2px);
+    margin: 0 auto;
+}
+
+// Override `button` styles
+button.emp-tablefilter-input {
+    @include fontSize(14px);
+}
+
+
+// Option panes
+
+.emp-tablefilter-optionpane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    line-height: 1.5;
+    color: $emp-tablefilter-optionpane-color;
+    background-color: white;
+    border: $emp-tablefilter-optionpane-option-border;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.5);
+    z-index: 111; // One greater than `thead.sticky` in `components/table/src/scss/table.scss`
+
+    ul {
+        list-style: none outside none;
+
+        li {
+            display: block;
+            width: 100%;
+            color: $emp-tablefilter-optionpane-color;
+            text-align: inherit;
+            border: 0;
+
+            line-height: 1.5;
+            white-space: nowrap;
+
+            background-color: $emp-tablefilter-optionpane-option-bg-color;
+            transition: background-color 150ms ease-in;
+
+            &:hover {
+                color: $emp-tablefilter-optionpane-color-hover;
+                text-decoration: none;
+                background-color: $emp-tablefilter-optionpane-option-bg-color-hover;
+            }
+
+            &:not(.emp-tablefilter-optionpane-radio-option) {
+                padding: $emp-tablefilter-optionpane-item-padding;
+            }
+
+            &.emp-tablefilter-optionpane-divider {
+                height: 1px;
+                margin: 0.5rem 0;
+                background-color: #e5e5e5;
+                overflow: hidden;
+            }
+        }
+
+        // Radio buttons: make the label consume the whole space and hide the
+        li.emp-tablefilter-optionpane-radio-option {
+            padding: 0;
+
+            button {
+                display: block;
+                width: 100%;
+                position: relative;
+                line-height: 1.5;
+                padding: $emp-tablefilter-optionpane-item-button-padding;
+                padding: 3px 20px;
+                background-color: $emp-tablefilter-optionpane-option-bg-color;
+                font-size: $cui-text-size;
+                border: none;
+                border-radius: 0;
+                text-align: left;
+
+                &:focus,
+                &:hover {
+                    background-color: $emp-tablefilter-optionpane-option-bg-color-hover;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                $bullet-width: 8px;
+
+                // Bullet
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: calc(50% - #{($bullet-width / 2)});
+                    left: $bullet-width - 2;
+                    display: block;
+                    font-size: 36px;
+                    width: $bullet-width;
+                    height: $bullet-width;
+                    border-radius: 50%;
+                }
+            }
+
+            &.emp-tablefilter-optionpane-selected-option button {
+                background-color: $emp-tablefilter-optionpane-option-bg-color-selected;
+
+                &:hover {
+                    background-color: $emp-tablefilter-optionpane-option-bg-color-selected-hover;
+                }
+
+                &:before {
+                    background-color: $emp-tablefilter-optionpane-selected-bullet-color;
+                }
+            }
+
+            input:focus + label,
+            &.emp-tablefilter-optionpane-selected-option label {
+                background-color: $emp-tablefilter-optionpane-option-bg-color-selected;
+
+                &:hover {
+                    background-color: $emp-tablefilter-optionpane-option-bg-color-selected-hover;
+                }
+            }
+
+            // Hide the actual radio button
+            input[type="radio"] {
+                @include hide();
+            }
+        }
+    }
+
+    .emp-tablefilter-optionpane-close {
+        display: block;
+        padding: $emp-tablefilter-optionpane-item-padding;
+        text-align: center;
+        font-size: $cui-text-size; // Match the size of the label text
+        text-decoration: none;
+
+        &:focus {
+            text-decoration: none;
+        }
+    }
+}
+
+// Empty set placeholder
+.emp-tablefilter-wrapper ~ .emp-tablefilter-empty-set { // First class is needed for specificity over standard table cell styles
+    td {
+        text-align: center;
+        font-style: italic;
+    }
+}
+
+// Date
+
+// An section/option in the option pane
+// This is a logical row
+.emp-tablefilter-optionpane-date-section {
+    .emp-tablefilter-optionpane & {
+        border-top: 1px solid #ccc;
+    }
+
+    &.emp-selected {
+        background-color: $emp-group-header-bg-color;
+
+        .theme-teal & {
+            @import "../../../../../../scss/_theme_teal.scss";
+            background-color: $emp-group-header-bg-color;
+        }
+
+        .theme-lilypad & {
+            @import "../../../../../../scss/_theme_lilypad.scss";
+            background-color: $emp-group-header-bg-color;
+        }
+
+        .theme-eggplant & {
+            @import "../../../../../../scss/_theme_eggplant.scss";
+            background-color: $emp-group-header-bg-color;
+        }
+
+        .theme-cobalt & {
+            @import "../../../../../../scss/_theme_cobalt.scss";
+            background-color: $emp-group-header-bg-color;
+        }
+
+
+        .theme-hazel & {
+            @import "../../../../../../scss/_theme_hazel.scss";
+            background-color: $emp-group-header-bg-color;
+        }
+
+
+        .theme-contrast & {
+            @import "../../../../../../scss/_theme_contrast.scss";
+            background-color: $emp-group-header-bg-color;
+        }
+    }
+
+    .emp-date {
+        width: 7em; // Override the default em-based width since our font size is smaller
+    }
+}
+
+// Check box button container
+// This is the logical "header" for the option
+.emp-tablefilter-optionpane-date-selection {
+    // border-bottom: 1px dotted #ddd;
+    padding: 0 4px;
+    margin-bottom: 4px;
+
+    & > div {
+        display: inline-block;
+        height: 20px;
+        line-height: normal;
+    }
+
+    // Check box button container
+    & > div:first-child {
+    }
+
+    // Section title container
+    & > div:last-child {
+        margin-left: 8px; // Separate the label from the check box
+
+        label {
+            display: inline;
+            font-size: 18px;
+        }
+    }
+}
+
+// Controls container
+// This is the logical "content" area of the option
+.emp-tablefilter-optionpane-date-controls {
+    padding: 0.5em 0.5em 0.5em 2em; // Large right padding to make it appear indented
+
+    // Non-checkable inputs
+    input:not([type="radio"]):not([type="checkbox"]) {
+        // Match the font size and padding of other table inputs
+        padding: $emp-table-field-padding;
+        @include fontSize($cui-text-size);
+    }
+
+    .emp-date {
+        margin-right: 5px;
+    }
+
+    // Fix date picker alignment
+    .cui-c-datepicker {
+        margin-top: -1px;
+    }
+
+    // Fix label alignment
+    .cui-flex-col-small-40px {
+        text-align: right;
+        padding-right: 4px;
+    }
+
+    .cui-flex-row .cui-fixed-col-small-100px {
+        padding-left: 6px;
+        padding-right: 6px;
+
+        label {
+            // Align the two "search" labels vertically (both left-aligned)
+            display: inline-block;
+            min-width: 88px; // Magic number: the width of the longer label
+        }
+    }
+
+    .emp-tablefilter-optionpane-startRange {
+        margin-bottom: 10px;
+    }
+
+    .emp-tablefilter-optionpane-endRange {
+        margin-bottom: 5px;
+    }
+}
+
+.emp-tablefilter-optionpane-date-label {
+    padding-left: 5px;
+}
+
+// Size of numeric inputs (since the `size` attribute is ignored)
+.emp-tablefilter-optionpane-date-day,
+.emp-tablefilter-optionpane-date-month {
+    width: 40px;
+
+    // Slashes between the fields
+    & + label + span {
+        padding: 0 2px;
+    }
+}
+
+.emp-tablefilter-optionpane-date-year {
+    width: 54px;
+    margin-right: 5px;
+}
+
+.emp-filter-row td span {
+    border: 0 !important;
+}

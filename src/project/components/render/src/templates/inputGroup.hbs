@@ -1,0 +1,97 @@
+{{#ifCond v1=this.readOnly op="boolCheck" v2=true~}}
+
+    <div class="cui-readonly-group">
+        <div class="cui-label">
+            <span class="cui-legend">{{legend}}</span>
+        </div>
+        <div class="cui-data">
+            {{#ifCond v1=this.type op="in" v2="checkbox,radio"~}}
+
+                <span class="emp-data">{{~readOnlyInputGroup this.options~}}</span>
+            {{~else~}}
+
+
+                <span class="emp-data">{{~readOnlyInputGroupInputs this.options~}}</span>
+            {{/ifCond~}}
+        </div>
+    </div>
+{{~else~}}
+
+    {{#if fieldSearch~}}
+        <fieldset {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-search-composite emp-search-input-group"}' style=this.style scope="inputGroup" required=(legendRequired this) )) }}>
+    {{~else~}}
+        <fieldset {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="inputGroup" required=(legendRequired this) style=this.style federal=(federalMarker this) )) }}>
+    {{/if~}}
+
+    	<div class="emp-fieldset-contents" role="group" aria-labelledby="">
+{{log this}}
+	        <div class="cui-label">
+	            <legend id="">
+	                {{~legend~}}
+	            </legend>
+	        </div>
+	        <div class="cui-data">
+	            {{! Check to see if this is radio or checkbox inputGroup, if so add the special selection group class unles the developer toogle off with regularInputs attribute }}
+	            <div {{#ifCond v1=this.type op="in" v2="radio,checkbox"}} {{#unless this.regularInputs }}class="cui-selection-group"{{/unless}} {{else}} class="emp-input-collection" {{/ifCond}}>
+
+	                {{! Call each field individually }}
+	                {{#ifCond v1=this.type op="in" v2="radio,checkbox"~}}
+
+	                    {{#each this.options~}}
+
+	                        {{! Check to make sure these are not normal inputs}}
+	                        {{#unless this.regularInputs ~}}
+	                            {{~> _field this flip="true" noFieldWrap="true" noWrap="true" isGroup="true"~}}
+	                        {{~else~}}
+	                            {{~> _field this flip="true" noWrap="true" isGroup="true"~}}
+	                        {{/unless~}}
+
+	                    {{/each~}}
+
+	                {{~else~}}
+
+	                    {{#each this.options~}}
+	                        {{#if ../ignoreRequired~}}
+
+	                            {{~> _field this noWrap="true" isGroup="true" ignoreRequired="true"~}}
+	                        {{~else~}}
+
+	                            {{#if this.help}}
+	                                <div class="emp-field">
+	                                    {{~> _itag this.help}}
+	                                </div>
+	                            {{/if}}
+
+	                            {{#rendererHook (extendData this noWrap="true" isGroup="true") scope="inputGroup"}}{{/rendererHook}}
+
+	                        {{/if~}}
+	                    {{/each~}}
+
+	                {{/ifCond~}}
+
+	                {{! This is only used when fieldsets (input groups are called form the search composite)}}
+	                {{#if this.fieldSearch~}}
+	                    {{~> (getPartialName this.fieldSearch.template) this.fieldSearch noWrap=true ~}}
+	                {{/if~}}
+
+	                {{#ifCond v1=this.scope op="==" v2="entityLookup"}}
+	                    {{#if this.clearButton}}
+	                        <div class="emp-field">
+	                            {{~> (getPartialName this.clearButton.template) this.clearButton noWrap=true~}}
+	                        </div>
+	                    {{/if}}
+	                {{/ifCond}}
+	            </div>
+
+	            {{#if this.itag~}}
+	                <button class="cui-icon emp-icon-help" data-tooltip-source={{this.itag.id}} title="More information" type="button">More information</button>
+	            {{/if~}}
+	        </div>
+	        {{#if this.message~}}
+	            {{~> _message this.message~}}
+	        {{/if~}}
+
+	    </div>
+
+    </fieldset>
+{{/ifCond~}}

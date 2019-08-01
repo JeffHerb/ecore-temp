@@ -1,0 +1,53 @@
+.emp-rating-stars-container {
+	padding-right: 10px;
+    white-space: nowrap;
+
+    &.emp-rating-readonly {
+
+        .emp-rating-value {
+            top: 0;
+        }
+    }
+}
+
+.emp-rating-star {
+    display: inline-block;
+    position: relative;
+    height: 16px;
+    width: 20px;
+
+    svg {
+        polygon {
+            stroke: #000;
+            height: 32px;
+            width: 32px;
+        }
+    }
+
+    &.emp-hover-star {
+
+    	svg {
+
+    		polygon {
+    			fill: $cui-color-warning-background;
+    			stroke: $cui-color-warning-border
+    		}
+    	}
+    }
+
+    &.emp-selected-star {
+
+    	svg {
+
+    		polygon {
+    			fill: darken($cui-color-warning-background, 20);
+    			stroke: $cui-color-warning-text;
+    		}
+    	}
+
+    }
+
+    .emp-table & {
+        top: 3px;
+    }
+}

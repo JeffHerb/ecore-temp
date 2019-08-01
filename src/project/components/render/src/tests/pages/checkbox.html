@@ -1,0 +1,192 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Standard Editable Checkbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_TEST_CHECKBOX"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_CHECKBOX",
+                                                "id": "E_TEST_CHECKBOX",
+                                                "type": "checkbox",
+                                                "value": "y"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Prechecked editable checkbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_TEST_CHECKED_CHECKBOX"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_CHECKED_CHECKBOX",
+                                                "id": "E_TEST_CHECKED_CHECKBOX",
+                                                "type": "checkbox",
+                                                "value": "y",
+                                                "checked": true
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Flipped Input (Label then Checkbox)
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_TEST_FLIPPED_CHECKBOX"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_FLIPPED_CHECKBOX",
+                                                "id": "E_TEST_FLIPPED_CHECKBOX",
+                                                "type": "checkbox",
+                                                "value": "y"
+                                            },
+                                            "flip": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Readonly Positive Checkbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_TEST_POS_CHECKBOX"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_POS_CHECKBOX",
+                                                "id": "E_TEST_POS_CHECKBOX",
+                                                "type": "checkbox",
+                                                "value": "y",
+                                                "checked": true
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Readonly Negative Checkbox
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_TEST_NEG_CHECKBOX"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_NEG_CHECKBOX",
+                                                "id": "E_TEST_NEG_CHECKBOX",
+                                                "type": "checkbox",
+                                                "value": "y"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

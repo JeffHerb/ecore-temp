@@ -1,0 +1,27 @@
+{{#unless this.skipHeader~}}
+<header>
+    <div class="emp-section-title">
+        <h3>{{~this.contents.name~}}</h3>
+    </div>
+    {{#unless this.hideControls~}}
+        <div class="emp-section-controls">
+            <ul>
+                <li>
+                    <button type="button" class="emp-view-document-resizer emp-icon-resize-section" title="Resize section" tabindex="1"></button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                </li>
+            </ul>
+        </div>
+    {{/unless~}}
+
+</header>
+{{/unless~}}
+<div class="emp-viewer-contents">
+    <object data="{{this.contents.src}}" class="emp-pdf-object" type="application/pdf">
+        <embed src="{{this.contents.src}}" class="emp-pdf-embed">
+            <p>Something has gone wrong!</p>
+        </embed>
+    </object>
+</div>

@@ -1,0 +1,436 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+</body>
+<script>
+    var fwData = {
+        "page": {
+            "contents": [
+                // Editable Date Input Example
+                {
+                    "type": "section",
+                    "attributes": {
+                        "id": "E_TEST_GROUP"
+                    },
+                    "contents": [
+                        {
+                            "type": "header",
+                            "template": "group",
+                            "title": "Form lines inside of a section"
+                        },
+                        {
+                            "type": "formLineSection2",
+                            "template": "composite",
+                            "properties": {
+                                "lineDescriptionTitle": "Description",
+                                "lineValueTypeTitle": "Type Title",
+                                "lineValueType": "Value Type",
+                                "lineValueTitle": "Value",
+                                "lineValueNotifierTitle": "Notifier",
+                                "lineAdjustmentTitle": "Adjustment Title",
+                                "lineAdjustmentReasonTitle": "Adjustment Reason Title",
+                                "hideLineNumbers": true
+                            },
+                            "parts": {
+                                "lines": [
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "adjustments": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attribute": {
+                                                        "id": "E_ADJUSTMENT_1",
+                                                        "name": "E_ADJUSTMENT_1",
+                                                        "type": "text",
+                                                        "value": "12,000"
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_ADJUSTMENT_1"
+                                                    },
+                                                    "text": "Adjustment Amount",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            "reason": {
+                                                "type": "select",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_ADJUSTMENT_REASON_1",
+                                                        "name": "E_ADJUSTMENT_REASON_1"
+                                                    },
+                                                    "options": [
+                                                        {
+                                                            "text": "Because",
+                                                            "value": "because"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "100",
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "section",
+                    "attributes": {
+                        "id": "E_TEST_GROUP"
+                    },
+                    "contents": [
+                        {
+                            "type": "header",
+                            "template": "group",
+                            "title": "Form lines inside no adjustment or reason"
+                        },
+                        {
+                            "type": "formLineSection2",
+                            "template": "composite",
+                            "properties": {
+                                "lineDescriptionTitle": "Description",
+                                "lineValueTypeTitle": "Type Title",
+                                "lineValueTitle": "Value",
+                                "lineValueNotifierTitle": "Notifier",
+                            },
+                            "parts": {
+                                "lines": [
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "100",
+                                                    "valueNotifierText": "H",
+                                                    "valueNotifierTooltip": "History",
+                                                    "valueNotifierColor": "red"
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    },
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "-100,000,000,000,000.00",
+                                                        "style": "negative-number"
+                                                    },
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    },
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "-100,000,000,000,000.00",
+                                                    "valueNotifierText": "H",
+                                                    "valueNotifierTooltip": "History",
+                                                    "valueNotifierColor": "red"
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "section",
+                    "attributes": {
+                        "id": "E_TEST_GROUP"
+                    },
+                    "contents": [
+                        {
+                            "type": "header",
+                            "template": "group",
+                            "title": "Form lines Adjustment Only"
+                        },
+                        {
+                            "type": "formLineSection2",
+                            "template": "composite",
+                            "properties": {
+                                "lineDescriptionTitle": "Description",
+                                "lineValueTypeTitle": "Type Title",
+                                "lineValueTitle": "Value",
+                                "lineValueNotifierTitle": "Notifier",
+                                "lineAdjustmentTitle": "Adjustment Title"
+                            },
+                            "parts": {
+                                "lines": [
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "adjustments": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attribute": {
+                                                        "id": "E_ADJUSTMENT_1",
+                                                        "name": "E_ADJUSTMENT_1",
+                                                        "type": "text",
+                                                        "value": "12,000"
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_ADJUSTMENT_1"
+                                                    },
+                                                    "text": "Adjustment Amount",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "100",
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    },
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "100",
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label",
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "section",
+                    "attributes": {
+                        "id": "E_TEST_GROUP"
+                    },
+                    "contents": [
+                        {
+                            "type": "header",
+                            "template": "group",
+                            "title": "Form lines Reason Only"
+                        },
+                        {
+                            "type": "formLineSection2",
+                            "template": "composite",
+                            "properties": {
+                                "lineTitle": "Line #",
+                                "lineDescriptionTitle": "Description",
+                                "lineValueTypeTitle": "Type Title",
+                                "lineValueTitle": "Value",
+                                "lineValueNotifierTitle": "Notifier",
+                                "lineAdjustmentReasonTitle": "Adjustment Reason Title"
+                            },
+                            "parts": {
+                                "lines": [
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "reason": {
+                                                "type": "select",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_ADJUSTMENT_REASON_1",
+                                                        "name": "E_ADJUSTMENT_REASON_1"
+                                                    },
+                                                    "options": [
+                                                        {
+                                                            "text": "Because",
+                                                            "value": "because"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "100",
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    },
+                                    {
+                                        "type": "formLineRow",
+                                        "template": "composite",
+                                        "parts": {
+                                            "reason": false,
+                                            "lineValues": [
+                                                {
+                                                    "properties": {
+                                                        "valueLabel": "RPT",
+                                                        "valueVal": "12",
+                                                        "valueNotifierText": "H",
+                                                        "valueNotifierTooltip": "History",
+                                                        "valueNotifierColor": "red"
+                                                    }
+                                                },
+                                                {
+                                                    "valueLabel": "CMP",
+                                                    "valueVal": "100",
+                                                }
+                                            ]
+                                        },
+                                        "properties": {
+                                            "lineNumber": "1",
+                                            "lineLabel": "Line Label"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "section",
+                    "contents": [
+                        {
+                            "type": "formLineExtendedHeader",
+                            "template": "composite",
+                            "properties": {
+                                "title": "Form Line Extended Header",
+                                "currencyLabel": "Credit Due"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

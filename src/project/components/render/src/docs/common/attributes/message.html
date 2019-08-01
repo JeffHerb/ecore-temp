@@ -1,0 +1,373 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../../dist/" docCSS="../../css/" title="messsage Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Message Attribute</h2>
+
+                <p>
+                    Provide field level messages to at the field or group level.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Field message -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="field-message">Field Message Example</h3>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:Text type="text" viewKey="demo" message="<%= errorMessage %>" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Change the label visibility",
+        "attributes": {
+            "for": "demo"
+        },
+        "visibility": "hidden",
+        "hasLayout": false
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "1,000.00"
+        }
+    },
+    "message": {
+        "type": "error",
+        "text": "This is a error simple message!"
+    }
+}
+                </pre>
+
+                <p>
+                    For the purposes of this example we are using a <code>&lt;E2:Text&gt;</code>. For the full <a href="#field-message-list">support list</a> see below.
+                </p>
+
+                <h4>Rendered Examples</h4>
+                <p>
+                    The <code>message</code> allows developers to send message along with inputs. The developer needs to provide the type of message that should be displayed and the text of the message. For more infomation on different message types see the <a href="../../tags/message.html">E2:Message</a> tag page. When this is rendered into JSON, the <code>message</code> property appears as part of the root field object.
+                </p>
+
+                <section id="field-message-example">
+                </section>
+
+                <p id="field-set-list">
+                    Supported On:
+                </p>
+
+                <ul>
+                    <li><a href="../../tags/date.html">Date</a></li>
+                    <li><a href="../../tags/selectBox.html">selectBox</a></li>
+                    <li><a href="../../tags/textArea.html">Textarea</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Group Message -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="field-message">Field Message Example</h3>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:InputGroup legend="Full Name" message="<%= errorMessage %>">
+    &lt;E2:Text type="text" viewKey="E_FIRST_NAME" visibility="HIDE_LABEL_NO_SPACE" />
+    &lt;E2:Text type="text" viewKey="E_MIDDLE_INITIAL" visibility="HIDE_LABEL_NO_SPACE" />
+    &lt;E2:Text type="text" viewKey="E_LAST_NAME" visibility="HIDE_LABEL_NO_SPACE" />
+&lt;/E2:InputGroup></pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "inputs",
+    "template": "inputGroup",
+    "legend": "Full Name:",
+    "options": [
+        {
+            "type": "text",
+            "template": "field",
+            "label": {
+                "text": "First Name",
+                "attributes": {
+                    "for": "E_FIRST_NAME"
+                },
+                "visibility": "hidden",
+                "hasLayout": false
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_FIRST_NAME",
+                    "id": "E_FIRST_NAME",
+                    "type": "text",
+                    "value": "",
+                }
+            }
+        },
+        {
+            "type": "text",
+            "template": "field",
+            "label": {
+                "text": "Middle Initial",
+                "attributes": {
+                    "for": "E_MIDDLE_INITIAL"
+                },
+                "visibility": "hidden",
+                "hasLayout": false
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_MIDDLE_INITIAL",
+                    "id": "E_MIDDLE_INITIAL",
+                    "type": "text",
+                    "value": "",
+                    "size": 1
+                }
+            }
+        },
+        {
+            "type": "text",
+            "template": "field",
+            "label": {
+                "text": "Last Name",
+                "attributes": {
+                    "for": "E_LAST_NAME"
+                },
+                "visibility": "hidden",
+                "hasLayout": false
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_LAST_NAME",
+                    "id": "E_LAST_NAME",
+                    "type": "text",
+                    "value": "",
+                }
+            }
+        }
+    ],
+    "message": {
+        "type": "error",
+        "text": "This is a error simple message!"
+    }
+}
+                </pre>
+
+                <p>
+                    For the purposes of this example we are using a <code>&lt;E2:InputGroup&gt;</code>. For the full <a href="#group-message-list">support list</a> see below.
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <p>
+                    Similar to the example above. By adding the <code>message</code> attribute on the group tag (in this case <code>E2:InputGroup</code>) any error messages found will appear under the group in question. In the JSON, the <code>message</code> attribute should be found at the root level of the input group object.
+                </p>
+
+                <section id="group-message-example">
+                </section>
+
+                <p id="group-message-list">
+                    Supported On:
+                </p>
+
+                <ul>
+                    <li><a href="../../tags/checkBoxGroup.html">CheckBoxGrouo</a></li>
+                    <li><a href="../../tags/inputGroup.html">InputGroup</a></li>
+                    <li><a href="../../tags/radioGroup.html">RadioGroup</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <script>
+            var fieldMessage = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Change the label visibility",
+                                            "attributes": {
+                                                "for": "demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "value": "1,000.00"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This is a error simple message!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <script>
+            var groupMessage = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "inputs",
+                                        "template": "inputGroup",
+                                        "legend": "Full Name:",
+                                        "options": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "First Name",
+                                                    "attributes": {
+                                                        "for": "E_FIRST_NAME"
+                                                    },
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_FIRST_NAME",
+                                                        "id": "E_FIRST_NAME",
+                                                        "type": "text",
+                                                        "value": "",
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Middle Initial",
+                                                    "attributes": {
+                                                        "for": "E_MIDDLE_INITIAL"
+                                                    },
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_MIDDLE_INITIAL",
+                                                        "id": "E_MIDDLE_INITIAL",
+                                                        "type": "text",
+                                                        "value": "",
+                                                        "size": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Last Name",
+                                                    "attributes": {
+                                                        "for": "E_LAST_NAME"
+                                                    },
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_LAST_NAME",
+                                                        "id": "E_LAST_NAME",
+                                                        "type": "text",
+                                                        "value": "",
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This is a group error simple message!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var fieldMessageExample = document.getElementById("field-message-example");
+                var groupMessageExample = document.getElementById("group-message-example");
+
+                // Create the generic example
+                render.page(fieldMessageExample, fieldMessage, function() {
+
+                    console.log("Field Message Done");
+
+                    render.page(groupMessageExample, groupMessage, function() {
+
+                        console.log("Group Message Done");
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

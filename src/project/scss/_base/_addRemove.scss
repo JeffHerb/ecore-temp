@@ -1,0 +1,185 @@
+.emp-add-remove-list-box {
+    display: flex;
+    flex-wrap: wrap;
+
+    .emp-add-remove-container {
+        flex: 0 0 auto;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+        header {
+            @include fontSize($cui-text-size);
+            margin-bottom: 5px;
+            margin-top: 2px;
+            margin-left: 4px;
+        }
+
+        ul {
+            list-style: none;
+            border: 1px solid #84827B;
+            
+            li .emp-field {
+                padding: 2px 5px;
+                margin-bottom: 0;
+
+                .emp-check-include-all {
+                    padding-top: 4px;
+                }
+            }
+
+            & > :first-child {
+                margin-bottom: 2px;
+            }
+        }
+
+        .emp-check-include-all-div {
+            border-bottom: 1px solid #84827B;
+            padding-top: 4px !important;
+        }
+
+        .cui-data-left {
+            .cui-data,
+            .cui-label {
+                display: inline-block;
+                width: auto;
+
+                span, label {
+                    @include fontSize($cui-text-size);
+                }
+            }
+        }
+
+        .emp-add-remove-all {
+            margin-top: 5px;
+
+            button {
+                @include fontSize($cui-text-size);
+            }
+        }
+    }
+
+    .emp-order-list-container {
+        flex: 0 0 auto;
+        margin: 0 10px 10px 0;
+
+        header {
+            @include fontSize($cui-text-size);
+            margin-bottom: 5px;
+            margin-top: 2px;
+            margin-left: 4px;
+        }
+
+        ol {
+            display: block;
+            border: 1px solid #84827B;
+            padding: 7px 7px 5px;
+
+            li {
+                @include fontSize($cui-text-size);
+                cursor: pointer;
+                padding: 2px 4px 2px 4px;
+                min-height: 20px;
+
+                span {
+                    color: $emp-header-links-color;
+                }
+
+                .ie & {
+                    
+                    &:first-child {
+                        padding: 3px 4px 3px 4px;
+                    }
+
+                    padding: 2px 4px 3px 4px;
+                }
+
+                &.emp-selected-item {
+                    background: $emp-table-highlight !important;
+
+                    .theme-teal & {
+                        @import "../_theme_teal.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../_theme_lilypad.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../_theme_eggplant.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../_theme_cobalt.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-hazel & {
+                        @import "../_theme_hazel.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-contrast & {
+                        @import "../_theme_contrast.scss";
+                        background: $emp-table-highlight !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .emp-order-list-move-controls-container {
+        flex: 1 0 auto;
+
+        .emp-order-list-move-controls {
+            flex-direction: column;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            height: 100%;
+
+            button {
+                display: inline-block;
+                height: 32px;
+                overflow: hidden;
+                text-indent: -9999px;
+                width: 32px;
+
+                &.emp-add-remove-up-button {
+                    margin-bottom: 10px;
+                    margin-top: 5px;
+
+                    &:before {
+                        content: " ";
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-bottom: 8px solid #84827B;
+                        height: 0;
+                        left: 7px;
+                        position: absolute;
+                        top: 11px;
+                        width: 0;
+                    }
+
+                }
+
+                &.emp-add-remove-down-button {
+
+                    &:before {
+                        content: " ";
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-top: 8px solid #84827B;
+                        height: 0;
+                        left: 7px;
+                        position: absolute;
+                        top: 12px;
+                        width: 0;
+                    }
+                }
+            }
+        }
+    }
+}

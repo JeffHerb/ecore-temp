@@ -1,0 +1,437 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Checkbox Group Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>CheckBoxGroup Custom Tag</h1>
+                <div class="docs-badge cui-success">New in E2</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:CheckBoxGroup&gt;</code> tag combines a series of <code>&lt;E2:CheckBox&gt;</code> tags into a logical group. This is primarily used for check lists ("select all that apply", etc). Each group will have a single legend in addition to the check boxes which acts as a label for the entire group.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:CheckBoxGroup legend="Choose a color">
+    &lt;E2:CheckBox viewKey="E_CHECK_BLUE" value="blue" />
+    &lt;E2:CheckBox viewKey="E_CHECK_RED" value="red" />
+&lt;/E2:CheckBoxGroup></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "checkbox",
+    "template": "inputGroup",
+    "legend": "Choose a color",
+    "options": [
+        {
+            "type": "checkbox",
+            "template": "field",
+            "label": {
+                "text": "Blue",
+                "attributes": {
+                    "for": "E_CHECK_BLUE"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_CHECK_BLUE",
+                    "id": "E_CHECK_BLUE",
+                    "type": "checkbox",
+                    "value": "blue"
+                }
+            }
+        },
+        {
+            "type": "checkbox",
+            "template": "field",
+            "label": {
+                "text": "Red",
+                "attributes": {
+                    "for": "E_CHECK_RED"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_CHECK_RED",
+                    "id": "E_CHECK_RED",
+                    "type": "checkbox",
+                    "value": "red"
+                }
+            }
+        }
+    ]
+}</pre>
+                <p>
+                    When this JSP tag is used the JSON should call the <code>&lt;E2:InputGroup&gt;</code> <code>template</code> and the <code>type</code> property should be set to <code>checkbox</code>. One major difference when using the <code>&lt;E2:InputGroup&gt;</code> template compared to other container-type tags is that it uses the <code>options</code> property for all its children instead of the <code>contents</code> property. This is because inputGroup template will handle its children via templates instead of the standard render logic.
+                </p>
+                <p>
+                    Developers need to set the <code>legend</code> attribute for this tag. All check box-specific settings are handled by those individual custom tags.
+                </p>
+            </div>
+        </div>
+
+                <h3>Rendered examples</h3>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>legend</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                A label that applies to the entire collection of fields
+                            </td>
+                        </tr>
+                        <!--
+                        <tr>
+                            <th>
+                                regularInputs
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Removes the default check box style. This is not recommended for most use cases.
+                            </td>
+                        </tr>
+                    -->
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;fieldset&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Controls the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                message
+                            </th>
+                            <td>
+                                hashmap
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Provides a hashmap of a specific field level message to an input (<a href="../common/attributes/message.html">more details</a>).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--<div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>RegularInputs Examples</h2>
+            </div>
+            <div class="cui-col-small-12">
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:CheckBoxGroup legend="Choose a color" regularInputs="true">
+&lt;/E2:CheckBoxGroup></pre>
+            </div>
+            <div class="cui-col-small-12">
+                <h3>RegularInputs JSON</h3>
+                <pre class="code">
+{
+    "type": "checkbox",
+    "template": "inputGroup",
+    "legend": "Choose a color",
+    "regularInputs": true,
+    "options": [
+        {
+            "type": "checkbox",
+            "template": "field",
+            "label": {
+                "text": "Blue",
+                "attributes": {
+                    "for": "E_CHECK_BLUE"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_CHECK_BLUE",
+                    "id": "E_CHECK_BLUE",
+                    "type": "checkbox",
+                    "value": "blue"
+                }
+            }
+        },
+        {
+            "type": "checkbox",
+            "template": "field",
+            "label": {
+                "text": "Red",
+                "attributes": {
+                    "for": "E_CHECK_RED"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "E_CHECK_RED",
+                    "id": "E_CHECK_RED",
+                    "type": "checkbox",
+                    "value": "red"
+                }
+            }
+        }
+    ]
+}</pre>
+                <p>
+                    In some rare situations it may be necessary to remove the default styling from check boxes. Adding the <code>regularInputs="true"</code> to the custom tag causes the JSON to add an additional <code>regularInputs</code> property to the <code>inputGroup</code> JSON object.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h3>Rendered examples</h3>
+            </div>
+        </div>
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    This attribute will only change the appearence of labels. If the developer wants the input to appear to the right of the input, or the inputs to appear in row, developer will need to add additional custom tag attributes or wrap the <code>&lt;E2:CheckBox&gt;</code> tags in <code>&lt;E2:Row&gt;</code> and <code>&lt;E2:Col&gt;</code> custom tags to achieve the desired layout.
+                </p>
+                <section id="regularInput-example">
+                </section>
+
+            </div>
+        </div>
+-->
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "inputGroup",
+                                        "legend": "Choose a color",
+                                        "options": [
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Blue",
+                                                    "attributes": {
+                                                        "for": "blue"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "blue",
+                                                        "id": "blue",
+                                                        "type": "checkbox",
+                                                        "value": "blue"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Red",
+                                                    "attributes": {
+                                                        "for": "red"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "red",
+                                                        "id": "red",
+                                                        "type": "checkbox",
+                                                        "value": "red"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // var regularInputs = {
+            //     title: "Column Test Page",
+            //     attributes: {
+            //         className: "render-container"
+            //     },
+            //     "contents": [
+            //         {
+            //             "type": "row",
+            //             "template": "grid",
+            //             "contents": [
+            //                 {
+            //                     "type": "column",
+            //                     "template": "grid",
+            //                     "width": "half",
+            //                     "contents": [
+            //                         {
+            //                             "type": "checkbox",
+            //                             "template": "inputGroup",
+            //                             "legend": "Choose a color",
+            //                             "regularInputs": true,
+            //                             "options": [
+            //                                 {
+            //                                     "type": "checkbox",
+            //                                     "template": "field",
+            //                                     "label": {
+            //                                         "text": "Blue",
+            //                                         "attributes": {
+            //                                             "for": "demo_3"
+            //                                         }
+            //                                     },
+            //                                     "input": {
+            //                                         "attributes": {
+            //                                             "name": "demo1",
+            //                                             "id": "demo_3",
+            //                                             "type": "checkbox",
+            //                                             "value": "blue"
+            //                                         }
+            //                                     }
+            //                                 },
+            //                                 {
+            //                                     "type": "checkbox",
+            //                                     "template": "field",
+            //                                     "label": {
+            //                                         "text": "Red",
+            //                                         "attributes": {
+            //                                             "for": "demo_4"
+            //                                         }
+            //                                     },
+            //                                     "input": {
+            //                                         "attributes": {
+            //                                             "name": "demo1",
+            //                                             "id": "demo_4",
+            //                                             "type": "checkbox",
+            //                                             "value": "red"
+            //                                         }
+            //                                     }
+            //                                 }
+            //                             ]
+            //                         }
+            //                     ]
+            //                 }
+            //             ]
+            //         }
+            //     ]
+            // };
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                // var regularInputExample = document.getElementById("regularInput-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    // RegularInput Type
+                    // render.page(regularInputExample, regularInputs, function () {
+                    //
+                    //     console.log("Default Done");
+                    //
+
+
+
+                });
+
+            });
+        </script>
+<!--(bake ../includes/footer.html)-->

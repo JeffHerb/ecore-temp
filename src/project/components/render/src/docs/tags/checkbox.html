@@ -1,0 +1,667 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Checkbox Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>CheckBox Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:CheckBox&gt;</code> tag is used to create individual checkbox elements.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:CheckBox viewKey="demo" value="y" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "checkbox",
+    "template": "field",
+    "label": {
+        "text": "Checkbox Label",
+        "attributes": {
+            "for": "E_CHECK_1"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "E_CHECK_1",
+            "id": "E_CHECK_1",
+            "type": "checkbox",
+            "value": "y"
+        }
+    }
+}</pre>
+                <p>
+                    CheckBox JSON objects are structured like every other input but with the <code>type</code> attribute set to <code>checkbox</code>.
+                </p>
+
+                <h3>Rendered examples</h3>
+                <p>
+                    Just like other inputs, all attributes are tied to the <code>viewKey</code>. As the example shows, check boxes objects include the <code>label</code> object first followed by <code>input</code>. This example shows an individual check box, however check boxes normally appear in groups &mdash; see the <a href="../tags/checkboxGroup.html">CheckBoxGroup</a> tag for details on working with groups.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The registered viewkey (previously called <code>pageElementName</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Default <code>value</code> of the input
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                check
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates the input is checked initially
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute (hover text) for the input element
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                readOnly
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the input should be a readonly or updatable mode (<a href="../common/attributes/readOnly.html">more details</a>) See below for boolean input details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                icon
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                This is a enhancment for radio and checkbox as an alternative to showing the select value in read-only mode, developers can swap the normal text value with an image.
+                                <ul>
+                                    <li>checkmark</li>
+                                    <li>not-applicable</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                accessKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Shortcut key to set focus to the input element (<a href="../common/attributes/accessKey.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>).
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                       <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that need to be executed. This must include both the event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>flip</th>
+                            <td>Boolean</td>
+                            <td>No</td>
+                            <td>
+                                Flips the display order from <code>Input</code>-<code>Label</code> to <code>Label</code>-<code>Input</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                labelHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;label&gt;</code> element (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;input&gt;</code> element (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Java object attribute from which value is populated. It is the tag's or its parent tag's responsibility to make the object available to the page context.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rsMapping
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Maps the field to a result set. Please see the <a href="resultset.html">ResultSet custom tag documentation</a> for details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>accessKey</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Flip Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:CheckBox viewKey="demo" value="y" flip="true" /></pre>
+
+                <h3>Flip JSON</h3>
+                <pre class="code">
+{
+    "type": "checkbox",
+    "template": "field",
+    "label": {
+        "text": "Checkbox Label",
+        "attributes": {
+            "for": "E_CHECK_2"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "E_CHECK_2",
+            "id": "E_CHECK_2",
+            "type": "checkbox",
+            "value": "true"
+        },
+        "flip": true
+    }
+}</pre>
+                <p>
+                    By adding the <code>flip</code> attribute to the <code>JSP</code> tag, an additional <code>flip</code> property with the value of <code>true</code> should be added to the input object.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+
+                <section id="flip-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Checked Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:CheckBox viewKey="demo" value="y" checked="true" /></pre>
+
+                <h3>Checked JSON</h3>
+                <pre class="code">
+{
+    "type": "checkbox",
+    "template": "field",
+    "label": {
+        "text": "Checkbox Label",
+        "attributes": {
+            "for": "demo_1"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo_1",
+            "type": "checkbox",
+            "value": "true",
+            "checked": true
+        }
+    }
+}</pre>
+                <p>
+                    When the <code>checked</code> attribute is added to the JSP it will set the <code>checked</code> attribute to the input's attribute list in the JSON.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="checked-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>ReadOnly Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:CheckBox viewKey="demo" value="y" readOnly="true" icon="Checkmark" /></pre>
+
+                <h3>Checked JSON</h3>
+                <pre class="code">
+{
+    "type": "checkbox",
+    "template": "field",
+    "label": {
+        "text": "Checkbox Label",
+        "attributes": {
+            "for": "demo_1"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo_1",
+            "type": "checkbox",
+            "checked":true
+        }
+        "requestedMode": "1",
+        "icon": "not-applicable"
+    }
+}</pre>
+                <p>
+                    Requested mode for checkboxes are similar to other inputs with one exception. If the developer forces an input into a read-only state, they can specify an additional attribute of <code>icon</code>. This will allow the developer to swap the check box's text value with a single image. See the <<Need to define a list of icons!>>. This adds the additional input sub-property of <code>icon</code> to the JSON.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="readOnly-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_CHECK_1"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_CHECK_1",
+                                                "id": "E_CHECK_1",
+                                                "type": "checkbox",
+                                                "value": true
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Default example JSON
+            var flip = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_CHECK_2"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_CHECK_2",
+                                                "id": "E_CHECK_2",
+                                                "type": "checkbox",
+                                                "value": "y"
+                                            },
+                                            "flip": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Checked
+            var checked = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Checkbox Label",
+                                            "attributes": {
+                                                "for": "E_CHECK_3"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_CHECK_3",
+                                                "id": "E_CHECK_3",
+                                                "type": "checkbox",
+                                                "value": "y",
+                                                "checked": true
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Checked
+            var readOnly = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Read Only Checkbox `true`",
+                                            "attributes": {
+                                                "for": "E_CHECK_4"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_CHECK_4",
+                                                "id": "E_CHECK_4",
+                                                "type": "checkbox",
+                                                "value": "y",
+                                                "checked": "checked"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "checkbox",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Read Only Checkbox `false`",
+                                            "attributes": {
+                                                "for": "E_CHECK_4"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_CHECK_4",
+                                                "id": "E_CHECK_4",
+                                                "type": "checkbox",
+                                                "value": "y"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById('default-example');
+                var flipExample = document.getElementById('flip-example');
+                var checkedExample = document.getElementById('checked-example');
+                var readOnlyExample = document.getElementById('readOnly-example');
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log('Default Done');
+
+                    // Flip example
+                    render.page(flipExample, flip, function() {
+
+                        console.log('Flip Example Done');
+
+                        // Checked example
+                        render.page(checkedExample, checked, function() {
+
+                            console.log('Checked Example Done');
+
+                            // Checked example
+                            render.page(readOnlyExample, readOnly, function() {
+
+                                console.log('ReadOnly Example Done');
+
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

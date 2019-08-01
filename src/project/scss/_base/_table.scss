@@ -1,0 +1,1085 @@
+//   ========================================================
+// * @name       _table.scss
+// * @desc       Empire table styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Default table styles
+// * --------------------------------------------------------
+.emp-table {
+    @include section-table-spacing();
+    @include clearfix;
+
+    flex-grow: 1;
+
+    margin: 0 10px 10px;
+
+    section &,
+    .cui-row & {
+        margin: 0;
+    }
+
+    .emp-table-controls {
+        @include clearfix;
+        flex-grow: 1;
+        padding: 0;
+
+        @include pointbreak($cui-bp-medium, true) {
+            order: 2;
+        }
+
+        .emp-header-controls {
+            @include clearfix;
+            margin-top: 1em;
+
+            .cui-label {
+                width: auto !important;
+
+                legend {
+                    width: auto !important;
+                    margin-left: 0;
+                    margin-top: 7px;
+                }
+            }
+
+            .emp-field,
+            .emp-composite,
+            button,
+            fieldset {
+                float: right;
+            }
+
+            fieldset {
+                width: auto;
+                padding-right: 10px;
+            }
+
+            .emp-composite{
+                margin: 0;
+                padding-left: 10px;
+            }
+
+            .emp-input-collection {
+                margin-top: 3px;
+
+                .emp-field {
+                    float: none;
+
+                    .cui-label,
+                    .cui-data {
+                        display: inline-block;
+                    }
+
+                    .cui-label,
+                    .cui-data-left {
+
+                        label {
+                            font-weight: normal;
+                            margin-right: 0.5em;
+                        }
+                    }
+                }
+
+                button {
+                    padding: 5px 10px;
+                }
+            }
+
+            .emp-field {
+                display: inline-block;
+                white-space: nowrap;
+                width: auto;
+
+                .cui-label {
+                    width: auto;
+                    margin-left: 1em;
+                }
+            }
+
+            & > .emp-field {
+                margin-top: 4px;
+            }
+
+            .emp-composite.emp-search-composite {
+                display: inline-block;
+
+                .cui-label {
+                    width: auto !important;
+
+                    label {
+                        display: inline-block;
+                        margin-top: 6px;
+                    }
+                }
+
+                .cui-data {
+
+                    .emp-field,
+                    & > button {
+                        margin: 0;
+                    }
+                }
+            }
+
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .emp-footer-controls {
+            margin-top: 5px;
+
+            .cui-label {
+                display: inline-block;
+                width: auto !important;
+                flex: 0 0 auto;
+                margin-left: 5px;
+            }
+
+            .emp-button-row {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+        }
+
+        .emp-col-full,
+        .emp-col-half {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .emp-table-hide-row,
+    .emp-table-hide-column {
+        @include hide-voluntary();
+    }
+
+    .emp-table-wrapper {
+        margin: 0;
+    }
+
+    [class*="emp-indicator-"] {
+        display: inline-block;
+        min-width: 1.5em;
+        padding: 0.2em 0;
+        margin: 0 0.25em 0.25em 0;
+        text-align: center;
+    }
+
+    .emp-indicator-2 {
+        min-width: 2.2em;
+    }
+
+    .emp-indicator-3 {
+        min-width: 2.9em;
+    }
+
+    .emp-indicator-3.emp-federal-data {
+        background-color: #333 !important;
+    }
+
+    [class*="emp-indicator-"]:last-of-type {
+        margin: 0;
+    }
+
+    table {
+        empty-cells: show;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+
+        caption {
+            font-weight: $cui-font-weight-semibold;
+            @include fontSize(20px);
+            padding: 5px 2px;
+            text-align: left;
+            color: $cui-color-dark-gray-alt;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $cui-color-dark-gray-alt;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $cui-color-dark-gray-alt;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $cui-color-dark-gray-alt;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $cui-color-dark-gray-alt;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $cui-color-dark-gray-alt;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $cui-color-dark-gray-alt;
+            }
+        }
+    }
+
+    th,
+    td {
+        font-weight: normal;
+        text-align: left;
+        border: $emp-table-cell-border;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border: $emp-table-cell-border;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border: $emp-table-cell-border;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border: $emp-table-cell-border;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border: $emp-table-cell-border;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border: $emp-table-cell-border;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border: $emp-table-cell-border;
+        }
+
+        &.cui-align-right {
+            text-align: right;
+
+            .emp-field {
+                .cui-label {
+                    float: none;
+                }
+            }
+        }
+
+        &.cui-align-center {
+            text-align: center;
+
+            .emp-field {
+                .cui-label {
+                    float: none;
+                }
+            }
+        }
+
+        // This style makes it so labels dont break the height of tables causing unneeded vertical scrolling.
+        label.cui-hide-from-screen {
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+
+        span.emp-table-select-true {
+            display: inline-block;
+            height: 13px;
+            width: 13px;
+
+            &:before {
+                border-top: 3px solid #98bf89;
+                content: ' ';
+                display: inline-block;
+                transform: rotate(45deg);
+                top: 16px;
+                left: 6px;
+                position: absolute;
+                width: 6px;
+            }
+
+            &:after {
+                border-top: 3px solid #98bf89;
+                content: ' ';
+                display: inline-block;
+                height: 3px;
+                left: 2px;
+                transform: rotate(-45deg);
+                top: -3px;
+                position: relative;
+                width: 100%;
+            }
+        }
+
+        span.emp-table-select-false {
+
+            background: $emp-red-1;
+            border-radius: 20px;
+            display: inline-block;
+            height: 14px;
+            overflow: hidden;
+            width: 14px;
+
+            &:before {
+                background: #FFF;
+                border-radius: 10px;
+                content: ' ';
+                display: inline-block;
+                height: 10px;
+                left: 2px;
+                position: relative;
+                top: -2px;
+                width: 10px;
+            }
+
+            &:after {
+                background: $emp-red-1;
+                content: ' ';
+                display: inline-block;
+                height: 14px;
+                left: -4px;
+                position: relative;
+                transform: rotate(45deg);
+                width: 2px;
+            }
+
+        }
+
+        span.emp-responsive-cell-header {
+            display: none;
+        }
+
+    }
+
+    th {
+        color: $emp-table-header-color;
+        padding: $emp-table-header-cell-padding;
+        background-color: $emp-table-header-bgcolor;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            color: $emp-table-header-color;
+            padding: $emp-table-header-cell-padding;
+            background-color: $emp-table-header-bgcolor;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            color: $emp-table-header-color;
+            padding: $emp-table-header-cell-padding;
+            background-color: $emp-table-header-bgcolor;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            color: $emp-table-header-color;
+            padding: $emp-table-header-cell-padding;
+            background-color: $emp-table-header-bgcolor;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            color: $emp-table-header-color;
+            padding: $emp-table-header-cell-padding;
+            background-color: $emp-table-header-bgcolor;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            color: $emp-table-header-color;
+            padding: $emp-table-header-cell-padding;
+            background-color: $emp-table-header-bgcolor;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            color: $emp-table-header-color;
+            padding: $emp-table-header-cell-padding;
+            background-color: $emp-table-header-bgcolor;
+        }
+
+        &[data-columntype="score"] {
+            min-width: 150px;
+            max-width: 150px;
+        }
+
+        span {
+            width: auto;
+        }
+
+        &.cui-currency span,
+        &.cui-aligh-right span {
+            text-align: left;
+        }
+    }
+
+    td {
+        position: relative;
+        padding: $emp-table-body-cell-padding;
+        height: $emp-table-cell-min-height;
+
+        // Tooltip indication
+        [title]:not(a):not(button):not(i):not([class*="emp-indicator-"]) {
+            border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            text-decoration: none;
+            cursor: default;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            }
+        }
+
+        &.cui-align-right {
+            text-align: right;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a span.emp-popup {
+            display: inline-block;
+            position: absolute;
+            transform: rotate(45deg);
+            border-bottom: 10px solid #888 !important;
+            content: " ";
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            top: -2px;
+            right: -7px;
+        }
+
+        .emp-field {
+
+            .cui-data,
+            .cui-label {
+                width: auto !important;
+
+                input:not([type="checkbox"]), select{
+                    min-height: 27px;
+                }
+            }
+
+            .cui-data-left {
+                .cui-data,
+                .cui-label {
+                    width: auto !important;
+                }
+            }
+
+        }
+
+    }
+
+    tfoot td {
+        padding: $emp-table-header-cell-padding;
+        font-weight: 600;
+        border-width: 3px 0 0 0;
+
+        // Repeat the footer styles to maintain specificity over `.theme-X .emp-table td`
+        .theme-teal &,
+        .theme-lilypad &,
+        .theme-eggplant &,
+        .theme-cobalt & {
+            border-width: 3px 0 0 0;
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
+        }
+
+    }
+
+    th img {
+        margin-top: -3px;
+    }
+
+    td {
+        input,
+        select,
+        textarea {
+            padding: $emp-table-field-padding;
+            @include fontSize($cui-text-size);
+        }
+    }
+
+    tbody {
+        tr {
+            &.emp-highlight-row {
+                background: $emp-table-highlight !important;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    background: $emp-table-highlight !important;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    background: $emp-table-highlight !important;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    background: $emp-table-highlight !important;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    background: $emp-table-highlight !important;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    background: $emp-table-highlight !important;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    background: $emp-table-highlight !important;
+                }
+
+                &:hover,
+                &:hover th {
+                    background: $emp-table-highlight-hover !important;
+
+                    .theme-teal & {
+                        @import "../_theme_teal.scss";
+                        background: $emp-table-highlight-hover !important;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../_theme_lilypad.scss";
+                        background: $emp-table-highlight-hover !important;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../_theme_eggplant.scss";
+                        background: $emp-table-highlight-hover !important;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../_theme_cobalt.scss";
+                        background: $emp-table-highlight-hover !important;
+                    }
+
+                    .theme-hazel & {
+                        @import "../_theme_hazel.scss";
+                        background: $emp-table-highlight-hover !important;
+                    }
+
+                    .theme-contrast & {
+                        @import "../_theme_contrast.scss";
+                        background: $emp-table-highlight-hover !important;
+                    }
+                }
+
+                th {
+                    background: $emp-table-highlight !important;
+
+                    .theme-teal & {
+                        @import "../_theme_teal.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../_theme_lilypad.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../_theme_eggplant.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../_theme_cobalt.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-hazel & {
+                        @import "../_theme_hazel.scss";
+                        background: $emp-table-highlight !important;
+                    }
+
+                    .theme-contrast & {
+                        @import "../_theme_contrast.scss";
+                        background: $emp-table-highlight !important;
+                    }
+                }
+            }
+
+            &.emp-checked-row {
+
+                box-shadow:
+                    inset 2px 2px 0 0 #A97227,
+                    inset -1px -1px 0 0 #A97227;
+
+                .ie & {
+                    box-shadow: 0 0 0;
+                    border-color: #A97227;
+
+                    td {
+                        border-color: #A97227 !important;
+                        box-shadow: 0px 1px 0 0 #A97227 inset, 0px -1px 0 0 #A97227 inset;
+                    }
+                    td:first-child {
+                        border-left-color: #A97227;
+                        box-shadow: 1px 1px 0 0 #A97227 inset, 0px -1px 0 0 #A97227 inset;
+                    }
+                    td:last-child {
+                        border-right-color: #A97227;
+                        box-shadow: 0px 1px 0 0 #A97227 inset, -1px -1px 0 0 #A97227 inset;
+                    }
+                }
+
+            }
+
+            td.emp-negative-number {
+                color: $cui-color-error-text !important;
+
+                &.cui-numeric, 
+                &.cui-currency {
+                    input {
+                        color: $cui-color-error-text !important;
+                    }
+                }
+
+            }
+        }
+
+        tr.emp-bold {
+
+            td, th {
+                font-weight: bold;
+
+                span, a {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    td {
+
+        &.emp-negative-number {
+            color: $cui-color-error-text;
+        }
+
+        .cui-numeric, 
+        .cui-currency {
+            //min-width: 162px; Removed per danielle and jill 11/13/2017
+            white-space: nowrap;
+
+            input {
+                margin-right: 4px - $cui-table-cell-padding-right; // to line-up with editable currency fields
+                padding-right: $cui-input-padding-right - 4px + $cui-input-border-width; // to line-up with editable currency fields
+            }
+
+        }
+
+        .emp-field {
+            .cui-data-left {
+                input {
+                    margin: 0 !important;
+                }
+            }
+        }
+
+    }
+
+    td.cui-numeric, 
+    td.cui-currency {
+        text-align: right;
+
+        & > span {
+            display: inline;
+            padding-right: 0;
+        }
+
+        .emp-field {
+            float: right;
+
+            .cui-data {
+
+                input {
+
+                    text-align: right;
+                }
+            }
+
+            .cui-label {
+                width: auto;
+            }
+        }
+    }
+
+    tfoot {
+        tr {
+
+            td.cui-align-right,
+            td.cui-currency {
+                border: 1px solid $emp-table-cell-border-color;
+                border-top: 3px solid $emp-table-cell-border-color;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    border: 1px solid $emp-table-cell-border-color;
+                    border-top: 3px solid $emp-table-cell-border-color;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    border: 1px solid $emp-table-cell-border-color;
+                    border-top: 3px solid $emp-table-cell-border-color;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    border: 1px solid $emp-table-cell-border-color;
+                    border-top: 3px solid $emp-table-cell-border-color;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    border: 1px solid $emp-table-cell-border-color;
+                    border-top: 3px solid $emp-table-cell-border-color;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    border: 1px solid $emp-table-cell-border-color;
+                    border-top: 3px solid $emp-table-cell-border-color;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    border: 1px solid $emp-table-cell-border-color;
+                    border-top: 3px solid $emp-table-cell-border-color;
+                }
+            }
+        }
+    }
+
+    th.emp-min-width,
+    td.emp-min-width,
+    th[class*="emp-width-ind-"],
+    td[class*="emp-width-ind-"] {
+        width: 1px;
+    }
+
+    th.emp-min-width[data-type="button"] {
+        max-width: 32px;
+    }
+
+    header {
+        [class*="emp-table-paging-"]:before {
+            color: $cui-color-dark-gray;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $cui-color-dark-gray;
+            }
+        }
+
+        [class*="emp-table-paging-prev"]:before {
+            @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+        }
+
+        [class*="emp-table-paging-next"]:before {
+            @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            }
+        }
+    }
+
+    & + .cui-row {
+        padding-top: 10px !important;
+    }
+
+    th span.cui-hide-from-screen {
+        width: 1px;
+    }
+}
+
+section {
+    // No top margin if emp-table is the first block inside a section (after the section's header)
+    header + .emp-table {
+        margin-top: 0;
+    }
+
+    &.emp-collapse {
+
+        section > .emp-table,
+        .emp-table {
+            visibility: hidden;
+            height: 1px;
+
+            .emp-table-controls {
+                display: none;
+            }
+        }
+    }
+}
+
+// Themify some CUI styles
+
+// Table stripes
+table:not([class*="cui-no-stripes"]) tbody tr:not(.cui-hidden):not(.cui-ui-only):nth-child(even) {
+    background-color: $cui-table-row-bg-alt-color;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+}
+
+table.cui-no-stripes tr.manual-strip {
+    background-color: $cui-table-row-bg-alt-color;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $cui-table-row-bg-alt-color;
+    } 
+}
+
+tbody tr:hover,
+table tbody tr:nth-child(even):hover {
+    background-color: $cui-table-row-bg-hover-color;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $cui-table-row-bg-hover-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $cui-table-row-bg-hover-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $cui-table-row-bg-hover-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $cui-table-row-bg-hover-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $cui-table-row-bg-hover-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $cui-table-row-bg-hover-color;
+    }
+}
+
+// Selection Popups
+.cui-modal-body-content .cui-messages {
+
+    .cui-warning,
+    .cui-error,
+    .cui-informational {
+        margin-bottom: 0;
+        margin-left: 10px;
+        width: 100%;
+    }
+}

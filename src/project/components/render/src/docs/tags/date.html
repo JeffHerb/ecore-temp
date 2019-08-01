@@ -1,0 +1,359 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Date Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Date Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Date&gt;</code> field is like a standard <code>&lt;E2:Text&gt;</code> JSP tag but with the addtion of a date picker button. Unlike the standard <code>&lt;E2:Text&gt;</code> the <code>type</code> attribute doesn't have to be defined as the tag itself implys the component type.
+                </p>
+
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Date viewKey="demo" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "date",
+    "template": "field",
+    "label": {
+        "text": "Date",
+        "attributes": {
+            "for": "E_BEGIN_DATE"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "E_BEGIN_DATE",
+            "id": "E_BEGIN_DATE",
+            "type": "text"
+        }
+    }
+}</pre>
+
+                <p>
+                   The difference between <code>&lt;E2:Text&gt;</code> and <code>&lt;E2:Date&gt;</code> is that the date JSON uses a <code>type</code> of <code>date</code> instead of <code>text</code>. Note that the input object's <code>type</code> is still set to <code>text</code>.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The registered viewkey (previously called <code>pageElementName</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Default value of the input
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                required
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicate whether the field should be required or not (<a href="../common/attributes/required.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                readOnly
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the input should be a readonly (<a href="../common/attributes/readOnly.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute (hover text) of the input element
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                List of event-based JavaScript associated with the field. The string must include both the event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                accessKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                format
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to express the format in which the data should be rendered. This includes style alignment. Acceptable values:
+                                <ul>
+                                    <li>ALIGN_MONEY_FIELD</li>
+                                    <li>SHOW_IN_RED</li>
+                                    <li>NUMERIC_DATA</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                    <li>HIDE_LABEL</li>
+                                    <li>HIDE_LABEL_NO_SPACE</li>
+                                    <li>HIDE_LABEL_YES_SPACE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                labelHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;label&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;input&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Java object attribute from which value is populated. It is the responsibility of the tag or its parent tag to make the object available to the page context.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rsMapping
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to map this field to result set. See the ResultSet custom tag documentation for details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                message
+                            </th>
+                            <td>
+                                hashmap
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Provides a hashmap of a specific field level message to an input (<a href="../common/attributes/message.html">more details</a>).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked-in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "full",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Date",
+                                            "attributes": {
+                                                "for": "E_BEGIN_DATE"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_BEGIN_DATE",
+                                                "id": "E_BEGIN_DATE",
+                                                "type": "text"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "jquery", "cui", "domReady!"], function (render, $, cui) {
+
+                // Examples
+                var defaultExample = document.getElementById("default-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    cui.load("datepicker", function () {
+                        $(".calendar").datepicker();
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

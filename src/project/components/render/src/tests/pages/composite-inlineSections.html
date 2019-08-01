@@ -1,0 +1,154 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Removed the html 5 shiv for testing purposes -->
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+</body>
+<script>
+    var fwData = {
+        "page": {
+            "contents": [
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "inlineSections",
+                            "template": "composite",
+                            "parts": {
+                                "section1": {
+                                    "type": "section",
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Section 1"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_SOTHER"
+                                                                },
+                                                                "text": "Something:"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "name": "E_SOTHER",
+                                                                    "id": "E_SOTHER",
+                                                                    "value": "100.00"
+                                                                },
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "section2": {
+                                    "type": "section",
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Section 2"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_SOTHER2"
+                                                                },
+                                                                "text": "Something:"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "name": "E_SOTHER2",
+                                                                    "id": "E_SOTHER2",
+                                                                    "value": "100.00"
+                                                                },
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_SOTHER3"
+                                                                },
+                                                                "text": "Something:"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "name": "E_SOTHER3",
+                                                                    "id": "E_SOTHER3",
+                                                                    "value": "100.00"
+                                                                },
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

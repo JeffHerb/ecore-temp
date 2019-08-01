@@ -1,0 +1,52 @@
+// Core settings
+@import "../../../../../../cui/scss/_settings";
+@import "../../../../../../cui/scss/_utilities/_mixins";
+
+// Component overrides
+@import "../../../_settings";
+
+// Themes
+.theme-hazel {
+    @import "../../../../../scss/_theme_hazel.scss";
+
+    // Theme customizations
+    $menujs-custom-class: "emp";
+    $menujs-font-size:    $cui-text-size;
+    $menujs-menu-height:  $emp-header-min-height;
+
+    // Items and groups
+    $menujs-item-text-color:     #fff;
+    $menujs-item-bg-color:       $emp-accent-color;
+    $menujs-item-border-color:   $emp-accent-color;
+
+    // Item padding (incorporates icon size)
+    $menujs-item-padding-vertical:   8px;
+    $menujs-item-padding-horizontal: 12px;
+
+    $menujs-item-padding: $menujs-item-padding-vertical $menujs-item-padding-horizontal;
+
+    // General
+    $menujs-group-border-color:  $menujs-item-border-color;
+
+    $menujs-item-border-color: transparent;
+    $menujs-item-border: $menujs-item-border-width $menujs-item-border-style $menujs-item-border-color;
+    $menujs-icon-triangle-color: $menujs-item-text-color;
+    $menujs-item-text-color-hover: $cui-text-color;
+    $menujs-link-hover-text-decoration: none;
+
+    // No values are actually changed below, we just need to redefine these so they pull in values set above
+    $menujs-item-bg-color-hover:   darken($menujs-item-bg-color, 10%);
+    $menujs-item-text-color-focus: $menujs-item-text-color-hover;
+    $menujs-item-bg-color-focus:   $menujs-item-bg-color-hover;
+    $menujs-item-open-color:          darken($menujs-item-text-color, 20%);
+    $menujs-item-open-bg-color:       darken($menujs-item-bg-color, 20%);
+    $menujs-item-open-color-hover:    $menujs-item-open-color;
+    $menujs-item-open-bg-color-hover: $menujs-item-open-bg-color;
+
+    // Component default settings
+    @import "../_utilities/_variables";
+    @import "../_utilities/_mixins";
+
+    // Component styles
+    @import "../_modules";
+}

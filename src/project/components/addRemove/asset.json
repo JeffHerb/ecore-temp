@@ -1,0 +1,5 @@
+{
+    "name": "addRemove",
+    "lazy": false,
+    "sources": ["script"]
+}

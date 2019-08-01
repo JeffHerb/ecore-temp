@@ -1,0 +1,42 @@
+.cui-modal.emp-selection-popup {
+
+    .table-wrapper {
+        margin: 0;
+    }
+
+    .emp-button-group {
+        margin-top: 1em;
+
+        button {
+            margin-left: 10px;
+        }
+
+    }
+}
+
+button.emp-active-spinner {
+    padding-left: 25px;
+}
+
+.emp-confirm-modal {
+
+    .emp-confirm-button-container {
+        text-align: right;
+
+        .emp-confirm-yes-button {
+            margin-right: 10px;
+        }
+    }
+}
+
+@media print {
+
+    .emp-select-other-describe {
+        display: block !important;
+    }
+
+    // Expandable to print
+    .emp-expandable-region {
+        display: block !important;
+    }
+}

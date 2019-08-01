@@ -1,0 +1,66 @@
+{{#unless this.noWrap~}}
+    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "cui-data"}' scope="input-div" style=this.input.style))}}>
+{{/unless~}}
+
+    {{! Check to see if the input is read only }}
+    {{#ifCond v1=this.input.readOnly op='boolCheck' v2=true ~}}
+
+        {{#if this.input.attributes.title~}}
+
+            {{#ifCond v1=this.label.text op="!=" v2=(concat this.input.attributes.title ":")~}}
+
+                <span {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes defaultSelection=this.input.defaultValue scope="text")) skip='value,type,name,aria-required,size,maxlength,data-validation' }}>
+                    {{~{ standardTextFormat this.input.attributes.value }~}}
+                </span>
+            {{else~}}
+
+                <span {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes defaultSelection=this.input.defaultValue scope="text")) skip='value,type,name,aria-required,size,maxlength,data-validation,title' }}>
+                    {{~{ standardTextFormat this.input.attributes.value }~}}
+                </span>
+            {{/ifCond~}}
+
+        {{~else~}}
+
+            <span {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes defaultSelection=this.input.defaultValue scope="text")) skip='value,type,name,aria-required,size,maxlength,data-validation' }}>
+                {{~{ standardTextFormat this.input.attributes.value }~}}
+            </span>
+        {{/if~}}
+
+        {{#if this.help}}
+            {{~> _itag this.help}}
+        {{/if}}
+
+    {{~else~}}
+
+        {{#ifCond v1="password-toggle" op="in" v2=this.input.style}}
+            <div class="emp-password-wrapper">
+                <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input.required defaultSelection=this.input.defaultValue isPassword=true scope="text") ) }} />
+                <button type="button" class="emp-password-toggle">Show</button>
+            </div>
+
+        {{else}}
+            <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input.required defaultSelection=this.input.defaultValue scope="text") ) }} />
+
+            {{!ecore appended 'cent' amount}}
+            {{#if this.suffix}}
+                {{~> _currencySuffix this.suffix}}
+            {{/if}}
+
+            {{!itag}}
+            {{#if this.help}}
+                {{~> _itag this.help}}
+            {{/if}}
+        {{/ifCond}}
+    {{~/ifCond~}}
+
+
+    {{! Look for messages if this is not in a composite}}
+    {{#unless this.composite~}}
+        {{#if this.message~}}
+            {{> _message this.message}}
+        {{/if~}}
+    {{/unless~}}
+{{#unless this.noWrap~}}
+    </div>
+{{/unless~}}
+

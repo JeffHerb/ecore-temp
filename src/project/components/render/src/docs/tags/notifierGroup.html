@@ -1,0 +1,178 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Notifier Group Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>NotifierGroup Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:NotifierGroup&gt;</code> is used to group notifiers together in a list.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:NotifierGroup>
+    &lt;E2:Notifier notifierID="note1">
+    &lt;E2:Notifier notifierID="note2">
+    &lt;E2:Notifier notifierID="note3">
+&lt;/E2:NotifierGroup>
+                </pre>
+
+                <h3>Static JSON</h3>
+                <pre class="code">
+{
+    "template": "notifierGroup",
+    "notifiers": [
+        ... Notifiers Omitted ...
+    ]
+}
+</pre>
+
+                <p>
+                    When the <code>E2:NotifierGroup</code> is render into JSON it creates an object with two properties. The first is the <code>template</code> attribute, which ensures the render builds notifiers inside an unordered list. The second is the <code>notifiers</code> array property. The contents of this property should be an array of object which match the <code>E2:Notifier</code> specification.
+                </p>
+
+                <h3>Static Rendered Examples</h3>
+
+                <p>
+                    The <code>E2:NotifierGroup</code> is a simple wrapper container. Developers are encourage to use this tag when the notifiers dont shown inside of a table.
+                </p>
+
+                <section id="default-group-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;ul&gt;</code> element (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var notificationGroup = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "template": "notifierGroup",
+                                        "notifiers": [
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Notifier 1",
+                                                    "id": "note1"
+                                                },
+                                                "text": "Note 1"
+                                            },
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Notifier 2",
+                                                    "id": "note2"
+                                                },
+                                                "text": "Note 2"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Notifier 3 - Interactive",
+                                                    "href": "#",
+                                                    "id": "note3"
+                                                },
+                                                "text": "Note 3"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Default example
+                var groupExample = document.getElementById("default-group-example");
+
+                // Create the generic example
+                render.page(groupExample, notificationGroup, function () {
+
+                    console.log("Default Done");
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

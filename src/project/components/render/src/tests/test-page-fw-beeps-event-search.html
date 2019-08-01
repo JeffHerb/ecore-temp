@@ -1,0 +1,942 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire - FWBEEPS Events Search</title>
+    <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!--
+===============================================================================
+eMPIRE2 | Empire - BEEPS Event Search
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+08/08/2018  JM        Page created.
+===============================================================================
+-->
+</head>
+
+<body>
+    <div id="body-wrapper">
+        <!-- Accessibility cues -->
+        <div class="cui-hide-from-screen">
+            <a href="#nav">Go to navigation</a>
+            <a href="#main">Go to content</a>
+        </div>
+        <!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-row-first">
+                <div class="emp-header-logo">
+                    Empire
+                </div>
+                <nav id="emp-header-menu-main"></nav>
+                <div id="emp-header-error-report">
+                    <i role="button" class="emp-icon-error-report" title="Report an error">Report an error!</i>
+                </div>
+                <div id="emp-header-favorites" role="button" tabindex="1" title="Favorites">
+                    <i class="emp-header-favorites-icon"></i>&#9734;</div>
+            </div>
+            <!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-row-second">
+                <div class="emp-header-tabset-title">
+                    <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+                    <h1>Tabset menu title</h1>
+                </div>
+                <ul class="emp-header-links">
+                    <li class="emp-header-employee">
+                        <a role="button">Employee</a>
+                    </li>
+                    <li class="emp-header-preferences">
+                        <a role="button">Preferences</a>
+                    </li>
+                    <li class="emp-header-notifications">
+                        <a role="button">Notifications</a>
+                    </li>
+                    <li class="emp-header-help">
+                        <a role="button">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- ==================== -->
+        <!-- TABSET               -->
+        <!-- ==================== -->
+        <ul class="emp-tabset emp-collapse">
+            <li class="emp-selected">
+                <a href="#" title="BEEPS Event Search" tabindex="1">BEEPS Event Search</a>
+            </li>
+        </ul>
+        <!-- ==================== -->
+        <!-- PAGE TITLE           -->
+        <!-- ==================== -->
+        <div class="emp-page-title">
+            <div class="emp-text">
+                <h2>BEEPS Events Search</h2>
+            </div>
+            <ul class="emp-actions">
+                <li>
+                    <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+                </li>
+            </ul>
+        </div>
+        <!-- ==================== -->
+        <!-- SEARCH BOX           -->
+        <!-- ==================== -->
+        <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+
+        <!-- ==================== -->
+        <!-- PAGE MESSAGES        -->
+        <!-- ==================== -->
+        <ul class="cui-messages emp-messages cui-hidden">
+            <li class="cui-error">
+                <p>Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than
+                    its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it
+                    wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</p>
+            </li>
+            <li class="cui-warning">
+                <p>Warning message. Displays information about certain things that need to be considered before continuing.</p>
+            </li>
+            <li class="cui-informational">
+                <p>Informational message. Provide some information to assist in making the right decisions or something.</p>
+            </li>
+            <li class="cui-success">
+                <p>Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this
+                    type of message shows per page submission.</p>
+            </li>
+        </ul>
+        <!-- ####################### -->
+        <!-- DEVELOPER'S CODE (JSP)  -->
+        <!-- ####################### -->
+
+    </div>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [{
+                    "template": "pagebody",
+                    "contents": [{
+                        "type": "section",
+                        "contents": [{
+                                "template": "group",
+                                "title": "BEEP Events",
+                                "type": "header"
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [{
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [{
+                                            "type": "select",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_SUBSCRIBER"
+                                                },
+                                                "text": "Subscriber:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_SUBSCRIBER"
+                                                },
+                                                "options": [{
+                                                        "text": "STAAASUBSCRIBER",
+                                                        "value": "0"
+                                                    },
+                                                    {
+                                                        "text": "AMPSUBSCRIBERS",
+                                                        "value": "1"
+                                                    },
+                                                ]
+                                            }
+                                        }]
+                                    },
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [{
+                                            "type": "select",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_EVENT_TYPE"
+                                                },
+                                                "text": "Event Type:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_EVENT_TYPE"
+                                                },
+                                                "options": [{
+                                                        "text": "STADDRS",
+                                                        "value": "0"
+                                                    },
+                                                    {
+                                                        "text": "STPROF",
+                                                        "value": "1"
+                                                    },
+                                                ]
+                                            }
+                                        }]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [{
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [{
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_EVENT_ID"
+                                                },
+                                                "text": "Event ID:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_EVENT_ID",
+                                                    "value": "123",
+                                                    "maxlength": "3",
+                                                    "size": "3"
+                                                }
+                                            }
+                                        }]
+                                    },
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [{
+                                            "type": "select",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_EVENT_STATUS"
+                                                },
+                                                "text": "Event Status:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_EVENT_STATUS"
+                                                },
+                                                "options": [{
+                                                        "text": "All",
+                                                        "value": "0"
+                                                    },
+                                                    {
+                                                        "text": "Success",
+                                                        "value": "1"
+                                                    },
+                                                    {
+                                                        "text": "Failure",
+                                                        "value": "2"
+                                                    }
+                                                ]
+                                            }
+                                        }]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [{
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [{
+                                            "type": "dateTime",
+                                            "template": "composite",
+                                            "parts": {
+                                                "date": {
+                                                    "type": "date",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DATE"
+                                                        },
+                                                        "text": "Date:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "text",
+                                                            "name": "E_DATE",
+                                                            "id": "E_DATE",
+                                                            "value": "09/09/9009",
+                                                            "maxlength": "10"
+                                                        }
+                                                    }
+                                                },
+                                                "hour": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_HOUR"
+                                                        },
+                                                        "text": "Hour:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_HOUR"
+                                                        },
+                                                        "options": [{
+                                                                "value": "0",
+                                                                "text": "01"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "02"
+                                                            },
+                                                            {
+                                                                "value": "2",
+                                                                "text": "03"
+                                                            },
+                                                            {
+                                                                "value": "3",
+                                                                "text": "04"
+                                                            },
+                                                            {
+                                                                "value": "4",
+                                                                "text": "05"
+                                                            },
+                                                            {
+                                                                "value": "5",
+                                                                "text": "06"
+                                                            },
+                                                            {
+                                                                "value": "6",
+                                                                "text": "07"
+                                                            },
+                                                            {
+                                                                "value": "7",
+                                                                "text": "08"
+                                                            },
+                                                            {
+                                                                "value": "8",
+                                                                "text": "09"
+                                                            },
+                                                            {
+                                                                "value": "9",
+                                                                "text": "10"
+                                                            },
+                                                            {
+                                                                "value": "10",
+                                                                "text": "11"
+                                                            },
+                                                            {
+                                                                "value": "11",
+                                                                "text": "12"
+                                                            }
+                                                        ],
+                                                        "value": "4",
+                                                        "noBlankOption": true
+                                                    }
+                                                },
+                                                "minute": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_MINUTE"
+                                                        },
+                                                        "text": "Minute:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_MINUTE"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "0",
+                                                                "text": "00"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "05"
+                                                            },
+                                                            {
+                                                                "value": "2",
+                                                                "text": "10"
+                                                            },
+                                                            {
+                                                                "value": "3",
+                                                                "text": "15"
+                                                            },
+                                                            {
+                                                                "value": "4",
+                                                                "text": "20"
+                                                            },
+                                                            {
+                                                                "value": "5",
+                                                                "text": "25"
+                                                            },
+                                                            {
+                                                                "value": "6",
+                                                                "text": "30"
+                                                            },
+                                                            {
+                                                                "value": "7",
+                                                                "text": "35"
+                                                            },
+                                                            {
+                                                                "value": "8",
+                                                                "text": "40"
+                                                            },
+                                                            {
+                                                                "value": "9",
+                                                                "text": "45"
+                                                            },
+                                                            {
+                                                                "value": "10",
+                                                                "text": "50"
+                                                            },
+                                                            {
+                                                                "value": "11",
+                                                                "text": "55"
+                                                            }
+                                                        ],
+                                                        "value": "5",
+                                                        "noBlankOption": true
+                                                    }
+                                                },
+                                                "period": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_AM_PM"
+                                                        },
+                                                        "text": "AM/PM:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_AM_PM"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "0",
+                                                                "text": "AM"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "PM"
+                                                            }
+                                                        ],
+                                                        "value": "1",
+                                                        "noBlankOption": true
+                                                    }
+                                                }
+                                            },
+                                            "properties": {
+                                                "legend": "Event Generated Begin Date:"
+                                            }
+                                        }]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [{
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [{
+                                            "type": "dateTime",
+                                            "template": "composite",
+                                            "parts": {
+                                                "date": {
+                                                    "type": "date",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DATE"
+                                                        },
+                                                        "text": "Date:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "text",
+                                                            "name": "E_DATE",
+                                                            "id": "E_DATE",
+                                                            "value": "09/09/9010",
+                                                            "maxlength": "10"
+                                                        }
+                                                    }
+                                                },
+                                                "hour": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_HOUR"
+                                                        },
+                                                        "text": "Hour:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_HOUR"
+                                                        },
+                                                        "options": [{
+                                                                "value": "0",
+                                                                "text": "01"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "02"
+                                                            },
+                                                            {
+                                                                "value": "2",
+                                                                "text": "03"
+                                                            },
+                                                            {
+                                                                "value": "3",
+                                                                "text": "04"
+                                                            },
+                                                            {
+                                                                "value": "4",
+                                                                "text": "05"
+                                                            },
+                                                            {
+                                                                "value": "5",
+                                                                "text": "06"
+                                                            },
+                                                            {
+                                                                "value": "6",
+                                                                "text": "07"
+                                                            },
+                                                            {
+                                                                "value": "7",
+                                                                "text": "08"
+                                                            },
+                                                            {
+                                                                "value": "8",
+                                                                "text": "09"
+                                                            },
+                                                            {
+                                                                "value": "9",
+                                                                "text": "10"
+                                                            },
+                                                            {
+                                                                "value": "10",
+                                                                "text": "11"
+                                                            },
+                                                            {
+                                                                "value": "11",
+                                                                "text": "12"
+                                                            }
+                                                        ],
+                                                        "value": "4",
+                                                        "noBlankOption": true
+                                                    }
+                                                },
+                                                "minute": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_MINUTE"
+                                                        },
+                                                        "text": "Minute:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_MINUTE"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "0",
+                                                                "text": "00"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "05"
+                                                            },
+                                                            {
+                                                                "value": "2",
+                                                                "text": "10"
+                                                            },
+                                                            {
+                                                                "value": "3",
+                                                                "text": "15"
+                                                            },
+                                                            {
+                                                                "value": "4",
+                                                                "text": "20"
+                                                            },
+                                                            {
+                                                                "value": "5",
+                                                                "text": "25"
+                                                            },
+                                                            {
+                                                                "value": "6",
+                                                                "text": "30"
+                                                            },
+                                                            {
+                                                                "value": "7",
+                                                                "text": "35"
+                                                            },
+                                                            {
+                                                                "value": "8",
+                                                                "text": "40"
+                                                            },
+                                                            {
+                                                                "value": "9",
+                                                                "text": "45"
+                                                            },
+                                                            {
+                                                                "value": "10",
+                                                                "text": "50"
+                                                            },
+                                                            {
+                                                                "value": "11",
+                                                                "text": "55"
+                                                            }
+                                                        ],
+                                                        "value": "5",
+                                                        "noBlankOption": true
+                                                    }
+                                                },
+                                                "period": {
+                                                    "type": "select",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_AM_PM"
+                                                        },
+                                                        "text": "AM/PM:",
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_AM_PM"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "0",
+                                                                "text": "AM"
+                                                            },
+                                                            {
+                                                                "value": "1",
+                                                                "text": "PM"
+                                                            }
+                                                        ],
+                                                        "value": "1",
+                                                        "noBlankOption": true
+                                                    }
+                                                }
+                                            },
+                                            "properties": {
+                                                "legend": "Event Generated End Date:"
+                                            }
+                                        }]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "buttonGroup",
+                                "contents": [{
+                                    "type": "column",
+                                    "template": "buttonGroup",
+                                    "width": "half",
+                                    "push": "half",
+                                    "align": "right",
+                                    "contents": [{
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "type": "button",
+                                                    "name": "E_CLEAR",
+                                                    "id": "E_CLEAR"
+                                                },
+                                                "text": "Clear"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "type": "button",
+                                                    "name": "E_SEARCH",
+                                                    "id": "E_SEARCH"
+                                                },
+                                                "primary": true,
+                                                "text": "Search"
+                                            }
+                                        }
+                                    ]
+                                }]
+                            },
+                            {
+                                "template": "table",
+                                "title": "BEEFS Events 1 - 999 of 9,999 Rows",
+                                "attributes": {
+                                    "id": "E_table_beep_events_result_set"
+                                },
+                                "paging": {
+                                    "previous": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "E_Previous",
+                                                "id": "E_Previous"
+                                            },
+                                            "text": "Previous"
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "E_Next",
+                                                "id": "E_Next"
+                                            },
+                                            "text": "Next"
+                                        }
+                                    },
+                                },
+                                "head": {
+                                    "rows": [{
+                                        "columns": [{
+                                                "type": "header",
+                                                "text": "Event ID"
+                                            },
+                                            {
+                                                "type": "header",
+                                                "text": "Generated TS"
+                                            },
+                                            {
+                                                "type": "header",
+                                                "text": "Processed TS"
+                                            },
+                                            {
+                                                "type": "header",
+                                                "text": "Event Status"
+                                            },
+                                            {
+                                                "type": "header",
+                                                "text": "Drill down to More Details",
+                                                "style": "min-width",
+                                                "hideLabel": true,
+                                                "attributes": {
+                                                    "data-type": "primaryButton"
+                                                },
+                                                "responsive": {
+                                                    "primaryButton": true
+                                                }
+                                            }
+                                        ]
+                                    }]
+                                },
+                                "body": {
+                                    "rows": [{
+                                            "columns": [{
+                                                    "text": "123"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "Failed"
+                                                },
+                                                {
+                                                    "contents": [{
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "BTN_DRILL_DOWN",
+                                                                "type": "button"
+                                                            },
+                                                            "icon": "drill-down",
+                                                            "text": "Drill Down to More Details"
+                                                        }
+                                                    }]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [{
+                                                    "text": "124"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "Success"
+                                                }, {
+                                                    "contents": [{
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "BTN_DRILL_DOWN",
+                                                                "type": "button"
+                                                            },
+                                                            "icon": "drill-down",
+                                                            "text": "Drill Down to More Details"
+                                                        }
+                                                    }]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [{
+                                                    "text": "125"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "Success"
+                                                },
+                                                {
+                                                    "contents": [{
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "BTN_DRILL_DOWN",
+                                                                "type": "button"
+                                                            },
+                                                            "icon": "drill-down",
+                                                            "text": "Drill Down to More Details"
+                                                        }
+                                                    }]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [{
+                                                    "text": "126"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "12/12/2017 15:01:34:43"
+                                                },
+                                                {
+                                                    "text": "Failed"
+                                                },
+                                                {
+                                                    "contents": [{
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "BTN_DRILL_DOWN",
+                                                                "type": "button"
+                                                            },
+                                                            "icon": "drill-down",
+                                                            "text": "Drill Down to More Details"
+                                                        }
+                                                    }]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+
+                            {
+                                "type": "section",
+                                "contents": [{
+                                        "template": "group",
+                                        "title": "Payload Value",
+                                        "type": "header"
+                                    },
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [{
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [{
+                                                "type": "textarea",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_PAYLOAD"
+                                                    },
+                                                    "text": "Payload:"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_PAYLOAD",
+                                                        "id": "E_PAYLOAD",
+                                                        "rows": "5",
+                                                        "cols": "100",
+                                                        "value": "Lorem ipsumn Lorem ipsumnLorem ipsumnLorem ipsumnLorem ipsumnLorem ipsumnLorem ipsumnLorem ipsumnLorem ipsumnLorem ipsumn."
+                                                    },
+                                                    "style": "top-align-label"
+                                                }
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+
+                        ]
+                    }]
+                }]
+            }
+        };
+    </script>
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'emp', 'uimockup', 'domReady!'], function ($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            uiMockup.createPageDataStore(function (results) {
+                emp.init();
+            });
+        });
+    </script>
+</body>
+
+</html>

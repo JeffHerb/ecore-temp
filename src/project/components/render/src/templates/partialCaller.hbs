@@ -1,0 +1,9 @@
+{{#ifCond v1=this.partialTemp op="===" v2="searchInputBox"~}}
+
+	{{~> _searchBoxInputs selection=this.arguments.selection values=this.arguments.values ~}}
+
+{{~else~}}
+
+    {{~> (getPartialName this.partialTemp) this.arguments ~}}
+
+{{/ifCond~}}

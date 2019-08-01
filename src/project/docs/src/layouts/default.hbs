@@ -1,0 +1,27 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{title}}</title>
+        <link href="../../css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+        <div id="body-wrapper">
+            {{> body}}
+        </div>
+    </body>
+    <script id="require" src="../../js/main.js"></script>
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+
+    </script>
+
+</html>

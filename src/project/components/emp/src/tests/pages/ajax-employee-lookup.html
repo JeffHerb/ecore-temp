@@ -1,0 +1,971 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template -Ajax Employee Lookup</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData = {
+        "tabset": {
+            "id": "CMTEST01",
+            "url": "\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S",
+            "name": "Case Management",
+        },
+        "screen": {
+            "id": "CM0060S",
+        },
+        "pagePrefs": {
+            "tables": []
+        },
+        "favorites": {
+            "data": {
+                "tabsets": [
+                    {
+                        "id": "1",
+                        "label": "Case Work",
+                        "tabsets": [
+                            {
+                                "label":"Collection Agency",
+                                "url":"#",
+                                "id":"CollectionAgency",
+                                "parent":"1",
+                                "seqno":1
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "label": "Phone Work",
+                        "tabsets": []
+                    }
+                ],
+            },
+            "lastUpdated": {
+                "client": 0
+            }
+        },
+        "page": {
+            "contents": [
+                {
+                    "template": "globalHeader",
+
+                    "page": {
+                        "title": "Taxpayer Data",
+                    }
+                },
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "template": "group",
+                                    "title": "Taxpayer Data",
+                                    "type": "header"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DOB"
+                                                        },
+                                                        "text": "Date of Birth:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_DOB",
+                                                            "name": "E_DOB",
+                                                            "value": "01/20/1935"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_COLLECTION_ID"
+                                                        },
+                                                        "text": "Collection case ID:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_COLLECTION_ID",
+                                                            "name": "E_COLLECTION_ID",
+                                                            "value": "E-987654321-1"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED"
+                                                        },
+                                                        "text": "Last Updated:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED",
+                                                            "name": "E_LAST_UPDATED",
+                                                            "value": "06/26/2013"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_BY"
+                                                        },
+                                                        "text": "Last Updated By:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_BY",
+                                                            "name": "E_LAST_UPDATED_BY",
+                                                            "value": "12345",
+                                                            "data-title": "John Jacob Jinglehimerscmit",
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "template": "group",
+                                    "title": "Taxpayer Data - Remote",
+                                    "type": "header"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DOB"
+                                                        },
+                                                        "text": "Date of Birth:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_DOB_REMOTE",
+                                                            "name": "E_DOB_REMOTE",
+                                                            "value": "01/20/1935"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_COLLECTION_ID_REMOTE"
+                                                        },
+                                                        "text": "Collection case ID:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_COLLECTION_ID_REMOTE",
+                                                            "name": "E_COLLECTION_ID_REMOTE",
+                                                            "value": "E-123456789-1"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_REMOTE"
+                                                        },
+                                                        "text": "Last Updated:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_REMOTE",
+                                                            "name": "E_LAST_UPDATED_REMOTE",
+                                                            "value": "07/20/2014"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_BY_REMOTE"
+                                                        },
+                                                        "text": "Last Updated By - Remote:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_BY_REMOTE",
+                                                            "name": "E_LAST_UPDATED_BY_REMOTE",
+                                                            "value": "56789",
+                                                            "data-tooltip-url":"http://localhost:3000/ajaxEmployee-56789",
+
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        // {
+                        //     "type": "section",
+                        //     "contents": [
+                        //         {
+                        //             "type": "employeeSearch",
+                        //             "template": "composite",
+                        //             "properties": {
+                        //                 "url": "somerequesturl"
+                        //             }
+                        //         }
+                        //     ]
+                        // },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "template": "table",
+                                    "title": "Simple Table",
+                                    "attributes": {
+                                        "id": "E_STANDARD_TABLE"
+                                    },
+                                    "head": {
+                                        "rows": [
+                                            {
+                                                "columns": [
+                                                    {
+                                                        "type": "header",
+                                                        "text": "Last Updated By"
+                                                    },
+                                                    {
+                                                        "type": "header",
+                                                        "text": "Column 2"
+                                                    },
+                                                    {
+                                                        "type": "header",
+                                                        "text": "Column 3"
+                                                    },
+                                                    {
+                                                        "type": "header",
+                                                        "text": "Column 4"
+                                                    },
+                                                    {
+                                                        "type": "header",
+                                                        "text": "Column 5"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "body": {
+                                        "rows": [
+                                            {
+                                                "columns": [
+                                                    {
+                                                        "contents": [
+                                                            {
+                                                                "type": "text",
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "attributes": {
+                                                                        "id": "E_LAST_UPDATED_BY_TABLE_1",
+                                                                        "name": "E_LAST_UPDATED_BY_TABLE_1",
+                                                                        "value": "45678",
+                                                                        "data-tooltip-url":"http://localhost:3000/ajaxEmployee-456781"
+                                                                    },
+                                                                    "readOnly": true,
+                                                                    "style": "employee"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "text": "Data 2"
+                                                    },
+                                                    {
+                                                        "text": "Data 3"
+                                                    },
+                                                    {
+                                                        "text": "Data 4"
+                                                    },
+                                                    {
+                                                        "text": "Data 5"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "template": "group",
+                                    "title": "Taxpayer Data - Remote - Missing Name Data",
+                                    "type": "header"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DOB"
+                                                        },
+                                                        "text": "Date of Birth:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_DOB_REMOTE",
+                                                            "name": "E_DOB_REMOTE",
+                                                            "value": "01/20/1935"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_COLLECTION_ID_REMOTE"
+                                                        },
+                                                        "text": "Collection case ID:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_COLLECTION_ID_REMOTE",
+                                                            "name": "E_COLLECTION_ID_REMOTE",
+                                                            "value": "E-123456789-1"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_REMOTE_1"
+                                                        },
+                                                        "text": "Last Updated:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_REMOTE_1",
+                                                            "name": "E_LAST_UPDATED_REMOTE_1",
+                                                            "value": "07/20/2014"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_BY_REMOTE_1"
+                                                        },
+                                                        "text": "Last Updated By - Remote:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_BY_REMOTE_1",
+                                                            "name": "E_LAST_UPDATED_BY_REMOTE_1",
+                                                            "value": "99999",
+                                                            "data-tooltip-url":"http://localhost:3000/ajaxEmployee-99999",
+                                                            "title": "Click to load employee name"
+                                                        },
+                                                        "readOnly": true,
+                                                        "style": "employee"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "template": "group",
+                                    "title": "Taxpayer Data - Remote - Return Message Failure",
+                                    "type": "header"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DOB"
+                                                        },
+                                                        "text": "Date of Birth:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_DOB_REMOTE",
+                                                            "name": "E_DOB_REMOTE",
+                                                            "value": "01/20/1935"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_COLLECTION_ID_REMOTE"
+                                                        },
+                                                        "text": "Collection case ID:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_COLLECTION_ID_REMOTE",
+                                                            "name": "E_COLLECTION_ID_REMOTE",
+                                                            "value": "E-123456789-1"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_REMOTE_2"
+                                                        },
+                                                        "text": "Last Updated:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_REMOTE_2",
+                                                            "name": "E_LAST_UPDATED_REMOTE_2",
+                                                            "value": "07/20/2014"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_BY_REMOTE_2"
+                                                        },
+                                                        "text": "Last Updated By - Remote:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_BY_REMOTE_2",
+                                                            "name": "E_LAST_UPDATED_BY_REMOTE_2",
+                                                            "value": "11111",
+                                                            "data-tooltip-url":"http://localhost:3000/ajaxEmployee-11111",
+                                                            "title": "Click to load employee name"
+                                                        },
+                                                        "readOnly": true,
+                                                        "style": "employee"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "template": "group",
+                                    "title": "Taxpayer Data - Remote - Failed Ajax Request",
+                                    "type": "header"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_DOB"
+                                                        },
+                                                        "text": "Date of Birth:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_DOB_REMOTE",
+                                                            "name": "E_DOB_REMOTE",
+                                                            "value": "01/20/1935"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_COLLECTION_ID_REMOTE"
+                                                        },
+                                                        "text": "Collection case ID:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_COLLECTION_ID_REMOTE",
+                                                            "name": "E_COLLECTION_ID_REMOTE",
+                                                            "value": "E-123456789-1"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_REMOTE_3"
+                                                        },
+                                                        "text": "Last Updated:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_REMOTE_3",
+                                                            "name": "E_LAST_UPDATED_REMOTE_3",
+                                                            "value": "07/20/2014"
+                                                        },
+                                                        "readOnly": true
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "width": "half",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_LAST_UPDATED_BY_REMOTE_3"
+                                                        },
+                                                        "text": "Last Updated By - Remote:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_LAST_UPDATED_BY_REMOTE_3",
+                                                            "name": "E_LAST_UPDATED_BY_REMOTE_3",
+                                                            "value": "22222",
+                                                            "data-tooltip-url":"http://localhost:3000/ajaxEmployee-22222",
+                                                            "title": "Click to load employee name"
+                                                        },
+                                                        "readOnly": true,
+                                                        "style": "employee"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ]
+        }
+    }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+    <style>
+    body{
+        padding-bottom:200px;
+    }
+    </style>
+
+</html>
+<!-- JSON SERVER TEST DATA -->
+
+<!--
+
+"ajaxEmployee-45678":
+    {
+      "messages": [],
+      "result": [
+        {
+          "method": "data",
+          "dest": "",
+          "body": {
+            "employeeId": "45678",
+            "lastName": "SAMMY",
+            "firstName": "SAM",
+            "middleInitial": null,
+            "gradeCode": "99",
+            "titleCode": "9999999",
+            "titleDesc": "OUTSIDE LINE/EMP",
+            "agencyCode": "OTHER",
+            "hoe": {
+              "unitId": "DBD",
+              "levelCode": "40",
+              "levelDesc": "SECTION/D-O",
+              "unitName": "AUTOMATED TELEPHONE SECT",
+              "assgnDate": "2003-06-11",
+              "roleCode": "V",
+              "roleDesc": null,
+              "addrLine1": "DBD ADDRESS",
+              "addrLine2": "W.A. HARRIMAN CAMPUS",
+              "addrCity": "ALBANY",
+              "addrState": "NY",
+              "addrBaseZip": "12227",
+              "addrExtZip": null,
+              "areaCode": "518",
+              "exchPhone": "455",
+              "fourDigitPhone": "7811",
+              "extPhone": "5166"
+            }
+          },
+          "messages": []
+        }
+      ],
+      "status": "success"
+    },
+  "ajaxEmployee-56789":
+    {
+      "messages": [],
+      "result": [
+        {
+          "method": "data",
+          "dest": "",
+          "body": {
+            "employeeId": "56789",
+            "lastName": "SMITH",
+            "firstName": "JOHN",
+            "middleInitial": "A",
+            "gradeCode": "99",
+            "titleCode": "9999999",
+            "titleDesc": "OUTSIDE LINE/EMP",
+            "agencyCode": "OTHER",
+            "hoe": {
+              "unitId": "DBD",
+              "levelCode": "40",
+              "levelDesc": "SECTION/D-O",
+              "unitName": "AUTOMATED TELEPHONE SECT",
+              "assgnDate": "2003-06-11",
+              "roleCode": "V",
+              "roleDesc": null,
+              "addrLine1": "DBD ADDRESS",
+              "addrLine2": "W.A. HARRIMAN CAMPUS",
+              "addrCity": "ALBANY",
+              "addrState": "NY",
+              "addrBaseZip": "12227",
+              "addrExtZip": null,
+              "areaCode": "518",
+              "exchPhone": "455",
+              "fourDigitPhone": "7811",
+              "extPhone": "5166"
+            }
+          },
+          "messages": []
+        }
+      ],
+      "status": "success"
+    },
+    "ajaxEmployee-99999":
+    {
+      "messages": [],
+      "result": [
+        {
+          "method": "data",
+          "dest": "",
+          "body": {
+            "employeeId": "99999",
+            "lastName": "",
+            "firstName": "",
+            "middleInitial": "",
+            "gradeCode": "99",
+            "titleCode": "9999999",
+            "titleDesc": "OUTSIDE LINE/EMP",
+            "agencyCode": "OTHER",
+            "hoe": {
+              "unitId": "DBD",
+              "levelCode": "40",
+              "levelDesc": "SECTION/D-O",
+              "unitName": "AUTOMATED TELEPHONE SECT",
+              "assgnDate": "2003-06-11",
+              "roleCode": "V",
+              "roleDesc": null,
+              "addrLine1": "DBD ADDRESS",
+              "addrLine2": "W.A. HARRIMAN CAMPUS",
+              "addrCity": "ALBANY",
+              "addrState": "NY",
+              "addrBaseZip": "12227",
+              "addrExtZip": null,
+              "areaCode": "518",
+              "exchPhone": "455",
+              "fourDigitPhone": "7811",
+              "extPhone": "5166"
+            }
+          },
+          "messages": []
+        }
+      ],
+      "status": "success"
+    },
+    "ajaxEmployee-11111":
+    {
+      "messages": [],
+      "result": [
+        {
+          "method": "data",
+          "dest": "",
+          "body": {
+            "employeeId": "11111",
+            "lastName": "",
+            "firstName": "",
+            "middleInitial": "",
+            "gradeCode": "99",
+            "titleCode": "9999999",
+            "titleDesc": "OUTSIDE LINE/EMP",
+            "agencyCode": "OTHER",
+            "hoe": {
+              "unitId": "DBD",
+              "levelCode": "40",
+              "levelDesc": "SECTION/D-O",
+              "unitName": "AUTOMATED TELEPHONE SECT",
+              "assgnDate": "2003-06-11",
+              "roleCode": "V",
+              "roleDesc": null,
+              "addrLine1": "DBD ADDRESS",
+              "addrLine2": "W.A. HARRIMAN CAMPUS",
+              "addrCity": "ALBANY",
+              "addrState": "NY",
+              "addrBaseZip": "12227",
+              "addrExtZip": null,
+              "areaCode": "518",
+              "exchPhone": "455",
+              "fourDigitPhone": "7811",
+              "extPhone": "5166"
+            }
+          },
+          "messages": []
+        }
+      ],
+      "status": "failure"
+    }
+
+ -->

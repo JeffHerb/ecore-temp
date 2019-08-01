@@ -1,0 +1,3652 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>EMP - Selection Setup</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData =
+{
+  "page": {
+    "contents": [
+      {
+        "template": "globalHeader",
+        "tabsets": {
+          "type": "unordered",
+          "template": "lists",
+          "options": [
+            {
+              "template": "link",
+              "attributes": {
+                "href": "page.jsp"
+              },
+              "text": "TP Sum"
+            },
+            // {
+            //   "contents": [
+            //     // {
+            //     //   "template": "link",
+            //     //   "attributes": {
+            //     //     "href": "page.jsp"
+            //     //   },
+            //     //   "text": "Section Setup"
+            //     // }
+            //   ]
+            // },
+            // {
+            //   "contents": [
+            //     // {
+            //     //   "template": "link",
+            //     //   "attributes": {
+            //     //     "href": "page.jsp"
+            //     //   },
+            //     //   "text": "Name History"
+            //     // }
+            //   ],
+            //   //"selected": true
+            // },
+            // {
+            //   "contents": [
+            //     // {
+            //     //   "template": "link",
+            //     //   "attributes": {
+            //     //     "href": "page.jsp"
+            //     //   },
+            //     //   "text": "Address Sum"
+            //     // }
+            //   ]
+            // },
+            // {
+            //   "contents": [
+            //     // {
+            //     //   "template": "link",
+            //     //   "attributes": {
+            //     //     "href": "page.jsp"
+            //     //   },
+            //     //   "text": "Events"
+            //     // }
+            //   ]
+            // },
+            // {
+            //   "contents": [
+            //     // {
+            //     //   "template": "link",
+            //     //   "attributes": {
+            //     //     "href": "page.jsp"
+            //     //   },
+            //     //   "text": "Correspondence"
+            //     // }
+            //   ]
+            // }
+          ],
+          "collapse": true,
+          "title": "Tabset menu title"
+        },
+        "page": {
+          "title": "Section Setup"
+        },
+        "buttons": {
+          "retrieve": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "retrieve-button",
+                "name": "retrieve-button",
+                "className": "cui-button-primary emp-search-retrieve",
+                "tabindex": 1,
+                "type": "submit"
+              },
+              "text": "Retrieve"
+            }
+          },
+          "clear": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "clear-button",
+                "name": "clear-button",
+                "className": "emp-button-search-clear",
+                "tabindex": 1,
+                "title": "Leave ID and clear the rest",
+                "type": "button"
+              },
+              "text": "Clear"
+            }
+          },
+          "clearAll": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "clear-all-button",
+                "name": "clear-all-button",
+                "className": "emp-button-search-clear-all",
+                "tabindex": 1,
+                "title": "Clear all fields in search box",
+                "type": "button"
+              },
+              "text": "All"
+            }
+          },
+          "hideSearchBox": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "emp-search-toggle",
+                "className": "emp-search-toggle",
+                "tabindex": 1,
+                "title": "Hide the search box",
+                "type": "button"
+              },
+              "text": "Hide the search box"
+            }
+          },
+          "sendID": {
+            "template": "link",
+            "attributes": {
+              "role": "button"
+            },
+            "text": "Send ID"
+          },
+          "getID": {
+            "template": "link",
+            "attributes": {
+              "role": "button"
+            },
+            "text": "Get ID"
+          },
+          "switch": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attribute": {
+                "type": "button"
+              },
+              "text": "Switch"
+            }
+          }
+        }
+      },
+      {
+        "template": "pagebody",
+        "contents": [
+          {
+            "readOnly": true,
+            "attributes": {},
+            "type": "form",
+            "contents": [
+              {
+                "type": "row",
+                "template": "buttonGroup",
+                "contents": [
+                  {
+                    "type": "column",
+                    "template": "buttonGroup",
+                    "align": "right",
+                    "contents": [
+                      {
+                        "type": "button",
+                        "template": "field",
+                        "input": {
+                          "attributes": {
+                            "id": "contentReset",
+                            "type": "button"
+                          },
+                          "text": "Reset Content"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "row",
+                "template": "buttonGroup",
+                "contents": [
+                  {
+                    "type": "column",
+                    "template": "buttonGroup",
+                    "align": "right",
+                    "contents": [
+                      {
+                        "type": "button",
+                        "template": "field",
+                        "input": {
+                          "attributes": {
+                            "id": "contentSetOne",
+                            "type": "button"
+                          },
+                          "text": "Replace With Content Set One"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "row",
+                "template": "buttonGroup",
+                "contents": [
+                  {
+                    "type": "column",
+                    "template": "buttonGroup",
+                    "align": "right",
+                    "contents": [
+                      {
+                        "type": "button",
+                        "template": "field",
+                        "input": {
+                          "attributes": {
+                            "id": "contentSetTwo",
+                            "type": "button"
+                          },
+                          "text": "Replace With Content Set Two"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "row",
+                "template": "buttonGroup",
+                "contents": [
+                  {
+                    "type": "column",
+                    "template": "buttonGroup",
+                    "align": "right",
+                    "contents": [
+                      {
+                        "type": "button",
+                        "template": "field",
+                        "input": {
+                          "attributes": {
+                            "id": "sectionSetup",
+                            "type": "button"
+                          },
+                          "text": "Trigger Section Setup"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "template": "universal",
+                "attributes": {
+                  "id": "emp-section"
+                },
+                "contents": [
+                  {
+                    "type": "section",
+                    "contents": [
+                      {
+                        "type": "header",
+                        "template": "group",
+                        "title": "Textbox",
+                        "contents": [
+                          {
+                            "text": "Text Test"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "menu": {
+    "items": [
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Client Information"
+      },
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Account Information"
+      },
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Work Management"
+      },
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Special Services"
+      }
+    ]
+  }
+}
+</script>
+
+  <script id="require" src="../../../dist/js/main.js"></script>
+  <script>
+      require(['domReady!'], function() {
+
+        console.log("page is done");
+
+        $replaceSection = $('#emp-section');
+
+        var defaultContent =
+        {
+          "template": "universal",
+          "attributes": {
+            "id": "emp-section"
+          },
+          "contents": [
+            {
+              "type": "section",
+              "contents": [
+                {
+                  "type": "header",
+                  "template": "group",
+                  "title": "Textbox",
+                  "contents": [
+                    {
+                      "text": "Text Test"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        };
+
+        var replacementDataSetOne =
+        {
+          "contents": [
+            {
+              "template": "universal",
+              "attributes": {
+                "id": "emp-section"
+              },
+              "contents": [
+                {
+                  "template": "table",
+                  "title": "Active Exception",
+                  "attributes": {
+                    "id": "activeException-Table"
+                  },
+                  "selectable": true,
+                  "selectionType": "single",
+                  "head": {
+                    "rows": [
+                      {
+                        "columns": [
+                          {
+                            "type": "header",
+                            "text": "Override",
+                            "attributes": {
+                              "data-type": "alpha",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Clear",
+                            "attributes": {
+                              "data-type": "alpha",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Exception",
+                            "attributes": {
+                              "data-type": "alpha",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Non Reviewable",
+                            "attributes": {
+                              "data-type": "alpha",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "DLN",
+                            "attributes": {
+                              "data-type": "numeric",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Form",
+                            "attributes": {
+                              "data-type": "alpha",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Liability Period Begin Date",
+                            "attributes": {
+                              "data-type": "date",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Liability Period End Date",
+                            "attributes": {
+                              "data-type": "date",
+                              "data-colmap": ""
+                            }
+                          },
+                          {
+                            "type": "header",
+                            "text": "Drill Down to More Details",
+                            "attributes": {
+                              "data-type": "button",
+                              "data-colmap": ""
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "body": {
+                    "rows": [
+                      {
+                        "columns": [
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": "1320 - TAX DUE DISCREPANCY"
+                          },
+                          {
+                            "text": "NR"
+                          },
+                          {
+                            "text": "123456789"
+                          },
+                          {
+                            "text": "CT-30"
+                          },
+                          {
+                            "text": "01/01/2012"
+                          },
+                          {
+                            "text": "01/01/2013"
+                          },
+                          {
+                            "text": "Drill Down to More Details"
+                          }
+                        ],
+                        "key": 0
+                      },
+                      {
+                        "columns": [
+                          {
+                            "text": "Exception"
+                          },
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": "1320 - TAX DUE DISCREPANCY"
+                          },
+                          {
+                            "text": "NR"
+                          },
+                          {
+                            "text": "123456789"
+                          },
+                          {
+                            "text": "CT-30"
+                          },
+                          {
+                            "text": "01/01/2012"
+                          },
+                          {
+                            "text": "01/01/2013"
+                          },
+                          {
+                            "text": "Drill Down to More Details"
+                          }
+                        ],
+                        "key": 1
+                      },
+                      {
+                        "columns": [
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": "1320 - TAX DUE DISCREPANCY"
+                          },
+                          {
+                            "text": "NR"
+                          },
+                          {
+                            "text": "123456789"
+                          },
+                          {
+                            "text": "CT-30"
+                          },
+                          {
+                            "text": "01/01/2012"
+                          },
+                          {
+                            "text": "01/01/2013"
+                          },
+                          {
+                            "text": "Drill Down to More Details"
+                          }
+                        ],
+                        "key": 2
+                      },
+                      {
+                        "columns": [
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": "1320 - TAX DUE DISCREPANCY"
+                          },
+                          {
+                            "text": "NR"
+                          },
+                          {
+                            "text": "123456789"
+                          },
+                          {
+                            "text": "CT-30"
+                          },
+                          {
+                            "text": "01/01/2012"
+                          },
+                          {
+                            "text": "01/01/2013"
+                          },
+                          {
+                            "text": "Drill Down to More Details"
+                          }
+                        ],
+                        "key": 3
+                      },
+                      {
+                        "columns": [
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": ""
+                          },
+                          {
+                            "text": "1320 - TAX DUE DISCREPANCY"
+                          },
+                          {
+                            "text": "NR"
+                          },
+                          {
+                            "text": "123456789"
+                          },
+                          {
+                            "text": "CT-30"
+                          },
+                          {
+                            "text": "01/01/2012"
+                          },
+                          {
+                            "text": "01/01/2013"
+                          },
+                          {
+                            "text": "Drill Down to More Details"
+                          }
+                        ],
+                        "key": 4
+                      }
+                    ]
+                  }
+                }
+              ]
+           }
+          ]
+        };
+
+        var replacementDataSetTwo =
+        {
+          "contents": [
+            {
+              "template": "universal",
+              "attributes": {
+                "id": "emp-section"
+              },
+              "contents": [
+                {
+                  "contents": [
+                    {
+                      "attributes": {
+                        "method": "post",
+                        "action": "/EMPIRE/gateway//AMP120T.tabset/AMP120S",
+                        "id": "form_content",
+                        "name": "form_content"
+                      },
+                      "contents": [
+                        {
+                          "parts": {
+                            "asof": {
+                              "parts": {},
+                              "properties": {
+                                "datetime": "2016-08-03 11:18:36"
+                              },
+                              "type": "asof",
+                              "template": "composite"
+                            },
+                            "notifiers": {
+                              "template": "notifierGroup"
+                            }
+                          },
+                          "properties": {},
+                          "type": "pageInfo",
+                          "template": "composite"
+                        },
+                        {
+                          "attributes": {},
+                          "contents": [
+                            {
+                              "title": "Audit Case Details",
+                              "template": "group",
+                              "type": "header"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_CASE_ID_V4"
+                                        },
+                                        "text": "Case ID:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "500001596",
+                                          "size": 10,
+                                          "aria-required": false,
+                                          "maxlength": 10,
+                                          "type": "text",
+                                          "name": "E_CASE_ID_V4",
+                                          "id": "E_CASE_ID_V4"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_CASE_STATE_V2"
+                                        },
+                                        "text": "Case State:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "Unassigned",
+                                          "size": 20,
+                                          "aria-required": false,
+                                          "maxlength": 20,
+                                          "type": "text",
+                                          "name": "caseState",
+                                          "id": "E_CASE_STATE_V2"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_KEY_CASE_ID"
+                                        },
+                                        "text": "Key Case ID:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "size": 10,
+                                          "aria-required": false,
+                                          "maxlength": 10,
+                                          "type": "text",
+                                          "name": "keyCaseID",
+                                          "id": "E_KEY_CASE_ID"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_TAX_TYPE_ARTICLE"
+                                        },
+                                        "text": "Tax Type/Article:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "Personal Income",
+                                          "size": 30,
+                                          "aria-required": false,
+                                          "maxlength": 30,
+                                          "type": "text",
+                                          "name": "E_TAX_TYPE_ARTICLE",
+                                          "id": "E_TAX_TYPE_ARTICLE"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_OWNER"
+                                        },
+                                        "text": "Owner:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "Criminal Investigations Div",
+                                          "size": 20,
+                                          "aria-required": false,
+                                          "maxlength": 20,
+                                          "type": "text",
+                                          "name": "owner",
+                                          "id": "E_OWNER",
+                                          "title": "This is a simple tooltip using a title attribute",
+                                          "data-title": "readonly hover text value"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_CATEGORY_V5"
+                                        },
+                                        "text": "Category:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "Personal Income",
+                                          "size": 35,
+                                          "aria-required": false,
+                                          "maxlength": 35,
+                                          "type": "text",
+                                          "name": "category",
+                                          "id": "E_CATEGORY_V5"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_PROGRAM_V5"
+                                        },
+                                        "text": "Program:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "CCED CASE REFERRAL (PIT)",
+                                          "size": 35,
+                                          "aria-required": false,
+                                          "maxlength": 35,
+                                          "type": "text",
+                                          "name": "program",
+                                          "id": "E_PROGRAM_V5"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_ASSIGNED_ORGANIZATION"
+                                        },
+                                        "text": "Assigned Organization:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "Audit, Audit Division Directors, Income Franchise Desk Audit, Audit Group 1, Unit 3, Team B",
+                                          "size": 70,
+                                          "aria-required": false,
+                                          "maxlength": 185,
+                                          "type": "text",
+                                          "name": "assignedOrganization",
+                                          "id": "E_ASSIGNED_ORGANIZATION"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_ASSIGNED_EMPLOYEE_NAME_V3"
+                                        },
+                                        "text": "Assigned Employee Name:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "size": 35,
+                                          "aria-required": false,
+                                          "maxlength": 35,
+                                          "type": "text",
+                                          "name": "assignedEmployeeName",
+                                          "id": "E_ASSIGNED_EMPLOYEE_NAME_V3"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "label": {
+                                            "attributes": {
+                                              "for": "E_JOINT_TAXPAYER_ID_WITH_ID_TYPE"
+                                            },
+                                            "text": "Joint Taxpayer ID:"
+                                          },
+                                          "input": {
+                                            "attributes": {
+                                              "value": "PA3-35-2854(IND)",
+                                              "size": 19,
+                                              "aria-required": false,
+                                              "maxlength": 19,
+                                              "type": "text",
+                                              "name": "jointTaxpayerID",
+                                              "id": "E_JOINT_TAXPAYER_ID_WITH_ID_TYPE"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "text"
+                                        },
+                                        {
+                                          "width": "half",
+                                          "attributes": {},
+                                          "contents": [
+                                            {
+                                              "attributes": {
+                                                "Rtitle": "popup",
+                                                "onclick": "emp.functionCall(event, 'emp.selectionPopup', [{'url':'/EMPIRE/gateway/AMP120T.tabset/AMP120S_framework_TPSEARCH/ID_SEARCH_ACTION', 'data':{'fw_session_id':'fw_default_session_id','idNumber':'E_JOINT_TAXPAYER_ID_WITH_ID_TYPE','idType':'IT'}},{'E_JOINT_TAXPAYER_ID_WITH_ID_TYPE':'2','E_JOINT_NAME':'3','EXTERNAL_TAXPAYER_ID':'6'}])",
+                                                "id": "Field32"
+                                              },
+                                              "icon": "popup",
+                                              "template": "selection"
+                                            }
+                                          ],
+                                          "template": "grid",
+                                          "type": "column"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "row"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "type": "hidden",
+                                          "name": "extId",
+                                          "id": "EXTERNAL_TAXPAYER_ID"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_JOINT_NAME"
+                                        },
+                                        "text": "Joint Name:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "BOGUS NAME BCIGIDCCJ",
+                                          "size": 70,
+                                          "aria-required": false,
+                                          "maxlength": 161,
+                                          "type": "text",
+                                          "name": "jointName",
+                                          "id": "E_JOINT_NAME"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_FILING_STATUS_V4"
+                                        },
+                                        "text": "Filing Status:"
+                                      },
+                                      "input": {
+                                        "value": "2",
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "name": "filingStatus",
+                                          "id": "E_FILING_STATUS_V4"
+                                        },
+                                        "options": [
+                                          {
+                                            "value": "4",
+                                            "text": "Head of household"
+                                          },
+                                          {
+                                            "value": "2",
+                                            "text": "Married filing joint"
+                                          },
+                                          {
+                                            "value": "3",
+                                            "text": "Married filing separate"
+                                          },
+                                          {
+                                            "value": "5",
+                                            "text": "Qualifying widow(er)"
+                                          },
+                                          {
+                                            "value": "1",
+                                            "text": "Single"
+                                          }
+                                        ]
+                                      },
+                                      "template": "field",
+                                      "type": "select"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_AUDIT_PERIOD_BEGIN"
+                                        },
+                                        "text": "Audit Period Begin:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "value": "01/01/2013",
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "summaryAuditPeriodBegin",
+                                          "id": "E_AUDIT_PERIOD_BEGIN",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_summaryAuditPeriodBegin",
+                                          "id": "FMT_summaryAuditPeriodBegin"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_AUDIT_CASE_STATUS_V3"
+                                        },
+                                        "text": "Audit Case Status:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "name": "auditCaseStatus",
+                                          "id": "E_AUDIT_CASE_STATUS_V3"
+                                        },
+                                        "options": [
+                                          {
+                                            "value": "060",
+                                            "text": "On Hold - other"
+                                          },
+                                          {
+                                            "value": "063",
+                                            "text": "Waiver Sent"
+                                          },
+                                          {
+                                            "value": "064",
+                                            "text": "Reviewing info received"
+                                          },
+                                          {
+                                            "value": "120",
+                                            "text": "Referred-Investigations"
+                                          },
+                                          {
+                                            "value": "022",
+                                            "text": "Extension Granted"
+                                          },
+                                          {
+                                            "value": "089",
+                                            "text": "Protest/Prior Audit Hold"
+                                          },
+                                          {
+                                            "value": "201",
+                                            "text": "Sent SOPAC"
+                                          },
+                                          {
+                                            "value": "014",
+                                            "text": "Awaiting IRS Info/Results"
+                                          },
+                                          {
+                                            "value": "202",
+                                            "text": "Case to be Closed"
+                                          },
+                                          {
+                                            "value": "136",
+                                            "text": "Referred for Prosecution"
+                                          },
+                                          {
+                                            "value": "059",
+                                            "text": "Waiting Related Case"
+                                          },
+                                          {
+                                            "value": "203",
+                                            "text": "Refund Hold"
+                                          },
+                                          {
+                                            "value": "137",
+                                            "text": "Awaiting Sentencing"
+                                          },
+                                          {
+                                            "value": "005",
+                                            "text": "Awaiting T/P or Rep Reply"
+                                          },
+                                          {
+                                            "value": "204",
+                                            "text": "Requesting better address"
+                                          },
+                                          {
+                                            "value": "017",
+                                            "text": "Awaiting Ooc/Opinion"
+                                          },
+                                          {
+                                            "value": "205",
+                                            "text": "Awaiting TAA Results"
+                                          },
+                                          {
+                                            "value": "018",
+                                            "text": "Initial Letter Sent"
+                                          },
+                                          {
+                                            "value": "008",
+                                            "text": "Request Supervisor Assistance\t"
+                                          },
+                                          {
+                                            "value": "019",
+                                            "text": "Follow-up Letter Sent"
+                                          }
+                                        ]
+                                      },
+                                      "template": "field",
+                                      "type": "select"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_AUDIT_PERIOD_END"
+                                        },
+                                        "text": "Audit Period End:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "value": "01/01/2013",
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "summaryPeriod",
+                                          "id": "E_AUDIT_PERIOD_END",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_summaryPeriod",
+                                          "id": "FMT_summaryPeriod"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_AUDIT_CASE_STATUS_DATE"
+                                        },
+                                        "text": "Audit Case Status Date:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "summaryAuditCaseStatDate",
+                                          "id": "E_AUDIT_CASE_STATUS_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_summaryAuditCaseStatDate",
+                                          "id": "FMT_summaryAuditCaseStatDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_CASE_STATUTE_DATE"
+                                        },
+                                        "text": "Case Statute Date:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "caseStatueDate",
+                                          "id": "E_CASE_STATUTE_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_caseStatueDate",
+                                          "id": "FMT_caseStatueDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_FIRST_CONTACT_DATE"
+                                        },
+                                        "text": "First Contact Date:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "firstContactDate",
+                                          "id": "E_FIRST_CONTACT_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_firstContactDate",
+                                          "id": "FMT_firstContactDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_CONSENT_DATE"
+                                        },
+                                        "text": "Consent Date:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "consentDate",
+                                          "id": "E_CONSENT_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_consentDate",
+                                          "id": "FMT_consentDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_LAST_CONTACT_DATE"
+                                        },
+                                        "text": "Last Contact Date:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "lastContactDate",
+                                          "id": "E_LAST_CONTACT_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_lastContactDate",
+                                          "id": "FMT_lastContactDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "style": "align-right",
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_TOTAL_REFUND_REQESTED"
+                                        },
+                                        "text": "Total Refund Requested ($):"
+                                      },
+                                      "input": {
+                                        "style": "align-right",
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "0.00",
+                                          "size": 27,
+                                          "aria-required": false,
+                                          "maxlength": 23,
+                                          "type": "text",
+                                          "name": "refundRequested",
+                                          "id": "E_TOTAL_REFUND_REQESTED",
+                                          "data-validation": "isCurrency(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_EARLIEST_CLAIM_DATE"
+                                        },
+                                        "text": "Earliest Claim Date:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "earliestClaimDate",
+                                          "id": "E_EARLIEST_CLAIM_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_earliestClaimDate",
+                                          "id": "FMT_earliestClaimDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "style": "align-right",
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_TOTAL_REFUND_ALLOWED"
+                                        },
+                                        "text": "Total Refund Allowed ($):"
+                                      },
+                                      "input": {
+                                        "style": "align-right",
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "0.00",
+                                          "size": 27,
+                                          "aria-required": false,
+                                          "maxlength": 23,
+                                          "type": "text",
+                                          "name": "refundAllowed",
+                                          "id": "E_TOTAL_REFUND_ALLOWED",
+                                          "data-validation": "isCurrency(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_EARLIEST_INTEREST_FREE_DATE"
+                                        },
+                                        "text": "Earliest Interest Free Date:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "estimatedInterestFreeDate",
+                                          "id": "E_EARLIEST_INTEREST_FREE_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_estimatedInterestFreeDate",
+                                          "id": "FMT_estimatedInterestFreeDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "style": "align-right",
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_ESTIMATED_REVENUE_V2"
+                                        },
+                                        "text": "Estimated Revenue ($):"
+                                      },
+                                      "input": {
+                                        "style": "align-right",
+                                        "attributes": {
+                                          "size": 27,
+                                          "aria-required": false,
+                                          "maxlength": 23,
+                                          "type": "text",
+                                          "name": "estimatedRevenue",
+                                          "id": "E_ESTIMATED_REVENUE_V2",
+                                          "data-validation": "isCurrency(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_ESTIMATED_COMPLETION_DATE"
+                                        },
+                                        "text": "Estimated Completion Date:"
+                                      },
+                                      "input": {
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "estimatedCompletionDate",
+                                          "id": "E_ESTIMATED_COMPLETION_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_estimatedCompletionDate",
+                                          "id": "FMT_estimatedCompletionDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_LAST_AFE_BACKUP_DATE"
+                                        },
+                                        "text": "Last AFE Backup Date:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "aria-required": false,
+                                          "type": "text",
+                                          "name": "AFEBackupDate",
+                                          "id": "E_LAST_AFE_BACKUP_DATE",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "date"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "value": "date",
+                                          "type": "hidden",
+                                          "name": "FMT_AFEBackupDate",
+                                          "id": "FMT_AFEBackupDate"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "hidden"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_TOTAL_CASE_HOURS"
+                                        },
+                                        "text": "Total Case Hours:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "0.00",
+                                          "size": 7,
+                                          "aria-required": false,
+                                          "maxlength": 7,
+                                          "type": "text",
+                                          "name": "totalCaseHours",
+                                          "id": "E_TOTAL_CASE_HOURS",
+                                          "data-validation": "isNumeric(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_LAST_UPDATED"
+                                        },
+                                        "text": "Last Updated:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "08/03/2016",
+                                          "size": 11,
+                                          "aria-required": false,
+                                          "maxlength": 10,
+                                          "type": "text",
+                                          "name": "lastUpdated",
+                                          "id": "E_LAST_UPDATED",
+                                          "data-validation": "dateValidator(document.form.name)"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                },
+                                {
+                                  "width": "half",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_LAST_UPDATED_BY"
+                                        },
+                                        "text": "Last Updated By:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "51232",
+                                          "size": 8,
+                                          "aria-required": false,
+                                          "maxlength": 8,
+                                          "type": "text",
+                                          "name": "E_LAST_UPDATED_BY",
+                                          "id": "E_LAST_UPDATED_BY"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "width": "full",
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "readOnly": true,
+                                      "label": {
+                                        "attributes": {
+                                          "for": "E_LAST_UPDATED_BY_NAME"
+                                        },
+                                        "text": "Last Updated By Name:"
+                                      },
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "value": "David T Prusinowski",
+                                          "size": 35,
+                                          "aria-required": false,
+                                          "maxlength": 35,
+                                          "type": "text",
+                                          "name": "E_LAST_UPDATED_BY_NAME",
+                                          "id": "E_LAST_UPDATED_BY_NAME"
+                                        }
+                                      },
+                                      "template": "field",
+                                      "type": "text"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "grid",
+                              "type": "row"
+                            },
+                            {
+                              "contents": [
+                                {
+                                  "align": "left",
+                                  "template": "buttonGroup",
+                                  "type": "column"
+                                },
+                                {
+                                  "align": "right",
+                                  "contents": [
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "title": "Download AFE Backup",
+                                          "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_DOWNLOAD_ACTION'}])",
+                                          "type": "button",
+                                          "accessKey": " ",
+                                          "name": "Field73",
+                                          "id": "Field73",
+                                          "data-validation": true
+                                        },
+                                        "text": "Download AFE Backup"
+                                      },
+                                      "template": "field",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "title": "Create AudAuto",
+                                          "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_CREATE_AUDAUTO_ACTION'}])",
+                                          "type": "button",
+                                          "accessKey": " ",
+                                          "name": "Field74",
+                                          "id": "Field74",
+                                          "data-validation": true
+                                        },
+                                        "text": "Create AudAuto"
+                                      },
+                                      "template": "field",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "title": "Subscribe",
+                                          "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_SUBSCRIBE_ACTION'}])",
+                                          "type": "button",
+                                          "accessKey": " ",
+                                          "name": "Field75",
+                                          "id": "Field75",
+                                          "data-validation": true
+                                        },
+                                        "text": "Subscribe"
+                                      },
+                                      "template": "field",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "template": "buttonGroup",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "buttonGroup",
+                              "type": "row"
+                            },
+                            {
+                              "attributes": {},
+                              "contents": [
+                                {
+                                  "title": "Issue(s) and Tax Effect",
+                                  "template": "group",
+                                  "type": "header"
+                                },
+                                {
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "width": "half",
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "attributes": {},
+                                          "contents": [
+                                            {
+                                              "label": {
+                                                "attributes": {
+                                                  "for": "E_ISSUE_V2"
+                                                },
+                                                "text": "Issue:"
+                                              },
+                                              "input": {
+                                                "attributes": {
+                                                  "size": 50,
+                                                  "aria-required": false,
+                                                  "maxlength": 50,
+                                                  "type": "text",
+                                                  "name": "issue",
+                                                  "id": "E_ISSUE_V2"
+                                                }
+                                              },
+                                              "template": "field",
+                                              "type": "text"
+                                            },
+                                            {
+                                              "width": "half",
+                                              "attributes": {},
+                                              "contents": [
+                                                {
+                                                  "attributes": {
+                                                    "title": "popup",
+                                                    "onclick": "emp.functionCall(event, 'emp.selectionPopup', [{'url':'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_ISSUE_POPUP_ACTION', 'data':{'fw_session_id':'fw_default_session_id'}},{'ISSUES_PRIMARY_CD':'1','E_ISSUE_V2':'2'}])",
+                                                    "id": "Field82"
+                                                  },
+                                                  "icon": "ipopup.gif",
+                                                  "template": "selection",
+                                                  "text": "pop"
+                                                }
+                                              ],
+                                              "template": "grid",
+                                              "type": "column"
+                                            }
+                                          ],
+                                          "template": "grid",
+                                          "type": "row"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "row"
+                                },
+                                {
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "width": "full",
+                                      "attributes": {
+                                        "style": "align-Left"
+                                      },
+                                      "contents": [
+                                        {
+                                          "style": "align-left",
+                                          "label": {
+                                            "attributes": {
+                                              "for": "E_CHOOSE_FROM_ALL_ISSUES"
+                                            },
+                                            "text": "Choose From All Issues"
+                                          },
+                                          "input": {
+                                            "style": "align-left",
+                                            "attributes": {
+                                              "value": "Y",
+                                              "aria-required": false,
+                                              "checked": "checked",
+                                              "type": "checkbox",
+                                              "name": "issListChkBx",
+                                              "id": "E_CHOOSE_FROM_ALL_ISSUES"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "checkbox"
+                                        },
+                                        {
+                                          "input": {
+                                            "attributes": {
+                                              "value": "false",
+                                              "type": "hidden",
+                                              "name": "_issListChkBx",
+                                              "id": "_issListChkBx"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "hidden"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "row"
+                                },
+                                {
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "width": "full",
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "input": {
+                                            "attributes": {
+                                              "type": "hidden",
+                                              "name": "issueDesc",
+                                              "id": "ISSUES_PRIMARY_CD"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "hidden"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "row"
+                                },
+                                {
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "width": "full",
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "label": {
+                                            "attributes": {
+                                              "for": "E_ESTIMATED_TAX_EFFECT"
+                                            },
+                                            "text": "Estimated Tax Effect ($):"
+                                          },
+                                          "input": {
+                                            "attributes": {
+                                              "size": 27,
+                                              "aria-required": false,
+                                              "maxlength": 23,
+                                              "type": "text",
+                                              "name": "estimatedTaxEffect",
+                                              "id": "E_ESTIMATED_TAX_EFFECT",
+                                              "data-validation": "isCurrency(document.form.name)"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "text"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "row"
+                                },
+                                {
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "width": "full",
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "label": {
+                                            "attributes": {
+                                              "for": "E_PLAN_OF_ACTION"
+                                            },
+                                            "text": "Plan of Action:"
+                                          },
+                                          "input": {
+                                            "attributes": {
+                                              "size": 75,
+                                              "aria-required": false,
+                                              "maxlength": 75,
+                                              "type": "text",
+                                              "name": "planOfAction",
+                                              "id": "E_PLAN_OF_ACTION"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "text"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "row"
+                                },
+                                {
+                                  "attributes": {},
+                                  "contents": [
+                                    {
+                                      "width": "half",
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "label": {
+                                            "attributes": {
+                                              "for": "E_FOLLOW_UP_DATE"
+                                            },
+                                            "text": "Follow-up Date:"
+                                          },
+                                          "input": {
+                                            "attributes": {
+                                              "aria-required": false,
+                                              "type": "text",
+                                              "name": "followUpDate",
+                                              "id": "E_FOLLOW_UP_DATE",
+                                              "data-validation": "dateValidator(document.form.name)"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "date"
+                                        },
+                                        {
+                                          "input": {
+                                            "attributes": {
+                                              "value": "date",
+                                              "type": "hidden",
+                                              "name": "FMT_followUpDate",
+                                              "id": "FMT_followUpDate"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "hidden"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    },
+                                    {
+                                      "width": "half",
+                                      "attributes": {},
+                                      "contents": [
+                                        {
+                                          "label": {
+                                            "attributes": {
+                                              "for": "E_COMPLETION_DATE"
+                                            },
+                                            "text": "Completion Date:"
+                                          },
+                                          "input": {
+                                            "attributes": {
+                                              "aria-required": false,
+                                              "type": "text",
+                                              "name": "issueCompletionDate",
+                                              "id": "E_COMPLETION_DATE",
+                                              "data-validation": "dateValidator(document.form.name)"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "date"
+                                        },
+                                        {
+                                          "input": {
+                                            "attributes": {
+                                              "value": "date",
+                                              "type": "hidden",
+                                              "name": "FMT_issueCompletionDate",
+                                              "id": "FMT_issueCompletionDate"
+                                            }
+                                          },
+                                          "template": "field",
+                                          "type": "hidden"
+                                        }
+                                      ],
+                                      "template": "grid",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "grid",
+                                  "type": "row"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "align": "right",
+                                      "contents": [
+                                        {
+                                          "input": {
+                                            "attributes": {
+                                              "title": "Clear",
+                                              "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_CLEARISSUE_ACTION'}])",
+                                              "type": "button",
+                                              "accessKey": "C",
+                                              "name": "Field96",
+                                              "id": "Field96",
+                                              "data-validation": false
+                                            },
+                                            "text": "Clear"
+                                          },
+                                          "template": "field",
+                                          "type": "button"
+                                        },
+                                        {
+                                          "input": {
+                                            "primary": true,
+                                            "attributes": {
+                                              "title": "Add/Update Issue",
+                                              "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_ADDUPDATE_ISSUE_ACTION'}])",
+                                              "type": "button",
+                                              "accessKey": " ",
+                                              "name": "Field97",
+                                              "id": "Field97",
+                                              "data-validation": false
+                                            },
+                                            "text": "Add/Update Issue"
+                                          },
+                                          "template": "field",
+                                          "type": "button"
+                                        }
+                                      ],
+                                      "template": "buttonGroup",
+                                      "type": "column"
+                                    }
+                                  ],
+                                  "template": "buttonGroup",
+                                  "type": "row"
+                                },
+                                {
+                                  "head": {
+                                    "rows": [
+                                      {
+                                        "columns": [
+                                          {
+                                            "hideLabel": false,
+                                            "responsive": {
+                                              "priority": 1
+                                            },
+                                            "attributes": {
+                                              "data-columnType": "text",
+                                              "data-columnEditable": false,
+                                              "data-type": "alpha",
+                                              "data-colmap": "issuesTbl_Field98"
+                                            },
+                                            "sortable": true,
+                                            "type": "header",
+                                            "text": "Issue"
+                                          },
+                                          {
+                                            "hideLabel": false,
+                                            "responsive": {
+                                              "priority": 3
+                                            },
+                                            "attributes": {
+                                              "data-columnType": "text",
+                                              "data-columnEditable": false,
+                                              "data-type": "alpha",
+                                              "data-colmap": "issuesTbl_Field99"
+                                            },
+                                            "sortable": true,
+                                            "type": "header",
+                                            "text": "Plan of Action"
+                                          },
+                                          {
+                                            "hideLabel": false,
+                                            "responsive": {
+                                              "priority": 4
+                                            },
+                                            "attributes": {
+                                              "data-columnType": "text",
+                                              "data-columnEditable": false,
+                                              "data-type": "alpha",
+                                              "data-colmap": "issuesTbl_Field100"
+                                            },
+                                            "sortable": true,
+                                            "type": "header",
+                                            "text": "Follow-Up Date"
+                                          },
+                                          {
+                                            "hideLabel": false,
+                                            "responsive": {
+                                              "priority": 5
+                                            },
+                                            "attributes": {
+                                              "data-columnType": "text",
+                                              "data-columnEditable": false,
+                                              "data-type": "alpha",
+                                              "data-colmap": "issuesTbl_Field101"
+                                            },
+                                            "sortable": true,
+                                            "type": "header",
+                                            "text": "Issue Completion Date"
+                                          },
+                                          {
+                                            "hideLabel": false,
+                                            "responsive": {
+                                              "priority": 2
+                                            },
+                                            "attributes": {
+                                              "data-columnType": "text",
+                                              "data-columnEditable": false,
+                                              "data-type": "currency",
+                                              "data-colmap": "issuesTbl_Field102"
+                                            },
+                                            "sortable": true,
+                                            "type": "header",
+                                            "text": "Estimated Tax Effects ($)"
+                                          },
+                                          {
+                                            "style": "min-width",
+                                            "hideLabel": true,
+                                            "responsive": {},
+                                            "attributes": {
+                                              "data-columnType": "button",
+                                              "data-columnEditable": false,
+                                              "data-type": "alpha",
+                                              "data-colmap": "issuesTbl_Field103"
+                                            },
+                                            "sortable": false,
+                                            "type": "header",
+                                            "text": "Delete"
+                                          },
+                                          {
+                                            "style": "min-width",
+                                            "hideLabel": true,
+                                            "responsive": {
+                                              "primaryButton": true
+                                            },
+                                            "attributes": {
+                                              "data-columnType": "primaryButton",
+                                              "data-columnEditable": false,
+                                              "data-type": "alpha",
+                                              "data-colmap": "issuesTbl_Field104"
+                                            },
+                                            "sortable": false,
+                                            "type": "header",
+                                            "text": "Edit"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "body": {
+                                    "rows": [
+                                      {
+                                        "columns": [
+                                          {
+                                            "contents": []
+                                          },
+                                          {
+                                            "contents": []
+                                          },
+                                          {
+                                            "contents": []
+                                          },
+                                          {
+                                            "contents": []
+                                          },
+                                          {
+                                            "style": "currency",
+                                            "contents": [],
+                                            "text": "0.00"
+                                          },
+                                          {
+                                            "contents": [
+                                              {
+                                                "input": {
+                                                  "attributes": {
+                                                    "title": "Delete",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.confirm','args':['Are you sure you want to delete this record?\\n\\nClick OK to continue, otherwise click Cancel.']},1:{'function':'emp.referenceCall','args':['tables','issuesTbl','setFocus',[]]},2:{'function':'emp.form.submit','args':[{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_ISSUEDELETE_ACTION'}]}})",
+                                                    "type": "button",
+                                                    "accessKey": " ",
+                                                    "name": "E_BTN_DELETE_8_0",
+                                                    "id": "E_BTN_DELETE_8_0",
+                                                    "data-validation": false
+                                                  },
+                                                  "icon": "iDeleteImage.gif",
+                                                  "text": "E_BTN_DELETE"
+                                                },
+                                                "template": "field",
+                                                "type": "button"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "style": "min-width",
+                                            "contents": [
+                                              {
+                                                "input": {
+                                                  "attributes": {
+                                                    "title": "Edit",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','issuesTbl','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'form_content',action:'/EMPIRE/gateway/AMP120T.tabset/AMP120S/AMP120S_ISSUE_EDIT_ACTION'}]}})",
+                                                    "type": "button",
+                                                    "accessKey": " ",
+                                                    "name": "E_BTN_EDIT_21_0",
+                                                    "id": "E_BTN_EDIT_21_0",
+                                                    "data-validation": false
+                                                  },
+                                                  "icon": "iEditImage.gif",
+                                                  "text": "E_BTN_EDIT"
+                                                },
+                                                "template": "field",
+                                                "type": "button"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "key": "0"
+                                      }
+                                    ]
+                                  },
+                                  "prechecked": [],
+                                  "selectionType": "single",
+                                  "selectable": true,
+                                  "attributes": {
+                                    "id": "issuesTbl"
+                                  },
+                                  "title": " ",
+                                  "template": "table",
+                                  "type": "table",
+                                  "footer": {
+                                    "rows": [
+                                      {
+                                        "columns": [
+                                          {},
+                                          {},
+                                          {},
+                                          {},
+                                          {
+                                            "style": "align-right",
+                                            "text": "0.00"
+                                          },
+                                          {},
+                                          {}
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "optimize": true
+                                }
+                              ],
+                              "type": "section"
+                            },
+                            {
+                              "contents": [
+                                {
+                                  "align": "right",
+                                  "contents": [
+                                    {
+                                      "input": {
+                                        "attributes": {
+                                          "title": "Clear",
+                                          "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:''}])",
+                                          "type": "button",
+                                          "accessKey": "C",
+                                          "name": "Field146",
+                                          "id": "Field146",
+                                          "data-validation": false
+                                        },
+                                        "text": "Clear"
+                                      },
+                                      "template": "field",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "input": {
+                                        "primary": true,
+                                        "attributes": {
+                                          "title": "Update",
+                                          "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:''}])",
+                                          "type": "button",
+                                          "accessKey": "U",
+                                          "name": "Field147",
+                                          "id": "Field147",
+                                          "data-validation": false
+                                        },
+                                        "text": "Update"
+                                      },
+                                      "template": "field",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "template": "buttonGroup",
+                                  "type": "column"
+                                }
+                              ],
+                              "template": "buttonGroup",
+                              "type": "row"
+                            }
+                          ],
+                          "type": "section"
+                        },
+                        {
+                          "contents": [
+                            {
+                              "template": "universal",
+                              "attributes": {
+                                "id": "emp-exception"
+                              },
+                              "contents": [
+                                {
+                                  "readOnly": true,
+                                  "attributes": {},
+                                  "type": "section",
+                                  "contents": [
+                                    {
+                                      "template": "group",
+                                      "title": "Active Exception",
+                                      "readOnly": true,
+                                      "type": "header"
+                                    },
+                                    {
+                                      "template": "table",
+                                      "attributes": {
+                                        "id": "table_checkboxes"
+                                      },
+                                      "headerControls": {
+                                        "contents": [
+                                          {
+                                            "type": "select",
+                                            "template": "field",
+                                            "label": {
+                                              "attributes": {
+                                                "for": "E_FUNCTIONAL_AREA"
+                                              },
+                                              "text": "Functional Area:"
+                                            },
+                                            "input": {
+                                              "attributes": {
+                                                "id": "E_FUNCTIONAL_AREA",
+                                                "name": "E_FUNCTIONAL_AREA",
+                                                "tabindex": "1"
+                                              },
+                                              "options": {
+                                                "all": {
+                                                  "text": "All",
+                                                  "value": "all"
+                                                },
+                                                "nr": {
+                                                  "text": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                                                  "value": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                                }
+                                              },
+                                              "value": "all"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "head": {
+                                        "rows": [
+                                          {
+                                            "columns": [
+                                              {
+                                                "type": "header",
+                                                "text": "Override",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "control",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "alpha"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "text": "Clear",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "control",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "alpha"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "text": "Exception",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "alpha",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "alpha"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "style": "min-width",
+                                                "text": "Non Reviewable",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "alpha",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "alpha"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "text": "DLN",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "alpha",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "numeric"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "text": "Form",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "alpha",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "alpha"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "text": "Liability Period Begin Date",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "alpha",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "date"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "text": "Liability Period End Date",
+                                                "sortable": "true",
+                                                "attributes": {
+                                                  "data-type": "alpha",
+                                                  "data-columnType": "text",
+                                                  "data-sort": "date"
+                                                }
+                                              },
+                                              {
+                                                "type": "header",
+                                                "style": "min-width",
+                                                "text": "Drill Down to More Details",
+                                                "attributes": {
+                                                  "data-type": "button"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "body": {
+                                        "rows": [
+                                          {
+                                            "columns": [
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "table_my_table_1_0",
+                                                        "title": "Row 0",
+                                                        "name": "table_my_table_1_0",
+                                                        "value": "0",
+                                                        "type": "checkbox"
+                                                      },
+                                                      "label": {
+                                                        "text": "Row 0",
+                                                        "attributes": {
+                                                          "for": "table_my_table_1_0"
+                                                        }
+                                                      },
+                                                      "type": "checkbox"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "contents": []
+                                              },
+                                              {
+                                                "text": "1321 - TAX DUE DISCREPANCY"
+                                              },
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                      "alt": "Non Reviewable",
+                                                      "title": "Non Reviewable"
+                                                    },
+                                                    "text": "NR"
+                                                  }
+                                                ],
+                                                "style": "min-width"
+                                              },
+                                              {
+                                                "text": "123456789"
+                                              },
+                                              {
+                                                "text": "CT-30"
+                                              },
+                                              {
+                                                "text": "01/01/2012"
+                                              },
+                                              {
+                                                "text": "01/01/2013"
+                                              },
+                                              {
+                                                "style": "min-width",
+                                                "contents": [
+                                                  {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "E_BTN_DRILLDOWN",
+                                                        "onclick": "",
+                                                        "type": "button",
+                                                        "title": "Drill Down to More Details"
+                                                      },
+                                                      "icon": "drill-down",
+                                                      "text": "Drill Down to More Details"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "columns": [
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "table_my_table_1_1",
+                                                        "title": "Row 1",
+                                                        "name": "table_my_table_1_1",
+                                                        "value": "0",
+                                                        "type": "checkbox"
+                                                      },
+                                                      "label": {
+                                                        "text": "Row 1",
+                                                        "attributes": {
+                                                          "for": "table_my_table_1_1"
+                                                        }
+                                                      },
+                                                      "type": "checkbox"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "contents": []
+                                              },
+                                              {
+                                                "text": "1321 - TAX DUE DISCREPANCY"
+                                              },
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                      "alt": "Non Reviewable",
+                                                      "title": "Non Reviewable"
+                                                    },
+                                                    "text": "NR"
+                                                  }
+                                                ],
+                                                "style": "min-width"
+                                              },
+                                              {
+                                                "text": "123456789"
+                                              },
+                                              {
+                                                "text": "CT-30"
+                                              },
+                                              {
+                                                "text": "01/01/2012"
+                                              },
+                                              {
+                                                "text": "01/01/2013"
+                                              },
+                                              {
+                                                "style": "min-width",
+                                                "contents": [
+                                                  {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "E_BTN_DRILLDOWN",
+                                                        "onclick": "",
+                                                        "type": "button",
+                                                        "title": "Drill Down to More Details"
+                                                      },
+                                                      "icon": "drill-down",
+                                                      "text": "Drill Down to More Details"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "columns": [
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "readOnly": true,
+                                                      "attributes": {
+                                                        "id": "table_my_table_1_2",
+                                                        "title": "Row 2",
+                                                        "name": "table_my_table_1_2",
+                                                        "type": "checkbox",
+                                                        "checked": "true"
+                                                      },
+                                                      "label": {
+                                                        "text": "Row 2",
+                                                        "attributes": {
+                                                          "for": "table_my_table_1_2"
+                                                        }
+                                                      },
+                                                      "type": "checkbox"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "contents": []
+                                              },
+                                              {
+                                                "text": "1321 - TAX DUE DISCREPANCY"
+                                              },
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                      "alt": "Non Reviewable",
+                                                      "title": "Non Reviewable"
+                                                    },
+                                                    "text": "NR"
+                                                  }
+                                                ],
+                                                "style": "min-width"
+                                              },
+                                              {
+                                                "text": "123456789"
+                                              },
+                                              {
+                                                "text": "CT-30"
+                                              },
+                                              {
+                                                "text": "01/01/2012"
+                                              },
+                                              {
+                                                "text": "01/01/2013"
+                                              },
+                                              {
+                                                "style": "min-width",
+                                                "contents": [
+                                                  {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "E_BTN_DRILLDOWN",
+                                                        "onclick": "",
+                                                        "type": "button",
+                                                        "title": "Drill Down to More Details"
+                                                      },
+                                                      "icon": "drill-down",
+                                                      "text": "Drill Down to More Details"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "columns": [
+                                              {
+                                                "contents": []
+                                              },
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "readOnly": true,
+                                                      "attributes": {
+                                                        "id": "table_my_table_1_6",
+                                                        "title": "Row 6",
+                                                        "name": "table_my_table_1_6",
+                                                        "value": "0",
+                                                        "type": "checkbox"
+                                                      },
+                                                      "label": {
+                                                        "text": "Row 6",
+                                                        "attributes": {
+                                                          "for": "table_my_table_1_6"
+                                                        }
+                                                      },
+                                                      "type": "checkbox"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "text": "1320 - TAX DUE DISCREPANCY"
+                                              },
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                      "alt": "Non Reviewable",
+                                                      "title": "Non Reviewable"
+                                                    },
+                                                    "text": "NR"
+                                                  }
+                                                ],
+                                                "style": "min-width"
+                                              },
+                                              {
+                                                "text": "123456789"
+                                              },
+                                              {
+                                                "text": "CT-30"
+                                              },
+                                              {
+                                                "text": "01/01/2012"
+                                              },
+                                              {
+                                                "text": "01/01/2013"
+                                              },
+                                              {
+                                                "style": "min-width",
+                                                "contents": [
+                                                  {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "E_BTN_DRILLDOWN",
+                                                        "onclick": "",
+                                                        "type": "button",
+                                                        "title": "Drill Down to More Details"
+                                                      },
+                                                      "icon": "drill-down",
+                                                      "text": "Drill Down to More Details"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "columns": [
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "table_my_table_1_7",
+                                                        "title": "Row 7",
+                                                        "name": "table_my_table_1_7",
+                                                        "value": "0",
+                                                        "type": "checkbox"
+                                                      },
+                                                      "label": {
+                                                        "text": "Row 7",
+                                                        "attributes": {
+                                                          "for": "table_my_table_1_7"
+                                                        }
+                                                      },
+                                                      "type": "checkbox"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "contents": []
+                                              },
+                                              {
+                                                "text": "1320 - TAX DUE DISCREPANCY"
+                                              },
+                                              {
+                                                "contents": [
+                                                  {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                      "alt": "Non Reviewable",
+                                                      "title": "Non Reviewable"
+                                                    },
+                                                    "text": "NR"
+                                                  }
+                                                ],
+                                                "style": "min-width"
+                                              },
+                                              {
+                                                "text": "123456789"
+                                              },
+                                              {
+                                                "text": "CT-30"
+                                              },
+                                              {
+                                                "text": "01/01/2012"
+                                              },
+                                              {
+                                                "text": "01/01/2013"
+                                              },
+                                              {
+                                                "style": "min-width",
+                                                "contents": [
+                                                  {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                      "attributes": {
+                                                        "id": "E_BTN_DRILLDOWN",
+                                                        "onclick": "",
+                                                        "type": "button",
+                                                        "title": "Drill Down to More Details"
+                                                      },
+                                                      "icon": "drill-down",
+                                                      "text": "Drill Down to More Details"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "readOnly": true,
+                                      "contents": [
+                                        {
+                                          "template": "group",
+                                          "title": "Details",
+                                          "readOnly": true,
+                                          "type": "header"
+                                        },
+                                        {
+                                          "template": "grid",
+                                          "readOnly": true,
+                                          "contents": [
+                                            {
+                                              "template": "grid",
+                                              "readOnly": true,
+                                              "contents": [
+                                                {
+                                                  "template": "field",
+                                                  "input": {
+                                                    "readOnly": true,
+                                                    "attributes": {
+                                                      "id": "E_CREATE_DATE",
+                                                      "name": "E_CREATE_DATE",
+                                                      "type": "text",
+                                                      "value": "03/10/2005"
+                                                    },
+                                                    "required": true
+                                                  },
+                                                  "readOnly": true,
+                                                  "label": {
+                                                    "text": "Create Date:",
+                                                    "attributes": {
+                                                      "for": "E_CREATE_DATE"
+                                                    }
+                                                  },
+                                                  "type": "text"
+                                                }
+                                              ],
+                                              "width": "half",
+                                              "attributes": {},
+                                              "type": "column"
+                                            },
+                                            {
+                                              "template": "grid",
+                                              "readOnly": true,
+                                              "contents": [
+                                                {
+                                                  "template": "field",
+                                                  "input": {
+                                                    "readOnly": true,
+                                                    "attributes": {
+                                                      "id": "E_DOCUMENT_TYPE",
+                                                      "name": "E_DOCUMENT_TYPE",
+                                                      "type": "text",
+                                                      "value": "RETURN"
+                                                    }
+                                                  },
+                                                  "readOnly": true,
+                                                  "label": {
+                                                    "text": "Document Type:",
+                                                    "attributes": {
+                                                      "for": "E_DOCUMENT_TYPE"
+                                                    }
+                                                  },
+                                                  "type": "text"
+                                                }
+                                              ],
+                                              "width": "half",
+                                              "attributes": {},
+                                              "type": "column"
+                                            }
+                                          ],
+                                          "attributes": {},
+                                          "type": "row"
+                                        },
+                                        {
+                                          "template": "grid",
+                                          "readOnly": true,
+                                          "contents": [
+                                            {
+                                              "template": "grid",
+                                              "readOnly": true,
+                                              "contents": [
+                                                {
+                                                  "template": "field",
+                                                  "input": {
+                                                    "readOnly": true,
+                                                    "attributes": {
+                                                      "id": "E_TAX_TYPE",
+                                                      "name": "E_TAX_TYPE",
+                                                      "type": "text",
+                                                      "value": "CORP"
+                                                    },
+                                                    "required": true
+                                                  },
+                                                  "readOnly": true,
+                                                  "label": {
+                                                    "text": "Tax Type:",
+                                                    "attributes": {
+                                                      "for": "E_TAX_TYPE"
+                                                    }
+                                                  },
+                                                  "type": "text"
+                                                }
+                                              ],
+                                              "width": "half",
+                                              "attributes": {},
+                                              "type": "column"
+                                            },
+                                            {
+                                              "template": "grid",
+                                              "readOnly": true,
+                                              "contents": [
+                                                {
+                                                  "template": "field",
+                                                  "input": {
+                                                    "readOnly": true,
+                                                    "attributes": {
+                                                      "id": "E_TAX_SUB_TYPE",
+                                                      "name": "E_TAX_SUB_TYPE",
+                                                      "type": "text",
+                                                      "value": "9A - 209.1 / S"
+                                                    }
+                                                  },
+                                                  "readOnly": true,
+                                                  "label": {
+                                                    "text": "Tax Sub Type:",
+                                                    "attributes": {
+                                                      "for": "E_TAX_SUB_TYPE"
+                                                    }
+                                                  },
+                                                  "type": "text"
+                                                }
+                                              ],
+                                              "width": "half",
+                                              "attributes": {},
+                                              "type": "column"
+                                            }
+                                          ],
+                                          "attributes": {},
+                                          "type": "row"
+                                        },
+                                        {
+                                          "template": "grid",
+                                          "readOnly": true,
+                                          "contents": [
+                                            {
+                                              "template": "grid",
+                                              "readOnly": true,
+                                              "contents": [
+                                                {
+                                                  "template": "field",
+                                                  "input": {
+                                                    "readOnly": true,
+                                                    "attributes": {
+                                                      "id": "E_TAX_SUB_TYPE_DESC",
+                                                      "name": "E_TAX_SUB_TYPE_DESC",
+                                                      "type": "text",
+                                                      "value": "CT3, 3S, CT3, 4S Business Corp"
+                                                    }
+                                                  },
+                                                  "readOnly": true,
+                                                  "label": {
+                                                    "text": "Tax Sub Type Desc:",
+                                                    "attributes": {
+                                                      "for": "E_TAX_SUB_TYPE_DESC"
+                                                    }
+                                                  },
+                                                  "type": "text"
+                                                },
+                                                {
+                                                  "template": "field",
+                                                  "input": {
+                                                    "attributes": {
+                                                      "id": "_E_ACCEPT_INVENTORY_2",
+                                                      "name": "_E_ACCEPT_INVENTORY_2",
+                                                      "value": "false",
+                                                      "type": "hidden"
+                                                    }
+                                                  },
+                                                  "type": "hidden"
+                                                }
+                                              ],
+                                              "width": "half",
+                                              "attributes": {},
+                                              "type": "column"
+                                            }
+                                          ],
+                                          "attributes": {},
+                                          "type": "row"
+                                        }
+                                      ],
+                                      "attributes": {},
+                                      "type": "section"
+                                    },
+                                    {
+                                      "type": "row",
+                                      "template": "buttonGroup",
+                                      "contents": [
+                                        {
+                                          "type": "column",
+                                          "template": "buttonGroup",
+                                          "align": "right",
+                                          "contents": [
+                                            {
+                                              "type": "button",
+                                              "template": "field",
+                                              "input": {
+                                                "attributes": {
+                                                  "id": "E_BTN_CLEAR_EXCEPTION",
+                                                  "type": "button",
+                                                  "onclick": ""
+                                                },
+                                                "text": "Clear Exception"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "template": "field",
+                                  "input": {
+                                    "attributes": {
+                                      "id": "fw_session_id",
+                                      "name": "fw_session_id",
+                                      "value": "fw_default_session_id",
+                                      "type": "hidden"
+                                    }
+                                  },
+                                  "type": "hidden"
+                                },
+                                {
+                                  "template": "field",
+                                  "input": {
+                                    "attributes": {
+                                      "id": "fw_popup_ind",
+                                      "name": "fw_popup_ind",
+                                      "value": "false",
+                                      "type": "hidden"
+                                    }
+                                  },
+                                  "type": "hidden"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "contents": [
+                            {
+                              "template": "universal",
+                              "attributes": {
+                                "id": "emp-rating"
+                              },
+                              "contents": [
+                                {
+                                  "readOnly": true,
+                                  "attributes": {
+                                    "id": "E_RATING_WRAPPER"
+                                  },
+                                  "type": "section",
+                                  "contents": [
+                                    {
+                                      "template": "group",
+                                      "title": "Ratings",
+                                      "readOnly": true,
+                                      "type": "header"
+                                    },
+                                    {
+                                      "type": "row",
+                                      "template": "grid",
+                                      "contents": [
+                                        {
+                                          "type": "column",
+                                          "template": "grid",
+                                          "contents": [
+                                            {
+                                              "type": "rating",
+                                              "template": "composite",
+                                              "parts": {
+                                                "label": {
+                                                  "type": "label",
+                                                  "template": "field",
+                                                  "label": {
+                                                    "attributes": {
+                                                      "for": "E_RATING"
+                                                    },
+                                                    "text": "Interactive:"
+                                                  }
+                                                },
+                                                "hidden": {
+                                                  "type": "hidden",
+                                                  "template": "field",
+                                                  "input": {
+                                                    "attributes": {
+                                                      "type": "hidden",
+                                                      "name": "E_RATING",
+                                                      "id": "E_RATING"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+
+                                {
+                                  "template": "field",
+                                  "input": {
+                                    "attributes": {
+                                      "id": "fw_session_id",
+                                      "name": "fw_session_id",
+                                      "value": "fw_default_session_id",
+                                      "type": "hidden"
+                                    }
+                                  },
+                                  "type": "hidden"
+                                },
+                                {
+                                  "template": "field",
+                                  "input": {
+                                    "attributes": {
+                                      "id": "fw_popup_ind",
+                                      "name": "fw_popup_ind",
+                                      "value": "false",
+                                      "type": "hidden"
+                                    }
+                                  },
+                                  "type": "hidden"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "form"
+                    }
+                  ],
+                  "template": "pagebody"
+                }
+              ]
+            }
+          ]
+        };
+
+        $('#contentReset').on( "click", function(){
+           emp.render.section('emp-section', defaultContent, 'replace');
+           //delete any additional content elements. Tooltips, modals, etc..
+           $('.cui-popover').remove();
+           $('.cui-modal').remove();
+           $('.dp').remove();
+           $('.emp-table-responsive-column-menu').remove();
+        });
+
+        $('#contentSetOne').on( "click", function(){
+           emp.render.section('emp-section', replacementDataSetOne, 'replace');
+        });
+
+        $('#contentSetTwo').on( "click", function(){
+           emp.render.section('emp-section', replacementDataSetTwo, 'replace');
+        });
+
+        $('#sectionSetup').on( "click", function(){
+          emp.sectionSetup($('#emp-section'));
+        });
+
+      });
+  </script>
+
+</html>

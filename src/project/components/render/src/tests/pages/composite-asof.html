@@ -1,0 +1,76 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "asof",
+                                        "template": "composite",
+                                        "parts": {
+                                            "previous": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_PREVIOUS_BUTTON",
+                                                        "type": "button"
+                                                    },
+                                                    "text": "Previous"
+                                                }
+                                            },
+                                            "next": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_NEXT_BUTTON",
+                                                        "type": "button"
+                                                    },
+                                                    "text": "Next"
+                                                }
+                                            }
+                                        },
+                                        "properties": {
+                                            "url": "http://www.tax.ny.gov",
+                                            "datetime": "01/01/2016 12:00:00 AM"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

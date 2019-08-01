@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   enable-background="new 0 0 24 24"
+   viewBox="0 0 24 24"
+   x="0px"
+   y="0px"
+   width="24px"
+   height="24px"
+   version="1.1"
+   xml:space="preserve"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="TableGrid.svg"><metadata
+   id="metadata41"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs39" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="3378"
+   inkscape:window-height="1417"
+   id="namedview37"
+   showgrid="false"
+   inkscape:zoom="9.8333333"
+   inkscape:cx="8.9491525"
+   inkscape:cy="11.898305"
+   inkscape:window-x="54"
+   inkscape:window-y="560"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <rect
+   stroke-miterlimit="10"
+   x="1.9336989"
+   y="1.8828515"
+   width="20.115654"
+   height="3.7716849"
+   id="rect25"
+   style="fill:#35a0a0;stroke:#216372;stroke-width:1.25722837;stroke-miterlimit:10" />
+  <polygon
+   stroke-miterlimit="10"
+   points="23.5,7.5 7.5,7.5 7.5,7.456 7.5,20.5 23.5,20.5 "
+   id="polygon27"
+   transform="matrix(1.2572283,0,0,1.2572283,-7.4955135,-3.774676)"
+   style="fill:#ffffff;stroke:#216372;stroke-miterlimit:10" />
+  <line
+   stroke-miterlimit="10"
+   x1="2.5623131"
+   y1="3.1400797"
+   x2="21.420736"
+   y2="3.1400797"
+   id="line29"
+   style="fill:none;stroke:#dae9ed;stroke-width:1.25722837;stroke-miterlimit:10" />
+  <line
+   stroke-miterlimit="3"
+   x1="5.8189411"
+   y1="18.475517"
+   x2="19.826204"
+   y2="18.475517"
+   id="line31"
+   style="fill:none;stroke:#000000;stroke-width:2.76287889;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:0, 4.14431792" />
+  <line
+   stroke-miterlimit="3"
+   x1="5.8189411"
+   y1="13.570812"
+   x2="19.826204"
+   y2="13.570812"
+   id="line33"
+   style="fill:none;stroke:#000000;stroke-width:2.76287889;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:0, 4.14431792" />
+  <line
+   stroke-miterlimit="3"
+   x1="5.8189411"
+   y1="8.6661091"
+   x2="19.826204"
+   y2="8.6661091"
+   id="line35"
+   style="fill:none;stroke:#000000;stroke-width:2.76287889;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:0, 4.14431792" />
+</svg>

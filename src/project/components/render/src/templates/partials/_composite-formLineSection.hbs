@@ -1,0 +1,47 @@
+<div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"form-lines-sections"}' extend=(formLineSectionDetect this) style=this.style scope="form-line-section")) }}>
+
+    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"form-lines-flex-row form-line-header"}' extend=(formLineHeaderDetect this.lines) )) }}>
+        <div class="form-lines-section-label">
+            <div class="form-lines-line-number">
+                {{#if this.lineTitle}}
+                    {{this.lineTitle}}
+                {{else}}
+                    Line
+                {{/if}}
+            </div>
+            <div class="form-lines-label">
+                {{this.lineDescriptionTitle}}
+            </div>
+        </div>
+        <div class="form-lines-section-values">
+            <div class="form-lines-section-values-row">
+                <div class="form-lines-section-values-label">
+                    {{this.lineValueTypeTitle}}
+                </div>
+                <div class="form-lines-section-values-value">
+                    {{this.lineValueTitle}}
+                </div>
+                <div class="form-lines-section-values-notifier">
+                    {{this.lineValueNotifierTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="form-lines-section-values-adjustment-line">
+            <span>
+                {{this.lineAdjustmentTitle}}
+            </span>
+        </div>
+        <div class="form-lines-section-values-reason-line">
+            <span>
+                {{this.lineAdjustmentReasonTitle}}
+            </span>
+        </div>
+    </div>
+
+    {{#if this.lines}}
+        {{#each this.lines}}
+            {{~> (getPartialName this.template) this~}}
+        {{/each}}
+    {{/if}}
+
+</div>

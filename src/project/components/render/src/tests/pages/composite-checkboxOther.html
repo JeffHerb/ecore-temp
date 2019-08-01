@@ -1,0 +1,85 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+</body>
+<script>
+    var fwData = {
+        "page": {
+            "contents": [
+                {
+                    "type": "row",
+                    "template": "grid",
+                    "contents": [
+                        {
+                            "type": "column",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "checkboxOther",
+                                    "template": "composite",
+                                    "parts": {
+                                        "checkbox": {
+                                            "type": "checkbox",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_CHECKBOX",
+                                                    "name": "E_CHECKBOX",
+                                                    "value": "other",
+                                                    "type": "checkbox"
+                                                }
+                                            },
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_CHECKBOX"
+                                                },
+                                                "text": "Other:"
+                                            }
+                                        },
+                                        "describe": {
+                                            "type": "text",
+                                            "template": "field",
+                                            "input": {
+                                                "id": "E_OTHER",
+                                                "name": "E_OTHER",
+                                                "type": "text"
+                                            },
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_OTHER"
+                                                },
+                                                "text": "Describe Other:"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

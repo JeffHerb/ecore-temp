@@ -1,0 +1,265 @@
+<!doctype HTML>
+<html lang="en" class="external-app emp-orpts-subtheme emp-fontsize-14 theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+		<div id="header-wrapper"></div>
+        <div id="body-wrapper"></div>
+		<div id="footer-wrapper"></div>
+    </body>
+    <script>
+    var fwData =
+      {
+        "header": {
+            "contents": [
+                {
+                    "template": "external-universal-header"
+                },
+                {
+                    "template": "external-agency-header"
+                }
+            ]
+        },
+        "preferences": false,
+        "context": {
+            "ui": {
+                "css": "css/main.css",
+                "domain": "http://localhost:8888/",
+                "version": "dist",
+                "js": "js/main.js"
+            },
+            "screen": {
+                "type": "error"
+            }
+        },
+        "page": {
+            "contents": [
+                {
+                    "template": "external-pageinfo",
+                    "title": "Property Details",
+                    "instructions": [
+                        {
+                            "template": "output",
+                            "text": "<p>To reactivate the enrollment shown below, first verify the <em>Property information</em> and <em>Owner Summary</em> sections.When finished, select <strong> Add Enrollment</strong>.</p>"
+                        }
+                    ],
+                    "pageLegend": {
+                        "required": true,
+                        "helpText": true
+                    }
+                },
+                {
+                    "template": "pagebody",
+                    "contents": [                        
+                        {
+                            "template": "external-group",
+                            "title": "This is a external group",
+                            "contents": [
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_SOTHER"
+                                                        },
+                                                        "text": "Something:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "name": "E_SOTHER",
+                                                            "id": "E_SOTHER",
+                                                            "value": "100.00"
+                                                        },
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+
+// Selection list start
+{
+	"type": "selectionList",
+	"template": "composite",
+	"parts": {
+	    "legend": {
+	        "type": "text",
+	        "template": "field",
+	        "label": {
+	            "text": "Choose one of the client verification options below."                                      
+	        },
+	        "input":{
+	        	"attributes": {
+	                "id": "E_LEGEND_ID",
+	                "required": true,
+	                "value":""
+	            }
+	        },
+	        "help":{},
+	        "message":{}
+	    },
+	    "fields": [
+	    	{
+            	"type": "radio",
+                "template": "field",
+                "label": {
+                    "text": "A five-digit PIN",
+                    "attributes": {
+                        "for": "E_PIN"
+                    }
+                },
+                "input": {
+                    "attributes": {
+                        "name": "E_SELECTION_GROUP_NAME",
+                        "id": "E_PIN",
+                        "type": "radio",
+                        "value": "pin1"
+                    }
+                },
+                "help":{}                 
+            },
+            {
+            	"type": "radio",
+                "template": "field",
+                "label": {
+                    "text": "Another five-digit PIN",
+                    "attributes": {
+                        "for": "E_PIN_2"
+                    }
+                },
+                "input": {
+                    "attributes": {
+                        "name": "E_SELECTION_GROUP_NAME",
+                        "id": "E_PIN_2",
+                        "type": "radio",
+                        "value": "pin2"
+                    }
+                },
+                "help":{}                 
+            },
+            {
+		        "type": "selectionListField",
+		        "template": "composite",
+		        "parts": {
+		            "field": {
+		            	"type": "radio",
+	                    "template": "field",
+	                    "label": {
+	                        "text": "None of the above",
+	                        "attributes": {
+	                            "for": "E_NONE_OF_ABOVE"
+	                        }
+	                    },
+	                    "input": {
+	                        "attributes": {
+	                            "name": "E_SELECTION_GROUP_NAME",
+	                            "id": "E_NONE_OF_ABOVE",
+	                            "type": "radio",
+	                            "value": "na",
+	                            "checked":true,	
+	                        },
+	                        
+	                        "expands":"E_NONE_OF_ABOVE_container"
+	                    },
+	                    "help":{
+
+	                    }
+	                },
+	                "container":[
+	                	//Dynamic field contents here
+	                	{
+	                        "type": "row",
+	                        "template": "grid",
+	                        "contents": [
+	                            {
+	                                "type": "column",
+	                                "template": "grid",
+	                                "contents": [
+	                                    {
+	                                        "type": "text",
+	                                        "template": "field",
+	                                        "label": {
+	                                            "attributes": {
+	                                                "for": "E_TEST_TEXT_REQUIRED"
+	                                            },
+	                                            "text": "Test Text:"
+	                                        },
+	                                        "input": {
+	                                            "attributes": {
+	                                                "name": "E_TEST_TEXT_REQUIRED",
+	                                                "id": "E_TEST_TEXT_REQUIRED",
+	                                                "type": "text",
+	                                                "value": "required value",
+	                                                "aria-required": "true"
+	                                            },
+	                                            "required": true
+	                                        }
+	                                    }
+	                                ]
+	                            }
+	                        ]
+	                    },
+	                ]
+		        }		        
+		    }
+		]	    
+	},
+	"properties": {}
+}
+
+
+                                            ]
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                    ]
+                }
+            ]
+        },
+        "footer": {
+            "contents": [
+                {
+                    "template": "external-agency-footer"
+                },
+                {
+                    "template": "external-universal-footer"
+                }
+            ]
+        }
+    }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

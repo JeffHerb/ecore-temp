@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <div id="body-wrapper">
+        <!-- Accessibility cues -->
+        <div class="cui-hide-from-screen">
+            <a href="#nav">Go to navigation</a>
+            <a href="#main">Go to content</a>
+        </div>
+
+        <!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-row-first">
+                <div class="emp-header-logo">
+                    Empire
+                </div>
+                <nav id="emp-header-menu-main">
+                    Main Menu
+                </nav>
+                <div id="emp-header-favorites">
+                    &#9734;
+                </div>
+            </div>
+            <!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-row-second">
+                <div class="emp-header-tabset-title">
+                    <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+                    <h1>Tabset menu title</h1>
+                </div>
+                <ul class="emp-header-links">
+                    <li class="emp-header-employee"><a role="button">Employee</a></li>
+                    <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+                    <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+                    <li class="emp-header-help"><a role="button">Help</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- ==================== -->
+        <!-- TABSET               -->
+        <!-- ==================== -->
+        <ul class="emp-tabset emp-collapse">
+            <li><a href="#" title="Taxpayer Summary" tabindex="1">TP Sum</a></li>
+            <li><a href="#" title="Search by Name" tabindex="1">Srch by Name</a></li>
+            <li class="emp-selected"><a href="#" title="Name History" tabindex="1">Name History</a></li>
+            <li><a href="#" title="Address Summary" tabindex="1">Address Sum</a></li>
+        </ul>
+
+        <!-- ==================== -->
+        <!-- PAGE TITLE           -->
+        <!-- ==================== -->
+        <div class="emp-page-title">
+            <div class="emp-text">
+                <h2>Page title <span>Page mode</span></h2>
+            </div>
+            <ul class="emp-actions">
+                <li><button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button></li>
+                <li><button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button></li>
+                <li><button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button></li>
+            </ul>
+        </div>
+
+        <!-- ==================== -->
+        <!-- TAXPAYER INFO        -->
+        <!-- ==================== -->
+        <form name="form_tp_info" id="form_tp_info" class="emp-tp-header" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-tp-info">
+                <!-- Main taxpayer -->
+                <div class="emp-tp-info-main">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators">
+                            <a class="emp-button-send-id" role="button" tabindex="1">Send ID</a>
+                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                            <button type="button" class="emp-icon-add-event" title="Popup add event" tabindex="1">Popup add event</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-id">
+                            <span class="emp-data">123-45-6789 (IND)</span>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-name">
+                            <span class="emp-data">John H. Smith</span>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-address">
+                            <span class="emp-data">1943 Crossing Stone Ct., Albany, NY 12227</span>
+                            <button type="button" class="emp-icon-diff-mail" title="Mailing address is different" tabindex="1">Mailing address is different</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Joint taxpayer -->
+                <div class="emp-tp-info-joint">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators">
+                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-data-joint" title="Popup Data for Joint Taxpayer" tabindex="1">Popup Data for Joint Taxpayer</button>
+                            <button type="button" class="emp-icon-list-joint" title="View Joint Taxpayer List" tabindex="1">View Joint Taxpayer List</button>
+                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-id">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Associated ID:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">234-56-7890 (IND)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-name">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Associated Name:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">Jane M. Johnson-Smith</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emp-tp-header-buttons">
+                <button class="emp-button-switch" tabindex="1">Switch</button>
+            </div>
+        </form>
+
+        <!-- ==================== -->
+        <!-- SEARCH BOX           -->
+        <!-- ==================== -->
+        <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+        <form name="form_search" id="form_search" class="emp-search-box emp-collapse" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-search-fields">
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+                                <select id="HEADER_ID_TYPE" tabindex="1">
+                                    <option value="NC" selected="selected">9 Character ID</option>
+                                    <option value="BN">Business Name</option>
+                                    <option value="BT">Business Taxpayer ID</option>
+                                    <option value="IN">Individual Name</option>
+                                    <option value="IT">Individual Taxpayer ID</option>
+                                    <option value="MA">Mail Agent ID</option>
+                                    <option value="RD">Representative ID</option>
+                                    <option value="RN">Representative Name</option>
+                                </select>
+                            </div>
+                            <div class="cui-data">
+                                <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+                                <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div class="emp-search-buttons">
+                <div class="cui-row">
+                    <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+                </div>
+                <div class="cui-row">
+                    <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+                    <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+                </div>
+                <div class="cui-row">
+                    <a role="button" class="emp-button-get-id" id="btn_get_id" tabindex="1">Get ID</a>
+                </div>
+            </div>
+            <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+        </form>
+
+        <!-- ####################### -->
+        <!-- DEVELOPER'S CODE (JSP)  -->
+        <!-- ####################### -->
+
+        <main role="main">
+
+            <!-- ==================== -->
+            <!-- PAGE CONTENT         -->
+            <!-- ==================== -->
+
+            <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+                <div class="emp-table">
+                    <table id="break-table">
+                        <caption>Break line test</caption>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Column 1
+                                </th>
+                                <th>
+                                    Test Columns
+                                </th>
+                                <th>
+                                    Column 3
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>test value</td>
+                                <td>
+                                    Address 1<br>
+                                    Address 2<br>
+                                    123 Street Name<br>
+                                    City NY 12350
+                                </td>
+                                <td>test value</td>
+                            </tr>
+                            <tr>
+                                <td>test value</td>
+                                <td>
+                                    Address 1<br>
+                                    Address 2<br>
+                                    123 Street Name<br>
+                                    City NY 12350
+                                </td>
+                                <td>test value</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'emp', 'uimockup', 'dataStore', 'domReady!'], function($, emp, uiMockup, ds) {
+
+            uiMockup.createElementDataStore('table', function(results) {
+
+                // Now call init.
+                emp.init();
+
+                //var table = emp.reference.tables['table_my_table_1'];
+
+                console.log(ds.getStore(results));
+
+            });
+
+        });
+    </script>
+</body>
+</html>

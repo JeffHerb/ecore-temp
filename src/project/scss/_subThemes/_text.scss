@@ -1,0 +1,336 @@
+// ORPTS font family | font size
+
+$orptsFontFamily: "Proxima Nova" , "Open Sans", Arial, sans-serif;
+$orptsFontSize: 16px;
+
+.external-app {
+    .emp-asof div,
+    [class*="emp-col"] .cui-label,
+    [class*="emp-col"] .cui-label label,
+    section .cui-label,
+    section .cui-label label,
+    .emp-composite.emp-search-composite.emp-seach-composite-dynamic-label .cui-label select,
+    .emp-col-full.button-col.emp-button-group button:not(.cui-button-primary):not(.cui-button-selected),
+    .emp-table th, tr{
+        color: #333;
+    }
+
+    body,
+    input,
+    select,
+    textarea,
+    button,
+    label,
+    input,
+    button,
+    select,
+    textarea,
+    th,
+    td,
+    ol,
+    ul li,
+    p,
+    .emp-add-remove-list-box .emp-add-remove-container .cui-data-left .cui-label label,
+    .emp-add-remove-list-box .emp-order-list-container header,
+    .emp-add-remove-list-box .emp-add-remove-container header,
+    .emp-indicators li > span,
+    .emp-indicators li > a,
+    .emp-add-remove-list-box .emp-order-list-container ol li,
+    .emp-tabs header a,
+    .emp-asof form div,
+    .cui-label,
+    .cui-label legend,
+    .cui-label .cui-legend,
+    .emp-label,
+    .emp-data {
+        font-family: $orptsFontFamily;
+        font-size: $orptsFontSize;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .cui-message p {
+        font-family: $orptsFontFamily;
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea:not([type="checkbox"]):not([type="radio"]),
+    select:not([type="checkbox"]):not([type="radio"]){
+        box-shadow: rgba(0,0,0,0.1) 0 1px 1px 0 inset;
+    }
+
+    // * @section    Text size and font family
+    // * --------------------------------------------------------
+
+    .emp-search-box,
+    #form_workflow,
+    .emp-tp-info,
+    section,
+    section .cui-data {
+
+        label,
+        .cui-label legend,
+        .cui-label .cui-legend,
+        .cui-label span,
+        input,
+        input:not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]),
+        button,
+        select,
+        textarea,
+        .cui-data input,
+        .cui-data button,
+        .cui-data select,
+        .cui-data textarea {
+            @include fontSize($orptsFontSize);
+        }
+    }
+
+    section > header h3 {
+        font-size: 18px;
+
+        @include pointbreak("830px") {
+            font-size: 21px;
+        }
+    }
+
+    .cui-messages {
+        display: flex;
+        flex-direction: column;
+        .cui-error,
+        .cui-warning,
+        .cui-success,
+        .cui-informational {
+            font-size: 16px !important;
+            display: block;
+        }
+    }
+
+    .emp-field {
+        .cui-label,
+        .cui-data,
+        select,
+        textarea,
+        input,
+        span {
+            font-size: $orptsFontSize !important;
+        }
+
+        input,
+        select,
+        button,
+        [role="button"],
+        textarea,
+        .cui-data {
+            color: #333;
+        }
+
+        > span{
+            font-weight: bold;
+        }
+
+        .cui-data{
+            span, input, select{
+                font-weight: bold;
+            }
+
+            textarea{
+                font-weight: normal;
+                line-height: normal;
+            }
+        }
+    }
+
+    .emp-total-line{
+        .cui-data .emp-data{
+            border-top: 2px solid #AAA; 
+        }
+    }
+
+    [class*="emp-total"]{
+        .cui-label{
+            font-weight: bold;
+        }
+    }
+
+    .cui-data.cui-currency{
+        display: flex;
+        input, span{
+            font-family: 'Open Sans';
+            font-size: 15px !important;
+        }
+
+        input:not([size]), input[size="23"]{
+            width: 220px;
+        }
+
+        input[size="20"]{
+            width: 196px;
+        }
+
+        span:not(.cui-input-append){
+            width: 218px;
+            min-width: 218px;
+            padding-right: 5px;
+        }
+
+        .cui-input-append {
+            display: block;
+            font-weight: bold;
+            padding: 3px 6px 1px 0;
+            margin-left: -7px;
+            background: #dededc;
+            height: 29px;
+            width: auto;
+            border-radius: 0 4px 4px 0;
+            border: 1px solid #bfbfbd;
+            font-size: 15px !important;
+        }
+
+        @media print{
+            font-size: 12px;
+            font-family: 'Arial';
+        }
+    }
+
+    .cui-data-left .cui-data input[type="checkbox"]{
+        height: 16px;
+        width: 16px;
+        top: 3px;
+    }
+
+    .cui-data {
+        .emp-input-collection input[type="radio"] + label,
+        .emp-input-collection input[type="checkbox"] + label,
+        .cui-selection-group input[type="radio"] + label{
+            // margin-left: -15px;
+            // margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .emp-input-collection input[type="radio"],
+        .cui-selection-group input[type="radio"]{
+            opacity: 0;
+            left: -9999px;
+
+            & + label::before{
+                content: "";
+                border: 1px solid #454545;
+                border-radius: 16px;
+                display: inline-block;
+                font-size: 16px;
+                vertical-align: top;
+                height: 16px;
+                line-height: 16px;
+                width: 16px;
+                margin-right: 5px;
+            }
+
+            &:checked + label::before{
+                content: "\2022";
+                color: #454545;
+                margin-right: 5px;
+                line-height: 5px;
+                font-size: 37px;
+            }
+        }
+    }
+
+    .cui-data {
+        .emp-input-collection input[type="checkbox"]{
+            opacity: 0;
+            left: -9999px;
+
+            & + label::before{
+                content: "";
+                border: 1px solid #454545;
+                border-radius: 3px;
+                display: inline-block;
+                vertical-align: top;
+                height: 16px;
+                line-height: 16px;
+                width: 16px;
+                margin-right: 5px;
+            }
+
+            &:checked + label::before{
+                content: "\2713";
+                color: #454545;
+                font-weight: bolder;
+                margin-right: 5px;
+                //line-height: 0px;
+                font-size: 30px;
+            }
+        }
+    }
+
+
+    .emp-composite .cui-data input, fieldset .cui-data input{
+        font-weight: bold;
+    }
+
+    fieldset{
+
+        .emp-input-collection{
+            select{
+                font-weight: bold !important;
+            }
+
+            span{
+                vertical-align: bottom !important;
+                font-weight: normal;
+                margin: 0px 5px;
+            }
+        }
+    }
+
+    fieldset.emp-boolean-input-group{
+        button.emp-icon-help{
+            margin-top: -4px;
+        }
+    }
+
+    .emp-sticky-caption {
+        color: #333;
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea:not([type="checkbox"]):not([type="radio"]),
+    select:not([type="checkbox"]):not([type="radio"]){
+        box-shadow: rgba(0,0,0,0.1) 0 1px 1px 0 inset;
+    }
+
+    .emp-table .emp-table-wrapper .table-control-row button {
+        font-size: $orptsFontSize !important;
+    }
+
+    .ie{
+        @include pointbreak("720px"){
+            .cui-data.cui-currency{
+                .cui-input-append {
+                    padding-top: 4px;
+                }
+            }
+        }
+
+        fieldset.date-range{
+            button.cui-c-datepicker{
+                vertical-align: middle !important;
+            }
+        }
+
+    }
+}
+
+
+//firefox fix
+@-moz-document url-prefix() {
+    .cui-data.cui-currency{
+        .cui-input-append {
+            padding-top: 2px !important;
+        }
+    }
+}

@@ -1,0 +1,578 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Group Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Group</h1>
+                <div class="docs-badge cui-success">New in E2</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Group>
+    &lt;E2:GroupHeader title="Section Title">
+    &lt;/E2:GroupHeader>
+    ... Group Contents ...
+&lt;/E2:Group></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "section",
+    "contents": [
+        {
+            "type": "header",
+            "template": "group",
+            "title": "Section Title"
+        },
+        {
+            "type": "row",
+            "template": "grid",
+            "contents": [
+                {
+                    "type": "column",
+                    "template": "grid",
+                    "contents": [
+                        {
+                            "type": "p",
+                            "text": "Example group container"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+}</pre>
+
+                <p>
+                    To create a default <code>group</code> container, developers simply need to use the <code>&lt;E2:Group&gt;</code> tag. This tag itself doesn't have any special property, it is just a placeholder for additional contents. The first tag inside any Group should be the <code>&lt;E2:GroupHeader&gt;</code> this tag helps define the blue header section found below. Note in the Default JSON example, that the <code>&lt;E2:Group&gt;</code> tag only defines the <code>tag</code> and <code>contents</code> properties.
+                </p>
+
+                <p>
+                The <code>E2:GroupHeader</code> tag has a few key properties, the first being the group title. Group titles are set using the <code>title</code> attribute on the group tag. By default, group controls found on the far left of the group header are visible.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="section-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                hideControls
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Controls whether the group header controls should be visible.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;div&gt;</code> containers (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts. This attribute can be set on any of the ______________ (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Header Columns</h2>
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Group>
+    &lt;E2:GroupHeader title="Group Title">
+        &lt;E2:GroupHeaderCol text="Last Checked: 1/1/2015" />
+        &lt;E2:GroupHeaderCol>
+            &lt;E2:CheckBox viewKey="retainData" />
+        &lt;/E2:GroupHeaderCol>
+    &lt;/E2:GroupHeader>
+&lt;/E2:Group></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "section",
+    "contents": [
+        {
+            "type": "header",
+            "template": "group",
+            "title": "Group Title",
+            "columns": [
+                {
+                    "text": "Last Checked: 1/1/2015"
+                },
+                {
+                    "type": "checkbox",
+                    "template": "field",
+                    "label": {
+                        "text": "Retain Data",
+                        "attributes": {
+                            "for": "RETAIN_DATA_CHECK"
+                        }
+                    },
+                    "input": {
+                        "attributes": {
+                            "name": "RETAIN_DATA_CHECK",
+                            "id": "RETAIN_DATA_CHECK",
+                            "type": "checkbox",
+                            "value": "y"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "row",
+            "template": "grid",
+            "contents": [
+                {
+                    "type": "column",
+                    "template": "grid",
+                    "contents": [
+                        {
+                            "type": "p",
+                            "text": "Example group container"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+}</pre>
+
+                <p>
+                    To create additional columns in a group header, developers should use the <code>E2:GroupHeaderCol</code> tag inside of the <code>E2:GroupHeader</code> tag. Depending on the contents, developer can create single line tags or nest additional custom tags between the standard open and closing tags.
+                </p>
+
+                <p>
+                    Whenever a group header includes the <code>E2:GroupHeaderCol</code> the header JSON should add a <code>columns</code> array property, and create an object for each of the additional tags found within. For simple one line text columns, the new sub object can have just a <code>text</code> property and the developer entered value. For more complex contents, the new sub-object JSON should followin the standard JSON definition for the request tag within.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="headerColumns-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Header Indicators</h2>
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Group>
+    &lt;E2:GroupHeader title="Group Title">
+        &lt;E2:GroupIndicators>
+            &lt;E2:TabNavButton viewKey="tabButton1" text="Claim History" />
+        &lt;/E2:GroupIndicators>
+    &lt;/E2:GroupHeader>
+&lt;/E2:Group></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "header",
+    "template": "group",
+    "title": "Group Title",
+    "indicators": [
+        {
+            "type": "button",
+            "template": "tabNavigation",
+            "attributes": {
+                "tabindex": 1,
+                "title": "Legal Information"
+            },
+            "icon": "legal",
+            "text": "Legal Information",
+        }
+    ]
+}</pre>
+
+                <p>
+                    Some group have additional properties and functionalities based on the status of a given account or groups specific contents. Because of this, additional items may appear directly next to the group titile. Too add these items Developers can add the <code>E2:GroupIndicators</code> tag. The content of this tag is normally a <code>E2:TabNavButton</code> and based on the security and page mode the element could render as a button or an inline-icon.
+                </p>
+
+                <p>
+                    Whenever the <code>E2:GroupIndicators</code> is in use, the header object should contain the additional array property of <code>indicators</code>. The contents of this array should be the output of the individual custom tags found within.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="indicator-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>hideControls</h2>
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Group>
+    &lt;E2:GroupHeader title="Group Title" hideControls="true" />
+&lt;/E2:Group></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "header",
+    "template": "group",
+    "title": "Group Title",
+    "hideControls": true
+}</pre>
+
+                <p>
+                    By default all group controls (buttons located to the right most side of group title bar) are set to visible by default. If they need to be toggled off, on the <code>GroupHeader</code> tag, developers need to implement the <code>hideControls</code> attribute, and set it to <code>true</code>.
+                </p>
+
+
+                <h3>Rendered examples</h3>
+
+                <section id="hideControls-example">
+                </section>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "12",
+                                "contents": [
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "Group Title"
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "p",
+                                                                "text": "Example group container"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var headerColumns = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "12",
+                                "contents": [
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "Group Title",
+                                                "columns": [
+                                                    {
+                                                        "text": "Last Checked: 1/1/2015"
+                                                    },
+                                                    {
+                                                        "type": "checkbox",
+                                                        "template": "field",
+                                                        "label": {
+                                                            "text": "Retain Data",
+                                                            "attributes": {
+                                                                "for": "RETAIN_DATA_CHECK"
+                                                            }
+                                                        },
+                                                        "input": {
+                                                            "attributes": {
+                                                                "name": "RETAIN_DATA_CHECK",
+                                                                "id": "RETAIN_DATA_CHECK",
+                                                                "type": "checkbox",
+                                                                "value": "y"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "p",
+                                                                "text": "Example group container"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var indicators = {
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "12",
+                                "contents": [
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "Group Title",
+                                                "indicators": [
+                                                    {
+                                                        "type": "button",
+                                                        "template": "tabNavigation",
+                                                        "attributes": {
+                                                            "tabindex": 1,
+                                                            "title": "Legal Information"
+                                                        },
+                                                        "icon": "legal",
+                                                        "text": "Legal Information",
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "p",
+                                                                "text": "Example group container"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+
+            var hideControls = {
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "12",
+                                "contents": [
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "Group Title",
+                                                "hideControls": true,
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "p",
+                                                                "text": "Example group container"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("section-example");
+                var headerColumnsExample = document.getElementById("headerColumns-example");
+                var indicatorsExample = document.getElementById("indicator-example");
+                var hideControlsExamples = document.getElementById("hideControls-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    render.page(headerColumnsExample, headerColumns, function() {
+                        console.log("Header Columns");
+
+                        render.page(indicatorsExample, indicators, function() {
+                            console.log("Indicators Done");
+
+                            render.page(hideControlsExamples, hideControls, function() {
+                                console.log("Hide Controls Done");
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

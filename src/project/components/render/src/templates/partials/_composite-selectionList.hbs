@@ -1,0 +1,29 @@
+<fieldset class="emp-composite emp-selection-list">
+    {{#if this.legend}}
+    	{{#if this.legend.label}}
+    		{{#if this.legend.label.text}}
+	    		<legend {{#if this.legend.input.attributes.required}}aria-label="{{this.legend.label.text}} Required"{{/if}}>
+	    			{{this.legend.label.text}}
+
+	    			{{#if this.legend.input}}
+				    	{{#if this.legend.input.attributes}}
+				    		{{#if this.legend.input.attributes.required}}
+				    			<span class="cui-required"></span>
+							{{/if}}
+						{{/if}}
+					{{/if}}	    		
+	    		</legend>
+	    	{{/if}}
+    	{{/if}}
+    {{/if}}
+
+    {{#if this.fields}}
+	    {{#each this.fields}}
+	        <div class="emp-selection-list-field-container {{#ifCond v1=this.parts.field.input.attributes.checked op="===" v2=true}}emp-selection-list-active{{/ifCond}}" data-entity-key="{{@key}}">			    	
+		        {{#if this.template}}
+		            {{~> (getPartialName this.template) this scope="selectionList"~}}
+		        {{/if}}
+		    </div>
+		{{/each}}	
+	{{/if}}
+</fieldset>

@@ -1,0 +1,403 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="eventScript Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>EventScripts</h2>
+
+                <p>
+                    Event scripts provide developers with a way to attach different types of event based JavaScript functions to custom tags.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Event Script -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Text type="text" viewKey="demo" eventScript="{'onclick': { 'function': 'addCounter', 'arg': [1, 2]} }" />
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "column",
+    "template": "grid",
+    "size": "half",
+    "contents": [
+       {
+            "type": "button",
+            "template": "field",
+            "label": {
+                "text": "Press the button",
+                "attributes": {
+                    "for": "demo3"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "demo3",
+                    "id": "demo3",
+                    "type": "button",
+                    "onclick": "emp.functionCall(event, 'addCounter', [1,2])",
+                    value: "Click to add to the counter"
+                },
+            }
+        },
+    ]
+}
+                </pre>
+
+                <p>
+                    To assign an eventScript to an custom tag, developers need to create a stringified JSON object. Inside of this object should be a set of key value pairs for every type of event that is related to element in question. In the JSP example tag above, the <code>onclick</code> event is being declared. The click events value is an object that contains all the nesssary information needed to properly call the function the developer is looking to use. This sub object as a minimum needs to contain the property <code>function</code> and a string value representing the name of the function that the developer wishes to execute. Developers can also supply the optional <code>arg</code> property with an array of optional parameters that need to be sent along with the event function call.
+                </p>
+                <p>
+                    When this attribute is converted to JSON, all eventScript attributes should appear as key value pairs under the inputs attributes object. For the purposes of this example, the <code>onclick</code> is the only added attribute. When the attributes are converted to JSON, they are also converted slightly to fit the needs of the empire framework. First thing to note is the event does not called the developer declared function directly, instead it will call a global Empire function <code>emp.functionCall</code>. The developers function is instead the second parameter. The first parameter is the elements original element event attribute passed in by the calling element. The last (third) parameter is the optional array of parameters that will be passed to the developer defined or global function.
+                </p>
+
+                <h4>Rendered Examples</h4>
+                <p>
+                    For the purposes of this example, the <code>onclick</code> event is being used.
+                </p>
+
+                <section id="eventScript-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+
+                <ul id="eventScript-support">
+                    <li><a href="../../tags/button.html">Button</a></li>
+                    <li><a href="../../tags/checkbox.html">Checkbox</a></li>
+                    <li><a href="../../tags/date.html">Date</a></li>
+                    <li><a href="../../tags/form.html">Form</a></li>
+                    <li><a href="../../tags/notifier.html">Notifier</a></li>
+                    <li><a href="../../tags/radio.html">Radio</a></li>
+                    <li><a href="../../tags/selectBox.html">SelectBox</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                    <li><a href="../../tags/textArea.html">Textarea</a></li>
+                </ul>
+
+                <p>
+                    Developers should also note that many of the above tags listed might having overlaping event attributers because of the <code>preSubmitScript</code> attribute.
+                </p>
+
+            </div>
+        </div>
+
+ <!-- Event Script -->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Multiple Events Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Text type="text" viewKey="demo" eventScript="{'onclick': { 0: { 'function': 'functionOne', arg :[1] }, 1: { 'function': 'functionTwo', arg: [2]} } }" />
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "column",
+    "template": "grid",
+    "size": "half",
+    "contents": [
+       {
+            "type": "button",
+            "template": "field",
+            "label": {
+                "text": "Press the button",
+                "attributes": {
+                    "for": "demo3"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "demo3",
+                    "id": "demo3",
+                    "type": "button",
+                    "onclick": "emp.functionCall(event, { 0: { 'function': 'functionOne', arg :[1] }, 1: { 'function': 'functionTwo'} } )",
+                    value: "Click to add to the counter"
+                },
+            }
+        },
+    ]
+}
+                </pre>
+
+                <h3>Sample Functions</h3>
+                <pre class="code">
+function functionOne() {
+
+    var input = document.getElementById("LookupInput");
+
+    if (input.value === "") {
+
+        console.log("No Lookup value supplied");
+
+        return false;
+
+    } else {
+
+        return input.value;
+
+    }
+
+}
+
+function functionTwo(value) {
+
+    var LookupSpan = document.getElementById('LookupSpan');
+
+    if (LookupSpan === null) {
+
+        // Find input and its parent
+        var input = document.getElementById("LookupInput");
+        var container = input.parentNode;
+
+        var span = document.createElement('span');
+        span.setAttribute('id', 'LookupSpan');
+
+        var spanText = document.createTextNode("Text entered: " + value);
+
+        // Add text to span
+        span.appendChild(spanText);
+
+        // Add span to input container
+        container.appendChild(span);
+
+    } else {
+
+       LookupSpan.textContent  = "Text entered: " + value;
+
+    }
+
+    return true;
+
+}
+                </pre>
+
+                <p>
+                    In some cases it is a requirement that a particular event mighht need to call two deperate functions with two different sets of information. One way to handle this is to pass the <code>eventScript</code> an event type with a JavaScript object of functions based on a 0 index as value.
+                </p>
+
+                <p>
+                    As seen in the Sample JSON, the global function <code>emp.functionCall</code> is still being called. The global function will detect that an object has been passed in and will slowly iterate over the object of function calls. As each function is executed the the <code>emp.functionCall</code> will capture the returns. If a function returns a <code>false</code> for any reason, the execution chain will stop and an error will be placed in the console. This is important as custom JavaScript functions should always return something.
+                </p>
+
+                <p>
+                    Once a function has been execute the return value is also sent to the next child function. In the example above, the first function is used to capture the value from the text input. If a value is found <code>functionOne</code> will return that value. When <code>emp.functionCall</code> gets the return value it addes it sends it to <code>functionTwo</code>. Since both functions are custom to this page, the developer nows to expect the additional function paramer of <code>value</code>.
+                </p>
+
+
+                <h4>Rendered Examples</h4>
+                <p>
+                    For the purposes of this example, the <code>onclick</code> event is being used.
+                </p>
+
+                <section id="multi-eventScript-example">
+                </section>
+
+            </div>
+        </div>
+
+        <script>
+            var eventScript = {
+                title: "Simple Event Script",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                   {
+                                        "attributes": {
+                                            "style": "display: inline-block;"
+                                        },
+                                        "type": "button",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Press the button",
+                                            "attributes": {
+                                                "for": "demo3"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo3",
+                                                "id": "demo3",
+                                                "type": "button",
+                                                "onclick": "emp.functionCall(event, 'addCounter', [1,2])",
+                                            },
+                                            "text": "Click to add to the counter"
+                                        }
+                                    },
+                                    {
+                                        "type": "span",
+                                        "attributes": {
+                                            "id": "counter",
+                                            "style": "margin-left: 16px;"
+                                        },
+                                        "text": 0
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var multiEventSript = {
+                title: "Multi Event Script",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "LookupInput"
+                                            },
+                                            "text": "Lookup"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "id": "LookupInput",
+                                                "name": "LookupInput",
+                                                "type": "text"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "LookupButton",
+                                                "onclick": "emp.functionCall(event, { 0: { 'function': 'functionOne', arg :[1] }, 1: { 'function': 'functionTwo'} } )",
+                                            },
+                                            "text": "Lookup"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            var counter = 0;
+
+            function addCounter() {
+
+                var span = document.getElementById("counter");
+
+                counter++;
+
+                span.innerHTML = counter;
+
+            }
+
+            // This function only pulls the value out of the textbox and returns it
+            function functionOne() {
+
+                var input = document.getElementById("LookupInput");
+
+                if (input.value === "") {
+
+                    console.log("No Lookup value supplied");
+
+                    return false;
+
+                } else {
+
+                    return input.value;
+
+                }
+
+            }
+
+            function functionTwo(value) {
+
+                var LookupSpan = document.getElementById('LookupSpan');
+
+                if (LookupSpan === null) {
+
+                    // Find input and its parent
+                    var input = document.getElementById("LookupInput");
+                    var container = input.parentNode;
+
+                    var span = document.createElement('span');
+                    span.setAttribute('id', 'LookupSpan');
+
+                    var spanText = document.createTextNode("Text entered: " + value);
+
+                    // Add text to span
+                    span.appendChild(spanText);
+
+                    // Add span to input container
+                    container.appendChild(span);
+
+                } else {
+
+                   LookupSpan.textContent  = "Text entered: " + value;
+
+                }
+
+                return true;
+
+            }
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var eventScriptExample = document.getElementById("eventScript-example");
+                var multiEventScriptExample = document.getElementById("multi-eventScript-example");
+
+                // Create the generic example
+                render.page(eventScriptExample, eventScript, function() {
+
+                    console.log("Event Done");
+
+                    render.page(multiEventScriptExample, multiEventSript, function() {
+
+                        console.log("Multi Event Done");
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

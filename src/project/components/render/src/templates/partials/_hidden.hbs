@@ -1,0 +1,7 @@
+{{#ifCond v1=this.state op="===" v2="forceRequired"}}
+
+    <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"data-required":true}' required=this.input.required defaultSelection=this.input.defaultValue)) }} />
+{{else}}
+
+    <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' required=this.input.required defaultSelection=this.input.defaultValue)) }} />
+{{/ifCond}}

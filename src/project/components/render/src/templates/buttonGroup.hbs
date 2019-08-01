@@ -1,0 +1,20 @@
+{{! Check to see if this is a row to pass in a additional row class}}
+{{#ifCond v1=this.type op='===' v2='row'~}}
+
+    {{! Call the grid row template and pass it the extend class of button-row }}
+    {{~> _grid this extend=(extendDefaults defaults='{"className":"emp-button-row"}')~}}
+
+{{/ifCond~}}
+
+{{#ifCond v1=this.type op='===' v2='column'~}}
+
+    {{#if this.align~}}
+
+        {{~> _grid this extend=(extendDefaults defaults='{"className":"button-col emp-button-group"}' align=this.align ) ~}}
+
+    {{~else~}}
+
+        {{~> _grid this extend='{"className":"button-col emp-button-group"}' ~}}
+
+    {{/if~}}
+{{/ifCond~}}

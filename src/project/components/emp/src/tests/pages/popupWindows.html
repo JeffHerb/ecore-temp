@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <meta name="expires" content="0" />
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="../../../dist/css/main.css">
+        <title>
+            Audit Selection Category Maintenance
+        </title>
+    </head>
+
+    <body>
+        <div id="body-wrapper"></div>
+        <div id="emp-page-loading">
+            <div class="message" style="z-index:900; height: 100%; width: 100%; position: fixed;">
+                <style type='text/css'>
+                    @-webkit-keyframes uil-default-anim {
+                        0% {
+                            opacity: 1
+                        }
+
+                        100% {
+                            opacity: 0
+                        }
+                    }
+
+                    @keyframes uil-default-anim {
+                        0% {
+                            opacity: 1
+                        }
+
+                        100% {
+                            opacity: 0
+                        }
+                    }
+
+                    .uil-default-css>div:nth-of-type(0) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.5s;
+                        animation-delay: -0.5s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(1) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.5s;
+                        animation-delay: -0.5s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(2) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.4166666666666667s;
+                        animation-delay: -0.4166666666666667s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(3) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.33333333333333337s;
+                        animation-delay: -0.33333333333333337s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(4) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.25s;
+                        animation-delay: -0.25s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(5) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.16666666666666669s;
+                        animation-delay: -0.16666666666666669s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(6) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -0.08333333333333331s;
+                        animation-delay: -0.08333333333333331s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(7) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0s;
+                        animation-delay: 0s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(8) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0.08333333333333337s;
+                        animation-delay: 0.08333333333333337s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(9) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0.16666666666666663s;
+                        animation-delay: 0.16666666666666663s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(10) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0.25s;
+                        animation-delay: 0.25s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(11) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0.33333333333333337s;
+                        animation-delay: 0.33333333333333337s;
+                    }
+
+                    .uil-default-css>div:nth-of-type(12) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0.41666666666666663s;
+                        animation-delay: 0.41666666666666663s;
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: none;
+                        width: 40px;
+                        height: 40px;
+                        left: -16px;
+                        top: -16px;
+                    }
+                </style>
+                <div class="container" style="height: 65px;position:absolute;white-space: nowrap;display: inline-block;top: 50%;margin: -34.5px 0 0 -70px;width: 140px;left: 50%;">
+                    <div class="spinner" style="height: 40px; width: 40px; margin: auto;">
+                        <div class='uil-default-css' style='transform:scale(0.20);'>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                            <div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'></div>
+                        </div>
+                    </div>
+                    <p>Loading, Please Wait.</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            var fwData = {
+                "page": {
+                    "contents": [
+                        {
+                            "buttons": {
+                                "hideSearchBox": {
+                                    "input": {
+                                        "primary": false,
+                                        "attributes": {
+                                            "className": "emp-search-toggle",
+                                            "title": "Hide/Show search box",
+                                            "type": "button",
+                                            "name": "emp-search-toggle",
+                                            "id": "emp-search-toggle",
+                                            "tabindex": "1"
+                                        },
+                                        "text": "hide/Show"
+                                    },
+                                    "template": "field",
+                                    "type": "button"
+                                },
+                                "clearAll": {
+                                    "input": {
+                                        "primary": false,
+                                        "attributes": {
+                                            "className": "emp-button-search-clear-all",
+                                            "title": "Clear all fields in search box",
+                                            "type": "button",
+                                            "name": "clear-all-button",
+                                            "id": "clear-all-button",
+                                            "tabindex": "1"
+                                        },
+                                        "text": "All"
+                                    },
+                                    "template": "field",
+                                    "type": "button"
+                                },
+                                "retrieve": {
+                                    "input": {
+                                        "primary": false,
+                                        "attributes": {
+                                            "title": "Retrieve",
+                                            "type": "submit",
+                                            "name": "Retrieve",
+                                            "id": "search"
+                                        },
+                                        "text": "Retrieve"
+                                    },
+                                    "template": "field",
+                                    "type": "button"
+                                },
+                                "clear": {
+                                    "input": {
+                                        "primary": false,
+                                        "attributes": {
+                                            "className": "emp-button-search-clear",
+                                            "title": "Clear all fields except the primary id dropdown and inputs",
+                                            "type": "button",
+                                            "name": "clear-button",
+                                            "id": "clear-button",
+                                            "tabindex": "1"
+                                        },
+                                        "text": "Clear"
+                                    },
+                                    "template": "field",
+                                    "type": "button"
+                                }
+                            },
+                            "secondaryMenu": [
+                                {
+                                    "attributes": {
+                                        "className": "emp-header-preferences",
+                                        "role": "button"
+                                    },
+                                    "template": "link",
+                                    "text": "Preferences"
+                                },
+                                {
+                                    "attributes": {
+                                        "className": "emp-header-notifications",
+                                        "role": "button",
+                                        "onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':true,'attributes':{'method':'POST','action':'\\/empr2-amp\\/gateway\\/FWNOTFSTS.tabset','name':'Notifications','id':'Notifications'},'map':{'fw_popup_request_ind':'true'}}])"
+                                    },
+                                    "template": "link",
+                                    "text": "Notifications"
+                                }
+                            ],
+                            "tabsets": {
+                                "attributes": {
+                                    "className": "emp-tabset"
+                                },
+                                "title": "Case Management Tabset Test",
+                                "template": "lists",
+                                "type": "unordered",
+                                "collapse": "true",
+                                "options": [
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CM0060S"
+                                        },
+                                        "template": "link",
+                                        "text": "Employee Maintenance"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CM0040S"
+                                        },
+                                        "template": "link",
+                                        "text": "Organization Definition"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CMFW01S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Inventory Management"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CM0030S"
+                                        },
+                                        "template": "link",
+                                        "text": "Related Case"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP183S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Selection Program Maintenance"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CM0050S"
+                                        },
+                                        "template": "link",
+                                        "text": "Case Related Documents"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP120S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Details"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/JR0040S"
+                                        },
+                                        "template": "link",
+                                        "text": "Notes"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP170S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Closure Details"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP100S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Creation"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CM0065S"
+                                        },
+                                        "template": "link",
+                                        "text": "Employee Maintenance(Supervisor)"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CMFW03S"
+                                        },
+                                        "template": "link",
+                                        "text": "Self Assign Candidate Inventory"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/FWTEST1S"
+                                        },
+                                        "template": "link",
+                                        "text": "360°"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/FWTEST2S"
+                                        },
+                                        "template": "link",
+                                        "text": "FWTEST2S_Tab_Title"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CMFW02S"
+                                        },
+                                        "template": "link",
+                                        "text": "Candidate Inventory Management"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP175S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Closure Approval"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP225S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Refund Approvals"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CA0050S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Case Assessment Approval"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/AMP340S"
+                                        },
+                                        "template": "link",
+                                        "text": "Audit Reactivate Case"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CMFW05S"
+                                        },
+                                        "template": "link",
+                                        "text": "Batch Expire Candidate Inventory"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CM0060S-MGR"
+                                        },
+                                        "template": "link",
+                                        "text": "Employee Maintenance For Managers"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/CMFW10S"
+                                        },
+                                        "template": "link",
+                                        "text": "My Cases"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/NRP746S"
+                                        },
+                                        "template": "link",
+                                        "text": "CT Affiliated Entity Info Schedule"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/NRP750S"
+                                        },
+                                        "template": "link",
+                                        "selected": true,
+                                        "text": "Insurance Summary"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/NRP742S"
+                                        },
+                                        "template": "link",
+                                        "text": "Corp Filing Summary"
+                                    },
+                                    {
+                                        "attributes": {
+                                            "href": "/empr2-amp/gateway/CMTEST01.tabset/NRP743S"
+                                        },
+                                        "template": "link",
+                                        "text": "Shareholder"
+                                    }
+                                ]
+                            },
+                            "search": {
+                                "headerID": {
+                                    "defaultValues": {
+                                        "BT": {
+                                            "HEADER_ID_NUMBER": ""
+                                        },
+                                        "BN": {
+                                            "HEADER_LAST_NAME": ""
+                                        }
+                                    },
+                                    "select": {
+                                        "input": {
+                                            "defaultValue": "BT",
+                                            "value": "BT",
+                                            "readOnly": false,
+                                            "attributes": {
+                                                "aria-required": "true",
+                                                "title": "ID Type",
+                                                "name": "HEADER_ID_TYPE",
+                                                "id": "HEADER_ID_TYPE"
+                                            },
+                                            "noBlankOption": "true",
+                                            "options": [
+                                                {
+                                                    "value": "BN",
+                                                    "text": "Business Name"
+                                                },
+                                                {
+                                                    "value": "BT",
+                                                    "text": "Business Taxpayer ID"
+                                                }
+                                            ],
+                                            "required": "true"
+                                        },
+                                        "template": "field",
+                                        "type": "select"
+                                    }
+                                },
+                                "hidden": [
+                                    {
+                                        "input": {
+                                            "attributes": {
+                                                "value": "fw_default_session_id",
+                                                "type": "hidden",
+                                                "name": "fw_session_id",
+                                                "id": "fw_session_id"
+                                            }
+                                        },
+                                        "template": "field",
+                                        "type": "hidden"
+                                    },
+                                    {
+                                        "input": {
+                                            "attributes": {
+                                                "value": "false",
+                                                "type": "hidden",
+                                                "name": "fw_popup_ind",
+                                                "id": "fw_popup_ind"
+                                            }
+                                        },
+                                        "template": "field",
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "collapse": true,
+                                "url": "/empr2-amp/gateway/CMTEST01.tabset/NRP750S/search"
+                            },
+                            "template": "globalHeader",
+                            "header": {
+                                "primary": {
+                                    "notifiersAndControls": [
+                                        {
+                                            "input": {
+                                                "attributes": {
+                                                    "title": "Add Contacts",
+                                                    "type": "button",
+                                                    "name": "primary-event",
+                                                    "id": "primary-event"
+                                                },
+                                                "icon": "add-event",
+                                                "text": "Popup add event"
+                                            },
+                                            "template": "field",
+                                            "type": "button"
+                                        },
+                                        {
+                                            "input": {
+                                                "attributes": {
+                                                    "title": "View Legal Representative",
+                                                    "type": "button",
+                                                    "name": "primary-legal-rep",
+                                                    "id": "primary-legal-rep"
+                                                },
+                                                "icon": "legal",
+                                                "text": "View legal representative"
+                                            },
+                                            "template": "field",
+                                            "type": "button"
+                                        }
+                                    ],
+                                    "address": "",
+                                    "name": "",
+                                    "id": ""
+                                },
+                                "sendID": true,
+                                "associate": {
+                                    "notifiersAndControls": [
+                                        {
+                                            "input": {
+                                                "attributes": {
+                                                    "title": "View Joint Taxpayer List",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.specialSelectionPopup', 'args':[{'type':'associateSelection','secondRequest':{'mapping':{'taxpayerID':6},'request':'\\/empr2-amp\\/gateway\\/CMTEST01.tabset\\/NRP750S_framework_jointsearch\\/jointAjax'},'mapping':false,'request':'\\/empr2-amp\\/gateway\\/CMTEST01.tabset\\/NRP750S_framework_jointsearch\\/ASSOC_SRCH'}]}})",
+                                                    "type": "button",
+                                                    "name": "assoicate-list-joint",
+                                                    "id": "assoicate-list-joint"
+                                                },
+                                                "icon": "list-joint",
+                                                "text": "View Joint Taxpayer List"
+                                            },
+                                            "template": "field",
+                                            "type": "button"
+                                        }
+                                    ]
+                                }
+                            },
+                            "page": {
+                                "title": "Popup Window test page"
+                            }
+                        },
+                        {
+                            "template": "pagebody",
+                            "contents": [
+                                {
+                                    "type": "row",
+                                    "template": "buttonGroup",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "buttonGroup",
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "button",
+                                                            "onclick": "emp.functionCall(event, 'parentBlank', []);"
+                                                        },
+                                                        "text": "Popup to blank"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "buttonGroup",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "buttonGroup",
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "button",
+                                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.form.virtual','args':[{'newWindow':true,'attributes':{'method':'GET','action':'https:\/\/google.com\/search','id':'virtual','name':'virtual'},'map':{'q':'auditCaseTblApproval_Google','fw_popup_request_ind':'true'}}]}})"
+                                                        },
+                                                        "text": "Popup GET blank"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+
+
+        </script>
+
+        <script>
+
+            function parentBlank() {
+                console.log("parent blank called!");
+
+                let blankRef = emp.windows.createReference('blankWindow');
+
+                emp.windows.open(blankRef.name);
+
+                return true;
+            }
+
+        </script>
+
+        <script id="require" src="../../../dist/js/main.js"></script>
+
+    </body>
+
+</html>

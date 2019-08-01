@@ -1,0 +1,58 @@
+.emp-score-container {
+	border: 0 !important;
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+
+	.emp-score-number {
+		background: transparent;
+		border: 0 !important;
+        color: #1C1C1C;
+		display: inline-block;
+        font-weight: 600;
+		position: absolute;
+		left: 0;
+		height: 100%;
+		text-align: center;
+		top: 25%;
+		width: 100%;
+		//z-index: 10;
+	}
+
+    // &.emp-score-bar-green .emp-score-number {
+    //     color: #3C763D;
+    // }
+
+    // &.emp-score-bar-yellow .emp-score-number {
+    //     color: #806900;
+    // }
+
+    // &.emp-score-bar-red .emp-score-number {
+    //     color: #b52c2c;
+    // }
+
+	.emp-score-bar {
+		border: 0 !important;
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		height: 100%;
+		top: 0;
+		//z-index: 1;
+	}
+
+    &.emp-score-bar-green .emp-score-bar {
+        background: #B0DAA0;
+    }
+
+    &.emp-score-bar-yellow .emp-score-bar {
+        background: #FFE77A;
+    }
+
+    &.emp-score-bar-red .emp-score-bar {
+        background: #E49595;
+    }
+}

@@ -1,0 +1,34 @@
+<form name="form_tp_info" id="form_tp_info" class="emp-tp-header emp-railroad-header" method="post">
+    <!-- Taxpayer info -->
+    <!-- The emp-tpinfo-* classes used at this level are for distinguishing buttons that may appear for both taxpayers (e.g. legal rep) -->
+    <div class="emp-tp-info emp-rail-road-header">
+        <!-- Main taxpayer -->
+        <div class="emp-tp-info-main" id="emp-tp-info-main">
+            <div class="cui-row">
+                <div class="emp-tp-id">
+                    <span class="emp-label">
+                        Company ID:
+                    </span>
+                    <span class="emp-data">
+                        {{#if this.primary.id~}}
+                            {{~this.primary.id~}}
+                        {{/if}}
+                    </span>
+                </div>
+            </div>
+            <div class="cui-row">
+                <div class="emp-tp-name">
+                    <span class="emp-label">
+                        Company Name:
+                    </span>
+                    <span class="emp-data">
+                        {{#if this.primary.name~}}
+                        {{~this.primary.name~}}
+                        {{/if}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

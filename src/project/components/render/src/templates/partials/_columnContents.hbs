@@ -1,0 +1,65 @@
+{{! check to see if this content part has both, because its the template that is more important}}
+{{#ifCond v1=this.text op="&&" v2=this.template~}}
+
+    {{#ifCond v1=this.type op='!in' v2='radio,checkbox' ~}}
+
+        {{! This is for textbox and select inputs}}
+        {{~> (getPartialName this.template) this scope="table-column"~}}
+
+    {{~else~}}
+
+        {{! Radio and checkboxs are different tell the field temlate that we are inside of a table and we dont want to wrap our contents}}
+        {{~> (getPartialName this.template) this insideTable="true" noWrap="true" scope="table-column"~}}
+
+    {{/ifCond~}}
+
+{{~else~}}
+
+    {{! Handle text values}}
+    {{#if this.text~}}
+
+        {{#ifCond v1=this.hideLabel op="boolCheck" v2=true~}}
+
+            <span class="cui-hide-from-screen">{{~this.text~}}</span>
+        {{~else~}}
+
+
+            {{#if this.attributes~}}
+
+                <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}') )}}>
+                    {{~this.text~}}
+                </span>
+            {{~else~}}
+
+                {{#ifCond v1=rowLoc op="==" v2="footer"~}}
+                    <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "footer-cell"}' footerTooltip=this section="table-footer" scope="footer"))}}>
+                        {{~this.text~}}
+                    </span>
+                {{~else~}}
+                    {{~{ standardTextFormat this.text }~}}
+                {{/ifCond~}}
+
+            {{/if~}}
+
+        {{/ifCond~}}
+
+    {{/if~}}
+
+    {{! Handles the template }}
+    {{#if this.template~}}
+
+            {{#ifCond v1=this.type op='!in' v2='radio,checkbox' ~}}
+
+                {{! This is for textbox and select inputs}}
+                {{~> (getPartialName this.template) this scope="table-column"~}}
+
+            {{~else~}}
+
+                {{! Radio and checkboxs are different tell the field temlate that we are inside of a table and we dont want to wrap our contents}}
+                {{~> (getPartialName this.template) this insideTable="true" noWrap="true" scope="table-column"~}}
+
+            {{/ifCond~}}
+
+    {{/if~}}
+
+{{/ifCond~}}

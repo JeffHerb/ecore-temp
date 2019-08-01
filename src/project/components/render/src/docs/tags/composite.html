@@ -1,0 +1,190 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Composite Tag")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Composite Custom Tag</h1>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:TableColumn&gt;</code> defines the type of column data (header or data) and the whether it should be rendered or not.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Composite template="search">
+    &lt;E2:Component name="label">
+        &lt;E2:Label viewKey="E_SEARCH_TEXT" />
+    &lt;/E2:Component>
+    &lt;E2:Component name="text">
+        &lt;E2:Text viewKey="E_SEARCH_TEXT" visibility="HIDE_LABEL" />
+    &lt;/E2:Component>
+    &lt;E2:Component name="button">
+        &lt;E2:Button viewKey="E_SEARCH_BUTTON" />
+    &lt;/E2:Component>
+&lt;/E2:Composite>
+                </pre>
+
+                <p>
+                    <code>E2:Composite</code> is a special tag used to create UI Support specified components not normally avaliable via normal custom tags.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+
+                <pre class="code">
+{
+    "type": "search"
+    "template": "composite",
+    "parts": {
+        "label": [
+            {
+                ... Standard label JSON
+            }
+        ],
+        "text": [
+            {
+                ... Standard text JSON ...
+            }
+        ],
+        "button": [
+            {
+                ... Standard button JSON ...
+            }
+        ]
+    }
+}</pre>
+
+                <p>
+                    When <code>E2:Composite</code> is converted into JSON, the values are very one to one. Every composite will call the same Handlebars <code>template</code> called <em>composite</em>. The JSP <code>template</code> attribute becomes the root <code>type</code> property. The only dynamic content appear in the <code>parts</code> object property. For every tag declared inside of the <code>E2:Composite</code> tag, a corrisponding named array will be created. In the example above the arrays <code>label</code>, <code>text</code> and <code>button</code> are created because of the use of the <code>E2:Text</code> and <code>E2:Button</code>. Below are the results of this custom composite.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                template
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Declare the special rendering template that should be used to generate this request.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Default Composite",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "search",
+                        "template": "composite",
+                        "parts": {
+                            "label":{
+                                "template": "field",
+                                "label": {
+                                    "text": "Search for users:",
+                                    "attributes": {
+                                        "for": "E_SEARCH_TEXT"
+                                    }
+                                }
+                            },
+                            "text": {
+                                "type": "text",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "E_SEARCH_TEXT",
+                                        "name": "E_SEARCH_TEXT",
+                                        "type": "text"
+                                    }
+                                }
+                            },
+                            "button": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "E_SEARCH_TEXT",
+                                        "type": "button"
+                                    },
+                                    "text": "Search"
+                                }
+                            }
+                        }
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "tables", "domReady!"], function (render, tables) {
+
+                // // Examples
+                var defaultExample = document.getElementById("default-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,995 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire - Federal Data Template</title>
+    <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!--
+    ===============================================================================
+    eMPIRE2 | Empire - TB0940 Sales Tax Exempt Organization
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Date        Initials  Comments
+    11/24/2015  JJ        Page Created
+    ===============================================================================
+-->
+</head>
+
+<body>
+    <div id="body-wrapper">
+        <!-- Accessibility cues -->
+        <div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+        <!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-row-first">
+                <div class="emp-header-logo"> Empire </div>
+                <nav id="emp-header-menu-main"> Main Menu </nav>
+                <div id="emp-header-favorites"> &#9734; </div>
+            </div>
+            <!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-row-second">
+                <div class="emp-header-tabset-title">
+                    <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+                    <h1>Tabset menu title</h1>
+                </div>
+                <ul class="emp-header-links">
+                    <li class="emp-header-employee"><a role="button">Employee</a></li>
+                    <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+                    <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+                    <li class="emp-header-help"><a role="button">Help</a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- ==================== -->
+        <!-- TABSET               -->
+        <!-- ==================== -->
+        <ul class="emp-tabset emp-collapse">
+            <li><a href="#" title="Taxpayer Summary" tabindex="1">TP Sum</a></li>
+            <li><a href="#" title="Search by Name" tabindex="1">Srch by Name</a></li>
+            <li class="emp-selected"><a href="#" title="Name History" tabindex="1">Individual Profile</a></li>
+            <li><a href="#" title="Address Summary" tabindex="1">Address Sum</a></li>
+            <li><a href="#" title="Check Digit" tabindex="1">Check Digit</a></li>
+            <li><a href="#" title="Old ID Search" tabindex="1">Old ID Search</a></li>
+            <li><a href="#" title="Current ID Search" tabindex="1">Current ID Search</a></li>
+            <li><a href="#" title="Multiple 9-Character IDs" tabindex="1">Multi 9-Char ID</a></li>
+            <li><a href="#" title="CT Sub Profile" tabindex="1">CT Sub Profile</a></li>
+            <li><a href="#" title="ST Profile" tabindex="1">ST Profile</a></li>
+            <li><a href="#" title="Multi State" tabindex="1">Multi State</a></li>
+            <li><a href="#" title="Pymt Search" tabindex="1">Pymt Search</a></li>
+            <li><a href="#" title="Trnsfr Return" tabindex="1">Trnsfr Return</a></li>
+            <li><a href="#" title="Transfer In" tabindex="1">Transfer In</a></li>
+            <li><a href="#" title="Transfer In/Out" tabindex="1">Transfer In/Out</a></li>
+            <li><a href="#" title="TFA Details" tabindex="1">TFA Details</a></li>
+            <li><a href="#" title="Events" tabindex="1">Events</a></li>
+            <li><a href="#" title="Correspondence" tabindex="1">Correspondence</a></li>
+        </ul>
+        <!-- ==================== -->
+        <!-- PAGE TITLE           -->
+        <!-- ==================== -->
+        <div class="emp-page-title">
+            <div class="emp-text">
+                <h2>Individual Profile <span>Page mode</span></h2>
+            </div>
+            <ul class="emp-actions">
+                <li>
+                    <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+                </li>
+            </ul>
+        </div>
+        <!-- ==================== -->
+        <!-- TAXPAYER INFO        -->
+        <!-- ==================== -->
+        <form name="form_tp_info" id="form_tp_info" class="emp-tp-header" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-tp-info">
+                <!-- Main taxpayer -->
+                <div class="emp-tp-info-main">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators"> <a class="emp-button-send-id" role="button" tabindex="1">Send ID</a> <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span> <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                            <button type="button" class="emp-icon-add-event" title="Popup add event" tabindex="1">Popup add event</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-id emp-federal-data"> <span class="emp-data">123-45-6789 (IND)</span> </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-name emp-federal-data"> <span class="emp-data">John H. Smith</span> </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-address emp-federal-data"> <span class="emp-data">1943 Crossing Stone Ct., Albany, NY 12227</span>
+                            <button type="button" class="emp-icon-diff-mail" title="Mailing address is different" tabindex="1">Mailing address is different</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Joint taxpayer -->
+                <div class="emp-tp-info-joint">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators">
+                            <span class="emp-indicator emp-federal-data" title="Federal Association" alt="Fed">Federal Association</span>
+                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span> <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-data-joint" title="Popup Data for Joint Taxpayer" tabindex="1">Popup Data for Joint Taxpayer</button>
+                            <button type="button" class="emp-icon-list-joint" title="View Joint Taxpayer List" tabindex="1">View Joint Taxpayer List</button>
+                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-id">
+                            <div class="emp-field emp-federal-data">
+                                <div class="cui-label"> <span class="emp-label">Associated ID:</span> </div>
+                                <div class="cui-data"> <span class="emp-data">234-56-7890 (IND)</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-name">
+                            <div class="emp-field emp-federal-data">
+                                <div class="cui-label"> <span class="emp-label">Associated Name:</span> </div>
+                                <div class="cui-data"> <span class="emp-data">Jane M. Johnson-Smith</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="emp-tp-header-buttons">
+                <button class="emp-button-switch" tabindex="1">Switch</button>
+            </div>
+        </form>
+        <!-- ==================== -->
+        <!-- SEARCH BOX           -->
+        <!-- ==================== -->
+        <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+        <form name="form_search" id="form_search" class="emp-search-box emp-collapse" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-search-fields">
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+                                <select id="HEADER_ID_TYPE" tabindex="1">
+                                    <option value="IT" selected="selected">Individual Taxpayer ID</option>
+                                    <option value="TI">Assign Temporary ID</option>
+                                    <option value="BT">Business Taxpayer ID</option>
+                                    <option value="AG">Assign Group ID</option>
+                                </select>
+                            </div>
+                            <div class="cui-data">
+                                <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+                                <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label"> <span class="emp-label">As of:</span> </div>
+                            <div class="cui-data">
+                                <input type="text" id="S_AS_OF" value="01/01/2007 01:20 PM" size="20" maxlength="50" tabindex="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <label for="S_ACTION">Action:</label>
+                            </div>
+                            <div class="cui-data">
+                                <select id="S_ACTION" tabindex="1">
+                                    <option selected="selected" value="1">Add</option>
+                                    <option value='2'>Update</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div class="emp-search-buttons">
+                <div class="cui-row">
+                    <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+                </div>
+                <div class="cui-row">
+                    <button type="button" class="emp-button-search-clear" title="Clear all fields except the primary dropdown and inputs" tabindex="1">Clear</button>
+                    <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+                </div>
+                <div class="cui-row"> <a role="button" class="emp-button-get-id" name="E_BTN_get_id" tabindex="1">Get ID</a> </div>
+            </div>
+            <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+        </form>
+        <!-- ####################### -->
+        <!-- DEVELOPER'S CODE (JSP)  -->
+        <!-- ####################### -->
+        <main role="main">
+            <div class="emp-page-info">
+                <!-- ==================== -->
+                <!-- AS OF                -->
+                <!-- ==================== -->
+                <div class="emp-asof">
+                    <form name="form_asof" id="form_asof" class="emp-asof-col" action="http://www.tax.ny.gov" method="post">
+                        <button type="button" class="emp-asof-prev" title="Previous history" tabindex="1">Previous history</button>
+                        <div id="E_AS_OF">As of:
+                            <time>01/01/2012 12:00:00</time>
+                        </div>
+                        <button type="button" class="emp-asof-next" title="Next history" tabindex="1">Next history</button>
+                    </form>
+                </div>
+                <!-- ==================== -->
+                <!-- INDICATORS           -->
+                <!-- ==================== -->
+                <ul class="emp-indicators">
+                    <li><span title="World Trade Center Filer" tabindex="1">WTCF</span></li>
+                    <li><span title="World Trade Center Payer" tabindex="1">WTCP</span></li>
+                    <li><a href="#" title="Multi 9-Character IDs Exist " id="notifier_1" target="_blank" tabindex="1">Multi 9-Char ID</a></li>
+                    <li><span title="Gift Tax Profile Exists" tabindex="1">Gift</span></li>
+                    <li><span title="Estate Tax Profile Exists" tabindex="1">Estate</span></li>
+                    <li><a href="#" title="Go to Associations " id="notifier_1" target="_blank" tabindex="1">Assoc</a></li>
+                </ul>
+            </div>
+            <!-- ==================== -->
+            <!-- PAGE CONTENT         -->
+            <!-- ==================== -->
+            <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+                <!-- ==================== -->
+                <!-- SECTIONS             -->
+                <!-- ==================== -->
+                <!-- ++++++++++++++++++++++++++++++++ -->
+                <!-- SECTION: .Active Exceptions      -->
+                <!-- ++++++++++++++++++++++++++++++++ -->
+                <section class="emp-collapse">
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Active exceptions</h3>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-section-header-field"> <i class="emp-icon-redcheck">Red check mark</i> Review Details </div>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-section-header-field"> <i class="emp-icon-redcheck">Red check mark</i> Exceptions to Resolve </div>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-section-header-field"> <i class="emp-icon-redcheck">Red check mark</i> Non-Reviewable Exceptions </div>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="cui-row">
+                        <p style="text-align: center; width: 100%;"><em>No content yet</em></p>
+                    </div>
+                </section>
+                <!-- +++++++++++++++++++++++++++++++++++ -->
+                <!-- SECTION: .Individual Profile Data   -->
+                <!-- +++++++++++++++++++++++++++++++++++ -->
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Individual Profile Data</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field emp-federal-data">
+                                <div class="cui-label"> <span class="emp-label">Taxpayer ID:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_TAXPAYER_ID">123-45-6789 (IND)</span> </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Internal Taxpayer ID:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_INTERNAL_TAXPAYER_ID">P123456789-00-2</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-full">
+                            <fieldset class="emp-federal-data">
+                                <div class="cui-label">
+                                    <legend>Name:</legend>
+                                </div>
+                                <div class="cui-data">
+                                    <div class="emp-input-collection">
+                                        <div class="emp-field">
+                                            <label for="E_NAME_FIRST" class="cui-hide-from-screen">First name</label>
+                                            <input type="text" id="E_NAME_FIRST" size="16" maxlength="16" value="John" tabindex="1">
+                                        </div>
+                                        <div class="emp-field">
+                                            <label for="E_MIDDLE_INITIAL" class="cui-hide-from-screen">Middle initial</label>
+                                            <input type="text" id="E_MIDDLE_INITIAL" size="1" maxlength="1" value="" tabindex="1">
+                                        </div>
+                                        <div class="emp-field">
+                                            <label for="E_LAST_NAME" class="cui-hide-from-screen">Last name</label>
+                                            <input type="text" id="E_LAST_NAME" size="40" maxlength="161" value="Smith" tabindex="1">
+                                        </div>
+                                        <div class="emp-field">
+                                            <label for="E_NAME_SUFFIX" class="cui-hide-from-screen">Name suffix</label>
+                                            <select id="E_NAME_SUFFIX" tabindex="1">
+                                                <option value="" selected="selected"></option>
+                                                <option value="Jr">Jr</option>
+                                                <option value="Sr">Sr</option>
+                                                <option value="II">II</option>
+                                                <option value="III">III</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <!--             <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_NAME">Name:</label>
+              </div>
+              <div class="cui-data">
+                <input type="text" id="E_NAME_FIRST" size="16" maxlength="16" value="John" tabindex="1">
+                <input type="text" id="E_MIDDLE_INITIAL" size="1" maxlength="1" value="" tabindex="1">
+                <input type="text" id="E_LAST_NAME" size="40" maxlength="161" value="" tabindex="1">
+                <select id="NAME_SUFFIX" tabindex="1">
+                  <option selected="selected" value="1"></option>
+                  <option value="1" selected="selected"></option>
+                  <option value='2'>Jr</option>
+                  <option value='3'>Sr</option>
+                  <option value='4'>II</option>
+                  <option value='5'>III</option>
+                </select>
+              </div>
+            </div> -->
+                    <div class="cui-row">
+                        <div class="emp-col-full">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_NAME_SOURCE">Name Source:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <select id="E_NAME_SOURCE" tabindex="1">
+                                        <option selected="selected" value="1"></option>
+                                        <option value='2'>Return</option>
+                                        <option value='3'>Phone Call</option>
+                                        <option value='4'>Walk-in</option>
+                                        <option value='5'>0123456789012345678</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_DATE_OF_BIRTH">Date of Birth:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_DATE_OF_BIRTH" class="emp-date" size="13" maxlength="10" tabindex="1">
+                                    <!-- Temp: cui-c-datepicker component should render the code below -->
+                                    <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_DECEASED_DATE">Deceased Date:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_DECEASED_DATE" class="emp-date" size="13" maxlength="10" tabindex="1">
+                                    <!-- Temp: cui-c-datepicker component should render the code below -->
+                                    <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_KITA_EFFECTIVE_DATE">KITA Effective Date:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_KITA_EFFECTIVE_DATE" class="emp-date" size="13" maxlength="10" tabindex="1">
+                                    <!-- Temp: cui-c-datepicker component should render the code below -->
+                                    <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_DECEASED_DATE_SOURCE">Deceased Date Source:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <select id="E_DECEASED_DATE_SOURCE" tabindex="1">
+                                        <option selected="selected" value="1"></option>
+                                        <option value='2'>Return</option>
+                                        <option value='3'>Online</option>
+                                        <option value='4'>SSA</option>
+                                        <option value='5'>1234567890</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Petition Date:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_PETITION_DATE">03/15/2013</span> </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Bar Date:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_BAR_DATE">03/15/2013</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Bankruptcy Type:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_BANKRUPTCY_TYPE">Chapter 11</span> </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Administrative Bar Date:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_ADMINISTRATIVE_BAR_DATE">07/01/2013</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Create Date:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_CREATE_DATE">08/11/2013</span> </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Identity Theft Date:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_IDENTITY_THEFT_DATE">07/01/2013</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half emp-col-pull-half">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Last Updated By:</span> </div>
+                                <div class="cui-data"> <span class="emp-data" id="E_LAST_UPDATED_BY">12345</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half cui-data-left">
+                            <div class="emp-field">
+                                <div class="cui-data"> <i class="emp-icon-stop">Not applicable</i> </div>
+                                <div class="cui-label"> <span class="emp-label" id="E_GROUP">Group</span> </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half cui-data-left">
+                            <div class="emp-field">
+                                <div class="cui-data"> <i class="emp-icon-stop">Not applicable</i> </div>
+                                <div class="cui-label"> <span class="emp-label" id="E_MTA_GROUP">MTA Group</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-button-row">
+                        <div class="emp-col-half">
+                            <button type="button" name="E_BTN_NAME_HISTORY" tabindex="1" title="Go to Name History">Name History</button>
+                            <button type="button" name="E_BTN_ADDRESS_SUMMARY" tabindex="1" title="Go to Address Summary">Address Summary</button>
+                            <button type="button" name="E_BTN_LEG_REP" tabindex="1" title="Go to Legal Rep">Leg Rep</button>
+                        </div>
+                        <div class="emp-col-half cui-align-right">
+                            <button type="button" name="E_BTN_CONTACT_INFORMATION" tabindex="1">Contact Information</button>
+                        </div>
+                    </div>
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++ -->
+                    <!-- SECTION: .Address Physica/Mailing Address  -->
+                    <!-- ++++++++++++++++++++++++++++++++++++++++++ -->
+                    <section>
+                        <header>
+                            <div class="emp-section-title">
+                                <h3>Address - Physical/Mailing</h3>
+                            </div>
+                            <div class="emp-section-controls">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div class="cui-row">
+                            <div class="emp-col-half">
+                                <div class="emp-field emp-federal-data">
+                                    <div class="cui-label">
+                                        <label for="E_LINE_1">Line 1:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_LINE_1" maxlength="30" size="34" value="&nbsp;" tabindex="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-field emp-federal-data">
+                                    <div class="cui-label emp-federal-data">
+                                        <label for="E_LINE_2">Line 2:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_LINE_2" maxlength="30" size="34" value="31 Spooner Street" tabindex="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-half">
+                                <div class="emp-field cui-required emp-federal-data">
+                                    <div class="cui-label">
+                                        <label for="E_CITY">City:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_CITY" maxlength="18" size="22" value="Albany" tabindex="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-field emp-federal-data">
+                                    <div class="cui-label">
+                                        <label for="E_STATE">State:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <select id="E_STATE" tabindex="1">
+                                            <option value="0" selected="selected"></option>
+                                            <option value='1'>New Jersey</option>
+                                            <option value='2'>California</option>
+                                            <option value='3'>Florida</option>
+                                            <option value='4'>ABCDEFGHIJKLMNOPQRSTUVWX</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-full">
+                                <div class="emp-field emp-federal-data">
+                                    <div class="cui-label">
+                                        <label for="E_ZIP">Zip:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_ZIP" maxlength="10" size="10" value="12227-1234" tabindex="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-half">
+                                <div class="emp-field emp-federal-data">
+                                    <div class="cui-label">
+                                        <label for="E_COUNTRY">Country:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <select id="E_COUNTRY" tabindex="1">
+                                            <option value="0" selected="selected"></option>
+                                            <option value='1'>United States</option>
+                                            <option value='2'>Canada</option>
+                                            <option value='3'>Mexico</option>
+                                            <option value='4'>ABCDEFGHIJKLMNOPQRSTUVWX</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-field emp-federal-data">
+                                    <div class="cui-label">
+                                        <label for="E_COUNTY">County:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <select id="E_COUNTRY" tabindex="1">
+                                            <option value="0" selected="selected"></option>
+                                            <option value='1'>Albany</option>
+                                            <option value='2'>Fulton</option>
+                                            <option value='3'>Herkimer</option>
+                                            <option value='4'>Montgomery</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-half">
+                                <div class="emp-field cui-required">
+                                    <div class="cui-label">
+                                        <label for="E_NOTIFY_DATE">Notify Date:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_NOTIFY_DATE" class="emp-date" size="13" maxlength="10" tabindex="1">
+                                        <!-- Temp: cui-c-datepicker component should render the code below -->
+                                        <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-composite emp-search-composite emp-seach-composite-dynamic-label emp-federal-data">
+                                    <div class="cui-label">
+                                      <label class="cui-hide-from-screen" for="E_ASSOCIATED_ID">
+                                          Pick what we should search for:
+                                      </label>
+                                      <select id="E_ASSOCIATED_ID">
+                                          <option selected="selected">Associated Business ID</option>
+                                          <option>Associated Individual ID</option>
+                                      </select>
+                                    </div>
+                                    <div class="cui-data emp-search">
+                                        <div class="emp-field">
+                                            <input id="E_ASSOCIATED_ID" type="text" value="Some Data" size="20" maxlength="50" tabindex="1">
+                                        </div>
+                                        <div class="emp-field">
+                                            <button type="button" name="E_BTN_GO" tabindex="1">
+                                                Go
+                                            </button>
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-half">
+                                <div class="emp-field">
+                                    <div class="cui-label"> <span class="emp-label">Posted Date:</span> </div>
+                                    <div class="cui-data"> <span class="emp-data" id="E_POSTED_DATE">01/20/2013</span> </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-field">
+                                    <div class="cui-label"> <span class="emp-label">Address Sequence Number:</span> </div>
+                                    <div class="cui-data"> <span class="emp-data" id="E_ADDRESS_SEQUENCE_NUMBER">001</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-full">
+                                <div class="emp-field">
+                                    <div class="cui-label">
+                                        <label for="E_SCHOOL_DISTRICT">School District:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <select id="E_SCHOOL_DISTRICT" tabindex="1">
+                                            <option value="0" selected="selected"></option>
+                                            <option value='1'>Shenendehowa Central School District (123)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-full">
+                                <div class="emp-field">
+                                    <div class="cui-label">
+                                        <label for="E_SCHOOL_DISTRICT_SOURCE">School District Source:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <select id="E_SCHOOL_DISTRICT_SOURCE" tabindex="1">
+                                            <option value="0" selected="selected"></option>
+                                            <option value='1'>Return</option>
+                                            <option value='1'>012345678901234567890</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-full">
+                                <div class="emp-field">
+                                    <div class="cui-label"> <span class="emp-label">School District Verified:</span> </div>
+                                    <div class="cui-data"> <span class="emp-data" id="E_SCHOOL_DISTRICT_VERIFIED">Yes</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-half cui-data-left">
+                                <div class="emp-field">
+                                    <div class="cui-data">
+                                        <input type="checkbox" id="E_GIFT_PHYSICAL" tabindex="1">
+                                    </div>
+                                    <div class="cui-label">
+                                        <label for="E_GIFT_PHYSICAL">Gift Physical</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-field">
+                                    <div class="cui-label">
+                                        <label for="E_NIXIE">Nixie:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_NIXIE" maxlength="2" size="2" value="&nbsp;" tabindex="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cui-row">
+                            <div class="emp-col-half cui-data-left">
+                                <div class="emp-field">
+                                    <div class="cui-data">
+                                        <input type="checkbox" id="E_GIFT_MAILING" tabindex="1">
+                                    </div>
+                                    <div class="cui-label">
+                                        <label for="E_GIFT_MAILING">Gift Mailing</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="emp-col-half">
+                                <div class="emp-field cui-required">
+                                    <div class="cui-label">
+                                        <label for="E_NIXIE_DATE">Nixie Date:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" id="E_NIXIE_DATE" class="emp-date" size="13" maxlength="10" tabindex="1">
+                                        <!-- Temp: cui-c-datepicker component should render the code below -->
+                                        <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <header>
+                            <div class="emp-section-title">
+                                <h3>Client to Client Association List </h3>
+                            </div>
+                            <div class="emp-section-controls">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                        <!-- Client to Client Association Result Set-->
+                        <div class="emp-table">
+                            <table id="t_client_to_client_association">
+                                <caption>
+                                    Associations (Total Result: 10)
+                                </caption>
+                                <thead>
+                                    <tr data-key="table-row">
+                                        <th data-sort="alpha">Header Assoc Role </th>
+                                        <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Federal Indicator">Federal Indicator</span> </th>
+                                        <th data-sort="alpha"> ID </th>
+                                        <th data-sort="alpha"> Name </th>
+                                        <th data-sort="alpha"> Association Group </th>
+                                        <th data-sort="alpha"> Association Type </th>
+                                        <th data-sort="alpha">Tax Type </th>
+                                        <th data-sort="date"> Effective Date</th>
+                                        <th data-sort="date"> Expiration Date</th>
+                                        <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Historical Row">Historical Row</span> </th>
+                                        <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="View Additional Details">View Additional Details</span> </th>
+                                        <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Delete Record">Delete Record</span> </th>
+                                        <th data-type="button" class="emp-min-width" data-table-primary-button="true"> <span class="cui-hide-from-screen" title="Edit/View Details">Edit/View Details</span> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">Fed</span></td>
+                                        <td>14-744477777 (BUS)</td>
+                                        <td>XAVY NABY</td>
+                                        <td>REPRESENTATIVE</td>
+                                        <td>MAIL AGENT</td>
+                                        <td>SALES</td>
+                                        <td> 04/15/2012 </td>
+                                        <td> </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete Record">Delete Record</button>
+                                        </td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">Fed</span></td>
+                                        <td>12-4778128 (BUS)</td>
+                                        <td>XAVY NABY</td>
+                                        <td>REPRESENTATIVE</td>
+                                        <td>SUB S MEMBER</td>
+                                        <td>CORP</td>
+                                        <td> 03/20/2013 </td>
+                                        <td> </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-delete" name="E_BTN_DELETE" title="Delete Record">Delete Record</button>
+                                        </td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Details">Edit Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">Fed</span></td>
+                                        <td>13-9478178 (BUS)</td>
+                                        <td>XAVY NABY</td>
+                                        <td>REPRESENTATIVE</td>
+                                        <td>FILE REP</td>
+                                        <td>WT</td>
+                                        <td> 03/20/2013 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">Fed</span></td>
+                                        <td>12-7444120 (BUS)</td>
+                                        <td>JURY GROUP</td>
+                                        <td>REPRESENTATIVE</td>
+                                        <td>PAID PREPARER</td>
+                                        <td>SALES</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">FED</span></td>
+                                        <td>12-4778128 (BUS)</td>
+                                        <td>MAY FLICK</td>
+                                        <td>REPRESENTATIVE</td>
+                                        <td>MAIL AGENT</td>
+                                        <td>CORP</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td></td>
+                                        <td>12-7444120 (BUS)</td>
+                                        <td>JANE POWER</td>
+                                        <td>CORPORATION</td>
+                                        <td>FILE REP</td>
+                                        <td>WT</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td></td>
+                                        <td>13-9478178 (BUS)</td>
+                                        <td>MAY FLICK</td>
+                                        <td>CORPORATION</td>
+                                        <td>PAID PREPARER</td>
+                                        <td>SALES</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td></td>
+                                        <td>13-9478178 (BUS)</td>
+                                        <td>XAVY NABY</td>
+                                        <td>CORPORATION</td>
+                                        <td>PAID PREPARER</td>
+                                        <td>CORP</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">Fed</span></td>
+                                        <td>12-4778128 (BUS)</td>
+                                        <td>JURY GROUP</td>
+                                        <td>CORPORATION</td>
+                                        <td>PAID PREPARER</td>
+                                        <td>WT</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SECONDARY</td>
+                                        <td class="emp-min-width"><span class="emp-indicator-3 emp-federal-data" alt="Federal Data">Fed</span></td>
+                                        <td>12-4778128 (BUS)</td>
+                                        <td>MAY FLICKSMAY</td>
+                                        <td>CORPORATION</td>
+                                        <td>SUB S MEMBER</td>
+                                        <td>SALES</td>
+                                        <td> 12/02/2014 </td>
+                                        <td> 09/12/2015 </td>
+                                        <td class="emp-min-width"><span class="emp-indicator-2" alt="Historical Row">HR</span></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width"></td>
+                                        <td class="emp-min-width">
+                                            <button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
+                <!-- Everything below the last section -->
+                <footer>
+                    <div class="emp-button-row">
+                        <div class="emp-col-full cui-align-right">
+                            <button type="button" name="E_BTN_OVERRIDE_DUPLICATE" tabindex="1">Override Duplicate</button>
+                            <button type="button" name="E_BTN_DELETE_TAXPAYER" class="cui-button-primary" tabindex="1">Delete Taxpayer</button>
+                            <button type="button" name="E_BTN_RESET" tabindex="1">Reset</button>
+                            <button type="submit" name="E_BTN_SUBMIT" class="cui-button-primary" tabindex="1">Submit</button>
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </main>
+    </div>
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script>
+    require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+        // Elements in the page that need to be turned into a data store
+        uiMockup.createPageDataStore(function(results) {
+            emp.init();
+        });
+    });
+    </script>
+</body>
+
+</html>

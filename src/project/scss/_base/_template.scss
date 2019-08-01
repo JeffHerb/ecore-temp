@@ -1,0 +1,590 @@
+//   ========================================================
+// * @name       _template.scss
+// * @desc       Empire specific structure styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    General structures
+// * --------------------------------------------------------
+body {
+    overflow-x: hidden; // Ugh. Not sure how else to keep the window from having a horizontal scrollbar when there is a table that's too wide to fit. Putting `overflow` on any other container doesn't help. (CP)
+}
+
+#body-wrapper {
+    @include clearfix;
+}
+
+
+// * @section    Page messages
+// * --------------------------------------------------------
+.emp-messages { // `<ul>`
+    @include grid-col(12);
+    @include clearfix;
+    list-style: none outside none;
+    margin: 0.75em 0.5em 0.75em 0.5em;
+}
+
+
+// * @section    Page body metadata/controls
+// * --------------------------------------------------------
+.emp-page-info { // This contains `.emp-indicators` and `.emp-asof`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    .emp-indicators {
+
+        span[class^="emp-indicator-"] {
+            width: auto !important;
+        }
+    }
+}
+
+
+// * @section    As Of navigation
+// * --------------------------------------------------------
+.emp-asof {
+    flex: 1 1 100%;
+    flex-direction: row;
+    width: 100%;
+
+    @include pointbreak($cui-bp-large) {
+        flex-direction: column;
+        flex-basis: 0;
+    }
+
+    #form_asof {
+        @include grid-col(12);
+        margin-left: 10px;
+
+        button {
+            @include hide-text;
+            position: relative;
+            width: $emp-as-of-button-width;
+            margin: $emp-as-of-button-margin;
+            margin-left: 0;
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: $cui-button-padding-top;
+                left: ($cui-button-icon-width / 2) - 2;
+                display: inline-block;
+                padding: 0;
+                line-height: $cui-line-height;
+                vertical-align: middle;
+
+                .emp-fontsize-20 & {
+                    top: 7px;
+                }
+
+                .emp-fontsize-22 & {
+                    top: 7px;
+                }
+            }
+        }
+
+        // Display
+        & > div {
+            display: inline-block;
+            text-align: center;
+            margin: 10px 0;
+
+            .emp-fontsize-16 & {
+                margin: 6px 0;
+            }
+
+            time {
+                margin-right: 5px;
+
+                .emp-fontsize-18 & {
+                    margin-right: 7px;
+                }
+            }
+
+        }
+    }
+
+    button {
+        color: transparent;
+
+        &:after {
+            color: $cui-color-dark-gray;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $cui-color-dark-gray;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $cui-color-dark-gray;
+            }
+        }
+    }
+}
+
+.emp-asof-prev {
+
+    &:after {
+        @include triangle($dir: "left", $size: 7px, $color: $cui-color-dark-gray-alt);
+
+        .emp-fontsize-10 & {
+            @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 -1) !important;
+        }
+
+        .emp-fontsize-16 & {
+            @include triangle($dir: "left", $size: 9px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2) !important;
+        }
+
+        .emp-fontsize-18 & {
+            @include triangle($dir: "left", $size: 10px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 2) !important;
+        }
+
+        .emp-fontsize-20 & {
+            @include triangle($dir: "left", $size: 12px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 3) !important;
+        }
+
+        .emp-fontsize-22 & {
+            @include triangle($dir: "left", $size: 13px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 3) !important;
+        }
+
+        .emp-fontsize-24 & {
+            @include triangle($dir: "left", $size: 14px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 4) !important;
+        }
+    }
+}
+
+.emp-asof-next {
+    &:after {
+        @include triangle($dir: "right", $size: 7px, $color: $cui-color-dark-gray-alt);
+
+        .emp-fontsize-10 & {
+            @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 -1) !important;
+        }
+
+        .emp-fontsize-16 & {
+            @include triangle($dir: "right", $size: 9px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2) !important;
+        }
+
+        .emp-fontsize-18 & {
+            @include triangle($dir: "right", $size: 10px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 2) !important;
+        }
+
+        .emp-fontsize-20 & {
+            @include triangle($dir: "right", $size: 12px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 3) !important;
+        }
+
+        .emp-fontsize-22 & {
+            @include triangle($dir: "right", $size: 13px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 3) !important;
+        }
+
+        .emp-fontsize-24 & {
+            @include triangle($dir: "right", $size: 14px, $color: $cui-color-dark-gray-alt);
+            left: ($cui-button-icon-width / 2 + 5) !important;
+        }
+
+    }
+
+    @include pointbreak("699px") {
+        width: 100%;
+    }
+}
+
+// * @section    Page indicators
+// * --------------------------------------------------------
+.emp-indicators {
+    flex: 2 1 100%;
+    flex-direction: row;
+    margin-left: 0.65em !important;
+
+    @include row($width: auto);
+    flex: 1 1 !important;
+    flex-wrap: wrap;
+    list-style: none outside none;
+
+    @include pointbreak($cui-bp-large) {
+        justify-content: flex-end;
+        margin-right: $cui-font-size / 2;
+        margin-left: 0;
+
+        li {
+            margin: $emp-indicator-li-margin;
+        }
+
+    }
+
+    // Disable the default behavior for indicators
+    &:after {
+        display: none;
+    }
+
+    // Inside a group
+    section & {
+        margin: $cui-font-size / 2;
+    }
+
+    li > span,
+    li > a {
+        display: inline-block;
+        margin: 5px 5px 5px 0;
+        color: $emp-indicator-color;
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        border-radius: $emp-indicator-border-radius;
+        @include fontSize($cui-text-size);
+        padding: 4px 5px 5px;
+        position: relative;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            color: $emp-indicator-color;
+            background-color: $emp-indicator-bg-color;
+            border: $emp-indicator-border;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            color: $emp-indicator-color;
+            background-color: $emp-indicator-bg-color;
+            border: $emp-indicator-border;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            color: $emp-indicator-color;
+            background-color: $emp-indicator-bg-color;
+            border: $emp-indicator-border;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            color: $emp-indicator-color;
+            background-color: $emp-indicator-bg-color;
+            border: $emp-indicator-border;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            color: $emp-indicator-color;
+            background-color: $emp-indicator-bg-color;
+            border: $emp-indicator-border;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            color: $emp-indicator-color;
+            background-color: $emp-indicator-bg-color;
+            border: $emp-indicator-border;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            margin: $emp-indicator-li-margin;
+        }
+
+        // Text containers
+        span,
+        a {
+            // Make them fill the whole `<li>`
+            display: block;
+            padding: $emp-indicator-padding;
+            white-space: nowrap;
+            @include fontSize($cui-text-size);
+        }
+
+    }
+
+    li {
+
+        // Icon for linked items
+        a {
+            position: relative;
+            overflow: hidden;
+
+            // Padding:    text padding                  room for the icon           icon position offset
+            padding-right: $emp-indicator-padding-left + $emp-indicator-icon-width + $emp-indicator-padding-left;
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 25%;
+                right: $emp-indicator-padding-right;
+                left: auto; // Override the indicator default value
+                display: block;
+                height: $emp-indicator-icon-height;
+                width: $emp-indicator-icon-width;
+
+                @if $emp-indicator-icon-url != "" {
+                    background: transparent url($emp-indicator-icon-url) center right no-repeat;
+                }
+            }
+
+            span.emp-popup {
+                background: #000;
+                display: block;
+                height: 2em;
+                position: absolute;
+                right: -1.25em;
+                text-indent: -9999px;
+                top: -1.25em;
+                transform: rotate(45deg);
+                width: 2em;
+            }
+
+            &.popup {
+                padding-right: $emp-indicator-padding-left + $emp-indicator-icon-width + $emp-indicator-padding-left + 5;
+
+                &:after {
+                    right: $emp-indicator-padding-right + 5;
+                }
+            }
+        }
+
+        // We need to enumerate all of these pseudoclasses to override the default `a` color despite the higher specificity used here...
+        a,
+        a:focus,
+        a:active,
+        a:visited,
+        a:hover {
+            color: $emp-indicator-link-color;
+            font-weight: normal;
+            text-decoration: none;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $emp-indicator-link-color;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $emp-indicator-link-color;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $emp-indicator-link-color;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $emp-indicator-link-color;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $emp-indicator-link-color;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $emp-indicator-link-color;
+            }
+        }
+
+        a:hover {
+            background-color: $emp-indicator-bg-color-hover;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                background-color: $emp-indicator-bg-color-hover;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                background-color: $emp-indicator-bg-color-hover;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                background-color: $emp-indicator-bg-color-hover;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                background-color: $emp-indicator-bg-color-hover;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                background-color: $emp-indicator-bg-color-hover;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                background-color: $emp-indicator-bg-color-hover;
+            }
+        }
+
+    }
+
+}
+
+.emp-notifier-color-red:not(:hover) {
+    background-color: #a32e2a !important;
+    color: #FFF;
+}
+
+.emp-notifier-color-black:not(:hover) {
+    background-color: #333 !important;
+}
+
+.emp-notifier-color-green:not(:hover) {
+    background-color: $emp-green-notifier !important;
+}
+
+.emp-notifier-color-lightgray:not(:hover) {
+    background-color: $emp-lightgray-notifier !important;
+    color: #1C1C1C !important;
+}
+
+
+// * @section    Main
+// * --------------------------------------------------------
+
+.emp-print-only,
+.emp-federal-print-message {
+    display: none;
+    height: 0;
+
+    & > div {
+        margin: 0;
+    }
+}
+
+@media print {
+    .emp-print-only,
+    .emp-federal-print-message {
+        display: block;
+        height: auto;
+    }
+
+    & > div {
+        margin: inherit;
+    }
+}
+
+
+// * @section    Main form
+// * --------------------------------------------------------
+#form_content {
+    @include clearfix;
+}
+
+
+// * @section    Exception blocks
+// * --------------------------------------------------------
+[class*="emp-exceptions-"] {
+    @include row();
+}
+
+
+// * @section    <footer>
+// * --------------------------------------------------------
+body footer {
+    padding-bottom: $emp-footer-padding-bottom;
+
+    @include section-row-spacing;
+
+    .cui-row,
+    .emp-button-row {
+        justify-content: flex-end;
+    }
+
+    .cui-data-left .cui-label,
+    .cui-data {
+        float: none;
+        display: inline-block;
+    }
+}
+
+#body-wrapper {
+    margin-bottom: 10px;
+
+    &.emp-disabled-page {
+
+        .emp-header-logo {
+            background: #000 !important;
+        }
+
+        .emp-header-links {
+            display: none;
+        }
+
+    }
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+
+.no-margin-left {
+    margin-left: 0;
+}
+
+.no-margin-right {
+    margin-right: 0;
+}
+
+.no-padding-top {
+    padding-top: 0;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.no-padding-right {
+    padding-right: 0;
+}
+
+p.no-margin-padding {
+    margin: 0;
+    padding: 0;
+}
+
+p.indent-left {
+    padding-left: 25px;
+}
+

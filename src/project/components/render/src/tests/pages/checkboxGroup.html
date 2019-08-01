@@ -1,0 +1,189 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "attributes": {
+                                    "id": "E_EDITABLE_CHECKBOXGROUP"
+                                },
+                                "contents": [
+                                    // Standard Editable Checkbox Group
+                                    {
+                                        "type": "checkbox",
+                                        "template": "inputGroup",
+                                        "legend": "Choose a color",
+                                        "options": [
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Blue",
+                                                    "attributes": {
+                                                        "for": "E_TEST_EDITABLE_CHECK_BLUE"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_EDITABLE_CHECK_BLUE",
+                                                        "id": "E_TEST_EDITABLE_CHECK_BLUE",
+                                                        "type": "checkbox",
+                                                        "value": "blue"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Red",
+                                                    "attributes": {
+                                                        "for": "E_TEST_EDITABLE_CHECK_RED"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_EDITABLE_CHECK_RED",
+                                                        "id": "E_TEST_EDITABLE_CHECK_RED",
+                                                        "type": "checkbox",
+                                                        "value": "red"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Green",
+                                                    "attributes": {
+                                                        "for": "E_TEST_EDITABLE_CHECK_GREEN"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_EDITABLE_CHECK_GREEN",
+                                                        "id": "E_TEST_EDITABLE_CHECK_GREEN",
+                                                        "type": "checkbox",
+                                                        "value": "green"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "attributes": {
+                                    "id": "E_READONLY_CHECKBOXGROUP"
+                                },
+                                "contents": [
+                                    // Standard Editable Checkbox Group
+                                    {
+                                        "type": "checkbox",
+                                        "template": "inputGroup",
+                                        "legend": "Choose a color",
+                                        "options": [
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Blue",
+                                                    "attributes": {
+                                                        "for": "E_TEST_READONLY_CHECK_BLUE"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_READONLY_CHECK_BLUE",
+                                                        "id": "E_TEST_READONLY_CHECK_BLUE",
+                                                        "type": "checkbox",
+                                                        "value": "blue",
+                                                        "checked": true
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Red",
+                                                    "attributes": {
+                                                        "for": "E_TEST_READONLY_CHECK_RED"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_READONLY_CHECK_RED",
+                                                        "id": "E_TEST_READONLY_CHECK_RED",
+                                                        "type": "checkbox",
+                                                        "value": "red",
+                                                        "checked": true
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Green",
+                                                    "attributes": {
+                                                        "for": "E_TEST_READONLY_CHECK_GREEN"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_READONLY_CHECK_GREEN",
+                                                        "id": "E_TEST_READONLY_CHECK_GREEN",
+                                                        "type": "checkbox",
+                                                        "value": "green"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        readOnly: true
+                                    },
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

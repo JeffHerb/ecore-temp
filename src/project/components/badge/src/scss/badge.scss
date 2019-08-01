@@ -1,0 +1,100 @@
+// Core settings
+@import "../../../../../cui/scss/_settings";
+@import "../../../../../cui/scss/_utilities/_mixins";
+// Implementer settings
+@import "../../_settings";
+// Project settings
+@import "../../../../scss/_settings";
+// Component settings
+// @import "_utilities/_mixins";
+
+.cui-badge {
+    position: absolute;
+    background: #fff;
+    top: -9999em; // We have to declare this so that the element does not take up any space when it is first created, before it is displayed. Otherwise there will be a white gap at the bottom of the page equal to the height of the tallest badge.
+    color: white;
+    background-color: $emp-red-2;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 2px 6px;
+
+    .theme-teal & {
+        @import "../../../../scss/_theme_teal.scss";
+        background-color: $emp-red-2;
+    }
+
+    .theme-lilypad & {
+        @import "../../../../scss/_theme_lilypad.scss";
+        background-color: $emp-red-2;
+    }
+
+    .theme-eggplant & {
+        @import "../../../../scss/_theme_eggplant.scss";
+        background-color: $emp-red-2;
+    }
+
+    .theme-cobalt & {
+        @import "../../../../scss/_theme_cobalt.scss";
+        background-color: $emp-red-2;
+    }
+
+    .theme-hazel & {
+        @import "../../../../scss/_theme_hazel.scss";
+        background-color: $emp-red-2;
+    }
+
+    .theme-contrast & {
+        @import "../../../../scss/_theme_contrast.scss";
+        background-color: $emp-red-2;
+    }
+
+    // Indeterminate state (no displayed value)
+    &.cui-badge-indeterminate {
+        @include hide-text();
+        width: 1em;
+        height: 1em;
+        padding: 8px;
+    }
+}
+
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform: translateX(2px);
+    }
+    50% {
+        -webkit-transform: translateX(-2px);
+    }
+    100% {
+        -webkit-transform: translateX(2px);
+    }
+}
+
+@-moz-keyframes shake {
+    0% {
+        -moz-transform: translateX(2px);
+    }
+    50% {
+        -moz-transform: translateX(-2px);
+    }
+    100% {
+        -moz-transform: translateX(2px);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(2px);
+    }
+    50% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(2px);
+    }
+}
+
+.cui-animate-shake {
+    -webkit-animation: shake 0.2s ease infinite;
+       -moz-animation: shake 0.2s ease infinite;
+            animation: shake 0.2s ease infinite;
+}

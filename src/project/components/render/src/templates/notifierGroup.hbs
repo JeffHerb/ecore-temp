@@ -1,0 +1,7 @@
+<ul {{attribute (mergeAttributes this.attributes defaults='{"className": "emp-indicators"}') }}>
+    {{#each this.notifiers~}}
+        <li>
+            {{~> (getPartialName this.template) this~}}
+        </li>
+    {{/each~}}
+</ul>

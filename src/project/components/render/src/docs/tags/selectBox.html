@@ -1,0 +1,839 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="SelectBox Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>SelectBox Custom Tag</h1>
+                <div class="docs-badge cui-success">New in E2</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:SelectBox&gt;</code> tag renders an HTML <code>&lt;select&gt;</code> element. This is a combination of the <code>&lt;ET:ComboBox&gt;</code> and <code>&lt;ET:List&gt;</code> custom tags from Empire 1 which are now deprecated.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:SelectBox viewKey="demo" options="<%= colorMap %>" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "select",
+    "template": "field",
+    "label": {
+        "text": "Pick your favorite color",
+        "attributes": {
+            "for": "select-demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "select-demo",
+            "id": "select-demo",
+        }
+        "options": {
+            "blue": {
+                "text": "Blue",
+                "value": "blue",
+                "tabindex": 1
+            },
+            "green": {
+                "text": "Green",
+                "value": "gree",
+                "tabindex": 1
+            },
+            "red": {
+                "text": "Red",
+                "value": "green",
+                "tabindex": 1
+            },
+        }
+    }
+}</pre>
+
+                <p>
+                    Developers must provide at least the <code>viewKey</code> and <code>options</code> attributes. The <code>options</code> map is a Java map that represents the options to be added to the <code>&lt;select&gt;</code> element.
+                </p>
+                <p>
+                    The JSON for this component generally mirrors that of a <a href="text.html">text field</a>. The main difference is the addition of the <code>options</code> property in the <code>input</code> object. This property, which contains a list of sub-objects for each option, is a translation of the Java map. The key for each sub-object is somewhat arbitrary (it's used for the <code>value</code> property described below) but they must be unique.
+                </p>
+                <p>
+                    At a minimum each sub-object needs a <code>text</code>, <code>value</code>, and <code>tabindex</code> property. Additional attributes related to the options may also be included. Note that the <code>text</code> property is the visible text that is rendered to the screen for the user to see.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                A registered view key (previously called <code>pageElementName</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                options
+                            </th>
+                            <td>
+                                Map
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Java Map representing the selectable options
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Initially selected option (previously called <code>selectedValue</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                required
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the field must be filled in (<a href="../common/attributes/required.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                readOnly
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the input should be read-only (<a href="../common/attributes/readOnly.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute of the input element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that needs to be executed. The string must include both event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                accessKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                multiple
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Renders the element as a multi-select box
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                size
+                            </th>
+                            <td>
+                                Integer
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Changes the number of rows that should appear by default in a multi-select box. The default size is 4.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable values:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                    <li>HIDE_LABEL</li>
+                                    <li>HIDE_LABEL_NO_SPACE</li>
+                                    <li>HIDE_LABEL_YES_SPACE</li>
+                                    <li>NO_BLANK_OPTIONS</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                labelHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;label&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;select&gt;</code>tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Java object attribute from which value is populated. It is the responsibility of the custom tag or its parent custom tag to make the object available to the page context.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rsMapping
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to map this field to result set. Please see the <a href="resultset.html">ResultSet custom tag documentation</a> for details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                message
+                            </th>
+                            <td>
+                                hashmap
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Provides a hashmap of a specific field level message to an input (<a href="../common/attributes/message.html">more details</a>).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- NO_BLANK_OPTIONS -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h2 id="no-blank-option">No Blank Attribute</h2>
+
+                <h3>Custom Tag</h3>
+
+                <pre class="code">
+&lt;E2:SelectBox viewKey="demo" options="<%= colorMap %>" noBlank="true"> />
+                </pre>
+
+                <h4>No Blank Attribute JSON</h4>
+                <pre class="code">
+{
+    "type": "select",
+    "template": "field",
+    "label": {
+        "text": "Pick your favorite color",
+        "attributes": {
+            "for": "select-demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "select-demo",
+            "id": "select-demo",
+        },
+        "options": {
+            "blue": {
+                "text": "Blue",
+                "value": "blue",
+                "tabindex": 1
+            },
+            "green": {
+                "text": "Green",
+                "value": "gree",
+                "tabindex": 1
+            },
+            "red": {
+                "text": "Red",
+                "value": "green",
+                "tabindex": 1
+            },
+        },
+        "noBlankOption": true,
+    }
+}
+                </pre>
+
+                <p>
+                    For the full <a href="#no-blank-options-support">support list</a> see below.
+                </p>
+
+                <h4>Rendered Examples</h4>
+                <p>
+                    By default all standard <code>SelectBox</code> render with a blank option item. This blank option is the default state for the input and contains an empty string as its value. If a select box should not contain a blank option, then add <code>noBlank</code> to the tag and set it to a value of <em>true</em>. When this renderes in JSON, the <code>input</code> object will now contain a property of <code>noBlankOption</code> with the value set to <em>true</em>.
+                </p>
+
+                <section id="noBlank-example">
+                </section>
+
+            </div>
+
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Value Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:SelectBox viewKey="demo" options="<%= colorMap %>" value="red" /></pre>
+
+                <h3>Value Attribute JSON</h3>
+                <pre class="code">
+{
+    "type": "select",
+    "template": "field",
+    "label": {
+        "text": "Pick your favorite color",
+        "attributes": {
+            "for": "select-demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "select-demo",
+            "id": "select-demo",
+        }
+        "options": {
+            "blue": {
+                "text": "Blue",
+                "value": "blue",
+                "tabindex": 1
+            },
+            "green": {
+                "text": "Green",
+                "value": "gree",
+                "tabindex": 1
+            },
+            "red": {
+                "text": "Red",
+                "value": "green",
+                "tabindex": 1
+            },
+        },
+        "value": "red"
+    }
+}</pre>
+
+                <p>
+                    To set the pre-selected option, set the value of the corresponding option using the <code>value</code> attribute. This is a change from <code>selectedValue</code> so the select component is more consistant with other inputs. Note that in the JSON the pre selected option value is an additional property of the <code>input</code> object. Also note that the <code>value</code> attribute expects to find an string. If the multiple version of the option list is in use, the additional values should be comma-separated.
+                </p>
+
+                <h2>Value Attribute Examples</h2>
+
+                <section id="value-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Multi and Size Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:SelectBox viewKey="demo" options="<%= colorMap %>" multiple="true" size="5" /></pre>
+
+                <h3>Value Attribute JSON</h3>
+                <pre class="code">
+{
+    "type": "select",
+    "template": "field",
+    "label": {
+        "text": "Pick your favorite colors",
+        "attributes": {
+            "for": "select-demo3"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "select-demo3",
+            "id": "select-demo3",
+            "size": 5
+        }
+        "options": {
+            "blue": {
+                "text": "Blue",
+                "value": "blue",
+                "tabindex": 1
+            },
+            "green": {
+                "text": "Green",
+                "value": "green",
+                "tabindex": 1
+            },
+            "red": {
+                "text": "Red",
+                "value": "red",
+                "tabindex": 1
+            },
+            "purple": {
+                "text": "Purple",
+                "value": "purple",
+                "tabindex": 1
+            },
+            "orange": {
+                "text": "Orange",
+                "value": "orange",
+                "tabindex": 1
+            },
+            "white": {
+                "text": "White",
+                "value": "white",
+                "tabindex": 1
+            },
+            "black": {
+                "text": "Black",
+                "value": "black",
+                "tabindex": 1
+            }
+        },
+        "value": "red,white,blue",
+        "multiple": true
+    }
+}</pre>
+
+                <p>
+                    If a developer wants to toggle a traditional select box into a multi-select box, add <code>multiple="true"</code> to the custom tag. This will cause a new <code>multiple</code> attribute to appear in the JSON. By default multi-select boxes will display 4 rows of options at once (further options will require the user to scroll). Developers can add the optional attribute of <code>size</code> and pass in an integer to override the number of rows the component should display. In the JSON this additional property should appear inside of the input's attribute object.
+                </p>
+
+                <h2>Multi and Size Attribute Examples</h2>
+
+                <section id="multi-and-size-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "select-demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "select-demo",
+                                                "id": "select-demo",
+                                            },
+                                            "options": {
+                                                "blue": {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                    "tabindex": 1
+                                                },
+                                                "green": {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                    "tabindex": 1
+                                                },
+                                                "red": {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                    "tabindex": 1
+                                                },
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var noBlankOptions = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "select-demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "select-demo",
+                                                "id": "select-demo",
+                                            },
+                                            "options": {
+                                                "blue": {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                    "tabindex": 1
+                                                },
+                                                "green": {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                    "tabindex": 1
+                                                },
+                                                "red": {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                    "tabindex": 1
+                                                },
+                                            },
+                                            "noBlankOption": true,
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Value example JSON
+            var value = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite color",
+                                            "attributes": {
+                                                "for": "select-demo2"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "select-demo2",
+                                                "id": "select-demo2",
+                                            },
+                                            "options": {
+                                                "blue": {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                    "tabindex": 1
+                                                },
+                                                "green": {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                    "tabindex": 1
+                                                },
+                                                "red": {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                    "tabindex": 1
+                                                },
+                                            },
+                                            "value": "red"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Multi and Size example JSON
+            var multi = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Pick your favorite colors",
+                                            "attributes": {
+                                                "for": "select-demo3"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "select-demo3",
+                                                "id": "select-demo3",
+                                                "size": 5
+                                            },
+                                            "options": {
+                                                "blue": {
+                                                    "text": "Blue",
+                                                    "value": "blue",
+                                                    "tabindex": 1
+                                                },
+                                                "green": {
+                                                    "text": "Green",
+                                                    "value": "green",
+                                                    "tabindex": 1
+                                                },
+                                                "red": {
+                                                    "text": "Red",
+                                                    "value": "red",
+                                                    "tabindex": 1
+                                                },
+                                                "purple": {
+                                                    "text": "Purple",
+                                                    "value": "purple",
+                                                    "tabindex": 1
+                                                },
+                                                "orange": {
+                                                    "text": "Orange",
+                                                    "value": "orange",
+                                                    "tabindex": 1
+                                                },
+                                                "white": {
+                                                    "text": "White",
+                                                    "value": "white",
+                                                    "tabindex": 1
+                                                },
+                                                "black": {
+                                                    "text": "Black",
+                                                    "value": "black",
+                                                    "tabindex": 1
+                                                }
+                                            },
+                                            "value": "red,white,blue",
+                                            "multiple": true,
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Examples
+                var defaultExample = document.getElementById("default-example");
+                var valueExample = document.getElementById("value-example");
+                var multiSizeExample = document.getElementById("multi-and-size-example");
+                var noBlankExample = document.getElementById("noBlank-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    // Value example
+                    render.page(valueExample, value, function () {
+
+                        console.log("Value Done");
+
+                        render.page(noBlankExample, noBlankOptions, function() {
+
+                            console.log("No blank options Done");
+
+                            render.page(multiSizeExample, multi, function () {
+
+                                console.log("Multi Done");
+
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,54 @@
+<form name="form_tp_info" id="form_tp_info" class="emp-tp-header" method="post">
+    <!-- Taxpayer info -->
+    <!-- The emp-tpinfo-* classes used at this level are for distinguishing buttons that may appear for both taxpayers (e.g. legal rep) -->
+    <div class="emp-tp-info">
+        <!-- Main taxpayer -->
+        <div class="emp-tp-info-main" id="emp-tp-info-main">
+            <div class="cui-row">
+                <div class="emp-tp-indicators">
+                    {{#if buttons.sendID ~}} {{~> _link buttons.sendID section="globalHeader" scope="sendID"~}} {{/if~}} {{#if this.header.primary.notifiersAndControls~}}
+                    {{#each this.header.primary.notifiersAndControls~}} {{~> (getPartialName this.template) this section="globalHeader"
+                    scope="globalHeader" ~}} {{/each~}} {{/if~}}
+
+                </div>
+            </div>
+            <div class="cui-row">
+                <div class="emp-tp-id">
+                    {{#if header.primary.id~}}
+                    <span class="emp-data">
+                        {{~header.primary.id~}} {{~else~}}
+                        <span class="emp-label">
+                            ID: {{/if~}}
+                        </span>
+                </div>
+            </div>
+            <div class="cui-row">
+                <div class="emp-tp-name">
+                    {{#if header.primary.name~}}
+                    <span class="emp-data">
+                        {{~header.primary.name~}} {{~else~}}
+                        <span class="emp-label">
+                            Name: {{/if~}}
+                        </span>
+                </div>
+            </div>
+            <div class="cui-row">
+                <div class="emp-tp-address">
+                    {{#if header.primary.address~}}
+                    <span class="emp-data">
+                        {{~header.primary.address~}} {{~else~}}
+                        <span class="emp-label">
+                            Address: {{/if~}}
+                        </span>
+                        {{#if header.primary.differentMail~}} {{~> _button header.primary.differentMail~}} {{/if~}}
+                </div>
+            </div>
+        </div>
+        <!-- Joint taxpayer -->
+        {{~> _header-jointTaxPayer this.header.associate~}}
+    </div>
+    <!-- Buttons -->
+    <div class="emp-tp-header-buttons">
+        {{#if buttons.switch~}} {{~> _button buttons.switch section="globalHeader" scope="globalSwitch"~}} {{/if~}}
+    </div>
+</form>

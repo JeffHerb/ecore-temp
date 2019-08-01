@@ -1,0 +1,21 @@
+{{! route the tab navigation to the right partial}}
+{{#if this.disabled~}}
+
+    <span {{attribute (mergeAttributes this.attributes defaults=defaults) skip="tabindex" }}>
+        {{#if this.disabledText~}}
+            {{~this.disabledText~}}
+        {{~else~}}
+            {{~this.text~}}
+        {{/if~}}
+    </span>
+{{~else~}}
+
+    {{#ifCond v1=this.type op='==' v2='link'~}}
+        {{~> _link this defaults='{}' source="tabNavLink" ~}}
+{{!--     {{else}}
+        <li>
+            {{> _button this defaults=(extendDefaults defaults='{}' iconClass=this.icon) source="tabNavButton" }}
+        </li> --}}
+    {{/ifCond~}}
+
+{{/if~}}

@@ -1,0 +1,65 @@
+<form name="form_tp_info" id="form_tp_info" class="emp-tp-header" method="post">
+    <!-- Taxpayer info -->
+    <!-- The emp-tpinfo-* classes used at this level are for distinguishing buttons that may appear for both taxpayers (e.g. legal rep) -->
+    <div class="emp-tp-info">
+        <!-- Main taxpayer -->
+        <div class="emp-tp-info-main" id="emp-tp-info-main">
+            <div class="cui-row">
+                <div class="emp-tp-id">
+                    {{#if this.primary.id~}}
+                        <span class="emp-data">
+                            {{~this.primary.id~}}
+                    {{~else~}}
+                        <span class="emp-label">
+                            ID:
+                    {{/if~}}
+                    </span>
+                </div>
+            </div>
+            <div class="cui-row">
+                <div class="emp-tp-name">
+                    {{#if this.primary.name~}}
+                        <span class="emp-data">
+                            {{~this.primary.name~}}
+                    {{~else~}}
+                        <span class="emp-label">
+                            Name:
+                    {{/if~}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Joint taxpayer -->
+        <div class="emp-tp-info-joint" id="emp-tp-info-joint">
+            <div class="cui-row">
+                <div class="emp-tp-joint-id">
+                    <div class="emp-field">
+                        <div class="cui-label">
+                            <span class="emp-label">Joint ID:</span>
+                        </div>
+                        <div class="cui-data">
+                            <span class="emp-data">
+                                {{#if this.associate.id~}} {{~this.associate.id~}} {{/if~}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cui-row">
+                <div class="emp-tp-joint-name">
+                    <div class="emp-field">
+                        <div class="cui-label">
+                            <span class="emp-label">Joint Name:</span>
+                        </div>
+                        <div class="cui-data">
+                            <span class="emp-data">
+                                {{#if this.associate.name~}} {{~this.associate.name~}} {{/if~}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

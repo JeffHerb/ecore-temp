@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" class="external-app theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "table",
+                        "title": "Primary Secondary Expandable Responsive",
+                        "attributes":{
+                            "id": "primary-secondary"
+                        },
+                        "style": "external",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Name",
+                                            "responsive": {
+                                                "type": "primary"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Employee ID",
+                                            "responsive": {
+                                                "type": "secondary"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Email"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Position",
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 6"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 7"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 8"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 9"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 10"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 11"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 12"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 13"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 15"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Jeff"
+                                        },
+                                        {
+                                            "text": "10000"
+                                        },
+                                        {
+                                            "text": "jeffrey.herb@its.ny.gov"
+                                        },
+                                        {
+                                            "text": "ITS 4"
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "text": "7"
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "9"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Ben"
+                                        },
+                                        {
+                                            "text": "20000"
+                                        },
+                                        {
+                                            "text": "jean.morris@its.ny.gov"
+                                        },
+                                        {
+                                            "text": "ITS 2"
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "text": "7"
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "9"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+
+            }
+        };             
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

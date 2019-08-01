@@ -1,0 +1,53 @@
+<div class="agency-header">
+    <div id="banner-toggle" class="banner-toggle">
+        <button class="nys-logo banner-button">
+            <span>
+                Toggle New York State Banner
+            </span>
+        </button>
+    </div>
+    <div class="agency-title">
+        <a href="#">
+            <span>Department of</span>
+            <span>Taxation and Finance</span>
+        </a>
+    </div>
+    <ul class="agency-support-login">
+        {{#if this.userAcct}}
+        <li>
+            <button id="userAcct">
+                <span class="user-icon"></span>
+                <span class="label">{{this.userAcct.text}}</span>
+            </button>
+        </li>
+        {{/if}}
+        {{#if this.support}}
+            {{#ifCond v1=this.support.type op="===" v2="simple"}}
+            <li>
+                <a id="agencyHelp" href="{{this.support.contents.0.attributes.href}}">
+                    <span class="support-icon"></span>
+                    <span class="label">{{this.support.contents.0.text}}</span>
+                </a>
+            </li>
+            {{else}}
+            <li>
+                <button id="agencyHelp">
+                    <span class="support-icon"></span>
+                    <span class="label">{{this.support.contents.0.text}}</span>
+                </button>
+            </li>
+            {{/ifCond}}
+        {{/if}}
+    </ul>
+</div>
+<header class="emp-global-header external-view oprts-theme">
+    <div class="application-header">
+        <button class="menu-button">
+            <svg height="20" version="1" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#454545" d="M1 3h18v3H1zM1 9h18v3H1zM1 15h18v3H1z"></path>
+            </svg>
+            <span>Menu</span>
+        </button>
+        <h1 class="application-title">{{this.title}}</h1>
+    </div>
+</header>

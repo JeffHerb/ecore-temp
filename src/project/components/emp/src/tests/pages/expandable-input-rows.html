@@ -1,0 +1,312 @@
+<!doctype HTML>
+<html lang="en" class="external-app theme-teal">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Submit - Generic test page</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+    <div id="header-wrapper"></div>
+    <div id="body-wrapper"></div>
+    <div id="footer-wrapper"></div>
+
+</body>
+
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    var fwData =
+    {
+        "header": {
+            "contents": [
+            ]
+        },
+        "page": {
+            "contents": [
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "input",
+                                            "template": "inputGroup",
+                                            "legend": "Input Group:",
+                                            "style": "boolean-list",
+                                            "options": [
+                                                {
+                                                    "type": "radio",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_YES",
+                                                            "name": "E_YES_NO",
+                                                            "type": "radio"
+                                                        },
+                                                        "style": "expandable-control",
+                                                        "expands": "expandable_section_1"
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_FIELD_1"
+                                                        },
+                                                        "text": "Yes",
+                                                    }
+                                                },
+                                                {
+                                                    "type": "radio",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_NO",
+                                                            "name": "E_YES_NO",
+                                                            "type": "radio"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_NO"
+                                                        },
+                                                        "text": "No",
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "attributes": {
+                                "id": "expandable_section_1"
+                            },
+                            "style": "expandable-region-collapsed",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "template": "output",
+                                            "text": "Expandable contents sections!"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        // Select control for expandable row hooks,
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "select",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": ""
+                                                },
+                                                "text": "Expandable based on dropdown:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_EXP_SELECT",
+                                                    "name": "E_EXP_SELECT"
+                                                },
+                                                "options": [
+                                                    {
+                                                        "text": "Non Expandable 1",
+                                                        "value": "ne1"
+                                                    },
+                                                    {
+                                                        "text": "Expandable Options",
+                                                        "value": "eo1",
+                                                        "expands": "expandable_section_2"
+                                                    },
+                                                    {
+                                                        "text": "Non Expandable 2",
+                                                        "value": "ne2"
+                                                    }
+                                                ]
+                                            },
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        // Expandable for dropdowns
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "attributes": {
+                                "id": "expandable_section_2"
+                            },
+                            "style": "expandable-region-collapsed",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "width": "half",
+                                    "contents": [
+                                        {
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_SELECT_EXPANDED_FIELD_1"
+                                                },
+                                                "text": "Expanded Row Field 1:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_SELECT_EXPANDED_FIELD_1",
+                                                    "name": "E_SELECT_EXPANDED_FIELD_1",
+                                                    "type": "text"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "width": "half",
+                                    "contents": [
+                                        {
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_SELECT_EXPANDED_FIELD_2"
+                                                },
+                                                "text": "Expanded Row Field 2:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_SELECT_EXPANDED_FIELD_2",
+                                                    "name": "E_SELECT_EXPANDED_FIELD_2",
+                                                    "type": "text"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "input",
+                                            "template": "inputGroup",
+                                            "legend": "Input Group:",
+                                            "style": "boolean-list",
+                                            "options": [
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_YES_CHECK",
+                                                            "name": "E_YES_CHECK",
+                                                            "type": "checkbox"
+                                                        },
+                                                        "style": "expandable-control",
+                                                        "expands": "expandable_section_3"
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_YES_CHECK"
+                                                        },
+                                                        "text": "Yes",
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_NO_CHECK",
+                                                            "name": "E_NO_CHECK",
+                                                            "type": "checkbox"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_NO_CHECK"
+                                                        },
+                                                        "text": "No",
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "attributes": {
+                                "id": "expandable_section_3"
+                            },
+                            "style": "expandable-region-collapsed",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "template": "output",
+                                            "text": "Expandable contents sections!"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ]
+        },
+        "footer": {
+            "contents": []
+        },
+        "preferences": {},
+        "context": {
+            "screen": {
+                "id": "test"
+            },
+            "urls": {}
+        }
+    }
+</script>
+<script>
+
+    require(['domReady!'], function () {
+
+        console.log("page is ready");
+
+    });
+
+</script>
+
+</html>

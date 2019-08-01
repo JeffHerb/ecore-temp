@@ -1,0 +1,158 @@
+// Core settings
+@import "../../../../../cui/scss/_settings";
+@import "../../../../../cui/scss/_utilities/_mixins";
+
+// Project settings
+@import "../../../../scss/_settings";
+@import "../../../../scss/_utilities/_mixins";
+
+// Component settings
+@import "_utilities/_variables";
+
+// Implementer settings
+@import "../../_settings";
+
+// Component styles
+.feta-tooltip {
+    position: absolute;
+    display: inline-block;
+    border: 1px solid $feta-tooltip-border-color;
+    max-width: 500px;
+    padding: $feta-tooltip-padding;
+    border-radius: $feta-tooltip-border-radius;
+    box-shadow: $feta-tooltip-box-shadow;
+    z-index:15;
+
+    &.cui-popover { // For specificity
+        background: $feta-tooltip-bg-color;
+
+        .cui-popover-arrow {
+            &:after {
+                content: "";
+                width: 10px;
+                height: 10px;
+                @include transform(rotate(45deg));
+                position: absolute;
+                z-index: 11;
+            }
+
+            &:after {
+                border:solid 1px;
+                z-index: 9;
+            }
+
+            &.up-arrow {
+                &:after {
+                    top: 2px;
+                    left: 50%;
+                    margin-left: -5px;
+                }
+
+                &:after {
+                    border-color:$feta-tooltip-border-color transparent transparent $feta-tooltip-border-color;
+                }
+            }
+
+            &.down-arrow {
+                &:after {
+                    bottom: 2px;
+                    left: 50%;
+                    margin-left: -5px;
+                }
+
+                &:after {
+                    border-color: transparent $feta-tooltip-border-color $feta-tooltip-border-color transparent;
+                }
+            }
+
+            &.left-arrow{
+
+                &:after{
+                    top: 50%;
+                    left: 2px;
+                    margin-top: -5px;
+                }
+
+                &:after{
+                    border-color: transparent transparent $feta-tooltip-border-color $feta-tooltip-border-color;
+                }
+            }
+
+            &.right-arrow {
+                &:before,
+                &:after {
+                    top: 50%;
+                    right: 0px;
+                    margin-top: -5px;
+                }
+
+                &:after {
+                    border-color: $feta-tooltip-border-color $feta-tooltip-border-color transparent transparent;
+                }
+            }
+        }
+    }
+
+    // Hide headers in field instruction tooltips
+    & > .cui-popover-body > header {
+        @media only screen {
+            //Make sure header is never displayed, since inline styles are applied when legend itag is clicked to reveal all help text, add important to override styles.
+            display: none !important;
+        }
+    }
+}
+
+// Containers for instruction blocks (not the blocks themselves)
+.feta-field-instructions {
+    display: none;
+
+    @media print {
+        display: block;
+        margin: 1em;
+
+        & > div {
+            margin-bottom: 1em;
+
+            // Header (for print only)
+            & > header {
+                display: block;
+                font-weight: bold;
+                font-size: larger;
+            }
+        }
+    }
+
+    & > div > header {
+        @media screen {
+            display: none;
+        }
+    }
+}
+
+//Legacy styles for release1 reg-tool data. Needed for pages that have r1 and r2 baselines.
+#instructionsFooter{
+    display: none;
+
+    @media print {
+        display: block;
+        margin: 1em;
+
+        & > div {
+            margin-bottom: 1em;
+
+            // Header (for print only)
+            & > h4 {
+                display: block;
+                font-weight: bold;
+                font-size: larger;
+                margin-bottom:0;
+            }
+        }
+    }
+
+    & > div > h4 {
+        @media screen {
+            display: none;
+        }
+    }
+}

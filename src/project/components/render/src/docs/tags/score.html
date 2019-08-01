@@ -1,0 +1,265 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Score Custom Tag")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Score Custom Tag</h1>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Score&gt;</code> is used to create a visual representation of a percentage value. This component can only be used inside an <code>E2:TableColumn</code>.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Score score="<% score %>" base="<% base %>" />
+                </pre>
+
+                <h3>Sample JSON</h3>
+
+
+                <pre class="code">
+{
+    "template": "score",
+    "color": "green",
+    "score": 100,
+    "percentage": 100
+}
+                </pre>
+
+                <p>
+                    <code>E2:Score</code> custom tag is used when there needs to be a visual represnetation of a percentage based value inside the cell of a table. Here the developer simply need to provide a max (base) value and the related raw score value. Framework will then used the two to create the percentage.
+                </p>
+
+                <p>
+                    The JSON markup for this tag is very lean. The properties <em>score</em> is pulled directly out of the provided developer markup. The <em>percentage</em> is figured out on the framework layer to avoid possible floating point issues on the front-end. Developers can also pick from a varity of bar colors. They can do this by providing the name of the color they wish the bar to appear as. The default value is set to <em>green</em>.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                score
+                            </th>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The raw score
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                base
+                            </th>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                The total maxamum amount the score is based on. This is used to calculate the percentage.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                color
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                The desired score the background bar should appear as. Allowed colors:
+                                <ul>
+                                    <li>Green <strong>default</strong></li>
+                                    <li>Red</li>
+                                    <li>Yellow</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Tag as a container",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "ITS Scores",
+                        "head": {
+                            "rows": [
+                                {
+                                    "type": "header",
+                                    "text": "Name"
+                                },
+                                {
+                                    "type": "header",
+                                    "text": "Score"
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Person 1"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "score",
+                                                    "color": "green",
+                                                    "score": 100,
+                                                    "percentage": 100
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Person 2"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "score",
+                                                    "color": "green",
+                                                    "score": 95,
+                                                    "percentage": 95
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Person 3"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "score",
+                                                    "color": "green",
+                                                    "score": 85,
+                                                    "percentage": 85
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Person 4"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "score",
+                                                    "color": "yellow",
+                                                    "score": 72,
+                                                    "percentage": 72
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Person 5"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "score",
+                                                    "color": "red",
+                                                    "score": 45,
+                                                    "percentage": 45
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // // Examples
+                var defaultExample = document.getElementById("default-example");
+                var containerExample = document.getElementById("container-example");
+
+                // // Create the generic example
+                // render.page(defaultExample, page, function () {
+
+                //     console.log("Default Done");
+
+                // });
+
+            });
+
+        </script>
+
+<!--(bake ../includes/footer.html)-->

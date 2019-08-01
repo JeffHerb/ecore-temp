@@ -1,0 +1,115 @@
+body {
+    padding: 1em;
+}
+
+h1 {
+    float: left; /* For the badge */
+}
+
+h3 {
+    margin-top: 0.5em;
+}
+
+pre.code {
+    overflow-y: hidden;
+    overflow-x: auto;
+    tab-size: 1;
+    padding: 1em 2em;
+    font-size: 13px;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    color: #2f6f9f;
+}
+
+section {
+    border-left: #a5c9ff 1px solid;
+    border-right: #a5c9ff 1px solid;
+}
+
+.docs-no-border {
+    border: none;
+    border-left: none;
+    border-right: none;
+}
+
+code {
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    padding: 0 0.3em;
+    font-size: 14px; /* Account for the fact that the monospace fonts appear larger than the sans serif */
+    border-radius: 3px;
+    padding: 2px 4px;
+    color: #c7254e;
+    border: none;
+    background-color: #f9f2f4;
+}
+
+/* Undo coloring for code used in headings */
+h1 code,
+h2 code,
+h3 code,
+h4 code {
+    font-size: inherit;
+    background-color: transparent;
+    color: inherit;
+    padding-left: 0;
+}
+
+a > code {
+    padding: 0; /* The default padding hides the underline */
+}
+
+table {
+    margin-bottom: 1em;
+}
+
+table caption {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    padding: 0.3em 0;
+}
+
+table:not(.emp-table) tbody th {
+    background-color: transparent;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+}
+
+td {
+    line-height: 1.4; /* Prevents `<code>` elements from overlapping other text */
+}
+
+table:not([class*="cui-no-stripes"]) tbody tr:nth-child(even) code {
+    background-color: transparent;
+}
+
+ul {
+    padding-left: 1em;
+    margin: auto;
+}
+
+ul ul {
+    padding-left: 2em;
+    margin-left: 1.5em;
+}
+
+.docs-badge {
+    float: right;
+    top: 4px;
+    padding: 4px 6px;
+}
+
+.docs-badge:before {
+    display: none; /* Hide the check mark image inherited by `.cui-success` */
+}
+
+.render-container {
+    width: 100%;
+}
+
+.render-container table {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}

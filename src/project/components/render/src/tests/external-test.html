@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="external-app emp-orpts-subtheme">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>Employer Account Creation</title>
+	<link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+	<!-- Removed the html 5 shiv for testing purposes -->
+</head>
+
+<body>
+	<!-- ==================== -->
+	<!-- UNIVERSAL HEADER     -->
+	<!-- ==================== -->
+	<div id="header-wrapper">
+		<div class="unav-agency-wrapper">
+			<div class="unav-header">
+				<div class="unav-header-links">
+					<ul>
+						<li> <a href="https://ny.gov/services">Services</a> </li>
+						<li> <a href="https://www.governor.ny.gov/news">News</a> </li>
+						<li> <a href="https://ny.gov/agencies">Government</a> </li>
+						<li> <a href="https://ny.gov/local">Local</a> </li>
+					</ul>
+				</div>
+				<div class="unav-primary-bar">
+					<div class="unav-header-logo"> <a href="#"> <span class="accessibly-hide-text"> New York State Home </span> </a> </div>
+					<div class="unav-toggle-arrow"> <a href="#" role="button"> <span class="arrow"></span> <span class="accessibly-hide-text">Expand Mobile Universal Menu</span> </a> </div>
+				</div>
+			</div>
+			<div class="agency-header">
+				<div id="banner-toggle" class="banner-toggle"> <button class="nys-logo banner-button"> <span> Toggle New York State Banner </span> </button> </div>
+				<div class="agency-title"> <a href="#"> <span>Department of</span> <span>Labor</span> </a> </div>
+				<ul class="agency-support-login">
+					<li> <button> <span class="label">Support</span> </button> </li>
+				</ul>
+			</div>
+		</div>
+		<!-- ==================== -->
+		<!-- GLOBAL HEADER        -->
+		<!-- ==================== -->
+	</div>
+	<div id="body-wrapper">
+		<main>
+			<!-- ==================== -->
+			<!-- PAGE INFO            -->
+			<!-- ==================== -->
+			<div class="emp-page-info">
+				<!-- ==================== -->
+				<!-- PAGE TITLE           -->
+				<div class="emp-page-title">
+					<h2>Filing Details</h2>
+				</div>
+				<!-- ==================== -->
+				<!-- PAGE INSTRUCTIONS    -->
+				<!-- ==================== -->
+				<div class="emp-page-instructions" id="emp-page-instructions">
+					<p class="text">In the following questions, indicate which taxes you filed returns for within the last 12 months using the taxpayer ID number indicated below. If you select 'Yes' to any of the questions, you must also select the form that you filed.
+					</p>
+					<p class="text">On the next page, enter a dollar amount from a tax return for each tax type indicated to verify your identity. This information helps us to ensure that your business information stays protected and that the right taxpayer is creating this account.</p>
+					<p class="text">When done, select <strong>Continue</strong>.</p>
+				</div>
+				<!-- ==================== -->
+				<!-- PAGE LEGEND          -->
+				<!-- ==================== -->
+				<div class="emp-page-legend">
+					<div class="emp-legend">
+						<span class="cui-required"></span>
+						<span>Required field</span>
+					</div>
+					<div class="emp-legend">
+						<button type="button" class="cui-icon emp-icon-help" title="More information">More information</button>
+						<span>To learn more about a particular field</span>
+					</div>
+				</div>
+			</div>
+			<!-- ==================== -->
+			<!-- PAGE CONTENT         -->
+			<!-- ==================== -->
+			<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+			<!-- SECTION: .New property registration information    -->
+			<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+			<section class="emp-no-collapse">
+				<header>
+					<div class="emp-section-title">
+						<h3>Taxpayer information</h3>
+					</div>
+					<!-- <div class="emp-section-controls">
+                        <ul>
+                            <li>
+                                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section">Hide section</button>
+                            </li>
+                        </ul>
+                    </div> -->
+				</header>
+				<div class="cui-row">
+					<div class="emp-col-full">
+						<div class="emp-field">
+							<div class="cui-label">
+								<span class="emp-label">Taxpayer ID number:</span>
+							</div>
+							<div class="cui-data">
+								<span class="emp-data" id="EC_TAXPAYER_ID_NUMBER">TF-111111111</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cui-row">
+					<div class="emp-col-full">
+						<div class="emp-field">
+							<div class="cui-label">
+								<span class="emp-label">Employer registration number (ER#):</span>
+							</div>
+							<div class="cui-data">
+								<span class="emp-data" id="EC_EMPLOYER_REG_NUMBER">1234567</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cui-row">
+					<div class="emp-col-full">
+						<div class="emp-field">
+							<div class="cui-label">
+								<span class="emp-label">Legal name of business:</span>
+							</div>
+							<div class="cui-data">
+								<span class="emp-data" id="EC_LEGAL_NAME_OF_BUSINESS">ABC Employer LLC</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="emp-no-collapse">
+				<header>
+					<div class="emp-section-title">
+						<h3>Withholding tax</h3>
+					</div>
+				</header>
+				<div class="cui-row">
+					<div class="emp-col-full">
+						<fieldset class="emp-yes-no-component emp-boolean-input-group cui-required">
+							<div class="cui-label">
+								<legend>Have you filed a withholding tax return within the last 12 months?</legend>
+							</div>
+							<div class="cui-data">
+								<div class="emp-input-collection">
+									<div class="emp-field cui-data-left">
+										<input name="EC_EXPANDABLE_YES_NO" id="EC_EXPANDABLE_YES" value="y" type="radio" aria-controls="expandableC_section_1" aria-expanded="true" class="emp-expandable-control">
+										<label for="EC_EXPANDABLE_YES">Yes</label>
+									</div>
+									<div class="emp-field cui-data-left">
+										<input name="EC_EXPANDABLE_YES_NO" id="EC_EXPANDABLE_NO" value="N" type="radio">
+										<label for="EC_EXPANDABLE_NO">No</label>
+										<button data-tooltip-source="i1" type="button" class="cui-icon emp-icon-help" title="More information">More information</button>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="emp-region emp-collapse" id="expandableC_section_1">
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field cui-required">
+								<div class="cui-label" for="">
+									<label for="EC_FORM_FILED">Form filed:</label>
+								</div>
+								<div class="cui-data">
+									<select aria-controls="expandableB_section_1 expandableD_section_2" aria-expanded="false" class="emp-expandable-control" id="EC_FORM_FILED" name="EC_FORM_FILED">
+										<option selected="selected" value="1">Select one</option>
+										<option data-expands="expandableB_section_1" value="nys1">NYS-1</option>
+										<option data-expands="expandableD_section_2" value="nys45">NYS-45</option>
+									</select>
+									<button data-tooltip-source="i2" type="button" class="cui-icon emp-icon-help" title="More information">More information</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="emp-region emp-collapse" id="expandableB_section_1">
+						<div class="cui-row">
+							<div class="emp-col-full">
+								<div class="emp-field cui-required">
+									<div class="cui-label">
+										<label for="EC_PAYROLL_DATE">Payroll date:</label>
+									</div>
+									<div class="cui-data">
+										<input class="emp-date" id="EC_PAYROLL_DATE" maxlength="10" size="13" type="text" aria-required="true">
+										<!-- Temp: cui-c-datepicker component should render the code below -->
+										<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="emp-col-full">
+							<div class="emp-field cui-required">
+								<div class="cui-label">
+									<label for="EC_TOTAL_TAX_WITHHELD">Total tax withheld ($):</label>
+								</div>
+								<div class="cui-data cui-currency">
+									<input aria-required="true" id="EC_TOTAL_TAX_WITHHELD" maxlength="20" size="20" type="text" value="">
+									<span class="cui-input-append">.00</span>
+									<button class="cui-icon emp-icon-help" data-tooltip-source="i3" title="More information" type="button">More information</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="emp-region emp-collapse" id="expandableD_section_2">
+						<div class="cui-row">
+							<div class="emp-col-full">
+								<div class="emp-field cui-required">
+									<div class="cui-label" for="">
+										<label for="EC_QUARTER">Quarter:</label>
+									</div>
+									<div class="cui-data">
+										<select id="EC_QUARTER">
+											<option selected="selected" value="1">Select one</option>
+                                    <option value="2">01/01-03/31</option>
+                                    <option value="3">04/01-06/30</option>
+                                    <option value="4">07/01-09/30</option>
+                                     <option value="5">10/01-12/31</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cui-row">
+							<div class="emp-col-full">
+								<div class="emp-field cui-required">
+									<div class="cui-label" for="">
+										<label for="EC_YEAR">Year:</label>
+									</div>
+									<div class="cui-data">
+										<select id="EC_YEAR">
+											<option selected="selected" value="1">Select one</option>
+											<option value='2'>2018</option>
+											<option value='3'>2019</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cui-row">
+							<div class="emp-col-full">
+								<div class="emp-field cui-required">
+									<div class="cui-label">
+										<label for="EC_TOTAL_TAX_WITHHELD">Total tax withheld ($):</label>
+									</div>
+									<div class="cui-data cui-currency">
+										<input aria-required="true" id="EC_TOTAL_TAX_WITHHELD" maxlength="20" size="20" type="text" value="">
+										<span class="cui-input-append">.00</span>
+										<button class="cui-icon emp-icon-help" data-tooltip-source="i3" title="More information" type="button">More information</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<section class="emp-no-collapse">
+				<header>
+					<div class="emp-section-title">
+						<h3>Unemployment insurance</h3>
+					</div>
+				</header>
+				<div class="cui-row">
+					<div class="emp-col-full">
+						<fieldset class="emp-yes-no-component emp-boolean-input-group cui-required">
+							<div class="cui-label">
+								<legend>Have you filed an unemployment insurance tax return within the last 12 months?</legend>
+							</div>
+							<div class="cui-data">
+								<div class="emp-input-collection">
+									<div class="emp-field cui-data-left">
+										<input name="EC_UNEMPLOYMENT_YES_NO" id="EC_UNEMPLPOYMENT_YES" value="y" type="radio" aria-controls="expandableB_section_2" aria-expanded="true" class="emp-expandable-control">
+										<label for="EC_UNEMPLPOYMENT_YES">Yes</label>
+									</div>
+									<div class="emp-field cui-data-left">
+										<input name="EC_UNEMPLOYMENT_YES_NO" id="EC_UNEMPLOYMENT_NO" value="N" type="radio">
+										<label for="EC_UNEMPLOYMENT_NO">No</label>
+									</div>
+									<button class="cui-icon emp-icon-help" data-tooltip-source="i4" title="More information" type="button">More information</button>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="emp-region emp-collapse" id="expandableB_section_2">
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field">
+								<div class="cui-label">
+									<span class="emp-label">Form filed:</span>
+								</div>
+								<div class="cui-data">
+									<span class="emp-data" id="EC_FORM_FILED_2">NYS-45</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field cui-required">
+								<div class="cui-label" for="">
+									<label for="EC_QUARTER2">Quarter:</label>
+								</div>
+								<div class="cui-data">
+									<select id="EC_QUARTER2">
+										<option selected="selected" value="1">Select one</option>
+										<option value='2'>NYS-1</option>
+										<option value='3'>NYS-45</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field cui-required">
+								<div class="cui-label" for="">
+									<label for="EC_YEAR2">Year:</label>
+								</div>
+								<div class="cui-data">
+									<select id="EC_YEAR2">
+										<option selected="selected" value="1">Select one</option>
+										<option value='2'>2017</option>
+										<option value='3'>2018</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field cui-required">
+								<div class="cui-label">
+									<label for="EC_TOTAL_TAX_WITHHELD">Total remuneration paid this quarter ($):</label>
+								</div>
+								<div class="cui-data cui-currency">
+									<input aria-required="true" id="EC_TOTAL_TAX_WITHHELD" maxlength="20" size="20" type="text" value="">
+									<span class="cui-input-append">.00</span>
+									<button class="cui-icon emp-icon-help" data-tooltip-source="i5" title="More information" type="button">More information</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ++++++++++++++++++++++ -->
+			<!-- SECTION: Owner summary -->
+			<!-- ++++++++++++++++++++++ -->
+
+			<div class="cui-row emp-button-row">
+				<div class="emp-col-full button-col emp-button-group cui-align-center">
+					<button type="button" name="E_BTN_BACK" title="Back">Back</button>
+					<button type="button" name="E_BTN_CONTINUE" class="cui-button-primary" title="Continue">Continue</button>
+				</div>
+			</div>
+		</main>
+	</div>
+	<div id="footer-wrapper">
+		<!-- ==================== -->
+		<!-- GLOBAL FOOTER        -->
+		<!-- ==================== -->
+		<footer class="emp-global-footer orpts-theme">
+		<ul>
+		<li>
+					<a href="https://www.labor.ny.gov/secure/contact/" target="_blank" title="This will open a new window to the Contact Us page">Contact Us</a>
+				</li>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/accessibility.htm" target="_blank" title="This will open a new window to the Web Site Disclaimer page">Accessibility Policy</a>
+				</li>
+				<li>
+					<a href="http://www.labor.ny.gov/privacy.sht" target="_blank" title="This will open a new window to the Privacy Policy page">Privacy Policy</a>
+				</li>
+				<li>
+					<a href="http://labor.ny.gov/utilities/document-readers.shtm" target="_blank" title="This will open a new window to the Document Readers page">Document Readers</a>
+				</li>
+				</ul>
+			<!--<ul>
+				<li> <a href="https://www.tax.ny.gov/help/tech/accessibility.htm" title="This will open a new window to the Web Site Accessibility page" target="_blank">Accessibility</a> </li>
+				<li> <a href="https://www.tax.ny.gov/help/tech/disclaimer.htm" title="This will open a new window to the Web Site Disclaimer page" target="_blank">Disclaimer</a> </li>
+				<li> <a href="https://www.tax.ny.gov/help/tech/privacy_policy.htm" title="This will open a new window to the Privacy Policy page" target="_blank">Privacy</a> </li>
+				<li> <a href="https://www.tax.ny.gov/help/tech/securesite.htm" title="This will open a new window to the Web Site Security page" target="_blank">Security</a> </li>
+				<li> <a href="https://www.tax.ny.gov/help/tech/copyright.htm" title="This will open a new window to the Copyright page" target="_blank">Copyright</a> </li>
+				<li> <a href="https://www.tax.ny.gov/help/tech/email_phishing.htm" title="This will open a new window to the Email/Phishing page" target="_blank">Email/Phishing</a> </li>
+			</ul>-->
+		</footer>
+		<!-- ==================== -->
+		<!-- UNIVERSAL FOOTER     -->
+		<!-- ==================== -->
+		<div class="unav-footer">
+			<div class="unav-footer-contents clearfix">
+				<div class="unav-flex-row">
+					<div class="footer-logo clearfix"> <span class="nys-logo unav-footer-logo"></span> </div>
+					<div class="footer-links clearfix">
+						<ul>
+							<li> <a href="https://www.ny.gov/agencies">Agencies</a> </li>
+							<li> <a href="https://www.ny.gov/mobileapps">App Directory</a> </li>
+							<li> <a href="https://www.ny.gov/counties">Counties</a> </li>
+							<li> <a href="https://www.ny.gov/events">Events</a> </li>
+							<li> <a href="https://www.ny.gov/programs">Programs</a> </li>
+							<li> <a href="https://www.ny.gov/services">Services</a> </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="emp-field-instructions" id="emp-field-instructions">
+		<div id="i1">
+			<header>Have you filed a withholding tax return within the last 12 months</header>
+			<p>Select 'Yes' only if one of the following forms has been filed for your business within the last 12 months: NYS-1 or NYS-45.</p>
+		</div>
+		<div id="i2">
+			<header>Form filed</header>
+			<p>Select the form filed within the last 12 months from the drop down. If the form filed is not listed, change your answer to the above question to 'No.'</p>
+		</div>
+		<div id="i3">
+			<header>Total tax withheld</header>
+			<p class="text">Enter the whole dollar amount from the original New York State withholding tax return selected above. If the amount is zero, enter a single '0.' Do not enter any dollar signs, commas, or decimals.</p>
+			<p class="text">See <a href="https://www.tax.ny.gov/e-services/otc/busverification.htm" target="" title="This will open a new window for more information.">Business verification</a> for instructions on where to find this amount on your return.</p>
+		</div>
+		<div id="i4">
+			<header>Have you filed an unemployment insurance tax return within the last 12 months?</header>
+			<p class="text">Need text</p>
+
+		</div>
+		<div id="i5">
+			<header>Total remuneration paid this quarter</header>
+			<p>Need text</p>
+		</div>
+
+	</div>
+	<script id="require" src="../../dist/js/main.js"></script>
+	<script type="text/javascript">
+		require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+			// Elements in the page that need to be turned into a data store
+			uiMockup.createPageDataStore(function(results) {
+				emp.init();
+			});
+		});
+	</script>
+</body>
+
+</html>

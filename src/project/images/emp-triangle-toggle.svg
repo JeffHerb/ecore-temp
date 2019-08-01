@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="32"
+   height="32"
+   viewBox="0 0 32 32.000003"
+   enable-background="new 0 0 800 300"
+   xml:space="preserve"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="emp-triangle-toggle.svg"
+   inkscape:export-filename="C:\development\empire\src\project\images\emp-triangle-32.png"
+   inkscape:export-xdpi="89.80735"
+   inkscape:export-ydpi="89.80735"><metadata
+     id="metadata3055"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs3053" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1433"
+     inkscape:window-height="821"
+     id="namedview3051"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="18.28"
+     inkscape:cx="13.765063"
+     inkscape:cy="16.182328"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_1" /><path
+     d="m 17.629966,6.9661695 c -0.881163,-0.532687 -2.309877,-0.532687 -3.19104,0 C 14.208354,7.1055565 0.31143369,20.55152 0.24512698,20.63085 l -0.0103965,0.01006 4.6224e-4,7.52e-4 C 0.08941012,20.822334 0,21.022335 0,21.236583 0,21.91201 0.81393246,22.468722 1.880385,22.5778 l 27.931999,0.02318 c 1.245966,0 2.256279,-0.610763 2.256279,-1.363984 0,-0.212851 -0.0878,-0.411596 -0.231268,-0.590927 L 17.629966,6.9661695 Z"
+     id="path3049"
+     inkscape:connector-curvature="0"
+     style="fill:#707070" /></svg>

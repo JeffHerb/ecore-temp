@@ -1,0 +1,595 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../../dist/" docCSS="../css/" title="Button Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Button Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    Button controls for submitting forms and providing interactive components. This tag collapse the following tags:
+                </p>
+                <ul>
+                    <li>ET:AjaxButton</li>
+                    <li>ET:PrimaryButton</li>
+                    <li>ET:TabNavButton</li>
+                    <li>ET:JSButton</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Button viewKey="button" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "button",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "id": "button",
+            "name": "button",
+            "type": "button"
+        },
+        "text": "Button"
+    }
+}</pre>
+
+                <p>
+                    <code>&lt;E2:Button&gt;</code> are form controls that kick off specific interactions or transactions.
+                </p>
+                <p>
+                    Buttons generally follow the same JSON structure as other input types. The only exceptions are that they do not have labels and the <code>value</code> attribute is not required.
+                </p>
+                <p>
+                    As with other input types, all attributes for a button should be defined in the <code>attributes</code> object. However, the <code>text</code> (visual label) should be set using its own <code>text</code> property inside the <code>input</code> object.
+                </p>
+                <p>
+                    For traditional buttons that link to other pages, submit forms or provide additional context on the server side when they are clicked, should have the <code>viewKey</code> defined and provide
+                </p>
+
+                <h3>Rendered example</h3>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Registered view key (previously called <code>buttonTagId</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                text
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                The text at should appear inside of the button.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute (hover text) for the button
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                preSubmitScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Name and arguments to a function that is execute "onclick", but before the form has been submitted (<a href="../common/attributes/preSubmitScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Controls the visibility state of the button (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                primary
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Applies "primary" styling to the button
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>button</code> element (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                List of event-based JavaScript associated with the field. The string must include both the event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>accessKey</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)</td>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>
+                                Used to control the type attribute this button will render as. Buttons can be either set to <em>button</em> or <em>submit</em>. The default value is <em>button</em>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Buttons without viewKey Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Button text="Interactive Button" id="inter-button" eventScript="{...script omitted ...}"/></pre>
+
+                <h3>Primary JSON</h3>
+                <pre class="code">
+{
+    "type": "button",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "id": "inter-button",
+            "type": "button"
+        },
+        "text": "Interactive Button"
+    }
+}</pre>
+                <p>
+                    When developers need an interactive button control, simply exclude the <code>viewKey</code>. When the button renders in JSON it will appear sligntly different as the addtiional <code>attributes</code> property of <code>type</code>. This will make it so the button does not automatically submit a form on click. If developers need to submit the form this button appears in or another form on click, they should use a viewKey based button or add the JavaScript required to their event script to kick off the action.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="no-viewkey-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Primary Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Button viewKey="button" primary="true" /></pre>
+
+                <h3>Primary JSON</h3>
+                <pre class="code">
+{
+    "type": "button",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "id": "button1",
+            "name": "button1",
+            "type": "button"
+        },
+        "text": "Primary Button",
+        "primary": true
+    }
+}</pre>
+                <p>
+                    Set the <code>primary</code> attribute to <code>true</code> to create a primary button.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="primary-example">
+                </section>
+
+            </div>
+        </div>
+
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Icon Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Button viewKey="button" primary="true" /></pre>
+
+                <h3>Icon JSON</h3>
+                <pre class="code">
+{
+    "type": "button",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "id": "button1",
+            "name": "button1",
+            "type": "button"
+        },
+        "icon": "printer"
+        "text": "Print Page"
+    }
+}</pre>
+                <p>
+                    To render a button as an icon, rather than text, provide a <code>string</code> value for the name of the icon. In the example above we are adding the <code>printer</code> icon, so we used the value <em>print</em>. Icon names are predefined and must be registered.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="icon-example">
+                </section>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Control attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Button viewKey="button" control="submit" /></pre>
+
+                <h3>Icon JSON</h3>
+                <pre class="code">
+{
+    "type": "button",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "id": "button1",
+            "name": "button1",
+            "type": "submit"
+        },
+        "icon": "printer"
+        "text": "Print Page"
+    }
+}</pre>
+                <p>
+                    By default when buttons render they render as a standard button control; or a button with the attribute of <code>type</code> set to <em>button</em>. This is fine if a button is being used for JavaScript interactions, but if the button is used to control a form, then it needs to be turned into a <em>submit</em>em> button. To make the change, use the control attribute with the value of submit.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="control-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Form Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button",
+                                                "name": "button",
+                                            },
+                                            "text": "Button"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var noViewKey = {
+                title: "Form Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "inter-button",
+                                                "type": "button"
+                                            },
+                                            "text": "Interactive Button"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var primary = {
+                title: "Form Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button1",
+                                                "name": "button1",
+                                            },
+                                            "text": "Regular Button"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button2",
+                                                "name": "button2",
+                                            },
+                                            "text": "Primary Button",
+                                            "primary": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var icon = {
+                title: "Form Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button2",
+                                                "name": "button2",
+                                            },
+                                            "icon": "printer",
+                                            "text": "Print Button",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var control = {
+                title: "Form Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button2",
+                                                "name": "button2",
+                                                "type": "submit"
+                                            },
+                                            "text": "Submit Button"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+            require(['render', 'text', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var noViewKeyExample = document.getElementById("no-viewkey-example");
+                var primaryExample = document.getElementById("primary-example");
+                var iconExample = document.getElementById("icon-example");
+                var controlExample = document.getElementById("control-example");
+
+                render.page(defaultExample, page, function() {
+                    console.log('Default Done');
+
+                    render.page(noViewKeyExample, noViewKey, function() {
+
+                        console.log("No viewKey Done");
+
+                        render.page(primaryExample, primary, function() {
+
+                            console.log('Primary Button');
+
+                            render.page(iconExample, icon, function() {
+
+                                console.log('Icon Done');
+
+                                render.page(controlExample, control, function() {
+
+                                    console.log("Control Done");
+
+                                });
+
+                            });
+
+                        });
+
+                    })
+
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

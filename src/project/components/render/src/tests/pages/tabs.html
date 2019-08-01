@@ -1,0 +1,782 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body class="theme-teal">
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "tabs",
+                        "tabs": [
+                            {
+                                "title": "Tab 1",
+                                "attributes": {
+                                    "id": "tab1"
+                                },
+                                "selected": true,
+                                "container": {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "Tab 1"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "title": "Tab 2",
+                                "attributes": {
+                                    "id": "tab2"
+                                },
+                                "selected": false,
+                                "container": {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "Tab 2"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "title": "Tab 3",
+                                "attributes": {
+                                    "id": "tab3"
+                                },
+                                "selected": false,
+                                "container": {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "Tab 3"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "template": "tabs",
+                        "attributes": {
+                            "id": "test-tabs"
+                        },
+                        "tabs": [
+                            {
+                                "title": "Output",
+                                "selected": true,
+                                "container": [
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "output",
+                                                        "text": "Tab 1"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "output",
+                                                        "text": "Another row of text."
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Fields",
+                                "selected": false,
+                                "container": [
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "width": "half",
+                                                "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "template": "field",
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "E_READONLY_TEXT"
+                                                            },
+                                                            "text": "Read Only Text:"
+                                                        },
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "E_READONLY_TEXT",
+                                                                "name": "E_READONLY_TEXT",
+                                                                "type": "text",
+                                                                "value": "Read Only"
+                                                            },
+                                                            "readOnly": true
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "width": "half",
+                                                "contents": [
+                                                    {
+                                                        "type": "text",
+                                                        "template": "field",
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "E_EDITABLE_TEXT"
+                                                            },
+                                                            "text": "Editable Text:"
+                                                        },
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "E_EDITABLE_TEXT",
+                                                                "name": "E_EDITABLE_TEXT",
+                                                                "type": "text",
+                                                                "value": "Edit Text"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "width": "half",
+                                                "contents": [
+                                                    {
+                                                        "type": "select",
+                                                        "template": "field",
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "E_DROPDOWN"
+                                                            },
+                                                            "text": "Select Box:"
+                                                        },
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "E_DROPDOWN",
+                                                                "name": "E_DROPDOWN",
+                                                            },
+                                                            "options": [
+                                                                {
+                                                                    "text": "Option 1",
+                                                                    "value": 1
+                                                                },
+                                                                {
+                                                                    "text": "Option 2",
+                                                                    "value": 2
+                                                                },
+                                                                {
+                                                                    "text": "Option 3",
+                                                                    "value": 3
+                                                                },
+                                                                {
+                                                                    "text": "Option 4",
+                                                                    "value": 4
+                                                                },
+                                                                {
+                                                                    "text": "Option 5",
+                                                                    "value": 5
+                                                                },
+                                                                {
+                                                                    "text": "Option 6",
+                                                                    "value": 6
+                                                                },
+                                                                {
+                                                                    "text": "Option 7",
+                                                                    "value": 7
+                                                                },
+                                                                {
+                                                                    "text": "Option 8",
+                                                                    "value": 8
+                                                                },
+                                                                {
+                                                                    "text": "Option 9",
+                                                                    "value": 9
+                                                                },
+                                                                {
+                                                                    "text": "Option 10",
+                                                                    "value": 10
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "width": "half",
+                                                "contents": [
+                                                    {
+                                                        "type": "search",
+                                                        "template": "composite",
+                                                        "parts": {
+                                                            "label": {
+                                                                "type": "label",
+                                                                "template": "field",
+                                                                "label": {
+                                                                    "attributes": {
+                                                                        "for": "E_SEARCH_COMPOSITE"
+                                                                    },
+                                                                    "text": "Search Composite"
+                                                                }
+                                                            },
+                                                            "text": {
+                                                                "type": "text",
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "attributes": {
+                                                                        "id": "E_SEARCH_COMPOSITE",
+                                                                        "name": "E_SEARCH_COMPOSITE",
+                                                                        "type": "text",
+                                                                        "size": "10",
+                                                                        "value": "Test"
+                                                                    }
+                                                                },
+                                                            },
+                                                            "button": {
+                                                                "type": "button",
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "attributes": {
+                                                                        "id": "E_POPUP"
+                                                                    },
+                                                                    "icon": "popup",
+                                                                    "text": "Popup"
+                                                                }
+                                                            }
+
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Table",
+                                "selected": false,
+                                "container": [
+                                    {
+                                        "template": "table",
+                                        "attributes": {
+                                            "id": "tabs-table"
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 1"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 2"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 3"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 4"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 5"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 6"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 7"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 8"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 9"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "sortable": true,
+                                                            "text": "Column 10"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]  
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        } ,
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        },
+                                                        {
+                                                            "text": "Column's Data"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

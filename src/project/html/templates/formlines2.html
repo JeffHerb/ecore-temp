@@ -1,0 +1,1150 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire - MT3040S WCS Return Information</title>
+    <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!--
+===============================================================================
+eMPIRE2 | Empire - MT3040S WCS Return Information
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+08/28/2017  DB        This page has been created.
+11/03/2017  DB        In the Form Data section we need the State Admin Fee
+                      Amt($) field and the Local Admin Fee Amt($) field need to
+					  be made editable and display as negative. Also in the Form
+					  Lines section, the State Administration Fee and the Local
+					  Administration Fee sections can be removed per Kevin Browe.
+11/09/2017  DB        This page has been registered.
+11/09/2017  DB        This code has been checked.
+===============================================================================
+-->
+</head>
+
+<body>
+    <div id="body-wrapper">
+        <!-- Accessibility cues -->
+        <div class="cui-hide-from-screen">
+            <a href="#nav">Go to navigation</a>
+            <a href="#main">Go to content</a>
+        </div>
+        <!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-row-first">
+                <div class="emp-header-logo"> Empire </div>
+                <nav id="emp-header-menu-main"> Main Menu </nav>
+                <div id="emp-header-favorites"> &#9734; </div>
+            </div>
+            <!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-row-second">
+                <div class="emp-header-tabset-title">
+                    <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+                    <h1>Tabset menu title</h1>
+                </div>
+                <ul class="emp-header-links">
+                    <li class="emp-header-employee">
+                        <a role="button">Employee</a>
+                    </li>
+                    <li class="emp-header-preferences">
+                        <a role="button">Preferences</a>
+                    </li>
+                    <li class="emp-header-notifications">
+                        <a role="button">Notifications</a>
+                    </li>
+                    <li class="emp-header-help">
+                        <a role="button">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- ==================== -->
+        <!-- TABSET               -->
+        <!-- ==================== -->
+        <ul class="emp-tabset emp-collapse">
+            <li class="emp-selected">
+                <a href="#" title="Wireless Surcharge (WCS) Return Information" tabindex="1">WCS Return Info</a>
+            </li>
+        </ul>
+        <!-- ==================== -->
+        <!-- PAGE TITLE           -->
+        <!-- ==================== -->
+        <div class="emp-page-title">
+            <div class="emp-text">
+                <h2>Wireless Surcharge (WCS) Return Information
+                    <span>Page Mode</span>
+                </h2>
+            </div>
+            <ul class="emp-actions">
+                <li>
+                    <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+                </li>
+            </ul>
+        </div>
+        <!-- ==================== -->
+        <!-- TAXPAYER INFO        -->
+        <!-- ==================== -->
+        <form name="form_tp_info" id="form_tp_info" class="emp-tp-header" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-tp-info">
+                <!-- Main taxpayer -->
+                <div class="emp-tp-info-main">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators">
+                            <a class="emp-button-send-id" role="button" tabindex="1">Send ID</a>
+                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <span class="emp-indicator-3" title="Potentially Dangerous Taxpayer - Call Internal Affairs (518) 451-1566"
+                                alt="PDT">Potentially Dangerous Taxpayer - Call Internal Affairs (518) 451-1566</span>
+                            <span class="emp-indicator-3"
+                                title="Caution Upon Contact - Call Internal Affairs (518) 451-1566" alt="CAU">Caution Upon Contact - Call Internal Affairs (518) 451-1566</span>
+                            <button type="button" class="emp-icon-legal-rep" title="Popup Legal Representative" tabindex="1">Popup Legal Representative</button>
+                            <button type="button" class="emp-icon-add-event" title="Popup Add Event" tabindex="1">Popup Add Event</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-id">
+                            <span class="emp-data">12-3455698 (BUS)</span>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-name">
+                            <span class="emp-data">XYZ Car Detailing Company</span>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-address">
+                            <span class="emp-data">258 State Street, Albany, NY 12227</span>
+                            <button type="button" class="emp-icon-diff-mail" title="Mailing address is different" tabindex="1">Mailing address is different</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Joint taxpayer -->
+                <div class="emp-tp-info-joint">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators">
+                            <span class="emp-indicator emp-federal-data" title="Federal Association" alt="Fed">Federal Association</span>
+                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-data-joint" title="Popup Current Page with Associated ID" tabindex="1">Popup Current Page with Associated ID</button>
+                            <button type="button" class="emp-icon-list-joint" title="View Associated Taxpayer List" tabindex="1">View Associated Taxpayer List</button>
+                            <button type="button" class="emp-icon-legal-rep" title="View Legal Representative" tabindex="1">View Legal Representative</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-id">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Associated ID:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-name">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Associated Name:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="emp-tp-header-buttons">
+                <button class="emp-button-switch" tabindex="1">Switch</button>
+            </div>
+        </form>
+        <!-- ==================== -->
+        <!-- SEARCH BOX           -->
+        <!-- ==================== -->
+        <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+        <form name="form_search" id="form_search" class="emp-search-box emp-collapse" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-search-fields">
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+                                <select id="HEADER_ID_TYPE" tabindex="1">
+                                    <option value="NC">9 Character ID</option>
+                                    <option value="BN">Business Name</option>
+                                    <option value="BT" selected="selected">Business Taxpayer ID</option>
+                                    <option value="DN">DLN</option>
+                                </select>
+                            </div>
+                            <div class="cui-data">
+                                <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+                                <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-composite emp-search-composite cui-required">
+                            <div class="cui-label">
+                                <span class="emp-label">Tax Type:</span>
+                            </div>
+                            <div class="cui-data emp-search">
+                                <div class="emp-field">
+                                    <span id="S_TAX_TYPE_TEXT" class="emp-data" aria-required="true">MF</span>
+                                </div>
+                                <div class="emp-field">
+                                    <button type="button" id="S_POPUP" class="emp-icon-tax-type" title="Popup Tax Type" tabindex="1">Popup Tax Type</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <span class="emp-label">Tax Sub Type Desc:</span>
+                            </div>
+                            <div class="cui-data">
+                                <span id="S_TAX_SUB_TYPE_DESC" class="emp-data">Postpaid Wireless Surcharge</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="S_LIABILITY_PERIOD_BEGIN">Liability Period Begin:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input type="text" id="S_LIABILITY_PERIOD_BEGIN" class="emp-date" aria-required="true" value="01/01/2016" size="13" maxlength="10"
+                                    tabindex="1">
+                                <button type="button" id="dp_S_LIABILITY_PERIOD_BEGIN" class="cui-icon cui-c-datepicker" title="Select Date" tabindex="1">Date Picker</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="S_LIABILITY_PERIOD_END">Liability Period End:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input type="text" id="S_LIABILITY_PERIOD_END" class="emp-date" aria-required="true" value="01/01/2016" size="13" maxlength="10"
+                                    tabindex="1">
+                                <button type="button" id="dp_S_LIABILITY_PERIOD_END" class="cui-icon cui-c-datepicker" title="Select Date" tabindex="1">Date Picker</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <span class="emp-label">As of:</span>
+                            </div>
+                            <div class="cui-data">
+                                <span id="S_AS_OF" class="emp-data">08/28/2017 03:49:10 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div class="emp-search-buttons">
+                <div class="cui-row">
+                    <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+                </div>
+                <div class="cui-row">
+                    <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+                    <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+                </div>
+                <div class="cui-row">
+                    <a role="button" class="emp-button-get-id" name="E_BTN_get_id" tabindex="1">Get ID</a>
+                </div>
+            </div>
+            <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+        </form>
+        <!-- ####################### -->
+        <!-- DEVELOPER'S CODE (JSP)  -->
+        <!-- ####################### -->
+        <main role="main">
+            <!-- ==================== -->
+            <!-- PAGE CONTENT         -->
+            <!-- ==================== -->
+            <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+                <!-- ==================== -->
+                <!-- SECTIONS             -->
+                <!-- ==================== -->
+                <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
+                <!-- SECTION: .Form Lines (NOTE: For Postpaid Modes)-->
+                <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Form Lines (NOTE: All Columns)</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="form-line-sections-2">
+                        <div class="line-row has-adjustment-column has-reason-column header-row">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>Line #</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>Value Type</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>Value</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span>ADJ. ID</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Shot Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span class="emp-indicator-3  emp-notifier-color-green" title="Overstated/Understated">W901</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>This is a longer annoying description that sole purpose is to break everything we code.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>3B</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label!</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <div class="emp-field cui-currency">
+                                        <div class="cui-label cui-hide-from-screen">
+                                            <label class="cui-hide-from-screen" for="adjustment-1">This is a field label</label>
+                                        </div>
+                                        <div class="cui-data">
+                                            <input type="text" id="adjustment-1" name="adjustment-1" value="1337.17" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>AA</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label but only reasons.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <div class="emp-field cui-currency">
+                                        <div class="cui-label cui-hide-from-screen">
+                                            <label class="cui-hide-from-screen" for="adjustment-1">This is a field label</label>
+                                        </div>
+                                        <div class="cui-data">
+                                            <select id="reason-1" name="reason-1">
+                                                <option></option>
+                                                <option>Some Reason</option>
+                                                <option>Some Reason 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Form Lines (NOTE: No Adjustmet Column)</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="form-line-sections-2">
+                        <div class="line-row header-row no-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>Line #</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>Value Type</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>Value</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span>ADJ. ID</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Shot Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span class="emp-indicator-3  emp-notifier-color-green" title="Overstated/Understated">W901</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>This is a longer annoying description that sole purpose is to break everything we code.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>3B</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label!</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column has-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>AA</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label but only reasons.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <div class="emp-field cui-currency">
+                                        <div class="cui-label cui-hide-from-screen">
+                                            <label class="cui-hide-from-screen" for="adjustment-1">This is a field label</label>
+                                        </div>
+                                        <div class="cui-data">
+                                            <select id="reason-1" name="reason-1">
+                                                <option></option>
+                                                <option>Some Reason</option>
+                                                <option>Some Reason 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Form Lines (NOTE: No Reasons Column)</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="form-line-sections-2">
+                        <div class="line-row header-row has-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>Line #</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>Value Type</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>Value</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span>ADJ. ID</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Shot Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span class="emp-indicator-3  emp-notifier-color-green" title="Overstated/Understated">W901</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>This is a longer annoying description that sole purpose is to break everything we code.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>3B</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label!</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <div class="emp-field cui-currency">
+                                        <div class="cui-label cui-hide-from-screen">
+                                            <label class="cui-hide-from-screen" for="adjustment-1">This is a field label</label>
+                                        </div>
+                                        <div class="cui-data">
+                                            <input type="text" id="adjustment-1" name="adjustment-1" value="1337.17" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row has-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>AA</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label but only reasons.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Form Lines (NOTE: No Adjustment or Reasons Column)</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="form-line-sections-2">
+                        <div class="line-row header-row no-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>Line #</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>Value Type</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>Value</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span>ADJ. ID</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Shot Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span class="emp-indicator-3  emp-notifier-color-green" title="Overstated/Understated">W901</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>This is a longer annoying description that sole purpose is to break everything we code.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>CMP</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>1,000,000,000.00</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>3B</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label!</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-row no-adjustment-column no-reason-column">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>AA</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Yet another label but only reasons.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>RPT</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>255.12</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Form Lines (NOTE: Header Only)</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="form-line-sections-2">
+                        <div class="line-row has-adjustment-column has-reason-column header-row">
+                            <div class="line-number-description-container">
+                                <div class="line-number">
+                                    <div class="value-container">
+                                        <span>Line #</span>
+                                    </div>
+                                </div>
+                                <div class="line-description">
+                                    <div class="value-container">
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-values-container">
+                                <div class="line-values-row">
+                                    <div class="value-type">
+                                        <span>Value Type</span>
+                                    </div>
+                                    <div class="value-value">
+                                        <span>Value</span>
+                                    </div>
+                                    <div class="value-notifier">
+                                        <span>ADJ. ID</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-adjustment">
+                                <div class="value-container">
+                                    <span>Adjustment</span>
+                                </div>
+                            </div>
+                            <div class="line-reason">
+                                <div class="value-container">
+                                    <span>Reason</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </form>
+        </main>
+    </div>
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'emp', 'uimockup', 'domReady!'], function ($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            //uiMockup.createPageDataStore(function(results) {
+            emp.init();
+            //});
+        });
+    </script>
+</body>
+
+</html>

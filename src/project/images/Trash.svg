@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+  <path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M13.5 17.5c0 0-1.888 0.581-4.089 0.581C7.666 18.081 5.5 17.5 5.5 17.5l-1-12h10L13.5 17.5z"/>
+  <rect x="3.5" y="3.5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="12" height="2"/>
+  <line fill="none" stroke="#000000" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="5.401" y1="4.318" x2="5.387" y2="4.671"/>
+  <line fill="none" stroke="#000000" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="6.901" y1="4.318" x2="6.887" y2="4.671"/>
+  <line fill="none" stroke="#000000" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="8.401" y1="4.318" x2="8.387" y2="4.671"/>
+  <line fill="none" stroke="#000000" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="9.901" y1="4.318" x2="9.887" y2="4.671"/>
+  <line fill="none" stroke="#000000" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="11.4" y1="4.318" x2="11.387" y2="4.671"/>
+  <line fill="none" stroke="#000000" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="13.4" y1="4.318" x2="13.387" y2="4.671"/>
+  <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M11.5 3.225c0 0.152-0.123 0.275-0.274 0.275H7.774C7.623 3.5 7.5 3.377 7.5 3.225v-0.45C7.5 2.623 7.623 2.5 7.774 2.5c0 0 0.853-0.553 1.711-0.553 0.868 0 1.74 0.553 1.74 0.553 0.151 0 0.274 0.123 0.274 0.275V3.225z"/>
+  <line fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="9.447" y1="7.518" x2="9.541" y2="17.063"/>
+  <line fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="11.447" y1="7.518" x2="11.541" y2="17.063"/>
+  <line fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="13.447" y1="7.518" x2="13.541" y2="17.063"/>
+  <line fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="7.447" y1="7.518" x2="7.541" y2="17.063"/>
+  <line fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" x1="5.447" y1="7.518" x2="5.541" y2="17.063"/>
+</svg>

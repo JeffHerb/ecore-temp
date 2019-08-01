@@ -1,0 +1,483 @@
+//   ========================================================
+// * @name       _utilities/_variables.scss
+// * @desc       Empire sass variables
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150204
+// * @see        https://github.com/ny/frg-coreui
+//   ========================================================
+
+// Override variables from /src/cui/scss/_settings and add new variables as necessary
+
+// * @section    Colors
+// * --------------------------------------------------------
+$emp-fore-color:   black !default;
+$emp-bg-color:     white !default;
+$emp-accent-color: #888 !default;
+
+$emp-red-1: #ee3300; // Required asterisk, icons
+$emp-red-2: rgb(163,  46,  42); // Notifiers, indicators, notifications badge
+
+$emp-green-notifier: $cui-color-success-text;
+$emp-lightgray-notifier: #D3D3D3;
+
+// * @section    Breakpoint (overrides Core UI's)
+// * --------------------------------------------------------
+$cui-bp-medium:        600px;
+$cui-bp-medium-minus:  $cui-bp-medium - 1px;
+$cui-bp-large:         920px;
+$cui-bp-large-minus:   $cui-bp-large - 1px;
+
+
+// * @section    Fonts
+// * --------------------------------------------------------
+$cui-text-size: 14px;
+$emp-em-size:   16px;
+$cui-line-height: 1;
+$cui-text-color: $emp-fore-color;
+$cui-font-family:  "Open Sans", $cui-font-basic;
+$cui-text-font:    "Open Sans", $cui-font-basic;
+$cui-font-heading: "Promixa Nova", $cui-font-basic;
+
+
+// * @section    Grid
+// * --------------------------------------------------------
+$cui-grid-use-legacy-styles: false; // Enables flex box
+$cui-grid-gutter-width: 0;
+$cui-grid-column-padding: 0;
+
+// Sizes for fixed column classes
+$cui-grid-fixed-sizes:     (20px, 40px, 100px, 8em, 150px, 200px, 33pc, 67pc);
+// Sizes for flexible column classes -- these should generally mirror and/or complement the fixed column sizes defined above
+$cui-grid-flex-sizes:      (40px, 100px, 8em, 150px, 200px, 300px, 400px, 33pc, 67pc);
+
+$cui-grid-flex-row-wrap: nowrap;
+
+// These never worked
+$emp-col-half-margin-small:  6px inherit !important;
+$emp-col-half-margin-medium: inherit !important;
+
+
+// * @section    General settings
+// * --------------------------------------------------------
+$cui-images-path:   "../images/";
+// $emp-images-path:   $cui-images-path;
+$emp-images-path:   "../../dist/images/";
+$emp-padding:       10px;
+$emp-margin:        $emp-padding;
+$cui-text-color:    $emp-fore-color;
+$emp-label-color:   $cui-text-color;
+$cui-heading-color: $cui-text-color;
+$cui-heading-color-alt: lighten($cui-text-color, 10%);
+$cui-input-color:   $cui-text-color;
+$cui-link-color:    $emp-accent-color;
+$cui-link-color-hover:    $emp-accent-color;
+$cui-button-bg-color:     $emp-bg-color;
+$cui-button-border-color: $emp-fore-color;
+$cui-button-font-size:    $cui-font-size;
+$cui-button-text-shadow: none;
+$emp-link-font-weight: normal;
+
+
+// * @section    Empire header
+// * --------------------------------------------------------
+$emp-header-min-height:      48px;
+$emp-header-bg-color:        $emp-bg-color;
+$emp-header-logo-color:      $emp-fore-color;
+$emp-header-logo-bg-color:   $emp-header-bg-color;
+$emp-header-logo-font-size:  20px;
+$emp-header-logo-font-weight: bold;
+$emp-header-logo-text-align: center;
+$emp-header-border:          none; // 1px solid $emp-accent-color;
+$emp-header-favorites-color: transparent;
+$emp-header-links-color:     $cui-link-color;
+$emp-header-links-color-hover: $emp-fore-color;
+$emp-tabset-title-margin: 0 0 0 0.5em;
+
+
+// * @section    Menu
+// * --------------------------------------------------------
+$emp-menu-bg-color: $emp-bg-color;
+$emp-menu-border:   1px solid $emp-accent-color;
+
+
+// * @section    Taxpayer header
+// * --------------------------------------------------------
+$emp-tp-header-bg-color:     $emp-bg-color;
+$emp-tp-header-padding:      0;
+$emp-tp-header-margin:       6px $emp-margin; // Not used directly, but sets the value of another variable below
+
+$emp-tp-header-button-width:  5.5em;
+$emp-tp-header-button-margin: 0 auto 0.5em auto;
+
+$emp-tp-header-tp-info-row-margin:  0 0 0.15em 0;
+$emp-tp-header-tp-info-main-width:  5em;
+$emp-tp-header-tp-info-joint-width: 9em;
+$emp-tp-header-tp-info-line-height: 1.5;
+
+$emp-search-box-sendid-color:       $cui-link-color;
+$emp-search-box-sendid-font-weight: 600;
+$emp-search-box-sendid-underline:       underline;
+$emp-search-box-sendid-underline-hover: none;
+
+$emp-tp-header-workflow-button-margin:  -0.3em 0.2em 0 0;
+$emp-tp-header-workflow-go-margin-left: 0.3em;
+
+$emp-tp-header-separator-padding-top-small: 0.55em;
+$emp-tp-header-separator-padding-top-large: 0;
+$emp-tp-header-separator-margin-top-small:  0.55em;
+$emp-tp-header-separator-margin-top-large:  0;
+$emp-tp-header-separator-border-top-small:  1px solid $emp-accent-color;
+$emp-tp-header-separator-border-top-large:  none;
+
+$emp-tp-info-joint-bg-color:     $emp-bg-color;
+$emp-tp-info-border-color: $emp-bg-color;
+$emp-tp-info-width: 1px;
+$emp-tp-info-style: solid;
+//$emp-tp-info-joint-border:       $emp-tp-info-joint-border-width $emp-tp-info-joint-border-style $emp-tp-info-joint-border-color;
+
+$emp-tp-info-main-border-top-color: $emp-accent-color;
+$emp-tp-info-main-border-top:    $emp-tp-info-width $emp-tp-info-style $emp-tp-info-main-border-top-color;
+
+$emp-tp-info-joint-bg-color:     $emp-accent-color;
+$emp-tp-info-joint-border-color: $emp-accent-color;
+$emp-tp-info-joint-border-bottom-color: $emp-accent-color;
+$emp-tp-info-joint-border:       $emp-tp-info-width $emp-tp-info-style $emp-tp-info-joint-border-bottom-color;
+$emp-tp-info-joint-border-bottom:       $emp-tp-info-width $emp-tp-info-style $emp-tp-info-joint-border-bottom-color;
+
+$emp-workflow-bg-color: $emp-tp-header-bg-color;
+
+
+// * @section    Page title
+// * --------------------------------------------------------
+$emp-page-title-padding-top:    0.5em;
+$emp-page-title-padding-right:  0.5em;
+$emp-page-title-padding-bottom: 0.5em;
+$emp-page-title-padding-left:   0.5em; // 0;
+$emp-page-title-padding:        $emp-page-title-padding-top $emp-page-title-padding-right $emp-page-title-padding-bottom $emp-page-title-padding-left;
+$emp-page-title-separator-content: "\00BB"; // "";
+$emp-page-title-separator-margin: 0 0.5em 0 0.25em; // Left margin is smaller because we are assuming there is whitespace between the page title and the `<span>`
+
+
+// * @section    Tabset
+// * --------------------------------------------------------
+$emp-tabset-color:             $emp-fore-color;
+$emp-tabset-color-selected:    $emp-accent-color;
+$emp-tabset-color-hover:       $emp-fore-color;
+// $emp-tabset-margin:            0.5em 0 0.25em 0;
+$emp-tabset-border-color:      $emp-bg-color;
+$emp-tabset-bg-color:          $emp-bg-color;
+$emp-tabset-bg-color-hover:    $emp-accent-color;
+// $emp-tabset-border:            1px solid $emp-tabset-border-color;
+$emp-tabset-border-color-selected: $emp-bg-color;
+$emp-tabset-border-selected:   1px solid $emp-tabset-border-color-selected;
+$emp-tabset-title-padding-top: 2px;
+$emp-tabset-list-padding-right:  24px;
+
+$emp-tabset-item-color-selected: $emp-tabset-bg-color;
+$emp-tabset-item-bg-color-selected: $emp-accent-color;
+$emp-tabset-item-padding:        0;
+$emp-tabset-item-margin:         0; // 0.2em 0.4em 0.2em 0;
+$emp-tabset-item-anchor-height:  2.7em;
+$emp-tabset-item-anchor-padding: 0.7em 0.7em 0;
+$emp-tabset-item-border-color: $emp-tabset-item-color-selected;
+$emp-tabset-item-border:       1px solid $emp-tabset-border-color;
+$emp-tabset-item-border-color-selected: white;
+$emp-tabset-item-border-selected:       1px solid $emp-tabset-border-color-selected;
+$emp-tabset-item-text-decoration: underline;
+$emp-tabset-item-text-decoration-hover: none;
+$emp-tabset-item-text-decoration-selected: none;
+
+// Tabset toggle button
+$emp-tabset-toggle-bg-color-hover: #8D8D8D;
+
+
+// * @section    Search box
+// * --------------------------------------------------------
+$emp-search-box-min-height:    8em; // Should give enough height for the buttons
+$emp-search-box-padding:       0;
+// $emp-search-box-margin:        $emp-tp-header-margin;
+
+$emp-search-box-row-margin-top:    0;
+$emp-search-box-row-margin-right:  0;
+$emp-search-box-row-margin-bottom: 0.35em;
+$emp-search-box-row-margin-left:   $emp-search-box-row-margin-right;
+$emp-search-box-row-margin:        $emp-search-box-row-margin-top $emp-search-box-row-margin-right $emp-search-box-row-margin-bottom $emp-search-box-row-margin-left;
+$emp-search-box-bg-color:          $emp-bg-color;
+$emp-search-box-bg-color-accent:   $emp-accent-color;
+
+$emp-search-box-toggle-icon-bg-color:    darken($emp-search-box-bg-color, 18%);
+$emp-search-box-toggle-icon-width:       30px;
+$emp-search-box-toggle-icon-height:      22px;
+
+$emp-search-box-button-area-width:          10em;
+$emp-search-box-button-area-padding-top:    1em;
+$emp-search-box-button-area-padding-left:   0.5em;
+$emp-search-box-button-area-padding-bottom: $emp-search-box-button-area-padding-top;
+$emp-search-box-button-area-padding-right:  0.5em;
+$emp-search-box-button-area-padding:        $emp-search-box-button-area-padding-top $emp-search-box-button-area-padding-right $emp-search-box-button-area-padding-bottom $emp-search-box-button-area-padding-left;
+$emp-search-box-button-area-bg-color:       $emp-search-box-bg-color-accent;
+$emp-search-box-button-retrieve-shadow:     none;
+$emp-search-box-button-retrieve-color:      $cui-color-white;
+
+$emp-search-box-button-margin-top:          0;
+$emp-search-box-button-margin-right:        0;
+$emp-search-box-button-margin-bottom:       0;
+$emp-search-box-button-margin-left:         0;
+$emp-search-box-button-margin: $emp-search-box-button-margin-top $emp-search-box-button-margin-right $emp-search-box-button-margin-bottom $emp-search-box-button-margin-left;
+$emp-search-box-button-font: $cui-font-family;
+$emp-search-box-button-text-align: center;
+
+$emp-search-box-search-fields-margin:         0 8.5em;
+$emp-search-box-search-fields-padding-top:    0.25em;
+$emp-search-box-search-fields-padding-right:  0.25em;
+$emp-search-box-search-fields-padding-bottom: $emp-search-box-search-fields-padding-top;
+$emp-search-box-search-fields-padding-left:   $emp-search-box-search-fields-padding-right;
+$emp-search-box-search-fields-padding:        $emp-search-box-search-fields-padding-top $emp-search-box-search-fields-padding-right $emp-search-box-search-fields-padding-bottom $emp-search-box-search-fields-padding-left;
+
+$emp-search-box-search-fields-border-size:   0.75em;
+$emp-search-box-search-fields-border-color:  $emp-search-box-bg-color-accent;
+$emp-search-box-search-fields-border-style:  solid;
+$emp-search-box-search-fields-border-top:    $emp-search-box-search-fields-border-size $emp-search-box-search-fields-border-color $emp-search-box-search-fields-border-style;
+$emp-search-box-search-fields-border-right:  $emp-search-box-search-fields-border-top;
+$emp-search-box-search-fields-border-bottom: $emp-search-box-search-fields-border-top;
+$emp-search-box-search-fields-border-left:   $emp-search-box-search-fields-border-top;
+$emp-search-box-search-fields-border:        $emp-search-box-search-fields-border-top $emp-search-box-search-fields-border-right $emp-search-box-search-fields-border-bottom $emp-search-box-search-fields-border-left;
+
+$emp-search-box-getid-color:       $cui-link-color;
+$emp-search-box-getid-font-weight: 600;
+$emp-search-box-getid-underline:       underline;
+$emp-search-box-getid-underline-hover: none;
+
+// When collapsed
+$emp-search-box-collapsed-border:        1px solid $emp-search-box-button-area-bg-color;
+$emp-search-box-collapsed-bg-color:      $emp-search-box-button-area-bg-color;
+
+
+// * @section    Indicators
+// * --------------------------------------------------------
+$emp-indicator-color:    $emp-fore-color;
+$emp-indicator-link-color: $emp-indicator-color;
+$emp-indicator-bg-color:       $emp-accent-color;
+$emp-indicator-bg-color-hover: $emp-accent-color;
+$emp-indicator-border:   1px solid $emp-accent-color;
+$emp-indicator-border-radius: $cui-border-radius;
+$emp-indicator-width:      1.5em;
+$emp-indicator-width-1:      1.5em;
+$emp-indicator-width-2:      1.8em;
+$emp-indicator-width-3:      2.3em;
+$emp-indicator-max-height: 1.5em;
+$emp-indicator-margin:     0 0 0 0.3em;
+$emp-indicator-li-margin:  0 0.15em 0.6em 0.15em;
+$emp-icon-button-margin:   -0.05em 0 0 0.1em;
+$emp-indicator-border:         1px solid $emp-accent-color;
+$emp-indicator-padding-top:    7px;
+$emp-indicator-padding-right:  8px;
+$emp-indicator-padding-bottom: $emp-indicator-padding-top - 1;
+$emp-indicator-padding-left:   $emp-indicator-padding-right;
+$emp-indicator-padding:        $emp-indicator-padding-top $emp-indicator-padding-right $emp-indicator-padding-bottom $emp-indicator-padding-left;
+// Set this to an empty string to disable the icon
+$emp-indicator-icon-url:       $emp-images-path + "emp-notifier-popup.png";
+$emp-indicator-icon-width:     13px;
+$emp-indicator-icon-height:    13px;
+
+
+// * @section    As of
+// * --------------------------------------------------------
+$emp-as-of-button-width:    2em;
+$emp-as-of-button-margin:   0.1em 0.5em;
+
+
+// * @section    Fields
+// * --------------------------------------------------------
+$emp-label-width:              230px;
+$emp-data-padding-left:        4px;
+$emp-data-padding:             0 $emp-data-padding-left 0 0;
+$emp-data-font-weight:         600; // Semibold
+$cui-input-border-color:       $emp-fore-color;
+$emp-input-date-width:         6.6em;
+$emp-input-currency-width:     13em;
+$emp-read-only-currency-width: 14.3em;
+
+$cui-button-primary-bg-color:  $emp-accent-color;
+$cui-button-primary-bg-color-hover:  $emp-bg-color;
+
+$emp-search-box-button-retrieve-bg-color:         $cui-button-primary-bg-color;
+$emp-search-box-button-retrieve-bg-color-hover:   $cui-button-primary-bg-color-hover;
+
+$emp-federal-badge-color: #333;
+
+// Popover and title indications
+$emp-data-has-title-underline-style:  dashed;
+$emp-data-has-title-underline-color:  $emp-accent-color;
+$emp-table-has-title-underline-style: $emp-data-has-title-underline-style;
+$emp-table-has-title-underline-color: $emp-data-has-title-underline-color;
+$emp-table-has-popover-bg-color:      $emp-data-has-title-underline-color;
+$emp-table-has-popover-border-color:  false; // Specify a color to enable the border
+
+
+// * @section    Headers
+// * --------------------------------------------------------
+$emp-group-header-font-size:     18px;
+$emp-group-header-min-height:    38px;
+$emp-group-header-color:         $cui-text-color;
+$emp-group-header-bg-color:      $emp-bg-color;
+$emp-subgroup-header-color:      $cui-text-color;
+$emp-subgroup-header-bg-color:   $emp-bg-color;
+$emp-h1-font-size:               1.45em;
+$emp-h2-font-size:               1.7em;
+$emp-h4-font-size:               1.35em;
+$emp-header-font-size:           1em;
+$emp-data-button-padding:        6px 12px;
+$emp-data-button-margin-top:     -3px;
+$emp-data-button-margin-left:    0;
+$emp-data-button-vertical-align: initial;
+$emp-label-max-width:            2em;
+
+
+// * @section    Groups
+// * --------------------------------------------------------
+$emp-group-padding-top:           0;
+$emp-group-padding-right:         0;
+$emp-group-padding-bottom:        $emp-padding;
+$emp-group-padding-left:          0;
+$emp-group-padding:               $emp-group-padding-top $emp-group-padding-right $emp-group-padding-bottom $emp-group-padding-left;
+$emp-group-margin:                0.75em 0 1em 0;
+$emp-group-margin-desktop:        0.75em 0.5em 0.75em 0.5em;
+$emp-group-subgroup-margin:       0.75em 0.25em 1em 0.25em; // Same top/bottom as `$emp-group-margin`
+
+$emp-group-row-padding-top:       0;
+$emp-group-row-padding-right:     $emp-group-padding-bottom;
+$emp-group-row-padding-bottom:    $emp-group-row-padding-top;
+$emp-group-row-padding-left:      $emp-group-padding-bottom;
+$emp-group-row-padding:           $emp-group-row-padding-top $emp-group-row-padding-right $emp-group-row-padding-bottom $emp-group-row-padding-left;
+$emp-group-row-padding-desktop:   $emp-group-row-padding-top 0 $emp-group-padding-bottom 0;
+
+$emp-group-row-margin-top:        0;
+$emp-group-row-margin-right:      0;
+$emp-group-row-margin-bottom:     0;
+$emp-group-row-margin-left:       0;
+$emp-group-row-margin:            $emp-group-row-margin-top $emp-group-row-margin-right $emp-group-row-margin-bottom $emp-group-row-margin-left;
+
+$emp-group-col-padding-top:       4px;
+$emp-group-col-padding-right:     0;
+$emp-group-col-padding-bottom:    2px;
+$emp-group-col-padding-left:      0;
+$emp-group-col-padding:           $emp-group-col-padding-top $emp-group-col-padding-right $emp-group-col-padding-bottom $emp-group-col-padding-left;
+
+$emp-group-border-color:          $emp-fore-color;
+$emp-group-border-width:          1px;
+$emp-group-border-style:          solid;
+$emp-group-border:                $emp-group-border-color $emp-group-border-width $emp-group-border-style;
+$emp-group-border-radius:         $cui-border-radius-small;
+
+$emp-group-header-border-color:   $emp-group-border-color;
+$emp-group-header-border-width:   $emp-group-border-width;
+$emp-group-header-border-style:   $emp-group-border-style;
+$emp-group-header-border:         $emp-group-header-border-color $emp-group-header-border-width $emp-group-header-border-style;
+$emp-group-header-border-bottom:  $emp-group-header-border-color $emp-group-header-border-width $emp-group-header-border-style;
+
+$emp-subgroup-header-border-color: $emp-group-border-color;
+$emp-subgroup-header-border-width: $emp-group-border-width;
+$emp-subgroup-header-border-style: $emp-group-border-style;
+$emp-subgroup-header-border:       $emp-subgroup-header-border-color $emp-subgroup-header-border-width $emp-subgroup-header-border-style;
+
+$emp-group-header-bg-color-collapsed:     $emp-fore-color;
+$emp-group-header-border-color-collapsed: darken($emp-group-header-bg-color-collapsed, 18);
+
+$emp-group-header-padding-top:    0;
+$emp-group-header-padding-right:  0;
+$emp-group-header-padding-bottom: 0;
+$emp-group-header-padding-left:   0;
+$emp-group-header-padding:        $emp-group-header-padding-top $emp-group-header-padding-right $emp-group-header-padding-bottom $emp-group-header-padding-left;
+$emp-group-header-margin:         9px 0;
+
+$emp-group-controls-button-margin: 0 0 0 0.75em;
+
+$emp-group-collapse-icon-url: $emp-images-path + "emp-popup.png";
+$emp-group-collapse-background-position: 4px 4px;
+
+$emp-group-instructions-toggle-expand-icon-url: $emp-images-path + "emp-popup.png";
+$emp-group-instructions-toggle-expand-background-position: 4px 4px;
+
+$emp-group-field-margin:          auto 0;
+$emp-group-field-padding-top:     2px;
+
+$emp-group-color-difference:      2%;
+$emp-group-element-margin:        0 0 0.25em 0;
+$emp-flexgrid-col-min-width:      3em;
+
+$emp-group-in-section-container-margin:         1em 0 0.25em 0 !important;
+$emp-group-in-section-container-padding:        0 4px 0 8px;
+$emp-group-in-section-container-border-spacing: 3px 0;
+
+$emp-icon-redcheck-color: $cui-color-required-red;
+$emp-icon-greencheck-color: $cui-color-success-text;
+$emp-icon-redcheck-color-group-header: $emp-group-header-color;
+$emp-icon-redcheck-font-weight: bolder;
+
+
+// * @section    Text (<p>, free text, etc.)
+// * --------------------------------------------------------
+
+
+// * @section    Tables
+// * --------------------------------------------------------
+$emp-table-padding-top:              0;
+$emp-table-padding-right:            0;
+$emp-table-padding-bottom:           $emp-table-padding-top;
+$emp-table-padding-left:             $emp-table-padding-right;
+$emp-table-padding:                  $emp-table-padding-top $emp-table-padding-right $emp-table-padding-bottom $emp-table-padding-left;
+
+$emp-table-margin-top:               1.5em;
+$emp-table-margin-right:             0.75em;
+$emp-table-margin-bottom:            0;
+$emp-table-margin-left:              $emp-table-margin-right;
+$emp-table-margin:                   $emp-table-margin-top $emp-table-margin-right $emp-table-margin-bottom $emp-table-margin-left;
+
+$emp-table-header-cell-padding-top:      $emp-padding;
+$emp-table-header-cell-padding-right:    6px;
+$emp-table-header-cell-padding-bottom:   $emp-table-header-cell-padding-top;
+$emp-table-header-cell-padding-left:     $emp-table-header-cell-padding-right;
+$emp-table-header-cell-padding:          $emp-table-header-cell-padding-top $emp-table-header-cell-padding-right $emp-table-header-cell-padding-bottom $emp-table-header-cell-padding-left;
+
+$emp-table-header-button-margin:     0 0 0 0.5em;
+
+$emp-table-header-row-margin-default:    6px;
+
+$emp-table-cell-vertical-padding-difference: 6px;
+$emp-table-body-cell-padding-top:    ($emp-table-header-cell-padding-top - $emp-table-cell-vertical-padding-difference);
+$emp-table-body-cell-padding-right:  $emp-table-header-cell-padding-right;
+$emp-table-body-cell-padding-bottom: ($emp-table-header-cell-padding-bottom - $emp-table-cell-vertical-padding-difference);
+$emp-table-body-cell-padding-left:   $emp-table-header-cell-padding-left;
+$emp-table-body-cell-padding:        $emp-table-body-cell-padding-top $emp-table-body-cell-padding-right $emp-table-body-cell-padding-bottom $emp-table-body-cell-padding-left;
+
+$emp-table-header-bgcolor:     $emp-bg-color;
+$emp-table-header-color:       $emp-fore-color;
+$emp-table-cell-border-width:  1px;
+$emp-table-cell-border-style:  solid;
+$emp-table-cell-border-color:  $emp-bg-color;
+$emp-table-cell-border:        $emp-table-cell-border-width $emp-table-cell-border-style $emp-table-cell-border-color;
+
+$emp-table-cell-min-height:    $cui-button-icon-height + $emp-table-header-cell-padding-top - $emp-table-cell-vertical-padding-difference + $emp-table-header-cell-padding-bottom - $emp-table-cell-vertical-padding-difference;
+
+$emp-table-field-padding-diff:   3;
+$emp-table-field-padding-top:    $cui-input-padding-top - $emp-table-field-padding-diff;
+$emp-table-field-padding-right:  $cui-input-padding-right - $emp-table-field-padding-diff;
+$emp-table-field-padding-bottom: $cui-input-padding-bottom - $emp-table-field-padding-diff;
+$emp-table-field-padding-left:   $cui-input-padding-left - $emp-table-field-padding-diff;
+$emp-table-field-padding:        $emp-table-field-padding-top $emp-table-field-padding-right $emp-table-field-padding-bottom $emp-table-field-padding-left;
+
+$emp-table-highlight: rgba(255, 235, 59, 0.5);
+$emp-table-highlight-hover: #FFCC00;
+
+
+// * @section    Footer
+// * --------------------------------------------------------
+$emp-footer-padding-bottom: 1em;
+
+
+// * @section    Print
+// * --------------------------------------------------------
+
+// Apply large-screen styles for printing
+$print-using-large-styles: true;

@@ -1,0 +1,30 @@
+{{#unless this.noWrap~}}
+    <div class="cui-data">
+{{/unless~}}
+
+    {{! Check to see if the input is read only }}
+    {{#ifCond v1=this.input.readOnly op='boolCheck' v2=true ~}}
+
+        <span {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}')) defaultSelection=this.input.defaultValue skip='value,name,type,aria-required,data-validation'}}>
+            {{~{ standardTextFormat this.input.attributes.value }~}}
+        </span>
+    {{~else~}}
+
+        <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-date"}' defaultSelection=this.input.defaultValue required=this.input) dynamics=this.input.formats) }} />
+        <button type="button" id="cal_{{this.input.attributes.id}}" class="cui-icon cui-c-datepicker" title="Select Date" tabindex="1">Date picker</button>
+    {{/ifCond~}}
+
+    {{! Look for messages if this is not in a composite}}
+    {{#unless this.composite~}}
+        {{#if this.message~}}
+            {{~> _message this.message~}}
+        {{/if~}}
+    {{/unless~}}
+
+    {{#if this.help}}
+        {{~> _itag this.help}}
+    {{/if}}
+
+{{#unless this.noWrap~}}
+    </div>
+{{/unless~}}

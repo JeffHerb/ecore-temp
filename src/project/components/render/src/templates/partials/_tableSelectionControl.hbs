@@ -1,0 +1,56 @@
+{{#ifCond v1=this.selectionObj op="boolCheck" v2=true}}
+
+    {{#ifCond v1=this.readOnly op="boolCheck" v2=true}}
+
+        {{#if this.selection.checked}}
+            <span class="emp-table-select-true"></span>
+        {{/if}}
+
+    {{else}}
+
+        {{#ifCond v1=this.tableData.selectionType op="===" v2="single"}}
+
+            <label for="{{this.tableData.attributes.id}}_{{index}}" class="cui-hide-from-screen">Row {{index}}</label>
+            <input {{#if this.selection.checked}}checked="checked"{{/if}} type="radio" value="{{key}}" name="test" id="{{this.tableData.attributes.id}}_{{index}}" />
+        {{else}}
+
+            <label for="{{this.tableData.attributes.id}}_{{index}}" class="cui-hide-from-screen">Row {{index}}</label>
+            <input type="checkbox" {{#if this.selection.checked}}checked="checked"{{/if}} id="{{this.tableData.attributes.id}}_{{index}}" name="{{this.tableData.attributes.id}}" value="{{key}}" />
+
+            {{#ifCond v1=this.section op="===" v2="head"}}
+                {{!-- Hidden input for framework --}}
+                <input type="hidden" {{#if this.selection.checked}}checked="checked"{{/if}} id="{{this.tableData.attributes.id}}_{{index}}_hidden" name="_{{this.tableData.attributes.id}}" value="false" />
+            {{/ifCond}}
+
+        {{/ifCond}}
+
+    {{/ifCond}}
+
+{{else}}
+
+    {{#ifCond v1=this.tableData.selectionType op="===" v2="single"}}
+
+        <label for="{{this.tableData.attributes.id}}_{{index}}" class="cui-hide-from-screen">Row {{index}}</label>
+        <input {{#if this.selection.checked}}checked="checked"{{/if}} type="radio" value="{{key}}" name="test" id="{{this.tableData.attributes.id}}_{{index}}" />
+
+    {{else}}
+
+        {{#ifCond v1=this.section op="===" v2="head"}}
+
+            <label for="{{this.tableData.attributes.id}}_{{index}}" class="cui-hide-from-screen">Row {{index}}</label>
+            <input type="checkbox" {{#tableAllSeclected this.tableData.body}}checked="checked"{{/tableAllSeclected}} id="{{this.tableData.attributes.id}}_{{index}}" name="{{this.tableData.attributes.id}}" value="{{key}}" />
+
+            {{!-- Hidden input for framework --}}
+            <input type="hidden" {{#if this.selection.checked}}checked="checked"{{/if}} id="{{this.tableData.attributes.id}}_{{index}}_hidden" name="_{{this.tableData.attributes.id}}" value="false" />
+        {{else}}
+
+            <label for="{{this.tableData.attributes.id}}_{{index}}" class="cui-hide-from-screen">Row {{index}}</label>
+            <input type="checkbox" {{#if this.selection.checked}}checked="checked"{{/if}} id="{{this.tableData.attributes.id}}_{{index}}" name="{{this.tableData.attributes.id}}" value="{{key}}" />
+        {{/ifCond}}
+
+
+
+    {{/ifCond}}
+
+{{/ifCond}}
+

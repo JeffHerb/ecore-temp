@@ -1,0 +1,8 @@
+{{#each this.parts}}
+    <div class="emp-entity-container {{#ifCond v1=@key op="===" v2=../showContainer}}emp-show-container{{/ifCond}}" data-entity-key="{{@key}}">
+        {{#if this.template}}
+
+            {{~> (getPartialName this.template) this scope="entityLookup"~}}
+        {{/if}}
+    </div>
+{{/each}}

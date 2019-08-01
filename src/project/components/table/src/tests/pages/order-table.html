@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "form",
+                                "contents": [
+                                    // Multiple Selection Table
+                                    {
+                                        "type": "order",
+                                        "template": "table",
+                                        "selectable": false,
+                                        "title": "Document Order",
+                                        "attributes": {
+                                            "id": "order-test-example"
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Group",
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Description"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Button Menu",
+                                                            "hideLabel": true,
+                                                            "attributes": {
+                                                                "data-type": "buttonMenu",
+                                                                "data-columntype": "buttonMenu"
+                                                            },
+                                                            "style": "min-width"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "General"
+                                                        },
+                                                        {
+                                                            "text": "General Ledger"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "title": "Button Menu"
+                                                                        },
+                                                                        "text": "Button Menu",
+                                                                        "icon": "responsive-table-menu"
+                                                                    },
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "BTN_ENTER_VAR",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "Enter Variables"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "DTN_DELETE",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "DELETE",
+
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                    ],
+                                                    "key": "order-0",
+                                                    "selection": {
+                                                        "checked": false,
+                                                        "empty": false,
+                                                        "readOnly": false
+                                                    }
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "General"
+                                                        },
+                                                        {
+                                                            "text": "General journal and closing entries"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "title": "Button Menu"
+                                                                        },
+                                                                        "text": "Button Menu",
+                                                                        "icon": "responsive-table-menu"
+                                                                    },
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "BTN_ENTER_VAR",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "Enter Variables"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "DTN_DELETE",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "DELETE",
+
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                    ],
+                                                    "key": "order-1",
+                                                    "selection": {
+                                                        "checked": false,
+                                                        "empty": false,
+                                                        "readOnly": false
+                                                    }
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Sales"
+                                                        },
+                                                        {
+                                                            "text": "Sales Invoices"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "title": "Button Menu"
+                                                                        },
+                                                                        "text": "Button Menu",
+                                                                        "icon": "responsive-table-menu"
+                                                                    },
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "BTN_ENTER_VAR",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "Enter Variables"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "DTN_DELETE",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "DELETE",
+
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                    ],
+                                                    "key": "order-2",
+                                                    "selection": {
+                                                        "checked": false,
+                                                        "empty": false,
+                                                        "readOnly": false
+                                                    }
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Federal"
+                                                        },
+                                                        {
+                                                            "text": "Federal income tax returns (Form 1120, 1065, or 1040)"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "title": "Button Menu"
+                                                                        },
+                                                                        "text": "Button Menu",
+                                                                        "icon": "responsive-table-menu"
+                                                                    },
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "BTN_ENTER_VAR",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "Enter Variables"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "DTN_DELETE",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "DELETE",
+
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                    ],
+                                                    "key": "order-3",
+                                                    "selection": {
+                                                        "checked": false,
+                                                        "empty": false,
+                                                        "readOnly": false
+                                                    }
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Corp Tax"
+                                                        },
+                                                        {
+                                                            "text": "New York State corporation tax return"
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "title": "Button Menu"
+                                                                        },
+                                                                        "text": "Button Menu",
+                                                                        "icon": "responsive-table-menu"
+                                                                    },
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "BTN_ENTER_VAR",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "Enter Variables"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "DTN_DELETE",
+                                                                                    "type": "button"
+                                                                                },
+                                                                                "text": "DELETE",
+
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                }
+                                                            ],
+                                                            "style": "min-width",
+                                                        },
+                                                    ],
+                                                    "key": "order-4",
+                                                    "selection": {
+                                                        "checked": false,
+                                                        "empty": false,
+                                                        "readOnly": false
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        }
+    </script>
+
+
+</html>

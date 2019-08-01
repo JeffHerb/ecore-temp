@@ -1,0 +1,59 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // TEST STANDARD SEARCH COMPOSITE
+                    {
+                        "type": "eventsComments",
+                        "template": "composite",
+                        "parts": {
+                            "comments": [
+                                {
+                                    "type": "eventComment",
+                                    "template": "composite",
+                                    "properties": {
+                                        "name": "Billy Bob Thorton",
+                                        "date": "01/01/2018",
+                                        "comments": "Armageddon was the best picture ever made!"
+                                    }
+                                },
+                                {
+                                    "type": "eventComment",
+                                    "template": "composite",
+                                    "properties": {
+                                        "name": "Bruce Willis",
+                                        "date": "02/01/2018",
+                                        "comments": "Die Hard was better. Its also a Christmas movie."
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

@@ -1,0 +1,5 @@
+{
+    "name": "external-menu",
+    "lazy": false,
+    "sources": ["script", "style"]
+}

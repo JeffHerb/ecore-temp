@@ -1,0 +1,160 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Page Title -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>DEPRECATED - This is still included for archive purposes ONLY.</h1>
+                <br><br><br><br>
+                <h1>PageTitle Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    This is the common page title that should appear on the top over every Empire page.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:PageTitle title="Page Name" subTitle="Page Sub Title">
+&lt;/E2:PageTitle></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "pageTitle",
+    "title": "Page Name",
+    "subtitle": "Page Sub Title"
+}
+</pre>
+
+                <p>
+                    PageTitle is very limited in option, developer simply need to to supply the page <code>title</code>, and a <code>subtitle</code> if needed.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>title</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>General page title</td>
+                        </tr>
+                        <tr>
+                            <th>subtitle</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>Specific page sub-title</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>) Unlike the older tag developer can no longer disable page level buttons.
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "pageTitle",
+                                        "title": "Page Name",
+                                        "subtitle": "Page Sub Title"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'jquery', 'cui', 'domReady!'], function(render, $, cui) {
+
+                // Examples
+                var defaultExample = document.getElementById("default-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,12 @@
+.emp-tab-contents {
+    
+    section.emp-collapse {
+        margin-top: 0;
+    } 
+
+    .emp-tab.emp-active-tab {
+        section.emp-collapse {
+            margin-bottom: 10px;
+        } 
+    }
+}

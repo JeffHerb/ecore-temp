@@ -1,0 +1,13 @@
+<div class="emp-link-list">
+    <ul>
+    {{#each this.links}}
+        {{#ifCond v1=(getKey @key) op="!in" v2='attributes,scope,state,section'}}
+            {{#ifCond v1=this.template op="===" v2="link"}}
+            <li>
+                 {{~> (getPartialName "link") this ~}}
+            </li>
+            {{/ifCond}}
+        {{/ifCond}}
+    {{/each}}
+    </ul>
+</div>

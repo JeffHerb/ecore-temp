@@ -1,0 +1,140 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="preSubmitScript Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>preSubmitScript</h2>
+
+                <p>
+                    The preSubmitScript attribute allows developers to specify functionality that must be executed after a UI element submit event has been fired.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Button type="text" viewKey="demo" preSubmitScript="consoleAndAlert(event, 'This is the console message')}"  />
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "button",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "id": "button",
+            "name": "button",
+            "onclick": "emp.functionCall(event, 'consoleAndAlert', ['This is the console message'])"
+        },
+        "text": "Submit"
+    }
+}
+                </pre>
+                <p>
+                    For the purposes of this example we are using a <code>Button</code>. For the full <a href="#preSubmitScript-support">support list</a> see below. This attribute simply attaches developer defined functions to the appropriate event type that an element would use to submit a form. In this example, the <code>button</code> tag is being used so the <code>onclick</code> event is the one that the function would be bound too.
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <section id="submit-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags and binds to the following events:
+                </p>
+
+                <ul id="preSubmitScript-support">
+                    <li><a href="../../tags/button.html">Button</a> - onClick Event</li>
+                    <li><a href="../../tags/notifiers.html">Notifiers</a> - onClick Event</li>
+                    <li><a href="../../tags/tabNavButton.html">tabNavButton</a> - onClick Event</li>
+                    <li><a href="../../tags/tabNavLink.html">tabNavLink</a> - onClick Event</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <script>
+            var submitScript = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "tag": "form",
+                        "attributes": {
+                            "name": "form1",
+                            "method": "POST",
+                            "action": "http://www.ny.gov"
+                        },
+                        contents: [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "button",
+                                                        "name": "button",
+                                                        "onclick": "emp.functionCall(event, 'consoleAndAlert', ['This is the console message'])"
+                                                    },
+                                                    "text": "Submit"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            function consoleAndAlert(e, msg) {
+
+                console.log(msg);
+                console.log("For the purposes of this example, return false is preventing the actual form submit.");
+
+                alert("Check the console to see the message the button listed.");
+
+                e.preventDefault();
+                //return false;
+
+            }
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var submitScriptExample = document.getElementById("submit-example");
+
+                // Create the generic example
+                render.page(submitScriptExample, submitScript, function() {
+
+                    console.log("Submit Script Done");
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

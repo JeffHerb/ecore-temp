@@ -1,0 +1,31 @@
+<div class="emp-page-info">
+
+    {{#if this.title}}
+        {{> _pageTitle this}}
+    {{/if}}
+
+    {{#if this.instructions}}
+        <div class="emp-page-instructions" id="emp-page-instructions">
+            {{#each this.instructions}}
+                {{> _output this raw=true}}
+            {{/each}}
+        </div>
+    {{/if}}
+
+    {{#if this.pageLegend}}
+        <div class="emp-page-legend">
+            {{#if this.pageLegend.required}}
+                <div class="emp-legend">
+                    <span class="cui-required"></span>
+                    <span>Required field</span>
+                </div>
+            {{/if}}
+            {{#if this.pageLegend.helpText}}
+                <div class="emp-legend">
+                    <button type="button" class="cui-icon emp-icon-help emp-page-itags emp-legend-help" title="More information">More information</button>
+                    <span>To learn more about a particular field</span>
+                </div>
+            {{/if}}
+        </div>
+    {{/if}}
+</div>

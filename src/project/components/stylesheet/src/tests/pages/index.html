@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Responsive Tables</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper">
+        </div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "add-styleSheet",
+                                                "onclick": "emp.functionCall(event, 'createStyleSheet')"
+                                            },
+                                            "text": "Add Stylesheet"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "update-rule",
+                                                "onclick": "emp.functionCall(event, 'makeBackgroundBlue')"
+                                            },
+                                            "text": "Make Background Blue"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "delete-rule",
+                                                "onclick": "emp.functionCall(event, 'deleteBody')"
+                                            },
+                                            "text": "Delete Body"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "menu": []
+        };
+    </script>
+
+    <script>
+
+        require(["jquery", "emp", "stylesheet", "domReady!"], function($, emp, stylesheet) {
+
+            window.bodyBack;
+
+            window.createStyleSheet = function() {
+
+                bodyBack = stylesheet.newSheet("bodyBack", {
+                    "body": {
+                        "background": "#000"
+                    }
+                });
+
+            };
+
+            window.makeBackgroundBlue = function() {
+
+                var newBodyRule = {
+                    "body": {
+                        "background": "#00F",
+                        "border": "1px solid #000"
+                    }
+                }
+
+                stylesheet.updateRule(bodyBack, newBodyRule);
+            };
+
+            window.deleteBody = function() {
+
+                stylesheet.deleteRule(bodyBack, "body");
+            };
+
+        });
+    </script>
+</html>

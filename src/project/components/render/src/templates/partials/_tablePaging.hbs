@@ -1,0 +1,8 @@
+<div class="emp-table-pagination">
+	{{#if this.previous~}}
+		{{~> (getPartialName this.previous.template) this.previous ~}}
+	{{/if~}}
+	{{#if this.next~}}
+		{{~> (getPartialName this.next.template) this.next ~}}
+	{{/if~}}
+</div>

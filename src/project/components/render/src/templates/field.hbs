@@ -1,0 +1,136 @@
+{{!--
+    Fields Template
+
+    This template is used to control the structural layout of all the different input and their labels, the paritals below are used to render there specific contents accordingly.
+--}}
+
+{{!-- Check for file input types, these are slightly different structure so we dont use the normal field logic --}}
+
+{{#ifCond v1=this.type op="===" v2="file"~}}
+
+    {{~> _file this ~}}
+
+{{~else~}}
+
+    {{! Make sure we have a label to include or not }}
+    {{#if this.label~}}
+
+        {{! Check to see if the label stucutre need to change because of input type. }}
+        {{#ifCond v1=this.type op='!in' v2="radio,checkbox" ~}}
+
+            {{#unless this.noFieldWrap~}}
+
+                {{#if this.ignoreRequired~}}
+                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' federal=this.input.federal validationError=this.message.type scope="field" state=this.state)) }}>
+                        {{~> _fieldLayout this ~}}
+                    </div>
+                {{~else~}}
+
+                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' required=this.input federal=this.input.federal total=this.input validationError=this.message.type scope="field" state=this.state)) }}>
+                        {{~> _fieldLayout this ~}}
+                    </div>
+                {{/if~}}
+            {{~else~}}
+
+                {{! Force a empty span wrapper with not class just in case. }}
+                {{~> _fieldLayout this ~}}
+
+            {{/unless~}}
+
+        {{~else~}}
+
+            {{! Wh have a radio or checkbox field, check to see if they are flipping the two }}
+            {{#ifCond v1=this.input.flip op="||" v2=this.flip ~}}
+
+                {{#if this.noFieldWrap~}}
+
+                    {{~> _fieldLayout this ~}}
+
+                {{~else~}}
+
+                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' scope="field")) }}>
+                        {{~> _fieldLayout this ~}}
+                    </div>
+                {{/if~}}
+
+            {{~else~}}
+
+                {{! Check to see if this a call for a section header. If so remove the left-side wrappers}}
+                {{#if this.sectionHeader~}}
+
+                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' scope="field")) }}>
+                        <div class="cui-data-left {{#if this.input.readOnly}}emp-boolean-image{{/if}}">
+                            {{~> _fieldLayout this flip="true" ~}}
+                        </div>
+                    </div>
+                {{~else~}}
+
+                    {{! Check to see if we are inside of a table}}
+                    {{#if this.insideTable~}}
+
+                         {{! Force a empty span wrapper with not class just in case. }}
+                        <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="field")) }}>
+                            {{~> _fieldLayout this ~}}
+                        <span>
+                    {{~else~}}
+
+                        {{#if this.noFieldWrap~}}
+
+                            {{~> _fieldLayout this ~}}
+
+                        {{~else~}}
+
+                            {{#if this.input.readOnly~}}
+                                <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field cui-data-left emp-boolean-image"}' scope="field")) }}>
+                                    {{~> _fieldLayout this flip="true"~}}
+
+                                    {{#if this.message~}}
+                                        {{~> _message this.message~}}
+                                    {{/if~}}
+                                </div>
+
+                            {{~else~}}
+                                <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field cui-data-left"}' scope="field")) }}>
+                                    {{~> _fieldLayout this flip="true"~}}
+                                </div>
+
+                            {{/if~}}
+
+                        {{/if~}}
+
+                    {{/if~}}
+
+                {{/if~}}
+
+            {{/ifCond~}}
+
+        {{/ifCond~}}
+
+    {{~else~}}
+
+        {{! No label to speak of so make the requested input }}
+        {{#if this.attributes ~}}
+            <div {{attribute (mergeAttributes this.attributes defaults='{"className": "emp-field"}') }}>
+                {{~> _input this ~}}
+
+                {{!Sort on inputGroup}}
+                {{#ifCond v1=this.type op="==" v2="sortOn"}}
+                    <span>on</span>
+                {{/ifCond}}
+
+                {{!Date range inputGroup}}
+                {{#ifCond v1=this.type op="==" v2="dateRange"}}
+                    <span>to</span>
+                {{/ifCond}}
+            </div>
+        {{~else~}}
+            {{~> _input this ~}}
+        {{/if~}}
+
+        {{#if this.messages~}}
+            {{~> _message this.message~}}
+        {{/if~}}
+
+    {{/if~}}
+
+{{/ifCond~}}

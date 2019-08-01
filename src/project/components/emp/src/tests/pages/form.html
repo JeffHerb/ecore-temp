@@ -1,0 +1,167 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Form Submit - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "form",
+                                                "attributes": {
+                                                    "id": "test-form1",
+                                                    "action": "www.test.com"
+                                                },
+                                                "contents": [
+                                                    {
+                                                        "template":"output",
+                                                        "raw": true,
+                                                        "text": "<p>The button below will change there form actions on click to submit to `http://www.google.com`. The first button will not traval to the page as a special parameter will block the submittion so developers can see the action change.<br><br> The second button will attempt the submit to google.</p>"
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "submit",
+                                                                "id": "E_BTN_TEST_1_SUBMIT_A",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{'action':'http://www.google.com'}], {'preventSubmit':true})"
+                                                            },
+                                                            "text": "Test Submit Button 1"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "submit",
+                                                                "id": "E_BTN_TEST_1_SUBMIT_B",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{'action':'http://www.google.com'}])"
+                                                            },
+                                                            "text": "Test Submit Button 2"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "form",
+                                "attributes": {
+                                    "id": "test-form2",
+                                    "action": "www.test2.com"
+                                },
+                                "contents": [
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "output",
+                                                        "raw": true,
+                                                        "text": "<br><p> This time the set of buttons will submit a form they are referring to by ID. The buttons are not found inside of the form. Again the first button will be blocked, but the action will be changes. The second will actual submit. This time submittions are set to http://www.yahoo.com</p>"
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "submit",
+                                                                "id": "E_BTN_TEST_2_SUBMIT_A",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{'id':'test-form2','action':'http://www.yahoo.com'}], {'preventSubmit':true})"
+                                                            },
+                                                            "text": "Test Submit Button 1"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "submit",
+                                                                "id": "E_BTN_TEST_2_SUBMIT_B",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{'id':'test-form2','action':'http://www.yahoo.com'}])"
+                                                            },
+                                                            "text": "Test Submit Button 2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "button",
+                                                                "data-validation": false,
+                                                                "id": "E_BTN_TEST_2_SUBMIT_B",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{'id':'test-form2','action':'http://www.yahoo.com'}])"
+                                                            },
+                                                            "text": "Test Submit Button 2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "submit",
+                                                                "id": "E_BTN_TEST_SUBMIT_ICON",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{'id':'test-form2','action':'http://www.yahoo.com'}])"
+                                                            },
+                                                            "icon": "edit",
+                                                            "text": "Test Submit Button ICON"
+                                                        }
+                                                    },
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+    </script>
+    <script>
+
+        require(['domReady!'], function() {
+
+            console.log("page is ready");
+
+        });
+
+    </script>
+
+</html>

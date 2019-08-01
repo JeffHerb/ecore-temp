@@ -1,0 +1,232 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Output Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Output Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Ouput&gt;</code> is for output static content to the screen.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Output text="<%= output %>"></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "output",
+    "text": "&lt;p>This is an example of the output tag placing raw html onto the page.&lt;/p>"
+}</pre>
+                <p>
+                    <code>&lt;E2:Output&gt;</code> tag is used to display predefined static content that is not part of the Registration tool.
+                </p>
+
+                <h3>Rendered Examples</h3>
+
+                <p>
+                    It is important to note, all static output that is kicked out from the <code>E2:Output</code> tag is pre wrapped in a <code>div</code> with the <code>class</code> of <em>emp-ouput</em>. All <code>htmlAttribute</code> related items will also be appended to this wrapper <code>div</code>.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>text</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The viewKey that has been registered in the Framework Registration Tool.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered wrapper <code>&lt;div&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                printOnly
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates this section should visible only when the page is being printed.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Print Only Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Output text="<%=  %>" printOnly="true"></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "output",
+    "text": "&lt;p>This is only &lt;/p>",
+    "printOnly": true
+
+}</pre>
+                <p>
+                    <code>&lt;E2:Output&gt;</code> with the <code>printOnly</code> attributes simply dont render visually on screen but appear when printed.
+                </p>
+
+                <h3>Rendered Examples</h3>
+
+                <p>
+                    When the converted to JSON, the JSP attribute is simply copied into the root of the output object.
+                </p>
+
+                <section id="printOnly-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var outputDefault = {
+                title: "Output default",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "template": "output",
+                                        "text": "<p>This is an example of the output tag placing raw html onto the page.</p>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var printOnly = {
+                title: "Output default",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "template": "output",
+                                        "text": "<p>This is an example of the output tag placing raw html onto the page.</p>",
+                                        "printOnly": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Default example
+                var outputExample = document.getElementById("default-example");
+                var printOnlyExample = document.getElementById("printOnly-example");
+
+                // Create the generic example
+                render.page(outputExample, outputDefault, function () {
+
+                    console.log("Default Done");
+
+                    render.page(printOnlyExample, printOnly, function() {
+
+                        console.log("Print Only Done");
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

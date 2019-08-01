@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "form",
+                                "contents": [
+                                    {
+                                        "template": "table",
+                                        "title": "Data Only Table (Selectionless)",
+                                        "attributes": {
+                                            "id": "E_STANDARD_TABLE"
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Column 1"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Column 2"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Column 3"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Column 4"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Column 5"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Data 1"
+                                                        },
+                                                        {
+                                                            "text": "Data 2"
+                                                        },
+                                                        {
+                                                            "text": "Data 3"
+                                                        },
+                                                        {
+                                                            "text": "Data 4"
+                                                        },
+                                                        {
+                                                            "text": "Data 5"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        }
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

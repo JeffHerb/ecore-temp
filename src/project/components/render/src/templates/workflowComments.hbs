@@ -1,0 +1,40 @@
+<form class="emp-workflow-comments-container" id="emp-workflow-comments" action="{{this.submit}}">
+    <div class="cui-row emp-workflow-historical-comments-header">
+        <div class="emp-col-full">
+            <header>Comments:</header>
+        </div>
+    </div>
+	<div class="cui-row emp-workflow-historical-comments-container">
+		<div class="emp-col-full">
+            <ul>
+			{{#each this.comments~}}
+                <li>
+                    <div class="commenter">
+                        <div class="name">
+                            <span class="name-value">{{this.author}}</span>
+                        </div>
+                        <div class="date">
+                            <span class="date-value">{{this.date}}</span>
+                        </div>
+                    </div>
+				    <p>
+					   {{~this.comment~}}
+				    </p>
+                </li>
+			{{/each~}}
+            <ul>
+		</div>
+	</div>
+	<div class="cui-row emp-workflow-new-comments">
+		<div class="emp-col-full">
+            <div class="emp-field cui-required">
+                <div class="cui-label">
+                    <label for="emp-workflow-new-comments">New Comment:</label>
+                </div>
+                <div class="cui-data">
+                    <textarea id="emp-workflow-new-comments" name="comment" aria-required="true"></textarea>
+                </div>
+            </div>
+		</div>
+	</div>
+</form>

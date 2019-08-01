@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selection Popup For Issues</title>
+<link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+<!--
+  ===============================================================================
+  eMPIRE2 | Selection Popup For Issues
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Date        Initials  Comments
+  09/03/2015  JJ        Page Created
+  11/03/2015  JJ        Result Set Cleaned Up
+  ===============================================================================
+-->
+</head>
+<body>
+<div id="body-wrapper">
+  <!-- ==================== -->
+  <!-- ACCESSIBILITY CUES   -->
+  <!-- ==================== -->
+  <div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+
+  <!-- ==================== -->
+  <!-- GLOBAL HEADER        -->
+  <!-- ==================== -->
+  <header>
+    <!-- Logo and main menu -->
+    <div class="emp-header-row-first">
+      <div class="emp-header-logo"> Empire </div>
+      <nav id="emp-header-menu-main"> Main Menu </nav>
+      <div id="emp-header-favorites"> &#9734; </div>
+    </div>
+    <!-- Title, notifiers and secondary menu -->
+    <div class="emp-header-row-second">
+      <div class="emp-header-tabset-title">
+        <button type="button" class="emp-tabset-toggle" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+        <h1>Tabset menu title</h1>
+      </div>
+      <ul class="emp-header-links">
+        <li class="emp-header-employee"><a role="button">Employee</a></li>
+        <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+        <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+        <li class="emp-header-help"><a role="button">Help</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ==================== -->
+  <!-- TABSET               -->
+  <!-- ==================== -->
+  <ul class="emp-tabset emp-collapse">
+    <li><a href="#" title="Taxpayer Summary" tabindex="1">TP Sum</a></li>
+    <li><a href="#" title="Search by Name" tabindex="1">Srch by Name</a></li>
+    <li class="emp-selected"><a href="#" title="Name History" tabindex="1">Name History</a></li>
+    <li><a href="#" title="Address Summary" tabindex="1">Address Sum</a></li>
+    <li><a href="#" title="Check Digit" tabindex="1">Check Digit</a></li>
+    <li><a href="#" title="Old ID Search" tabindex="1">Old ID Search</a></li>
+    <li><a href="#" title="Current ID Search" tabindex="1">Current ID Search</a></li>
+    <li><a href="#" title="Multiple 9-Character IDs" tabindex="1">Multi 9-Char ID</a></li>
+    <li><a href="#" title="CT Sub Profile" tabindex="1">CT Sub Profile</a></li>
+    <li><a href="#" title="ST Profile" tabindex="1">ST Profile</a></li>
+    <li><a href="#" title="Multi State" tabindex="1">Multi State</a></li>
+    <li><a href="#" title="Pymt Search" tabindex="1">Pymt Search</a></li>
+    <li><a href="#" title="Trnsfr Return" tabindex="1">Trnsfr Return</a></li>
+    <li><a href="#" title="Transfer In" tabindex="1">Transfer In</a></li>
+    <li><a href="#" title="Transfer In/Out" tabindex="1">Transfer In/Out</a></li>
+    <li><a href="#" title="TFA Details" tabindex="1">TFA Details</a></li>
+    <li><a href="#" title="Events" tabindex="1">Events</a></li>
+    <li><a href="#" title="Correspondence" tabindex="1">Correspondence</a></li>
+  </ul>
+
+  <!-- ####################### -->
+  <!-- DEVELOPER'S CODE (JSP)  -->
+  <!-- ####################### -->
+  <main role="main">
+    <form name="form_content" id="form_content" action="www.tax.ny.gov" method="post" role="main">
+      <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <!-- SECTION: .Selection Popup for Category Owner        -->
+      <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <section>
+        <div class="cui-row emp-section-instructions">
+          <div class="emp-col-full">
+            <p id="text_block_1">Please make a selection from the list
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_ISSUES">Issues:</label>
+              </div>
+              <div class="cui-data">
+                <select id="E_ISSUES" tabindex="1">
+                  <option value="0">&nbsp;</option>
+                  <option value='1'>Cost of Good Sold</option>
+                  <option value='2'>Taxable Sales Ratio</option>
+                  <option value='3'>Sales Per Day</option>
+                  <option value='4'>BWL Ratio</option>
+                  <option value='5'>Salaries</option>
+                  <option value='6'>Rent</option>
+                  <option value='7'>Residency</option>
+                  <option value='8'>EIC</option>
+                  <option value='9'>DDC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_TAX_TYPE">Tax Type:</label>
+              </div>
+              <div class="cui-data">
+                <select id="E_TAX_TYPE" tabindex="1">
+                  <option value="00">&nbsp;</option>
+                  <option value="01">Sales Tax</option>
+                  <option value="02">Personal Income Tax</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="emp-button-row">
+          <div class="emp-col-half"> &nbsp; </div>
+          <div class="emp-col-half cui-align-right">
+            <button type="button" name="E_BTN_CLEAR" tabindex="1">Clear</button>
+            <button type="button" name="E_BTN_FILTER" class="cui-button-primary" tabindex="1">Filter</button>
+          </div>
+        </div>
+
+        <!-- Table 1 Selection Popup for Issues -->
+        <div class="emp-table">
+          <table id="table_my_table_2">
+            <thead>
+              <tr>
+                <th class="cui-align-center emp-min-width"> <span class="cui-hide-from-screen"> Use this column's radio buttons to select rows </span> </th>
+                <th data-sort="alpha"> Issues </th>
+                <th data-sort="alpha"> Tax Type </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>Cost of Good Sold</td>
+                <td>Sales Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>Taxable Sales Ration</td>
+                <td>Sales Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>Sales Per Day</td>
+                <td>Sales Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>BWL Ratio</td>
+                <td>Sales Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>Salaries</td>
+                <td>Sales Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>Rent</td>
+                <td>Sales Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>Residency</td>
+                <td>Personal Income Tax</td>
+              </tr>
+              <tr>
+                <td class="table-control-col emp-min-width"><label for="table_my_table_2_0" class="cui-hide-from-screen">Select this row</label>
+                  <input type="radio"  name="table_my_table_2" value="0"></td>
+                <td>EIC</td>
+                <td>Personal Income Tax</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- Everything below the last section -->
+      <footer>
+        <div class="emp-button-row">
+          <div class="emp-col-full cui-align-right">
+            <button type="button" name="E_BTN_CLEAR" tabindex="1">Clear</button>
+            <button type="button" name="E_BTN_CLEAR_SELECTION" tabindex="1">Clear Selection</button>
+            <button type="submit" name="E_BTN_SELECT" class="cui-button-primary" tabindex="1">Select</button>
+          </div>
+        </div>
+      </footer>
+    </form>
+  </main>
+</div>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+       require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            uiMockup.createPageDataStore(function(results) {
+                emp.init();
+            });
+    });
+</script>
+</body>
+</html>

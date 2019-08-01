@@ -1,0 +1,166 @@
+//   ========================================================
+// * @name       _form.scss
+// * @desc       Empire form and form tag styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Form tag
+// * --------------------------------------------------------
+input.emp-date {
+    width: $emp-input-date-width;
+}
+
+.cui-numeric, 
+.cui-currency {
+
+    input[type="text"] {
+        width: $emp-input-currency-width;
+        text-align: right;
+    }
+
+    span {
+        display: inline-block;
+        text-align: right;
+        padding-right: 0.4em;
+        width: $emp-read-only-currency-width;
+    }
+}
+
+// Override some CUI styles
+input,
+textarea,
+select {
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        border-color: $cui-input-border-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        border-color: $cui-input-border-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        border-color: $cui-input-border-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        border-color: $cui-input-border-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        border-color: $cui-input-border-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        border-color: $cui-input-border-color;
+    }
+
+    &:focus {
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-color: $cui-input-border-color-focus;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-color: $cui-input-border-color-focus;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-color: $cui-input-border-color-focus;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-color: $cui-input-border-color-focus;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-color: $cui-input-border-color-focus;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-color: $cui-input-border-color-focus;
+        }
+    }
+}
+
+.emp-field {
+
+    .cui-data {
+
+        .emp-icon-redcheck {
+            margin-top: -10px;
+        }
+
+        .emp-icon-stop {
+            margin-top: -2px;
+        }
+
+        div.emp-data {
+            font-weight: normal;
+        }
+    }
+}
+
+// Temp until calendar plug-in is added to components
+.cui-c-datepicker {
+    background: transparent url($emp-images-path + "icalendar.svg") 0px 1px no-repeat;
+    background-size: 25px;
+    margin-top: 1px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "icalendar.png");
+        }
+    }
+}
+
+.emp-orpts-subtheme{
+    .cui-c-datepicker {
+        background: transparent url($emp-images-path + "external-icalendar.svg") 0px 1px no-repeat;
+        background-size: 23px;
+        margin-top: 1px;
+    }
+
+    @media print {
+        & .ie{
+            .cui-c-datepicker{
+                background-image: url($emp-images-path + "external-icalendar.png");
+            }
+        }
+    }
+}
+
+
+
+// Select Other Composite Styles
+.emp-select-other-selectbox,
+.emp-check-other-checkbox {
+    margin-bottom: 7px;
+}
+
+form > .cui-row {
+    margin-top: 10px;
+}
+
+.emp-composite.emp-composite-add-remove {
+    display: flex;
+}
+
+.emp-hide-form {
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+}

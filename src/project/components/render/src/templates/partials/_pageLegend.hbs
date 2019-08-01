@@ -1,0 +1,15 @@
+<div class="emp-page-legend">
+    {{#each this.pagelegend.legends~}}
+        <div class="emp-legend">
+            {{#ifCond v1=this.type op="==" v2="required" ~}}
+                <span class="cui-required"></span>
+                <span>Field required</span>
+            {{~/ifCond ~}}
+
+            {{#ifCond v1=this.type op="==" v2="info" ~}}
+               <button class="cui-icon emp-icon-help emp-page-itags" title="More information" type="button">More information</button>
+               <span>Select to learn more about a field</span>
+            {{~/ifCond ~}}
+        </div>
+    {{/each}}
+</div>

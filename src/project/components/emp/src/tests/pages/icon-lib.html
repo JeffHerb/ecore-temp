@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "template": "table",
+                                                "attributes": {
+                                                    "id": "button-lib"
+                                                },
+                                                "optimize": false,
+                                                "head": {
+                                                    "rows": [
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Example"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Class"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Acceptable Values"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Description"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "body": {
+                                                    "rows": [
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "template": "icon",
+                                                                            "icon": "up-arrow",
+                                                                            "text": "Up Influence Arrow"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "type": "unordered",
+                                                                            "template": "lists",
+                                                                            "options": [
+                                                                                {
+                                                                                    "text": "emp-icon-up-arrow"
+                                                                                },
+                                                                                {
+                                                                                    "text": "emp-icon-positive-influence"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "type": "unordered",
+                                                                            "template": "lists",
+                                                                            "options": [
+                                                                                {
+                                                                                    "text": "up-arrow"
+                                                                                },
+                                                                                {
+                                                                                    "text": "positive-influence"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "text": "Up Influence/Score Arrow"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "template": "icon",
+                                                                            "icon": "down-arrow",
+                                                                            "text": "Up Influence Arrow"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "type": "unordered",
+                                                                            "template": "lists",
+                                                                            "options": [
+                                                                                {
+                                                                                    "text": "emp-icon-up-down"
+                                                                                },
+                                                                                {
+                                                                                    "text": "emp-icon-negative-influence"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "type": "unordered",
+                                                                            "template": "lists",
+                                                                            "options": [
+                                                                                {
+                                                                                    "text": "down-arrow"
+                                                                                },
+                                                                                {
+                                                                                    "text": "negative-influence"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "text": "Down Influence/Score Arrow"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

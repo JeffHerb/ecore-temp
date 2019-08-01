@@ -1,0 +1,245 @@
+//   ========================================================
+// * @name       _grid.scss
+// * @desc       Empire responsive grid styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+// * @section    Row and col structures
+// * --------------------------------------------------------
+.cui-row {
+    #body-wrapper & {
+        margin-bottom: 5px;
+
+        @include pointbreak($cui-bp-large) {
+            margin-bottom: 0;
+        }
+    }
+
+    //prevent cut-off at bottom of page.
+    @media print{
+        page-break-inside: avoid;
+    }
+}
+
+// * @section    Section grids
+// * --------------------------------------------------------
+section,
+section.emp-tabs div.emp-tab-contents {
+    @include section-row-spacing;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        @include section-row-spacing;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        @include section-row-spacing;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        @include section-row-spacing;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        @include section-row-spacing;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        @include section-row-spacing;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        @include section-row-spacing;
+    }
+
+    .cui-row {
+        @include pointbreak($cui-bp-large-minus, true) {
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+            .cui-label {
+                line-height: 1.2;
+            }
+        }
+    }
+}
+
+.cui-row {
+
+    section {
+        margin: 0;
+    }
+
+    .emp-col-full,
+    .emp-col-half {
+        overflow: hidden;
+
+        &.emp-collapse {
+            display: none;
+        }
+    }
+
+    &.emp-divider-line + .cui-row {
+
+        .emp-col-half,
+        .emp-col-full {
+            border-top: 1px solid #808589;
+            padding-top: 15px;
+        }
+
+    }
+
+    &.emp-collapse {
+        display: none;
+    }
+}
+
+.emp-col-half {
+    margin: $emp-col-half-margin-small;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    @include clearfix;
+
+    @include pointbreak($cui-bp-medium) {
+        float: left;
+        padding: $emp-group-row-padding;
+        margin: $emp-col-half-margin-medium;
+        width: 50%;
+    }
+
+    // Right-aligned column with nothing to the left of it
+    // Sticks to the left for small
+    &.cui-pull-right {
+        text-align: left;
+
+        // Floats right for medium
+        @include pointbreak($cui-bp-medium) {
+            text-align: left;
+            float: right;
+        }
+
+        // Floats and aligns right for large
+        @include pointbreak($cui-bp-large) {
+            text-align: left;
+        }
+    }
+
+    // Inside button groups
+    .emp-button-group & {
+        // The left and right sides often have different amounts of buttons so a 50/50 split doesn't work (one side may wrap unnecessarily). So we use `table-cell` to let them divide the width as needed.
+        // This causes extra padding to the right of the .emp-col-half containers
+        // display: table-cell;
+        // width: auto;
+        // float: none;
+    }
+
+    &.emp-col-push-half {
+        @include pointbreak($cui-bp-medium) {
+            margin-right: 50% !important;
+            padding-left: 10px !important;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            padding-right: 0.6em;
+        }
+    }
+
+    &.emp-col-pull-half {
+        @include pointbreak($cui-bp-medium) {
+            margin-left: 50% !important;
+            padding-left: 10px !important;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            padding-left: 0.6em;
+        }
+    }
+}
+
+@include pointbreak($cui-bp-medium) {
+    section .cui-row > .emp-col-half:nth-child(1),
+    section .emp-button-row > .emp-col-half:nth-child(1) {
+        padding-left: 0;
+    }
+    section .cui-row > .emp-col-half:nth-child(2),
+    section .emp-button-row > .emp-col-half:nth-child(2) {
+        padding-right: 0;
+    }
+}
+
+.emp-col-full,
+.emp-asof-section {
+    @include clearfix;
+    flex-grow: 1;
+
+    @include pointbreak($cui-bp-medium) {
+        padding: $emp-group-row-padding;
+
+        section & {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.emp-asof-section {
+    margin-bottom: 5px;
+}
+
+
+// * @section    Flexible grid
+// * --------------------------------------------------------
+.emp-flexgrid-row {
+    display: table !important;
+    empty-cells: show;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    float: none;
+    height: auto;
+
+    // Override clearfix
+    &:after {
+        display: none;
+    }
+}
+
+[class*="emp-flexgrid-col"] {
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+    height: 100%;
+
+    // Override clearfix
+    &:after {
+        display: none;
+    }
+
+    &.filler {
+        min-width: $emp-flexgrid-col-min-width;
+    }
+}
+
+.emp-flexgrid-col-fixed-1 {
+    width: $cui-button-icon-width;
+    min-width: $cui-button-icon-width;
+}
+
+.emp-flexgrid-col-fixed-2 {
+    width: $cui-button-icon-width * 2;
+    min-width: $cui-button-icon-width * 2;
+}
+
+.emp-flexgrid-col-fixed-300 {
+    @include set-fixed-width(300px);
+}

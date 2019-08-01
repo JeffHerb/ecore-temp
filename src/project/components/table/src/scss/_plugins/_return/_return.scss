@@ -1,0 +1,82 @@
+ul.emp-table-selectable-return-pane {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #373a3c;
+  display: none;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1500;
+  list-style: none;
+
+  &.emp-active {
+    display: inline-block;
+  }
+
+  li {
+    background: transparent;
+    display: block;
+    position: relative;
+
+    button {
+      background: transparent;
+      border: 0;
+      display: block;
+      padding: 3px 20px 3px 25px;
+      text-align: left;
+      width: 100%;
+    }
+
+    &:hover,
+    &.selected {
+      background: #f5f5f5;
+    }
+
+    &.emp-selected {
+
+      button {
+
+        &:focus {
+          outline: none;
+        }
+
+        &:after {
+
+          background: #f5f5f5;
+          content: "";
+          border: solid #373a3c;
+          border-width: 0 2px 2px 0;
+          display: block;
+          height: 9px;
+          left: 11px;
+          position: absolute;
+          top: calc(50% - 6px);
+          transform: rotate(45deg);
+          width: 6px;
+        }
+
+      }
+
+    }
+
+    a {
+      display: inline-block;
+      padding: 3px 20px;
+      text-align: center;
+      width: 100%;
+
+      &:focus,
+      &.active {
+        outline: none;
+      }
+
+    }
+
+  }
+
+}
+
+.emp-table .table-control-row .emp-icon-select-return {
+  background-image: url("../../dist/images/select-return.svg");
+  background-position-y: 2px;
+  margin-right: 3px;
+}

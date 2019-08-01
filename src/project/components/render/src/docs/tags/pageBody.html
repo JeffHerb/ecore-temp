@@ -1,0 +1,158 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="PageBody Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>PageBody Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:PageBody&gt;</code> is used to wrap all of the page specific components in an accessible container.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:PageBody></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "pagebody",
+    "contents": []
+}</pre>
+                <p>
+                    <code>&lt;E2:PageBody&gt;</code> tag should be used to wrap all of the definitive page contents. This tag appears under the global header and includes the <code>&lt;E2:PageTitle&gt;</code> tag as well as all groups.
+                </p>
+
+                <h3>Rendered Examples</h3>
+
+                <p>
+                    This tag does not render any visiual content. The tag simply class the create a <code>main</code> container and by default includes the <code>role</code> attribute, set to <em>main</em>. At the JSON layer, this tag simply requests for the <em>pageBody</em> <code>template</code>.
+                </p>
+
+                <p>
+                    By default this renders no visible content. Use the browser development tool on the box below to see the rendered output.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                This is the title for the page. This value is sent to the global page header JSON under the <code>page</code> object and in the <code>title</code> property.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                mode
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                This is the title for the page. This value is sent to the global page header JSON under the <code>page</code> object and in the <code>mode</code> property.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered wrapper <code>&lt;main&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var outputDefault = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "template": "pagebody",
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Default example
+                var outputExample = document.getElementById("default-example");
+
+                // Create the generic example
+                render.page(outputExample, outputDefault, function () {
+
+                    console.log("Default Done");
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

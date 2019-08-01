@@ -1,0 +1,60 @@
+{{! Handle creating the section header element }}
+{{#ifCond v1=this.type op='==' v2='header'~}}
+    <header {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}') ) }}>
+        {{#if this.title~}}
+             <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-title"}') }}>
+                <h3>
+                    {{~this.title~}}
+
+                    {{#if this.titleEnhancements~}}
+
+                        {{#each this.titleEnhancements.contents~}}
+                            {{~> (getPartialName this.template) this ~}}
+                        {{/each~}}
+
+                    {{/if~}}
+
+                </h3>
+             </div>
+        {{/if~}}
+
+        {{#each this.columns~}}
+            <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-field"}') }}>
+
+            {{#if this.contents~}}
+
+                {{#each this.contents~}}
+
+                    {{#if this.template~}}
+                        {{~> (getPartialName this.template) this sectionHeader="true"~}}
+                    {{~else~}}
+                        {{~this.text~}}
+                    {{/if~}}
+
+                {{/each~}}
+
+            {{~else~}}
+
+                {{#if this.template~}}
+                    {{~> (getPartialName this.template) this sectionHeader="true"~}}
+                {{~else~}}
+                    {{~this.text~}}
+                {{/if~}}
+
+            {{/if~}}
+            </div>
+        {{/each~}}
+
+        {{#unless this.hideControls~}}
+            <div class="emp-section-controls">
+                <ul>
+                    <li>
+                        <button type="button" class="emp-icon-section-toggle-collapse" title="{{#if this.isCollapsed}}Show section{{else}}Hide section{{/if}}" tabindex="1"></button>
+                    </li>
+                </ul>
+            </div>
+        {{/unless~}}
+
+    </header>
+
+{{/ifCond~}}

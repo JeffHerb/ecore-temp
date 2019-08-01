@@ -1,0 +1,49 @@
+.framework-search {
+  .cui-messages {
+    margin: 0 10px !important;
+  }
+
+  .emp-actions {
+    margin-right: 10px;
+  }
+
+  .emp-page-title {
+    border-bottom: 5px solid #DAEBEC;
+    margin-bottom: 10px;
+  }
+
+  .emp-header-controls {
+    margin-top: 5px;
+  }
+
+  .emp-table {
+    margin-bottom: 10px;
+  }
+
+}
+
+td.emp-key-value-pairs {
+    padding: 0 !important;
+
+    ul {
+        list-style: none;
+
+        li {
+
+            border-bottom: 1px solid #707070;
+            padding-top: 2px;
+            padding-bottom: 2px;
+
+            &:last-child {
+
+                border-bottom: 0;
+            }
+        }
+
+        strong {
+            display: inline-block;
+            padding-left: 5px;
+            width: 50%;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "name": "htmlToDataStore",
+    "lazy": true,
+    "sources": ["script"]
+}

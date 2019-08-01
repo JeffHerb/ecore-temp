@@ -1,0 +1,171 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="htmAttributes Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>htmlAttribute</h2>
+
+                <p>
+                    htmlAttribute attribute allows developers to set custom HTML attributes on custom tag generated elements.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Form htmlAttribute="{"className":"demo-form", "id":"demo-form"}">
+&lt;/E2:Form>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "form",
+    "attributes": {
+        "name": "form1",
+        "method": "POST",
+        "action": "http://www.ny.gov",
+        "className": "demo-form",
+        "id": "demo-form"
+    },
+    contents: []
+}
+                </pre>
+                <p>
+                For the purposes of this example we are using the <code>form</code>. For a full <a href="#support-list">support list</a> see below. In this particular example, the <code>E2:Form</code> custom tag only renders a <code>form</code> HTML element. So for this example the <code>htmlAttribute</code> will work fine. Other custom tags require more specific attributes. The support list below explains which variation of the attribute should be used.
+                </p>
+
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12 border-example">
+                <h4>Rendered Example</h4>
+
+                <p>
+                    In this example the form tag has been extended to include the <code>id</code> and <code>class</code> attributes. To see the rendered results use the browsers development tool to inspect the box below.
+                </p>
+
+                <section id="html-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+                <p>
+                    <h5>Standard htmlAttributes</h5>
+                    <li><a href="../../tags/button.html">Button</a> - Button</li>
+                    <li><a href="../../tags/buttonGroup.html">ButtonGroup</a> - Div (ButtonRow), Div(ButtonCol)</li>
+                    <li><a href="../../tags/checkBoxGroup.html">CheckBoxGroup</a> - Fieldset</li>
+                    <li><a href="../../tags/col.html">Col</a> - Div</li>
+                    <li><a href="../../tags/form.html">From</a> - Form</li>
+                    <li><a href="../../tags/hiddenField.html">Hidden</a> - Input</li>
+                    <li><a href="../../tags/inputGroup.html">InputGroup</a> - Fieldset</li>
+                    <li><a href="../../tags/message.html">Message</a> - Div</li>
+                    <li><a href="../../tags/notifier.html">Notifier</a> - Span or A (element depends on render mode)</li>
+                    <li><a href="../../tags/notifierGroup.html">Notifier Group</a> - UL</li>
+                    <li><a href="../../tags/radioGroup.html">RadioGroup</a> - Fieldset</li>
+                    <li><a href="../../tags/row.html">Row</a> - Div</li>
+                    <li><a href="../../tags/section.html">Section</a> - Section (Section), Header - (SectionHeader), Div - (SectionCol), Div - (SectionIndicator)</li>
+                </p>
+                <p>
+                    <h5>Element Specific htmlAttributes</h5>
+                </p>
+                <ul>
+                    <li>
+                        <a href="../../tags/checkbox.html">Checkbox</a>
+                        <ul>
+                            <li>label - labelHtmlAttribute</li>
+                            <li>input - inputHtmlAttribute</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../../tags/date.html">Date</a>
+                        <ul>
+                            <li>label - labelHtmlAttribute</li>
+                            <li>input - inputHtmlAttribute</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../../tags/selectBox.html">SelectBox</a>
+                        <ul>
+                            <li>label - labelHtmlAttribute</li>
+                            <li>input - inputHtmlAttribute</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../../tags/radio.html">Radio</a>
+                        <ul>
+                            <li>label - labelHtmlAttribute</li>
+                            <li>input - inputHtmlAttribute</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../../tags/textArea.html">Textarea</a>
+                        <ul>
+                            <li>label - labelHtmlAttribute</li>
+                            <li>textarea - inputHtmlAttribute</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../../tags/text.html">Text</a>
+                        <ul>
+                            <li>label - labelHtmlAttribute</li>
+                            <li>input - inputHtmlAttribute</li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <script>
+            // HTML Extend JSON
+            var htmlExtendScript = {
+                title: "Extending the HTML attributes",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "form",
+                        "attributes": {
+                            "name": "form1",
+                            "method": "POST",
+                            "action": "http://www.ny.gov",
+                            "class": "demo-form2",
+                            "id": "demo-form2"
+                        },
+                        "contents": []
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var htmlExtendExample = document.getElementById("html-example");
+
+                // Create the generic example
+                render.page(htmlExtendExample, htmlExtendScript, function() {
+
+                    console.log("Basic htmlAttribute Done");
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

@@ -1,0 +1,31 @@
+<section class="emp-events-comments">
+  {{#each this.comments}}
+    <div class="emp-event-comment">
+      <div class="cui-row">
+        <div class="emp-col-full">
+          <div class="emp-field">
+            <div class="cui-label" for="E_NAME"> <span>Name:</span> </div>
+            <div class="cui-data"> <span class="emp-data" id="E_NAME">Billy Bob Thorton</span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="cui-row">
+        <div class="emp-col-full">
+          <div class="emp-field">
+            <div class="cui-label" for="E_DATE"> <span>Date:</span> </div>
+            <div class="cui-data"> <span class="emp-data" id="E_DATE">01/01/2018</span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="cui-row">
+        <div class="emp-col-full">
+          <div class="emp-field">
+            <div class="cui-label"> <span class="cui-hide-from-screen">Event Comment:</span> </div>
+            <div class="cui-data"> <span class="emp-data">Armageddon was the best picture ever made!</span> </div>
+          </div>
+        </div>
+      </div>
+      <span class="emp-comment-breaker"></span>
+    </div>
+  {{/each}}
+</section>

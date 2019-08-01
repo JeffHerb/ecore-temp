@@ -1,0 +1,886 @@
+.emp-table {
+
+    .emp-table-wrapper {
+        margin: 10px 0 0!important;
+        overflow: hidden;
+        position: relative;
+
+        @include pointbreak($cui-bp-medium, true) {
+            // display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .emp-collapse & {
+            height: 1px;
+        }
+
+        .table-control-row {
+            text-align: right;
+            position: relative;
+
+            @include pointbreak($cui-bp-medium, true) {
+                flex: 0 1 100%;
+                order: 3;
+            }
+
+            button {
+                text-align: right;
+            }
+
+            & > button {
+                margin-top: 4px;
+            }
+
+            &:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            .cui-messages {
+
+                p {
+                    text-align: left;
+                    width: 100%;
+                }
+
+            }
+
+        }
+
+        .emp-table-controls {
+            clear: both;
+        }
+
+        .emp-table-pagination {
+            display: inline-block;
+            margin-top: 4px;
+            margin-right: 0.5em;
+            padding-right: 0.5em;
+            position: relative;
+
+            .theme-teal & {
+                @import "../../../../scss/_theme_teal.scss";
+                border-right: $emp-table-cell-border;
+            }
+
+            .theme-lilypad & {
+                @import "../../../../scss/_theme_lilypad.scss";
+                border-right: $emp-table-cell-border;
+            }
+
+            .theme-eggplant & {
+                @import "../../../../scss/_theme_eggplant.scss";
+                border-right: $emp-table-cell-border;
+            }
+
+            .theme-cobalt & {
+                @import "../../../../scss/_theme_cobalt.scss";
+                border-right: $emp-table-cell-border;
+            }
+
+            .theme-hazel & {
+                @import "../../../../scss/_theme_hazel.scss";
+                border-right: $emp-table-cell-border;
+            }
+
+            .theme-contrast & {
+                @import "../../../../scss/_theme_contrast.scss";
+                border-right: $emp-table-cell-border;
+            }
+
+            .emp-icon-first,
+            .emp-icon-last,
+            .emp-icon-previous,
+            .emp-icon-next {
+                background: #FFF;
+                border: 1px solid #8C8E91;
+                margin-top: 2px;
+                position: relative;
+
+                &:after {
+                    border-style: solid;
+                    content: " ";
+                    display: inline-block;
+                    position: absolute;
+                    height: 0;
+                    width: 0;
+                    top: 5px;
+                }
+            }
+
+            .emp-icon-first,
+            .emp-icon-previous {
+                &:after {
+                    border-color: transparent #84827B transparent transparent;
+                    border-width: 6px 6px 6px 0;
+                    left: 8px;
+                }
+            }
+
+            .emp-icon-first {
+                &:before {
+                    border-left: 2px solid #84827B;
+                    content: " ";
+                    display: inline-block;
+                    height: 12px;
+                    position: absolute;
+                    left: 6px;
+                    width: 1px;
+                    top: 5px;
+                }
+            }
+
+            .emp-icon-last {
+                &:before {
+                    border-left: 2px solid #84827B;
+                    content: " ";
+                    display: inline-block;
+                    height: 12px;
+                    position: absolute;
+                    left: 14px;
+                    width: 1px;
+                    top: 5px;
+                }
+            }
+
+            .emp-icon-last,
+            .emp-icon-next {
+                &:after {
+                    border-color: transparent transparent transparent #84827B;
+                    border-width: 6px 0 6px 6px;
+                    left: 8px;
+                }
+            }
+
+        }
+
+        .emp-paging-container-advance {
+            span {
+                position: relative;
+                top: 6px;
+                padding: 0 10px;
+            }
+        }
+
+        .emp-paging-container-advance + .emp-table-client-side-controls {
+            position: absolute;
+            right: 0;
+            float: none;
+            top: 4px;
+        }
+
+        .emp-table-client-side-controls {
+            display: inline-block;
+            float: right;
+            position: relative;
+            top: 6px;
+
+            &:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        }
+
+        .emp-table-no-paging .emp-table-client-side-controls {
+            top: 0;
+        }
+
+        @media print {
+
+            .emp-table-client-side-controls {
+
+                margin-bottom: 10px;
+            }
+        }
+
+        .table-paging-control-row .emp-table-pagination {
+            border-right: 0;
+            float: right;
+            margin: 0.5em 0 0 0;
+            padding-right: 0;
+        }
+
+        .emp-header-controls {
+            margin-bottom: 10px;
+        }
+
+        /* Need to duplicate the caption because the view wrapper has transfor: translate3d */
+        .emp-sticky-caption {
+            float: left;
+            margin-top: 3px;
+            font-weight: $cui-font-weight-semibold;
+            @include fontSize(20px);
+
+            @include pointbreak($cui-bp-medium, true) {
+                flex: 0 1 100%;
+                order: 1;
+            }
+        }
+
+        .emp-table-message {
+            display: none;
+            font-size: 12px;
+            float: right;
+            margin: 5px 10px;
+            font-weight: bold;
+
+            &.emp-table-loading-show {
+                display: inline-block;
+            }
+
+            .spinner {
+                position: relative !important;
+            }
+        }
+
+        .cui-messages {
+            flex-wrap: wrap;
+            float: left;
+            width: 100% !important;
+
+            .cui-error {
+                width: 100%;
+            }
+        }
+    }
+
+    .view-wrapper {
+        float: left;
+        overflow: auto;
+        transform: translate3d(0px, 0px, 0px);
+        touch-action: manipulation;
+        margin-top: 6px;
+        width: 100%;
+
+        will-change: transform;
+
+        @include pointbreak($cui-bp-medium, true) {
+            flex: 0 1 100%;
+            order: 3;
+        }
+
+        & + .emp-table-controls {
+            float: none;
+            padding-top: 5px;
+        }
+
+        &.emp-remove-overflow {
+            overflow: visible !important;
+        }
+
+    }
+
+    .cui-messages {
+        padding-bottom: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 0;
+            width: 100%;
+        }
+    }
+
+    table {
+        thead{
+            @media print{
+                display: table-row-group;
+            }
+        }
+
+        tr{
+            @media print{
+                page-break-inside: avoid; 
+            }
+        }
+
+        th,
+        td {
+            [class*="emp-icon"]:not(.emp-icon-help) {
+                margin: 0 !important;
+            }
+
+            div.emp-min-button-width {
+                display: inline-block;
+                white-space: nowrap;
+
+                button {
+                    margin-right: 10px !important;
+
+                    &:last-child {
+                        margin-right: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    table.sticky {
+        caption {
+            display: none;
+        }
+
+        thead {
+            th {
+                background: $emp-table-header-bgcolor;
+                border-bottom-width: 0;
+                border-top-width: 0;
+                height: inherit;
+
+                div.sticky-cell {
+                    background: $emp-table-header-bgcolor;
+                    border-bottom: $emp-table-cell-border;
+                    border-top: $emp-table-cell-border;
+                    height: inherit;
+                    position: relative;
+                    z-index: 10;
+
+                    transform: translate3d(0,0,0);
+
+                    -webkit-transform: translateZ(0);
+                    -moz-transform: translateZ(0);
+                    -ms-transform: translateZ(0);
+                    -o-transform: translateZ(0);
+                    transform: translateZ(0);
+
+                    //background-attachmend:fixed;
+                    -ms-scroll-chaining: none;
+                    scroll-chaining: none;
+
+                    will-change: transform;
+
+                    .theme-teal & {
+                        @import "../../../../scss/_theme_teal.scss";
+                        background: $emp-table-header-bgcolor;
+                        border-bottom: $emp-table-cell-border;
+                        border-top: $emp-table-cell-border;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../../../../scss/_theme_lilypad.scss";
+                        background: $emp-table-header-bgcolor;
+                        border-bottom: $emp-table-cell-border;
+                        border-top: $emp-table-cell-border;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../../../../scss/_theme_eggplant.scss";
+                        background: $emp-table-header-bgcolor;
+                        border-bottom: $emp-table-cell-border;
+                        border-top: $emp-table-cell-border;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../../../../scss/_theme_cobalt.scss";
+                        background: $emp-table-header-bgcolor;
+                        border-bottom: $emp-table-cell-border;
+                        border-top: $emp-table-cell-border;
+                    }
+
+                    .theme-hazel & {
+                        @import "../../../../scss/_theme_hazel.scss";
+                        background: $emp-table-header-bgcolor;
+                        border-bottom: $emp-table-cell-border;
+                        border-top: $emp-table-cell-border;
+                    }
+
+                    .theme-contrast & {
+                        @import "../../../../scss/_theme_contrast.scss";
+                        background: $emp-table-header-bgcolor;
+                        border-bottom: $emp-table-cell-border;
+                        border-top: $emp-table-cell-border;
+                    }
+
+                    span {
+                        display: table-cell;
+                        padding: 0;
+
+                        // Fix bug that throws off some tables' views
+                        &.cui-hide-from-screen {
+                            font-size: 1px;
+                            left: 0;
+                            top: 0;
+                        }
+                    }
+                }
+
+                &.table-structure-cell {
+                    padding: 0;
+                }
+            }
+        }
+
+        tbody {
+
+            th,
+            td {
+                &.last-visible-column {
+                    border-right: 1px solid #707070;
+                }
+            }
+        }
+    }
+
+    tfoot {
+
+        .emp-no-cell-footer-borders {
+            border-bottom: 0;
+            border-left: 0;
+            border-right: 0;
+        }
+
+    }
+}
+
+@media print {
+    .emp-table {
+        .emp-table-wrapper {
+            position: inital;
+        }
+
+        .view-wrapper {
+            height: 100% !important;
+            margin-top: 0;
+
+            table.sticky {
+                caption {
+                    position: inherit;
+                    top: 0;
+                }
+
+                thead {
+
+                    th {
+
+                        //Resolves issue of border not appearing when printing on IE
+                        z-index:-1;
+
+                        .theme-teal & {
+                            @import "../../../../scss/_theme_teal.scss";
+                            background: $emp-table-header-bgcolor;
+                            border-top: $emp-table-cell-border;
+                            border-left: $emp-table-cell-border;
+                        }
+
+                        .theme-lilypad & {
+                            @import "../../../../scss/_theme_lilypad.scss";
+                            background: $emp-table-header-bgcolor;
+                            border-top: $emp-table-cell-border;
+                            border-left: $emp-table-cell-border;
+                        }
+
+                        .theme-eggplant & {
+                            @import "../../../../scss/_theme_eggplant.scss";
+                            background: $emp-table-header-bgcolor;
+                            border-top: $emp-table-cell-border;
+                            border-left: $emp-table-cell-border;
+                        }
+
+                        .theme-cobalt & {
+                            @import "../../../../scss/_theme_cobalt.scss";
+                            background: $emp-table-header-bgcolor;
+                            border-top: $emp-table-cell-border;
+                            border-left: $emp-table-cell-border;
+                        }
+
+                        .theme-hazel & {
+                            @import "../../../../scss/_theme_hazel.scss";
+                            background: $emp-table-header-bgcolor;
+                            border-top: $emp-table-cell-border;
+                            border-left: $emp-table-cell-border;
+                        }
+
+                        .theme-contrast & {
+                            @import "../../../../scss/_theme_contrast.scss";
+                            background: $emp-table-header-bgcolor;
+                            border-top: $emp-table-cell-border;
+                            border-left: $emp-table-cell-border;
+                        }
+
+                        div.sticky-cell {
+                            background: transparent;
+                            display: inline-block;
+                            position: relative;
+                            height: 100%;
+                            z-index: 1;
+                            border: 0;
+                            top: 0 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Plugins
+
+@import '_plugins/_sort/_sort';
+@import '_plugins/_responsive/_responsive';
+@import '_plugins/_filter/_filters';
+@import '_plugins/_return/_return';
+
+.external-app {
+
+    table.emp-pivot-table {
+
+        thead {
+            position:absolute;
+            left:-10000px;
+            top:auto;
+            width:85%; /*Estimate viewport width minus column padding for calculating header height on table init */
+            height:1px;
+            overflow:hidden;
+        }
+
+        tbody {
+
+            tr {
+                display: block;
+
+                th {
+
+                    &.emp-responsive-row-header {
+                        display: block;
+
+                        & > div.expandable-header {
+
+                            button {
+                                display: flex;
+                                flex-direction: column;
+                                background: transparent;
+                                border: 0;
+                                text-align: left;
+                                padding-left: 2em;
+                                position: relative;
+                                width: 100%;
+
+                                &::before {
+                                    content: " ";
+                                    display: block;
+                                    position: absolute;
+                                    left: 5px;
+                                    top: calc(50% - 10px);
+                                    transform: rotate(0deg);
+
+                                    width: 0;
+                                    height: 0;
+                                    border-bottom: 10px solid transparent;  /* left arrow slant */
+                                    border-top: 10px solid transparent; /* right arrow slant */
+                                    border-left: 10px solid #2f2f2f; /* bottom, add background color here */
+                                    font-size: 0;
+                                    line-height: 0;
+
+                                }
+
+                                .primary-title {
+                                    font-size: 18px;
+                                    margin-bottom: 0.5em;
+                                    width: 100%;
+                                }
+
+                            }
+
+                            // & > span.cui-hide {
+                            //     clip: rect(1px, 1px, 1px, 1px);
+                            //     position: absolute;
+                            // }
+                        }
+
+
+                    }
+                }
+
+                td {
+                    display: none;
+                }
+
+                &:hover {
+                    background: transparent;
+                }
+
+            }
+
+            tr.emp-responsive-toggle-active {
+                border-left: 1px solid #707070;
+                border-right: 1px solid #707070;
+                border-top: 1px solid #707070;
+
+                .emp-button-menu-column {
+
+                    // text-align: center;
+                    // width: 100%;
+
+                    .emp-responsive-cell-header {
+                        display: none;
+                    }
+                }
+
+                .emp-pivote-table-expand {
+
+                    &:before {
+                        transform: rotate(90deg) !important;
+                    }
+                }
+
+                th {
+                    border: 0;
+                }
+
+                td {
+                    display: block;
+                    background: #FFF;
+                    border: 0;
+                    height: auto;
+                    font-weight: bold;
+                    padding-bottom: 10px;
+
+                    .emp-responsive-cell-header {
+                        display: block;
+                        font-size: 16px;
+                        font-weight: normal;
+                        margin-bottom: 5px;
+                        overflow: visible;
+                    }
+                }
+
+            }
+
+        }
+
+        //@include pointbreak('768px') {}
+
+        &.unpivot {
+
+            thead {
+                display: table-header-group;
+                position: relative;
+            }
+    
+            tbody {
+    
+                tr,
+                tr.emp-responsive-toggle-active {
+                    display: table-row;
+                    border: 1px solid rgb(112, 112, 112);
+    
+                    th {
+    
+                        &.emp-responsive-row-header {
+                            display: none !important;
+                        }
+                    }
+    
+                    td {
+                        display: table-cell !important;
+                        background: transparent;
+                        border: 1px solid rgb(112, 112, 112);
+                        font-weight: inherit;
+                        padding-bottom: 4px;
+    
+                        .emp-responsive-cell-header {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // @media print {
+
+        //     tbody {
+
+        //         .emp-responsive-row-header,
+        //         .emp-responsive-cell-header {
+        //             display: none !important;
+        //         }
+        //     }
+        // }
+
+    }
+
+    .emp-pivot-table-clone {
+        width: 100px;
+        overflow: auto;
+    }
+
+    .emp-pivot-table-pos-wrap {
+        position: absolute;
+        height: 1px;
+        width: 1px;
+        opacity: 0;
+    }
+
+}
+
+@media print {
+
+    table.emp-pivot-table {
+
+        thead {
+            position:absolute;
+            left:-10000px;
+            top:auto;
+            width:1px;
+            height:1px;
+            overflow:hidden;
+        }
+
+        tbody {
+
+            tr {
+                display: block;
+
+                th {
+
+                    &.emp-responsive-row-header {
+                        display: block;
+
+                        & > div.expandable-header {
+
+                            button {
+                                display: flex;
+                                flex-direction: column;
+                                background: transparent;
+                                border: 0;
+                                text-align: left;
+                                padding-left: 2em;
+                                position: relative;
+                                width: 100%;
+
+                                &::before {
+                                    content: " ";
+                                    display: block;
+                                    position: absolute;
+                                    left: 5px;
+                                    top: calc(50% - 10px);
+                                    transform: rotate(0deg);
+
+                                    width: 0;
+                                    height: 0;
+                                    border-bottom: 10px solid transparent;  /* left arrow slant */
+                                    border-top: 10px solid transparent; /* right arrow slant */
+                                    border-left: 10px solid #2f2f2f; /* bottom, add background color here */
+                                    font-size: 0;
+                                    line-height: 0;
+
+                                }
+
+                                .primary-title {
+                                    font-size: 18px;
+                                    margin-bottom: 0.5em;
+                                    width: 100%;
+                                }
+
+                            }
+
+                            // & > span.cui-hide {
+                            //     clip: rect(1px, 1px, 1px, 1px);
+                            //     position: absolute;
+                            // }
+                        }
+
+
+                    }
+                }
+
+                td {
+                    display: none;
+                }
+
+                &:hover {
+                    background: transparent;
+                }
+
+            }
+
+            tr.emp-responsive-toggle-active {
+                border-left: 1px solid #707070;
+                border-right: 1px solid #707070;
+                border-top: 1px solid #707070;
+
+                .emp-button-menu-column {
+
+                    // text-align: center;
+                    // width: 100%;
+
+                    .emp-responsive-cell-header {
+                        display: none;
+                    }
+                }
+
+                .emp-pivote-table-expand {
+
+                    &:before {
+                        transform: rotate(90deg) !important;
+                    }
+                }
+
+                th {
+                    border: 0;
+                }
+
+                td {
+                    display: block;
+                    background: #FFF;
+                    border: 0;
+                    height: auto;
+                    font-weight: bold;
+                    padding-bottom: 10px;
+
+                    .emp-responsive-cell-header {
+                        display: block;
+                        font-size: 16px;
+                        font-weight: normal;
+                        margin-bottom: 5px;
+                        overflow: visible;
+                    }
+                }
+
+            }
+
+        }
+
+        //@include pointbreak('768px') {}
+
+        &.unpivot {
+
+            thead {
+                display: table-header-group;
+                position: relative;
+            }
+    
+            tbody {
+    
+                tr,
+                tr.emp-responsive-toggle-active {
+                    display: table-row;
+                    border: 1px solid rgb(112, 112, 112);
+    
+                    th {
+    
+                        &.emp-responsive-row-header {
+                            display: none !important;
+                        }
+                    }
+    
+                    td {
+                        display: table-cell !important;
+                        background: transparent;
+                        border: 1px solid rgb(112, 112, 112);
+                        font-weight: inherit;
+                        padding-bottom: 4px;
+    
+                        .emp-responsive-cell-header {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}

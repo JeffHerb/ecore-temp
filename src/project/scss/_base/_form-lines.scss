@@ -1,0 +1,729 @@
+$borderColor: #808589;
+
+.form-lines-sections {
+    @include fontSize($cui-text-size);
+    margin: 10px 0;
+
+    .form-lines-flex-row:nth-child(even) {
+        background: #efefef;
+    }
+
+    .form-lines-flex-row {
+        border: 1px solid $borderColor;
+        display: flex;
+        flex: 1 0 auto;
+        flex-wrap: wrap;
+        margin: 0 10px 10px;
+
+        &:not(:last-child) {
+
+            border-bottom: 1px solid $borderColor;
+
+            @include pointbreak('1010px') {
+                border-bottom: none;
+            }
+        }
+
+        .form-lines-section-values {
+            display: flex;
+            flex: 1 0 auto;
+            flex-direction: column;
+
+            .form-lines-section-values-row {
+                display: flex;
+                flex: 1 0 auto;
+                flex-direction: row;
+
+                & > div {
+                    flex: 1 0 auto;
+                    padding: 5px;
+                }
+
+                .form-lines-section-values-label {
+                    flex: 0 0 100px;
+                    max-width: 100px;
+                    border-right: 1px solid $borderColor;
+                }
+
+                .form-lines-section-values-notifier {
+                    flex: 0 0 60px;
+                    max-width: 60px;
+                    text-align: center;
+
+                    span {
+                        span {
+                            background-color: $emp-indicator-bg-color;
+                            border: $emp-indicator-border;
+                            border-radius: $emp-indicator-border-radius;
+                            color: $cui-color-white;
+                        }
+                    }
+                }
+
+                .form-lines-section-values-value {
+                    border-right: 1px solid $borderColor;
+                    text-align: right;
+                }
+            }
+
+            & > div {
+                border-bottom: 1px solid $borderColor;
+            }
+
+            & > :last-child {
+                border-bottom: none;
+            }
+
+            .emp-indicator-1,
+            .emp-indicator-2,
+            .emp-indicator-3,
+            .emp-indicator-4 {
+                display: inline-block;
+                padding: 3px 5px;
+            }
+        }
+
+        .form-lines-section-values-adjustment-line {
+            display: flex;
+            flex: 1 0 100%;
+            flex-direction: row;
+
+            & > div {
+                padding: 5px;
+            }
+
+            .form-line-adjustment-label {
+                border-right: 1px solid $borderColor;
+                flex: 0 0 100px;
+                max-width: 100px;
+            }
+
+            .form-line-adjustment-filler {
+                flex: 0 0 60px;
+                max-width: 60px;
+                text-align: center;
+            }
+
+            .form-line-adjustment-value {
+                flex: 1;
+                border-right: 1px solid $borderColor;
+                text-align: right;
+
+                .emp-field {
+                    float: right;
+                }
+            }
+        }
+
+        .form-lines-section-values-reason-line {
+            display: flex;
+            flex: 1 0 auto;
+            flex-direction: row;
+
+            & > div {
+                padding: 5px;
+            }
+
+            .form-line-reason-label {
+                border-right: 1px solid $borderColor;
+                flex: 0 0 100px;
+                max-width: 100px;
+            }
+
+            .form-line-reason-filler {
+                flex: 0 0 60px;
+                max-width: 60px;
+                text-align: center;
+            }
+
+            .form-line-reason-value {
+                flex: 1;
+                border-right: 1px solid $borderColor;
+                text-align: right;
+
+                .emp-field {
+                    float: right;
+
+                    select {
+                        width: 182px;
+                    }
+                }
+
+            }
+        }
+
+        .form-lines-section-label ,
+        .form-lines-section-values,
+        .form-lines-section-values-adjustment-line {
+            flex-basis: 100%;
+        }
+
+        .form-lines-section-label {
+            background-color: #DAEBEC;
+            border-bottom: 1px solid $borderColor;
+            font-weight: 600;
+            display: flex;
+
+            .form-line-mobile-only-line-number {
+                padding-right: 10px;
+            }
+
+            .form-lines-line-number {
+                border-right: 1px solid $borderColor;
+                min-width: 40px;
+                display: none;
+            }
+
+            & > div {
+                padding: 5px;
+            }
+        }
+
+        &.form-line-no-adjustment {
+            .form-lines-section-values-adjustment-line {
+                display: none;
+            }
+        }
+
+        &.form-line-no-reason {
+            .form-lines-section-adjustment-reason-line {
+                display: none;
+            }
+        }
+
+        &.form-line-no-adjustment.form-line-has-reason {
+            .form-lines-section-values-reason-line {
+                border-top: 1px solid $borderColor;
+            }
+        }
+
+        &.form-line-has-adjustment.form-line-no-reason {
+            .form-lines-section-values-adjustment-line {
+                border-top: 1px solid $borderColor;
+            }
+        }
+
+        &.form-line-has-adjustment.form-line-has-reason {
+
+            .form-lines-section-values-adjustment-line {
+                border-top: 1px solid $borderColor;
+            }
+
+            .form-lines-section-values-reason-line {
+                border-top: 1px solid $borderColor;
+            }
+        }
+
+        &.form-line-header {
+            display: none;
+        }
+
+        @include pointbreak('1010px') {
+            margin: 0 10px 0;
+
+            .form-lines-section-label {
+                flex: 1 0 auto !important;
+            }
+
+            .form-lines-section-label,
+            .form-lines-section-values-adjustment-line {
+                //flex: 1 0 auto;
+                border-bottom: none;
+            }
+
+            .form-lines-section-label {
+                background: transparent;
+                flex: 0 0 250px;
+                font-weight: normal;
+
+                .form-lines-line-number {
+                    display: flex;
+                    min-width: 55px;
+                }
+
+                .form-line-mobile-only-line-number {
+                    display: none;
+                }
+            }
+
+            .form-lines-section-values {
+                border-right: 1px solid $borderColor;
+                flex: 0 0 330px;
+            }
+
+            .form-lines-section-values-adjustment-line {
+                //flex-basis: auto;
+                flex-basis: 210px;
+                max-width: 210px;
+
+                .form-line-adjustment-value {
+
+                    .emp-field {
+                        float: none;
+
+                        label {
+                            display: none;
+                        }
+
+                    }
+
+                    .cui-data {
+                        input, select {
+                            width: 192px;
+                        }
+                    }
+
+                }
+            }
+
+            .form-lines-section-values-reason-line {
+                flex-basis: 210px;
+                max-width: 210px;
+
+                .form-line-reason-value {
+
+                    .emp-field {
+                        float: none;
+
+                        .cui-label {
+                            width: auto;
+                        }
+                    }
+
+                }
+            }
+
+            .form-lines-section-label,
+            .form-lines-section-values {
+                border-right: 1px solid $borderColor;
+            }
+
+            .form-line-adjustment-label,
+            .form-line-adjustment-filler {
+                display: none;
+            }
+
+            .form-line-reason-label,
+            .form-line-reason-filler {
+                display: none;
+            }
+
+            &.form-lines-adjustment {
+                .form-lines-section-values-adjustment-line {
+                    border-top: none;
+                }
+            }
+
+            &.form-line-no-adjustment {
+                .form-lines-section-values-adjustment-line {
+                    display: flex;
+                }
+            }
+
+            &.form-line-no-adjustment.form-line-has-reason {
+                .form-lines-section-values-reason-line {
+                    border-top: none;
+                }
+            }
+
+            &.form-line-has-adjustment.form-line-no-reason {
+                .form-lines-section-values-adjustment-line {
+                    border-top: none;
+                }
+            }
+
+            .form-lines-section-values-adjustment-line {
+
+                .form-line-adjustment-value {
+                    border-right: none;
+                }
+            }
+
+            .form-lines-section-values-reason-line {
+
+                .form-line-reason-value {
+                    border-right: none;
+                }
+            }
+
+            &.form-line-has-adjustment.form-line-has-reason {
+
+                .form-lines-section-values-adjustment-line {
+                    border-top: none;
+                }
+
+                .form-lines-section-values-reason-line {
+                    border-top: none;
+                }
+            }
+
+            &.form-line-header {
+                background: #DDDDDD;
+                display: flex;
+
+                .form-lines-section-label .form-lines-line-number,
+                .form-lines-section-values .form-lines-label > span,
+                .form-lines-section-values-adjustment-line > span,
+                .form-lines-section-values .form-lines-section-values-label,
+                .form-lines-section-values .form-lines-section-values-value,
+                .form-lines-section-values .form-lines-section-values-notifier,
+                .form-lines-section-values-reason-line > span {
+                    padding: 6px;
+                }
+
+                // .form-lines-section-label .form-lines-line-number {
+                //     padding: 0;
+                // }
+
+                &.form-line-header-no-adjustment {
+                    .form-lines-section-values-adjustment-line {
+                        display: none;
+                    }
+                }
+
+                &.form-line-header-no-reason {
+                    .form-lines-section-values-reason-line {
+                        display: none;
+                    }
+                }
+
+            }
+
+        }
+    }
+
+}
+
+.form-lines-sections {
+
+    @include pointbreak('1010px') {
+
+        &.form-lines-force-reason {
+
+            .form-lines-section-values-adjustment-line {
+                border-right: 1px solid $borderColor;
+                flex: 0 0 210px;
+                max-width: 210px;
+            }
+
+        }
+    }
+
+    .form-line-table-cell {
+        display: table !important;
+        height: 100%;
+        width: 100%;
+
+        & > span {
+            display: table-cell;
+            line-height: 1.2;
+            vertical-align: middle;
+        }
+    }
+
+    .emp-tab & {
+        display: none;
+    }
+
+    .emp-tab.emp-active-tab & {
+        display: block;
+    }
+
+}
+
+.emp-form-lines-header {
+    display: flex;
+    flex-wrap: wrap;
+
+    .emp-extended-header-row {
+        display: flex;
+        flex-direction: row;
+        padding-left: 10px;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .emp-section-title {
+            padding: 0 5px 0 0 ;
+            flex: 1 0 50px;
+        }
+
+        .emp-form-lines-due {
+            flex: 0 0 200px;
+
+            .emp-field {
+                max-width: 300px;
+
+                .cui-numeric, 
+                .cui-currency {
+
+                    .emp-data {
+                        padding-right: 2.2em;
+                    }
+                }
+            }
+        }
+
+        .emp-section-controls {
+            flex: 1 0 50px;
+            min-width: 50px;
+
+            @include pointbreak('850px') {
+                flex: 0 0 50px;
+            }
+        }
+
+        .form-lines-extension {
+            display: flex;
+            flex: 1 0 100%;
+            flex-direction: row;
+            order: 3;
+
+            .emp-field {
+                margin-top: 0;
+            }
+
+            .emp-section-field.form-lines-tax-due {
+                display: flex;
+                order: 0 !important;
+                margin-top: -3px;
+
+                .cui-label{
+                    display: inline-block;
+                    width: 210px;
+                    text-align: right;
+
+                    @include pointbreak("600px", true){
+                        width: auto;
+                        text-align: left;
+                    }
+                }
+
+                .cui-numeric, .cui-currency {
+                    width: auto;
+
+                    .emp-data {
+                        padding-right: 0;
+                        width: auto;
+                    }
+                }
+
+                @include pointbreak('600px') {
+                    max-width: 330px;
+                    order: 1;
+
+                    .ie & {
+                        order: 0;
+                    }
+
+                    .cui-numeric, .cui-currency {
+
+                        .emp-data {
+                            width: 8.0em;
+                        }
+                    }
+                }
+            }
+
+            .form-lines-notifiers {
+                display: flex;
+                flex: 1 0 128px;
+                justify-content: flex-end;
+
+                ul {
+                    margin-top: 4px;
+                    margin-bottom: 0;
+                    justify-content: flex-end;
+
+                    @include pointbreak('920px') {
+                        margin-top: 8px;
+                    }
+
+                    .emp-indicator-1,
+                    .emp-indicator-2,
+                    .emp-indicator-3 {
+                        width: auto;
+                    }
+
+                    li {
+                        background: none;
+                        border: none;
+                    }
+
+                }
+            }
+
+            .form-lines-buttons {
+                flex: 0 0 75px;
+                min-width: 75px;
+                max-width: 75px;
+
+                button {
+                    margin-top: 10px;
+                    margin-left: 10px;
+                }
+            }
+
+            @include pointbreak('850px') {
+                order: initial;
+                max-width: 650px;
+
+                .ie & {
+                    order: 0;
+                }
+
+                .form-lines-notifiers {
+                    li {
+                        margin: 2px 5px 5px 0 !important;
+                    }
+                }
+            }
+
+        }
+
+        .emp-section-controls {
+            justify-content: flex-end;
+        }
+    }
+
+    .emp-tab-container & {
+        display: none;
+    }
+
+    .emp-tab-container .emp-active-tab & {
+        display: block;
+    }
+}
+
+.form-lines-flex-row {
+
+    &.form-line-header-no-adjustment.form-line-header-no-reason,
+    &.form-line-no-adjustment.form-line-no-reason {
+
+        .form-lines-section-values {
+            border-right: 0;
+        }
+
+        .form-lines-section-values-adjustment-line,
+        .form-lines-section-values-reason-line {
+            flex: 0 0 0;
+            width: 0;
+        }
+
+        .form-lines-section-values-adjustment-line,
+        .form-lines-section-values-reason-line {
+            flex: 0;
+            width: 0;
+        }
+    }
+
+}
+
+@include pointbreak('1010px') {
+
+    .form-lines-force-adjust:not(.form-lines-force-reason) {
+
+        .form-lines-flex-row {
+
+            &.form-line-header-has-adjustment,
+            &.form-line-header-no-adjustment,
+            &.form-line-has-adjustment,
+            &.form-line-no-adjustment {
+
+                .form-lines-section-values {
+                    border-right: 1px solid $borderColor;
+                }
+
+                .form-lines-section-values-adjustment-line {
+                    flex-basis: 210px;
+                    max-width: 210px;
+                }
+            }
+
+
+        }
+
+        .form-lines-flex-row.form-line-no-reason {
+
+            .form-lines-section-values-reason-line {
+                flex: 0;
+                width: 0;
+            }
+        }
+    }
+
+    .form-lines-force-reason:not(.form-lines-force-adjust) {
+
+        .form-lines-flex-row {
+
+            &.form-line-header-has-reason,
+            &.form-line-header-no-reason,
+            &.form-line-has-reason,
+            &.form-line-no-reason {
+
+                .form-lines-section-values-reason-line {
+                    flex-basis: 210px;
+                    max-width: 210px;
+                }
+            }
+
+
+        }
+
+        .form-lines-flex-row.form-line-no-adjustment {
+
+            .form-lines-section-values-adjustment-line {
+                flex: 0;
+                width: 0;
+            }
+
+            &.form-line-has-reason,
+            &.form-line-no-reason {
+                .form-lines-section-values-adjustment-line {
+                    border-right: 0;
+                }
+            }
+
+            &.form-line-no-reason {
+                .form-lines-section-values {
+                    border-right: 1px solid $borderColor;
+                }
+            }
+        }
+    }
+
+    .form-lines-force-adjust.form-lines-force-reason {
+        .form-lines-flex-row {
+            &.form-line-header-has-reason,
+            &.form-line-header-no-reason,
+            &.form-line-has-reason,
+            &.form-line-no-reason {
+
+                // .form-lines-section-values {
+                //     border-right: 1px solid $borderColor;
+                // }
+
+                .form-lines-section-values-reason-line {
+                    flex-basis: 210px;
+                    max-width: 210px;
+                }
+            }
+        }
+    }
+
+
+}
+
+.emp-tab {
+
+    &.emp-active-tab {
+
+        section.emp-collapse .form-lines-sections {
+            display: none;
+        }
+    }
+
+}
+
+section.emp-collapse .form-lines-sections {
+    display: none;
+}

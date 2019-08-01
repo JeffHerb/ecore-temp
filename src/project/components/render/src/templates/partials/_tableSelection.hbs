@@ -1,0 +1,24 @@
+{{#ifCond v1=this.section op="===" v2="body"~}}
+    <td class="table-control-col emp-min-width">
+{{~else~}}
+    <th class="table-control-col emp-min-width">
+{{/ifCond~}}
+
+    <label for="{{this.tableData.attributes.id}}_{{index}}" class="cui-hide-from-screen">Row {{index~}}</label>
+    {{#ifCond v1=this.tableData.selectionType op="===" v2="single"~}}
+        <input type="radio" {{#if this.checked}}checked="checked"{{/if}} id="{{this.tableData.attributes.id}}_{{index}}" name="{{this.tableData.attributes.id}}" value="{{key}}" />
+    {{~else~}}
+
+        <input type="checkbox" {{#if this.checked}}checked{{/if}} id="{{this.tableData.attributes.id}}_{{index}}" name="{{this.tableData.attributes.id}}" value="{{key}}" />
+        {{~#ifCond v1=this.section op="===" v2="head"~}}
+            {{!-- Hidden input for framework --}}
+            <input type="hidden" {{#if this.checked}}checked{{/if}} id="{{this.tableData.attributes.id}}_{{index}}_hidden" name="_{{this.tableData.attributes.id}}" value="false" />
+        {{/ifCond~}}
+
+    {{/ifCond~}}
+
+{{#ifCond v1=this.section op="===" v2="body"~}}
+    </td>
+{{~else~}}
+    </th>
+{{/ifCond~}}

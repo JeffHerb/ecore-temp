@@ -1,0 +1,447 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Radio Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Radio Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>Radio</code> tag is used to create individual radio elements.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Radio viewKey="demo" value="y"/></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "radio",
+    "template": "field",
+    "label": {
+        "text": "Radio Label",
+        "attributes": {
+            "for": "demo_1"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo_1",
+            "type": "radio",
+            "value": "y"
+        }
+    }
+}</pre>
+                <p>
+                    Radio tags JSON look like every other pre-specified of input. The difference here being that the <code>type</code> attribute is set to <em>radio</em>.
+                </p>
+
+                <h3>Rendered examples</h3>
+                <p>
+                    Just like other inputs, all attributes are tied to the <code>viewKeys</code>. As the example shows, radio buttons appear <code>label</code> tag first then <code>input</code>. Unlike other, radio normally appear in groups, this example is simply to show individual radio tags. Reference the <a href="../tags/radioGroup.html">RadioGroup</a> tag for more specifics on working with groups.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Default value of the input.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                check
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicate if the input is checked on load.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute of the input element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                accessKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that needs to be executed. The string must include both event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                labelHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;label&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;input&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Java object attribute from which value is populated. It is the responsibility of the tag or its parent tag to make the object available to the page context.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Flip Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Radio viewKey="demo" value="y" flip="true" /></pre>
+
+                <h3>Flip JSON</h3>
+                <pre class="code">
+{
+    "type": "radio",
+    "template": "field",
+    "label": {
+        "text": "Radio Label",
+        "attributes": {
+            "for": "demo_1"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo_1",
+            "type": "radio",
+            "value": "y"
+        },
+        "flip": true
+    }
+}</pre>
+                <p>
+                    By adding the <code>flip</code> attribute to the <code>JSP</code> tag, an additional <code>flip</code> property with the value of <code>true</code> should be added to the input object.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="flip-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Check Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Radio viewKey="demo" value="y" checked="true" /></pre>
+
+                <h3>Checked JSON</h3>
+                <pre class="code">
+{
+    "type": "radio",
+    "template": "field",
+    "label": {
+        "text": "Radio Label",
+        "attributes": {
+            "for": "demo_1"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo_1",
+            "type": "radio",
+            "value": "y",
+            "checked": true
+        }
+    }
+}</pre>
+                <p>
+                    When the <code>checked</code> attribute is added to the JSP, this will set the <code>checked</code> attribute to the inputs attribute list.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="checked-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "radio",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Radio Label",
+                                            "attributes": {
+                                                "for": "demo_1"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo_1",
+                                                "type": "radio",
+                                                "value": "y"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Default example JSON
+            var flip = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "radio",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Radio Label",
+                                            "attributes": {
+                                                "for": "demo_1"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo_1",
+                                                "type": "radio",
+                                                "value": "y"
+                                            },
+                                            "flip": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Checked
+            var checked = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "radio",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Radio Label",
+                                            "attributes": {
+                                                "for": "demo_1"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo_1",
+                                                "type": "radio",
+                                                "value": "y",
+                                                "checked": true
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var flipExample = document.getElementById("flip-example");
+                var checkedExample = document.getElementById("checked-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    // Flip example
+                    render.page(flipExample, flip, function() {
+
+                        console.log("Flip Example Done");
+
+                        // Checked example
+                        render.page(checkedExample, checked, function() {
+
+                            console.log("Checked Example Done");
+
+                        });
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

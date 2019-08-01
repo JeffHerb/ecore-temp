@@ -1,0 +1,49 @@
+.theme-hazel {
+    @import "../../../../../../../scss/_theme_hazel";
+
+    .emp-table {
+        table {
+            thead {
+                th[data-sort] {
+                    &:before {
+                        border-top-color: $emp-grey-5;
+                    }
+
+                    &:after {
+                        border-bottom-color: $emp-grey-5;
+                    }
+                }
+
+                th[data-sortdir="ASC"] {
+                    &:after {
+                        border-bottom-color: $emp-grey-3;
+                    }
+                }
+
+                th[data-sortdir="DESC"] {
+                    &:before {
+                        border-top-color: $emp-grey-3;
+                    }
+                }
+            }
+
+            &.sticky {
+                th[data-sortdir="ASC"] {
+                    .sticky-cell {
+                        &:after {
+                            border-bottom-color: $emp-grey-3;
+                        }
+                    }
+                }
+
+                th[data-sortdir="DESC"] {
+                    .sticky-cell {
+                        &:before {
+                            border-top-color: $emp-grey-3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

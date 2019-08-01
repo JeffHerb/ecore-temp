@@ -1,0 +1,408 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Radio Group Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>RadioGroup Custom Tag</h1>
+                <div class="docs-badge cui-success">New in E2</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:RadioGroup&gt;</code> tag is used to help structure
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <h4>Manual list creation with tags</h4>
+                <pre class="code">
+&lt;E2:RadioGroup viewKey="colorValue">
+    &lt;E2:Radio label="Blue" value="blue" />
+    &lt;E2:Radio label="Red" value="red" />
+&lt;/E2:RadioGroup></pre>
+
+
+                <h4>Provided source list</h4>
+                <pre class="code">
+&lt;E2:RadioGroup viewKey="colorValue" options="<%= radioKeyValues  %>"></E2:RadioGroup>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "radio",
+    "template": "inputGroup",
+    "legend": "Pick a color",
+    "options": [
+        {
+            "type": "radio",
+            "template": "field",
+            "label": {
+                "text": "Blue",
+                "attributes": {
+                    "for": "demo_1"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "demo",
+                    "id": "demo_1",
+                    "type": "radio",
+                    "value": "blue"
+                }
+            }
+        },
+        {
+            "type": "radio",
+            "template": "field",
+            "label": {
+                "text": "Red",
+                "attributes": {
+                    "for": "demo_2"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "demo",
+                    "id": "demo_2",
+                    "type": "radio",
+                    "value": "red"
+                }
+            }
+        }
+    ]
+}</pre>
+                <p>
+                    <code>RadioGroups</code> is a very special component as developers can define this tag in two different ways. The first one is the manual process, this is where developers declare each <code>E2:Radio</code> input by hand. Or developers can pass in the a key value list of every radio button option via the <code>options</code> attribute.
+                </p>
+                <p>
+                    Another signification change is developer need to list the <code>viewKey</code> attribute on the group itself. This is because the viewKey label will become the legend for the <code>RadioGroup</code> instead of the label for the individual options.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The registered viewkey
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;fieldset&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>flip</th>
+                            <td>Boolean</td>
+                            <td>No</td>
+                            <td>
+                                Manualy flip the order of <code>Input</code> <code>Label</code> to <code>Label</code> <code>Input</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                message
+                            </th>
+                            <td>
+                                hashmap
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Provides a hashmap of a specific field level message to an input (<a href="../common/attributes/message.html">more details</a>).
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                layout
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Controls the way the elements are listed on the page. Developers can only define either <em>vertical</em> or <em>horizontal</em> layout. The default layout is horizontal.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2></h2>
+
+                <h3>Custom Tag</h3>
+
+                <pre class="code">
+&lt;E2:RadioGroup viewKey="colorValue" options="<%=radioKeyValues%>" layout="vertical"></E2:RadioGroup>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "radio",
+    "template": "inputGroup",
+    "legend": "Pick a color",
+    "options": [
+        ... Ommited ...
+    ],
+    "layout: "vertical"
+}</pre>
+                <p>
+                    By default all <code>E2:RadioGroups</code> render in as a horizontal list. In order to toggle the list to appear vertically developers need to add the attribute of <code>layout</code> with the value of <em>vertical</em>.
+                </p>
+
+                <p>
+
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="vertical-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "radio",
+                                        "template": "inputGroup",
+                                        "legend": "Pick a color",
+                                        "options": [
+                                            {
+                                                "type": "radio",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Blue",
+                                                    "attributes": {
+                                                        "for": "demo_1"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "demo",
+                                                        "id": "demo_1",
+                                                        "type": "radio",
+                                                        "value": "blue"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "radio",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Red",
+                                                    "attributes": {
+                                                        "for": "demo_2"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "demo",
+                                                        "id": "demo_2",
+                                                        "type": "radio",
+                                                        "value": "red"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+           var vertical = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "radio",
+                                        "template": "inputGroup",
+                                        "legend": "Pick a color",
+                                        "options": [
+                                            {
+                                                "type": "radio",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Blue",
+                                                    "attributes": {
+                                                        "for": "demo_1"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "demo",
+                                                        "id": "demo_1",
+                                                        "type": "radio",
+                                                        "value": "blue"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "radio",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Red",
+                                                    "attributes": {
+                                                        "for": "demo_2"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "demo",
+                                                        "id": "demo_2",
+                                                        "type": "radio",
+                                                        "value": "red"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "layout": "vertical"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var verticalExample = document.getElementById("vertical-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    // RegularInput Type
+                    render.page(verticalExample, vertical, function() {
+
+                        console.log("Default Done");
+
+                    });
+
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

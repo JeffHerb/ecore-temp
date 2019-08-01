@@ -1,0 +1,631 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Selection Popup Tag -")-->
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Selection Popup Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    This custom tag represents popup windows now being turned into popup modals. This tags functionality covers all of the requirements for the following old tags:
+                </p>
+                <ul>
+                    <li>ET:SelectionPopup</li>
+                    <li>ET:RTPopup</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+<pre class="code">
+&lt;E2:SelectionPopup viewKey="selectionPop" url="http://localhost:3000/selectionPopup" params="{'param1': 1, 'param2': 2}" fieldMapping="{'E_TAX_TYPE':1, 'E_TAX_TYPE_HIDDEN':1, 'E_TAX_CODE':2 }" icon="popup-view-list" />
+</pre>
+
+                <h3>Sample JSON</h3>
+<pre class="code">
+{
+    "template": "selection",
+    "attributes": {
+        "id": "E_BTN_POPUP",
+        "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':2, 'E_TAX_TYPE_HIDDEN':3, 'E_TAX_CODE':3 }])",
+    },
+    "text": "Open Selection Popup",
+    "icon": "popup-view-list"
+}
+</pre>
+
+                <p>
+                    <code>E2:SelectionPopup</code> is an enhanced form of the <code>E2:Button</code> or <code>E2:Link</code> tag. The major difference is the additional attributes developers need to define in order to create a selectionPop. As of Empire2 selection popups are actually render as in-page modals. These modals are built on the fly from AJAXed contents and then using empire core functionality, used to map data between the modal and the parent screen.
+                </p>
+
+                <p>
+                    When creating a <code>E2:SelectionPopup</code> developers still need to provide the button/link <code>viewKey</code> and the <code>fieldMapping</code> attributes. If a selection popup is coming from a framework controlled Reference Table, developers shouldnt need to provide any additional information. If the data on the other hand is coming in from a special souce, developers will also need to provide a <code>url</code>. The <code>url</code> should represent the ajax endpoint that is searching this data. Developers can also provide additional query string information on the request address using the <code>params</code> attribute. Please not that the params need to be in JSON, key value pair format.
+                </p>
+
+                <p>
+                    Destination:Source mapping simply identifies the different elements developers are looking pull values from or placing values into. The order destination first is because the same source could populate more than on specific location.
+                </p>
+
+                <p>
+                    When converted into JSON, the selection popup calls there own <em>selection</em> <code>template</code>. The viewKey for the control turns into the control elements <code>id</code> attribute and the remaining required attributes become part of the embedded click event. Not above that <code>emp.selectionPopup</code> global function is being called. The <code>url</code> and <code>params</code> attribute are turned into a single object witht he keys of <code>url</code> and <code>data</code>. Lastly the <code>fieldMapping</code> is included as the last argument.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                veiwKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Id of the control found in the registration tool.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                url
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The url were the ajax data should be coming from.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                fieldMapping
+                            </th>
+                            <td>
+                                Key Value
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Source column number to parent updatable name (id).
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                params
+                            </th>
+                            <td>
+                                Key Value
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Additional key value pair parameters.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>type</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>
+                                Indicated the type of control the selection popup should render as. Acceptable Values:<br>
+                                <ul>
+                                    <li>Button <strong>Default</strong></li>
+                                    <li>Link</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>icon</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>
+                                Provide a string name of an icon that represents the control instead of words.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>height</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the height of the modal. Can be any acceptable CSS height measurement. Ex: <code>300px</code>, <code>5em</code>, <code>50vh</code>, etc..
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>width</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the width of the modal. Can be any acceptable CSS width measurement. Ex: <code>300px</code>, <code>5em</code>, <code>50vw</code>, etc..
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> (link) tag (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Type Attribute</h2>
+
+                <h3>Custom Tag</h3>
+<pre class="code">
+&lt;E2:SelectionPopup viewKey="selectionPop" url="http://localhost:3000/selectionPopup" params="{'param1': 1, 'param2': 2}" fieldMapping="{0: 'text1', 1: 'text2'}" type="link" />
+</pre>
+
+                <h3>Sample JSON</h3>
+<pre class="code">
+{
+    "type": "link",
+    "template": "selection",
+    "attributes": {
+        "id": "E_BTN_POPUP",
+        "type": "button",
+        "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':2, 'E_TAX_TYPE_HIDDEN':2, 'E_TAX_CODE':3 }, true])",
+    },
+    "text": "Open Selection Popup"
+}
+</pre>
+
+                <p>
+                    By default this control renders as a button but can be rendered as a link by switching providing the <code>type</code> attribute with the value of <em>link</em>. Developers can also provide the optional <code>icon</code> attribute type if they prefer the control include an icon.
+                </p>
+
+                <section id="link-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Height and Width Attribute</h2>
+
+                <h3>Custom Tag</h3>
+<pre class="code">
+&lt;E2:SelectionPopup viewKey="selectionPop" url="http://localhost:3000/selectionPopup" fieldMapping="{0: 'text1', 1: 'text2'}" type="link" height="500px" width="250px" />
+</pre>
+
+                <h3>Sample JSON</h3>
+<pre class="code">
+{
+    "type": "link",
+    "template": "selection",
+    "attributes": {
+        "id": "E_BTN_POPUP",
+        "type": "button",
+        "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':1, 'E_TAX_TYPE_HIDDEN':1, 'E_TAX_CODE':2 }, {'height':'500px', 'width':'250px'}])",
+    },
+    "text": "Open Selection Popup"
+}
+</pre>
+
+                <p>
+                    By default all modals will automatically size to half the height and width of the users viewport (open browser size). This may be enough in most cases but developers should tweak the front end based ont he know contents of the modal in question. To do this developers can control either or both with the <code>height</code> and <code>width</code> attributes.
+                </p>
+
+                <p>
+                    When converted to JSON, developers size requirements render as an additionl argument at the end of the <code>emp.selectionPopup</code> call. The passed attributes are turned into another JSON object and will hold the <code>height</code> and <code>width</code> properties respectfully based on what they provide.
+                </p>
+
+                <section id="height-width-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Selection Return</h2>
+
+                <h3>Custom Tag</h3>
+<pre class="code">
+&lt;E2:SelectionPopup viewKey="selectionPop" url="http://localhost:3000/selectionPopup" fieldMapping="{0: 'text1', 1: 'text2'}" type="link" />
+</pre>
+
+                <h3>Sample JSON</h3>
+<pre class="code">
+{
+    "type": "link",
+    "template": "selection",
+    "attributes": {
+        "id": "E_BTN_POPUP",
+        "type": "button",
+        "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':2, 'E_TAX_CODE':3, 'E_TAX_DESCRIPTION_B':4 }, true])",
+    },
+    "text": "Open Selection Popup"
+}
+</pre>
+
+                <p>
+                    When selection popup tables are implmented the a small piece of functional is omitted by default. This is the ability for the developers to choice which columns get returned form the selection map provided.
+                </p>
+
+                <section id="selection-return-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Row Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Tax Search"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "inputs",
+                                                "template": "inputGroup",
+                                                "legend": "Full Name:",
+                                                "options": [
+                                                    {
+                                                        "type": "text",
+                                                        "template": "field",
+                                                        "label": {
+                                                            "text": "Tax Type",
+                                                            "attributes": {
+                                                                "for": "E_TAX_TYPE"
+                                                            }
+                                                        },
+                                                        "input": {
+                                                            "attributes": {
+                                                                "name": "E_TAX_TYPE",
+                                                                "id": "E_TAX_TYPE",
+                                                                "type": "text"
+                                                            },
+                                                            "readOnly": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "template": "field",
+                                                        "label": {
+                                                            "text": "Tax Code",
+                                                            "attributes": {
+                                                                "for": "E_TAX_CODE"
+                                                            }
+                                                        },
+                                                        "input": {
+                                                            "attributes": {
+                                                                "name": "E_TAX_CODE",
+                                                                "id": "E_TAX_CODE",
+                                                                "type": "text",
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "hidden",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "hidden",
+                                                                "name": "E_TAX_TYPE_HIDDEN",
+                                                                "id": "E_TAX_TYPE_HIDDEN"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "button": {
+                                                "template": "selection",
+                                                "attributes": {
+                                                    "id": "E_BTN_POPUP",
+                                                    "type": "button",
+                                                    "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':2, 'E_TAX_TYPE_HIDDEN':2, 'E_TAX_CODE':3 }])",
+                                                },
+                                                "text": "Open Selection Popup",
+                                                "icon": "popup-view-list"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var link = {
+                title: "Row Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "link",
+                                        "template": "selection",
+                                        "attributes": {
+                                            "id": "E_BTN_POPUP",
+                                            "type": "button",
+                                            "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':3, 'E_TAX_TYPE_HIDDEN':4, 'E_TAX_CODE':4 }])",
+                                        },
+                                        "text": "Open Selection Popup"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var heightWidth = {
+                title: "Height Width Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "link",
+                                        "template": "selection",
+                                        "attributes": {
+                                            "id": "E_BTN_POPUP",
+                                            "type": "button",
+                                            "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/', 'data':{'param1': 1, 'param2': 2}}, {'E_TAX_TYPE':1, 'E_TAX_TYPE_HIDDEN':1, 'E_TAX_CODE':2 }, {'height':'500px','width':'250px'}])",
+                                        },
+                                        "text": "Open Specific Sized Selection Popup"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var selectionReturn = {
+                title: "Selection Return Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TAX_TYPE_B"
+                                            },
+                                            "text": "Tax Type:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TAX_TYPE_B",
+                                                "id": "E_TAX_TYPE_B",
+                                                "type": "text"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TAX_CODE_B"
+                                            },
+                                            "text": "Tax Code:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TAX_CODE_B",
+                                                "id": "E_TAX_CODE_B",
+                                                "type": "text"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TAX_DESCRIPTION_B"
+                                            },
+                                            "text": "Description:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TAX_DESCRIPTION_B",
+                                                "id": "E_TAX_DESCRIPTION_B",
+                                                "type": "text"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "link",
+                                        "template": "selection",
+                                        "attributes": {
+                                            "id": "E_BTN_POPUP_RETURN",
+                                            "type": "button",
+                                            "onclick": "emp.functionCall(event, 'emp.selectionPopup',[{'url':'http://localhost:3000/selectionPopup/'}, {'E_TAX_TYPE_B':1, 'E_TAX_CODE_B':2, 'E_TAX_DESCRIPTION_B':3 }, true])",
+                                        },
+                                        "text": "Selection Popup with Selection Retrun"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'modal', 'emp', 'domReady!'], function(render, modal, emp) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var linkExample = document.getElementById("link-example");
+                var heightWidthExample = document.getElementById("height-width-example");
+                var selectionReturnExample = document.getElementById("selection-return-example");
+
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    render.page(linkExample, link, function() {
+
+                        console.log("Link Done");
+
+                        render.page(heightWidthExample, heightWidth, function() {
+
+                            console.log("Height Width Done");
+
+                            render.page(selectionReturnExample, selectionReturn, function() {
+
+                                console.log("Selection Return Example");
+
+                            });
+
+                        });
+
+                    });
+
+                });
+
+                emp.init();
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

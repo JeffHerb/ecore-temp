@@ -1,0 +1,295 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Link Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Link Custom Tag</h1>
+            </div>
+        </div>
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>E2:Link</code> is the generic way to create an anchor control that can be used for event bindings or navigational peices. This tag combinds the functionality formerally found in:
+                </p>
+                <ul>
+                    <li>Common Web Links</li>
+                    <li>ET:TabNavLink</li>
+                    <li>ET:ExternalLinkButton</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Link href="http://www.google.com" text="Google" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "link",
+    "attributes": {
+        "href": "https://www.google.com"
+    },
+    "text": "Google"
+}</pre>
+
+                <p>
+                    By the E2:Link tag acts link any other anchor tag. By providing it a <code>href</code> attribute and a <code>text</code> attribute will cause the tag to render as a standard web hyperlink. If the link requires additional functionality or opens tabSet pages, then a <code>viewKey</code> should be provided and the link needs to be registered with the registration tool.
+                </p>
+
+                <p>
+                    When a link is turned to JSON, the tag needs to include a reference to the <code>template</code> property and should have the value of <em>link</em>. The display text or the JSP <cod>text</code> attributer is turned into the text property. Lastly the <code>attributes</code> property should be included and a copy of the all the link specific attributes should be include. On a standard web link, the only required property is the <code>href</code> property.
+                </p>
+
+                <section id="hyperLink-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>href or viewKey</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to define where the link tag is going. If the <code>href</code> attribute is defined, its assumed the link goes a page that can be reached via a normal http request. If a viewKey is defined instead, the anchor tag will used the information provided by the registration tool.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>text</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Text that should be used when rendering the link.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute of the input element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                disabledText
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                The text displayed when the element is rendered in readOnly or disabled mode. If this attribute is missing the normal text is used.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                preSubmitScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Name and arguments to a function that is execute "onclick", but before the form has been submitted (<a href="../common/attributes/preSubmitScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                List of event-based JavaScript associated with the field. The string must include both the event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                requestedMode
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the input should be read-only or updatable mode. See the disabled example below on how requestedMode "1" or readonly should be treated.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered wrapper <code>&lt;div&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var hyperLink = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "link",
+                                        "attributes": {
+                                            "href": "http://www.google.com"
+                                        },
+                                        "text": "Google"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var viewKey = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "link",
+                                        "attributes": {
+                                            "href": "http://www.google.com"
+                                        },
+                                        "text": "Google"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            var hyperLinkExample = document.getElementById('hyperLink-example');
+            var viewKeyExample = document.getElementById('viewKey-example');
+
+            require(['render', 'domReady!'], function(render) {
+
+                render.page(hyperLinkExample, hyperLink, function() {
+                    console.log("Standard Link done.");
+
+                    render.page(viewKeyExample, viewKey, function() {
+                        console.log("ViewKey Example");
+                    });
+
+                })
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

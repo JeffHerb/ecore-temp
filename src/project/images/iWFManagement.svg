@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0" y="0" width="24" height="24" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+  <rect x="0.5" y="6.5" fill="#FFFFFF" stroke="#565555" stroke-miterlimit="10" width="18" height="17"/>
+  <polygon fill="#BF0022" stroke="#771212" stroke-miterlimit="10" points="19.1 11.5 19 8.5 23.5 8.5 23.5 4.5 19 4.5 19.1 1.5 12.5 6.5 "/>
+  <path fill="#FFFFFF" stroke="#565555" stroke-linecap="round" stroke-miterlimit="10" d="M4.3 13c0 0 1.5 5.4 2 5.4 0.5 0 2.7-5.2 3.1-5.2 0.5 0 2 5.2 2.5 5.2C12.5 18.4 13.9 13 13.9 13"/>
+</svg>

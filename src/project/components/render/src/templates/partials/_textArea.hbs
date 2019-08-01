@@ -1,0 +1,103 @@
+{{#unless this.noWrap~}}
+    {{#ifCond v1="editor" op="===" v2=this.input.style}}
+            <div class="cui-data emp-allow-overflow">
+        {{else}}
+            <div class="cui-data">
+    {{/ifCond}}
+{{/unless~}}
+
+    {{! Check to see if the input is read only }}
+    {{#ifCond v1=this.input.readOnly op='boolCheck' v2=true ~}}
+
+        {{~#ifCond v1="commaColumnList" op="in" v2=this.input.style}}
+
+            {{> _readOnly_column_list this.input.attributes.value}}
+
+        {{else}}
+
+            {{~#ifCond v1="container" op="in" v2=this.input.style}}
+
+                <div {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes scope="textarea")) skip='value,name,aria-required,maxlength,data-validation' }}>
+                    {{~{ standardTextFormat this.input.attributes.value }~}}
+                </div>
+
+            {{~else~}}
+
+                <p {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes scope="textarea")) skip='value,name,aria-required,maxlength,data-validation,type,rows,cols' }}>
+                    {{~{ standardTextFormat this.input.attributes.value }~}}
+                </p>
+
+            {{/ifCond}}
+
+        {{/ifCond}}
+
+    {{~else~}}
+
+        {{~#ifCond v1="editor" op="in" v2=this.input.style}}
+
+            <div class="emp-quill-editor" data-editor-for="{{this.input.attributes.id}}">
+                <div class="emp-quill-toolbar">
+                    <span class="ql-formats">
+                        <select class="ql-size">
+                            <option value="10px">10px</option>
+                            <option value="12px">12px</option>
+                            <option selected>14px</option>
+                            <option value="16px">16px</option>
+                            <option value="18px">18px</option>
+                            <option value="20px">20px</option>
+                        </select>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-undo" title="Undo">
+                            <svg viewbox="0 0 18 18">
+                              <polygon class="ql-fill ql-stroke" points="6 10 4 12 2 10 6 10"></polygon>
+                              <path class="ql-stroke" d="M8.09,13.91A4.6,4.6,0,0,0,9,14,5,5,0,1,0,4,9"></path>
+                            </svg>
+                        </button>
+                        <button class="ql-redo" title="Redo">
+                            <svg viewbox="0 0 18 18">
+                              <polygon class="ql-fill ql-stroke" points="12 10 14 12 16 10 12 10"></polygon>
+                              <path class="ql-stroke" d="M9.91,13.91A4.6,4.6,0,0,1,9,14a5,5,0,1,1,5-5"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-bold">Bold</button>
+                        <button class="ql-italic">Italic</button>
+                        <button class="ql-strike">Strike</button>
+                        <button class="ql-underline">Underline</button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-link">Link</button>
+                    </span>
+                    <span class="ql-formats">
+                        <button type="button" class="ql-list" value="ordered"></button>
+                        <button type="button" class="ql-list" value="bullet"></button>
+                        <button class="ql-indent" value="-1" type="button"></button>
+                        <button class="ql-indent" value="+1" type="button"></button>
+                    </span>
+                </div>
+                <div class="emp-quill-container" data-hidden="{{this.input.attributes.id}}">
+                     {{{this.input.attributes.value}}}
+                </div>
+                <input type="hidden" name="{{this.input.attributes.name}}" id="{{this.input.attributes.id}}" value="" />
+            </div>
+
+        {{else}}
+
+            <textarea tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input style=this.input.style) dynamics=this.input.formats) skip="value" }}>{{this.input.attributes.value}}</textarea>
+
+        {{/ifCond}}
+
+    {{/ifCond~}}
+
+    {{! Look for messages if this is not in a composite}}
+    {{#unless this.composite~}}
+        {{#if this.message~}}
+            {{~> _message this.message~}}
+        {{/if~}}
+    {{/unless~}}
+
+{{#unless this.noWrap~}}
+    </div>
+{{/unless~}}

@@ -1,0 +1,748 @@
+<!doctype HTML>
+<html lang="en" class="external-app emp-orpts-subtheme theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Enhanced STAR Income Verification Program</title>
+        <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+        <div id="header-wrapper"></div>
+        <div id="body-wrapper"></div>
+        <div id="footer-wrapper"></div>
+    </body>
+    <script>
+
+        var fwData = {
+            "header": {
+                "contents": [
+                    {
+                        "template": "external-universal-header"
+                    },
+                    {
+                        "template": "external-agency-header",
+                        "userAcct": {
+                            "type": "interactive",
+                            "text": "John Smith",
+                            "contents": [
+                                {
+                                    "template": "popover",
+                                    "contents": [
+                                        {
+                                            "type": "external-auth-user",
+                                            "template": "composite",
+                                            "properties": {
+                                                "realName": "John Smith",
+                                                "companyName": "ABC Company",
+                                                "userid": "123-45-6789"
+                                            }
+                                        },
+                                        {
+                                            "type": "external-account-demo",
+                                            "template": "composite",
+                                            "properties": {
+                                                "account": "Tax Professioal",
+                                                "role": "Administrator"
+                                            }
+                                        },
+                                        // {
+                                        //     "template": "tree",
+                                        //     "contents": [
+                                        //         {
+                                        //             "type": "button",
+                                        //             "template": "field",
+                                        //             "input" :{
+                                        //                 "attributes": {
+                                        //                     "id": "EC_LOGOUT",
+                                        //                     "name": "EC_LOGOUT"
+                                        //                 },
+                                        //                 "text": "logout"
+                                        //             }
+                                        //         }
+                                        //     ]
+                                        // }
+                                    ]
+                                }
+                            ],
+                        },
+                        "support": {
+                            "type": "simple",
+                            "text": "Get Support",
+                            "contents": [
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "#",
+                                    },
+                                    "text": "Get Support"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "page": {
+                "contents": [
+                    {
+                        "template":"pagebody",
+                        "contents":[
+                            {
+                                "type":"form",
+                                "attributes":{
+                                    "id":"form_content",
+                                    "name":"form_content",
+                                    "action":"",
+                                    "method":"post"
+                                },
+                                "contents":[
+                                    {
+                                        "type": "pageInfo",
+                                        "template": "composite",
+                                        "parts":{
+                                            "pagetitle":{
+                                                "title": "Property Details (New Enrollment)"
+                                            },
+                                            "pageinstructions":{
+                                                "text": "Complete and verify the fields below, then select <strong>Update Enrollment</strong>. If you do not select Update Enrollment, your changes will not be saved."
+                                            },
+                                            "pagelegend":{
+                                                "legends": [
+                                                    {
+                                                        "type": "required"
+                                                    },
+                                                    {
+                                                        "type": "info"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "New property registration information"
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "contents": [
+                                                        {
+                                                            "template": "field",
+                                                            "label": {
+                                                            "attributes": {
+                                                                "className": "emp-label"
+                                                            },
+                                                            "text": "SWIS code:"
+                                                            },
+                                                            "input": {
+                                                            "attributes": {
+                                                                "className": "emp-data",
+                                                                "value": "010100"
+                                                            },
+                                                            "readOnly": true
+                                                            },
+                                                            "type": "text"
+                                                        }
+                                                    ],
+                                                    "template": "grid"
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "contents": [
+                                                        {
+                                                            "template": "field",
+                                                            "label": {
+                                                            "attributes": {
+                                                                "className": "emp-label"
+                                                            },
+                                                            "text": "Print key:"
+                                                            },
+                                                            "input": {
+                                                            "attributes": {
+                                                                "className": "emp-data",
+                                                                "value": "41.16-1-28.000"
+                                                            },
+                                                            "readOnly": true
+                                                            },
+                                                            "type": "text"
+                                                        }
+                                                    ],
+                                                    "template": "grid"
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "contents": [
+                                                            {
+                                                                "template": "field",
+                                                                "label": {
+                                                                "attributes": {
+                                                                    "className": "emp-label"
+                                                                },
+                                                                "text": "Unit number:"
+                                                                },
+                                                                "input": {
+                                                                "attributes": {
+                                                                    "className": "emp-data",
+                                                                    "value": ""
+                                                                },
+                                                                "readOnly": true
+                                                                },
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "template": "grid"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "contents": [
+                                                            {
+                                                                "template": "field",
+                                                                "label": {
+                                                                "attributes": {
+                                                                    "className": "emp-label"
+                                                                },
+                                                                "text": "Property address:"
+                                                                },
+                                                                "input": {
+                                                                "attributes": {
+                                                                    "className": "emp-data",
+                                                                    "value": "234 State Street Albany, NY 12206"
+                                                                },
+                                                                "readOnly": true
+                                                                },
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "template": "grid"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "contents": [
+                                                            {
+                                                                "template": "field",
+                                                                "label": {
+                                                                "attributes": {
+                                                                    "className": "emp-label"
+                                                                },
+                                                                "text": "Mobile home or Co-op:"
+                                                                },
+                                                                "input": {
+                                                                "attributes": {
+                                                                    "className": "emp-data",
+                                                                    "value": "Co-op"
+                                                                },
+                                                                "readOnly": true
+                                                                },
+                                                                "type": "text"
+                                                            }
+                                                        ],
+                                                        "template": "grid"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "input",
+                                                                "template": "inputGroup",
+                                                                "legend": "Is this property held either in a trust or life estate?",
+                                                                "style": "boolean-list",
+                                                                "options": [
+                                                                    {
+                                                                        "type": "radio",
+                                                                        "template": "field",
+                                                                        "input": {
+                                                                            "attributes": {
+                                                                                "id": "E_YES",
+                                                                                "name": "E_YES_NO",
+                                                                                "type": "radio"
+                                                                            },
+                                                                            "style": "expandable-control",
+                                                                            "expands": "expandable_section_1",
+                                                                            "required": true
+                                                                        },
+                                                                        "label": {
+                                                                            "attributes": {
+                                                                                "for": "E_YES"
+                                                                            },
+                                                                            "text": "Yes",
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "radio",
+                                                                        "template": "field",
+                                                                        "input": {
+                                                                            "attributes": {
+                                                                                "id": "E_NO",
+                                                                                "name": "E_YES_NO",
+                                                                                "type": "radio"
+                                                                            },
+                                                                            "required": true
+                                                                        },
+                                                                        "label": {
+                                                                            "attributes": {
+                                                                                "for": "E_NO"
+                                                                            },
+                                                                            "text": "No",
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "itag": {
+                                                                    "id": "i1"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "template": "yesno",
+                                                                "name": "E_YES_NO_COMP",
+                                                                "legend": "Yes No Component:",
+                                                                "yes": {
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "name": "E_YES_NO_COMP",
+                                                                            "id": "E_YES_NO_COMP_YES",
+                                                                            "value": "y",
+                                                                            "type": "radio"
+                                                                        },
+                                                                        "style": "expandable-control",
+                                                                        "expands": "expandable_section_1",
+                                                                    },
+                                                                },
+                                                                "no": {
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "name": "E_YES_NO_COMP",
+                                                                            "id": "E_YES_NO_COMP_NO",
+                                                                            "value": "N",
+                                                                            "type": "radio"
+                                                                        }
+                                                                    },
+                                                                },
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "template": "region",
+                                                                "attributes": {
+                                                                    "id": "expandable_section_1"
+                                                                },
+                                                                "collapse": true,
+                                                                "contents": [
+                                                                    {
+                                                                        "template": "output",
+                                                                        "text": "Expandable contents sections!"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "Owner summary"
+                                            },
+                                            {
+                                                "template": "table",
+                                                "selectable": true,
+                                                "selectionType": "multiple",
+                                                "selectAll": true,
+                                                "attributes": {
+                                                    "className": "emp-table-selectable emp-pivot-table sticky unpivot",
+                                                    "id": "owner-summary",
+                                                    "data-type": "pivot",
+                                                    "data-responsive": "false",
+                                                    "data-filter": "false",
+                                                    "data-resize": "false",
+                                                    "data-mobile": "true"
+                                                },
+                                                "footerControls": {
+                                                    "contents": [
+                                                        {
+                                                            "type": "search",
+                                                            "template": "composite",
+                                                            "attributes": {
+                                                                "id": "E_STANDARD_SEARCH_COMPOSITE"
+                                                            },
+                                                            "parts": {
+                                                                "label": {
+                                                                    "template": "field",
+                                                                    "label": {
+                                                                        "attributes": {
+                                                                            "for": "EC_REASON_FOR_ACTION"
+                                                                        },
+                                                                        "text": "Reason for Action:"
+                                                                    }
+                                                                },
+                                                                "text": {
+                                                                    "type": "select",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "name": "EC_REASON_FOR_ACTION",
+                                                                            "id": "EC_REASON_FOR_ACTION",
+                                                                        },
+                                                                        "options": {
+                                                                            "select-one": {
+                                                                                "text": "Select one",
+                                                                                "value": "Select one",
+                                                                                "tabindex": 1
+                                                                            },
+                                                                            "no-longer-owners-primary-home": {
+                                                                                "text": "No longer owner's primary home",
+                                                                                "value": "No longer owner's primary home",
+                                                                                "tabindex": 1
+                                                                            },
+                                                                            "deceased": {
+                                                                                "text": "Deceased",
+                                                                                "value": "Deceased",
+                                                                                "tabindex": 1
+                                                                            },
+                                                                            "property-sold": {
+                                                                                "text": "Property sold",
+                                                                                "value": "Property sold",
+                                                                                "tabindex": 1
+                                                                            },
+                                                                            "not-age-qualified": {
+                                                                                "text": "Not age qualified",
+                                                                                "value": "Not age qualified",
+                                                                                "tabindex": 1
+                                                                            }
+                                                                        },
+                                                                        "noBlankOption": true,
+                                                                        "value": "all"
+                                                                    }
+
+                                                                },
+                                                                "button": {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "name": "EC_BTN_REMOVE"
+                                                                        },
+                                                                        "text": "Remove"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "head": {
+                                                    "rows": [
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "type": "header",
+                                                                    "attributes": {
+                                                                        "data-type": "alpha",
+                                                                        "data-sort": "alpha",
+                                                                        "data-table-column-priority": "1"
+                                                                    },/*
+                                                                    "responsive": {
+                                                                        "priority": "1"
+                                                                    }, */
+                                                                    "text": "Name",
+                                                                    "sortable": true
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "attributes": {
+                                                                        "data-type": "alpha",
+                                                                        "data-sort": "alpha",
+                                                                        "data-table-column-priority": "2"
+                                                                    },
+                                                                    /* "responsive": {
+                                                                        "priority": "2"
+                                                                    }, */
+                                                                    "text": "Social Security number (SSN)",
+                                                                    "sortable": true
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "attributes": {
+                                                                        "data-type": "alpha",
+                                                                        "data-sort": "alpha",
+                                                                        "data-table-column-priority": "3"
+                                                                    }/* ,
+                                                                    "responsive": {
+                                                                        "priority": "3"
+                                                                    } */,
+                                                                    "text": "Owner/spouse",
+                                                                    "sortable": true
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "attributes": {
+                                                                        "data-type": "alpha",
+                                                                        "data-sort": "alpha",
+                                                                        "data-table-column-priority": "4"
+                                                                    },
+                                                                    /* "responsive": {
+                                                                        "priority": "4"
+                                                                    }, */
+                                                                    "text": "Date of birth",
+                                                                    "sortable": true
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "attributes": {
+                                                                        "data-type": "alpha",
+                                                                        "data-sort": "alpha",
+                                                                        "data-table-column-priority": "5"
+                                                                    },/*
+                                                                    "responsive": {
+                                                                        "priority": "5"
+                                                                    }, */
+                                                                    "text": "Relationships",
+                                                                    "sortable": true
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "body": {
+                                                    "rows": [
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "template": "link",
+                                                                            "attributes": {
+                                                                                "href": "#",
+                                                                                "tabindex": "1"
+                                                                            },
+                                                                            "text": "Smith, John"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                "text": "XXX-XX-1234"
+                                                                },
+                                                                {
+                                                                "text": "Property owner"
+                                                                },
+                                                                {
+                                                                "text": "02/04/1945"
+                                                                },
+                                                                {
+                                                                "text": "Susan Smith (spouse)"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "template": "link",
+                                                                            "attributes": {
+                                                                                "href": "#",
+                                                                                "tabindex": "1"
+                                                                            },
+                                                                            "text": "Smith, Susan"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                "text": "XXX-XX-4962"
+                                                                },
+                                                                {
+                                                                "text": "Spouse of property owner - not an owner"
+                                                                },
+                                                                {
+                                                                "text": "04/02/1950"
+                                                                },
+                                                                {
+                                                                "text": "John Smith (spouse)"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "row",
+                                                "template": "buttonGroup",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "buttonGroup",
+                                                        "align": "center",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "attributes": {
+                                                                        "name": "EC_ADD_OWNER",
+                                                                        "title": "Add Owner"
+                                                                    },
+                                                                    "text": "Add Owner"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "align": "center",
+                                                "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "button",
+                                                            "name": "E_BTN_RETURN_TO_SEARCH",
+                                                            "tabindex": "1",
+                                                            "title": "Return to Search"
+                                                        },
+                                                        "text": "Return to Search"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "button",
+                                                            "name": "E_BTN_ADD_ENROLLMENT",
+                                                            "className": "cui-button-primary",
+                                                            "tabindex": "1",
+                                                            "title": "Update Enrollment"
+                                                        },
+                                                        "text": "Update Enrollment",
+                                                        "primary": true
+                                                    }
+                                                }
+                                                ],
+                                                "template": "buttonGroup"
+                                            }
+                                        ]
+                                    }
+
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "contents": [
+                    {
+                        "template": "external-agency-footer"
+                    },
+                    {
+                        "template": "external-universal-footer"
+                    }
+                ]
+            },
+            "fieldinstructions": {
+                "instructions": [
+                    {
+                        "id": "i1",
+                        "field": "Is this property held either in a trust or life estate?",
+                        "text": "If you're unsure whether the property is held in a trust or life estate, refer to your deed."
+                    }
+                ]
+            },
+            "preferences": {},
+            "context": {
+                "screen": {
+                    "type": "ui-test-page",
+                    "id": "password-test",
+                },
+                "urls": {
+                    "errorReport": false
+                },
+            }
+        };
+    </script>
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            // journal.live('on');
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

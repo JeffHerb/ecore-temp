@@ -1,0 +1,14 @@
+<div class="emp-select-other-selectbox">
+    {{#if this.otherValue}}
+        {{~> _field this.select otherValue=this.otherValue scope="selectOther" ~}}
+    {{else}}
+        {{~> _field this.select otherValue="other" scope="selectOther" ~}}
+    {{/if}}
+</div>
+{{#if this.otherValue}}
+<div class="emp-select-other-describe {{#ifCond v1=this.otherValue op="!=" v2=this.select.input.value }}cui-hidden{{/ifCond}}">
+{{else}}
+<div class="emp-select-other-describe {{#ifCond v1="other" op="!=" v2=this.select.input.value }}cui-hidden{{/ifCond}}"></div>
+{{/if}}
+    {{~> (getPartialName this.describe.template) this.describe ~}}
+</div>

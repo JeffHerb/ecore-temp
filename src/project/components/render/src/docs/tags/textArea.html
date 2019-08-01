@@ -1,0 +1,460 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Textarea Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Textarea Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>Textarea</code> field is a carbon copy of your standard <code>text</code> JSP tag. The only difference is text area are used for large amounts of text that can appear across multiple lines.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:TextArea viewKey="demo" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "textarea",
+    "template": "field",
+    "label": {
+        "text": "When to use TextArea's",
+        "attributes": {
+            "for": "date-demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "date-demo",
+            "id": "date-demo",
+            "type": "textarea",
+            "value": "This type of tag is for where you have a large amount of information. Something like a paragraph or simply a few sentances."
+        }
+    }
+}</pre>
+
+                <p>
+                   To define any <code>TextArea</code> input, developer need to implement the JSP tag and specify the <code>viewKey</code> the same way the would for a common <code>&lt;E2:Text&gt;</code> tag. Unlike the standard <code>&lt;E2:Text&gt;</code> the <code>type</code> attribute doesn't have to be defined as the tag itself implys the component type.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                A registered view key (previously called <code>pageElementName</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Default value of the input.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                required
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the field must be filled in (<a href="../common/attributes/required.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                readOnly
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the input should be read-only (<a href="../common/attributes/readOnly.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rows
+                            </th>
+                            <td>
+                                Integer
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Number of rows of text to display by default
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute of the input element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that needs to be executed. The string must include both event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                accessKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label or parts (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                    <li>HIDE_LABEL</li>
+                                    <li>HIDE_LABEL_NO_SPACE</li>
+                                    <li>HIDE_LABEL_YES_SPACE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                labelHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;label&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;textarea&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Java object attribute from which value is populated. It is the responsibility of the tag or its parent tag to make the object available to the page context.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rsMapping
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to map this field to result set. Please see the <a href="resultset.html">ResultSet custom tag documentation</a> for details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                message
+                            </th>
+                            <td>
+                                hashmap
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Provides a hashmap of a specific field level message to an input (<a href="../common/attributes/message.html">more details</a>).
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                format
+                            </th>
+                            <td>
+                                string
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Changes the a inputs value to match a specific structure (<a href="../common/attributes/format.html">more details</a>).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:TextArea type="text" viewKey="demo2" rows="10" /></pre>
+
+                <h3>Rows JSON</h3>
+                <pre class="code">
+{
+    "type": "textarea",
+    "template": "field",
+    "label": {
+        "text": "10 row example",
+        "attributes": {
+            "for": "date-demo2"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "date-demo2",
+            "id": "date-demo2",
+            "type": "textarea",
+            "rows": 10
+        }
+    }
+}</pre>
+
+                <p>
+                   Textareas support the ability to change the elements hieght without using style. To do this, developers need to declare the <code>rows</code> attribute. This sets the number of rows a textarea will display before forcing the element to start scrolling on the vertical axis. Since rows is a native attribute it will appear inside of the <code>input</code> attribute object when generated.
+                </p>
+
+                <h2>Rows examples</h2>
+
+                <section id="rows-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "full",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "When to use TextArea's",
+                                            "attributes": {
+                                                "for": "date-demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "date-demo",
+                                                "id": "date-demo",
+                                                "type": "textarea",
+                                                "value": "This type of tag is for where you have a large amount of information. Something like a paragraph or simply a few sentances."
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+            var rows = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "full",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "10 row example",
+                                            "attributes": {
+                                                "for": "date-demo2"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "date-demo2",
+                                                "id": "date-demo2",
+                                                "type": "textarea",
+                                                "rows": 10,
+                                                "value": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Examples
+                var defaultExample = document.getElementById("default-example");
+                var rowsExample = document.getElementById("rows-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    render.page(rowsExample, rows, function () {
+
+                        console.log("Rows Done!");
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,249 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="Format Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Format Attribute</h2>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    Masks are specific ways a particular data should appear when displayed. 
+                </p>
+
+                <ul>
+                    <li><a href="#dates">Dates</a></li>
+                    <li><a href="#number">Numbers</a></li>
+                </ul>
+
+                <p>
+                    Formats can be used on any type of output based tag below:
+                </p>
+
+                <ul>
+                    <li><a href="../../tags/date.html">Date</a></li>
+                    <li><a href="../../tags/tableColumn.html">Table Column</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Dates -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="dates">Date Masks</h3>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:Date viewKey="date_demo" format="MM/dd/yyyy" /> 
+- or -
+&lt;E2:Text control="date" type="date" viewKey="date_text_demo" format="MM/dd/yyyy" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Last date of the year",
+        "attributes": {
+            "for": "demo"
+        },
+        "visibility": "hidden",
+        "hasLayout": false
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "12/31/2015"
+        }
+    }
+}
+</pre>
+
+                <p>
+                    The date format can be used on on either the <code>E2:Date</code> or the <code>E2:Text</code> with the <codoe>type</codoe> attribute set to <em>date</em>. Formatting is done on the server side, so when developers pass in a format, the string value needs to meet the time date specifications provided in Java. For a full list of date time masks please consult the <a href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">Oracle documentation</a>.
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <p>
+                    Formats provide no addition markup at the JSON level. Existing values if any are already converted on and server in the inputs <code>Value</code> attribute. 
+                </p>
+
+                <section id="date-example">
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- Numbers -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="dates">Date Masks</h3>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:Text viewKey="text1" format="quantity" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Number Value with formatting",
+        "attributes": {
+            "for": "demo2"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo2",
+            "id": "demo2",
+            "type": "text",
+            "value": "1,235,897.00"
+        }
+    }
+}
+</pre>
+
+                <p>
+                    Number formatting is based on the Java number and currancy format spec. For more specific information on different formats, please reference the <a href="https://docs.oracle.com/javase/tutorial/i18n/format/numberintro.html" >Oracle documentation</a>. In most cases providing the value of either <em>quanity</em> or <em>currancy</em> is enough to outbut the desired proper formatting values.
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <section id="number-example">
+                </section>
+
+            </div>
+
+        </div>
+
+        <script>
+            var date = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Last date of the year",
+                                            "attributes": {
+                                                "for": "demo"
+                                            },
+                                            "visibility": "hidden",
+                                            "hasLayout": false
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "value": "12/31/2015"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var number = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Number Value with formatting",
+                                            "attributes": {
+                                                "for": "demo2"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo2",
+                                                "id": "demo2",
+                                                "type": "text",
+                                                "value": "1,235,897.00"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Examples
+                var dateExample = document.getElementById("date-example");
+                var numberExample = document.getElementById("number-example");
+
+                // Create the generic example
+                render.page(dateExample, date, function () {
+
+                    console.log("Date Done");
+
+                    render.page(numberExample, date, function () {
+
+                        console.log("Number Done");
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

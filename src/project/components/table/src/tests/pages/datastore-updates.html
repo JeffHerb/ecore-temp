@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "form",
+                                "contents": [
+                                    // Standard Control table
+                                    {
+                                        "template": "table",
+                                        "title": "Standard Input Contorls",
+                                        "attributes": {
+                                            "id": "E_STANDARD_INPUT_CONTROL_TABLE"
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Text Field",
+                                                            "attributes": {
+                                                                "data-colmap": "textField"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Textarea",
+                                                            "attributes": {
+                                                                "data-colmap": "textareaField"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Select Box",
+                                                            "attributes": {
+                                                                "data-colmap": "selectField"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "E_STANDARD_TEXTBOX",
+                                                                            "name": "E_STANDARD_TEXTBOX",
+                                                                            "value": "test"
+                                                                        }
+                                                                    },
+                                                                    "label": {
+                                                                        "attributes": {
+                                                                            "for": "E_STANDARD_TEXTBOX"
+                                                                        },
+                                                                        "text": "Standard Text Field:",
+                                                                        "visibility": "hidden",
+                                                                        "hasLayout": false
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "textarea",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "E_STANDARD_TEXTAREA",
+                                                                            "name": "E_STANDARD_TEXTAREA",
+                                                                            "value": "Long Text"
+                                                                        }
+                                                                    },
+                                                                    "label": {
+                                                                        "attributes": {
+                                                                            "for": "E_STANDARD_TEXTAREA"
+                                                                        },
+                                                                        "text": "Standard Text Field:",
+                                                                        "visibility": "hidden",
+                                                                        "hasLayout": false
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "select",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "E_STANDARD_SELECT",
+                                                                            "name": "E_STANDARD_SELECT",
+                                                                        },
+                                                                        "options": [
+                                                                            {
+                                                                                "text": "Blue",
+                                                                                "value": "blue"
+                                                                            },
+                                                                            {
+                                                                                "text": "Red",
+                                                                                "value": "red"
+                                                                            },
+                                                                            {
+                                                                                "text": "Green",
+                                                                                "value": "green"
+                                                                            }
+                                                                        ],
+                                                                        "value": "blue"
+                                                                    },
+                                                                    "label": {
+                                                                        "attributes": {
+                                                                            "for": "E_STANDARD_SELECT"
+                                                                        },
+                                                                        "text": "Standard Select Box:",
+                                                                        "visibility": "hidden",
+                                                                        "hasLayout": false
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    // Complex Controls
+                                    {
+                                        "template": "table",
+                                        "title": "Complex Control Table",
+                                        "attributes": {
+                                            "id": "E_COMPLEX_CONTROLS"
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "text": "Text Field",
+                                                            "attributes": {
+                                                                "data-colmap": "rating"
+                                                            }
+                                                        },
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "contents": [
+                                                                {
+                                                                    "type": "rating",
+                                                                    "template": "composite",
+                                                                    "parts": {
+                                                                        "label": {
+                                                                            "type": "label",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "attributes": {
+                                                                                    "for": "E_RATING_LABEL_NO_SPACE"
+                                                                                },
+                                                                                "text": "Hide Label with no space:",
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            }
+                                                                        },
+                                                                        "hidden": {
+                                                                            "type": "hidden",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "type": "hidden",
+                                                                                    "name": "E_RATING_LABEL_NO_SPACE",
+                                                                                    "id": "E_RATING_LABEL_NO_SPACE",
+                                                                                    "value": "3"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        }
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

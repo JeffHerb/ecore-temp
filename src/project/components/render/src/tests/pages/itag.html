@@ -1,0 +1,736 @@
+<!doctype HTML>
+<html lang="en" class="external-app emp-orpts-subtheme">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+        <div id="header-wrapper"></div>
+        <div id="body-wrapper"></div>
+        <div id="footer-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "header": {
+                "contents": [
+                    {
+                        "template": "external-universal-header"
+                    },
+                    {
+                        "template": "external-agency-header"
+                    }
+                ]
+            },
+            "page": {
+                "contents": [
+                    {
+                        "template": "external-pageinfo",
+                        "title": "Property Details",
+                        "instructions": [
+                            {
+                                "template": "output",
+                                "text": "<p>To reactivate the enrollment shown below, first verify the <em>Property information</em> and <em>Owner Summary</em> sections.When finished, select <strong> Add Enrollment</strong>.</p>"
+                            }
+                        ],
+                        "pageLegend": {
+                            "required": true,
+                            "helpText": true
+                        }
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "EC_LAST_NAME"
+                                            },
+                                            "text": "Last Name:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "id": "EC_LAST_NAME"
+                                            }
+                                        },
+                                        "help": [
+                                            {
+                                                "template": "output",
+                                                "raw": true,
+                                                "text": "<p>This is field external section/group instructions</p>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "EC_LAST_NAME_RO"
+                                            },
+                                            "text": "Last Name ReadOnly:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "id": "EC_LAST_NAME_RO",
+                                                "value": "TEST NAME"
+                                            },
+                                            "readOnly": true
+                                        },
+                                        "help": [
+                                            {
+                                                "template": "output",
+                                                "raw": true,
+                                                "text": "<p>This is field external read only</p>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "EC_ECORE_CURRENCY"
+                                            },
+                                            "text": "Ecore Currency ($):"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "id": "EC_ECORE_CURRENCY",
+                                                "value": "999,888,777",
+                                                "size": "20",
+                                                "max-length": "20"
+                                            },
+                                            "style": "currency,appended"
+                                        },
+                                        "suffix": {
+                                            "text": ".89"
+                                        },
+                                        "help": [
+                                            {
+                                                "template": "output",
+                                                "raw": true,
+                                                "text": "<p>This is suffix external section/group instructions</p>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "EC_TOTAL_WITH_LINE"
+                                            },
+                                            "text": "Total with line ($):"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "EC_TOTAL_WITH_LINE",
+                                                "id": "EC_TOTAL_WITH_LINE",
+                                                "value": "999,888,777.89"
+                                            },
+                                            "readOnly": true,
+                                            "totalLine": true,
+                                            "style": "currency"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "EC_TOTAL"
+                                            },
+                                            "text": "Total ($):"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "EC_TOTAL",
+                                                "id": "EC_TOTAL",
+                                                "value": "999,888,777.89"
+                                            },
+                                            "readOnly": true,
+                                            "total": true,
+                                            "style": "currency,total"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "input",
+                                        "template": "inputGroup",
+                                        "legend": "Sort On - Input Group:",
+                                        "style": "sort-on",
+                                        "options": [
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_1",
+                                                        "name": "E_FIELD_1",
+                                                    },
+                                                    "options": {
+                                                        "1":{
+                                                            "text": "Ascending",
+                                                            "value": "1"
+                                                        },
+                                                        "2": {
+                                                            "text": "Desceding",
+                                                            "value": "2"
+                                                        }
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_1"
+                                                    },
+                                                    "text": "Order:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            {
+                                                "type": "sortOn",
+                                                "template": "field",
+                                            },
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_3",
+                                                        "name": "E_FIELD_3",
+                                                    },
+                                                    "options": {
+                                                        "1": {
+                                                            "text": "Value One",
+                                                            "value": "1"
+                                                        },
+                                                        "2": {
+                                                            "text": "value Two",
+                                                            "value": "2"
+                                                        }
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_3"
+                                                    },
+                                                    "text": "Field 3:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            {
+                                                "help": [
+                                                    {
+                                                        "template": "output",
+                                                        "raw": true,
+                                                        "text": "<p>This is sort-on external section/group instructions</p>"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_DATE"
+                                            },
+                                            "text": "Date:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "id": "E_DATE"
+                                            }
+                                        },
+                                        "help": [
+                                            {
+                                                "template": "output",
+                                                "raw": true,
+                                                "text": "<p>This is date external section/group instructions</p>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "input",
+                                        "template": "inputGroup",
+                                        "legend": "Date Range - Input Group:",
+                                        "className": "sort-on",
+                                        "options": [
+                                            {
+                                                "type": "date",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_DATE_BEGIN"
+                                                    },
+                                                    "text": "Date Begin:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_DATE_BEGIN"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "dateRange",
+                                                "template": "field",
+                                            },
+                                            {
+                                                "type": "date",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_DATE_END"
+                                                    },
+                                                    "text": "Date End:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_DATE_END"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "help": [
+                                                    {
+                                                        "template": "output",
+                                                        "raw": true,
+                                                        "text": "<p>This is date range external section/group instructions</p>"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "input",
+                                        "template": "inputGroup",
+                                        "legend": "Date Month / Year - Input Group:",
+                                        "options": [
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_MONTH"
+                                                    },
+                                                    "text": "Month:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_MONTH"
+                                                    },
+                                                    "options": {
+                                                        "1": {
+                                                            "text": "Select one",
+                                                            "value": "select one"
+                                                        },
+                                                        "2": {
+                                                            "text": "January",
+                                                            "value": "January"
+                                                        },
+                                                        "3": {
+                                                            "text": "April",
+                                                            "value": "April"
+                                                        },
+                                                        "4": {
+                                                            "text": "July",
+                                                            "value": "July"
+                                                        },
+                                                        "5": {
+                                                            "text": "October",
+                                                            "value": "October"
+                                                        }
+                                                    },
+                                                    "noBlankOption": true
+                                                }
+                                            },
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_YEAR"
+                                                    },
+                                                    "text": "Year:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_YEAR"
+                                                    },
+                                                    "options": {
+                                                        "1": {
+                                                            "text": "Select one",
+                                                            "value": "select one"
+                                                        },
+                                                        "2": {
+                                                            "text": "2018",
+                                                            "value": "2018"
+                                                        },
+                                                        "3": {
+                                                            "text": "2017",
+                                                            "value": "2017"
+                                                        },
+                                                        "4": {
+                                                            "text": "2016",
+                                                            "value": "2016"
+                                                        }
+                                                    },
+                                                    "noBlankOption": true
+                                                }
+                                            },
+                                            {
+                                                "help": [
+                                                    {
+                                                        "template": "output",
+                                                        "raw": true,
+                                                        "text": "<p>This is date range external section/group instructions</p>"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "section",
+                        "contents": [
+                            {
+                                "type": "header",
+                                "template": "group",
+                                "title": "Itags in Table"
+                            },
+                            {
+                                "template": "table",
+                                "attributes": {
+                                    "id": "table_itags_in_table"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Text with help tag",
+                                                    "attributes":{
+                                                        "data-type": "alpha",
+                                                        "data-sort": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Link with help tag",
+                                                    "attributes":{
+                                                        "data-type": "alpha",
+                                                        "data-sort": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Field with help tag",
+                                                    "attributes":{
+                                                        "data-type": "alpha",
+                                                        "data-sort": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Date with help tag",
+                                                    "attributes":{
+                                                        "data-type": "alpha",
+                                                        "data-sort": "alpha"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "template": "text",
+                                                            "text": "Some text value"
+                                                        },
+                                                        {
+                                                            "template": "itag",
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column plain text help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "template": "link",
+                                                            "attributes": {
+                                                                "href": "#"
+                                                            },
+                                                            "text": "A link"
+                                                        },
+                                                        {
+                                                            "template": "itag",
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column link help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "EC_FIELD"
+                                                                },
+                                                                "text": "Field:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "EC_FIELD",
+                                                                    "size": 15,
+                                                                    "maxlength": 15
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "template": "itag",
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column text field help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "date",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "EC_DATE"
+                                                                },
+                                                                "text": "Date:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "EC_DATE",
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "template": "itag",
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column date field help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "template": "external-group",
+                        "title": "This is a external group",
+                        "instructions": [
+                            {
+                                "template": "output",
+                                "raw": true,
+                                "text": "<p>Part A of instructions</p>"
+                            },
+                            {
+                                "template": "output",
+                                "raw": true,
+                                "text": "<p>This is external section/group instructions"
+                            }
+                        ],
+                        "help": [
+                            {
+                                "template": "output",
+                                "raw": true,
+                                "text": "<p>This is section help text</p>"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "contents": [
+                    {
+                        "template": "external-agency-footer"
+                    },
+                    {
+                        "template": "external-universal-footer"
+                    }
+                ]
+            },
+            "preferences": {},
+            "context": {
+                "screen": {
+                    "type": "",
+                    "id": "itag-icon-test"
+                },
+                "urls": {
+                    "errorReport": false
+                }
+            }
+        };
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

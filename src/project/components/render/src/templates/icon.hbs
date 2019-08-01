@@ -1,0 +1,7 @@
+<i {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' iconClass=this.icon title=title) skipAttributes="name,for,type,value,checked,required" ) }}>
+    {{#if test~}}
+        {{~text~}}
+    {{~else~}}
+        {{~this.attributes.tile~}}
+    {{/if~}}
+</i>

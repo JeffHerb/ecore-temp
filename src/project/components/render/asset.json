@@ -1,0 +1,22 @@
+{
+	"type": "component",
+	"name": "render",
+	"lazy": false,
+    "sources": ["script"],
+	"preferences": {
+		"files": {
+			"render": {
+				"preferred": "render"
+			},
+			"templates": {
+				"preferred": "handlebars-templates"
+			},
+			"helpers": {
+				"preferred": "handlebars-helpers"
+			},
+			"partials": {
+				"preferred": "handlebars-partials"
+			}
+		}
+	}
+}

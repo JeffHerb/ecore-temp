@@ -1,0 +1,256 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Tag Custom Tag")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Tag Custom Tag</h1>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:TableColumn&gt;</code> defines the type of column data (header or data) and the whether it should be rendered or not.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Tag type="span" />
+                </pre>
+
+                <p>
+                    <code>E2:Tag</code> is used to create one off elements that when
+                </p>
+
+                <h3>Sample JSON</h3>
+
+
+                <pre class="code">
+{
+    "type": "span",
+    "template": "universalElm"
+    "text": "Custom Span!"
+}
+                </pre>
+
+                <p>
+                    <code>E2:Tag</code> is a generic way to specific HTML markup not currently being provided by existing custom tags. In the example above a developer needs to create a generic container to hold some text. In order to do this they use the <code>E2:Tag</code> custom tag and set the <code>type</code> of tag to be a <em>span</em>. Then directly on the tag they provide the custom <code>text</code> related to this span.
+                </p>
+
+                <p>
+                    The JSON markup for this tag is very lean. Both the <code>type</code> and <code>text</code> attributes are one to one matchies the producded JSON property. The only additon is that of the <code>template</code> property which always calls for the <em>universalElm</em> Handlebars template.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                type
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The type of HTML element that should be created
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                text
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the inner textNode to a specific value.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;input&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Tag as a wrapper</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Tag type="div" htmlAttributes="{'id':'custom-section'}">
+    &lt;E2:Text viewKey="E_TEXTBOX" />
+&lt;/E2:Tag>
+                </pre>
+
+                <p>
+                    <code>E2:Tag</code> can also be used to wrap other custom tags.
+                </p>
+
+                <h3>Sample JSON</h3>
+
+
+                <pre class="code">
+{
+    "type": "div",
+    "attributes": {
+        "id": "custom-section"
+    },
+    "template": "universalElm",
+    "contents": [
+        {
+            ... E2:Text Tag...
+        }
+    ]
+}
+                </pre>
+
+                <p>
+                    <code>E2:Tag</code> is a generic way to specific HTML markup not currently being provided by existing custom tags. In the example above a developer needs to create a generic container to hold some text. In order to do this they use the <code>E2:Tag</code> custom tag and set the <code>type</code> of tag to be a <em>span</em>. Then directly on the tag they provide the custom <code>text</code> related to this span.
+                </p>
+
+                <p>
+                    The JSON markup for this tag is very lean. Both the <code>type</code> and <code>text</code> attributes are one to one matchies the producded JSON property. The only additon is that of the <code>template</code> property which always calls for the <em>universalElm</em> Handlebars template.
+                </p>
+
+                <section id="container-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Default Tag",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "span",
+                        "template": "universalElm",
+                        "text": "Custom Span!"
+                    }
+                ]
+            };
+
+            var container = {
+                title: "Tag as a container",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "div",
+                        "attributes": {
+                            "id": "custom-section"
+                        },
+                        "template": "universalElm",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "template": "field",
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_TEXTBOX"
+                                    },
+                                    "text": "Example TextBox"
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "type": "text",
+                                        "id": "E_TEXTBOX",
+                                        "name": "E_TEXTBOX",
+                                        "value": "In a special wrapper"
+                                    }
+                                }
+                            }
+                        ]
+
+                    }
+                ]
+            }
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "tables", "domReady!"], function (render, tables) {
+
+                // // Examples
+                var defaultExample = document.getElementById("default-example");
+                var containerExample = document.getElementById("container-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    render.page(containerExample, container, function() {
+
+                        console.log("Container Done");
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../includes/footer.html)-->

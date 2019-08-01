@@ -1,0 +1,5 @@
+{
+    "name": "stylesheet",
+    "lazy": false,
+    "sources": ["script"]
+}

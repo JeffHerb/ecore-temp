@@ -1,0 +1,27 @@
+<fieldset {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-composite emp-date-time-composite"}' )) }}>
+    <div class="cui-label">
+        <legend>
+            {{~ this.legend~}}
+        </legend>
+    </div>
+
+    <div class="cui-data">
+        <div class="emp-input-collection">
+            {{#if this.date}}
+                {{~> (getPartialName this.date.template) this.date~}}
+            {{/if}}
+
+            {{#if this.hour}}
+                {{~> (getPartialName this.hour.template) this.hour~}}
+            {{/if}}
+
+            {{#if this.minute}}
+                {{~> (getPartialName this.minute.template) this.minute~}}
+            {{/if}}
+
+            {{#if this.period}}
+                {{~> (getPartialName this.minute.template) this.period~}}
+            {{/if}}
+        </div>
+    </div>
+</fieldset>

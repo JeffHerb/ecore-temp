@@ -1,0 +1,332 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Standard Notifier
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "notifierGroup",
+                                        "notifiers": [
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Standard Notifier",
+                                                    "id": "standard-notifier"
+                                                },
+                                                "text": "Standard Notifier"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Link Notifier",
+                                                    "href": "#",
+                                                    "id": "link-Notifier"
+                                                },
+                                                "text": "Link Notifier"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Popup Notifier",
+                                                    "href": "#",
+                                                    "id": "popup-notifier"
+                                                },
+                                                "text": "Popup Notifier",
+                                                "popup": true
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Color Notifiers
+                    // -- Black ---
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "notifierGroup",
+                                        "notifiers": [
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Standard Notifier",
+                                                    "id": "standard-notifier"
+                                                },
+                                                "text": "Standard Notifier",
+                                                "color": "black"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Link Notifier",
+                                                    "href": "#",
+                                                    "id": "link-Notifier"
+                                                },
+                                                "text": "Link Notifier",
+                                                "color": "black"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Popup Notifier",
+                                                    "href": "#",
+                                                    "id": "popup-notifier"
+                                                },
+                                                "text": "Popup Notifier",
+                                                "color": "black",
+                                                "popup": true
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // --- Green ---
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "notifierGroup",
+                                        "notifiers": [
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Standard Notifier",
+                                                    "id": "standard-notifier"
+                                                },
+                                                "text": "Standard Notifier",
+                                                "color": "green"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Link Notifier",
+                                                    "href": "#",
+                                                    "id": "link-Notifier"
+                                                },
+                                                "text": "Link Notifier",
+                                                "color": "green"
+                                            },
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Popup Notifier",
+                                                    "href": "#",
+                                                    "id": "popup-notifier"
+                                                },
+                                                "text": "Popup Notifier",
+                                                "color": "green",
+                                                "popup": true
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Table Notifiers
+                    {
+                        "template": "table",
+                        "title": "Table Notifiers",
+                        "attributes": {
+                            "id": "E_STANDARD_TABLE"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Color"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Class"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "JSP String"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Example"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Red/Undefined"
+                                        },
+                                        {
+                                            "text": "N/A"
+                                        },
+                                        {
+                                            "text": "N/A"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Standard Notifier",
+                                                        "title": "Standard Notifier",
+                                                        "id": "table-red-notifier"
+                                                    },
+                                                    "text": "RED"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Black"
+                                        },
+                                        {
+                                            "text": "emp-notifier-color-black"
+                                        },
+                                        {
+                                            "text": "black"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Black Notifier",
+                                                        "title": "Black Notifier",
+                                                        "id": "table-black-notifier"
+                                                    },
+                                                    "text": "BLK",
+                                                    "color": "black"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Green"
+                                        },
+                                        {
+                                            "text": "emp-notifier-color-green"
+                                        },
+                                        {
+                                            "text": "green"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Green Notifier",
+                                                        "title": "Green Notifier",
+                                                        "id": "table-green-notifier"
+                                                    },
+                                                    "text": "GRN",
+                                                    "color": "green"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Light Gray"
+                                        },
+                                        {
+                                            "text": "emp-notifier-color-lightgray"
+                                        },
+                                        {
+                                            "text": "lightgray"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Light Gray Notifier",
+                                                        "title": "Light Gray Notifier",
+                                                        "id": "table-lightgray-notifier"
+                                                    },
+                                                    "text": "LGY",
+                                                    "color": "lightgray"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

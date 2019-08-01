@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>Tooltip Test - Feta</title>
+    <link href="/dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <!-- Skip navigation for accessibility purposes -->
+    <div class="cui-hide-from-screen">
+        <a href="#nav">Go to navigation</a>
+        <a href="#main">Go to content</a>
+    </div>
+
+    <div id="nygov-universal-navigation" class="nygov-universal-container" data-iframe="true" data-updated="2014-11-07 08:30">
+        <noscript>
+            <iframe width="100%" height="86px" src="//static-assets.ny.gov/load_global_menu/ajax?iframe=true" frameborder="0" style="border:none; overflow:hidden; width:100%; height:86px;" scrolling="no">
+                Your browser does not support iFrames
+            </iframe>
+        </noscript>
+        <script type="text/javascript">
+            var _NY = {
+                HOST: 'static-assets.ny.gov',
+                BASE_HOST: 'www.ny.gov',
+                hideSettings: false,
+                hideSearch: false
+            };
+            (function (document, bundle, head) {
+                head = document.getElementsByTagName('head')[0];
+                bundle = document.createElement('script');
+                bundle.type = 'text/javascript';
+                bundle.async = true;
+                bundle.src = 'https://static-assets.ny.gov/sites/all/widgets/universal-navigation/js/dist/global-nav-bundle.js';
+                head.appendChild(bundle);
+            }(document));
+        </script>
+    </div>
+
+    <div id="cui-body-wrapper">
+
+        <header class="feta-agency-header">
+
+            <div class="cui-fixed-col-small-48px feta-toggle">
+                <div class="cui-no-wrap">NYS &darr;</div>
+            </div>
+
+            <div class="feta-agency-title">
+                <!-- Department of Taxation and Finance -->
+                <div class="feta-agency-name">
+                    <a href="https://tax.ny.gov"><span class="feta-agency-name-line1">Department of</span> <span class="feta-agency-name-line1">Taxation and Finance</span></a>
+                </div>
+            </div>
+
+            <div class="feta-agency-header-toggles">
+                <ul>
+                    <li><a href="http://www.tax.ny.gov/e-services/otc/help/tips_os.htm">Support</a></li>
+                    <li><a href="http://www.tax.ny.gov/help/contact/how_to_reach.htm">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div class="cui-fixed-col-small-48px feta-toggle">
+                <div class="cui-no-wrap">Menu &darr;</div>
+            </div>
+
+            <nav id="nav" role="navigation" class="feta-nav">
+                <div class="cui-col-small-6">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                    </ul>
+                </div>
+                <div class="cui-col-small-6 cui-align-right">
+                    <ul>
+                        <li><a href="#">Save &amp; Exit</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main" id="main">
+
+            <h1 class="feta-app-title">Tooltips</h1>
+
+            <h2 class="feta-app-title">Test Page</h2>
+
+            <div class="feta-page-instructions">
+                <p>Page instructions would go here.</p>
+            </div>
+
+            <div class="feta-page-legend">
+                <div class="feta-page-legend-item"><span class="cui-required">*</span> Required field</div>
+                <div class="feta-page-legend-item"><span class="cui-icon feta-icon-help">More information</span> Select to learn more about a particular field</div>
+            </div>
+
+            <form name="form_content" id="form_content" action="www.ny.gov" method="post">
+                <section class="cui-inline-field feta-label-width-half">
+                    <header>
+                        <h3>Form field examples</h3>
+                    </header>
+
+                    <div class="cui-row">
+                        <div class="cui-col">
+                            <fieldset>
+                                <div class="cui-field cui-selection-group">
+                                    <div class="cui-field-main">
+                                        <div class="cui-label">
+                                            <legend class="cui-desc">Are you filing in this quarter?</legend>
+                                        </div>
+                                        <div class="cui-data">
+                                            <input type="radio" class="cui-value" name="filingThisQuarter" id="filingThisQuarter_Y" value="1">
+                                            <label for="filingThisQuarter_Y">Yes</label>
+                                            <input type="radio" class="cui-value" name="filingThisQuarter" id="filingThisQuarter_N" checked="checked" value="2">
+                                            <label for="filingThisQuarter_N">No</label>
+                                        </div>
+                                        <div class="cui-controls">
+                                            <a href="#i1" class="cui-icon feta-icon-help">More information</a>
+                                        </div>
+                                    </div>
+                                    <div class="feta-field-instructions">
+                                        <div id="i1">
+                                            <p>Help text for question 1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="cui-row">
+                        <div class="cui-col">
+                            <div class="cui-field">
+                                <div class="cui-field-main">
+                                    <div class="cui-label">
+                                        <span class="cui-desc">First name:</span>
+                                    </div>
+                                    <div class="cui-data">
+                                        <span class="cui-value">John</span>
+                                    </div>
+                                    <div class="cui-controls">
+                                        <a href="#i2" class="cui-icon feta-icon-help">More information</a>
+                                    </div>
+                                </div>
+                                <div class="feta-field-instructions">
+                                    <div id="i2">
+                                        <p>Help text for question 2</p>
+                                        <p>Help text for question 2</p>
+                                        <p>Help text for question 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cui-row">
+                        <div class="cui-col">
+                            <div class="cui-field cui-required">
+                                <div class="cui-field-main">
+                                    <div class="cui-label">
+                                        <label for="lastName" class="cui-desc">Last name:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input type="text" class="cui-value" id="lastName" aria-required="true" size="20" maxlength="30" value="Smith">
+                                    </div>
+                                    <div class="cui-controls">
+                                        <a href="#i3" class="cui-icon feta-icon-help">More information</a>
+                                    </div>
+                                </div>
+                                <div class="feta-field-instructions">
+                                    <div id="i3">
+                                        <p>Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3. Help text for question 3.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cui-row">
+                        <div class="cui-col">
+                            <fieldset>
+                                <div class="cui-field cui-selection-group">
+                                    <div class="cui-field-main">
+                                        <div class="cui-label">
+                                            <legend class="cui-desc">Which quarters are you filing?</legend>
+                                        </div>
+                                        <div class="cui-data">
+                                            <input type="checkbox" class="cui-value whichQuarterDynamic" id="whichQuarters_1" value="1">
+                                            <label for="whichQuarters_1">First</label>
+                                            <input type="checkbox" class="cui-value whichQuarterDynamic" id="whichQuarters_2" checked="checked" value="2">
+                                            <label for="whichQuarters_2">Second</label>
+                                            <input type="checkbox" class="cui-value" id="whichQuarters_3" value="3">
+                                            <label for="whichQuarters_3">Third</label>
+                                            <input type="checkbox" class="cui-value" id="whichQuarters_4" value="4">
+                                            <label for="whichQuarters_4">Fourth</label>
+                                        </div>
+                                        <div class="cui-controls">
+                                            <a href="#i4" class="cui-icon feta-icon-help">More information</a>
+                                        </div>
+                                    </div>
+                                    <div class="feta-field-instructions">
+                                        <div id="i4">
+                                            <p>Help text for question 4</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </main>
+    </div>
+
+    <div id="nygov-universal-footer" class="nygov-universal-container">
+        <noscript>
+            <iframe id="nygov-universal-footer-frame" class="nygov-universal-container" width="100%" height="200px" src="//static-assets.ny.gov/load_global_footer/ajax?iframe=true" data-updated="2014-11-07 08:30" frameborder="0" style="border:none; overflow:hidden; width:100%; height:200px;" scrolling="no">
+                Your browser does not support iFrames
+            </iframe>
+        </noscript>
+    </div>
+
+    <script id="require" src="/dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'cui', 'feta', 'domReady!'], function ($, cui, feta) {
+        });
+    </script>
+</body>
+</html>

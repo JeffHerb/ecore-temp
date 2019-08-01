@@ -1,0 +1,36 @@
+{{#ifCond v1=this.section op="===" v2="globalHeader"~}}
+
+	{{#if this.list~}}
+
+        {{#ifCond v1=this.list op="hasLength" v2=true~}}
+            <ul class="cui-messages emp-messages">
+                {{#each this.list~}}
+                    <li {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' messageType=this.type scope="message" visibility=this.visibility))}}>{{~this.text~}}</li>
+                {{/each~}}
+            </ul>
+        {{~else~}}
+            <ul class="cui-messages emp-messages cui-hidden"></ul>
+        {{/ifCond~}}
+	{{~else~}}
+		<div class="cui-messages">
+			<div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' messageType=this.type scope="message" visibility=this.visibility)) }}>
+		    	{{~this.text~}}
+			</div>
+        </div>
+	{{/if~}}
+
+{{~else~}}
+    {{#if this.list~}}
+        <ul class="cui-messages">
+            {{#each this.list}}
+                <li {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' messageType=this.type scope="message" visibility=this.visibility))}}>{{~this.text~}}</li>
+            {{/each~}}
+        </ul>
+    {{~else~}}
+        <div class="cui-messages">
+            <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' messageType=this.type scope="message" visibility=this.visibility)) }}>
+                {{~this.text~}}
+            </div>
+        </div>
+    {{/if~}}
+{{/ifCond~}}

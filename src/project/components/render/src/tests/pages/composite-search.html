@@ -1,0 +1,822 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // TEST STANDARD SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_STANDARD_SEARCH_COMPOSITE_NO_LABEL"
+                                        },
+                                        "parts": {
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "NO_LABEL_STANDART_SEARCH"
+                                                    },
+                                                    "text": "No Label Standart Search:",
+                                                    "visibility": "hidden"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "NO_LABEL_STANDART_SEARCH",
+                                                        "name": "E_NO_LABEL_COMPOSITE",
+                                                        "type": "text",
+                                                        "value": "No Label Data",
+                                                        "size": 10
+                                                    }
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_STANDARD_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // STANDARD SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_STANDARD_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_STANDARD_SEARCH"
+                                                    },
+                                                    "text": "Standard Search:"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_STANDARD_SEARCH",
+                                                        "name": "E_STANDARD_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    }
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_STANDARD_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // READONLY SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_READONLY_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_READONLY_SEARCH"
+                                                    },
+                                                    "text": "Readonly Search:"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_READONLY_SEARCH",
+                                                        "name": "E_READONLY_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    "readOnly": true
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_READONLY_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // REQUIRED SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_REQUIRED_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_REQUIRED_SEARCH"
+                                                    },
+                                                    "text": "Required Search:"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_REQUIRED_SEARCH",
+                                                        "name": "E_REQUIRED_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    required: true
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_REQUIRED_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // READONLY REQUIRED SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_REQUIRED_READONLY_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_REQUIRED_READONLY_SEARCH"
+                                                    },
+                                                    "text": "Required Search:"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_REQUIRED_READONLY_SEARCH",
+                                                        "name": "E_REQUIRED_READONLY_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    "required": true,
+                                                    "readOnly": true
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_REQUIRED_READONLY_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // HIDDEN LABEL SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_HIDDEN_LABEL_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_HIDDEN_LABELS_SEARCH"
+                                                    },
+                                                    "text": "Go button example:",
+                                                    "visibility": "hidden"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_HIDDEN_LABELS_SEARCH",
+                                                        "name": "E_HIDDEN_LABELS_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    }
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_HIDDEN_LABELS_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // NO LABLE SPACE SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_HIDDEN_LABEL_NO_SPACE_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_HIDDEN_LABELS_SEARCH_NO_SPACE"
+                                                    },
+                                                    "text": "Go button example:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_HIDDEN_LABELS_SEARCH_NO_SPACE",
+                                                        "name": "E_HIDDEN_LABELS_SEARCH_NO_SPACE",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    }
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_HIDDEN_LABELS_SEARCH_NO_SPACE_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // ERROR SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_ERROR_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_ERROR_SEARCH"
+                                                    },
+                                                    "text": "Error Search:"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_ERROR_SEARCH",
+                                                        "name": "E_ERROR_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    required: true
+                                                },
+                                                "message": {
+                                                    "type": "error",
+                                                    "text": "This field is required!"
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_ERROR_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // FEDERAL SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_FEDERAL_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FEDERAL_SEARCH"
+                                                    },
+                                                    "text": "Federal Search:"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FEDERAL_SEARCH",
+                                                        "name": "E_FEDERAL_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    federal: true
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_FEDERAL_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // TWO INPUT SEARCH COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_FEDERAL_SEARCH_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "type": "select",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_TOGGLE_SEARCH"
+                                                    },
+                                                    "text": "Pick what we should search for:",
+                                                    "visibility": "hidden"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TOGGLE_SEARCH",
+                                                        "id": "E_TOGGLE_SEARCH",
+                                                    },
+                                                    "options": {
+                                                        "blue": {
+                                                            "text": "Blue",
+                                                            "value": "blue",
+                                                        },
+                                                        "green": {
+                                                            "text": "Green",
+                                                            "value": "green",
+                                                        },
+                                                        "red": {
+                                                            "text": "Red",
+                                                            "value": "red",
+                                                        },
+                                                    },
+                                                    "value": "blue"
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FEDERAL_SEARCH",
+                                                        "name": "E_FEDERAL_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    federal: true
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_FEDERAL_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "search",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_FEDERAL_SEARCH_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "type": "select",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_TOGGLE_SEARCH"
+                                                    },
+                                                    "text": "Pick what we should search for:",
+                                                    "visibility": "hidden"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TOGGLE_SEARCH",
+                                                        "id": "E_TOGGLE_SEARCH",
+                                                    },
+                                                    "options": {
+                                                        "blue": {
+                                                            "text": "Blue",
+                                                            "value": "blue",
+                                                        },
+                                                        "green": {
+                                                            "text": "Green",
+                                                            "value": "green",
+                                                        },
+                                                        "red": {
+                                                            "text": "Red",
+                                                            "value": "red",
+                                                        },
+                                                    },
+                                                    "value": "blue",
+                                                    "readOnly": true
+                                                }
+                                            },
+                                            "text": {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FEDERAL_SEARCH",
+                                                        "name": "E_FEDERAL_SEARCH",
+                                                        "type": "text",
+                                                        "value": "Some Data",
+                                                        "size": 10
+                                                    },
+                                                    federal: true
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "E_FEDERAL_SEARCH_GO"
+                                                    },
+                                                    "text": "Go"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "parts": {
+                                            "button": {
+                                                "input": {
+                                                    "attributes": {
+                                                        "title": "Validate",
+                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'headerOnly',action:'/EMPIRE/gateway/APIDEHOU01.tabset/NRP101S/NRP101S_RETRIEVE_PR_TP_HANDLER'}])",
+                                                        "type": "button",
+                                                        "name": "E_BTN_VALIDATE_6",
+                                                        "id": "E_BTN_VALIDATE_6",
+                                                        "data-validation": false
+                                                    },
+                                                    "text": "Validate"
+                                                },
+                                                "template": "field",
+                                                "type": "button"
+                                            },
+                                            "text": {
+                                                "template": "inputGroup",
+                                                "type": "inputs",
+                                                "legend": "Primary Taxpayer Name:",
+                                                "options": [
+                                                    {
+                                                        "input": {
+                                                            "attributes": {
+                                                                "size": 16,
+                                                                "aria-required": false,
+                                                                "maxlength": 16,
+                                                                "type": "text",
+                                                                "name": "primaryFirstName",
+                                                                "id": "E_FIRST_NAME"
+                                                            }
+                                                        },
+                                                        "template": "field",
+                                                        "type": "text"
+                                                    },
+                                                    {
+                                                        "input": {
+                                                            "attributes": {
+                                                                "size": 1,
+                                                                "aria-required": true,
+                                                                "maxlength": 1,
+                                                                "type": "text",
+                                                                "name": "primaryMiddleInitial",
+                                                                "id": "E_MIDDLE_INITIAL",
+                                                                "data-validation": "isAlphaNumeric(document.form.name)"
+                                                            },
+                                                            "required": true
+                                                        },
+                                                        "template": "field",
+                                                        "type": "text"
+                                                    },
+                                                    {
+                                                        "input": {
+                                                            "attributes": {
+                                                                "size": 40,
+                                                                "aria-required": false,
+                                                                "maxlength": 138,
+                                                                "type": "text",
+                                                                "name": "primarylastName",
+                                                                "id": "E_LAST_NAME"
+                                                            }
+                                                        },
+                                                        "template": "field",
+                                                        "type": "text"
+                                                    },
+                                                    {
+                                                        "input": {
+                                                            "attributes": {
+                                                                "aria-required": false,
+                                                                "name": "primarySuffix",
+                                                                "id": "E_NAME_SUFFIX"
+                                                            },
+                                                            "options": [
+                                                                {
+                                                                    "value": "0",
+                                                                    "text": "I"
+                                                                },
+                                                                {
+                                                                    "value": "1",
+                                                                    "text": "II"
+                                                                },
+                                                                {
+                                                                    "value": "2",
+                                                                    "text": "III"
+                                                                },
+                                                                {
+                                                                    "value": "3",
+                                                                    "text": "IV"
+                                                                },
+                                                                {
+                                                                    "value": "4",
+                                                                    "text": "V"
+                                                                },
+                                                                {
+                                                                    "value": "5",
+                                                                    "text": "JR"
+                                                                },
+                                                                {
+                                                                    "value": "6",
+                                                                    "text": "SR"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "template": "field",
+                                                        "type": "select"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "properties": {},
+                                        "type": "search",
+                                        "template": "composite"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

@@ -1,0 +1,294 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Editable Date Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE",
+                                                "id": "E_TEST_DATE",
+                                                "type": "text",
+                                                "value": ""
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // ReadOnly Date Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_READONLY"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_READONLY",
+                                                "id": "E_TEST_DATE_READONLY",
+                                                "type": "text",
+                                                "value": "10/1/1984"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Date Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_REQUIRED"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_REQUIRED",
+                                                "id": "E_TEST_DATE_REQUIRED",
+                                                "type": "text",
+                                                "value": "",
+                                                "aria-required": "true"
+                                            },
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Readonly Required Date
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_READONLY_REQUIRED"
+                                            },
+                                            "text": "Test Text:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_READONLY_REQUIRED",
+                                                "id": "E_TEST_DATE_READONLY_REQUIRED",
+                                                "type": "text",
+                                                "value": "",
+                                                "aria-required": "true"
+                                            },
+                                            "readOnly": true,
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Hidden Text Label Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_HIDDEN_LABEL"
+                                            },
+                                            "text": "Test Text:",
+                                            "visibility": "hidden"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_HIDDEN_LABEL",
+                                                "id": "E_TEST_DATE_HIDDEN_LABEL",
+                                                "type": "text",
+                                                "value": ""
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Hidden Text Label With No Space Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_HIDDEN_LABEL_NO_SPACE"
+                                            },
+                                            "text": "Test Text:",
+                                            "visibility": "hidden",
+                                            "hasLayout": false
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_HIDDEN_LABEL_NO_SPACE",
+                                                "id": "E_TEST_DATE_HIDDEN_LABEL_NO_SPACE",
+                                                "type": "text",
+                                                "value": ""
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Error Message Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_ERROR"
+                                            },
+                                            "text": "Test Text:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_ERROR",
+                                                "id": "E_TEST_DATE_ERROR",
+                                                "type": "text",
+                                                "value": ""
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This field is required!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Federal Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_DATE_FEDERAL"
+                                            },
+                                            "text": "Test Text:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_DATE_FEDERAL",
+                                                "id": "E_TEST_DATE_FEDERAL",
+                                                "type": "text",
+                                                "value": ""
+                                            },
+                                            "federal": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

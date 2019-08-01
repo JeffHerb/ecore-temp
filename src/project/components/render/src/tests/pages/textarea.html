@@ -1,0 +1,352 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Editable TeTextarea xt Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA"
+                                            },
+                                            "text": "Test Textarea:",
+                                            "style":"top-align-label"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA",
+                                                "id": "E_TEST_TEXTAREA",
+                                                "value": "editable value"
+                                            }
+                                        },
+                                        "style":"top-align-label"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // ReadOnly Textarea Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_READONLY"
+                                            },
+                                            "text": "Test Textarea:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_READONLY",
+                                                "id": "E_TEST_TEXTAREA_READONLY",
+                                                "value": "readonly value"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Textarea Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_REQUIRED"
+                                            },
+                                            "text": "Test Textarea:",
+
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_REQUIRED",
+                                                "id": "E_TEST_TEXTAREA_REQUIRED",
+                                                "value": "required textarea",
+                                                "aria-required": "true"
+                                            },
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Readonly Required Textarea Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_READONLY_REQUIRED"
+                                            },
+                                            "text": "Test Textarea:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_READONLY_REQUIRED",
+                                                "id": "E_TEST_TEXTAREA_READONLY_REQUIRED",
+                                                "value": "required textarea",
+                                                "aria-required": "true"
+                                            },
+                                            "readOnly": true,
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Textarea Hidden Label with space Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_HIDDEN_LABEL"
+                                            },
+                                            "text": "Test Textarea:",
+                                            "visibility": "hidden"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_HIDDEN_LABEL",
+                                                "id": "E_TEST_TEXTAREA_HIDDEN_LABEL",
+                                                "value": "hidden textarea label, but space is still allocated."
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required Textarea Hidden Label without space Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_HIDDEN_LABEL_WITHOUTSPACE"
+                                            },
+                                            "text": "Test Textarea:",
+                                            "visibility": "hidden",
+                                            "hasLayout": false
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_HIDDEN_LABEL_WITHOUTSPACE",
+                                                "id": "E_TEST_TEXTAREA_HIDDEN_LABEL_WITHOUTSPACE",
+                                                "value": "hidden textarea label, but no additional space is still allocated."
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Error Message Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_ERROR"
+                                            },
+                                            "text": "Test Textarea:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_ERROR",
+                                                "id": "E_TEST_TEXTAREA_ERROR",
+                                                "value": "hidden textarea label, but no additional space is still allocated."
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This field is required!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Federal Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_FEDERAL"
+                                            },
+                                            "text": "Test Textarea:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_FEDERAL",
+                                                "id": "E_TEST_TEXTAREA_FEDERAL",
+                                                "value": "hidden textarea label, but no additional space is still allocated."
+                                            },
+                                            "federal": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Data-Title Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_TEXTAREA_READONLY"
+                                            },
+                                            "text": "Test Textarea:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_TEXTAREA_READONLY",
+                                                "id": "E_TEST_TEXTAREA_READONLY",
+                                                "value": "readonly value",
+                                                "data-title": "readonly hover text value"
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_LIST_VIEW"
+                                            },
+                                            "text": "Read only List view:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_LIST_VIEW",
+                                                "id": "E_LIST_VIEW",
+                                                "value": "100000,100001,100002,100003,100004,100005,100006,100007,100008,100009,100010"
+                                            },
+                                            "readOnly": true,
+                                            "style": "commaColumnList"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

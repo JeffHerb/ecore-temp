@@ -1,0 +1,5 @@
+{
+    "name": "uimockup",
+    "lazy": true,
+    "sources": ["script", "style"]
+}

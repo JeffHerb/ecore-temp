@@ -1,0 +1,800 @@
+//   ========================================================
+// * @name       _group.scss
+// * @desc       Empire section styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Default section styles
+// * --------------------------------------------------------
+section {
+    padding: $emp-group-padding;
+    border: $emp-group-border;
+    border-top: $emp-group-border; // Necessary?
+    border-bottom: $emp-group-border; // Necessary?
+
+    // Top-level sections
+    @include pointbreak($cui-bp-medium, true) {
+        *:not(section):not(.emp-section-in-section-container):not(.emp-col-half) > & {
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    // Force grids into rows at small
+    .cui-row {
+        display: block;
+
+        .emp-col-half,
+        .emp-col-full {
+            margin-bottom: 7px !important;
+        }
+    }
+
+    @include pointbreak($cui-bp-medium) {
+        .cui-row {
+            @include row();
+        }
+    }
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        border-top: $emp-group-border;
+        border-bottom: $emp-group-border;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        border-top: $emp-group-border;
+        border-bottom: $emp-group-border;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        border-top: $emp-group-border;
+        border-bottom: $emp-group-border;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        border-top: $emp-group-border;
+        border-bottom: $emp-group-border;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        border-top: $emp-group-border;
+        border-bottom: $emp-group-border;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        border-top: $emp-group-border;
+        border-bottom: $emp-group-border;
+    }
+
+    // Need an extra tag to override the specificity in the default CUI styles
+    body & {
+        margin: $emp-group-margin;
+
+        // Add side borders and margin on larger screens
+        @include pointbreak($cui-bp-large) {
+            margin: $emp-group-margin-desktop;
+        }
+    }
+
+    // Add side borders and margin on larger screens
+    //@include pointbreak($cui-bp-large) {
+    @media (min-width: $cui-bp-large) {
+        border-left: $emp-group-border;
+        border-right: $emp-group-border;
+        border-radius: $emp-group-border-radius;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-left: $emp-group-border;
+            border-right: $emp-group-border;
+            border-radius: $emp-group-border-radius;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-left: $emp-group-border;
+            border-right: $emp-group-border;
+            border-radius: $emp-group-border-radius;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-left: $emp-group-border;
+            border-right: $emp-group-border;
+            border-radius: $emp-group-border-radius;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-left: $emp-group-border;
+            border-right: $emp-group-border;
+            border-radius: $emp-group-border-radius;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-left: $emp-group-border;
+            border-right: $emp-group-border;
+            border-radius: $emp-group-border-radius;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-left: $emp-group-border;
+            border-right: $emp-group-border;
+            border-radius: $emp-group-border-radius;
+        }
+    }
+
+    & > header {
+        @include row;
+        min-height: 0;
+        cursor: pointer;
+        font-family: $cui-font-heading;
+        border-bottom: $emp-group-header-border-bottom;
+        background-color: $emp-group-header-bg-color;
+        color: $emp-group-header-color;
+        
+        //prevent cut-off at bottom of page.
+        @media print{
+            page-break-inside: avoid;
+        }
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-bottom: $emp-group-header-border-bottom;
+            background-color: $emp-group-header-bg-color;
+            color: $emp-group-header-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-bottom: $emp-group-header-border-bottom;
+            background-color: $emp-group-header-bg-color;
+            color: $emp-group-header-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-bottom: $emp-group-header-border-bottom;
+            background-color: $emp-group-header-bg-color;
+            color: $emp-group-header-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-bottom: $emp-group-header-border-bottom;
+            background-color: $emp-group-header-bg-color;
+            color: $emp-group-header-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-bottom: $emp-group-header-border-bottom;
+            background-color: $emp-group-header-bg-color;
+            color: $emp-group-header-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-bottom: $emp-group-header-border-bottom;
+            background-color: $emp-group-header-bg-color;
+            color: $emp-group-header-color;
+        }
+
+        &:nth-of-type(1) {
+            margin-bottom: $emp-group-padding-bottom + $emp-group-row-padding-top;
+        }
+
+        label,
+        h3 {
+            color: $emp-group-header-color;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $emp-group-header-color;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $emp-group-header-color;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $emp-group-header-color;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $emp-group-header-color;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $emp-group-header-color;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $emp-group-header-color;
+            }
+        }
+
+        &:not(.emp-flex-header) {
+            @include pointbreak($cui-bp-medium, true) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .emp-section-title {
+                @include grid-col(12);
+                @include col-fluid($width: 100%, $breakpointName: "medium");
+
+                padding-left: $emp-padding;
+
+                @include pointbreak($cui-bp-medium) { // For specificity over grid mixin
+                    padding-left: $emp-padding;
+                }
+
+                @include pointbreak($cui-bp-medium, true) {
+                    order: 1;
+                    flex: 0 1 100%;
+                    max-width: calc(100% - 96px);
+                    padding-left: $emp-padding / 2;
+                }
+
+                // Remove the popup icon on flower buttons that appear in the header
+                button span.emp-popup {
+                    background: none;
+                }
+            }
+
+            .emp-section-field {
+                @include grid-col(12);
+                @include col-fluid($width: 100%, $breakpointName: "medium");
+                white-space: nowrap;
+                line-height: $emp-group-header-min-height;
+                margin: ($emp-group-header-font-size - $cui-font-size - $emp-group-field-padding-top)/2 0;
+                padding-top: 3px !important;
+
+                @include pointbreak($cui-bp-medium, true) {
+                    order: 3;
+                    padding-left: $emp-padding / 2;
+                    padding-right: $emp-padding / 2;
+                }
+
+                .emp-field {
+                    margin-top: 2px;
+
+                    .cui-data {
+                        display: inline;
+                        margin-top: 0;
+                        width: auto;
+
+                        .emp-data {
+                            margin-top: -3px;
+                            font-weight: normal !important;
+                        }
+
+                        i.emp-icon-redcheck:after,
+                        i.emp-icon-greencheck:after {
+                            top: 11px
+                        }
+                    }
+
+                    .cui-label {
+                        display: inline;
+                        float:none;
+
+                        label, span {
+                            font-size: 16px;
+                        }
+
+                        .emp-label {
+                            margin-top: 0;
+                        }
+                    }
+
+                    .cui-data-left {
+                        height: 30px;
+                        margin-top: -3px;
+
+                        .emp-icon-redcheck {
+                            margin-top: 1px;
+                        }
+
+                        .emp-icon-stop {
+                            margin-top: 0;
+                            position: relative;
+                            top: 6px;
+                        }
+                    }
+
+                    span, label {
+                        font-size: 16px !important;
+                    }
+                }
+            }
+
+            .emp-section-controls {
+                @include grid-col(12);
+                @include col-fluid($width: 100px, $breakpointName: "medium");
+                line-height: $emp-group-header-min-height;
+                min-width: 6em; // This could go down to 5.8em if you really wanted it to
+                list-style: none outside none;
+
+                @include pointbreak($cui-bp-medium, true) {
+                    order: 2;
+                    flex: 0 1 96px;
+                }
+
+                ul {
+                    float: right;
+
+                    li {
+                        display: block;
+                        float: left;
+                        padding-top: 3px;
+
+                        button {
+                            margin: $emp-group-controls-button-margin;
+                            vertical-align: middle;
+                            transition: transform 150ms ease-in-out;
+
+                            &:hover {
+                                background-color: transparent; // Override standard button style
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        &:last-child button {
+                            margin-right: 1em;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        h3 {
+            padding: $emp-group-header-padding;
+            margin: $emp-group-header-margin;
+            @include fontSize($emp-group-header-font-size);
+            font-weight: $cui-font-weight-semibold;
+
+            button {
+                padding: ($cui-button-padding-top - 3) ($cui-button-padding-right - 4) ($cui-button-padding-bottom - 4) ($cui-button-padding-left - 4);
+                margin-left: $cui-button-margin-left;
+                vertical-align: text-top;
+            }
+
+            button.cui-icon {
+                margin-top: 0;
+            }
+        }
+
+        &.emp-flex-header {
+
+            .emp-section-title {
+                padding-left: $emp-padding;
+
+                @include pointbreak($cui-bp-medium) { // For specificity over grid mixin
+                    padding-left: $emp-padding;
+                }
+            }
+
+            .emp-section-field {
+                .emp-field {
+                    display: inline-block;
+                    margin-top: 2px;
+                    float: right;
+
+                    .cui-data {
+                        display: inline;
+                        width: 100%;
+                        margin-top: 0;
+
+                        .emp-data {
+                            margin-top: -2px;
+                        }
+
+                        i.emp-icon-redcheck:after,
+                        i.emp-icon-greencheck:after {
+                            top: 11px
+                        }
+                    }
+
+                    .cui-label {
+                        display: inline;
+                        float:none;
+
+                        label, span {
+                            font-size: 16px;
+                        }
+                    }
+
+                    .cui-data-left {
+
+                        .cui-data {
+                            width: auto;
+                        }
+
+                        .cui-label {
+
+                            .emp-label {
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    span, label {
+                        font-size: 16px !important;
+                    }
+                }
+            }
+
+            .emp-section-controls {
+                @include grid-col(12);
+                @include col-fluid($width: 100px, $breakpointName: "medium");
+                line-height: $emp-group-header-min-height;
+                min-width: 6em; // This could go down to 5.8em if you really wanted it to
+                list-style: none outside none;
+
+                ul {
+                    float: right;
+
+                    li {
+                        display: block;
+                        float: left;
+                        padding-top: 3px;
+
+                        button {
+                            margin: $emp-group-controls-button-margin;
+                            vertical-align: middle;
+                        }
+
+                        &:last-child button {
+                            margin-right: 0.5em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.emp-no-collapse > header{
+        cursor: default;
+    }
+
+    // Top-level sections
+    @include pointbreak($cui-bp-medium, true) {
+        *:not(section):not(.emp-section-in-section-container) > & > header{
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    .emp-table {
+        padding: $emp-group-row-padding;
+    }
+
+    .emp-field {
+        input:not([type="button"]),
+        select,
+        textarea {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+    }
+
+    // Sub-section
+    section {
+        margin: $emp-margin $emp-margin 0.75em $emp-margin;
+        padding: $emp-group-padding;
+
+        & > header {
+            padding: 0;
+            margin-bottom: 0;
+
+            h3 {
+                @include fontSize($emp-group-header-font-size - 2);
+            }
+
+            label,
+            h3 {
+                color: $emp-subgroup-header-color;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    color: $emp-subgroup-header-color;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    color: $emp-subgroup-header-color;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    color: $emp-subgroup-header-color;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    color: $emp-subgroup-header-color;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    color: $emp-subgroup-header-color;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    color: $emp-subgroup-header-color;
+                }
+            }
+        }
+    }
+
+    // Collapsed section
+    &.emp-collapse {
+
+        & > header {
+            border: $emp-group-border; // Is this needed? Under the old theming structure this selector was necessary just for added specificity so the theme would take effect
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                border: $emp-group-border;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                border: $emp-group-border;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                border: $emp-group-border;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                border: $emp-group-border;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                border: $emp-group-border;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                border: $emp-group-border;
+            }
+        }
+
+        // Top-level sections
+        @include pointbreak($cui-bp-medium, true) {
+            body *:not(section):not(.emp-section-in-section-container) > & > header { // Added `body` for specificity over `.theme-teal body section.emp-collapse header`
+                border-left: none;
+                border-right: none;
+            }
+        }
+
+        .emp-section-in-section-container {
+            visibility: hidden;
+            height: 1px;
+
+            section {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-bottom: 0;
+                overflow: hidden;
+                height: 1px;
+            }
+        }
+    }
+
+    // Section next to another section should keep its padding
+    section + section {
+        padding: $emp-group-row-padding;
+        margin-bottom: 0.75em;
+
+        @include pointbreak($cui-bp-medium) {
+            padding: 0 0 $emp-padding 0;
+        }
+    }
+}
+
+.emp-icon-section-toggle-collapse {
+    background: url($emp-images-path + "emp-triangle-section-toggle.svg") no-repeat 0 0 transparent;
+    border-width: 0;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "emp-triangle-section-toggle.png");
+        }
+    }
+
+    header {
+        background-color: $emp-group-header-bg-color-collapsed;
+        border-color: $emp-group-header-border-color-collapsed;
+        border-bottom-width: 2px;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            background-color: $emp-group-header-bg-color-collapsed;
+            border-color: $emp-group-header-border-color-collapsed;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            background-color: $emp-group-header-bg-color-collapsed;
+            border-color: $emp-group-header-border-color-collapsed;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            background-color: $emp-group-header-bg-color-collapsed;
+            border-color: $emp-group-header-border-color-collapsed;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            background-color: $emp-group-header-bg-color-collapsed;
+            border-color: $emp-group-header-border-color-collapsed;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            background-color: $emp-group-header-bg-color-collapsed;
+            border-color: $emp-group-header-border-color-collapsed;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            background-color: $emp-group-header-bg-color-collapsed;
+            border-color: $emp-group-header-border-color-collapsed;
+        }
+    }
+
+    section.emp-collapse & {
+        transform: rotate(180deg);
+    }
+}
+
+section.emp-collapse > header .emp-section-controls .emp-icon-section-toggle-collapse, // For specificity over `section > header:not(.emp-flex-header) .emp-section-controls ul li button:hover`
+section.emp-collapse .emp-icon-section-toggle-collapse {
+    transform: rotate(180deg);
+
+    &:hover {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+body section.emp-collapse { // `body` was added to give this selector specificity over theme styles for opened section (i.e. `.theme-abc section` is the same specificity as `section.emp-collapse` alone)
+    padding-bottom: 0 !important;
+    border: none; // We'll use the `<header>` to provide the border instead; otherwise side-by-side groups may appear to be open because flex box forces them to have equal heights
+
+    // Hide everything but the header
+    & > *:not(header):not(.emp-table):not(.emp-section-in-section-container):not(.form-lines-sections) {
+        display: none;
+    }
+
+    header {
+        margin-bottom: 0 !important;
+
+        // Same border styles as an opened group
+        border: $emp-group-border;
+        border-radius: $emp-group-border-radius;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border: $emp-group-border;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border: $emp-group-border;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border: $emp-group-border;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border: $emp-group-border;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border: $emp-group-border;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border: $emp-group-border;
+        }
+    }
+
+    // @media print {
+
+    //     & > {
+
+    //         div, section {
+    //             background-color: #000;
+    //             display: none !important;
+    //         }
+    //     }
+    // }
+}
+
+// Side-by-side sections
+.emp-section-in-section-container {
+    //@include row;
+
+    & > section {
+        // Each section gets its own row on small and medium screens
+        @include pointbreak($cui-bp-large-minus, true) {
+            @include col-fluid($width: 100%);
+        }
+
+        // Equally distribute all sibling sub-sections
+        @include col(0 1 100%);
+        padding: $emp-group-padding; // Re-apply padding that was zero'd out by `flex-col`
+    }
+}
+
+.emp-equal-height {
+    & >.emp-col-full,
+    & > .emp-col-half {
+        // Equally distribute all sibling sub-sections
+        @include row;
+
+        & section {
+            @include col(0 1 100%);
+        }
+    }
+}
+
+.emp-inline-sections {
+    display: flex;
+
+    .emp-section-in-section-container  {
+        flex: 1 0;
+        display: flex;
+
+        section {
+            flex: 1 0;
+        }
+    }
+
+    & > section {
+        flex: 1 0;
+    }
+}
+
+.emp-section-in-section-container > section {
+    margin: 10px 10px 0.75em 10px;
+}
+
+form > .cui-row:first-child {
+    margin-top: 10px !important;
+}
+
+.emp-tab-contents section {
+    padding: 0;
+}

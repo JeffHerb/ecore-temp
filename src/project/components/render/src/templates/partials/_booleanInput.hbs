@@ -1,0 +1,32 @@
+{{#unless this.noWrap~}}
+    <div class="cui-data">
+{{/unless~}}
+
+{{! Check to see if the input is read only }}
+{{#ifCond v1=this.input.readOnly op='boolCheck' v2=true ~}}
+
+    {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
+
+        {{#if this.input.attributes.checked~}}
+            {{~> _icon this icon="checkmark" class="emp-boolean-icon" title="Item checked" attributes=this.input.attributes~}}
+        {{~else~}}
+            {{~> _icon this icon="not-applicable" class="emp-boolean-icon" title="Item not checked" attributes=this.input.attributes~}}
+        {{/if~}}
+
+    {{/ifCond~}}
+
+{{~else~}}
+
+    {{!-- <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=defaults)}} /> --}}
+
+    <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this) scope="boolean-input" ) }} />
+
+    {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
+        <input type="hidden" name="!{{this.input.attributes.name}}" id="!{{this.input.attributes.id}}" value="{{this.input.uncheckValue}}" />
+    {{/ifCond ~}}
+
+{{/ifCond~}}
+
+{{#unless this.noWrap~}}
+    </div>
+{{/unless~}}

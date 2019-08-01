@@ -1,0 +1,43 @@
+<svg id="Layer_1" enable-background="new 0 0 36 36" viewBox="0 0 36 36" x="0px" y="0px" width="36px" height="36px" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+  <radialGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.9378 0 0 1 0.06 0)" cx="19.1377" cy="18.4063" r="15.0946">
+    <stop offset="0" stop-color="rgb(255, 255, 255)"/>
+    <stop offset="1" stop-color="rgb(230, 230, 230)"/>
+  </radialGradient>
+  <path fill="url(#SVGID_1_)" stroke="#000000" stroke-miterlimit="10" d="M33.096 4.906H3.545c-0.542 0-1.045 0.339-1.045 0.96v24.818c0 0.62 0.503 1.222 1.045 1.222h28.902c0.543 0 1.053-0.602 1.053-1.222V5.866C33.5 5.246 33.639 4.906 33.096 4.906ZM9.779 8.313c-0.686 0-1.24-0.636-1.24-1.42 0-0.785 0.554-1.42 1.24-1.42 0.685 0 1.24 0.636 1.24 1.42C11.019 7.677 10.464 8.313 9.779 8.313ZM26.031 8.313c-0.686 0-1.24-0.636-1.24-1.42 0-0.785 0.555-1.42 1.24-1.42s1.239 0.636 1.239 1.42C27.271 7.677 26.717 8.313 26.031 8.313Z"/>
+  <ellipse fill="#ffffff" cx="9.779" cy="6.893" rx="1.24" ry="1.42"/>
+  <ellipse fill="#ffffff" cx="26.031" cy="6.893" rx="1.24" ry="1.42"/>
+  <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="18.0098" y1="12.4063" x2="18.0098" y2="5.3804">
+    <stop offset="0" stop-color="rgb(166, 0, 0)"/>
+    <stop offset="1" stop-color="rgb(255, 0, 0)"/>
+  </linearGradient>
+  <path fill="url(#SVGID_2_)" d="M32.686 5.406H3.362C2.824 5.406 3 5.228 3 5.806v6.601h30V5.806C33 5.228 33.225 5.406 32.686 5.406ZM9.547 8.084c-0.68 0-1.231-0.591-1.231-1.322s0.551-1.323 1.231-1.323 1.23 0.592 1.23 1.323S10.227 8.084 9.547 8.084ZM25.676 8.084c-0.68 0-1.232-0.591-1.232-1.322s0.553-1.323 1.232-1.323c0.679 0 1.229 0.592 1.229 1.323S26.354 8.084 25.676 8.084Z"/>
+  <ellipse fill="#ffffff" stroke="#c1272d" stroke-miterlimit="10" cx="9.106" cy="6.86" rx="1.28" ry="1.234"/>
+  <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="8.438" y1="4.2734" x2="10.1567" y2="4.2734">
+    <stop offset="0.0337" stop-color="rgb(167, 169, 172)"/>
+    <stop offset="0.2325" stop-color="rgb(182, 184, 186)"/>
+    <stop offset="0.382" stop-color="rgb(196, 198, 200)"/>
+    <stop offset="0.5744" stop-color="rgb(181, 183, 186)"/>
+    <stop offset="0.7191" stop-color="rgb(167, 169, 172)"/>
+    <stop offset="1" stop-color="rgb(209, 211, 212)"/>
+    <stop offset="1" stop-color="rgb(167, 169, 172)"/>
+  </linearGradient>
+  <path fill="url(#SVGID_3_)" stroke="#1a1a1a" stroke-miterlimit="10" stroke-opacity="0.82" d="M10.157 5.518c0 0.572-0.386 1.038-0.859 1.038 -0.474 0-0.86-0.466-0.86-1.038V3.029c0-0.571 0.386-1.038 0.86-1.038 0.473 0 0.859 0.466 0.859 1.038V5.518Z"/>
+  <ellipse fill="#ffffff" stroke="#c1272d" stroke-miterlimit="10" cx="25.833" cy="6.86" rx="1.28" ry="1.234"/>
+  <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="25.3145" y1="4.2734" x2="27.0303" y2="4.2734">
+    <stop offset="0.0337" stop-color="rgb(167, 169, 172)"/>
+    <stop offset="0.2325" stop-color="rgb(182, 184, 186)"/>
+    <stop offset="0.382" stop-color="rgb(196, 198, 200)"/>
+    <stop offset="0.5744" stop-color="rgb(181, 183, 186)"/>
+    <stop offset="0.7191" stop-color="rgb(167, 169, 172)"/>
+    <stop offset="1" stop-color="rgb(209, 211, 212)"/>
+    <stop offset="1" stop-color="rgb(167, 169, 172)"/>
+  </linearGradient>
+  <path fill="url(#SVGID_4_)" stroke="#1a1a1a" stroke-miterlimit="10" stroke-opacity="0.82" d="M27.03 5.518c0 0.572-0.386 1.038-0.858 1.038 -0.472 0-0.857-0.466-0.857-1.038V3.028c0-0.571 0.386-1.038 0.857-1.038 0.473 0 0.858 0.467 0.858 1.038V5.518Z"/>
+  <rect fill="#ffffff" stroke="#333333" stroke-miterlimit="10" x="13.5" y="14.906" width="8" height="5"/>
+  <rect fill="#ffffff" stroke="#333333" stroke-miterlimit="10" x="21.5" y="14.906" width="8" height="5"/>
+  <rect fill="#ffffff" stroke="#333333" stroke-miterlimit="10" x="5.5" y="19.906" width="8" height="5"/>
+  <rect fill="#ff0000" stroke="#333333" stroke-miterlimit="10" x="13.5" y="19.906" width="8" height="5"/>
+  <rect fill="#ffffff" stroke="#333333" stroke-miterlimit="10" x="21.5" y="19.906" width="8" height="5"/>
+  <rect fill="#ffffff" stroke="#333333" stroke-miterlimit="10" x="5.5" y="24.906" width="8" height="4"/>
+  <rect fill="#ffffff" stroke="#333333" stroke-miterlimit="10" x="13.5" y="24.906" width="8" height="4"/>
+</svg>

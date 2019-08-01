@@ -1,0 +1,143 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Row Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Row Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The row tag is used to define the occurrence of a new grid row. Grid rows by default are defind by the class: `cui-row`
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Row>
+&lt;/E2:Row></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "row",
+    "template": "grid",
+    "contents": []
+}</pre>
+
+                <p>
+                    <code>E2:Row</code> uses the shared <code>grid</code> template. This means the tag at a minimum should output JSON properties of <code>type</code> and <code>template</code>. The row tag should also create propety of <code>contents</code> which is an array for each sub object tag created within.
+                </p>
+
+                <h2>Default example</h2>
+                <p>
+                    By default rows render no visible content. Use the browser development tool on the box below to see the rendered output.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;div&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Row Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid"
+                    }
+                ]
+            };
+
+            // HTML Extend JSON
+            var htmlExtend = {
+                title: "Extending the HTML attributes",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "attributes": {
+                            "class": "demo-row",
+                            "id": "demo-row"
+                        }
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+
+                render.page(defaultExample, page, function() {
+                    console.log("Default Done");
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

@@ -1,0 +1,130 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Page Script Example - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "form",
+                                                "attributes": {
+                                                    "id": "test-form1",
+                                                    "action": "www.test.com"
+                                                },
+                                                "contents": [
+                                                    {
+                                                        "template":"output",
+                                                        "text": "<p> The buttons below demo how JSP page scripts should be written in Empire 2.</p>"
+                                                    },
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "button",
+                                                                "id": "E_BTN_TEST_1_SUBMIT_A",
+                                                                "onclick": "emp.functionCall(event, 'pageScript.readMessage', [{'url':'http://localhost:3000/selectionPopup', 'recno': 12345}], {'sendEvent':true})"
+                                                            },
+                                                            "text": "Send AJAX"
+                                                        }
+                                                    },
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+    </script>
+    <script>
+        var pageScript = {
+            readMessage: function _read_message(evt, request) {
+
+                // Build the new request
+                var req = {
+                    url: request.url
+                };
+
+                var data = {};
+
+                for (item in request) {
+
+                    if (item !== "url") {
+
+                        data[item] = request[item];
+                    }
+                }
+
+                if (Object.keys(data).length) {
+
+                    req.data = data;
+                }
+
+                // Build the response.
+                var res = {
+                    "done": function _request_done() {
+
+                        var $target = $(evt.target);
+                        var $parentRow = $target.parents('tr').eq(0);
+
+                        if ($parentRow.length) {
+
+                            $parentRow.removeClass('emp-bold')
+                        }
+                        else {
+
+                            journal.log({type: 'error', owner: 'Framework', func: 'pageScript -> readMessage'}, 'AJAX message passed, but couldnt find row to update.');
+                        }
+
+                    },
+                    "fail": function _request_fail() {
+
+                        journal.log({type: 'error', owner: 'Framework', func: 'pageScript -> readMessage'}, 'AJAX to make message as read failed.');
+                    }
+                }
+
+                emp.ajax.request(req, res);
+
+            }
+        }
+    </script>
+    <script>
+
+        require(['domReady!'], function() {
+
+            console.log("page is ready");
+
+        });
+
+    </script>
+
+</html>

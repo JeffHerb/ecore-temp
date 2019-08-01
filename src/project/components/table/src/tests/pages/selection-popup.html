@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "field_1"
+                                                    },
+                                                    "text": "Column 1 Value:"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "text",
+                                                        "id": "field_1",
+                                                        "name": "field_1"
+                                                    },
+                                                    "readOnly": true
+
+                                                }
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "field_2"
+                                                    },
+                                                    "text": "Column 2 Value:"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "text",
+                                                        "id": "field_2",
+                                                        "name": "field_2"
+                                                    },
+                                                    "readOnly": true
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "field_3"
+                                                    },
+                                                    "text": "Column 3 Value:"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "text",
+                                                        "id": "field_3",
+                                                        "name": "field_3"
+                                                    }
+                                                }
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "field_4"
+                                                    },
+                                                    "text": "Column 4 Value:"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "text",
+                                                        "id": "field_4",
+                                                        "name": "field_4"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_DROPDOWN",
+                                                        "name": "E_DROPDOWN"
+                                                    },
+                                                    "options": [
+                                                        {
+                                                            "text": "Personal Income",
+                                                            "value": "PT"
+                                                        },
+                                                        {
+                                                            "text": "Corporate",
+                                                            "value": "CT"
+                                                        },
+                                                        {
+                                                            "text": "Sales Tax",
+                                                            "value": "ST"
+                                                        }
+                                                    ]
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_DROPDOWN"
+                                                    },
+                                                    "text": "Dropdown"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type":"column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Is Individual?",
+                                                    "attributes": {
+                                                        "for": "E_TEST_CHECKED_INDIVIDUAL_1"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_CHECKED_INDIVIDUAL_1",
+                                                        "id": "E_TEST_CHECKED_INDIVIDUAL_1",
+                                                        "type": "checkbox",
+                                                        "value": "y",
+                                                        "checked": false
+                                                    },
+                                                    "checkValue": "y",
+                                                    "uncheckValue": "n"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [
+                                            {
+                                                "type": "checkbox",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Is Individual?",
+                                                    "attributes": {
+                                                        "for": "E_TEST_CHECKED_INDIVIDUAL_2"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "E_TEST_CHECKED_INDIVIDUAL_2",
+                                                        "id": "E_TEST_CHECKED_INDIVIDUAL_2",
+                                                        "type": "checkbox",
+                                                        "value": "y",
+                                                        "checked": false
+                                                    },
+                                                    "checkValue": "y",
+                                                    "uncheckValue": "n",
+                                                    "readOnly": true
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type":"search",
+                                                "template": "composite",
+                                                "parts": {
+                                                    "label": {
+                                                        "template": "field",
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "field_5"
+                                                            },
+                                                            "text": "Selection Popup:"
+                                                        }
+                                                    },
+                                                    "text": {
+                                                        "type": "text",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "type": "text",
+                                                                "id": "field_5"
+                                                            },
+                                                            "readOnly": true
+                                                        }
+                                                    },
+                                                    "button": {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "selection-popup",
+                                                                "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.selectionPopup', args:[{'request':'http://localhost:3000/selectionPopupLarge', 'mapping':{'field_1': 1, 'field_2': 2, 'field_3': 3, 'field_4': 4, 'E_DROPDOWN': 2, 'E_TEST_CHECKED_INDIVIDUAL_1': 6, 'E_TEST_CHECKED_INDIVIDUAL_2': 6}}] }})"
+                                                            },
+                                                            "text": "Launch Popup",
+                                                            "icon": "popup-view-list"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        }
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

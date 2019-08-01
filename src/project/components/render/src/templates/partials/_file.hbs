@@ -1,0 +1,28 @@
+<div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-composite emp-search-composite emp-file-upload"}' validationError=this.message.type required=this.input federal=this.input.federal scope="file-upload" ))}}>
+
+    {{#ifCond v1=this.label.hasLayout op="boolCheck" v2="false"~}}
+
+        {{~> _label this noWrap=true readOnly=this.input.readOnly scope="file-upload" ~}}
+    {{~else~}}
+        <div class="cui-label">
+            {{> _label this noWrap=true readOnly=this.input.readOnly scope="file-upload" }}
+        </div>
+    {{/ifCond~}}
+
+    <div class="cui-data emp-search">
+        <div class="emp-field">
+            <span class="emp-data emp-file-upload-name">Select a file</span>
+        </div>
+        <div class="emp-field">
+            <button type="button" class="emp-file-upload-button" type="button" tabindex="1">Browse</button>
+        </div>
+        <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className": "cui-hide-from-screen"}' required=this.input.required scope="file-upload") ) }}>
+    </div>
+
+    {{! Look for messages}}
+    {{#if this.message~}}
+        <div class="emp-composite-message">
+        {{> _message this.message}}
+        </div>
+    {{/if~}}
+</div>

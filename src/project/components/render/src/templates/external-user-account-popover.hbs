@@ -1,0 +1,31 @@
+{{#ifCond v1=this.type op="===" v2="information"}}
+    <div class="emp-user-information emp-user-account-popover-section">
+        <div class="cui-row emp-user-name">
+            <div class="column emp-col-full">
+                <span>{{userRealName}}</span>
+            </div>
+        </div>
+        <div class="cui-row emp-user-company">
+            <div class="column emp-col-full">
+                <span>{{userCompany}}</span>
+            </div>
+        </div>
+    </div>
+{{/ifCond}}
+
+{{#ifCond v1=this.type op="===" v2="role"}}
+    <div class="emp-user-account-information emp-user-account-popover-section">
+        <div class="cui-row emp-user-account-type">
+            <div class="column emp-col-full">
+                <span class="static-list">Account:</span>
+                <span>{{accountType}}</span>
+            </div>
+        </div>
+        <div class="cui-row emp-user-account-role">
+            <div class="column emp-col-full">
+                <span class="static-list">Role:</span>
+                <span>{{role}}</span>
+            </div>
+        </div>
+    </div>
+{{/ifCond}}

@@ -1,0 +1,1646 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <title>EMP AJAX Test Page - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+        <style>
+            pre {
+                background: lightgray;
+                overflow-y: hidden;
+                overflow-x: auto;
+                padding: 10px;
+            }
+
+            ul ul {
+                margin: 0 0 0 10px;
+            }
+
+            li {
+                padding: 0 0 5px;
+            }
+
+            ul ul > li:first-child {
+                padding: 5px 0 5px;
+            }
+        </style>
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData = {
+        page: {
+            contents: [
+                {
+                    "template": "globalHeader" ,
+                    "tabsets": {
+                        "type": "unordered",
+                        "template": "lists",
+                        "attributes": {
+                            "className": "emp-tabset"
+                        },
+                        "options": [
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 1"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 2"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 3"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 4"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 5"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 6"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 7"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 8"
+                            }
+                        ]
+                    },
+                    "page": {
+                        "title": "Page Title",
+                        "mode": "Page Mode"
+                    },
+                    "accounts": {
+                        "primary": {
+                            "indicators": {
+                                "bankruptcy": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "B",
+                                        "id": "primary-bankruptcy"
+                                    },
+                                    "text": "Bankruptcy exists"
+                                },
+                                "identity": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "I",
+                                        "id": "primary-identity"
+                                    },
+                                    "text": "Identity theft"
+                                },
+                                "legalRep": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "primary-legal",
+                                            "name": "primary-legal"
+                                        },
+                                        "icon": "legal",
+                                        "text": "View legal representative"
+                                    }
+                                },
+                                "event": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "primary-event",
+                                            "name": "primary-event"
+                                        },
+                                        "icon": "add-event",
+                                        "text": "Popup add event"
+                                    }
+                                }
+                            },
+                            "id": "123-45-6789 (IND)",
+                            "name": "John H. Smith",
+                            "address": "1943 Crossing Stone Ct., Albany, NY 12227",
+                            "sendID": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "send-id",
+                                        "name": "send-id",
+                                        "className": "emp-button-send-id",
+                                        "tabindex": "1"
+                                    },
+                                    "text": "Send ID"
+                                }
+                            },
+                            "differentMail": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "button",
+                                        "type": "button"
+                                    },
+                                    "icon": "diff-mail",
+                                    "text": "Mailing address is different"
+                                }
+                            },
+                        },
+                        "associate": {
+                            "indicators": {
+                                "bankruptcy": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "B",
+                                        "id": "associate-bankruptcy"
+                                    },
+                                    "text": "Bankruptcy exists"
+                                },
+                                "identity": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "I",
+                                        "id": "associate-identity"
+                                    },
+                                    "text": "Identity theft"
+                                },
+                                "joint": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "associate-data-joint",
+                                            "name": "associate-data-joint"
+                                        },
+                                        "icon": "data-joint",
+                                        "text": "Popup Data for Joint Taxpayer"
+                                    }
+                                },
+                                "jointList": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "assoicate-list-joint",
+                                            "name": "assoicate-list-joint"
+                                        },
+                                        "icon": "list-joint",
+                                        "text": "View Joint Taxpayer List"
+                                    }
+                                },
+                                "legalRep": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "associate-legal-rep",
+                                            "name": "associate-legal-rep"
+                                        },
+                                        "icon": "legal",
+                                        "text": "View legal representative"
+                                    }
+                                }
+                            },
+                            "id": "234-56-7890 (IND)",
+                            "name": "Jane M. Johnson-Smith"
+                        },
+                        "sendID": true,
+                        "getID": true,
+                        "allowSwitch": true
+                    },
+                    "search": {
+                        "headerID": {
+                            "select": {
+                                "type": "select",
+                                "template": "field",
+                                "label": {
+                                    "text": "Header ID type",
+                                    "attributes": {
+                                        "for": "HEADER_ID_TYPE"
+                                    },
+                                    "visibility": "hidden",
+                                    "hasLayout": false,
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "name": "HEADER_ID_TYPE",
+                                        "id": "HEADER_ID_TYPE",
+                                        "tabindex": 1,
+                                    },
+                                    "options": {
+                                        "NC": {
+                                            "text": "9 Character ID",
+                                            "value": "NC",
+                                            "tabindex": 1
+                                        },
+                                        "BN": {
+                                            "text": "Business Name",
+                                            "value": "BN",
+                                            "tabindex": 1
+                                        },
+                                        "BT": {
+                                            "text": "Business Taxpayer ID",
+                                            "value": "BT",
+                                            "tabindex": 1
+                                        },
+                                        "IN": {
+                                            "text": "Individual Name",
+                                            "value": "IN",
+                                            "tabindex": 1
+                                        },
+                                        "IT": {
+                                            "text": "Individual Taxpayer ID",
+                                            "value": "IT",
+                                            "tabindex": 1
+                                        },
+                                        "MA": {
+                                            "text": "Mail Agent ID",
+                                            "value": "MA",
+                                            "tabindex": 1
+                                        },
+                                        "RD": {
+                                            "text": "Representative ID",
+                                            "value": "RD",
+                                            "tabindex": 1
+                                        },
+                                        "RN": {
+                                            "text": "Representative Name",
+                                            "value": "RN",
+                                            "tabindex": 1
+                                        }
+                                    },
+                                    "value": "NC",
+                                    "noBlankOption": true
+                                },
+                                "noWrap": true
+                            },
+                            "defaultValues": {
+                                "NC": {
+                                    "id": "123456789"
+                                },
+                                "BN": {
+                                    "name": "Business Name"
+                                },
+                                "IN": {
+                                    "last": "Doe",
+                                    "first": "John",
+                                    "middle": "A"
+                                }
+                            }
+                        },
+                        "row": [
+                            {
+                                "fields": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "View:",
+                                            "attributes": {
+                                                "for": "S_VIEW"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "S_VIEW",
+                                                "id": "S_VIEW",
+                                            },
+                                            "required": true,
+                                            "options": {
+                                                "all": {
+                                                    "text": "ALL",
+                                                    "value": "all",
+                                                    "tabindex": 1
+                                                },
+                                                "non-reversed": {
+                                                    "text": "NON-REVERSED",
+                                                    "value": "non-reversed",
+                                                    "tabindex": 1
+                                                }
+                                            },
+                                            "noBlankOption": true,
+                                            "value": "all"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Tax Type:",
+                                            "attributes": {
+                                                "for": "tax-type"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "tax-type",
+                                                "id": "tax-type",
+                                                "type": "text",
+                                                "value": "CORP",
+                                            },
+                                            "requestedMode": "1"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button",
+                                                "name": "button"
+                                            },
+                                            "icon": "tax-type",
+                                            "text": "Button"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Tax Sub Type Desc:",
+                                            "attributes": {
+                                                "for": "tax-type"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "tax-type",
+                                                "id": "tax-type",
+                                                "type": "text",
+                                                "value": "CT-182 Adl Tax Oil Co.",
+                                            },
+                                            "requestedMode": "1"
+                                        }
+                                    },
+                                ]
+                            },
+                            {
+                                "fields": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                           "text": "Liability Period Begin:",
+                                           "attributes": {
+                                               "for": "S_LIABILITY_PERIOD_BEGIN"
+                                           }
+                                        },
+                                        "input": {
+                                           "attributes": {
+                                               "name": "S_LIABILITY_PERIOD_BEGIN",
+                                               "id": "S_LIABILITY_PERIOD_BEGIN",
+                                               "type": "01/01/2007",
+                                               "maxlength": "10",
+                                               "className": "emp-date"
+                                           },
+                                           "required": true,
+                                        }
+                                    },
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                           "text": "Liability Period End:",
+                                           "attributes": {
+                                               "for": "S_LIABILITY_PERIOD_END"
+                                           },
+                                           "required": true,
+                                        },
+                                        "input": {
+                                           "attributes": {
+                                               "name": "S_LIABILITY_PERIOD_END",
+                                               "id": "S_LIABILITY_PERIOD_END",
+                                               "type": "01/01/2007",
+                                               "maxlength": "10",
+                                               "className": "emp-date"
+                                           },
+                                           "required": true,
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "buttons": {
+                        "retrieve": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "retrieve-button",
+                                    "name": "retrieve-button",
+                                    "className": "cui-button-primary emp-search-retrieve",
+                                    "tabindex": 1,
+                                    "type": "submit"
+                                },
+                                "text": "Retrieve"
+                            }
+                        },
+                        "clear": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "clear-button",
+                                    "name": "clear-button",
+                                    "className": "emp-button-search-clear",
+                                    "tabindex": 1,
+                                    "title": "Leave ID and clear the rest",
+                                    "type": "button"
+                                },
+                                "text": "Clear"
+                            }
+                        },
+                        "clearAll": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "clear-all-button",
+                                    "name": "clear-all-button",
+                                    "className": "emp-button-search-clear-all",
+                                    "tabindex": 1,
+                                    "title": "Clear all fields in search box",
+                                    "type": "button"
+                                },
+                                "text": "All"
+                            }
+                        },
+                        "hideSearchBox": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "emp-search-toggle",
+                                    "className": "emp-search-toggle",
+                                    "tabindex": 1,
+                                    "title": "Hide the search box",
+                                    "type": "button"
+                                },
+                                "text": "Hide the search box"
+                            }
+                        }
+                    }
+                },
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "type": "header",
+                                    "template": "group",
+                                    "title": "AJAX Responses"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p>All developer defined AJAX responses should be contained inside a root JSON object, this root object is used to control and validate responses. Currently there are only 4 supported types of data responses: <em>data</em>, <em>section</em>, <em>messages</em>, <em>errors</em>. The basic structure of a AJAX response looks like the following.</p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": '<pre>{\n\t"type":"data|message|section|error",\n\t"contents":{}|[{},{}]\n}</pre>'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p><strong>data</strong> - Data responses are used when raw data needs to be returned to a page and its values are used to update the current page. The contents of a response object should be in <em>detination element ID</em>:<em>new value</em>. See example below.</p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": '<pre>{\n\t"type": "data",\n\t"contents": {\n\t\t"E_TEXTBOX_1": "Value 1",\n\t\t"E_TEXTBOX_2": "Value 2",\n\t\t"E_TEXTBOX_3": "Value 3",\n\t\t"E_TEXTBOX_4": "Value 4"\n\t}\n}</pre>'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p><strong>section</strong> - Section responses are used new HTML markup need to be added to an existing page or replace an existing peice of page markup. Inside the traditional AJAX contents wrapper, the JSON markup should match the exact same JSON being created by the Framewrok custom tags. Below is an example of a textbox being requested.</p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": '<pre>{\n\t"type": "section",\n\t"contents": {\n\t\t"type": "text",\n\t\t"template": "field",\n\t\t"label": {\n\t\t\t"attributes": {\n\t\t\t\t"for": "E_AJAX_TEXTBOX"\n\t\t\t},\n\t\t\t"text": "AJAX Textbox"\n\t\t},\n\t\t"input": {\n\t\t\t"attribtues": {\n\t\t\t\t"type": "text",\n\t\t\t\t"id": "E_AJAX_TEXTBOX",\n\t\t\t\t"name": "E_AJAX_TEXTBOX"\n\t\t\t}\n\t\t}\n\t}\n}</pre>'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p><strong>messages</strong> - Developer defined messages. This is a generic message response type that should be used when additional context to an ajax function that might have occurec is finished</p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": '<pre>{\n\t"type": "message",\n\t"contents": {\n\t\t"type": "info",\n\t\t"message": "Something has been completed!"\n\t}\n}</pre>'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p><strong>errors</strong> - These are special message reserved for when there is a framework level or buisness logic error that is not caused by invalid data submition or user action. Examples include Java Bugs, Network connection, etc. These types of errors mimic message, but these should not be getting defined by developers. If developers detect a problem with an AJAX request or the business logic can determine a problem, developers can communicate these errors with the user by used the message JSON strcuture with the content type set to error.</p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": '<pre>{\n\t"type": "error",\n\t"contents": {\n\t\t"message": "Something went horribly wrong. Please contact ITS!"\n\t}\n}</pre>'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p>To speed up the development process predefined functions have been setup developers can directly call that will handle the returned JSON. Developers simply need to provide a few parameters and the appropriate JSON endpoint.</p><ul><li>emp.ajax.requestData</li><li>emp.ajax.requestSection</li></ul>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "type": "header",
+                                    "template": "group",
+                                    "title": "emp.ajax.requestData"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p><strong>emp.ajax.requestData</strong> - should be used when data needs to be requested from the server side and will fill in different fields or inputs on the page. Fields are determined based on element ID's. This function accepts the one or more of the  <em>data</em>, <em>message</em>, and <em>error</em> reponse types.</p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Example - Single Data Object Returned"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text":"<p>Press the <em>Get Data</em> button below to preform the AJAX request.</p>"
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_1"
+                                                                },
+                                                                "text": "Person 1"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_1",
+                                                                    "name": "E_TEXTBOX_1"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_2"
+                                                                },
+                                                                "text": "Person 2"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_2",
+                                                                    "name": "E_TEXTBOX_2"
+                                                                },
+                                                                "readOnly": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_3"
+                                                                },
+                                                                "text": "Person 3"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_3",
+                                                                    "name": "E_TEXTBOX_3"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_4"
+                                                                },
+                                                                "text": "Person 4"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_4",
+                                                                    "name": "E_TEXTBOX_4"
+                                                                },
+                                                                "readOnly": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "buttonGroup",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "buttonGroup",
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_BTN_GET_DATA",
+                                                                    "name": "E_BTN_GET_DATA",
+                                                                    "onclick": "emp.functionCall(event, 'emp.ajax.requestData',[{'url':'http://localhost:3000/parameterless'}])"
+                                                                },
+                                                                "text": "Get Data",
+                                                                "primary": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "section",
+                                            "collapse": true,
+                                            "contents": [
+                                                {
+                                                    "type": "header",
+                                                    "template": "group",
+                                                    "title": "JSON Response"
+                                                },
+                                                {
+                                                    "type": "row",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "column",
+                                                            "template": "grid",
+                                                            "contents": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "text":'<pre>{\n\t"type": "data",\n\t"contents": {\n\t\t"E_TEXTBOX_1": "Value 1",\n\t\t"E_TEXTBOX_2": "Value 2",\n\t\t"E_TEXTBOX_3": "Value 3",\n\t\t"E_TEXTBOX_4": "Value 4"\n\t}\n}</pre>'
+                                                                }
+                                                            ]
+                                                        },
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Example - Data object and Success message"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text":"<p>Press the <em>Get Data</em> button below to preform the AJAX request.</p>"
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_1_B"
+                                                                },
+                                                                "text": "Person 1"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_1_B",
+                                                                    "name": "E_TEXTBOX_1_B"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_2_B"
+                                                                },
+                                                                "text": "Person 2"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_2_B",
+                                                                    "name": "E_TEXTBOX_2_B"
+                                                                },
+                                                                "readOnly": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_3_B"
+                                                                },
+                                                                "text": "Person 3"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_3_B",
+                                                                    "name": "E_TEXTBOX_3_B"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "width": "half",
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TEXTBOX_4_B"
+                                                                },
+                                                                "text": "Person 4"
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "id": "E_TEXTBOX_4_B",
+                                                                    "name": "E_TEXTBOX_4_B"
+                                                                },
+                                                                "readOnly": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "buttonGroup",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "buttonGroup",
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_BTN_GET_DATA_B",
+                                                                    "name": "E_BTN_GET_DATA_B",
+                                                                    "onclick": "emp.functionCall(event, 'emp.ajax.requestData',[{'url':'http://localhost:3000/parameterlessWithMessage'}])"
+                                                                },
+                                                                "text": "Get Data and Message",
+                                                                "primary": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "section",
+                                            "collapse": true,
+                                            "contents": [
+                                                {
+                                                    "type": "header",
+                                                    "template": "group",
+                                                    "title": "JSON Response"
+                                                },
+                                                {
+                                                    "type": "row",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "column",
+                                                            "template": "grid",
+                                                            "contents": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "text":'<pre>[\n\t{\n\t\t"type": "data",\n\t\t"contents": {\n\t\t\t"E_TEXTBOX_1_B": "value 1",\n\t\t\t"E_TEXTBOX_2_B": "value 2",\n\t\t\t"E_TEXTBOX_3_B": "value 3",\n\t\t\t"E_TEXTBOX_4_B": "value 4"\n\t\t}\n\t},\n\t{\n\t\t"type": "message",\n\t\t"contents": {\n\t\t\t"type": "success",\n\t\t\t"text": "The AJAX value was added successfully."\n\t\t}\n\t}\n]</pre>'
+                                                                }
+                                                            ]
+                                                        },
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "collapse": true,
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Syntax"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": "<ul><li><strong>request</strong> - <em>Object</em> <br><ul><li><strong>url</strong>-<em>String</em> <br>AJAX URL</li><li><strong>data</strong> - <em>Object || String || Array | optional</em> <br>Key value pairs, name of section, or array of sources</li></ul></li></ul>"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "collapse": true,
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Example Button Click Event"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": '<pre>{\n\t"type": "button",\n\t"template": "field",\n\t"input": {\n\t\t"attributes": {\n\t\t\t"id": "E_BTN_GET_DATA",\n\t\t\t"name": "E_BTN_GET_DATA",\n\t\t\t"onclick": "emp.functionCall(event, \'emp.ajax.requestData\',[{\'url\':\'http://localhost:3000/parameterless\'}])"\n\t\t},\n\t\t"text": "Get Data",\n\t\t"primary": true\n\t}\n}</pre>'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "type": "header",
+                                    "template": "group",
+                                    "title": "emp.ajax.requestSection"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "output",
+                                                    "text": "<p><strong>emp.ajax.requestSection</strong> - should be used when a a new section or a replacement section needs to be rendered. Sections are the HTML markup itself and all of its corresponding events. When defining the location to where the new or replacement contents need to be applied, use the elements ID. This function accepts the one or more of the  <em>section</em>, <em>message</em>, and <em>error</em> reponse types.</p></p>"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Example - Append and Prepend"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": "<p>Press either of the buttons below to either append or prepend a message to the screen accordingly. Please note that messages are only being for example reason, this can be any collection of render based json from the provided AJAX endpoint</p>"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "div",
+                                            "attributes": {
+                                                "id": "append-prepend-div",
+                                            },
+                                            "contents": [
+                                                {
+                                                    "type": "row",
+                                                    "template": "buttonGroup",
+                                                    "contents": [
+                                                        {
+                                                            "type": "column",
+                                                            "template": "buttonGroup",
+                                                            "contents": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "E_BTN_GET_DATA",
+                                                                            "name": "E_BTN_GET_DATA",
+                                                                            "onclick": "emp.functionCall(event, 'emp.ajax.requestSection',[{'url':'http://localhost:3000/prependMessage'}, 'append-prepend-div', 'prepend'])"
+                                                                        },
+                                                                        "text": "Prepend Message"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "E_BTN_GET_DATA",
+                                                                            "name": "E_BTN_GET_DATA",
+                                                                            "onclick": "emp.functionCall(event, 'emp.ajax.requestSection',[{'url':'http://localhost:3000/appendMessage'}, 'append-prepend-div'])"
+                                                                        },
+                                                                        "text": "Append Message"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "section",
+                                            "collapse": true,
+                                            "contents": [
+                                                {
+                                                    "type": "header",
+                                                    "template": "group",
+                                                    "title": "JSON Response"
+                                                },
+                                                {
+                                                    "type": "row",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "column",
+                                                            "template": "grid",
+                                                            "contents": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "text": '<p>Prepend Message</p><br><pre>{\n\t"type": "section",\n\t"contents": {\n\t\t"template": "message",\n\t\t"type": "info",\n\t\t"text": "Prepend Message from AJAX Request"\n\t}\n}</pre>'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "row",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "column",
+                                                            "template": "grid",
+                                                            "contents": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "text": '<p>Append Message</p><br><pre>{\n\t"type": "section",\n\t"contents": {\n\t\t"template": "message",\n\t\t"type": "info",\n\t\t"text": "Appended Message from AJAX Request"\n\t}\n}</pre>'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Example - Replace Section"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": "<p>Use the tables <em>Project Status</em> dropdown control to cause the table to be replace with a fresh version with a pre-defined set of data filtered out.</p>"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "table",
+                                                            "title": "Projects",
+                                                            "attributes": {
+                                                                "id": "table-example"
+                                                            },
+                                                            "selectable": true,
+                                                            "controls": {
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "search",
+                                                                        "template": "composite",
+                                                                        "parts": {
+                                                                            "label": {
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "attributes": {
+                                                                                        "for": "E_STATUS"
+                                                                                    },
+                                                                                    "text": "Project Status:"
+                                                                                }
+                                                                            },
+                                                                            "text": {
+                                                                                "type":"select",
+                                                                                "template": "field",
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "name": "E_STATUS",
+                                                                                        "id": "E_STATUS"
+                                                                                    },
+                                                                                    "options": {
+                                                                                        "open": {
+                                                                                            "text": "Open",
+                                                                                            "value": "open"
+                                                                                        },
+                                                                                        "closed": {
+                                                                                            "text": "Closed",
+                                                                                            "value": "closed"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "button": {
+                                                                                "type": "button",
+                                                                                "template": "field",
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "type": "button",
+                                                                                        "id":"E_UPDATE_TABLE",
+                                                                                        "onclick": "emp.functionCall(event, 'pickTable')"
+                                                                                    },
+                                                                                    "text": "Refresh"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "head": {
+                                                                "rows": [
+                                                                    {
+                                                                        "columns": [
+                                                                            {
+                                                                                "type": "header",
+                                                                                "attributes": {
+                                                                                    "data-type": "alpha"
+                                                                                },
+                                                                                "text": "Project Name"
+                                                                            },
+                                                                            {
+                                                                                "type": "header",
+                                                                                "attributes": {
+                                                                                    "data-type": "alpha"
+                                                                                },
+                                                                                "text": "Project Code"
+                                                                            },
+                                                                            {
+                                                                                "type": "header",
+                                                                                "attributes": {
+                                                                                    "data-type": "alpha"
+                                                                                },
+                                                                                "text": "Project Manager"
+                                                                            },
+                                                                            {
+                                                                                "type": "header",
+                                                                                "attributes": {
+                                                                                    "data-type": "alpha"
+                                                                                },
+                                                                                "text": "Status"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "body": {
+                                                                "rows": [
+                                                                    {
+                                                                        "columns": [
+                                                                            {
+                                                                                "text": "Core UI"
+                                                                            },
+                                                                            {
+                                                                                "text": "CUI"
+                                                                            },
+                                                                            {
+                                                                                "text": "Manager A"
+                                                                            },
+                                                                            {
+                                                                                "text": "Open"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "columns": [
+                                                                            {
+                                                                                "text": "User Experience Toolkit"
+                                                                            },
+                                                                            {
+                                                                                "text": "UXT"
+                                                                            },
+                                                                            {
+                                                                                "text": "Manager B"
+                                                                            },
+                                                                            {
+                                                                                "text": "Closed"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "columns": [
+                                                                            {
+                                                                                "text": "Empire"
+                                                                            },
+                                                                            {
+                                                                                "text": "EMP"
+                                                                            },
+                                                                            {
+                                                                                "text": "Manager C"
+                                                                            },
+                                                                            {
+                                                                                "text": "Closed"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "columns": [
+                                                                            {
+                                                                                "text": "Empire 2"
+                                                                            },
+                                                                            {
+                                                                                "text": "EMP2"
+                                                                            },
+                                                                            {
+                                                                                "text": "Manager D"
+                                                                            },
+                                                                            {
+                                                                                "text": "Open"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "section",
+                                            "collapse": true,
+                                            "contents": [
+                                                {
+                                                    "type": "header",
+                                                    "template": "group",
+                                                    "title": "JSON Response"
+                                                },
+                                                {
+                                                    "type": "row",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "type": "column",
+                                                            "template": "grid",
+                                                            "contents":[
+                                                                {
+                                                                    "template": "output",
+                                                                    "text": '<pre>{\n\t"type": "section",\n\t"contents": {\n\t\t"template": "table",\n\t\t"title": "Projects",\n\t\t"attributes": {\n\t\t\t"id": "table-example"\n\t\t},\n\t\t"selectable": true,\n\t\t"controls": {\n\t\t\t"contents": [\n\t\t\t\t{\n\t\t\t\t\t"type": "search",\n\t\t\t\t\t"template": "composite",\n\t\t\t\t\t"parts": {\n\t\t\t\t\t\t"label": {\n\t\t\t\t\t\t\t"template": "field",\n\t\t\t\t\t\t\t"label": {\n\t\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t\t"for": "E_STATUS"\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t"text": "Project Status:"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t"text": {\n\t\t\t\t\t\t\t"type": "select",\n\t\t\t\t\t\t\t"template": "field",\n\t\t\t\t\t\t\t"input": {\n\t\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t\t"name": "E_STATUS",\n\t\t\t\t\t\t\t\t\t"id": "E_STATUS"\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t"options": {\n\t\t\t\t\t\t\t\t\t"open": {\n\t\t\t\t\t\t\t\t\t\t"text": "Open",\n\t\t\t\t\t\t\t\t\t\t"value": "open"\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t"closed": {\n\t\t\t\t\t\t\t\t\t\t"text": "Closed",\n\t\t\t\t\t\t\t\t\t\t"value": "closed"\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t"button": {\n\t\t\t\t\t\t\t"type": "button",\n\t\t\t\t\t\t\t"template": "field",\n\t\t\t\t\t\t\t"input": {\n\t\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t\t"type": "button",\n\t\t\t\t\t\t\t\t\t"id": "E_UPDATE_TABLE",\n\t\t\t\t\t\t\t\t\t"onclick": "emp.functionCall(event, \'pickTable\')"\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t"text": "Refresh"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\n\t\t},\n\t\t"head": {\n\t\t\t"rows": [\n\t\t\t\t{\n\t\t\t\t\t"columns": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"type": "header",\n\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t"data-type": "alpha"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t"text": "Project Name"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"type": "header",\n\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t"data-type": "alpha"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t"text": "Project Code"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"type": "header",\n\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t"data-type": "alpha"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t"text": "Project Manager"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"type": "header",\n\t\t\t\t\t\t\t"attributes": {\n\t\t\t\t\t\t\t\t"data-type": "alpha"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t"text": "Status"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t"body": {\n\t\t\t"rows": [\n\t\t\t\t{\n\t\t\t\t\t"columns": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Core UI"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "CUI"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Manager A"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Open"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"columns": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "User Experience Toolkit"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "UXT"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Manager B"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Closed"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"columns": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Empire"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "EMP"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Manager C"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Closed"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"columns": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Empire 2"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "EMP2"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Manager B"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"text": "Open"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t}\n}</pre>'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "collapse": true,
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Syntax"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": "<ul><li><strong>request</strong> - <em>Object</em> <br><ul><li><strong>url</strong>-<em>String</em> <br>AJAX URL</li><li><strong>data</strong> - <em>Object || String || Array | optional</em> <br>Key value pairs, name of section, or array of sources</li></ul></li><li><strong>target</strong> - <em>String</em> <br> ID for the element being replace or elements placed around</li><li><strong>method</strong> - <em>String</em> <br> The action that should be taken when adding the generate section to the page. Acceptable values are:<ul><li>Append - <em>Default</em></li><li>Prepend</li><li>Replace</li></ul></li></ul>"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                    "type": "section",
+                                    "collapse": true,
+                                    "contents": [
+                                        {
+                                            "type": "header",
+                                            "template": "group",
+                                            "title": "Example Button Click Event"
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": '<pre>{\n\t"type": "button",\n\t"template": "field",\n\t"input": {\n\t\t"attributes": {\n\t\t\t"id": "E_BTN_GET_DATA",\n\t\t\t"name": "E_BTN_GET_DATA",\n\t\t\t"onclick": "emp.functionCall(event, \'emp.ajax.requestSection\',[{\'url\':\'http://localhost:3000/prependMessage\'}, \'append-prepend-div\',\'prepend\'])"\n\t\t},\n\t\t"text": "Prepend Message"\n\t}\n}</pre>'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "row",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "column",
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "output",
+                                                            "text": '<pre>{\n\t"type": "button",\n\t"template": "field",\n\t"input": {\n\t\t"attributes": {\n\t\t\t"id": "E_BTN_GET_DATA",\n\t\t\t"name": "E_BTN_GET_DATA",\n\t\t\t"onclick": "emp.functionCall(event, \'emp.ajax.requestSection\',[{\'url\':\'http://localhost:3000/appendMessage\'}, \'append-prepend-div\'])"\n\t\t},\n\t\t"text": "Append Message"\n\t}\n}</pre>'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    };
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+
+        function pickTable() {
+
+            // Get the set value from the dropdown
+            var value = $('#E_STATUS').val();
+
+            var req = {
+                url: ''
+            };
+
+            if (value === "open") {
+                req.url = 'http://localhost:3000/openTable'
+            }
+            else if (value === "closed") {
+                req.url += 'http://localhost:3000/closeTable';
+            }
+            else {
+                req.url = 'http://localhost:3000/fullTable';
+            }
+
+            emp.ajax.requestSection(req, 'table-example', 'replace');
+
+        }
+
+        // Code that must wait for the page to be ready.
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+
+    </script>
+
+</html>

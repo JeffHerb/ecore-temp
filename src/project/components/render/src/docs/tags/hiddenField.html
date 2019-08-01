@@ -1,0 +1,183 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Hidden Field Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>HiddenField Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:HiddenField&gt;</code> creates hidden input fields.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:HiddenField elementName="E_SESSION_ID" value="12345" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "hidden",
+    "template": "field",
+    "input": {
+        "attributes": {
+            "name": "E_SESSION_ID",
+            "id": "E_SESSION_ID",
+            "type": "hidden",
+            "value": "12345"
+        }
+    }
+}</pre>
+                <p>
+                    Hidden fields can be placed anywhere inside a <code>&lt;E2:Form&gt;</code> tag. The only required attribute is <code>name</code>.
+                </p>
+
+                <h2>Default example</h2>
+                <p>
+                    Hidden inputs can be placed anywhere inside of a form tag and do not render any visible content. Use the browser's development tool to inspect the box below to see the rendered output of the example JSON above.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                name
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Name of the hidden input
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Initial value the input
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rsMapping
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Maps the field to a result set. Please see the <a href="resultset.html">ResultSet custom tag documentation</a> for details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;input&gt;</code> element (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: 'HiddenField Test Page',
+                attributes: {
+                    className: 'render-container'
+                },
+                contents: [
+                    {
+                        'type': 'hidden',
+                        'template': 'field',
+                        'input': {
+                            'attributes': {
+                                'name': 'E_SESSION_ID',
+                                'id': 'E_SESSION_ID',
+                                'type': 'hidden',
+                                'value': '12345'
+                            }
+                        }
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById('default-example');
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log('Default Done');
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

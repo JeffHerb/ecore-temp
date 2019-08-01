@@ -1,0 +1,5 @@
+{
+    "name": "badge",
+    "lazy": false,
+    "sources": ["script", "style"]
+}

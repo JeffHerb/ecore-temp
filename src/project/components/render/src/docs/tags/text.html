@@ -1,0 +1,525 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Text Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Text Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Text&gt;</code> creates a standard text field. For special input types (radio, checkbox, select, or textarea) see their specific documentation pages.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Text control="text" viewKey="demo" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Demo Text Label",
+        "attributes": {
+            "for": "demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "",
+            "data-validation": "test1,test2,test3"
+        }
+    }
+}</pre>
+
+                <p>
+                   The <code>viewKey</code> attribute must be specified. The view key will drive most of the field's characteristics &mdash; usually its label, size, validation, and more.
+                </p>
+                <p>
+                   The <code>&lt;E2:Text&gt;</code> custom tag supports many different types of HTML 5 inputs. Developers can set the <code>control</code> tag to any of the following:
+                </p>
+                <p>
+                    <ul>
+                        <li>text</li>
+                        <li>email</li>
+                        <li>month</li>
+                        <li>number</li>
+                        <li>range</li>
+                        <li>password</li>
+                        <li>search</li>
+                        <li>tel</li>
+                        <li>time</li>
+                        <li>url</li>
+                        <li>week</li>
+                        <li>color</li>
+                    </ul>
+                </p>
+                <p>
+                    If the <code>control</code> attribute is missing the tag will default to <code>text</code>. Note that this custom tag only creates the <em>field</em> &mdash; additional layout and structure should be defined by parent JSP tags (e.g. <code>&lt;E2:Row&gt;</code> and <code>&lt;E2:Col&gt;</code>). Also, not all of the different types of inputs are listed here; elements requiring different markup, such as check boxes and radio buttons, have their own specific custom tags.
+                </p>
+
+                <h2>Default example</h2>
+                <p>
+                    For the <code>&lt;E2:Text&gt;</code> custom tag the JSON will actually generate information for two separate HTML elements: the <code>&lt;input&gt;</code> itself and its corrosponding <code>&lt;label&gt;</code> element. Based on the <code>viewKey</code> and other attributes, different JSON properies will be generated as well.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                viewKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                A registered view key (previously called <code>pageElementName</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                type
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Defines the input's control type. See the acceptable type list above or use one of the more specific custom tags. Will default to <em>text</em> is nothing is provided.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                value
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Initial value of the input
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                required
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the field must be filled in (<a href="../common/attributes/required.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                readOnly
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates whether the input should be read-only or updatable mode  (<a href="../common/attributes/readOnly.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the <code>title</code> attribute of the input element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>size</th>
+                            <td>
+                                Integer
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Set the <code>size</code> attribute of the input element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                style
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Add specific style to a element or a group of elements (<a href="../common/attributes/style.html">more details</a>).
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that needs to be executed. The string must include both event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                accessKey
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Shortcut key to set focus to the field (<a href="../common/attributes/accessKey.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to control the visibility state of a particular input and/or its label (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li><code>HIDE_ON_READ</code></li>
+                                    <li><code>HIDE_ON_UPDATE</code></li>
+                                    <li><code>HIDE_LABEL</code></li>
+                                    <li><code>HIDE_LABEL_NO_SPACE</code></li>
+                                    <li><code>HIDE_LABEL_YES_SPACE</code></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                inputHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;input&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                labelHtmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;label&gt;</code> tags (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                property
+                            </th>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Java object from which the value is populated. It is the responsibility of the custom tag or its parent custom tag to make the object available to the page context.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                rsMapping
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to map this field to result set. Please see the <a href="resultset.html">ResultSet custom tag documentation</a> for details.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                message
+                            </th>
+                            <td>
+                                hashmap
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Provides a hashmap of a specific field level message to an input (<a href="../common/attributes/message.html">more details</a>).
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                dataType
+                            </th>
+                            <td>
+                                string
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Defined the type of data that will pre presented in the text box. Currently the only supported types are:
+                                <ul>
+                                    <li>alpha (defualt)</li>
+                                    <li>date (recommended to use <code>E2:Date</code> instead)</li>
+                                    <li>numeric</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                format
+                            </th>
+                            <td>
+                                string
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Changes the a inputs value to match a specific structure (<a href="../common/attributes/format.html">more details</a>).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+<!--         <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Format Attribute</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Text viewKey="demo" type="numeric" format="quantity" /></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Demo Text Label",
+        "attributes": {
+            "for": "demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "",
+            "data-validation": "test1,test2,test3"
+        }
+        "value": "1,235,897.00"
+    }
+}</pre>
+
+                <p>
+                   The <code>format</code> attribute is used to define how a specific value should appear on the screen. This will not change the type of the input. Based on the value provided if the text box has a predefined value on page load the formatter will kick in and serve the textbox value in that format. Developers should define the <code>type</code> attribute as well for any <em>date</em> or <em>numeric</em> formats.
+                </p>
+
+                <section id="type-example">
+                </section>
+
+            </div>
+        </div> -->
+
+        <!-- What is the class we should be using to force a text to align to the right -->
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Demo Text Label",
+                                            "attributes": {
+                                                "for": "demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "value": ""
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Default example JSON
+            // var type = {
+            //     title: "Column Test Page",
+            //     attributes: {
+            //         className: "render-container"
+            //     },
+            //     contents: [
+            //         {
+            //             "type": "row",
+            //             "template": "grid",
+            //             "contents": [
+            //                 {
+            //                     "type": "column",
+            //                     "template": "grid",
+            //                     "width": "half",
+            //                     "contents": [
+            //                         {
+            //                             "type": "text",
+            //                             "template": "field",
+            //                             "label": {
+            //                                 "text": "Demo Text Label",
+            //                                 "attributes": {
+            //                                     "for": "demo"
+            //                                 }
+            //                             },
+            //                             "input": {
+            //                                 "attributes": {
+            //                                     "name": "demo",
+            //                                     "id": "demo",
+            //                                     "type": "text",
+            //                                     "value": "1,235,897.00"
+            //                                 }
+            //                             }
+            //                         }
+            //                     ]
+            //                 }
+            //             ]
+            //         }
+            //     ]
+            // };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Examples
+                var defaultExample = document.getElementById("default-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

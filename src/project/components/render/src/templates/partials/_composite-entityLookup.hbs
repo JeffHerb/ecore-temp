@@ -1,0 +1,15 @@
+<fieldset class="emp-composite emp-entity-lookup {{#if this.showLegend}} emp-entity-lookup-legend {{/if}}">
+    <legend>
+        {{#if this.legendText}}
+            {{this.legendText}}
+        {{else}}
+            Lookup entity by:
+        {{/if}}
+    </legend>
+    <div class="emp-entity-lookup-toggle">
+        {{> _field this.select }}
+    </div>
+    <div class="emp-entity-containers">
+        {{> _composite-entityLookupSections this.sections showContainer=(entityContainerSelect this.select.input) scope="entityLookup"}}
+    </div>
+</fieldset>

@@ -1,0 +1,80 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Removed the html 5 shiv for testing purposes -->
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+</body>
+<script>
+    var fwData = {
+        "page": {
+            "contents": [
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "linkList",
+                                            "template": "composite",
+                                            "parts": {
+                                                "link1": {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#id1"
+                                                    },
+                                                    "text": "Test Link"
+                                                },
+                                                "link2": {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#id2"
+                                                    },
+                                                    "text": "Test Link 2"
+                                                },
+                                                "link3": {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#id3"
+                                                    },
+                                                    "text": "Test Link 3"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

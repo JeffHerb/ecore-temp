@@ -1,0 +1,169 @@
+{{! Check to see if the label is being printed is for a static (text) value}}
+{{#ifCond v1=this.input.readOnly op='boolCheck' v2=true ~}}
+
+    {{#unless this.noWrap ~}}
+        <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"cui-label"}' labelLength=this.label.text labelStyles=this.input.style)) }}>
+    {{/unless~}}
+
+    {{#if this.label.visibility ~}}
+
+        {{#ifCond v1=this.label.hasLayout op='boolCheck' v2=false~}}
+
+            <span {{attribute (mergeAttributes this.label.attributes defaults='{"className":"cui-hide-from-screen"}' skipAttributes="for") }}>
+                {{~{ standardTextFormat this.label.text }~}}
+            </span>
+        {{~else~}}
+            {{! Creates a text version of the label that doesnt relate to an input }}
+            <div class="emp-hide-label-with-space">
+                <span {{attribute (mergeAttributes this.label.attributes defaults='{"className":"cui-hide-from-screen"}' skipAttributes="for") }}>
+                    {{~{ standardTextFormat this.label.text }~}}
+                </span>
+            </div>
+        {{/ifCond~}}
+
+    {{~else~}}
+
+        {{! Creates a text version of the label that doesnt relate to an input }}
+        <span {{attribute (mergeAttributes this.label.attributes defaults=defaults skipAttributes="for") }}>
+            {{~{ standardTextFormat this.label.text }~}}
+        </span>
+    {{/if~}}
+
+    {{#unless this.noWrap ~}}
+        </div>
+    {{/unless~}}
+
+{{~else~}}
+
+    {{!-- Readonly hook used by components where the full field input definition is not always passed --}}
+    {{#ifCond v1=this.readOnly op="boolCheck" v2=true~}}
+
+        {{#if this.label.visibility ~}}
+
+            {{#ifCond v1=this.label.hasLayout op='boolCheck' v2=false~}}
+
+                <span {{attribute (mergeAttributes this.label.attributes defaults='{"className":"cui-hide-from-screen"}' skipAttributes="for") }}>
+                    {{~{ standardTextFormat this.label.text }~}}
+                </span>
+            {{~else~}}
+
+                <div class="cui-label emp-hide-label-with-space">
+                    <span {{attribute (mergeAttributes this.label.attributes defaults='{"className":"cui-hide-from-screen"}' skipAttributes="for") }}>
+                        {{~{ standardTextFormat this.label.text }~}}
+                    </span>
+                </div>
+            {{/ifCond~}}
+
+        {{~else~}}
+            <div class="cui-label">
+                {{! Creates a text version of the label that doesnt relate to an input }}
+                <span {{attribute (mergeAttributes this.label.attributes defaults='{"className":"emp-label"}' skipAttributes="for") }}>
+                    {{~{ standardTextFormat this.label.text }~}}
+                </span>
+            </div>
+        {{/if~}}
+
+    {{~else~}}
+
+        {{! Check for visibility property }}
+        {{#if this.label.visibility ~}}
+
+            {{! Check for the hasLayout property to see if it defines if we need to have a class or not.}}
+            {{#ifCond v1=this.label.hasLayout op='boolCheck' v2=false~}}
+
+                {{! No layout was defined, so skip the div }}
+                <label {{attribute (mergeAttributes this.label.attributes defaults='{"className":"cui-hide-from-screen"}') }}>
+                    {{~{ standardTextFormat this.label.text }~}}
+                </label>
+            {{else~}}
+
+                {{! No layout was defined, so keep the div }}
+                <div class="cui-label emp-hide-label-with-space">
+                    <label {{attribute (mergeAttributes this.label.attributes defaults='{"className":"cui-hide-from-screen"}') }}>
+                        {{~{ standardTextFormat this.label.text }~}}
+                    </label>
+                </div>
+
+            {{/ifCond~}}
+
+
+        {{~else~}}
+
+            {{#ifCond v1=this.type op="!in" v2="radio,checkbox"~}}
+
+                {{#if this.label}}
+
+                    {{! No visibility property set so default to show a label with standard div structure }}
+                    {{#unless this.noWrap ~}}
+                        <div {{attribute (mergeAttributes this.label.attributes defaults=(extendDefaults defaults='{"className":"cui-label"}' labelLength=this.label.text
+                        labelStyles=this.input.style) skipAttributes="for" ) }}>
+                    {{/unless~}}
+
+                        <label {{attribute (mergeAttributes this.label.attributes defaults=(extendDefaults defaults='{}' labelStyles=this.input.style) ) }}>
+                            {{~{ standardTextFormat this.label.text }~}}
+                        </label>
+
+                    {{#unless this.noWrap ~}}
+                        </div>
+                    {{/unless~}}
+
+                {{else}}
+
+                    {{! No visibility property set so default to show a label with standard div structure }}
+                    {{#if this.noWrap}}
+
+                        <label {{attribute (mergeAttributes this.attributes defaults='{}' ) }}>
+                            {{~{ standardTextFormat this.text }~}}
+                        </label>
+
+                    {{else}}
+
+                    {{#ifCond v1=this op=hasProperty v2="hasLayout"}}
+
+                        {{! Check for the hasLayout property to see if it defines if we need to have a class or not.}}
+                        {{#ifCond v1=this.hasLayout op='boolCheck' v2=false~}}
+
+                            {{! No layout was defined, so skip the div }}
+                            <label {{attribute (mergeAttributes this.attributes defaults='{"className":"cui-hide-from-screen"}' ) }}>
+                                {{~{ standardTextFormat this.text }~}}
+                            </label>
+                        {{else~}}
+                            {{! No layout was defined, so keep the div }}
+                            <div class="cui-label emp-hide-label-with-space">
+                                <label {{attribute (mergeAttributes this.attributes defaults='{"className":"cui-hide-from-screen"}' ) }}>
+                                    {{~{ standardTextFormat this.text }~}}
+                                </label>
+                            </div>
+
+                        {{/ifCond~}}
+
+                    {{else}}
+
+                    <div class="cui-label">
+
+                        <label {{attribute (mergeAttributes this.attributes defaults='{}' ) }}>
+                            {{~{ standardTextFormat this.text }~}}
+                        </label>
+                    </div>
+
+                    {{/ifCond}}
+
+                    {{/if}}
+
+                {{/if}}
+
+            {{~else~}}
+
+                {{#ifCond v1=this.noWrap op='==' v2=undefined~}}
+                    <div class="cui-label">
+                {{/ifCond~}}
+                <label {{attribute (mergeAttributes this.label.attributes defaults='{}') }}>
+                    {{~{ standardTextFormat this.label.text }~}}
+                </label>
+                {{#ifCond v1=this.noWrap op='==' v2=undefined~}}
+                    </div>
+                {{/ifCond~}}
+            {{/ifCond~}}
+        {{/if~}}
+    {{/ifCond~}}
+{{/ifCond~}}

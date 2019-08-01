@@ -1,0 +1,130 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Full Grid
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "attributes": {
+                                    "id": "E_FULL_WIDTH"
+                                },
+                                "contents": []
+                            }
+                        ]
+                    },
+                    // Half Grid
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "attributes": {
+                                    "id": "E_HALF_WIDTH"
+                                },
+                                "contents": []
+                            }
+                        ]
+                    },
+                    // Push Half Grid
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "push": "half",
+                                "attributes": {
+                                    "id": "E_PUSH_HALF_WIDTH"
+                                },
+                                "contents": []
+                            }
+                        ]
+                    },
+                    // Three Quarters
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "three-quarters",
+                                "attributes": {
+                                    "id": "E_THREE_QUARTERS_WIDTH"
+                                },
+                                "contents": []
+                            }
+                        ]
+                    },
+                    // Quarter
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "quarter",
+                                "attributes": {
+                                    "id": "E_QUARTERS_WIDTH"
+                                },
+                                "contents": []
+                            }
+                        ]
+                    },
+                    // Custom Size
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "8",
+                                "attributes": {
+                                    "id": "E_CUSTOM_WIDTH"
+                                },
+                                "contents": []
+                            }
+                        ]
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

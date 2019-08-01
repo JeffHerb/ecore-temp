@@ -1,0 +1,710 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData = {
+        page: {
+            contents: [
+                {
+                    "template": "globalHeader" ,
+                    "tabsets": {
+                        "type": "unordered",
+                        "template": "lists",
+                        "attributes": {
+                            "className": "emp-tabset"
+                        },
+                        "options": [
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 1"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 2"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 3"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 4"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 5"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 6"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 7"
+                            },
+                            {
+                                "template": "link",
+                                "attributes": {
+                                    "href": "page.jsp"
+                                },
+                                "text": "tabNav 8"
+                            }
+                        ]
+                    },
+                    "page": {
+                        "title": "Page Title",
+                        "mode": "Page Mode"
+                    },
+                    "accounts": {
+                        "primary": {
+                            "indicators": {
+                                "bankruptcy": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "B",
+                                        "id": "primary-bankruptcy"
+                                    },
+                                    "text": "Bankruptcy exists"
+                                },
+                                "identity": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "I",
+                                        "id": "primary-identity"
+                                    },
+                                    "text": "Identity theft"
+                                },
+                                "legalRep": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "primary-legal",
+                                            "name": "primary-legal"
+                                        },
+                                        "icon": "legal",
+                                        "text": "View legal representative"
+                                    }
+                                },
+                                "event": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "primary-event",
+                                            "name": "primary-event"
+                                        },
+                                        "icon": "add-event",
+                                        "text": "Popup add event"
+                                    }
+                                }
+                            },
+                            "id": "123-45-6789 (IND)",
+                            "name": "John H. Smith",
+                            "address": "1943 Crossing Stone Ct., Albany, NY 12227",
+                            "sendID": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "send-id",
+                                        "name": "send-id",
+                                        "className": "emp-button-send-id",
+                                        "tabindex": "1"
+                                    },
+                                    "text": "Send ID"
+                                }
+                            },
+                            "differentMail": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "button",
+                                        "name": "button"
+                                    },
+                                    "icon": "emp-icon-diff-mail",
+                                    "text": "Mailing address is different"
+                                }
+                            },
+                        },
+                        "associate": {
+                            "indicators": {
+                                "bankruptcy": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "B",
+                                        "id": "associate-bankruptcy"
+                                    },
+                                    "text": "Bankruptcy exists"
+                                },
+                                "identity": {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "I",
+                                        "id": "associate-identity"
+                                    },
+                                    "text": "Identity theft"
+                                },
+                                "joint": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "associate-data-joint",
+                                            "name": "associate-data-joint"
+                                        },
+                                        "icon": "data-joint",
+                                        "text": "Popup Data for Joint Taxpayer"
+                                    }
+                                },
+                                "jointList": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "assoicate-list-joint",
+                                            "name": "assoicate-list-joint"
+                                        },
+                                        "icon": "list-joint",
+                                        "text": "View Joint Taxpayer List"
+                                    }
+                                },
+                                "legalRep": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "associate-legal-rep",
+                                            "name": "associate-legal-rep"
+                                        },
+                                        "icon": "legal",
+                                        "text": "View legal representative"
+                                    }
+                                }
+                            },
+                            "id": "234-56-7890 (IND)",
+                            "name": "Jane M. Johnson-Smith"
+                        },
+                        "sendID": true,
+                        "getID": true,
+                        "allowSwitch": true
+                    },
+                    "search": {
+                        "headerID": {
+                            "select": {
+                                "type": "select",
+                                "template": "field",
+                                "label": {
+                                    "text": "Header ID type",
+                                    "attributes": {
+                                        "for": "HEADER_ID_TYPE"
+                                    },
+                                    "visibility": "hidden",
+                                    "hasLayout": false,
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "name": "HEADER_ID_TYPE",
+                                        "id": "HEADER_ID_TYPE",
+                                        "tabindex": 1,
+                                    },
+                                    "options": {
+                                        "NC": {
+                                            "text": "9 Character ID",
+                                            "value": "NC",
+                                            "tabindex": 1
+                                        },
+                                        "BN": {
+                                            "text": "Business Name",
+                                            "value": "BN",
+                                            "tabindex": 1
+                                        },
+                                        "BT": {
+                                            "text": "Business Taxpayer ID",
+                                            "value": "BT",
+                                            "tabindex": 1
+                                        },
+                                        "IN": {
+                                            "text": "Individual Name",
+                                            "value": "IN",
+                                            "tabindex": 1
+                                        },
+                                        "IT": {
+                                            "text": "Individual Taxpayer ID",
+                                            "value": "IT",
+                                            "tabindex": 1
+                                        },
+                                        "MA": {
+                                            "text": "Mail Agent ID",
+                                            "value": "MA",
+                                            "tabindex": 1
+                                        },
+                                        "RD": {
+                                            "text": "Representative ID",
+                                            "value": "RD",
+                                            "tabindex": 1
+                                        },
+                                        "RN": {
+                                            "text": "Representative Name",
+                                            "value": "RN",
+                                            "tabindex": 1
+                                        }
+                                    },
+                                    "value": "NC",
+                                    "noBlankOption": true
+                                },
+                                "noWrap": true
+                            },
+                            "defaultValues": {
+                                "NC": {
+                                    "id": "123456789"
+                                },
+                                "BN": {
+                                    "name": "Business Name"
+                                },
+                                "IN": {
+                                    "last": "Doe",
+                                    "first": "John",
+                                    "middle": "A"
+                                }
+                            }
+                        },
+                        "row": [
+                            {
+                                "fields": [
+                                    {
+                                        "type": "select",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "View:",
+                                            "attributes": {
+                                                "for": "S_VIEW"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "S_VIEW",
+                                                "id": "S_VIEW",
+                                            },
+                                            "required": true,
+                                            "options": {
+                                                "all": {
+                                                    "text": "ALL",
+                                                    "value": "all",
+                                                    "tabindex": 1
+                                                },
+                                                "non-reversed": {
+                                                    "text": "NON-REVERSED",
+                                                    "value": "non-reversed",
+                                                    "tabindex": 1
+                                                }
+                                            },
+                                            "noBlankOption": true,
+                                            "value": "all"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Tax Type:",
+                                            "attributes": {
+                                                "for": "tax-type"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "tax-type",
+                                                "id": "tax-type",
+                                                "type": "text",
+                                                "value": "CORP",
+                                            },
+                                            "requestedMode": "1"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "button",
+                                                "name": "button"
+                                            },
+                                            "icon": "tax-type",
+                                            "text": "Button"
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Tax Sub Type Desc:",
+                                            "attributes": {
+                                                "for": "tax-type"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "tax-type",
+                                                "id": "tax-type",
+                                                "type": "text",
+                                                "value": "CT-182 Adl Tax Oil Co.",
+                                            },
+                                            "requestedMode": "1"
+                                        }
+                                    },
+                                ]
+                            },
+                            {
+                                "fields": [
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                           "text": "Liability Period Begin:",
+                                           "attributes": {
+                                               "for": "S_LIABILITY_PERIOD_BEGIN"
+                                           }
+                                        },
+                                        "input": {
+                                           "attributes": {
+                                               "name": "S_LIABILITY_PERIOD_BEGIN",
+                                               "id": "S_LIABILITY_PERIOD_BEGIN",
+                                               "type": "01/01/2007",
+                                               "maxlength": "10",
+                                               "className": "emp-date"
+                                           },
+                                           "required": true,
+                                        }
+                                    },
+                                    {
+                                        "type": "date",
+                                        "template": "field",
+                                        "label": {
+                                           "text": "Liability Period End:",
+                                           "attributes": {
+                                               "for": "S_LIABILITY_PERIOD_END"
+                                           },
+                                           "required": true,
+                                        },
+                                        "input": {
+                                           "attributes": {
+                                               "name": "S_LIABILITY_PERIOD_END",
+                                               "id": "S_LIABILITY_PERIOD_END",
+                                               "type": "01/01/2007",
+                                               "maxlength": "10",
+                                               "className": "emp-date"
+                                           },
+                                           "required": true,
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "buttons": {
+                        "retrieve": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "retrieve-button",
+                                    "name": "retrieve-button",
+                                    "className": "cui-button-primary emp-search-retrieve",
+                                    "tabindex": 1,
+                                    "type": "submit"
+                                },
+                                "text": "Retrieve"
+                            }
+                        },
+                        "clear": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "clear-button",
+                                    "name": "clear-button",
+                                    "className": "emp-button-search-clear",
+                                    "tabindex": 1,
+                                    "title": "Leave ID and clear the rest",
+                                    "type": "button"
+                                },
+                                "text": "Clear"
+                            }
+                        },
+                        "clearAll": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "clear-all-button",
+                                    "name": "clear-all-button",
+                                    "className": "emp-button-search-clear-all",
+                                    "tabindex": 1,
+                                    "title": "Clear all fields in search box",
+                                    "type": "button"
+                                },
+                                "text": "All"
+                            }
+                        },
+                        "hideSearchBox": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "btn_get_id",
+                                    "name": "btn_get_id",
+                                    "className": "emp-button-get-id",
+                                    "tabindex": 1,
+                                    "title": "Hide the search box",
+                                    "type": "button"
+                                },
+                                "text": "Hide the search box"
+                            }
+                        },
+                        "sendID": {
+                            "template": "link",
+                            "attributes": {
+                                "role": "button",
+                                "onclick": "emp.functionCall(event, {0:{'function':'emp.specialSelectionPopup', 'args':[{'url': 'http://localhost:3000/sendID/single'}, false, false, false, {'type':'sendID'}]}})"
+                            },
+                            "text": "Send ID"
+                        }
+                    },
+                    "workflow": {
+                        "options": [
+                            {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "workflow_next",
+                                        "tabindex": 1,
+                                        "title": "Get next workitem",
+                                        "type": "button"
+                                    },
+                                    "text": "Get next workitem",
+                                    "icon": "workflow-item-next"
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "workflow_view_comments",
+                                        "tabindex": 1,
+                                        "title": "View comments",
+                                        "type": "button"
+                                    },
+                                    "text": "View comments",
+                                    "icon": "workflow-item-comments"
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "workflow_work_management",
+                                        "tabindex": 1,
+                                        "title": "Go to work management",
+                                        "type": "button"
+                                    },
+                                    "text": "Go to work management",
+                                    "icon": "workflow-item-work-management"
+                                }
+                            },
+                        ],
+                        "actionSelect": {
+                            "type": "select",
+                            "template": "field",
+                            "label": {
+                                "text": "Workflow",
+                                "attributes": {
+                                    "for": "Workflow Actions"
+                                },
+                                "visibility": "hidden",
+                                "hasLayout": false,
+                            },
+                            "input": {
+                                "attributes": {
+                                    "name": "Workflow",
+                                    "id": "Workflow",
+                                    "tabindex": 1,
+                                },
+                                "options": {
+                                    "NC": {
+                                        "text": "Workflow actions",
+                                        "value": "1"
+                                    },
+                                    "BN": {
+                                        "text": "Workflow actions B",
+                                        "value": "2"
+                                    }
+                                },
+                                "value": "NC",
+                                "noBlankOption": true
+                            },
+                            "noFieldWrap": true,
+                            "noWrap": true
+                        },
+                        "actionGo": {
+                            "type": "button",
+                            "template": "field",
+                            "input": {
+                                "attributes": {
+                                    "id": "btn_workFlow_go",
+                                    "tabindex": 1,
+                                    "type": "button"
+                                },
+                                "text": "Go"
+                            }
+                        },
+                        "hidden": [
+                            {
+                                "type": "hidden",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "name": "workflow1",
+                                        "id": "workflow1",
+                                        "type": "hidden"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "hidden",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "name": "workflow2",
+                                        "id": "workflow2",
+                                        "type": "hidden"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                },
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "send-id-single-select",
+                                                    "type": "button",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.specialSelectionPopup', 'args':[{'request': 'http://localhost:3000/sendID/single', 'mapping': false, 'type':'sendID'}]}})"
+                                                },
+                                                "text": "Single Select"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "send-id-single-select",
+                                                    "type": "button",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.specialSelectionPopup', 'args':[{'request': 'http://localhost:3000/sendID/singleFail', 'mapping': false, 'type':'sendID'}]}})"
+                                                },
+                                                "text": "Single Select Fail"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "send-id-multiple-select",
+                                                    "type": "button",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.specialSelectionPopup', 'args':[{'request': 'http://localhost:3000/sendID/multiple', 'mapping': false, 'type':'sendID'}]}})"
+                                                },
+                                                "text": "Multiple Select"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "send-id-multiple-select",
+                                                    "type": "button",
+                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.specialSelectionPopup', 'args':[{'url': 'http://localhost:3000/sendID/multipleFail'}, false, false, false, {'type':'sendID'}]}})"
+                                                },
+                                                "text": "Multiple Select Fail"
+                                            }
+                                        }
+                                    ]
+                                },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    };
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+
+        // Code that must wait for the page to be ready.
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+
+
+    </script>
+
+</html>

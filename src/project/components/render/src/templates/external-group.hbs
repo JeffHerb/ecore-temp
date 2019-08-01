@@ -1,0 +1,65 @@
+{{#if this.type}}
+    {{#ifCond v1=this.type op="===" v2="title-instructions"}}
+        <section class="emp-instructional-header">
+            <header>
+                <div class="emp-section-title">
+                    <h3>
+                        {{this.title}}
+                        {{#if this.help}}
+                            <button class="emp-icon-help">
+                                <div class="cui-hide-from-screen">
+                                    {{#each this.help}}
+                                        {{> _output this raw=true}}
+                                    {{/each}}
+                                </div>
+                            </button>
+                        {{/if}}
+                    </h3>
+                </div>
+                {{#if this.instructions}}
+                    <div class="emp-section-instructions">
+                        {{#each this.instructions}}
+                            {{> _output this raw=true}}
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if this.controls}}
+                    <div class="emp-section-controls cui-row emp-button-group">
+                        <div class="button-col emp-button-group cui-align-center">
+                            {{#each this.controls}}
+                                {{~> (getPartialName this.template) this ~}}
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/if}}
+            </header>
+        </section>
+    {{else}}
+    {{/ifCond}}
+{{else}}
+<section>
+    <header>
+        <div class="emp-section-title">
+            <h3>
+                {{this.title}}
+                {{#if this.help}}
+                    <button class="emp-icon-help">
+                        <div class="cui-hide-from-screen">
+                            {{#each this.help}}
+                                {{> _output this raw=true}}
+                            {{/each}}
+                        </div>
+                    </button>
+                {{/if}}
+            </h3>
+        </div>
+    </header>
+    {{#if this.instructions}}
+    <div class="emp-section-instructions">
+        {{#each this.instructions}}
+            {{> _output this raw=true}}
+        {{/each}}
+    </div>
+    {{/if}}
+</section>
+{{/if}}

@@ -1,0 +1,13 @@
+{
+    "name": "frg-empire-render",
+    "version": "0.1.0",
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-bake": "^0.3.15",
+        "grunt-contrib-clean": "^0.6.0",
+        "grunt-contrib-concat": "^0.5.1",
+        "grunt-contrib-copy": "^0.8.2",
+        "grunt-contrib-handlebars": "^0.11.0",
+        "grunt-contrib-requirejs": "^0.4.4"
+    }
+}

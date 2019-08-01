@@ -1,0 +1,100 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData = {
+        "page": {
+            "contents": [
+                {
+                    "template": "globalHeader",
+                    "tabsets": {
+                        "type": "unordered",
+                        "template": "lists",
+                        "collapse": true,
+                        "title": "Notifier List"
+                    }
+                },
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "template": "table",
+                            "attributes": {
+                                "id": "notf"
+                            },
+                            "head": {
+                                "rows": [
+                                    {
+                                        "columns": [
+                                            {
+                                                "type": "header",
+                                                "text": "Flag",
+                                                "sortable": true
+                                            },
+                                            {
+                                                "type": "header",
+                                                "text": "Description / Alt Text",
+                                                "sortable": true
+                                            },
+                                            {
+                                                "type": "header",
+                                                "text": "Code within <ul> Tags",
+                                                "sortable": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "body": {
+                                "rows": [
+                                    {                                    
+                                        "columns": [
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Assessment",
+                                                    "title": "Assessment"
+                                                },
+                                                "text": "A"
+                                            },
+                                            {
+                                                "text": "Assessment"
+                                            },
+                                            {
+                                                "text": '&lt;span class="emp-indicator-1" title="Assessment">A&lt;/span>'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

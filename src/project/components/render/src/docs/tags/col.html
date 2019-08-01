@@ -1,0 +1,281 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Column (col) Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Column Custom Tag</h1>
+                <div class="docs-badge cui-success">New in E2</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>col</code> tag defines a column within a row of a grid. Columns are used as containers for other tags and are meant to define the layout of those tags. Column widths are defined with the classes <code>emp-col-half</code> or <code>emp-col-full</code>.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Col>
+&lt;/E2:Col></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "column",
+    "template": "grid",
+    "contents": []
+}</pre>
+
+                <p>
+                    <code>&lt;E2:Col&gt;</code> uses the shared <code>grid</code> template. This means at a minimum the JSP tag should output JSON properties of <code>type</code> and <code>template</code>. The column tag should also create propety of <code>contents</code> which should contain an array of JSON objects representing all JSP tags contained inside.
+                </p>
+
+                <h2>Default example</h2>
+                <p>
+                    This example establishes a grid by wrapping columns inside of rows. All <code>&lt;E2:Col&gt;</code> tags must be contained inside a <code>&lt;E2:Row&gt;</code> tag.
+                </p>
+                <p>
+                    By default <code>&lt;E2:Col&gt;</code> render no visible content. Use the browser development tool on the box below to see the rendered output.
+                </p>
+
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                width
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Defines the width of the column using the following values:
+                                <ul>
+                                    <li><strong>full</strong> - 100% of the row's width</li>
+                                    <li><strong>half</strong> - 50% of the row's width</li>
+                                    <!-- <li><strong>three-quarters</strong> - 3/4 width</li>
+                                    <li><strong>quarter</strong> - 1/4 width</li> -->
+                                </ul>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;div&gt;</code> container (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Using the Width Attribute</h2>
+                <p>
+                    By default developers dont have to specify a column width. Any <code>&lt;E2:Col&gt;</code> tags missing the <code>width</code> attribute will default to using the full width of the parent <code>&lt;E2:Row&gt;</code>.
+                </p>
+
+                <h2>Width Attribute Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Row>
+
+    &lt;E2:Col width="full">
+    &lt;/E2:Col>
+
+&lt;/E2:Row>
+&lt;E2:Row>
+
+    &lt;E2:Col width="half">
+    &lt;/E2:Col>
+
+    &lt;E2:Col width="half">
+    &lt;/E2:Col>
+
+&lt;/E2:Row></pre>
+
+                <h3>Size Extended JSON</h3>
+                <pre class="code">
+{
+    "type": "row",
+    "template": "grid",
+    "contents": [
+        {
+            "type": "column",
+            "template": "grid",
+            "width": "full",
+            contents: []
+        }
+    ]
+},
+{
+    "type": "row",
+    "template": "grid",
+    "contents": [
+        {
+            "type": "column",
+            "template": "grid",
+            "width": "half",
+            contents: []
+        },
+        {
+            "type": "column",
+            "template": "grid",
+            "width": "half",
+            contents: []
+        }
+    ]
+}</pre>
+          <div class="border-example">
+              <h2>Rendered Size example</h2>
+
+              <p>
+                  For demonstration purpose this time the demo object contains 2 different <code>&lt;E2:Row&gt;</code>. Inside the first row, a child <code>&lt;E2:Col&gt;</code> should be create and is being forced to take the full width of the row because the <code>size</code> attribute is set to <em>full</em>. The second row has 2 children, each of which has the <code>size</code> attribute set to <em>half</em>.
+              </p>
+              <p>
+                  By default <code>&lt;E2:Col&gt;</code> render no visible content. Use the browser development tool on the box below to see the rendered output.
+              </p>
+          </div>
+
+                <section id="size-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "full"
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // HTML Extend JSON
+            var sizeAttribute = {
+                title: "Extending the HTML attributes",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "full"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half"
+                            },
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half"
+                            }
+                        ]
+                    }
+                ]
+            };
+
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var sizeExample = document.getElementById("size-example");
+
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+                    console.log("Default Done");
+
+                    // Create the size example
+                    render.page(sizeExample, sizeAttribute, function() {
+                        console.log("Size Example Done!");
+                    });
+
+                });
+
+            });
+        </script>
+<!--(bake ../includes/footer.html)-->

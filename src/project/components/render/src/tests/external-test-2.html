@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" class="external-app emp-orpts-subtheme">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>Representative Account Creation</title>
+    <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!-- Removed the html 5 shiv for testing purposes -->
+</head>
+
+<body>
+    <!-- ==================== -->
+    <!-- UNIVERSAL HEADER     -->
+    <!-- ==================== -->
+    <div id="header-wrapper">
+        <div class="unav-agency-wrapper">
+            <div class="unav-header">
+                <div class="unav-header-links">
+                    <ul>
+                        <li> <a href="https://ny.gov/services">Services</a> </li>
+                        <li> <a href="https://www.governor.ny.gov/news">News</a> </li>
+                        <li> <a href="https://ny.gov/agencies">Government</a> </li>
+                        <li> <a href="https://ny.gov/local">Local</a> </li>
+                    </ul>
+                </div>
+                <div class="unav-primary-bar">
+                    <div class="unav-header-logo">
+                        <a href="#"> <span class="accessibly-hide-text"> New York State Home </span> </a>
+                    </div>
+                    <div class="unav-toggle-arrow">
+                        <a href="#" role="button"> <span class="arrow"></span> <span class="accessibly-hide-text">Expand
+                                Mobile Universal Menu</span> </a>
+                    </div>
+                </div>
+            </div>
+            <div class="agency-header">
+                <div id="banner-toggle" class="banner-toggle">
+                    <button class="nys-logo banner-button"> <span> Toggle New York State Banner </span> </button>
+                </div>
+                <div class="agency-title">
+                    <a href="#"> <span>Department of</span> <span>Labor</span> </a>
+                </div>
+                <ul class="agency-support-login">
+                    <li>
+                        <button> <span class="label">Support</span> </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="body-wrapper">
+        <main>
+            <!-- ==================== -->
+            <!-- GLOBAL HEADER        -->
+            <!-- ==================== -->
+            <!-- ==================== -->
+            <!-- PAGE INFO            -->
+            <!-- ==================== -->
+            <div class="emp-page-info">
+                <!-- ==================== -->
+                <!-- PAGE TITLE           -->
+                <div class="emp-page-title">
+                    <h2>Representative Identification</h2>
+                </div>
+                <!-- ==================== -->
+                <!-- PAGE INSTRUCTIONS    -->
+                <!-- ==================== -->
+                <div class="emp-page-instructions">
+                    <p class="text">Complete the following information and then select <strong>Continue</strong>. To
+                        return to the previous page, select <strong>Back</strong>.</p>
+                </div>
+                <!-- ==================== -->
+                <!-- PAGE LEGEND          -->
+                <!-- ==================== -->
+                <div class="emp-page-legend">
+                    <div class="emp-legend">
+                        <span class="cui-required"></span>
+                        <span>Required field</span>
+                    </div>
+                    <div class="emp-legend">
+                        <button type="button" class="cui-icon emp-icon-help" title="More information">More
+                            information</button>
+                        <span>To learn more about a particular field</span>
+                    </div>
+                </div>
+            </div>
+            <!-- ==================== -->
+            <!-- PAGE CONTENT         -->
+            <!-- ==================== -->
+            <!-- ++++++++++++++++++++++++++++++++ -->
+            <!-- SECTION: .Property Information   -->
+            <!-- ++++++++++++++++++++++++++++++++ -->
+            <section class="emp-no-collapse">
+                <header>
+                    <div class="emp-section-title">
+                        <h3>Identification details</h3>
+                    </div>
+                </header>
+
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="EC_">Electronic filer identification number (EFIN):</label>
+                            </div>
+                            <div class="cui-data">
+                                <input type="text" aria-required="true" size="6" id="EC_" maxlength="6" value="">
+                                <button data-tooltip-source="i1" type="button" class="cui-icon emp-icon-help"
+                                    title="More information">More information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="EC_">Type of ID associated with the EFIN above:</label>
+                            </div>
+                            <div class="cui-data">
+                                <select id="EC_" aria-required="true">
+                                    <option value="0">Select one</option>
+                                    <option value="1">Social Security number (SSN)</option>
+                                    <option value="2">Employer identification number (EIN)</option>
+                                </select>
+                                <button class="cui-icon emp-icon-help" data-tooltip-source="i2" title="More information"
+                                    type="button">More information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label>Social Security number (SSN):</label>
+                            </div>
+                            <div class="cui-data">
+                                <div class="emp-password-wrapper">
+                                    <input type="password" aria-required="true" class="emp-password-input"
+                                        name="password" id="password" value="Password123" />
+                                    <button class="emp-password-toggle" type="button">Show</button>
+                                </div>
+                                <button class="cui-icon emp-icon-help" data-tooltip-source="i3" title="More information"
+                                    type="button">More information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="EC_LAST_NAME">First name:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input aria-required="true" id="EC_LAST_NAME" maxlength="138" size="30" type="text"
+                                    value="">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <label for="EC_LAST_NAME">Middle initial :</label>
+                            </div>
+                            <div class="cui-data">
+                                <input id="EC_LAST_NAME" maxlength="1" size="1" type="text" value="">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="EC_LAST_NAME">Last name:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input aria-required="true" id="EC_LAST_NAME" maxlength="138" size="40" type="text"
+                                    value="">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="EC_PRINT_KEY">Employer identification number (EIN):</label>
+                            </div>
+                            <div class="cui-data">
+                                <input aria-required="true" type="text" size="12" id="EC_PRINT_KEY" maxlength="12"
+                                    value="">
+                                <button class="cui-icon emp-icon-help" data-tooltip-source="i4" title="More information"
+                                    type="button">More information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="EC_PRINT_KEY">Legal name of business:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input aria-required="true" type="text" size="40" id="EC_PRINT_KEY" maxlength="138"
+                                    value="">
+                                <button class="cui-icon emp-icon-help" data-tooltip-source="i5" title="More information"
+                                    type="button">More information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="cui-row emp-button-row">
+                <div class="emp-col-full button-col emp-button-group cui-align-center">
+                    <button type="button" name="E_BTN_BACK" title="Back">Back</button>
+                    <button type="button" name="E_BTN_CONTINUE" class="cui-button-primary"
+                        title="Continue">Continue</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="footer-wrapper">
+        <!-- ==================== -->
+        <!-- GLOBAL FOOTER        -->
+        <!-- ==================== -->
+        <footer class="emp-global-footer orpts-theme">
+            <ul>
+                <li>
+                    <a href="https://www.labor.ny.gov/secure/contact/" target="_blank"
+                        title="This will open a new window to the Contact Us page">Contact Us</a>
+                </li>
+                <li>
+                    <a href="https://www.tax.ny.gov/help/tech/accessibility.htm" target="_blank"
+                        title="This will open a new window to the Web Site Disclaimer page">Accessibility Policy</a>
+                </li>
+                <li>
+                    <a href="http://www.labor.ny.gov/privacy.sht" target="_blank"
+                        title="This will open a new window to the Privacy Policy page">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="http://labor.ny.gov/utilities/document-readers.shtm" target="_blank"
+                        title="This will open a new window to the Document Readers page">Document Readers</a>
+                </li>
+            </ul>
+            <!--<ul>
+                <li> <a href="https://www.tax.ny.gov/help/tech/accessibility.htm"
+                        title="This will open a new window to the Web Site Accessibility page"
+                        target="_blank">Accessibility</a> </li>
+                <li> <a href="https://www.tax.ny.gov/help/tech/disclaimer.htm"
+                        title="This will open a new window to the Web Site Disclaimer page"
+                        target="_blank">Disclaimer</a> </li>
+                <li> <a href="https://www.tax.ny.gov/help/tech/privacy_policy.htm"
+                        title="This will open a new window to the Privacy Policy page" target="_blank">Privacy</a> </li>
+                <li> <a href="https://www.tax.ny.gov/help/tech/securesite.htm"
+                        title="This will open a new window to the Web Site Security page" target="_blank">Security</a>
+                </li>
+                <li> <a href="https://www.tax.ny.gov/help/tech/copyright.htm"
+                        title="This will open a new window to the Copyright page" target="_blank">Copyright</a> </li>
+                <li> <a href="https://www.tax.ny.gov/help/tech/email_phishing.htm"
+                        title="This will open a new window to the Email/Phishing page"
+                        target="_blank">Email/Phishing</a> </li>
+            </ul>-->
+        </footer>
+        <!-- ==================== -->
+        <!-- UNIVERSAL FOOTER     -->
+        <!-- ==================== -->
+        <div class="unav-footer">
+            <div class="unav-footer-contents clearfix">
+                <div class="unav-flex-row">
+                    <div class="footer-logo clearfix"> <span class="nys-logo unav-footer-logo"></span> </div>
+                    <div class="footer-links clearfix">
+                        <ul>
+                            <li> <a href="https://www.ny.gov/agencies">Agencies</a> </li>
+                            <li> <a href="https://www.ny.gov/mobileapps">App Directory</a> </li>
+                            <li> <a href="https://www.ny.gov/counties">Counties</a> </li>
+                            <li> <a href="https://www.ny.gov/events">Events</a> </li>
+                            <li> <a href="https://www.ny.gov/programs">Programs</a> </li>
+                            <li> <a href="https://www.ny.gov/services">Services</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="emp-field-instructions" id="emp-field-instructions">
+        <div id="i1">
+            <header>Electronic filer identification number (EFIN)</header>
+            <p>Enter your six-digit electronic filer identification number issued by the Internal Revenue Service (IRS).
+                To create an account, you must have a current EFIN on file with the IRS. If you do not have an EFIN, you
+                must file an application with the IRS to obtain one.</p>
+        </div>
+        <div id="i2">
+            <header>Type of ID associated with the EFIN above</header>
+            <p>Slect the type of ID associated with the EFIN entered above. If you are unsure which type of ID your EFIn
+                is associated with, please contact the IRS.</p>
+        </div>
+        <div id="i3">
+            <header>Social Security number (SSN)</header>
+            <p>Enter your nine-digit Social Security number (SSN).</p>
+        </div>
+        <div id="i4">
+            <header>Employer identification number (EFIN)</header>
+            <p>Enter your nine-digit employer identification number (EIN).</p>
+        </div>
+        <div id="i5">
+            <header>Legal name of business</header>
+            <p>Enter the legal name of your business exactly as it appears on your Certificate of Incorporation,
+                Certificate of Authority, or other official document identifying your business.</p>
+        </div>
+
+    </div>
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script id="require" src="../../Demo/Itags/itagScript.js"></script>
+    <script type="text/javascript">
+        require(['jquery', 'emp', 'uimockup', 'domReady!'], function ($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            uiMockup.createPageDataStore(function (results) {
+                emp.init();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+{{#ifCond v1=this.text.template op="===" v2="inputGroup"~}}
+
+    {{~> _inputGroup this.text fieldSearch=this.button clearButton=this.clearButton scope=this.scope~}}
+
+{{~else~}}
+    {{! Check to see if label has no label property}}
+    {{#if this.label}}
+
+        <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-composite emp-search-composite"}' validationError=this.text.message.type compositeSearchRequired=this federal=this.text.input.federal dynamicLabel=this.label scope="search-composite" ))}}>
+
+            {{!-- Check to see if the label is a full input defintion --}}
+            {{#ifCond v1=this.label op="hasProperty" v2="input"~}}
+
+                {{#ifCond v1=this.label.type op="===" v2="select"~}}
+
+                    <div class="cui-label">
+                        {{~> _field this.label noWrap=true readOnly=this.text.input.readOnly scope="search-composite" ~}}
+                    </div>
+
+                {{else}}
+
+                    {{~> _label this.label readOnly=this.text.input.readOnly scope="search-composite" ~}}
+
+                {{/ifCond~}}
+
+            {{~else~}}
+
+                {{~> _label this.label readOnly=this.text.input.readOnly scope="search-composite" ~}}
+
+            {{/ifCond~}}
+
+            <div class="cui-data emp-search">
+
+                <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' style=this.text.input.style scope="search-composite" ))}}>
+                    {{~> (getPartialName this.text.template) this.text noFieldWrap=true noWrap=true composite="search" }}
+                </div>
+
+                {{#if this.button~}}
+                    <div class="emp-field">
+                        {{~> (getPartialName this.button.template) this.button noWrap=true~}}
+                    </div>
+                {{/if~}}
+
+                {{#ifCond v1=this.scope op="==" v2="entityLookup"}}
+                    <div class="emp-field">
+                         {{~> (getPartialName this.clearButton.template) this.clearButton noWrap=true~}}
+                    </div>
+                {{/ifCond}}
+
+            </div>
+            {{! Look for messages}}
+            {{#if this.text.message~}}
+            <div class="emp-composite-message">
+                {{~> _message this.text.message~}}
+            </div>
+            {{/if~}}
+
+        </div>
+
+    {{~else~}}
+
+        <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-composite emp-search-composite"}' validationError=this.text.message.type compositeSearchRequired=this federal=this.text.input.federal dynamicLabel=this.label scope="search-composite" ))}}>
+            {{!-- Check to see if the label is a full input defintion --}}
+            {{#ifCond v1=this.text op="hasProperty" v2="input"~}}
+
+                {{#ifCond v1=this.text.label.type op="===" v2="select"~}}
+
+                    <div class="cui-label">
+                        {{~> _field this.text noWrap=true readOnly=this.text.input.readOnly scope="search-composite" ~}}
+                    </div>
+
+                {{else}}
+
+                    {{~> _label (alterVisibility this.text) readOnly=this.text.input.readOnly scope="search-composite" ~}}
+
+                {{/ifCond~}}
+
+            {{~else~}}
+
+                {{~> _label this.text readOnly=this.text.input.readOnly scope="search-composite" ~}}
+
+            {{/ifCond~}}
+
+            <div class="cui-data emp-search">
+
+                <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' style=this.text.input.style scope="search-composite" ))}}>
+                    {{~> (getPartialName this.text.template) this.text noFieldWrap=true noWrap=true composite="search" }}
+                </div>
+
+{{!--                 {{#if this.text~}}
+                    <div class="emp-field">
+                        {{~> (getPartialName this.text.template) this.text noFieldWrap=true noWrap=true composite="search"~}}
+                    </div>
+                {{/if~}} --}}
+
+                {{#if this.button~}}
+                    <div class="emp-field">
+                        {{~> (getPartialName this.button.template) this.button noWrap=true~}}
+                    </div>
+                {{/if~}}
+
+                {{#if this.clearButton}}
+                    <div class="emp-field">
+                        {{~> (getPartialName this.clearButton.template) this.clearButton noWrap=true~}}
+                    </div>
+                {{/if}}
+
+            </div>
+
+            {{! Look for messages}}
+            {{#if this.text.message~}}
+            <div class="emp-composite-message">
+                {{~> _message this.text.message~}}
+            </div>
+            {{/if~}}
+
+        </div>
+    {{/if~}}
+{{/ifCond~}}

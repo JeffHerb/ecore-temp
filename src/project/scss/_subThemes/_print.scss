@@ -1,0 +1,107 @@
+@import '../_subThemes/mixins';
+
+@media print{
+    .external-app.emp-orpts-subtheme{
+
+    	#body-wrapper,
+    	#body-wrapper main{
+    		min-width:0px;	
+    		top:0;
+    		overflow:hidden;
+    	}
+
+    	#header-wrapper{
+    		top:0;
+
+    		.unav-header{
+    			display:none;
+    		}
+    	}
+
+    	#footer-wrapper{
+    		top:0;
+    	}
+
+    	input{
+    		max-width:100%;
+    	}
+
+    	[class*="emp-col"] .cui-data, section {
+			fieldset{
+				.cui-data{
+					display: inline-block;
+				}
+			}
+
+			.cui-data{
+	    		overflow: visible;	    		
+	    	}
+		}
+
+
+		table.emp-pivot-table tbody tr th.emp-responsive-row-header{
+			page-break-inside: avoid;
+		}
+
+        body:not(.ie){
+        	display: block;
+            .cui-row{        
+                .emp-col-full{
+                    > .emp-field, 
+                    .emp-composite.emp-search-composite:not(.emp-validation-error),
+                    .emp-composite.emp-search-composite.emp-seach-composite-dynamic-label,
+                    .emp-composite.emp-search-composite.emp-validation-error,
+                    .emp-check-other-checkbox .emp-field .cui-data-left,
+                    .emp-check-other-describe .emp-field{
+                        display: flex;
+
+                        .cui-label, .cui-data{
+                            flex-basis: 50%;
+                        }
+                    }
+
+                    .emp-composite.emp-search-composite.emp-validation-error{
+                        .emp-composite-message{
+                            margin-left: 50%;
+                        }
+                    }
+
+                    fieldset{
+                        legend{
+                            width: 100%;
+                        }
+
+                        .cui-label, .cui-data{
+                            width: 50%;
+                        }
+
+                        .cui-selection-group{
+                            display: inline;
+                        }
+                    }                    
+                }
+            }
+        }
+    }
+
+    // firefox
+    @media(min--moz-device-pixel-ratio:0) {
+        .external-app.emp-orpts-subtheme body{
+            // display: unset !important;
+            // position: unset !important;
+
+            #body-wrapper, #header-wrapper, #footer-wrapper {
+                top: unset !important;
+            }
+
+            section{
+                border: 1px solid #808589 ;
+                border-radius: 2px;
+            }
+
+            table{
+                border: 2px solid #333;
+            }
+        }
+    }
+}

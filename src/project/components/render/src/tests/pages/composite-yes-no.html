@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="external-app"
+      lang="en">
+<head>
+  <meta content="IE=edge"
+        http-equiv="X-UA-Compatible">
+  <meta charset="utf-8">
+  <title>Template - Core UI</title>
+  <link href="../../../dist/css/main.css"
+        media="all"
+        rel="stylesheet"
+        type="text/css"><!-- Removed the html 5 shiv for testing purposes -->
+</head>
+<body>
+  <div id="header-wrapper"></div>
+  <div id="body-wrapper"></div>
+  <div id="footer-wrapper"></div>
+  <script>
+        var fwData =
+        {
+            "preferences": false,
+            "footer": {
+                "contents": [
+                    {
+                        "template": "external-universal-footer"
+                    }
+                ]
+            },
+            "header": {
+                "contents": [
+                    {
+                        "template": "external-universal-header"
+                    },
+                    {
+                        "title": "Application Title",
+                        "template": "external-agency-header"
+                    }
+                ]
+            },
+            "context": {
+                "ui": {
+                    "css": "css/main.css",
+                    "domain": "http://dvm.int.nystax.gov/ecore/",
+                    "version": "v0.0",
+                    "js": "js/main.js"
+                },
+                "screen": {
+                    "type": "page"
+                }
+            },
+            "page": {
+                "contents": [
+                    {
+                        "contents": [
+                            {
+                                "attributes": {
+                                    "method": "post",
+                                    "action": "/sprite-web/gateway/ivp.app/enrollment_fl/SEARCH",
+                                    "id": "reg",
+                                    "name": "reg"
+                                },
+                                "contents": [
+                                    {
+                                        "attributes": {},
+                                        "contents": [
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "yes-no",
+                                                                "template": "composite",
+                                                                "properties": {
+                                                                    "legend": "Yes No Temp Fix:"
+                                                                },
+                                                                "parts": {
+                                                                    "legend": {
+                                                                        "type": "text",
+                                                                        "template": "field",
+                                                                        "label": {
+                                                                            "attirbutes": {
+                                                                                "for": "does_not_mater"
+                                                                            },
+                                                                            "text": "Yes No Temp Fix:"
+                                                                        }
+                                                                    },
+                                                                    "yes": {
+                                                                        "type": "radio",
+                                                                        "template": "field",
+                                                                        "input": {
+                                                                            "attributes": {
+                                                                                "name": "yes-no-radio",
+                                                                                "id": "yes_1",
+                                                                                "type":"radio"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "attributes": {
+                                                                                "for": "yes_1"
+                                                                            },
+                                                                            "text": "Yes"
+                                                                        }
+                                                                    },
+                                                                    "no": {
+                                                                        "type": "radio",
+                                                                        "template": "field",
+                                                                        "input": {
+                                                                            "attributes": {
+                                                                                "name": "yes-no-radio",
+                                                                                "id": "no_1",
+                                                                                "type":"radio"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "attributes": {
+                                                                                "for": "no_1"
+                                                                            },
+                                                                            "text": "No"
+                                                                        },
+                                                                        "help": [
+                                                                            {
+                                                                                "template": "output",
+                                                                                "raw": true,
+                                                                                "text": "<p>This is field external section/group instructions</p>"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "template": "external-group"
+                                    },
+                                    {
+                                        "input": {
+                                            "attributes": {
+                                                "value": "enrollment:enrollment:property",
+                                                "type": "hidden",
+                                                "name": "_fw_flowSessionKey",
+                                                "id": "reg__fw_flowSessionKey"
+                                            }
+                                        },
+                                        "template": "field",
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "type": "form"
+                            }
+                        ],
+                        "template": "pagebody"
+                    }
+                ]
+            }
+        }
+  </script>
+  <script id="require"
+        src="../../../dist/js/main.js"></script>
+  <script>
+
+
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+  </script>
+</body>
+</html>

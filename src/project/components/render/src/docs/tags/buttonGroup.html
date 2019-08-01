@@ -1,0 +1,345 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Button Group Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>ButtonRow and ButtonColumn</h1>
+                <div class="docs-badge cui-success">New in E2</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    To create a group of buttons the developer must organize the buttons using the <code>&lt;E2:ButtonRow&gt;</code> and <code>&lt;E2:ButtonCol&gt;</code> tags. This is similar to how inout fields are laid out in a grid using the <code>&lt;E2:Row&gt;</code> and <code>&lt;E2:Col&gt;</code> tags.
+                </p>
+                <p>
+                    At minimum, a group of buttons must have one row containing one column. This may be expanded to include two columns. The buttons must go inside a <code>&lt;E2:ButtonCol&gt;</code> tag.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Button Rows and Columns</h2>
+
+                <pre class="code">
+&lt;E2:ButtonRow>
+    &lt;E2:ButtonCol size="half">
+           &lt;E2:Button viewKey="button1" />
+           &lt;E2:Button viewKey="button2" />
+    &lt;/E2:ButtonCol>
+&lt;/E2:ButtonRow></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "row",
+    "template": "buttonGroup",
+    "contents": [
+        {
+            "type": "column",
+            "template": "buttonGroup",
+            "contents": [
+                {
+                    "type": "button",
+                    "template": "field",
+                    "input": {
+                        "attributes": {
+                            "id": "cancel",
+                            "name": "Cancel",
+                        },
+                        "text": "Cancel"
+                    }
+                },
+                {
+                    "type": "button",
+                    "template": "field",
+                    "input": {
+                        "attributes": {
+                            "id": "update",
+                            "name": "update",
+                        },
+                        "text": "Update",
+                        "primary": true
+                    }
+                }
+            ]
+        }
+    ]
+}</pre>
+
+                <p>
+                    While the Java developer uses the row-and-column layout approach, the JSON sets the <code>template</code> property to call the <code>buttonGroup</code> template. This adds necessary styles only used with button rows. <code>&lt;E2:ButtonCol&gt;</code> follows the same <a href="col.html"><code>size</code> controls</a> used by <code>&lt;E2:Col&gt;</code>.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                align
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Sets the buttons screen alignment. Acceptable Values <br>
+                                <ul>
+                                    <li><strong>Left</strong></li>
+                                    <li><strong>Center</strong></li>
+                                    <li><strong>Right</strong></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;div&gt;</code> container created for either the <code>ButtonRow</code> or the <code>ButtonCol</code> (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                visibility
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Controls the visibility state of a particular element (<a href="../common/attributes/visibility.html">more details</a>)
+                                <br>
+                                Acceptable Options:
+                                <ul>
+                                    <li>HIDE_ON_READ</li>
+                                    <li>HIDE_ON_UPDATE</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Align</h2>
+
+                <pre class="code">
+&lt;E2:ButtonRow>
+    &lt;E2:ButtonCol size="half" align=“right”>
+           &lt;E2:Button viewKey="button3" />
+           &lt;E2:Button viewKey="button4" />
+    &lt;/E2:ButtonCol>
+&lt;/E2:ButtonRow></pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "type": "row",
+    "template": "buttonGroup",
+    "contents": [
+        {
+            "type": "column",
+            "template": "buttonGroup",
+            "align": "right",
+            "contents": [
+                {
+                    "type": "button",
+                    "template": "field",
+                    "input": {
+                        "attributes": {
+                            "id": "cancel",
+                            "name": "Cancel",
+                        },
+                        "text": "Cancel"
+                    }
+                },
+                {
+                    "type": "button",
+                    "template": "field",
+                    "input": {
+                        "attributes": {
+                            "id": "update",
+                            "name": "update",
+                        },
+                        "text": "Update",
+                        "primary": true
+                    }
+                }
+            ]
+        }
+    ]
+}</pre>
+
+                <p>
+                    <code>ButtonCol</code> has one additional attribute of <code>align</code> which is used to align its buttons to the <code>right</code> or <code>left</code>. In the JSON, the additional property of <code>align</code> is created on the <code>column</code> object and it has the value of <code>true</code>.
+                </p>
+
+                <h3>Rendered examples</h3>
+
+                <section id="rightAlignment-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "buttonGroup",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "cancel",
+                                                "name": "Cancel",
+                                            },
+                                            "text": "Cancel"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "update",
+                                                "name": "update",
+                                            },
+                                            "text": "Update",
+                                            "primary": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var rightAlign = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "buttonGroup",
+                                "align": "right",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "cancel",
+                                                "name": "Cancel",
+                                            },
+                                            "text": "Cancel"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "update",
+                                                "name": "update",
+                                            },
+                                            "text": "Update",
+                                            "primary": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+                var rightAlignment = document.getElementById("rightAlignment-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                    render.page(rightAlignment, rightAlign, function() {
+                        console.log("Right Alignment Done");
+                    });
+
+                });
+
+            });
+        </script>
+<!--(bake ../includes/footer.html)-->

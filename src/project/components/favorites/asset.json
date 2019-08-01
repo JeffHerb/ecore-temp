@@ -1,0 +1,5 @@
+{
+    "name": "favorites",
+    "lazy": false,
+    "sources": ["script", "style"]
+}

@@ -1,0 +1,61 @@
+<tr {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' scope="table-row" visibility=this.visibility highlight=this.highlight rowKey=(keyOrIndex key=this.key index=this.rowIndex) style=this.style ) ) }} data-row-index="{{rowIndex}}">
+    {{! Before lookin the row check to see if the header is }}
+    {{#ifCond v1=this.tableData.selectable op="boolCheck" v2=true~}}
+
+        {{! Handles normal tables}}
+        {{#each this.columns~}}
+
+            {{#ifCond v1=@index op="===" v2=0~}}
+
+                {{! Check for head select all control }}
+                {{#ifCond v1=../this.rowLoc op="===" v2="head"~}}
+
+                    {{#ifCond v1=../this.tableData.selectAll op="boolCheck" v2=true~}}
+                        {{#ifCond v1=../this.tableData op="hasProperty" v2="body"~}}
+                            {{~> _tableSelection ../this section="head" index="all"~}}
+                        {{~else~}}
+                            <th></th>
+                        {{/ifCond~}}
+                    {{~else~}}
+                        <th class="emp-min-width table-control-col">
+                            <span class="cui-hide-from-screen" title=
+                            "Select Rows">Select Rows</span>
+                        </th>
+                    {{/ifCond~}}
+
+                {{/ifCond~}}
+
+                {{! Check for body input types}}
+                {{#ifCond v1=../this.rowLoc op="==" v2="body"~}}
+
+                    {{~> _tableSelection ../this section="body" index=../this.rowIndex key=(keyOrIndex key=../this.key index=../this.rowIndex) checked=../this.selected ~}}
+
+                {{/ifCond~}}
+
+                {{! Check for body input types}}
+                {{#ifCond v1=../this.rowLoc op="==" v2="footer"~}}
+
+                    <td class="footer-selection"></td>
+
+                {{/ifCond~}}
+
+                {{~> _column this includeMap=true colIndex=@index rowLoc=../this.rowLoc tableData=../this.tableData~}}
+
+            {{~else~}}
+
+                {{~> _column this includeMap=true colIndex=@index rowLoc=../this.rowLoc tableData=../this.tableData~}}
+
+            {{/ifCond~}}
+
+        {{/each~}}
+
+    {{~else~}}
+
+        {{! Handles normal tables}}
+        {{#each this.columns~}}
+            {{~> _column this includeMap=true colIndex=@index rowLoc=../this.rowLoc tableData=../this.tableData~}}
+        {{/each~}}
+
+    {{/ifCond~}}
+
+</tr>

@@ -1,0 +1,6 @@
+{{! This serves as a partial router}}
+{{#ifCond v1=this.type op="===" v2="iframe"}}
+    {{~> _composite-iframe this attributes=this.properties~}}
+{{else}}
+    {{~> (getPartialName this.type composite=true) (extendParts parts=this.parts properties=this.properties parentObj=this.parentObj attributes=this.attributes) scope=this.scope~}}
+{{/ifCond}}

@@ -1,0 +1,97 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "template": "pagebody",
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "output",
+                                        "text": "<p>This test page requires an active JSON-Server to work correctly.</p>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "user-name"
+                                            },
+                                            "text": "Taxpayer Name:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "type": "input",
+                                                "id": "user-name",
+                                                "name": "user-name"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "id": "selection-request",
+                                                "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.specialSelectionPopup', args:[{'url':'http://localhost:3000/duplicatePage'}, {'user-name': 'name'}, false, false, {'type':'duplicatePopup', 'url': 'http://localhost:3000/duplicateIDs', 'action': 'submit', 'mapping': {'id': 3}, 'removeClear': true, 'redirect': 'http://tax.ny.gov'} ] }})"
+                                            },
+                                            "text": "Call Popup!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+
+        });
+    </script>
+</html>

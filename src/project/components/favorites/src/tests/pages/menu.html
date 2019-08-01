@@ -1,0 +1,2290 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tables - Generic test page</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+    <div id="body-wrapper"></div>
+</body>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+var fwData = {
+    "tabset": {
+        "id": "CMTEST01",
+        "url": "\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S",
+        "name": "Case Management",
+    },
+    "screen": {
+        "id": "CM0060S",
+    },
+    "globalPrefs": {
+        "fontSize": 16,
+        "tabsetPinned": true,
+        "theme": "teal"
+    },
+    "pagePrefs": {
+        "tables": []
+    },
+    "favorites": {
+        "tabsets": [
+            {
+                "id": "CPERSI01",
+                "url": "CPERSI01.gateway?jadeAction=TB0822N_BUSINESS_SUMMARY_RETRIEVE_ACTION&amp;fwFromNav=Y",
+                "name": "Individual Profile Inq",
+                "label": "Individual Profile Inq",
+            },
+            {
+                "id": "AHRETI01",
+                "url": "AHRETI01.tabset?fwFromNav=Y",
+                "name": "HUT Return",
+                "label": "Highway use return",
+            },
+            {
+                "id": "AGI123",
+                "url": "AGI123.gateway?fwFromNav=Y",
+                "name": "Accounting General Inq",
+                "label": "Accounting General Inq",
+            },
+        ],
+        "lastUpdated": {
+            "client": 0
+        }
+    },
+    "menu": {
+        "items": [{
+            "items": [{
+                "items": [{
+                    "label": "Business Summary",
+                    "url": "CBUSII01.tabset"
+                }, {
+                    "label": "Assessments Receivable Inq",
+                    "url": "CASSEI01.tabset"
+                }, {
+                    "label": "Assessments Receivable Inq",
+                    "url": "CASSEI02.tabset"
+                }, {
+                    "label": "Bank Business Profile Inquiry",
+                    "url": "CBUSII03.tabset"
+                }, {
+                    "label": "Business Profile Inq",
+                    "url": "CBUSII04.tabset"
+                }, {
+                    "label": "Individual Profile Inq",
+                    "url": "CPERSI01.tabset"
+                }, {
+                    "label": "Individual Profile Inq",
+                    "url": "CPERSI02.tabset"
+                }, {
+                    "items": [{
+                        "label": "Corporation Inq",
+                        "url": "CCORPI01.tabset"
+                    }, {
+                        "label": "Corporation Inq",
+                        "url": "CCORPI02.tabset"
+                    }, {
+                        "label": "Sales Inq",
+                        "url": "CSALEI01.tabset"
+                    }, {
+                        "label": "Sales Inq",
+                        "url": "CSALEI03.tabset"
+                    }, {
+                        "label": "Withholding\/ Unemployment Inq",
+                        "url": "CWITHI01.tabset"
+                    }, {
+                        "label": "Withholding\/ Unemployment Inq",
+                        "url": "CWITHI03.tabset"
+                    }, {
+                        "label": "Highway Use Inq",
+                        "url": "CHIGHI01.tabset"
+                    }, {
+                        "label": "Petroleum Inq",
+                        "url": "CPETRI01.tabset"
+                    }, {
+                        "label": "Cigarette\/Tobacco Inq",
+                        "url": "CCIGAI01.tabset"
+                    }, {
+                        "label": "Limited Liability (LLC\/LLP) Inq",
+                        "url": "CLIMII01.tabset"
+                    }, {
+                        "label": "IFTA Inq",
+                        "url": "CIFTAI01.tabset"
+                    }, {
+                        "label": "Alcoholic Beverage Inq",
+                        "url": "CALCOI01.tabset"
+                    }, {
+                        "label": "Partnership Inq",
+                        "url": "CPARTI01.tabset"
+                    }, {
+                        "label": "Real Property Transfer Inq",
+                        "url": "CREALI01.tabset"
+                    }, {
+                        "label": "Hazardous Waste Inq",
+                        "url": "CHAZAI01.tabset"
+                    }, {
+                        "label": "Boxing\/Wrestling\/Taxicab Inq",
+                        "url": "CBOXII01.tabset"
+                    }, {
+                        "label": "Generic Inq",
+                        "url": "CGENERI01.tabset"
+                    }],
+                    "label": "Tax Type Profile Inq"
+                }, {
+                    "label": "Address Inq",
+                    "url": "CADDRI01.tabset"
+                }, {
+                    "label": "Address Inq",
+                    "url": "CADDRI03.tabset"
+                }, {
+                    "label": "Exempt Organization Inq",
+                    "url": "CEXEMI01.tabset"
+                }, {
+                    "label": "TF Number Inq",
+                    "url": "CTFNUI01.tabset"
+                }, {
+                    "label": "Representatives\/ Associations Inq",
+                    "url": "CREPRI01.tabset"
+                }, {
+                    "label": "Representatives\/ Associations Inq",
+                    "url": "CREPRI02.tabset"
+                }, {
+                    "label": "Check Digit Inq",
+                    "url": "CCHECI01.tabset"
+                }, {
+                    "label": "Check Digit Inq",
+                    "url": "CCHECI03.tabset"
+                }, {
+                    "label": "NAICS\/SIC Inq",
+                    "url": "CNAICI01.tabset"
+                }, {
+                    "label": "Geographic Codes Inq",
+                    "url": "CGEOGI01.tabset"
+                }, {
+                    "label": "Geographic Code Inq",
+                    "url": "CGEOGI02.tabset"
+                }, {
+                    "label": "Cig Vend Mach Stickers Inq",
+                    "url": "CCIGVI01.tabset"
+                }, {
+                    "label": "PIN\/Password Inq",
+                    "url": "CPINPI01.tabset"
+                }, {
+                    "label": "Corporation Sub Profile Inq",
+                    "url": "CSECOI02.tabset"
+                }, {
+                    "label": "Federal EIN\/Name Search",
+                    "url": "CFEINI01.tabset"
+                }, {
+                    "items": [{
+                        "label": "HUT Permits Inq",
+                        "url": "CPERMI01.tabset"
+                    }, {
+                        "label": "HUT Permit Renewal Inq",
+                        "url": "CPEREI01.tabset"
+                    }],
+                    "label": "HUT Permits Inquiry"
+                }, {
+                    "items": [{
+                        "label": "Corp",
+                        "url": "TB0720TS01.tabset"
+                    }],
+                    "label": "Tax Type profile 1"
+                }, {
+                    "label": "Tax Preparer Registration Inq",
+                    "url": "CTPREGI01.tabset"
+                }, {
+                    "label": "Data Linkage",
+                    "url": "CDATALINK.tabset"
+                }],
+                "label": "Inquire On Client"
+            }, {
+                "items": [{
+                    "label": "Business",
+                    "url": "CBUSIU01.tabset"
+                }, {
+                    "label": "Business",
+                    "url": "CBUSIU02.tabset"
+                }, {
+                    "label": "Business",
+                    "url": "CBUSIU03.tabset"
+                }, {
+                    "label": "Business",
+                    "url": "CBUSIU04.tabset"
+                }, {
+                    "label": "Business Profile",
+                    "url": "CBUSIU05.tabset"
+                }, {
+                    "label": "Business",
+                    "url": "CBUSIU06.tabset"
+                }, {
+                    "label": "Address",
+                    "url": "CADDRU01.tabset"
+                }, {
+                    "label": "Address",
+                    "url": "CADDRU02.tabset"
+                }, {
+                    "label": "Individual",
+                    "url": "CINDIU01.tabset"
+                }, {
+                    "label": "Individual",
+                    "url": "CINDIU02.tabset"
+                }, {
+                    "label": "Individual",
+                    "url": "CINDIU03.tabset"
+                }, {
+                    "label": "Individual",
+                    "url": "CINDIU05.tabset"
+                }, {
+                    "label": "Individual Header",
+                    "url": "CINDHU01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Corporation",
+                        "url": "CCORPU01.tabset"
+                    }, {
+                        "label": "Corporation",
+                        "url": "CCORPU02.tabset"
+                    }, {
+                        "label": "Sales",
+                        "url": "CSALEU01.tabset"
+                    }, {
+                        "label": "Sales",
+                        "url": "CSALEU02.tabset"
+                    }, {
+                        "label": "Withholding\/ Unemployment",
+                        "url": "CWITHU01.tabset"
+                    }, {
+                        "label": "Withholding\/ Unemployment",
+                        "url": "CWITHU02.tabset"
+                    }, {
+                        "label": "Withholding\/Unemployment",
+                        "url": "CWITHU03.tabset"
+                    }, {
+                        "label": "Highway Use",
+                        "url": "CHIGHU01.tabset"
+                    }, {
+                        "label": "Highway Use",
+                        "url": "CHIGHU02.tabset"
+                    }, {
+                        "label": "Petroleum",
+                        "url": "CPETRU01.tabset"
+                    }, {
+                        "label": "Petroleum",
+                        "url": "CPETRU02.tabset"
+                    }, {
+                        "label": "Petroleum",
+                        "url": "CPETRU03.tabset"
+                    }, {
+                        "label": "Cigarette\/Tobacco",
+                        "url": "CCIGAU01.tabset"
+                    }, {
+                        "label": "Cigarette\/Tobacco",
+                        "url": "CCIGAU02.tabset"
+                    }, {
+                        "label": "Limited Liability (LLC\/LLP)",
+                        "url": "CLIMIU01.tabset"
+                    }, {
+                        "label": "Limited Liability (LLC\/LLP)",
+                        "url": "CLIMIU02.tabset"
+                    }, {
+                        "label": "IFTA",
+                        "url": "CIFTAU01.tabset"
+                    }, {
+                        "label": "IFTA",
+                        "url": "CIFTAU02.tabset"
+                    }, {
+                        "label": "Alcoholic Beverage",
+                        "url": "CALCOU01.tabset"
+                    }, {
+                        "label": "Alcoholic Beverage",
+                        "url": "CALCOU02.tabset"
+                    }, {
+                        "label": "Partnership",
+                        "url": "CPARTU01.tabset"
+                    }, {
+                        "label": "Partnership",
+                        "url": "CPARTU02.tabset"
+                    }, {
+                        "label": "Real Property Transfer",
+                        "url": "CREALU01.tabset"
+                    }, {
+                        "label": "Real Property Transfer",
+                        "url": "CREALU02.tabset"
+                    }, {
+                        "label": "Hazardous Waste",
+                        "url": "CHAZAU01.tabset"
+                    }, {
+                        "label": "Hazardous Waste",
+                        "url": "CHAZAU02.tabset"
+                    }, {
+                        "label": "Boxing\/Wrestling\/Taxicab",
+                        "url": "CBOXIU01.tabset"
+                    }, {
+                        "label": "Boxing\/Wrestling\/Taxicab",
+                        "url": "CBOXIU02.tabset"
+                    }, {
+                        "label": "Generic",
+                        "url": "CGENERU01.tabset"
+                    }],
+                    "label": "Tax Type Profile"
+                }, {
+                    "items": [{
+                        "label": "Change DOS ID",
+                        "url": "CDOSIU01.tabset"
+                    }, {
+                        "label": "DOL ER",
+                        "url": "CDOLEU01.tabset"
+                    }],
+                    "label": "IDs"
+                }, {
+                    "label": "Assign TF Numbers",
+                    "url": "CTFNUU01.tabset"
+                }, {
+                    "label": "Representatives\/ Associations",
+                    "url": "CREPRU01.tabset"
+                }, {
+                    "label": "Legal Rep",
+                    "url": "CLGRPU01.tabset"
+                }, {
+                    "label": "Representatives\/ Associations",
+                    "url": "CREPRU02.tabset"
+                }, {
+                    "label": "Special Processing Indicators",
+                    "url": "CSPECU01.tabset"
+                }, {
+                    "label": "NAICS\/SIC",
+                    "url": "CNAICU01.tabset"
+                }, {
+                    "items": [{
+                        "label": "ST Reg Incomplete",
+                        "url": "CSTREU01.tabset"
+                    }, {
+                        "label": "Tax Preparer Registration",
+                        "url": "CTPREGU01.tabset"
+                    }],
+                    "label": "Registrations"
+                }, {
+                    "label": "COA",
+                    "url": "CSALEU03.tabset"
+                }, {
+                    "label": "Geographic Codes",
+                    "url": "CGEOGU01.tabset"
+                }, {
+                    "label": "Sensitive Taxpayer",
+                    "url": "CSENSU01.tabset"
+                }, {
+                    "label": "Electronic Funds Transfer",
+                    "url": "CEFTU01.tabset"
+                }, {
+                    "label": "Cigarette Vending Machine Stickers",
+                    "url": "CCIGVU01.tabset"
+                }, {
+                    "label": "Pin\/Password",
+                    "url": "CPINPU01.tabset"
+                }, {
+                    "label": "Corporation Sub Profile",
+                    "url": "CSECOU01.tabset"
+                }, {
+                    "label": "PIT Refund Offset",
+                    "url": "CPITRU01.tabset"
+                }, {
+                    "items": [{
+                        "label": "HUT Permits",
+                        "url": "CPERMU01.tabset"
+                    }, {
+                        "label": "HUT Permits",
+                        "url": "CPERMU02.tabset"
+                    }, {
+                        "label": "HUT Permits",
+                        "url": "CPERMU03.tabset"
+                    }, {
+                        "label": "HUT Permit Renewal",
+                        "url": "CPEREU03.tabset"
+                    }, {
+                        "label": "Permit Range",
+                        "url": "CPERRU01.tabset"
+                    }, {
+                        "label": "Print Request",
+                        "url": "CPRINU01.tabset"
+                    }],
+                    "label": "HUT Permits"
+                }, {
+                    "items": [{
+                        "label": "Business Profile",
+                        "url": "TB0110TS01.tabset"
+                    }, {
+                        "label": "Secondary FCC",
+                        "url": "TB0728TS01.tabset"
+                    }, {
+                        "label": "Primary FCC",
+                        "url": "TB0135TS01.tabset"
+                    }, {
+                        "label": "LL",
+                        "url": "TB0717TS01.tabset"
+                    }],
+                    "label": "Business"
+                }, {
+                    "label": "QEZE",
+                    "url": "AQEZEU01.tabset"
+                }],
+                "label": "Maintain Client"
+            }, {
+                "label": "Search for Client",
+                "url": "CSEARI01.tabset"
+            }, {
+                "label": "Search for Client",
+                "url": "CSEARI02.tabset"
+            }, {
+                "label": "Event Management",
+                "url": "CEVENU01.tabset"
+            }, {
+                "label": "Event Management",
+                "url": "CEVENU02.tabset"
+            }, {
+                "label": "Request Withholding\/ UI Tax Forms",
+                "url": "CREQUU01.tabset"
+            }, {
+                "items": [{
+                    "label": "Inquire on Account Test Build 1",
+                    "url": "TTII1101.tabset"
+                }],
+                "label": "Inquire on Account Build 1"
+            }, {
+                "items": [{
+                    "label": "Test Tab Build 2",
+                    "url": "TTII1201.tabset"
+                }],
+                "label": "Inquire on Account Build 2"
+            }, {
+                "items": [{
+                    "label": "Test Tab Build 3",
+                    "url": "TTII1301.tabset"
+                }],
+                "label": "Inquire on Account Build 3"
+            }, {
+                "items": [{
+                    "label": "Inquire on Account Test Tab Build 4",
+                    "url": "TTII1401.tabset"
+                }],
+                "label": "Inquire on Account Build 4"
+            }, {
+                "items": [{
+                    "label": "Test Tab Build 5",
+                    "url": "TTII1501.tabset"
+                }],
+                "label": "Inquire on Account Build 5"
+            }, {
+                "items": [{
+                    "label": "Test Tab DOL Build 5",
+                    "url": "TTII1502.tabset"
+                }],
+                "label": "Inquire on Account Build 5 DOL"
+            }, {
+                "items": [{
+                    "label": "NAICS\/SIC Test",
+                    "url": "TTIIX.tabset"
+                }],
+                "label": "Inquire on Account Build6X"
+            }, {
+                "items": [{
+                    "label": "Inquire On Account Build 6 A",
+                    "url": "TTII1601.tabset"
+                }],
+                "label": "Inquire on Account Build 6A"
+            }, {
+                "items": [{
+                    "label": "Inquire on Accounet Build 6B",
+                    "url": "TTII1602.tabset"
+                }],
+                "label": "Inquire on Account Build 6B"
+            }, {
+                "items": [{
+                    "label": "Inquire on Account Build 7",
+                    "url": "TTII1701.tabset"
+                }],
+                "label": "Inquire on Account Build 7"
+            }, {
+                "items": [{
+                    "label": "Inquire on Account for DOL",
+                    "url": "TTII1702.tabset"
+                }],
+                "label": "Inquire on Account Build 7 for DOL"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Test Build 1",
+                    "url": "TTIU1101.tabset"
+                }],
+                "label": "Maintain Account Build 1"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Test Tab Build 2",
+                    "url": "TTIU1201.tabset"
+                }],
+                "label": "Maintain Account Build 2"
+            }, {
+                "items": [{
+                    "label": "Test Tab Build 3",
+                    "url": "TTIU1301.tabset"
+                }],
+                "label": "Maintain Account Build 3"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Test Tab  Build 4",
+                    "url": "TTIU1401.tabset"
+                }],
+                "label": "Maintain Account Build 4"
+            }, {
+                "items": [{
+                    "label": "Test Tab Build 5",
+                    "url": "TTIU1501.tabset"
+                }],
+                "label": "Maintain Account Build 5"
+            }, {
+                "items": [{
+                    "label": "NAICS\/SIC Test",
+                    "url": "TTIUX.tabset"
+                }],
+                "label": "Maintain Account Build 6X"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Build 6A",
+                    "url": "TTIU1601.tabset"
+                }],
+                "label": "Maintain Account Build 6A"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Build 6B",
+                    "url": "TTIU1602.tabset"
+                }],
+                "label": "Maintain Account Build 6B"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Build 7",
+                    "url": "TTIU1701.tabset"
+                }],
+                "label": "Maintain Account Build 7"
+            }, {
+                "label": "Release 2 Build 3 Temp Tabset",
+                "url": "R2B3TEMP.tabset"
+            }, {
+                "label": "Release 2 Build 3 Temp Tabset 01",
+                "url": "R2BETEMP01.tabset"
+            }, {
+                "label": "Business Profile Inquiry",
+                "url": "CBUSII02.tabset"
+            }, {
+                "label": "Address Inq",
+                "url": "CADDRI02.tabset"
+            }, {
+                "label": "Check Digit Inq",
+                "url": "CCHECI02.tabset"
+            }, {
+                "label": "DOL Bank Training",
+                "url": "CDOLXI01.tabset"
+            }, {
+                "label": "Data LInkage Federal",
+                "url": "CDLINKFED.tabset"
+            }],
+            "label": "Client Information"
+        }, {
+            "items": [{
+                "items": [{
+                    "label": "Conversion Inq",
+                    "url": "ACONVI01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Accounting General Inq",
+                        "url": "AACTGI01.tabset"
+                    }, {
+                        "label": "Accounting General Inq - ST",
+                        "url": "AACTGI01S.tabset"
+                    }, {
+                        "label": "Certification Inq - ST",
+                        "url": "ACERTINQST.tabset"
+                    }],
+                    "label": "Accounting Inq"
+                }, {
+                    "label": "Taxpayer Account Inq",
+                    "url": "ATPAI01.tabset"
+                }, {
+                    "label": "Taxpayer Account Inq - Corp",
+                    "url": "ATPAI01C.tabset"
+                }, {
+                    "label": "Taxpayer Account Inq - Corp",
+                    "url": "ATPAI02C.tabset"
+                }, {
+                    "label": "Taxpayer Account Inq IF Field",
+                    "url": "ATPAI01IF.tabset"
+                }, {
+                    "label": "Taxpayer Account Inq - ST",
+                    "url": "ATPAI03S.tabset"
+                }, {
+                    "label": "Taxpayer Account Inquiry (CC)",
+                    "url": "ATPAI02.tabset"
+                }, {
+                    "label": "Returns Inq",
+                    "url": "ARETUI01.tabset"
+                }, {
+                    "label": "Returns Inq - Corp",
+                    "url": "ARETUI01C.tabset"
+                }, {
+                    "label": "Returns Inq - ST",
+                    "url": "ARETUI02S.tabset"
+                }, {
+                    "label": "Return Inq Audit - RETT",
+                    "url": "ARIAUDRETT.tabset"
+                }, {
+                    "label": "Returns Inq - Taxicab",
+                    "url": "ARETUI02T.tabset"
+                }, {
+                    "label": "ABT Return Inq",
+                    "url": "AABTRI01.tabset"
+                }, {
+                    "label": "HUT Return Inq",
+                    "url": "AHRETI01.tabset"
+                }, {
+                    "label": "Payment Inq",
+                    "url": "APAYMI01.tabset"
+                }, {
+                    "label": "Payment Inq - ST",
+                    "url": "APAYMI02S.tabset"
+                }, {
+                    "items": [{
+                        "label": "Refund Inq",
+                        "url": "AREFUI01.tabset"
+                    }, {
+                        "label": "Refund Inq - Corp",
+                        "url": "AREFUI01C.tabset"
+                    }, {
+                        "label": "Refund Inq - Corp",
+                        "url": "AREFUI02C.tabset"
+                    }, {
+                        "label": "Refund Inq - ST",
+                        "url": "AREFUI03S.tabset"
+                    }, {
+                        "label": "Refund Inq - CARTS",
+                        "url": "AREFCARI01.tabset"
+                    }, {
+                        "label": "APAC Refund Claim Inquiry",
+                        "url": "WAPACRCINQ.tabset"
+                    }],
+                    "label": "Refunds & Overpayments Inq"
+                }, {
+                    "label": "OSC Inq",
+                    "url": "AOSCI01.tabset"
+                }, {
+                    "label": "EPAY Inq",
+                    "url": "AEPAYI01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Filing Summary",
+                        "url": "AFISUI01.tabset"
+                    }, {
+                        "label": "Filing Summary",
+                        "url": "AFISUI02.tabset"
+                    }, {
+                        "label": "CARTS Audit Case History",
+                        "url": "ACACHI01.tabset"
+                    }, {
+                        "label": "Assessments",
+                        "url": "AASSEI01.tabset"
+                    }],
+                    "label": "Audit Screening"
+                }, {
+                    "label": "PIT Audit Analysis",
+                    "url": "AAIFI01.tabset"
+                }, {
+                    "label": "Corp Audit Analysis",
+                    "url": "AACTI01.tabset"
+                }, {
+                    "label": "ST Audit Analysis",
+                    "url": "AASTI01.tabset"
+                }, {
+                    "label": "Associations",
+                    "url": "AAUDASI01.tabset"
+                }, {
+                    "label": "OSC Misc Inq",
+                    "url": "AOSCI02M.tabset"
+                }, {
+                    "label": "Associations",
+                    "url": "AAUDASI02.tabset"
+                }, {
+                    "label": "Bankruptcy Inq",
+                    "url": "ABANKRI01.tabset"
+                }, {
+                    "label": "Fed Filing Sum Inq",
+                    "url": "AFEDFSUI01.tabset"
+                }, {
+                    "label": "Collection Inq",
+                    "url": "ACREPI01.tabset"
+                }, {
+                    "label": "Beverage Container Inq",
+                    "url": "ABCREGI01.tabset"
+                }, {
+                    "label": "WT NYS-1 Coupon Inq",
+                    "url": "AWTNYS1I01.tabset"
+                }, {
+                    "label": "MCTMT Inq",
+                    "url": "AMCTMTI01.tabset"
+                }, {
+                    "label": "IPA Inq",
+                    "url": "ACOLIPAI01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Income Tax Desk Audit Federal",
+                        "url": "AITAUFED.tabset"
+                    }, {
+                        "label": "Income Tax Desk Audit Federal Bypass",
+                        "url": "AITAUFEDBY.tabset"
+                    }],
+                    "label": "Income Tax Desk Audit Programs"
+                }, {
+                    "items": [{
+                        "label": "Casual Sales Tracking",
+                        "url": "WCASSTTR.tabset"
+                    }, {
+                        "label": "Bulk Sales Inq",
+                        "url": "WBLKSALESI.tabset"
+                    }],
+                    "label": "Audit Activity Management"
+                }, {
+                    "label": "BCMS Protest",
+                    "url": "ABCMSPROT.tabset"
+                }, {
+                    "label": "BCMS Inq",
+                    "url": "ABCMSINQ.tabset"
+                }],
+                "label": "Inquire on Account"
+            }, {
+                "items": [{
+                    "label": "Conversion",
+                    "url": "ACONVU01.tabset"
+                }, {
+                    "label": "DLN Cross Reference",
+                    "url": "ADLNCU01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Accounting General",
+                        "url": "AACTGU01.tabset"
+                    }, {
+                        "label": "Bank Adjustment",
+                        "url": "ABANKU01.tabset"
+                    }, {
+                        "label": "Accounting General - ST",
+                        "url": "AACTGU01S.tabset"
+                    }, {
+                        "label": "Certifications",
+                        "url": "ACERTU01.tabset"
+                    }, {
+                        "label": "COGNOS Cube Refresh",
+                        "url": "ACGCBREFU.tabset"
+                    }, {
+                        "label": "Bank Adjustment - MCTMT",
+                        "url": "ABANKU02M.tabset"
+                    }, {
+                        "label": "Bank Adjustment - ST",
+                        "url": "ABANKU01S.tabset"
+                    }, {
+                        "label": "PIT Sales and Use",
+                        "url": "APITSAUS01.tabset"
+                    }, {
+                        "label": "Jurisdiction Payment Plan",
+                        "url": "AJURPYPLAN.tabset"
+                    }, {
+                        "label": "Reconciliation - ST",
+                        "url": "SRECONCILL.tabset"
+                    }],
+                    "label": "Accounting"
+                }, {
+                    "items": [{
+                        "label": "Return Adj",
+                        "url": "ARETAU01.tabset"
+                    }, {
+                        "label": "Return Adj - Corp",
+                        "url": "ARETAU01C.tabset"
+                    }, {
+                        "label": "Return Adj - Corp - Protest",
+                        "url": "ARETAU03C.tabset"
+                    }, {
+                        "label": "Return Adj - Corp - Exceptions",
+                        "url": "ARETAU04C.tabset"
+                    }, {
+                        "label": "Return Adj - ST",
+                        "url": "ARETAU07S.tabset"
+                    }, {
+                        "label": "Return Adj - ST Exceptions",
+                        "url": "ARETAU08S.tabset"
+                    }, {
+                        "label": "Corporate Tax ID Exceptions",
+                        "url": "ACTIDU01C.tabset"
+                    }, {
+                        "label": "Return Adj - Taxicab",
+                        "url": "ARETAU05T.tabset"
+                    }, {
+                        "label": "Return Adj - MCTMT",
+                        "url": "ARETAU06M.tabset"
+                    }, {
+                        "label": "Return Adj Audit",
+                        "url": "ARETAU02.tabset"
+                    }, {
+                        "label": "Return Adj Audit - Corp",
+                        "url": "ARETAU02C.tabset"
+                    }, {
+                        "label": "Return Adjust Audit - RETT",
+                        "url": "ARAUDRETT.tabset"
+                    }, {
+                        "label": "Return Adj Audit - ST",
+                        "url": "ARETAU02S.tabset"
+                    }, {
+                        "label": "PIT Excep Attachmate",
+                        "url": "ARPITU01.tabset"
+                    }],
+                    "label": "Returns"
+                }, {
+                    "label": "HUT Return",
+                    "url": "AHRETU01.tabset"
+                }, {
+                    "label": "HUT Return",
+                    "url": "AHRETU02.tabset"
+                }, {
+                    "label": "HUT Return",
+                    "url": "AHRETU03.tabset"
+                }, {
+                    "label": "HUT Return Resolution",
+                    "url": "AHREREU01.tabset"
+                }, {
+                    "label": "Penalty and Interest",
+                    "url": "APENAU01.tabset"
+                }, {
+                    "label": "Penalty and Interest - ST",
+                    "url": "APENAU03S.tabset"
+                }, {
+                    "label": "Penalty and Interest Audit",
+                    "url": "APENAU02.tabset"
+                }, {
+                    "label": "Penalty and Interest Audit - ST",
+                    "url": "APENAU02S.tabset"
+                }, {
+                    "label": "Money Transfers\/Retargets",
+                    "url": "AMONEU01.tabset"
+                }, {
+                    "label": "Money Transfers\/Retargets - Corp",
+                    "url": "AMONEU01C.tabset"
+                }, {
+                    "label": "Money Transfers\/Retargets - ST",
+                    "url": "AMONEU02S.tabset"
+                }, {
+                    "items": [{
+                        "label": "Special Refund Processing",
+                        "url": "ASPECU01.tabset"
+                    }, {
+                        "label": "Refund Processing Audit - ST",
+                        "url": "ARFPRAUU01.tabset"
+                    }, {
+                        "label": "DTF Expedite Refund",
+                        "url": "AEXPRFU01.tabset"
+                    }, {
+                        "label": "DTF Expedite Refund - ST",
+                        "url": "AEXPRFU02S.tabset"
+                    }, {
+                        "label": "DTF Void Refund",
+                        "url": "ADTFVU01.tabset"
+                    }, {
+                        "label": "SWOP Offsets",
+                        "url": "ASWOPU01.tabset"
+                    }, {
+                        "label": "Internal Offsets",
+                        "url": "AINTOU01.tabset"
+                    }, {
+                        "label": "Internal Offsets - ST",
+                        "url": "AINTOU02S.tabset"
+                    }, {
+                        "label": "ACH Refund Maintenance",
+                        "url": "ADDEPU01.tabset"
+                    }, {
+                        "label": "ACH Refund Maintenance",
+                        "url": "ADDEPU02.tabset"
+                    }, {
+                        "label": "MCTMT Offsets",
+                        "url": "AMCOFFU01.tabset"
+                    }, {
+                        "label": "SCOP Offsets",
+                        "url": "ASCOPOFU01.tabset"
+                    }, {
+                        "label": "APAC Special Handling",
+                        "url": "WAPACSPECH.tabset"
+                    }, {
+                        "label": "APAC Refund Claim - Audit",
+                        "url": "WAPACRCA.tabset"
+                    }, {
+                        "label": "APAC Refund Claim Adjust",
+                        "url": "WAPACRCLAD.tabset"
+                    }],
+                    "label": "Refunds & Overpayments"
+                }, {
+                    "items": [{
+                        "label": "APAC Refund Claim",
+                        "url": "WAPACRCDM.tabset"
+                    }, {
+                        "label": "APAC Refund Claim - Non Audit",
+                        "url": "WAPACRCNA.tabset"
+                    }],
+                    "label": "Refund Claim"
+                }, {
+                    "label": "OSC",
+                    "url": "AOSCU01.tabset"
+                }, {
+                    "label": "OSC Payment",
+                    "url": "AOSCPU01.tabset"
+                }, {
+                    "label": "OSC Misc",
+                    "url": "AOSCU02M.tabset"
+                }, {
+                    "label": "Bankruptcy",
+                    "url": "ABANKRU01.tabset"
+                }, {
+                    "label": "Bankruptcy",
+                    "url": "ABANKRU02.tabset"
+                }, {
+                    "label": "OTE Restrictions",
+                    "url": "AOTERU01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Collection Clerical",
+                        "url": "ACCLEU01.tabset"
+                    }, {
+                        "label": "Collection Rep\/Agent",
+                        "url": "ACREPU01.tabset"
+                    }, {
+                        "label": "Collection Child Support",
+                        "url": "ACCHILDU01.tabset"
+                    }, {
+                        "label": "Collection Management",
+                        "url": "ACMANU01.tabset"
+                    }, {
+                        "label": "Collection EFW",
+                        "url": "ACEFWU01.tabset"
+                    }, {
+                        "label": "Paid",
+                        "url": "ACPAIDU01.tabset"
+                    }, {
+                        "label": "Collection IPA",
+                        "url": "ACIPAU01.tabset"
+                    }, {
+                        "label": "IE Atty Approval",
+                        "url": "AIEATTU01.tabset"
+                    }, {
+                        "label": "Collection IPA Approval",
+                        "url": "ACIPAAPU01.tabset"
+                    }, {
+                        "label": "OIC",
+                        "url": "AOICU01.tabset"
+                    }, {
+                        "label": "Offer in Compromise (OIC) Inquiry",
+                        "url": "AOICI01.tabset"
+                    }, {
+                        "label": "Collection Returns\/Refunds\/Offsets Inq",
+                        "url": "ACRROI01.tabset"
+                    }, {
+                        "label": "CCED CISS Resource",
+                        "url": "ACISSRESO.tabset"
+                    }, {
+                        "label": "CISS Collections Resources",
+                        "url": "ACCEDRSU01.tabset"
+                    }],
+                    "label": "Collections"
+                }, {
+                    "label": "EPAY",
+                    "url": "AEPAYU01.tabset"
+                }, {
+                    "label": "Large Filer NAICS",
+                    "url": "ALFNAIU01.tabset"
+                }, {
+                    "label": "PIT Large Filers",
+                    "url": "APILGFU01.tabset"
+                }, {
+                    "label": "Beverage Container",
+                    "url": "ABCREGU01.tabset"
+                }, {
+                    "label": "MCTMT Data Entry",
+                    "url": "AMTADEU01.tabset"
+                }, {
+                    "label": "CISS Audit",
+                    "url": "ACISSAUU01.tabset"
+                }, {
+                    "label": "Assessments - CC",
+                    "url": "AASSEU01.tabset"
+                }, {
+                    "label": "ACH Credit Bank Info",
+                    "url": "AACHCRU01.tabset"
+                }, {
+                    "label": "Individual Taxpayer Account Consolidate",
+                    "url": "ACONSOLU01.tabset"
+                }, {
+                    "label": "Payment Transfer",
+                    "url": "ATRANSU01.tabset"
+                }, {
+                    "label": "PIT Data Entry Header Only",
+                    "url": "APIDEHOU01.tabset"
+                }, {
+                    "label": "OTRA",
+                    "url": "AOTRAU01.tabset"
+                }, {
+                    "label": "Real Estate Transfer Tax",
+                    "url": "ARETTU01.tabset"
+                }, {
+                    "items": [{
+                        "label": "Bulk Sales",
+                        "url": "WBLKSALES.tabset"
+                    }, {
+                        "label": "Casual Sale",
+                        "url": "WCASSTTRU.tabset"
+                    }],
+                    "label": "Audit Activity Management"
+                }, {
+                    "label": "RETT Data Entry",
+                    "url": "ARETTDE.tabset"
+                }, {
+                    "label": "RETT Data Entry Inq",
+                    "url": "ARETTDEI.tabset"
+                }, {
+                    "label": "Unauthorized Access",
+                    "url": "AUNAUTHAC.tabset"
+                }, {
+                    "label": "Threatening TP",
+                    "url": "ATHREATTP.tabset"
+                }, {
+                    "label": "Medical Marijuana",
+                    "url": "AMEDMARU01.tabset"
+                }],
+                "label": "Maintain Account"
+            }, {
+                "label": "Search on Account",
+                "url": "ASEARI01.tabset"
+            }, {
+                "label": "Search on Account",
+                "url": "ASEARI02.tabset"
+            }, {
+                "label": "Collection Agency",
+                "url": "ACOLLU01.tabset"
+            }, {
+                "label": "Collection Agency",
+                "url": "ACOLLU02.tabset"
+            }],
+            "label": "Account Information"
+        }, {
+            "items": [{
+                "label": "Worklist Management",
+                "url": "BABEWLST_T.tabset"
+            }, {
+                "label": "Work Item Search",
+                "url": "BABEWSCH_T.tabset"
+            }],
+            "label": "Work Management"
+        }, {
+            "items": [{
+                "label": "Reporting"
+            }, {
+                "label": "EDMS",
+                "url": "SEDMSI01.tabset"
+            }, {
+                "label": "X Tools"
+            }, {
+                "label": "Order Forms",
+                "url": "CORDFU01.tabset"
+            }, {
+                "items": [{
+                    "label": "Reference Tables Inq",
+                    "url": "SREFEI01.tabset"
+                }],
+                "label": "Reference Tables"
+            }, {
+                "items": [{
+                    "label": "STAR Exemption Inq",
+                    "url": "SSTAREXI01.tabset"
+                }, {
+                    "items": [{
+                        "label": "MC STAR Rebate Inq",
+                        "url": "SMCSTI01.tabset"
+                    }, {
+                        "label": "MC STAR Rebate",
+                        "url": "SMCSTU01.tabset"
+                    }, {
+                        "label": "MC STAR Check Issue",
+                        "url": "SMCSTCK01.tabset"
+                    }],
+                    "label": "2008"
+                }, {
+                    "items": [{
+                        "label": "STAR Local Property Tax Rebate Inq",
+                        "url": "SSTARI01.tabset"
+                    }, {
+                        "label": "STAR Local Property Tax Rebate App",
+                        "url": "SSTARU01.tabset"
+                    }],
+                    "label": "2007\/2006"
+                }, {
+                    "label": "STAR Registration",
+                    "url": "SSTARREG.tabset"
+                }, {
+                    "label": "STAR Registration TCC"
+                }],
+                "label": "STAR"
+            }, {
+                "items": [{
+                    "label": "Data Definition Set Up Tool Inq",
+                    "url": "SDATAI02.tabset"
+                }, {
+                    "label": "Data Definition Set Up Tool",
+                    "url": "SDATAU02.tabset"
+                }, {
+                    "label": "Data Definition Set Up Tool Inq - Corp",
+                    "url": "SDATAI01.tabset"
+                }, {
+                    "label": "Data Definition Set Up Tool - Corp",
+                    "url": "SDATAU01.tabset"
+                }, {
+                    "label": "Form Definition Presentation Inq",
+                    "url": "SFDFUI01.tabset"
+                }, {
+                    "label": "Form Definition Presentation",
+                    "url": "SFDFUU01.tabset"
+                }, {
+                    "label": "Refund Scheduling Inq",
+                    "url": "SREFSI01.tabset"
+                }, {
+                    "label": "Refund Scheduling",
+                    "url": "SREFSU01.tabset"
+                }, {
+                    "label": "ST Refund Scheduling Inq",
+                    "url": "SSTREFSCHI.tabset"
+                }, {
+                    "label": "ST Refund Scheduling",
+                    "url": "SSTREFSCH.tabset"
+                }, {
+                    "label": "RAM Inq",
+                    "url": "SRAMI01.tabset"
+                }, {
+                    "label": "RAM",
+                    "url": "SRAMU01.tabset"
+                }, {
+                    "label": "RAM - PIT Inq",
+                    "url": "SRAMI02.tabset"
+                }, {
+                    "label": "RAM - PIT",
+                    "url": "SRAMU04.tabset"
+                }, {
+                    "label": "Controlled Restrictions",
+                    "url": "SCONTU01.tabset"
+                }, {
+                    "label": "Sales Tax e-filing",
+                    "url": "SSTEFU01.tabset"
+                }, {
+                    "label": "Controlled Restrictions II",
+                    "url": "SCONTU02.tabset"
+                }, {
+                    "label": "eFiling Errors",
+                    "url": "SEFERU01.tabset"
+                }],
+                "label": "Tools"
+            }, {
+                "items": [{
+                    "label": "DEM Data Exchange Management",
+                    "url": "SDEMU01.tabset"
+                }, {
+                    "label": "DEM Data Exchange Management",
+                    "url": "SDEMU02.tabset"
+                }, {
+                    "label": "DEM Data Exchange Management Inq",
+                    "url": "SDEMI01.tabset"
+                }, {
+                    "label": "DEM Data Exchange Management Inq",
+                    "url": "SDEMI02.tabset"
+                }],
+                "label": "DEM"
+            }, {
+                "label": "RP Holds",
+                "url": "SRPGHOLDS.tabset"
+            }, {
+                "label": "Software Vendor",
+                "url": "SSOFTVEND.tabset"
+            }, {
+                "label": "Filing Rereleaser",
+                "url": "SFILRRU01.tabset"
+            }, {
+                "label": "HUT System Monitoring",
+                "url": "SHSYSI01.tabset"
+            }, {
+                "label": "RP Statistics",
+                "url": "SRPSTAT01.tabset"
+            }, {
+                "label": "ST RP Stats",
+                "url": "SSTRPSTAT.tabset"
+            }, {
+                "items": [{
+                    "label": "Online Tax Center"
+                }, {
+                    "label": "OTC Manual Registration"
+                }, {
+                    "label": "Pin on Demand",
+                    "url": "SPINU01.tabset"
+                }, {
+                    "label": "DOL Troubleshooter"
+                }, {
+                    "label": "DOL Manual Registration",
+                    "url": "jsp\/FWRK\/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https:\/\/otcdvm.int.nystax.gov\/webapp\/wcs\/stores\/servlet\/ManualRegistration&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1"
+                }, {
+                    "label": "Message\/Email History",
+                    "url": "SOLSEMLI01.tabset"
+                }, {
+                    "label": "DOL Troubleshooter (DTF)"
+                }, {
+                    "label": "DOL Manual Registration (DTF)",
+                    "url": "jsp\/FWRK\/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=https:\/\/otcdvm.int.nystax.gov\/webapp\/wcs\/stores\/servlet\/ManualRegistration&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=InternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_1={SWAN_INT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_2=ExternalTaxpayerId&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_EXT_TP_ID}&EMPR_AUTH_ATTRIBUTE_NAME_3=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_3={SWAN_USER_NAME}&EMPR_AUTH_ATTRIBUTE_NAME_4=storeId&EMPR_AUTH_ATTRIBUTE_VALUE_4=10302&EMPR_AUTH_ATTRIBUTE_NAME_5=catalogId&EMPR_AUTH_ATTRIBUTE_VALUE_5=10002&EMPR_AUTH_ATTRIBUTE_NAME_6=langId&EMPR_AUTH_ATTRIBUTE_VALUE_6=-1"
+                }],
+                "label": "Online Tax Center"
+            }, {
+                "label": "OSCAR HUT Renewal"
+            }, {
+                "items": [{
+                    "label": "Maintain Account Build 1",
+                    "url": "TSTTBSETB1.tabset"
+                }, {
+                    "label": "Framework Demo1",
+                    "url": "EFDM001_T.tabset"
+                }, {
+                    "label": "Work Item Search",
+                    "url": "BABEWSCH_T.tabset"
+                }],
+                "label": "Reporting"
+            }, {
+                "items": [{
+                    "label": "DOL Troubleshooter"
+                }, {
+                    "label": "Manual Registration"
+                }],
+                "label": "Online Tax Center - DOL"
+            }, {
+                "items": [{
+                    "label": "NYS-1, NYS-45 and MCTMT Inq",
+                    "url": "SNYS1I01.tabset"
+                }, {
+                    "label": "NYS-1, NYS-45 and MCTMT",
+                    "url": "SNYS1U01.tabset"
+                }, {
+                    "label": "DOL NYS-45 Inq",
+                    "url": "SDOL45I01.tabset"
+                }, {
+                    "label": "RPC Check Process",
+                    "url": "SCHKPROC01.tabset"
+                }, {
+                    "label": "FSET Transmissions & Submissions",
+                    "url": "SFSETTSI01.tabset"
+                }, {
+                    "label": "FSET Vendor Certs",
+                    "url": "SFSETVCERT.tabset"
+                }, {
+                    "label": "START-UP NY",
+                    "url": "SSTARTUPNY.tabset"
+                }],
+                "label": "NYS-1, NYS-45 & MCTMT"
+            }, {
+                "label": "Printer ID Association",
+                "url": "SPRIDA01.tabset"
+            }, {
+                "items": [{
+                    "label": "ET Individual - Tax Year 2007"
+                }, {
+                    "label": "ET Individual - Tax Year 2006"
+                }, {
+                    "label": "ET Individual - Tax Year 2005"
+                }, {
+                    "label": "ET Fiduciary - Tax Year 2007"
+                }, {
+                    "label": "ET Fiduciary - Tax Year 2006"
+                }, {
+                    "label": "ET Fiduciary - Tax Year 2005"
+                }],
+                "label": "Statement of Estimated Income Tax"
+            }, {
+                "label": "Sales Tax No Tax Due"
+            }, {
+                "label": "ST Upload and Download an Address File",
+                "url": "SAUDTU01.tabset"
+            }, {
+                "label": "Procurement Fee",
+                "url": "SPRFEEU01.tabset"
+            }, {
+                "label": "ReReg NON-Responders"
+            }, {
+                "label": "Procurement Fee External",
+                "url": "SPRFEEEX.tabset"
+            }, {
+                "label": "Fix Program File View"
+            }, {
+                "label": "ACH File Unlock",
+                "url": "SACHFLU01.tabset"
+            }, {
+                "label": "Backout Queue Message Copying Facility",
+                "url": "http:\/\/uprutl01.int.nystax.gov:20581\/BQMCPY\/DTFMTF.jsp?65E20073=6c5e3bf1"
+            }, {
+                "label": "Data Fix Facility",
+                "url": "jsp\/FWRK\/InterSiteTransferService.jsp?EMPR_AUTH_SUBJECT_IP={SWAN_USER_IP_ADDR}&TARGET=http:\/\/dvm.int.nystax.gov\/FWDATAFX\/fixController&EMPR_AUTH_USER_ID={SWAN_USER_ID}&EMPR_AUTH_ATTRIBUTE_NAME_1=IsTaxpayerRequired&EMPR_AUTH_ATTRIBUTE_VALUE_1=N&EMPR_AUTH_ATTRIBUTE_NAME_2=UserName&EMPR_AUTH_ATTRIBUTE_VALUE_2={SWAN_USER_NAME}"
+            }, {
+                "label": "Framework Tabset",
+                "url": "FWRKTS.tabset"
+            }, {
+                "label": "Production Control",
+                "url": "PRCTRLU01.tabset"
+            }, {
+                "label": "PIT Manual Drain",
+                "url": "SPIMANU01.tabset"
+            }, {
+                "label": "1099G",
+                "url": "S1099GU01.tabset"
+            }, {
+                "label": "Indian Exempt Cig Quant",
+                "url": "SINDCIGU01.tabset"
+            }, {
+                "label": "Message Ctr Templates",
+                "url": "SMSSCTRTMP.tabset"
+            }, {
+                "label": "GEO Code Address Look-up",
+                "url": "SADDLKUP01.tabset"
+            }, {
+                "label": "Audit Selection Maintenance",
+                "url": "SAUDSPMTNC.tabset"
+            }, {
+                "label": "MDAS",
+                "url": "SMDASU01.tabset"
+            }, {
+                "label": "MDAS Rescore",
+                "url": "SMDASRSCR.tabset"
+            }, {
+                "label": "ST Rate Chg",
+                "url": "SSTRATECHG.tabset"
+            }, {
+                "label": "ST Data Repair",
+                "url": "SSTDATARP.tabset"
+            }, {
+                "label": "PIT Data Capture",
+                "url": "SPITDATCAP.tabset"
+            }, {
+                "label": "Correspondence Tracking",
+                "url": "SCORRTRACK.tabset"
+            }, {
+                "label": "Remittance Tracking Inq",
+                "url": "SRMTTRKINQ.tabset"
+            }, {
+                "label": "Remittance Tracking",
+                "url": "SREMITTRAC.tabset"
+            }, {
+                "label": "Remittance Tracking Approval",
+                "url": "SREMITTAPR.tabset"
+            }, {
+                "label": "Family Tax Credit Inquiry",
+                "url": "SFAMTAXINQ.tabset"
+            }, {
+                "label": "Family Tax Credit",
+                "url": "SFAMTAXCR.tabset"
+            }, {
+                "label": "Family Tax Credit - OSC",
+                "url": "SFTCOSC.tabset"
+            }, {
+                "label": "Inquiry for External Bank Users",
+                "url": "SBANKI01.tabset"
+            }, {
+                "label": "Preparer Complaint",
+                "url": "SPREPCOMP.tabset"
+            }, {
+                "label": "Audit Trail Application Details",
+                "url": "SAUDTRDU01.tabset"
+            }, {
+                "label": "Audit Trail Application Details Inq",
+                "url": "SAUDTRDI01.tabset"
+            }, {
+                "label": "Property Tax Freeze",
+                "url": "SPROPTAX.tabset"
+            }, {
+                "label": "Property Tax Freeze Data Upload",
+                "url": "SPTFDATAUP.tabset"
+            }, {
+                "label": "Property Tax Freeze Inquiry",
+                "url": "SPROPTINQ.tabset"
+            }, {
+                "label": "Vendor XML Inquiry",
+                "url": "SVENXMLINQ.tabset"
+            }, {
+                "label": "START-UP NY Inq",
+                "url": "SSTUPNYINQ.tabset"
+            }, {
+                "label": "Electronic Payment Admin"
+            }, {
+                "label": "Electronic Payment Inquiry"
+            }, {
+                "label": "BRAN Test",
+                "url": "BRANTEST.tabset"
+            }, {
+                "label": "RETT DPR",
+                "url": "SRETTDPR.tabset"
+            }, {
+                "label": "RETT DPR Inquiry",
+                "url": "SRETDPRINQ.tabset"
+            }, {
+                "items": [{
+                    "label": "PIT ET Bulk Upload Inquiry RPC",
+                    "url": "SPBKINQRPC.tabset"
+                }, {
+                    "label": "PIT ET Bulk Upload Update RPC",
+                    "url": "SPBUPDRPC.tabset"
+                }, {
+                    "label": "PIT ET Bulk Upload Inquiry",
+                    "url": "SPETBKINQ.tabset"
+                }, {
+                    "label": "PIT ET Bulk Upload Update",
+                    "url": "SPETBKUPD.tabset"
+                }],
+                "label": "PIT ET Bulk Upload"
+            }, {
+                "label": "Create Test Payment - UTM",
+                "url": "SCARTS01.tabset"
+            }, {
+                "label": "Mapper Tools",
+                "url": "SMAPTOOLS.tabset"
+            }],
+            "label": "Special Services"
+        },
+        {
+            "items": [{
+                "label": "EDMS",
+                "url": "SEDMSI01.tabset"
+            }],
+            "label": "EDMS"
+        }],
+        "display": {
+            "className": "emp"
+        }
+    },
+    "page": {
+        "contents": [{
+            "buttons": {
+                "hideSearchBox": {
+                    "input": {
+                        "primary": false,
+                        "attributes": {
+                            "className": "emp-search-toggle",
+                            "title": "Hide\/Show search box",
+                            "type": "button",
+                            "name": "emp-search-toggle",
+                            "id": "emp-search-toggle",
+                            "tabindex": "1"
+                        },
+                        "text": "hide\/Show"
+                    },
+                    "template": "field",
+                    "type": "button"
+                },
+                "clearAll": {
+                    "input": {
+                        "primary": false,
+                        "attributes": {
+                            "className": "emp-button-search-clear-all",
+                            "title": "Clear all fields in search box",
+                            "type": "button",
+                            "name": "clear-all-button",
+                            "id": "clear-all-button",
+                            "tabindex": "1"
+                        },
+                        "text": "Clear All"
+                    },
+                    "template": "field",
+                    "type": "button"
+                },
+                "retrieve": {
+                    "input": {
+                        "primary": false,
+                        "attributes": {
+                            "title": "Search",
+                            "type": "submit",
+                            "name": "Search",
+                            "id": "search"
+                        },
+                        "text": "Search"
+                    },
+                    "template": "field",
+                    "type": "button"
+                },
+                "clear": {
+                    "input": {
+                        "primary": false,
+                        "attributes": {
+                            "className": "emp-button-search-clear",
+                            "title": "Leave ID and clear the rest",
+                            "type": "button",
+                            "name": "clear-button",
+                            "id": "clear-button",
+                            "tabindex": "1"
+                        },
+                        "text": "Clear"
+                    },
+                    "template": "field",
+                    "type": "button"
+                }
+            },
+            "tabsets": {
+                "attributes": {
+                    "className": "emp-tabset"
+                },
+                "title": "Case Management",
+                "template": "lists",
+                "type": "unordered",
+                "collapse": "true",
+                "options": [{
+                    "attributes": {
+                        "href": "\/EMPIRE\/gateway\/AMP180STST.tabset\/AMP180S"
+                    },
+                    "template": "link",
+                    "text": "Selection Category Maintenance"
+                }]
+            },
+            "search": {
+                "row": [{
+                    "fields": [{
+                        "label": {
+                            "attributes": {
+                                "for": "S_OWNER"
+                            },
+                            "text": "Owner"
+                        },
+                        "input": {
+                            "readOnly": false,
+                            "attributes": {
+                                "title": "Owner",
+                                "type": "text",
+                                "name": "S_OWNER",
+                                "id": "S_OWNER"
+                            },
+                            "options": {
+                                "01": {
+                                    "value": "01",
+                                    "text": "IFDAB"
+                                },
+                                "02": {
+                                    "value": "02",
+                                    "text": "IFFAB"
+                                },
+                                "03": {
+                                    "value": "03",
+                                    "text": "TDAB"
+                                },
+                                "04": {
+                                    "value": "04",
+                                    "text": "TFAB"
+                                },
+                                "05": {
+                                    "value": "05",
+                                    "text": "CID"
+                                },
+                                "06": {
+                                    "value": "06",
+                                    "text": "TAA"
+                                }
+                            }
+                        },
+                        "template": "field",
+                        "type": "select"
+                    }]
+                }, {
+                    "fields": [{
+                        "label": {
+                            "attributes": {
+                                "for": "S_VIEW_8"
+                            },
+                            "text": "View"
+                        },
+                        "input": {
+                            "readOnly": false,
+                            "attributes": {
+                                "title": "View",
+                                "type": "text",
+                                "name": "S_VIEW_8",
+                                "id": "S_VIEW_8"
+                            },
+                            "options": {
+                                "AC": {
+                                    "value": "AC",
+                                    "text": "ACTIVE"
+                                },
+                                "IC": {
+                                    "value": "IC",
+                                    "text": "INACTIVE"
+                                },
+                                "AL": {
+                                    "value": "AL",
+                                    "text": "ALL"
+                                }
+                            }
+                        },
+                        "template": "field",
+                        "type": "select"
+                    }]
+                }],
+                "url": "\/EMPIRE\/gateway\/AMP180STST.tabset\/AMP180S\/search"
+            },
+            "template": "globalHeader",
+            "page": {
+                "title": "AMP180S Category Maintenance"
+            }
+        }, {
+            "contents": [{
+                "attributes": {
+                    "method": "post",
+                    "action": "\/EMPIRE\/gateway\/\/AMP180STST.tabset\/AMP180S",
+                    "id": "category-form",
+                    "name": "category-form"
+                },
+                "contents": [{
+                    "attributes": {},
+                    "contents": [{
+                        "title": "Category Details",
+                        "template": "group",
+                        "type": "header"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "full",
+                            "attributes": {},
+                            "contents": [{
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_TAX_TYPE_V3"
+                                    },
+                                    "text": "Tax Type:"
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "name": "selectedCategory.taxTypeTaxSubtypeCD",
+                                        "id": "E_TAX_TYPE_V3"
+                                    },
+                                    "options": {
+                                        "PP": {
+                                            "value": "PP",
+                                            "text": "Petro Products Bus"
+                                        },
+                                        "ST": {
+                                            "value": "ST",
+                                            "text": "Sales and Use"
+                                        },
+                                        "II01": {
+                                            "value": "II01",
+                                            "text": "Indep Proc Insur"
+                                        },
+                                        "AB01": {
+                                            "value": "AB01",
+                                            "text": "Alcoholic Beverage"
+                                        },
+                                        "BC01": {
+                                            "value": "BC01",
+                                            "text": "Beverage Container"
+                                        },
+                                        "DF01": {
+                                            "value": "DF01",
+                                            "text": "Diesel Fuel"
+                                        },
+                                        "GI01": {
+                                            "value": "GI01",
+                                            "text": "Gift"
+                                        },
+                                        "PT01": {
+                                            "value": "PT01",
+                                            "text": "Income-Partnership"
+                                        },
+                                        "CI": {
+                                            "value": "CI",
+                                            "text": "Cigarette\/Tobacco"
+                                        },
+                                        "GS01": {
+                                            "value": "GS01",
+                                            "text": "Generation Skip"
+                                        },
+                                        "BW92": {
+                                            "value": "BW92",
+                                            "text": "Taxicab Fee"
+                                        },
+                                        "HU01": {
+                                            "value": "HU01",
+                                            "text": "Highway Use"
+                                        },
+                                        "FT01": {
+                                            "value": "FT01",
+                                            "text": "Fuel Use (IFTA)"
+                                        },
+                                        "ES01": {
+                                            "value": "ES01",
+                                            "text": "Estate"
+                                        },
+                                        "BW93": {
+                                            "value": "BW93",
+                                            "text": "Medical Marijuana"
+                                        },
+                                        "HU03": {
+                                            "value": "HU03",
+                                            "text": "Highway Use Permit"
+                                        },
+                                        "CT": {
+                                            "value": "CT",
+                                            "text": "Corporation"
+                                        },
+                                        "PB01": {
+                                            "value": "PB01",
+                                            "text": "Petroleum Business"
+                                        },
+                                        "RE01": {
+                                            "value": "RE01",
+                                            "text": "Real Estate Transfer"
+                                        },
+                                        "BW01": {
+                                            "value": "BW01",
+                                            "text": "Boxing & Wrestling"
+                                        },
+                                        "MF01": {
+                                            "value": "MF01",
+                                            "text": "Motor Fuel"
+                                        },
+                                        "WT01": {
+                                            "value": "WT01",
+                                            "text": "Withholding"
+                                        },
+                                        "PI06": {
+                                            "value": "PI06",
+                                            "text": "Personal Income"
+                                        },
+                                        "RP01": {
+                                            "value": "RP01",
+                                            "text": "Real Property Gain"
+                                        }
+                                    },
+                                    "required": true
+                                },
+                                "template": "field",
+                                "type": "select"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "full",
+                            "attributes": {},
+                            "contents": [{
+                                "readonly": true,
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_OWNER"
+                                    },
+                                    "text": "Owner:"
+                                },
+                                "input": {
+                                    "readOnly": true,
+                                    "attributes": {
+                                        "name": "selectedCategory.catOwner_id",
+                                        "id": "E_OWNER"
+                                    },
+                                    "options": {
+                                        "01": {
+                                            "value": "01",
+                                            "text": "IFDAB"
+                                        },
+                                        "02": {
+                                            "value": "02",
+                                            "text": "IFFAB"
+                                        },
+                                        "03": {
+                                            "value": "03",
+                                            "text": "TDAB"
+                                        },
+                                        "04": {
+                                            "value": "04",
+                                            "text": "TFAB"
+                                        },
+                                        "05": {
+                                            "value": "05",
+                                            "text": "CID"
+                                        },
+                                        "06": {
+                                            "value": "06",
+                                            "text": "TAA"
+                                        }
+                                    }
+                                },
+                                "template": "field",
+                                "type": "select"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "full",
+                            "attributes": {},
+                            "contents": [{
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_CATEGORY_V5"
+                                    },
+                                    "text": "Category:"
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "size": 10,
+                                        "maxlength": 35,
+                                        "type": "text",
+                                        "name": "selectedCategory.cat_name",
+                                        "id": "E_CATEGORY_V5"
+                                    },
+                                    "required": true
+                                },
+                                "template": "field",
+                                "type": "text"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "readonly": true,
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_CATEGORY_ID"
+                                    },
+                                    "text": "Category:"
+                                },
+                                "input": {
+                                    "readOnly": true,
+                                    "attributes": {
+                                        "size": 10,
+                                        "maxlength": 9,
+                                        "type": "text",
+                                        "name": "selectedCategory.cat_id",
+                                        "id": "E_CATEGORY_ID"
+                                    }
+                                },
+                                "template": "field",
+                                "type": "text"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }, {
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_TABSET_ID"
+                                    },
+                                    "text": "Tabset ID:"
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "name": "selectedCategory.tabset_id",
+                                        "id": "E_TABSET_ID"
+                                    },
+                                    "options": {
+                                        "01": {
+                                            "value": "01",
+                                            "text": "IFDAB"
+                                        },
+                                        "02": {
+                                            "value": "02",
+                                            "text": "IFFAB"
+                                        },
+                                        "03": {
+                                            "value": "03",
+                                            "text": "TDAB"
+                                        },
+                                        "04": {
+                                            "value": "04",
+                                            "text": "TFAB"
+                                        },
+                                        "05": {
+                                            "value": "05",
+                                            "text": "CID"
+                                        },
+                                        "06": {
+                                            "value": "06",
+                                            "text": "TAA"
+                                        }
+                                    },
+                                    "required": true
+                                },
+                                "template": "field",
+                                "type": "select"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_DEFAULT_DISPLAY_TYPE"
+                                    },
+                                    "text": "Default Display Type:"
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "name": "selectedCategory.dflt_view_id",
+                                        "id": "E_DEFAULT_DISPLAY_TYPE"
+                                    },
+                                    "options": {
+                                        "08": {
+                                            "value": "08",
+                                            "text": "Unassigned"
+                                        }
+                                    },
+                                    "required": true
+                                },
+                                "template": "field",
+                                "type": "select"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }, {
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_CLEAN_UP"
+                                    },
+                                    "text": "Clean Up Type:"
+                                },
+                                "input": {
+                                    "attributes": {
+                                        "name": "selectedCategory.cleanup_type",
+                                        "id": "E_CLEAN_UP"
+                                    },
+                                    "options": {
+                                        "C": {
+                                            "value": "C",
+                                            "text": "By Category"
+                                        },
+                                        "T": {
+                                            "value": "T",
+                                            "text": "By Tax Type"
+                                        },
+                                        "N": {
+                                            "value": "N",
+                                            "text": "None"
+                                        }
+                                    }
+                                },
+                                "template": "field",
+                                "type": "select"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "readonly": true,
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_CREATED_DATE"
+                                    },
+                                    "text": "Created Date:"
+                                },
+                                "input": {
+                                    "readOnly": true,
+                                    "attributes": {
+                                        "size": 10,
+                                        "maxlength": 10,
+                                        "type": "text",
+                                        "name": "selectedCategory.create_ts",
+                                        "id": "E_CREATED_DATE"
+                                    }
+                                },
+                                "template": "field",
+                                "type": "text"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }, {
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "readonly": true,
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_CREATED_BY_V3"
+                                    },
+                                    "text": "Created By:"
+                                },
+                                "input": {
+                                    "readOnly": true,
+                                    "attributes": {
+                                        "size": 10,
+                                        "maxlength": 8,
+                                        "type": "text",
+                                        "name": "selectedCategory.create_emp_id",
+                                        "id": "E_CREATED_BY_V3"
+                                    }
+                                },
+                                "template": "field",
+                                "type": "text"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "readonly": true,
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_LAST_UPDATED"
+                                    },
+                                    "text": "Last Updated:"
+                                },
+                                "input": {
+                                    "readOnly": true,
+                                    "attributes": {
+                                        "size": 10,
+                                        "maxlength": 10,
+                                        "type": "text",
+                                        "name": "selectedCategory.last_update_ts",
+                                        "id": "E_LAST_UPDATED"
+                                    }
+                                },
+                                "template": "field",
+                                "type": "text"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }, {
+                            "width": "half",
+                            "attributes": {},
+                            "contents": [{
+                                "readonly": true,
+                                "label": {
+                                    "attributes": {
+                                        "for": "E_LAST_UPDATED_BY"
+                                    },
+                                    "text": "Last Updated By:"
+                                },
+                                "input": {
+                                    "readOnly": true,
+                                    "attributes": {
+                                        "size": 10,
+                                        "maxlength": 8,
+                                        "type": "text",
+                                        "name": "selectedCategory.last_update_id",
+                                        "id": "E_LAST_UPDATED_BY"
+                                    }
+                                },
+                                "template": "field",
+                                "type": "text"
+                            }],
+                            "template": "grid",
+                            "type": "column"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }, {
+                        "contents": [{
+                            "contents": [{
+                                "input": {
+                                    "primary": false,
+                                    "attributes": {
+                                        "title": "Clear",
+                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'category-form',action:'\/EMPIRE\/gateway\/AMP180STST.tabset\/AMP180S\/AMP180S_CLEAR_ACTION'}])",
+                                        "type": "button",
+                                        "accessKey": "C",
+                                        "name": "E_BTN_CLEAR_3",
+                                        "id": "E_BTN_CLEAR_3"
+                                    },
+                                    "text": "Clear"
+                                },
+                                "template": "field",
+                                "type": "button"
+                            }, {
+                                "input": {
+                                    "primary": true,
+                                    "attributes": {
+                                        "title": "Add\/Update Action",
+                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'category-form',action:'\/EMPIRE\/gateway\/AMP180STST.tabset\/AMP180S\/AMP180S_ADDUPDATE_ACTION'}])",
+                                        "type": "button",
+                                        "accessKey": " ",
+                                        "name": "E_BTN_ADD_UPD_ACTION_4",
+                                        "id": "E_BTN_ADD_UPD_ACTION_4"
+                                    },
+                                    "text": "Add\/Update Action"
+                                },
+                                "template": "field",
+                                "type": "button"
+                            }],
+                            "template": "buttonGroup",
+                            "type": "column"
+                        }],
+                        "template": "buttonGroup",
+                        "type": "row"
+                    }, {
+                        "attributes": {},
+                        "contents": [{
+                            "head": {
+                                "rows": [{
+                                    "columns": [{
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_cat_name"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Category"
+                                    }, {
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_taxTypeTaxSubtypeDesc"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Tax Type"
+                                    }, {
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_activeDesc"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Status"
+                                    }, {
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_create_ts"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Created Date"
+                                    }, {
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_create_emp_id"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Created By"
+                                    }, {
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_last_update_ts"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Last Updated"
+                                    }, {
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_last_update_id"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Last Updated By"
+                                    }, {
+                                        "hideLabel": true,
+                                        "attributes": {
+                                            "data-type": "button",
+                                            "data-colmap": "summaryList_Field0"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Activate Inactviate"
+                                    }, {
+                                        "hideLabel": true,
+                                        "attributes": {
+                                            "data-type": "button",
+                                            "data-colmap": "summaryList_Field1"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Edit"
+                                    }, {
+                                        "visibility": "hidden",
+                                        "hideLabel": false,
+                                        "attributes": {
+                                            "data-type": "alpha",
+                                            "data-colmap": "summaryList_cat_id"
+                                        },
+                                        "sortable": false,
+                                        "type": "header",
+                                        "text": "Category ID"
+                                    }]
+                                }]
+                            },
+                            "attributes": {
+                                "id": "summaryList"
+                            },
+                            "template": "table",
+                            "type": "table"
+                        }],
+                        "template": "grid",
+                        "type": "row"
+                    }],
+                    "type": "section"
+                }],
+                "type": "form"
+            }],
+            "template": "pagebody"
+        }]
+    }
+};
+</script>
+<script>
+require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+    // Fix the tabset appearance
+    $('.emp-tabset').addClass('emp-collapse');
+
+});
+</script>
+
+</html>

@@ -1,0 +1,1306 @@
+//   ========================================================
+// * @name       _iconbutton.scss
+// * @desc       Empire button icon styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    General header indicators
+// * --------------------------------------------------------
+.emp-tp-info .cui-data span,
+.emp-tp-info .emp-indicator-1,
+.emp-tp-info .emp-indicator-2,
+.emp-tp-info .emp-indicator-3 {
+    display: inline-block;
+    line-height: 1.5;
+}
+
+// Standard styles (both header and table indicators)
+.emp-indicator-1,
+.emp-indicator-2,
+.emp-indicator-3,
+.emp-indicator-4 {
+    //width: $emp-indicator-width;
+    background-color: $emp-indicator-bg-color;
+    border: $emp-indicator-border;
+    border-radius: $emp-indicator-border-radius;
+    color: $cui-color-white;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        color: $cui-color-white;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        color: $cui-color-white;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        color: $cui-color-white;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        color: $cui-color-white;
+    }
+
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        color: $cui-color-white;
+    }
+
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        background-color: $emp-indicator-bg-color;
+        border: $emp-indicator-border;
+        color: $cui-color-white;
+    }
+}
+
+// Indicators in the header
+.emp-tp-info {
+    .emp-indicator-1,
+    .emp-indicator-2,
+    .emp-indicator-3 {
+        position: relative;
+        width: $emp-indicator-width-1;
+        max-height: $emp-indicator-max-height;
+        margin: $emp-indicator-margin;
+        vertical-align: top;
+        @include hide-text;
+        text-align: center;
+
+        &:first-of-type {
+            margin-left: 0;
+        }
+    }
+
+    .emp-indicator-2 {
+        width: $emp-indicator-width-2;
+
+        &:after {
+            padding-left: 0.3em;
+        }
+    }
+
+    .emp-indicator-3 {
+        width: 2.5em;
+
+        &:after {
+            padding-left: 0.3em;
+        }
+    }
+
+    a.emp-indicator-1.emp-header-popup {
+        position: relative;
+        //width: 47px;
+    }
+
+    a.emp-indicator-1 span.link-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 9px;
+        background: transparent url("../../dist/images/emp-notifier-popup.png") center right no-repeat;
+        z-index: 10;
+        top: -1px;
+
+        & + span.emp-popup {
+            background: #000;
+            display: block;
+            height: 2em;
+            position: absolute;
+            right: -1.25em;
+            text-indent: -9999px;
+            top: -1.25em;
+            transform: rotate(45deg);
+            width: 2em;
+        }
+    }
+
+    [class*="emp-indicator-"]:after {
+        display: inline-block;
+        position: absolute;
+        width: $emp-indicator-width;
+        content: attr(alt);
+        text-indent: 0;
+        text-align: center;
+        top: -0.8px; // Aligns FF, IE and Chrome at default font size (otherwise use -0.05em) (MF)
+        left: -0.1em;
+        background-color: $emp-indicator-bg-color;
+        color: $emp-indicator-color;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            background-color: $emp-indicator-bg-color;
+            color: $emp-indicator-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            background-color: $emp-indicator-bg-color;
+            color: $emp-indicator-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            background-color: $emp-indicator-bg-color;
+            color: $emp-indicator-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            background-color: $emp-indicator-bg-color;
+            color: $emp-indicator-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            background-color: $emp-indicator-bg-color;
+            color: $emp-indicator-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            background-color: $emp-indicator-bg-color;
+            color: $emp-indicator-color;
+        }
+    }
+
+    .emp-indicator.emp-federal-data {
+        display: inline-block;
+        border-radius: 4px;
+        position: relative;
+        width: 2.7em;
+        max-height: $emp-indicator-max-height;
+        margin: 0;
+        vertical-align: top;
+        @include hide-text;
+
+        &:after {
+            display: inline-block;
+            border-radius: 4px;
+            position: absolute;
+            width: 2.7em;
+            content: attr(alt);
+            text-indent: 0;
+            text-align: center;
+            top: -0.8px; // Aligns FF, IE and Chrome at default font size (otherwise use -0.05em) (MF)
+            left: -0.1em;
+            background-color: #333;
+            color: #FFF;
+        }
+    }
+
+}
+
+// * @section    Icons
+// * --------------------------------------------------------
+[class*="emp-icon-"] {
+    @include button-icon;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: $emp-icon-button-margin;
+
+    // Placeholder style for icons that haven't been created yet, so mockup designers can keep track
+    background-image: linear-gradient(pink, pink);
+}
+
+.emp-icon-buttons {
+    position: absolute;
+}
+
+.emp-icon-buttons li {
+    float: left;
+}
+
+.emp-icon-buttons a {
+    display: inline-block;
+}
+
+.emp-group-collapse {
+    @if $emp-group-collapse-icon-url != "" {
+        background-image: url($emp-group-collapse-icon-url);
+        background-position: $emp-group-collapse-background-position;
+    }
+}
+
+.emp-group-instructions-toggle-expand {
+    @if $emp-group-instructions-toggle-expand-icon-url != "" {
+        background-image: url($emp-group-instructions-toggle-expand-icon-url);
+        background-position: $emp-group-instructions-toggle-expand-background-position;
+    }
+}
+
+.emp-icon-redcheck {
+    height: 1.6em;
+    background-image: none; // Undo placeholder
+
+    &:after {
+        background: transparent;
+        content: "";
+        border-style: solid;
+        border-color: #ee3300;
+        border-width: 0 3px 3px 0;
+        display: block;
+        height: 15px;
+        left: 9px;
+        position: absolute;
+        top: calc(50% - 8px);
+        transform: rotate(45deg);
+        width: 8px;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-color: $emp-icon-redcheck-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-color: $emp-icon-redcheck-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-color: $emp-icon-redcheck-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-color: $emp-icon-redcheck-color;
+        }
+
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-color: $emp-icon-redcheck-color;
+        }
+
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-color: $emp-icon-redcheck-color;
+        }
+    }
+}
+
+.external-app {
+    table{
+        .emp-icon-redcheck {
+            background-image: url($emp-images-path + "external-checkmark.svg");
+            background-size: 16px;
+
+            @media print {
+                .ie & {
+                    background-image: url($emp-images-path + "external-checkmark.png");
+                }
+            }
+
+            &:after{
+                display: none;
+            }
+        }
+    }
+
+    .emp-icon-stop{
+        background-image: url($emp-images-path + "external-checkmark-off.svg");
+        background-size: 16px;
+    }
+
+    @media print {
+        & .ie {
+            .emp-icon-stop{
+                background-image: url($emp-images-path + "external-checkmark-off.png");
+            }
+        }
+    }
+
+    .emp-icon-credit-claimed{
+        background-image: url($emp-images-path + "external-credits-claimed.png");
+        background-size: 16px;
+    }
+
+    .emp-icon-table-expand{
+        background-image: url($emp-images-path + "external-expand-all.gif");
+        background-size: 16px;
+    }
+
+    .emp-icon-table-collapse{
+        background-image: url($emp-images-path + "external-collapse-all.gif");
+        background-size: 16px;
+    }
+
+    .emp-icon-table-expand-view{
+        background-image: url($emp-images-path + "external-expand-view.gif");
+        background-size: 16px;
+    }
+
+    .emp-icon-table-collapse-view{
+        background-image: url($emp-images-path + "external-collapse-view.gif");
+        background-size: 16px;
+    }
+
+    .emp-icon-help{
+        background-image: url($emp-images-path + "external-help.svg");
+        background-size: 16px;
+    }
+
+    @media print {
+        & .ie{
+            .emp-icon-help{
+                background-image: url($emp-images-path + "external-help.png");
+            }
+        }
+    }
+
+    .emp-icon-delete {
+        background-image: url($emp-images-path + "external-Trash.png");
+        background-size: 16px 16px;
+    }
+}
+
+.emp-icon-greencheck {
+    height: 1.6em;
+    background-image: none; // Undo placeholder
+
+    &:after {
+        background: transparent;
+        content: "";
+        border-style: solid;
+        border-color: #3C763D;
+        border-width: 0 3px 3px 0;
+        display: block;
+        height: 15px;
+        left: 9px;
+        position: absolute;
+        top: calc(50% - 8px);
+        transform: rotate(45deg);
+        width: 8px;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            border-color: $emp-icon-greencheck-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            border-color: $emp-icon-greencheck-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            border-color: $emp-icon-greencheck-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            border-color: $emp-icon-greencheck-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            border-color: $emp-icon-greencheck-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            border-color: $emp-icon-greencheck-color;
+        }
+    }
+}
+
+// Inside a group header
+.emp-group-field {
+    .emp-icon-redcheck {
+        &:after {
+            color: $emp-icon-redcheck-color-group-header;
+
+            .theme-teal & {
+                @import "../_theme_teal.scss";
+                color: $emp-icon-redcheck-color-group-header;
+            }
+
+            .theme-lilypad & {
+                @import "../_theme_lilypad.scss";
+                color: $emp-icon-redcheck-color-group-header;
+            }
+
+            .theme-eggplant & {
+                @import "../_theme_eggplant.scss";
+                color: $emp-icon-redcheck-color-group-header;
+            }
+
+            .theme-cobalt & {
+                @import "../_theme_cobalt.scss";
+                color: $emp-icon-redcheck-color-group-header;
+            }
+
+            .theme-hazel & {
+                @import "../_theme_hazel.scss";
+                color: $emp-icon-redcheck-color-group-header;
+            }
+
+            .theme-contrast & {
+                @import "../_theme_contrast.scss";
+                color: $emp-icon-redcheck-color-group-header;
+            }
+        }
+    }
+}
+
+//TODO: Make Sass variables for the rest of this file so these images can be themed
+
+.emp-icon-legal-rep {
+    background-image: url($emp-images-path + "CourtHouse.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "CourtHouse.png");
+        }
+    }
+
+}
+
+.emp-icon-add-event {
+    background-image: url($emp-images-path + "PopupAddEvent.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "PopupAddEvent.png");
+        }
+    }
+}
+
+.emp-icon-diff-mail {
+    background-image: url($emp-images-path + "emp-envelope.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "emp-envelope.png");
+        }
+    }
+}
+
+.emp-icon-data-joint {
+    background-image: url($emp-images-path + "iViewMoreDetails.svg");
+    background-size: 20px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iViewMoreDetails.png");
+        }
+    }
+
+}
+
+.emp-icon-list-joint,
+.emp-icon-popup-view-list,
+.emp-icon-tax-type {
+    background-image: url($emp-images-path + "Popup.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "Popup.png");
+        }
+    }
+}
+
+.emp-icon-workflow-item-next {
+    background-image: url($emp-images-path + "iWFgetNext.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iWFgetNext.png");
+        }
+    }
+}
+
+.emp-icon-workflow-item-comments {
+    background-image: url($emp-images-path + "iComments.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iComments.png");
+        }
+    }
+}
+
+.emp-icon-workflow-item-no-comments {
+    background-image: url($emp-images-path + "iCommentsmt.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iCommentsmt.png");
+        }
+    }
+}
+
+
+.emp-icon-workflow-item-work-management {
+    background-image: url($emp-images-path + "iWFManagement.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iWFManagement.png");
+        }
+    }
+}
+
+[class*="emp-imgbtn-"] {
+    @include button-image;
+}
+
+.emp-icon-sections-toggle {
+    background-image: url($emp-images-path + "sections-expand-all.svg");
+    background-size: 24px 24px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: $emp-icon-button-margin;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "sections-expand-all.png");
+        }
+    }
+}
+
+.emp-icon-sections-toggle.emp-all-collapse {
+    background-image: url($emp-images-path + "sections-collapse-all.svg");
+    background-size: 24px 24px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: $emp-icon-button-margin;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "sections-collapse-all.png");
+        }
+    }
+}
+
+.emp-icon-info-blocks-toggle-expand {
+    background-image: url($emp-images-path + "emp-section-expand-all.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: $emp-icon-button-margin;
+}
+
+.emp-icon-print {
+    background-image: url($emp-images-path + "printer.svg");
+    background-size: 24px 24px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: $emp-icon-button-margin;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "printer.png");
+        }
+    }
+}
+
+.emp-icon-view-image {
+    background-image: url($emp-images-path + "Flower.svg");
+    //background-image: url($emp-images-path + "emp-image-loader.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "Flower.png");
+            //background-image: url($emp-images-path + "emp-image-loader.png");
+        }
+    }
+}
+
+.emp-icon-section-instructions-toggle-expand {
+    background-image: url("../../dist/images/emp-section-help-show.png");
+}
+
+.emp-imgbtn-section-toggle-collapse {
+    position: relative;
+    width: 32px;
+    height: 24px;
+
+    &:hover {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
+
+    img {
+        margin-left: 4px;
+        margin-right: 4px;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.emp-icon-order-table-move-up {
+    background: #FFF;
+    border: 1px solid #707070;
+    position: relative;
+
+    &:after {
+        display: inline-block;
+        content: " ";
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #707070;
+        position: absolute;
+        left: 4px;
+        top: 8px;
+    }
+}
+
+.emp-icon-order-table-move-down {
+    background: #FFF;
+    border: 1px solid #707070;
+    position: relative;
+
+    &:after {
+        display: inline-block;
+        content: " ";
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid #707070;
+        position: absolute;
+        left: 4px;
+        top: 8px;
+    }
+}
+
+.emp-icon-positive-influence {
+    //background-image: url($emp-images-path + "arrow-influence.svg");
+    //background-size: 24px 24px;
+
+    // @media print {
+    //     .ie & {
+    //         background-image: url($emp-images-path + "arrow-influence.png");
+    //     }
+    // }
+}
+
+.emp-icon-negative-influence {
+    // background-image: url($emp-images-path + "arrow-influence.svg");
+    // background-size: 24px 24px;
+    // transform: rotate(180deg);
+
+    // @media print {
+    //     .ie & {
+    //         background-image: url($emp-images-path + "arrow-influence.png");
+    //     }
+    // }
+}
+
+section.emp-collapse .emp-imgbtn-section-toggle-collapse {
+    transform: rotate(180deg);
+}
+
+.emp-icon-stop {
+    background-image: url($emp-images-path + "emp-stop.png");
+}
+
+.emp-icon-table-resizer {
+    background-image: url($emp-images-path + "ResizeTable.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "ResizeTable.png");
+        }
+    }
+
+}
+
+.emp-icon-resize-section {
+    background-image: url($emp-images-path + "ResizeSection.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-table-breakout {
+    background-image: url($emp-images-path + "TableBreakOut.svg");
+    background-size: 24px 24px;
+
+    // @media print {
+    //     .ie & {
+    //         background-image: url($emp-images-path + "ResizeTable.png");
+    //     }
+    // }
+
+}
+
+.emp-icon-table-breakin {
+    background-image: url($emp-images-path + "TableBreakIn.svg");
+    background-size: 24px 24px;
+
+    // @media print {
+    //     .ie & {
+    //         background-image: url($emp-images-path + "ResizeTable.png");
+    //     }
+    // }
+
+}
+
+.emp-icon-delete {
+    background-image: url($emp-images-path + "Trash.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "Trash.png");
+        }
+    }
+}
+
+.emp-icon-edit {
+    background-image: url($emp-images-path + "Edit.svg");
+    background-size: 24px 24px;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "Edit.png");
+        }
+    }
+
+}
+
+.emp-icon-more-info {
+    // background-image: url($emp-images-path + "emp-magnifier.png");
+    background-image: url($emp-images-path +  "Spyglass.svg");
+    background-size: 24px 24px;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "Spyglass.png");
+        }
+    }
+}
+
+
+// .emp-icon-view-details {
+//     background-image: url($emp-images-path + "emp-document-view.png");
+// }
+
+.emp-icon-letters-tx {
+    background-image: url($emp-images-path + "emp-letters-tx.png");
+}
+
+.emp-icon-dollar-sign {
+    background-image: url($emp-images-path + "imoney.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-drill-down {
+    background-image: url($emp-images-path + "idrilldown.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "idrilldown.png");
+        }
+    }
+}
+
+.emp-icon-tree-branch-open {
+    background-image: url($emp-images-path + "iFolderOpen.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-tree-branch-closed {
+    background-image: url($emp-images-path + "iFolderClosed.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-view-notes {
+    background-image: url($emp-images-path + "emp-view-notes.svg");
+    background-size: 24px 22px;
+}
+
+.emp-icon-work-items {
+    background-image: url($emp-images-path + "emp-work-items.svg");
+    background-size: 24px 24px;
+
+    @media print{
+        .ie &{
+            background-image: url($emp-images-path + "emp-work-items.png");
+        }
+    }
+}
+
+.emp-icon-star-red {
+    background-image: url($emp-images-path + "emp-star-red.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "emp-star-red.png");
+        }
+    }
+}
+
+// old icons
+.emp-icon-adjust-return {
+    background-image: url($emp-images-path + "iAdjustReturn.gif");
+}
+
+.emp-icon-iact-inact {
+    background-image: url($emp-images-path + "iact_inact.gif");
+}
+
+.emp-icon-assignment-history {
+    background-image: url($emp-images-path + "iAssignmentHistory.gif");
+}
+
+.emp-icon-associations {
+    background-image: url($emp-images-path + "associations.gif");
+}
+
+.emp-icon-associate {
+    background-image: url($emp-images-path + "iAssociate.gif");
+}
+
+.emp-icon-bank {
+    background-image: url($emp-images-path + "ibank.gif");
+}
+
+.emp-icon-cart-assignment {
+    background-image: url($emp-images-path + "iCARTSAssessments.gif");
+}
+
+.emp-icon-created-under-joint {
+    background-image: url($emp-images-path + "iCreatedUnderJoint.gif");
+}
+
+.emp-icon-claims {
+    background-image: url($emp-images-path + "iClaims.gif");
+}
+
+.emp-icon-copy {
+    background-image: url($emp-images-path + "iCopy.gif");
+}
+
+.emp-icon-create-migration-number {
+    background-image: url($emp-images-path + "icreateMigNum.gif");
+}
+
+.emp-icon-ct-profile {
+    background-image: url($emp-images-path + "iCTProfile.gif");
+}
+
+.emp-icon-cs-profile {
+    background-image: url($emp-images-path + "iCSProfile.gif");
+}
+
+.emp-icon-preview {
+    background-image: url($emp-images-path + "Spyglass.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-direct-deposit {
+    background-image: url($emp-images-path + "iDirectDeposit.gif");
+}
+
+.emp-icon-document-out {
+    background-image: url($emp-images-path + "documentout.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-event-log {
+    background-image: url($emp-images-path + "iEventsLog.gif");
+}
+
+.emp-icon-external-transmittal {
+    background-image: url($emp-images-path + "iExternalTransmittal.png");
+}
+
+.emp-icon-filing-comp {
+    background-image: url($emp-images-path + "ifilingcomp.gif");
+}
+
+.emp-icon-informational {
+    background-image: url($emp-images-path + "messages-sprite.png");
+    background-position: -70px 0;
+}
+
+.emp-icon-internal-transmittal {
+    background-image: url($emp-images-path + "iInternalTransmittal.png");
+}
+
+.emp-icon-lp-summary {
+    background-image: url($emp-images-path + "iLPSummary.png");
+}
+
+.emp-icon-lock {
+    background-image: url($emp-images-path + "iLocked.gif");
+}
+
+.emp-icon-liability-period {
+    background-image: url($emp-images-path + "iLiabilityPeriod.gif");
+}
+
+.emp-icon-manual-adjust {
+    background-image: url($emp-images-path + "imanualadjust.gif");
+}
+
+.emp-icon-map {
+    background-image: url($emp-images-path + "iMap.gif");
+}
+
+.emp-icon-multiple-returns {
+    background-image: url($emp-images-path + "iMultipleReturns.gif");
+}
+
+.emp-icon-form-order {
+    background-image: url($emp-images-path + "iFormOrder.gif");
+}
+
+.emp-icon-osc-void {
+    background-image: url($emp-images-path + "iOSCVoid.gif");
+}
+
+.emp-icon-popup {
+    background-image: url($emp-images-path + "Popup.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-view-details {
+    background-image: url($emp-images-path + "iViewMoreDetails.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iViewMoreDetails.png");
+        }
+    }
+}
+
+.emp-icon-draft {
+    background-image: url($emp-images-path + "PreviewDraft.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-arrow-down {
+    background-image: url($emp-images-path + "iArrowDown.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-final-copy {
+    background-image: url($emp-images-path + "iFinal.gif");
+}
+
+.emp-icon-record-match {
+    background-image: url($emp-images-path + "iRecordMatch.gif");
+}
+
+.emp-icon-transmittal {
+    background-image: url($emp-images-path + "iTransmittal.png");
+}
+
+.emp-icon-remove-mig-num {
+    background-image: url($emp-images-path + "iremoveMigNum.gif");
+}
+
+.emp-icon-roll-up {
+    background-image: url($emp-images-path + "iRollup.gif");
+}
+
+.emp-icon-sales-tax-liabilities {
+    background-image: url($emp-images-path + "iSalesTaxLiabilities.gif");
+}
+
+.emp-icon-sales-tax-profile {
+    background-image: url($emp-images-path + "iSalesTaxProfile.gif");
+}
+
+.emp-icon-arrow-up {
+    background-image: url($emp-images-path + "iArrowUp.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-source-of-deficiency {
+    background-image: url($emp-images-path + "iSourceOfDeficiency.gif");
+}
+
+.emp-icon-star {
+    background-image: url($emp-images-path + "emp-star-outline2.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-table-details {
+    background-image: url($emp-images-path + "itabledetails.gif");
+}
+
+.emp-icon-transfer-in-out {
+    background-image: url($emp-images-path + "iTransfInOut.gif");
+}
+
+.emp-icon-tax-payer-data {
+    background-image: url($emp-images-path + "iTaxpayerData.png");
+}
+
+.emp-icon-tax-payer-assessments {
+    background-image: url($emp-images-path + "iTaxpayerAssessments.gif");
+}
+
+.emp-icon-trxn {
+    background-image: url($emp-images-path + "iTrxn.gif");
+}
+
+.emp-icon-unlink {
+    background-image: url($emp-images-path + "iUnlink.gif");
+}
+
+.emp-icon-unlock {
+    background-image: url($emp-images-path + "iUnlocked.gif");
+}
+
+.emp-icon-user-profile {
+    background-image: url($emp-images-path + "iUserProfiles.gif");
+}
+
+.emp-icon-view-map {
+    background-image: url($emp-images-path + "iViewMap.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-view-pdf {
+    background-image: url($emp-images-path + "iViewPDF.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-wage-reporting {
+    background-image: url($emp-images-path + "iWageReporting.gif");
+}
+
+.emp-icon-calculator {
+    background-image: url($emp-images-path + "icalculator.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-financial-worksheet {
+    background-image: url($emp-images-path + "iFinancialWorksheet.gif");
+}
+
+.emp-icon-link {
+    background-image: url($emp-images-path + "iLink.gif");
+}
+
+.emp-icon-work-flow-return-to-work-list {
+    background-image: url($emp-images-path + "iWFreturnToWorkList.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-folder-closed {
+    background-image: url($emp-images-path + "iFolderClosed.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-low-priority {
+    background-image: url($emp-images-path + "iLowPriority.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iLowPriority.png");
+        }
+    }
+}
+
+.emp-icon-error-report {
+    background-image: url($emp-images-path + "life-buoy.svg");
+    background-size: 32px 32px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "life-buoy.png");
+        }
+    }
+}
+
+.emp-icon-worklist-launch {
+    background-image: url($emp-images-path + "iWorklistLaunch.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-work-flow-pending {
+    background-image: url($emp-images-path + "iWFpending.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-work-flow-next {
+    background-image: url($emp-images-path + "iWFgetNext.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-work-flow-subcategory-work-list {
+    background-image: url($emp-images-path + "iWFgotoSubCategoryWorklist.svg");
+    background-size: 24px 24px;
+}
+
+.emp-icon-responsive-table-menu {
+    background: transparent url($emp-images-path + "emp-hamburger.svg") 1px 3px no-repeat;
+    background-size: 18px 18px;
+    background-position: 3px 4px;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
+// Place new icon on template but not declaired anywhere
+.emp-icon-medium-priority {
+    background-image: url($emp-images-path + "iMediumPriority.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iMediumPriority.png");
+        }
+    }
+}
+
+.emp-icon-high-priority {
+    background-image: url($emp-images-path + "iHighPriority.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "iHighPriority.png");
+        }
+    }
+}
+
+.emp-icon-filled-up,
+.emp-icon-positive-influence {
+    background-image: url($emp-images-path + "filled-arrow-up.svg");
+    background-size: 24px;
+    height: 24px;
+    width: 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "filled-arrow-up.png");
+        }
+    }
+}
+
+.emp-icon-error{
+    border: none !important;
+    cursor: text !important;
+    background-image: url($emp-images-path + "emp-icon-error.png");
+    background-size: 24px;
+    height: 24px;
+    width: 24px;
+
+/*     @media print {
+        .ie & {
+            background-image: url($emp-images-path + "emp-icon-error.png");
+        }
+    } */
+}
+
+.emp-icon-outline-down,
+.emp-icon-negative-influence {
+    background-image: url($emp-images-path + "outline-arrow-down.svg");
+    background-size: 24px;
+    height: 24px;
+    width: 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "outline-arrow-down.png");
+        }
+    }
+}
+
+.emp-icon-ghost {
+    background-image: url($emp-images-path + "iBlinky.svg");
+    background-size: 32px;
+    height: 32px;
+    width: 32px;
+}
+
+.emp-icon-exclamation {
+    background-image: url($emp-images-path + "emp_Exclamation.svg");
+    background-size: 24px 24px;
+
+    @media print {
+        .ie & {
+            background-image: url($emp-images-path + "emp_Exclamation.png");
+        }
+    }
+}
+.emp-icon-warning,
+.emp-icon-breakout-warning {
+    background: transparent url("../images/messages-sprite.png") -24px -1px no-repeat;
+}
+
+// Utility class to remove the icon
+.emp-hide-icon {
+    background-image: none !important;
+}
+
+// Popup notifiers
+button {
+    span.emp-popup {
+        background: #888;
+        display: block;
+        height: 2em;
+        position: absolute;
+        right: -1.25em;
+        text-indent: -9999px;
+        top: -1.25em;
+        transform: rotate(45deg);
+        width: 2em;
+    }
+}
+
+.emp-field {
+
+    .cui-icon.cui-c-datepicker {
+        width: 26px !important;
+    }
+}
+
+@media print {
+
+    .emp-check-other-describe {
+        display: block !important;
+    }
+}

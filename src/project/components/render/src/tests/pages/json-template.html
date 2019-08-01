@@ -1,0 +1,587 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData = {
+        "menu": {
+            "items": [
+                {     
+                    "label": "Client Information",
+                    "items": [
+                        {
+                            "label": "Inquire On Client",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Maintain Client",
+                            "items": [
+                                {
+                                    "label": "Item 1",
+                                    "items": [
+                                        {
+                                            "label": "Item 1.1",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "label": "Item 1.2",
+                                            "href": "#"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Item 2",
+                                    "items": [
+                                        { 
+                                            "label": "Item 1.2",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "label": "Item 2.2",
+                                            "items": [
+                                                {
+                                                    "label": "Item 2.2.1",
+                                                    "href": "#"
+                                                }
+                                            ]
+                                        },
+                                        { 
+                                            "label": "Item 2.3",
+                                            "href": "#"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Item 3",
+                                    "href": "#"
+                                }
+
+                            ]
+                        },
+                        {
+                            "label": "Search for Client",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Event Management",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Busiiness Profile Inquiry",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Address Inquiry",
+                            "href": "#"
+                        }
+
+                    ]
+                },
+                {
+                    "label": "Account Information",
+                    "items": [
+                        {
+                            "label": "Inqure On Account",
+                            "items": [
+                                {
+                                    "label": "Conversion Inquiry",
+                                    "href": "#"
+                                },
+                                {
+                                    "label": "Accounting Inquiry",
+                                    "items": [
+                                        {
+                                            "label": "Item 1",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "label": "Item 2",
+                                            "href": "#"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Taxpayer Account Inquiry",
+                                    "href": "#"
+                                },
+                                {
+                                    "label": "Reqturns Inquiry",
+                                    "href": "#"
+                                },
+                                {
+                                    "label": "Audit Screening",
+                                    "items": [
+                                        {
+                                            "label": "Audit Screening 1",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "label": "Audit Screening 2",
+                                            "href": "#"
+                                        }
+                                    ] 
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Search on Account",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Collection Agency",
+                            "href": "#"
+                        }
+                    ]
+                },
+                {
+                    "label": "Work Management",
+                    "items": [
+                        {
+                            "label": "Worklist Management",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Work Item Search",
+                            "href": "#"
+                        },
+                        {
+                            "label": "Audit",
+                            "items": [
+                                {
+                                    "label": "Audit Case Work",
+                                    "href": "#"
+                                },
+                                {
+                                    "label": "Inventory Management",
+                                    "href": "#"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "BCMS",
+                            "items": [
+                                {
+                                    "label": "BCMS Case Work",
+                                    "href": "#"
+                                },
+                                {
+                                    "label": "Inventory Management",
+                                    "href": "#"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "Special Services",
+                    "items": [
+                        {
+                            "label": "Reporting",
+                            "href": "#"
+                        },
+                        {
+                            "label": "EDMS",
+                            "href": "#"
+                        },
+                        {
+                            "label": "order Forms",
+                            "href": "#"
+                        }
+                    ]
+                }
+            ]
+        },
+        "page": {
+            "contents": [
+                {
+                    "template": "globalHeader",
+                    "tabsets": {
+                        "template": "list",
+                        "title": "Tabset Menu Title",
+                        "attributes": {
+                            "className": "emp-tabset"
+                        },
+                        "type": "unordered",
+                        "options": [
+                            {
+                                "template": "link",
+                                "selected": true,
+                                "text": "TP Sum",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "TP Sum"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Srch By Name",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Srch By Name"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Name History",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Name History"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Address Sum",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Address Sum"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Check Digit",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Check Digit"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Old ID Search",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Old ID Search"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Current ID Search",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Current ID Search"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Milti 9-Chard ID",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Milti 9-Char ID"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "CT Sub Profile",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "CT Sub Profile"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "CT Sub Profile",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "ST Profile"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Multi State",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Multi State"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Pymnt Search",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Pymnt Search"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Trnsfr Return",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Trnsfr Return"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Transfer In",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Transfer In"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Transfer In/Out",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Transfer In/Out"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "TFA Details",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "TFA Details"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Events",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Events"
+                                }
+                            },
+                            {
+                                "template": "link",
+                                "text": "Correspondence",
+                                "attributes": {
+                                    "href": "#",
+                                    "title": "Correspondence"
+                                }
+                            }
+                        ],
+                        "collapse": true
+                    },
+                    "secondaryMenu": [
+                        {
+                            "template": "link",
+                            "text": "Employee",
+                            "attributes": {
+                                "role": "button",
+                                "className": "emp-header-employee"
+                            }
+                        },
+                        {
+                            "template": "link",
+                            "text": "Preferences",
+                            "attributes": {
+                                "role": "button",
+                                "className": "emp-header-preferences"
+                            }
+                        },
+                        {
+                            "template": "link",
+                            "text": "Notifications",
+                            "attributes": {
+                                "role": "button",
+                                "className": "emp-header-nofications"
+                            }
+                        },
+                        {
+                            "template": "link",
+                            "text": "Help",
+                            "attributes": {
+                                "role": "button",
+                                "className": "emp-header-help"
+                            }
+                        }
+                    ],
+                    "page": {
+                        "title": "JSON - Template",
+                        "mode": "Page mode"
+                    },
+                    "accounts": {
+                        "primary": {
+                            "notifiersAndControls": [
+                                {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "B",
+                                        "id": "primary-bankruptcy",
+                                        "title": "Bankruptcy Exist"
+                                    },
+                                    "text": "Bankruptcy Exist"
+                                },
+                                {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "PDT",
+                                        "id": "primary-bankruptcy",
+                                        "title": "Bankruptcy Exist"
+                                    },
+                                    "text": "Bankruptcy Exist"
+                                },
+                                {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "PDT",
+                                        "id": "primary-identity",
+                                        "title": "Identity Theft"
+                                    },
+                                    "text": "Identity Theft"
+                                },
+                                {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "primary-legal",
+                                            "name": "primary-legal",
+                                            "title": "View legal representative"
+                                        },
+                                        "icon": "legal",
+                                        "text": "View legal representative"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "primary-event",
+                                            "name": "primary-event",
+                                            "title": "Popup add event"
+                                        },
+                                        "icon": "add-event",
+                                        "text": "Popup add event"
+                                    }
+                                }
+                            ],
+                            "id": "123-45-6789 (IND)",
+                            "name": "John H. Smith",
+                            "address": "1943 Crossing Stone Ct., Albany, NY 12227",
+                            "sendID": {
+                                "template": "link",
+                                "attributes": {
+                                    "id": "send-id",
+                                    "className": "emp-button-send-id",
+                                    "role": "button"
+                                },
+                                "text": "Send ID"
+                            },
+                            "differentMail": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "button",
+                                        "type": "button"
+                                    },
+                                    "icon": "diff-mail",
+                                    "text": "Mailing address is different"
+                                }
+                            }
+                        },
+                        "associate": {
+                            "notifiersAndControls": [
+                                {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "FED",
+                                        "id": "associate-federal-data",
+                                        "title": "Federal Data"
+                                    },
+                                    "text": "Federal Data",
+                                    "federal": true
+                                },
+                                {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "B",
+                                        "id": "associate-bankruptcy",
+                                        "title": "Bankruptcy exists"
+                                    },
+                                    "text": "Bankruptcy exists"
+                                },
+                                {
+                                    "type": "static",
+                                    "template": "notifier",
+                                    "attributes": {
+                                        "alt": "I",
+                                        "id": "associate-identity",
+                                        "title": "Identity theft"
+                                    },
+                                    "text": "Identity theft"
+                                },
+                                {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "associate-data-joint",
+                                            "name": "associate-data-joint"
+                                        },
+                                        "icon": "data-joint",
+                                        "text": "Popup Data for Joint Taxpayer"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "assoicate-list-joint",
+                                            "name": "assoicate-list-joint",
+                                            "type": "button",
+                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.requestAssociate', 'args':[{'url': 'http://localhost:3000/jointTaxPayer'}]}})"
+                                        },
+                                        "icon": "list-joint",
+                                        "text": "View Joint Taxpayer List"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "associate-legal-rep",
+                                            "name": "associate-legal-rep"
+                                        },
+                                        "icon": "legal",
+                                        "text": "View legal representative"
+                                    }
+                                }
+                            ],
+                            "id": "234-56-7890 (IND)",
+                            "name": "Jane M. Johnson-Smith"
+                        },
+                        "sendID": true,
+                        "getID": true,
+                        "allowSwitch": true
+                    }
+                }
+            ]
+        },
+        "tabset": {
+            "id": "TP-JSON",
+            "name": "Template-JSON",
+            "url": "#"
+        }
+    }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

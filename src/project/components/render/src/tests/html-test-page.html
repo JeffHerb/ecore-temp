@@ -1,0 +1,429 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire - NRF001S Form Presentation Layout Definition Add Update</title>
+    <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!--
+===============================================================================
+eMPIRE2 | Empire - NRF001SFormPresentationLayoutDefinitionAddUpdate
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+06/07/2017  JJ        Page Created
+06/16/2017  DB        This page has been checked and the JSP view keys have been
+                      matched up.
+===============================================================================
+-->
+</head>
+
+<body>
+    <div id="body-wrapper">
+        <!-- Accessibility cues -->
+        <div class="cui-hide-from-screen">
+            <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a>
+        </div><!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-row-first">
+                <div class="emp-header-logo">
+                    Empire
+                </div>
+                <nav id="emp-header-menu-main">
+                    Main Menu
+                </nav>
+                <div id="emp-header-favorites">
+                    &#9734;
+                </div>
+            </div><!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-row-second">
+                <div class="emp-header-tabset-title">
+                    <button class="emp-tabset-toggle emp-collapse" tabindex="1" title="Show a full/partial tabset view" type="button">Toggle</button>
+                    <h1>Tabset menu title</h1>
+                </div>
+                <ul class="emp-header-links">
+                    <li class="emp-header-employee">
+                        <a role="button">Employee</a>
+                    </li>
+                    <li class="emp-header-preferences">
+                        <a role="button">Preferences</a>
+                    </li>
+                    <li class="emp-header-notifications">
+                        <a role="button">Notifications</a>
+                    </li>
+                    <li class="emp-header-help">
+                        <a role="button">Help</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- ==================== -->
+            <!-- GLOBAL HEADER        -->
+            <!-- ==================== -->
+            <header>
+                <!-- Logo and main menu -->
+                <div class="emp-header-row-first">
+                    <div class="emp-header-logo"> Empire </div>
+                    <nav id="emp-header-menu-main"> Main Menu </nav>
+                    <div id="emp-header-favorites"> &#9734; </div>
+                </div>
+                <!-- Title, notifiers and secondary menu -->
+                <div class="emp-header-row-second">
+                    <div class="emp-header-tabset-title">
+                        <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+                        <h1>Tabset menu title</h1>
+                    </div>
+                    <ul class="emp-header-links">
+                        <li class="emp-header-employee">
+                            <a role="button">Employee</a>
+                        </li>
+                        <li class="emp-header-preferences">
+                            <a role="button">Preferences</a>
+                        </li>
+                        <li class="emp-header-notifications">
+                            <a role="button">Notifications</a>
+                        </li>
+                        <li class="emp-header-help">
+                            <a role="button">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <!-- ==================== -->
+            <!-- INDICATORS           -->
+            <!-- ==================== -->
+            <ul class="emp-indicators">
+            </ul>
+            <!-- ==================== -->
+            <!-- SECTIONS             -->
+            <!-- ==================== -->
+            <!-- ++++++++++++++++++++++++++++++ -->
+            <!-- SECTION: .Correspondence Data  -->
+            <!-- ++++++++++++++++++++++++++++++ -->
+            <section>
+                <header>
+                    <div class="emp-section-title">
+                        <h3>Correspondence Data</h3>
+                        <ul class="emp-actions">
+                            <li><button class="emp-icon-sections-toggle" tabindex="1" title="Hide all sections" type="button">Hide all
+                                    sections</button></li>
+                            <li><button class="emp-icon-info-blocks-toggle-expand" tabindex="1" title="Show information for all sections" type="button">Show information for all sections</button>
+                            </li>
+                            <li><button class="emp-icon-print" tabindex="1" title="Print page" type="button">Print page</button></li>
+                        </ul>
+                    </div>
+                    <form name="form_tp_info" id="form_tp_info" class="emp-tp-header" method="post">
+                        <!-- Taxpayer info -->
+                        <!-- The emp-tpinfo-* classes used at this level are for distinguishing buttons that may appear for both taxpayers (e.g. legal rep) -->
+                        <div class="emp-tp-info emp-railroad-header">
+                            <!-- Main taxpayer -->
+                            <div class="emp-tp-info-main" id="emp-tp-info-main">
+                                <div class="cui-row">
+                                    <div class="emp-tp-id"> <span class="emp-label"> Company ID: </span> <span class="emp-data">
+                                            11-2223333 </span> </div>
+                                </div>
+                                <div class="cui-row">
+                                    <div class="emp-tp-name"> <span class="emp-label"> Company Name: </span> <span class="emp-data">
+                                            Dansville and Mount Morris Railroad
+                                        </span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- ==================== -->
+                    <!-- SEARCH BOX           -->
+                    <!-- ==================== -->
+                    <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+                    <form action="http://www.tax.ny.gov" class="emp-search-box" id="form_search" method="post" name="form_search">
+                        <div class="emp-search-fields">
+                            <div class="cui-row">
+                                <div class="emp-search-box-field">
+                                    <div class="cui-label">
+                                        <label class="cui-hide-from-screen" for="E_COMPANY_ID">Company ID:</label> <select id="HEADER_ID_TYPE" tabindex="1">
+                                            <option>
+                                                Company ID
+                                            </option>
+                                            <option>
+                                                Transaction Number
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="cui-data">
+                                        <input aria-required="true" id="E_COMPANY_ID" maxlength="6" size="6" tabindex="1" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cui-row">
+                                <div class="emp-search-box-field">
+                                    <div class="cui-label">
+                                        <label for="S_AS_OF_YEAR">As Of year:</label>
+                                    </div>
+                                    <div class="cui-data">
+                                        <select id="S_AS_OF_YEAR" tabindex="1">
+                                            <option>
+                                                2019
+                                            </option>
+                                            <option>
+                                                2018
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div><!-- Buttons -->
+                        <div class="emp-search-buttons">
+                            <div class="cui-row">
+                                <button class="cui-button-primary emp-search-retrieve" tabindex="1" type="submit">Retrieve</button>
+                            </div>
+                            <div class="cui-row">
+                                <button class="emp-button-search-clear" tabindex="1" title="Clear all fields except the primary dropdown and inputs" type="button">Clear</button> <button class="emp-button-search-clear-all" tabindex="1" title="Clear all fields in search box" type="button">All</button>
+                            </div>
+                            <div class="cui-row">
+                                <a class="emp-button-get-id" id="E_BTN_get_id" name="E_BTN_get_id" role="button" tabindex="1">Get ID</a>
+                            </div>
+                        </div><button class="emp-search-toggle" tabindex="1" title="Hide the search box" type="button">Hide the search
+                            box</button>
+                    </form><!-- ==================== -->
+                    <!-- PAGE MESSAGES        -->
+                    <!-- ==================== -->
+                    <ul class="cui-messages emp-messages cui-hidden">
+                        <li class="cui-error">
+                            <p>Error message. This is a long error message so that it wraps and I can make sure it looks OK and better
+                                than it's equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make
+                                it wrap? I guess it depends
+                                on your browser width? Well I think this is more than enough. If not, nice monitor!</p>
+                        </li>
+                        <li class="cui-warning">
+                            <p>Warning message. Displays information about certain things that need to be considered before continuing.
+                            </p>
+                        </li>
+                        <li class="cui-informational">
+                            <p>Informational message. Provide some information to assist in making the right decisions or something.</p>
+                        </li>
+                        <li class="cui-success">
+                            <p>Successful message. Something {noun} was successfully something {verb}. Most of the times only one of
+                                this type of message shows per page submission.</p>
+                        </li>
+                    </ul><!-- ####################### -->
+                    <!-- DEVELOPER'S CODE (JSP)  -->
+                    <!-- ####################### -->
+                    <main role="main">
+                        <!-- ==================== -->
+                        <!-- PAGE CONTENT         -->
+                        <!-- ==================== -->
+                        <form action="http://www.tax.ny.gov" id="form_content" method="post" name="form_content" role="main">
+                            <!-- ++++++++++++++++++++++++++++ -->
+                            <!-- SECTION: .Cur-Prior Threshold Summary  -->
+                            <!-- ++++++++++++++++++++++++++++ -->
+                            <section>
+                                <header>
+                                    <div class="emp-section-title">
+                                        <h3>Current/Prior Exceptions</h3>
+                                    </div>
+                                    <div class="emp-section-controls">
+                                        <ul>
+                                            <li><button class="emp-icon-section-toggle-collapse" tabindex="1" title="Hide section" type="button">Hide section</button></li>
+                                        </ul>
+                                    </div>
+                                </header>
+                                <div class="cui-row">
+                                    <div class="emp-col-half">
+                                        <div class="emp-composite emp-search-composite">
+                                            <div class="cui-label">
+                                                <label for="E_SWIS_CODE">SWIS Code:</label>
+                                            </div>
+                                            <div class="cui-data emp-search">
+                                                <div class="emp-field">
+                                                    <select id="E_SWIS_CODE" tabindex="1">
+                                                        <option value='0'>
+                                                            All
+                                                        </option>
+                                                        <option value='1'>
+                                                            123456
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="emp-field">
+                                                    <button name="E2_BTN_GO" tabindex="1" type="button" value="1">Go</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---Mass Exceptions Start==-->
+                                <section>
+                                    <header>
+                                        <div class="emp-section-title">
+                                            <h3>Mass Exceptions</h3>
+                                        </div>
+                                        <div class="emp-section-controls">
+                                            <ul>
+                                                <li><button class="emp-icon-section-toggle-collapse" tabindex="1" title="Hide section" type="button">Hide section</button></li>
+                                            </ul>
+                                        </div>
+                                    </header>
+                                    <div class="emp-table">
+                                        <table id="table_mass_exceptions">
+                                            <thead>
+                                                <tr>
+                                                    <th class="table-control-col emp-min-width"><label class="cui-hide-from-screen" for="table_checkboxes_all">Select All</label> <input id="table_checkboxes_all" tabindex="1" type="checkbox" value=""></th>
+                                                    <th class="emp-sortable" data-sort="alpha" data-table-column-priority="1">Swis Code</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="2">Value Section
+                                                    </th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="3">Account Number
+                                                    </th>
+                                                    <th class="emp-sortable" data-sort="alpha" data-table-column-priority="4">Account
+                                                        Description</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="5">File Code</th>
+                                                    <th class="emp-sortable" data-sort="alpha" data-table-column-priority="6">Mass Type</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="7">Installation
+                                                        Year</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="8">Exceptions
+                                                        Status</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="9">Exceptions
+                                                        Status Date</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="10">Last Updated
+                                                        By</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="11">Prior Units
+                                                        ($)</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="12">Current Units
+                                                        ($)</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="13">Change in
+                                                        Units ($)</th>
+                                                    <th class="emp-sortable" data-sort="date" data-table-column-priority="14">Percent Change
+                                                        in Units ($)</th>
+                                                    <th class="emp-min-width" data-type="button"><span class="cui-hide-from-screen" title="Go to {Page}">Page</span></th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="cui-currency" title="Total Amount ($)"><span class="emp-tooltip" title="This is a simple tooltip using a title attribute">2171.74</span></td>
+                                                    <td class="cui-currency" title="Total Amount ($)"><span class="emp-tooltip" title="This is a simple tooltip using a title attribute">2171.74</span></td>
+                                                    <td class="cui-currency" title="Total Amount ($)"><span class="emp-tooltip" title="This is a simple tooltip using a title attribute">2171.74</span></td>
+                                                    <td class="cui-currency" title="Total Amount ($)"><span class="emp-tooltip" title="This is a simple tooltip using a title attribute">2171.74</span></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="table-control-col emp-min-width"><label class="cui-hide-from-screen" for="table_checkboxes_0">Row 0</label> <input name="table_checkboxes_0" type="checkbox" value="0"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="emp-min-width"><button class="emp-icon-more-info" name="E_BTN_MORE_DETAILS" title="Go to {Page}">{Page}</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table-control-col emp-min-width"><label class="cui-hide-from-screen" for="table_checkboxes_1">Row 1</label> <input name="table_checkboxes_1" type="checkbox" value="0"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="emp-min-width"><button class="emp-icon-more-info" name="E_BTN_MORE_DETAILS" title="Go to {Page}">{Page}</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table-control-col emp-min-width"><label class="cui-hide-from-screentd class=" for="table_checkboxes_2" table-control-col=""><label class="cui-hide-from-screen" for="table_checkboxes_2">Row 2</label> <input name="table_checkboxes_2" type="checkbox" value="0"></label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="emp-min-width"><button class="emp-icon-more-info" name="E_BTN_MORE_DETAILS" title="Go to {Page}">{Page}</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="cui-row">
+                                        <div class="emp-col-half">
+                                            <div class="emp-field">
+                                                <div class="cui-label">
+                                                    <label for="E_ACTION">Action:</label>
+                                                </div>
+                                                <div class="cui-data">
+                                                    <select id="E_ACTION" tabindex="1">
+                                                        <option value='0'>
+                                                            Approved
+                                                        </option>
+                                                        <option value='1'>
+                                                            Un Approved
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="emp-col-half">
+                                            <div class="emp-field">
+                                                <div class="cui-label">
+                                                    <label for="E_ACTION_REASON">Action Reason:</label>
+                                                </div>
+                                                <div class="cui-data">
+                                                    <select id="E_ACTION_REASON" tabindex="1">
+                                                        <option value='0'>
+                                                        </option>
+                                                        <option value='1'>
+                                                            sdsdsd
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    </div>
+
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'emp', 'uimockup', 'domReady!'], function ($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            uiMockup.createPageDataStore(function (results) {
+                emp.init();
+            });
+    </script>
+    <script id="require" src="../../dist/js/main.js"></script>
+</body>
+
+</html>

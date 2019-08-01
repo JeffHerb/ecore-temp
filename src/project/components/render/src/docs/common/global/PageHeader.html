@@ -1,0 +1,302 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="Page Header -")-->
+
+<div class="cui-row">
+    <div class="cui-col-small-12">
+        <h2>Page Header</h2>
+
+        <p>
+            The global page header is one of the few major peices shared accross all of Empire. Because it is so standard, must of its contents have been simplfied in the returned page JSON to only include important structural information and header specific data.
+        </p>
+
+        <p>
+            The global page JSON has been broken up into the follow root objects and properties.
+        </p>
+
+        <h3>Template</h3>
+
+<pre class="code">
+"page": {
+    "title": "Page Title"
+    "mode": "Page Mode"
+}
+</pre>
+
+        <p>
+            The page title and mode are provided to the global header via the <code>E2:PageBody</code> attribute.
+        </p>
+
+        <h3>Page</h3>
+
+<pre class="code">
+"template": "globalHeader"
+</pre>
+
+        <p>
+
+        </p>
+
+        <h3>Accounts</h3>
+
+        <p> This object contains all of the data and special elements used to define the <strong>primary</strong> and <strong>associate</strong> accounts section of the header.
+
+<pre class="code">
+"primary": {
+    "indicators": {
+        "bankruptcy": {
+            "type": "static",
+            "template": "notifier",
+            "attributes": {
+                "alt": "B",
+                "id": "primary-bankruptcy"
+            },
+            "text": "Bankruptcy exists"
+        },
+        "identity": {
+            "type": "static",
+            "template": "notifier",
+            "attributes": {
+                "alt": "I",
+                "id": "primary-identity"
+            },
+            "text": "Identity theft"
+        },
+        "legalRep": {
+            "type": "button",
+            "template": "field",
+            "input": {
+                "attributes": {
+                    "id": "primary-legal",
+                    "name": "primary-legal"
+                },
+                "icon": "legal",
+                "text": "View legal representative"
+            }
+        },
+        "event": {
+            "type": "button",
+            "template": "field",
+            "input": {
+                "attributes": {
+                    "id": "primary-event",
+                    "name": "primary-event"
+                },
+                "icon": "add-event",
+                "text": "Popup add event"
+            }
+        }
+    },
+    "id": "123-45-6789 (IND)",
+    "name": "John H. Smith",
+    "address": "1943 Crossing Stone Ct., Albany, NY 12227",
+    "sendID": {
+        "type": "button",
+        "template": "field",
+        "input": {
+            "attributes": {
+                "id": "send-id",
+                "name": "send-id"
+                "className": "emp-button-send-id",
+                "tabindex": "1"
+            },
+            "icon": "emp-icon-diff-mail",
+            "text": "Mailing address is different"
+        }
+    },
+    "differentMail": {
+        "type": "button",
+        "template": "field",
+        "input": {
+            "attributes": {
+                "id": "button",
+                "name": "button"
+            },
+            "icon": "emp-icon-diff-mail",
+            "text": "Mailing address is different"
+        }
+    },
+    "associate": {
+        ... Omitted ...
+    }
+},
+</pre>
+
+    <p>
+        In the portion above, there are a few special JSON structures that should be notes. In the <code>indicators</code> object, the JSON markup for each piece matches the JSON that would be found from a normal <code>E2:Button</code> or <code>E2:Notifier</code> tag. This means these items can be enhances from the framework side following those tag specific functions or attributes. For example, the button indicators likely will have <code>eventScripts</code> not show here for demo purposes, but will have to be supplied via framework in the end product.
+    </p>
+    <p>
+        Also note that every possible indicator is defined here. This is because, handlebars (the back end part of the templateing engine), does not understand boolean state. So if for example an account <strong>does not</strong> meet bankruptcy requirements, the <code>primary.indicators.bankruptcy</codE> object <strong>should be excluded</strong> from the JSON when the page is served.
+    </p>
+
+    <p>
+        The associate account side of the main header is treated the same way as primary.
+    </p>
+
+    <h3>Search</h3>
+
+    <p>
+        The search box portion of the global header is easily the most dynamic, but is built using many of the standard <code>E2<code> input tags. The only difference is the strucuture around the JSON markup.
+    </p>
+
+<pre class="code">
+"search": {
+    "row": [
+        {
+            // Search row
+            "fields": [
+                {
+                 // Search row contents
+                }
+            ]
+        }
+    ]
+}
+</pre>
+
+    <p>
+        The first and most important part to watch is that the search box rows does not follow a standard grid system For each row in the global header, a new JSON object needs to be create. This object will contain the array property of <code>fields</code>. The contents of the fields array is a collection of JSON objects that match the specification of the different types of inputs. The only exception being the first row as shown in the example below.
+    </p>
+
+<pre class="code">
+    {
+        "type": "div",
+        "template": "universalElm",
+        "attributes": {
+            "className":"emp-field"
+        },
+        "contents": [
+            {
+                "type": "div",
+                "template": "universalElm",
+                "attributes": {
+                    "className":"cui-label"
+                },
+                "contents": [
+                    {
+                        "template": "field",
+                        "label": {
+                            "text": "Header ID type",
+                            "attributes": {
+                                "for": "HEADER_ID_TYPE"
+                            },
+                            "visibility": "hidden",
+                            "hasLayout": false,
+                        },
+                        "noFieldWrap": true,
+                        "noWrap": true
+                    },
+                    {
+                        "type": "select",
+                        "template": "field",
+                        "input": {
+                            "attributes": {
+                                "name": "HEADER_ID_TYPE",
+                                "id": "HEADER_ID_TYPE",
+                                "tabindex": 1,
+                            },
+                            "options": {
+                                "NC": {
+                                    "text": "9 Character ID",
+                                    "value": "NC",
+                                    "tabindex": 1
+                                },
+                                ... options omitted ...
+                            },
+                            "value": "NC",
+                            "noBlankOption": true
+                        },
+                        "noWrap": true
+                    },
+                ]
+            },
+            {
+                "type": "div",
+                "template": "universalElm",
+                "attributes": {
+                    "className":"cui-data"
+                },
+                "contents": [
+                    {
+                        "type": "text",
+                        "template": "field",
+                        "label": {
+                            "text": "Header ID number",
+                            "attributes": {
+                                "for": "HEADER_ID_NUMBER"
+                            },
+                            "visibility": "hidden",
+                            "hasLayout": false,
+                        },
+                        "input": {
+                            "attributes": {
+                                "name": "HEADER_ID_NUMBER",
+                                "id": "HEADER_ID_NUMBER",
+                                "type": "text",
+                                "value": "",
+                            }
+                        },
+                        "noFieldWrap":true,
+                        "noWrap": true
+                    }
+                ]
+            }
+        ]
+
+    }
+</pre>
+
+    <p>
+        Not all elements will float they way the UI or framework intended. This mainly occurse with the first and most common row used to pick search types. In this case the <code>universalElm</code> template is being used to render additional wrapper elements so controls can be properly styled.
+    </p>
+
+    <p>
+        Please reference the different custom tag JSONs for examples of how to prefill or mark input values for initial page load.
+    </p>
+
+    <h3>Buttons</h3>
+
+    <p>
+        The button section of the search box has been pulled into its own object. This is because button placement and structure might change. To get around the need for framework changes, just the button definitions need to be supplied. Just like with the accound indicators, if a specific button should not be rendered, the definition should be omitted at request time.
+    </p>
+
+    <p>
+        At the very end of the buttons object there are three special properties called <code>sendID</code> and <code>getID</code>. These properties control if the Send ID, Get ID, switch button should appear. If they need to be present, they should appear in the json markup set to true. If either dont need to be rendered simply omit the properties from the JSON entirely.
+    </p>
+
+    <h3>Tabsets</h3>
+
+    <p>
+        Tabsets or global navigation is also sent along with standard page JSON.
+    </p>
+
+<pre class="code">
+    "type": "unordered",
+    "template": "lists",
+    "attributes": {
+        "className": "emp-tabset"
+    },
+    "options": [
+        {
+            "template": "link",
+            "attributes": {
+                "href": "page.jsp"
+            },
+            "text": "tabNav 1"
+        },
+        {
+            "template": "link",
+            "attributes": {
+                "href": "page.jsp"
+            },
+            "text": "tabNav 2"
+        },
+         ... omitted ...
+</pre>
+
+    <p>
+        Going forward tabsets will render in a togglable list section instead of a scrolling section. So from the framework side, they only need to pass tabset information matching the example above. Each <code>option</code> object is represents a different tabset link. Each link also follows the <code>E2:Link</code> standards.
+    </p>
+
+    </div>
+</div>
+
+<!--(bake ../../includes/footer.html)-->

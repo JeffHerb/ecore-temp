@@ -1,0 +1,2565 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Table Tag -")-->
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Tables Custom Tag</h1>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Table&gt;</code> tag is used to create HTML tables (formerly known as result sets).
+                </p>
+
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="table-id" />
+    &lt;E2:TableColumn label="skipped" skip="true" />
+    &lt;E2:TableColumn label="Column1" />
+    &lt;E2:TableColumn label="Column2" />
+    &lt;E2:TableColumn label="Column3" />
+    &lt;E2:TableColumn label="Column4" />
+    &lt;E2:TableColumn label="Column5" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "attributes": {
+        id: "table-name"
+        "data-displayRows": "10"
+    },
+    "head": {
+        "rows": [
+            {
+                "columns": [ .. Data Hidden .. ]
+            }
+        ]
+    },
+    "body": {
+        "rows": [
+            {
+                "columns": [ .. Data Hidden .. ]
+            },
+            {
+                "columns": [ .. Data Hidden .. ]
+            },
+            {
+                "columns": [ .. Data Hidden .. ]
+            }
+        ]
+    }
+}
+</pre>
+
+                <p>
+                    To create a basic table, developers must define the <code>E2:Table</code> tag and then provide each table with a unique <code>id</code> and the <code>data</code> attribute used to a specific collection of data they wish to display. After that, developers need to define the internal column require. For more information on table columns see the <a href="tableColumn.html"><code>E2:TableColumn</code> documentation</a>.
+                <p>
+
+                <p>
+                    When looking at the tables JSON markup, it is important to look at the outer most object and properties. Simlilar to other <codE>E2</codE> tags, tables include the <code>template</code> property and will always have the value of <em>table</em>. Table specific attributes will appear in the <code>attributes</code> object. Three additional section objects (<code>head</code>, <code>body</code>, and <code>footer</code>) can also appear in the root of the table JSON.These represent the key literal <code>thead</code>, <code>tbody</code>, and <code>tfoot</code> and will in the JSON as they are required.
+                </p>
+
+<pre class="code">
+"head": {
+    "rows": [
+        {
+            "columns": [
+                {
+                    ... Contents Ommitted ...
+                },
+                {
+                    ... Contents Ommitted ...
+                }
+            ]
+        }
+    ]
+},
+</pre>
+
+                <p>
+                    When looking at a section structure there are a few key things to point out. First all table sections, <code>head</code>, <code>body</code>, and footer <code>footer</code> are rendered as objects. This section naming is required to ensure proper display structure. Next every section will have a <code>rows</code> propery, that will contain an array of object representing each row. Each object <code>row</code> will then contain its own object of <codoe>columns</codoe> which is another array of object representing each column of the table. Depending on the section, configuration and contents, this object will vary.
+                </p>
+
+                <p>
+                    For additional levels of functionality control see the example code and table level attributes below.
+                </p>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                data
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                Java hashmap or arrayList used to popuplate the table contents.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                id
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The desired id for the table This will also turn into the html ID of the table..
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                The displayed title or table caption.
+                            </td>
+                        </tr>
+<!--                         <tr>
+                            <th>
+                                displayRows
+                            </th>
+                            <td>
+                                Integer
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Limits the number or records returned at a time. Good to control tables that should paginate.
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <th>url</th>
+                            <td>String</td>
+                            <td>No</td>
+                            <td>Used to determine where a table will reative additional table data from. This is a required attribute for pagination</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                stickyHeader
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates that the header row should always appear above the table even when the user scrolls
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                stickyFooter
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Indicates that the footer row should always appear above the table even when the user scrolls
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                selectable
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to add an additional selectable rows column. This attribute takes only one of two values:<br>
+                                <strong>Single</strong> - The first column of the table will render with radio controls
+                                <strong>Multiple</strong> - The first column of the table will render with checkbox controls.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                selectAll
+                            </th>
+                            <td>
+                                Boolean
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to toggle on the "Select All" checkbox. This only works if the table is marked as <code>selectable="multiple"</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                preselected
+                            </th>
+                            <td>
+                                Array
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Array of indices that indicate if a row should be highlighted by default on page render.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                footerLabel
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Generic label that should appear in the footer.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                footerInitalSpan
+                            </th>
+                            <td>
+                                Number
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Number of initial columns that should be taken up by the first column of the footer.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                keyProperty
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Used to specifiy a specific table row.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Title Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="caption-example" title="Table Tile" />
+    ... Ommited ...
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "title": "Table Title",
+    "attributes": {
+        "id": "caption-example"
+    },
+    "head": { ... Omitted ... },
+    "body": { ... Omitted ... }
+}
+                </pre>
+
+                <p>
+                    The table title attribute is how developers add table captions or titles. When this is rendered into JSON, it will appear as a root property on the top of the table. In The HTML the title is rendered via the <code>caption</code> element.
+                </p>
+
+                <section id="title-example">
+                </section>
+
+            </div>
+        </div>
+
+<!--         <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>displayRows Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="display-rows-example" displayRows="5" />
+    &lt;E2:TableColumn label="Index" />
+    &lt;E2:TableColumn label="Column1" />
+    &lt;E2:TableColumn label="Column2" />
+    &lt;E2:TableColumn label="Column3" />
+    &lt;E2:TableColumn label="Column4" />
+    &lt;E2:TableColumn label="Column5" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+... No JSON Needed ...
+                </pre>
+
+                <p>
+                    The display rows attribute is used to shrink the number of rows return if it exceeds the n
+                </p>
+
+                <p>
+                    When this JSP attribute is rendered in JSON, it will append the <code>data-displayRow</code> attribute to the tables <code>attributes</code> object. The functionality and addtional controls are added by JavaScript.
+                </p>
+
+                <section id="displayRows-example">
+                </section>
+
+            </div>
+        </div> -->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Sticky Header, Sticky Footers Example</h2>
+
+                <div class="cui-messages">
+
+                </div>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="sticky-example" stickyHeader="true" />
+    &lt;E2:TableColumn label="Index" />
+    &lt;E2:TableColumn label="Column1" />
+    &lt;E2:TableColumn label="Column2" />
+    &lt;E2:TableColumn label="Column3" />
+    &lt;E2:TableColumn label="Column4" />
+    &lt;E2:TableColumn label="Column5" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "caption": "Display Rows Table",
+    "attributes": {
+        "id": "sticky-header",
+        "data-sticky": "header"
+    },
+    "head": { ... Omitted ... },
+    "body": { ... Omitted ... }
+}
+                </pre>
+
+                <p>
+                    Sticky headers and footer can be easily added by simply defining the <code>attribute</code> of <code>stickyHeader</code> or <code>stickyFooter</code> to the JSP tag with the value set to <code>true</code>.
+                </p>
+
+                <p>
+                    When this JSP attribute is rendered into JSON, it will add the attribute of <code>data-sticky</code> to the table element. In the example above the value is set to just header as it is the only item being requested. If both header and footer were defined as stick they would appear as a comma seperated value, e.g. <code>"header,footer"</code>.
+                </p>
+
+                <section id="stickyHeader-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Selectable Rows Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" selectable="single" id="single-selection" />
+    &lt;E2:TableColumn label="First" />
+    &lt;E2:TableColumn label="Last" />
+    &lt;E2:TableColumn label="Middle" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "title": "Table Title",
+    "attributes": {
+        "id": "single-selection"
+    },
+    "selectable": true,
+    "selectionType": "single",
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                      ... Ommitted remaining header columns ...
+                    }
+                ]
+            }
+        ]
+    },
+    "body": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "text": "Jeff"
+                    },
+                    {
+                        "text": "Herb"
+                    },
+                    {
+                        "text": "A"
+                    }
+                ]
+            },
+            {
+                ... Omitted remaining rows ...
+            }
+        ]
+    }
+}
+                </pre>
+
+                <p>
+                    The <code>selectable</code> attribute is used to indicate when a table should render with the additional first column containing either a <code>radio</code> or <code>checkbox</code> control. The developer does not need to write any additional table markup to reference the control column. To toggle between <code>radio</code> or <code>checkbox</code> developer must set the selectable tag to either <em>single</em> or <em>multiple</em>.
+                </p>
+
+                <p>
+                    In this particular case, there is no additional JSON added at the individual row level. Instead two additional attribute should appear in the root of the table object <code>selectable</code> and <code>selection</code>. The <code>selectable</code> property is used to indicate that the table needs the additional columns. The <code>selectionType</code> is used to determine if the additional column should contain either a <code>radio</code> or <code>checkbox</code>
+                </p>
+
+                <p>
+                    It is also important to note that the radio/checkbox control <code>name</code> and <code>id</code> attributes are pre-defined. In the example above, all radios will share the same <code>name</code> tag. The value of the name tag is the same as the table <code>id</code>. But since ids need to differ, the id of the radio has the suffixed to include its row number. In this case the suffix is <code>_1</code>. All indexs should follow the underscore number pattern for as many rows the table contains on the screen. If this table was setup to be multiple select, then the <code>name</code> and the <code>id</code> would both be suffix with the row index number.
+                </p>
+
+                <section id="singleSelection-example">
+                </section>
+
+                <p>
+                    By default selectable rows only affects the rows in the body of the table. But if the table requires a "select all" checkbox at the top then an additional parameter needs
+                </p>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Select All Rows Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="multiple-selection" selectable="multiple" selectAll="true" />
+    &lt;E2:TableColumn label="First" />
+    &lt;E2:TableColumn label="Last" />
+    &lt;E2:TableColumn label="Middle" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "title": "Multi Selection Table",
+    "attributes": {
+        "id": "multi-selection"
+    },
+    "selectable": true,
+    "selectionType": "multiple",
+    "selectAll": true,
+}
+                </pre>
+
+                <p>
+                    By default selectable rows only affects the rows in the body of the table. But if the table requires a "select all" checkbox at the top, then the additional attribute <code>selectAll</code> needs to be added and have the value set to <em>true</em>. It should be noted that this feature should only be used on tables with multiple (<code>checkbox</code>) selections.
+                </p>
+
+                <p>
+                    Note in the JSON is slightly changes to include the <code>selectAll</code> property as part of the tables root object.
+                </p>
+
+                <section id="multiSelection-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Preselected Rows Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="preselected" preselected="<%= selectedIndices %>" />
+    ... Omiited table contents ...
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "title": "Pre-selected Table",
+    "attributes": {
+        "id": "preselection-selection"
+    },
+    "selectable": true,
+    "preselected": [1,2],
+    "selectionType": "multiple",
+    "head": {
+        ... Omitted ...
+    }
+    "body": {
+        ... Omitted ...
+    }
+}
+                </pre>
+
+                <p>
+                    Specific rows can also be marked a highlight on page load. In the past this was done via JavaScript, now developers should have access to a new attribute on the JSP tag call <code>preselected</code>. Pre-selected contains an array of indices that should be marked as selected. If a selected row also contains a row selection control (<code>radio</code> or <code>checkbox</code>), it will also make the row as pre-selected.
+                </p>
+
+                <p>
+
+                </p>
+
+                <section id="preselected-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>FooterLabel and FooterInitalSpan Example</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="footer-example" footerLabel="Grand Total" footerInitialSpan="2" />
+    &lt;/E2:TableColumn label="City" property="city" />
+    &lt;/E2:TableColumn label="County" property="country" />
+    &lt;/E2:TableColumn label="Populations" property="population" format="Number" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+"footer": {
+    "rows": [
+        {
+            "columns": [
+                {
+                    "span": 2,
+                    "text": "Grand Total",
+                    "footerLabel": true
+                },
+                {
+                    "text": "1,000,000"
+                }
+            ]
+        }
+    ]
+}
+                </pre>
+
+                <p>
+                    Table footers are created when individual columns are marked with than <code>aggregate</code> function. In order to provide a label in the table, developers can define the additional attribute of <code>footerLabel</code> on the JSP. With this additional attribute present a new leading footer column in the footer row definition. Developers can also define the additional attribute of <code>footerInitialSpan</code>. This attribute takes a number, this number representing the number of column the new leading column should span.
+                </p>
+
+                <p>
+                    When this is rendered into JSON, the table now has two columns defined in the footer section. The first is our new footer label column. First, every footer label column will contain the property of <code>footerLabel</code> set to the value of <em>true</em>. This is simply a flag for our render so we can add style hooks. The columns should then contain the <code>text</code> property which should be the string value provided in the JSP <codd>footerLabel</codd> attribute. Since <code>footerInitialSpan</code> is defined on the JSP, the <code>span</code> property also appears and is set to the number provided on the tag.
+                </p>
+
+                <section id="footer-example">
+                </section>
+
+            </div>
+        </div>
+
+         <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Row Keys</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="key-example" keyProprty="<%= keyProprty %>" />
+    ... Omitted ...
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+
+                </pre>
+
+                <p>
+                    At times rows need to have an additional indentifier to connect serverside data to the client browser. The best way to do this is to add the <code>keyProperty</code> attribute on the <code>E2:Table</code> tag. The <code>keyProperty</code> attribute provides developers with to prefix a set of data or define a row value that will uniquely identify this particular row.
+                </p>
+
+                <p>
+                    When rendered into JSON, this key value will appear as a property inside of every row object as seen above. When turned into HTML the key value will appear on every <code>tr</code> row element as the attribute <code>data-rowkey</code>. If the table is setup to have selectable rows, the radio/checkboxes will also us the row key as their values.
+                </p>
+
+                <section id="row-key-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Pagination Attirubutes: AJAX URL and Page Amount</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Table data="<%= bodyArray %>" id="paging-table" ajaxURL="http://www.google.com" pageAmount="25" />
+    &lt;E2:TableColumn label="skipped" />
+    &lt;E2:TableColumn label="Column1" />
+    &lt;E2:TableColumn label="Column2" />
+    &lt;E2:TableColumn label="Column3" />
+    &lt;E2:TableColumn label="Column4" />
+    &lt;E2:TableColumn label="Column5" />
+&lt;/E2:Table>
+                </pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "caption": "Display Rows Table",
+    "attributes": {
+        "id": "paging-table",
+        "data-ajax": "http://www.google.com",
+        "data-page-amount": 25,
+        "data-total-rows": 100
+    },
+    "head": { ... Omitted ... },
+    "body": { ... Omitted ... }
+}
+                </pre>
+
+                <p>
+                    By default tables will not paginate unless a developer defines the URL in which the additional data can be collected from. In order to provide this, developer need to give a value URL using the <code>ajaxURL</code> attribute. In the past developers needed to create buttons and register them with the Registration tool. Going forward this additional buttons will be created for developers on the client side so they no longer need to be registered. Developers can also control the amount of records being returned per page using the <code>pageAmount</code> attribute. It is also important to note that this same ajax URL will be the same URL used to control server side sorting and filtering of tables (more information coming later).
+                </p>
+
+                <p>
+                    When this is changed to JSON the table object will pick up some additional attributes. <code>data-ajax</code> will be the URL provided by <code>ajaxURL</code> attribute. If <code>ajaxURL</code> is defined, the <code>data-page-amount</code> attribute will also appear. The value with default to <em>50</em> unless the developer used the <code>pageAmount</code> attribute. There should also be a <code>data-total-rows</code>, to indicate how many rows a particular table has.
+                </p>
+
+                <div class="cui-messages">
+                    <p class="cui-warning">This functionality is still being worked on. The example will be updated once the scripts have been finished!</p>
+                <div>
+
+                <section id="pagination-example">
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "attributes": {
+                            "id": "table-name"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "text": "Index"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "text": "Column 1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "text": "Column 2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "text": "Column 3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "text": "Column 4"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "contents": [
+                                                {
+                                                    "text": "Row 1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "1,1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "1,2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "1,3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "1,4"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "1,5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "contents": [
+                                                {
+                                                    "text": "Row 2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "2,1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "2,2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "2,3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "2,4"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "2,5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "contents": [
+                                                {
+                                                    "text": "Row 3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "3,1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "3,2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "3,3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "3,4"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "text": "3,5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var title = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Table Title",
+                        "attributes": {
+                            "id": "display-rows-example",
+                            "data-displayRow": "5"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Body"
+                                        },
+                                        {
+                                            "text": "Body"
+                                        },
+                                        {
+                                            "text": "Body"
+                                        },
+                                        {
+                                            "text": "Body"
+                                        },
+                                        {
+                                            "text": "Body"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+            var displayRows = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Display Rows Table",
+                        "attributes": {
+                            "id": "display-rows-example",
+                            "data-displayRow": "5"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Index",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 1"
+                                        },
+                                        {
+                                            "text": "1,1"
+                                        },
+                                        {
+                                            "text": "1,2"
+                                        },
+                                        {
+                                            "text": "1,3"
+                                        },
+                                        {
+                                            "text": "1,4"
+                                        },
+                                        {
+                                            "text": "1,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 2"
+                                        },
+                                        {
+                                            "text": "2,1"
+                                        },
+                                        {
+                                            "text": "2,2"
+                                        },
+                                        {
+                                            "text": "2,3"
+                                        },
+                                        {
+                                            "text": "2,4"
+                                        },
+                                        {
+                                            "text": "2,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 3"
+                                        },
+                                        {
+                                            "text": "3,1"
+                                        },
+                                        {
+                                            "text": "3,2"
+                                        },
+                                        {
+                                            "text": "3,3"
+                                        },
+                                        {
+                                            "text": "3,4"
+                                        },
+                                        {
+                                            "text": "3,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 4"
+                                        },
+                                        {
+                                            "text": "4,1"
+                                        },
+                                        {
+                                            "text": "4,2"
+                                        },
+                                        {
+                                            "text": "4,3"
+                                        },
+                                        {
+                                            "text": "4,4"
+                                        },
+                                        {
+                                            "text": "4,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 5"
+                                        },
+                                        {
+                                            "text": "5,1"
+                                        },
+                                        {
+                                            "text": "5,2"
+                                        },
+                                        {
+                                            "text": "5,3"
+                                        },
+                                        {
+                                            "text": "5,4"
+                                        },
+                                        {
+                                            "text": "5,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 6"
+                                        },
+                                        {
+                                            "text": "6,1"
+                                        },
+                                        {
+                                            "text": "6,2"
+                                        },
+                                        {
+                                            "text": "6,3"
+                                        },
+                                        {
+                                            "text": "6,4"
+                                        },
+                                        {
+                                            "text": "6,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 7"
+                                        },
+                                        {
+                                            "text": "7,1"
+                                        },
+                                        {
+                                            "text": "7,2"
+                                        },
+                                        {
+                                            "text": "7,3"
+                                        },
+                                        {
+                                            "text": "7,4"
+                                        },
+                                        {
+                                            "text": "7,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 8"
+                                        },
+                                        {
+
+                                            "text": "8,1"
+                                        },
+                                        {
+
+                                            "text": "8,2"
+                                        },
+                                        {
+
+                                            "text": "8,3"
+                                        },
+                                        {
+
+                                            "text": "8,4"
+                                        },
+                                        {
+
+                                            "text": "8,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 9"
+                                        },
+                                        {
+
+                                            "text": "9,1"
+                                        },
+                                        {
+
+                                            "text": "9,2"
+                                        },
+                                        {
+
+                                            "text": "9,3"
+                                        },
+                                        {
+
+                                            "text": "9,4"
+                                        },
+                                        {
+
+                                            "text": "9,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 10"
+                                        },
+                                        {
+
+                                            "text": "10,1"
+                                        },
+                                        {
+
+                                            "text": "10,2"
+                                        },
+                                        {
+
+                                            "text": "10,3"
+                                        },
+                                        {
+
+                                            "text": "10,4"
+                                        },
+                                        {
+
+                                            "text": "10,5"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var stickyHeader = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "attributes": {
+                            "id": "sticky-header",
+                            "data-sticky": "header"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Index",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 1"
+                                        },
+                                        {
+                                            "text": "1,1"
+                                        },
+                                        {
+                                            "text": "1,2"
+                                        },
+                                        {
+                                            "text": "1,3"
+                                        },
+                                        {
+                                            "text": "1,4"
+                                        },
+                                        {
+                                            "text": "1,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 2"
+                                        },
+                                        {
+                                            "text": "2,1"
+                                        },
+                                        {
+                                            "text": "2,2"
+                                        },
+                                        {
+                                            "text": "2,3"
+                                        },
+                                        {
+                                            "text": "2,4"
+                                        },
+                                        {
+                                            "text": "2,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 3"
+                                        },
+                                        {
+                                            "text": "3,1"
+                                        },
+                                        {
+                                            "text": "3,2"
+                                        },
+                                        {
+                                            "text": "3,3"
+                                        },
+                                        {
+                                            "text": "3,4"
+                                        },
+                                        {
+                                            "text": "3,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 4"
+                                        },
+                                        {
+                                            "text": "4,1"
+                                        },
+                                        {
+                                            "text": "4,2"
+                                        },
+                                        {
+                                            "text": "4,3"
+                                        },
+                                        {
+                                            "text": "4,4"
+                                        },
+                                        {
+                                            "text": "4,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 5"
+                                        },
+                                        {
+                                            "text": "5,1"
+                                        },
+                                        {
+                                            "text": "5,2"
+                                        },
+                                        {
+                                            "text": "5,3"
+                                        },
+                                        {
+                                            "text": "5,4"
+                                        },
+                                        {
+                                            "text": "5,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 6"
+                                        },
+                                        {
+                                            "text": "6,1"
+                                        },
+                                        {
+                                            "text": "6,2"
+                                        },
+                                        {
+                                            "text": "6,3"
+                                        },
+                                        {
+                                            "text": "6,4"
+                                        },
+                                        {
+                                            "text": "6,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 7"
+                                        },
+                                        {
+                                            "text": "7,1"
+                                        },
+                                        {
+                                            "text": "7,2"
+                                        },
+                                        {
+                                            "text": "7,3"
+                                        },
+                                        {
+                                            "text": "7,4"
+                                        },
+                                        {
+                                            "text": "7,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 8"
+                                        },
+                                        {
+                                            "text": "8,1"
+                                        },
+                                        {
+                                            "text": "8,2"
+                                        },
+                                        {
+                                            "text": "8,3"
+                                        },
+                                        {
+                                            "text": "8,4"
+                                        },
+                                        {
+                                            "text": "8,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 9"
+                                        },
+                                        {
+                                            "text": "9,1"
+                                        },
+                                        {
+                                            "text": "9,2"
+                                        },
+                                        {
+                                            "text": "9,3"
+                                        },
+                                        {
+                                            "text": "9,4"
+                                        },
+                                        {
+                                            "text": "9,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 10"
+                                        },
+                                        {
+                                            "text": "10,1"
+                                        },
+                                        {
+                                            "text": "10,2"
+                                        },
+                                        {
+                                            "text": "10,3"
+                                        },
+                                        {
+                                            "text": "10,4"
+                                        },
+                                        {
+                                            "text": "10,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 1"
+                                        },
+                                        {
+                                            "text": "11,1"
+                                        },
+                                        {
+                                            "text": "11,2"
+                                        },
+                                        {
+                                            "text": "11,3"
+                                        },
+                                        {
+                                            "text": "11,4"
+                                        },
+                                        {
+                                            "text": "11,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 12"
+                                        },
+                                        {
+                                            "text": "12,1"
+                                        },
+                                        {
+                                            "text": "12,2"
+                                        },
+                                        {
+                                            "text": "12,3"
+                                        },
+                                        {
+                                            "text": "12,4"
+                                        },
+                                        {
+                                            "text": "12,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 13"
+                                        },
+                                        {
+                                            "text": "13,1"
+                                        },
+                                        {
+                                            "text": "13,2"
+                                        },
+                                        {
+                                            "text": "13,3"
+                                        },
+                                        {
+                                            "text": "13,4"
+                                        },
+                                        {
+                                            "text": "13,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 14"
+                                        },
+                                        {
+                                            "text": "14,1"
+                                        },
+                                        {
+                                            "text": "14,2"
+                                        },
+                                        {
+                                            "text": "14,3"
+                                        },
+                                        {
+                                            "text": "14,4"
+                                        },
+                                        {
+                                            "text": "14,5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Row 15"
+                                        },
+                                        {
+                                            "text": "15,1"
+                                        },
+                                        {
+                                            "text": "15,2"
+                                        },
+                                        {
+                                            "text": "15,3"
+                                        },
+                                        {
+                                            "text": "15,4"
+                                        },
+                                        {
+                                            "text": "15,5"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var pagination = {
+                title: "Pagination Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "attributes": {
+                            "id": "paging-table",
+                            "data-ajax": "http://www.google.com",
+                            "data-page-amount": 25,
+                            "data-total-rows": 100
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Index",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5",
+                                            "attribute": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": []
+                        }
+                    }
+                ]
+            };
+
+            var singleSelection = {
+                title: "Single Select Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Single Selection Table",
+                        "attributes": {
+                            "id": "single-selection"
+                        },
+                        "selectable": true,
+                        "selectionType": "single",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "First Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Last Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Middle Initial",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Jeff"
+                                        },
+                                        {
+                                            "text": "Herb"
+                                        },
+                                        {
+                                            "text": "A"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Craig"
+                                        },
+                                        {
+                                            "text": "Patik"
+                                        },
+                                        {
+                                            "text": "M"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Manuel"
+                                        },
+                                        {
+                                            "text": "Farfan"
+                                        },
+                                        {
+                                            "text": "X"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+            var multiSelection = {
+                title: "Multi Select Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Multi Selection Table",
+                        "attributes": {
+                            "id": "multi-selection"
+                        },
+                        "selectable": true,
+                        "selectionType": "multiple",
+                        "selectAll": true,
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "First Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Last Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Middle Initial",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Jeff"
+                                        },
+                                        {
+                                            "text": "Herb"
+                                        },
+                                        {
+                                            "text": "A"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Craig"
+                                        },
+                                        {
+                                            "text": "Patik"
+                                        },
+                                        {
+                                            "text": "M"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Manuel"
+                                        },
+                                        {
+                                            "text": "Farfan"
+                                        },
+                                        {
+                                            "text": "X"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "John"
+                                        },
+                                        {
+                                            "text": "Doe"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "john_doe"
+                                                        },
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                        "text": "Middle Initial"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "john_doe",
+                                                            "name": "john_doe",
+                                                            "type": "text",
+                                                            "value": "D"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+            var preSelected = {
+                title: "Preselected Rows Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Pre-selected Table",
+                        "attributes": {
+                            "id": "preselection-selection"
+                        },
+                        "selectable": true,
+                        "preselected": [1,2],
+                        "selectionType": "multiple",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "First Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Last Name",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Middle Initial",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Jeff"
+                                        },
+                                        {
+                                            "text": "Herb"
+                                        },
+                                        {
+                                            "text": "A"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Craig"
+                                        },
+                                        {
+                                            "text": "Patik"
+                                        },
+                                        {
+                                            "text": "M"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Manuel"
+                                        },
+                                        {
+                                            "text": "Farfan"
+                                        },
+                                        {
+                                            "text": "X"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "John"
+                                        },
+                                        {
+                                            "text": "Doe"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "john_doe"
+                                                        },
+                                                        "visibility": "hidden",
+                                                        "hasLayout": false,
+                                                        "text": "Middle Initial"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "john_doe",
+                                                            "name": "john_doe",
+                                                            "type": "text",
+                                                            "value": "D"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var footer = {
+                title: "Footer Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "title": "Footer Example",
+                        "attributes": {
+                            "id": "footer-example"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "City",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "County",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Population",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Albany"
+                                        },
+                                        {
+                                            "text": "Albany"
+                                        },
+                                        {
+                                            "text": "500,000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Schenectady"
+                                        },
+                                        {
+                                            "text": "Schenetady"
+                                        },
+                                        {
+                                            "text": "250,000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "Troy"
+                                        },
+                                        {
+                                            "text": "Rensselaer"
+                                        },
+                                        {
+                                            "text": "250,000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "footer": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "span": 2,
+                                            "text": "Grand Total",
+                                            "footerLabel": true
+                                        },
+                                        {
+                                            "text": "1,000,000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var rowKeys = {
+
+                title: "rowKey Example",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+
+                        "template": "table",
+                        "title": "Row Keys",
+                        "selectable": true,
+                        "selectionType": "single",
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+
+                                        {
+                                            "type": "header",
+                                            "text": "Header 1",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header 2",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header 3",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header 4",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header 5",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Header 6",
+                                            "attributes": {
+                                                "data-type": "alpha"
+                                            }
+                                        }
+
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1x1"
+                                        },
+                                        {
+                                            "text": "1x2"
+                                        },
+                                        {
+                                            "text": "1x3"
+                                        },
+                                        {
+                                            "text": "1x4"
+                                        },
+                                        {
+                                            "text": "1x5"
+                                        },
+                                        {
+                                            "text": "1x6"
+                                        }
+
+                                    ],
+                                    "key": "key-0"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "2x1"
+                                        },
+                                        {
+                                            "text": "2x2"
+                                        },
+                                        {
+                                            "text": "2x3"
+                                        },
+                                        {
+                                            "text": "2x4"
+                                        },
+                                        {
+                                            "text": "2x5"
+                                        },
+                                        {
+                                            "text": "2x6"
+                                        }
+
+                                    ],
+                                    "key": "key-1"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "3x1"
+                                        },
+                                        {
+                                            "text": "3x2"
+                                        },
+                                        {
+                                            "text": "3x3"
+                                        },
+                                        {
+                                            "text": "3x4"
+                                        },
+                                        {
+                                            "text": "3x5"
+                                        },
+                                        {
+                                            "text": "3x6"
+                                        }
+
+                                    ],
+                                    "key": "key-2"
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "4x1"
+                                        },
+                                        {
+                                            "text": "4x2"
+                                        },
+                                        {
+                                            "text": "4x3"
+                                        },
+                                        {
+                                            "text": "4x4"
+                                        },
+                                        {
+                                            "text": "4x5"
+                                        },
+                                        {
+                                            "text": "4x6"
+                                        }
+
+                                    ],
+                                    "key": "key-3"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+            var tempRows = [];
+
+            for (var i = 1, len = 101; i < len; i++) {
+
+                var tempRow = {
+                    "columns": [
+                        {
+                            "type": "header",
+                            "text": "Row " + i
+                        },
+                    ]
+                }
+
+                for (var j = 1, jlen = 6; j < jlen; j++) {
+
+                    var tempCol = {
+                        "text": i + "," + j
+                    };
+
+                    // Add the column
+                    tempRow.columns.push(tempCol);
+
+                }
+
+                // Add the row
+                pagination.contents[0].body.rows.push(tempRow);
+
+            }
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "table", "domReady!"], function (render, table) {
+
+                // // Examples
+                var defaultExample = document.getElementById("default-example");
+                var titleExample = document.getElementById("title-example");
+                var displayRowsExample = document.getElementById("displayRows-example");
+                var stickyHeaderExample = document.getElementById("stickyHeader-example");
+                var paginationExample = document.getElementById("pagination-example");
+                var singleSelectionExample = document.getElementById("singleSelection-example");
+                var multiSelectionExample = document.getElementById("multiSelection-example");
+                var preSelectedExample = document.getElementById("preselected-example");
+                var footerExample = document.getElementById("footer-example");
+                var rowKeyExample = document.getElementById("row-key-example");
+
+                // Create the generic example
+                render.page(defaultExample, page, function () {
+
+                    console.log("Default Done");
+
+                    render.page(titleExample, title, function () {
+
+                        console.log("Title Done");
+
+                        render.page(stickyHeaderExample, stickyHeader, function () {
+
+                            console.log("Sticky Header Done");
+
+                            $('#sticky-header').table();
+
+                            render.page(paginationExample, pagination, function() {
+
+                                console.log("Pagination Done");
+
+                                render.page(singleSelectionExample, singleSelection, function() {
+
+                                    console.log("Single Selection Done");
+
+                                    // Setup the single table manually.
+                                    $('#single-selection').table();
+
+                                    render.page(multiSelectionExample, multiSelection, function() {
+
+                                        console.log("Multipe Selection Done");
+
+                                        $('#multi-selection').table();
+
+                                        render.page(preSelectedExample, preSelected, function() {
+
+                                            console.log("Preselected Done");
+
+                                            $('#preselection-selection').table();
+
+                                            render.page(footerExample, footer, function() {
+
+                                                console.log("Footer Done");
+
+                                                render.page(rowKeyExample, rowKeys, function() {
+
+                                                    console.log("Row keys");
+
+                                                });
+
+                                            });
+
+                                        })
+
+                                    });
+
+                                });
+
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../includes/footer.html)-->

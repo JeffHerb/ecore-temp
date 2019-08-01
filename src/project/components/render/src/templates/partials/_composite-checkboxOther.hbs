@@ -1,0 +1,6 @@
+<div class="emp-check-other-checkbox">
+    {{~> _field this.checkbox ~}}
+</div>
+<div class="emp-check-other-describe {{#unless this.checkbox.input.attributes.checked }}cui-hidden{{/unless}}">
+    {{~> (getPartialName this.describe.template) this.describe ~}}
+</div>

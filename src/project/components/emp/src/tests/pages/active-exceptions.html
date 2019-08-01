@@ -1,0 +1,1343 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>EMP - Active Exceptions</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+    var fwData = 
+{
+  "page": {
+    "contents": [
+      {
+        "template": "globalHeader",
+        "tabsets": {
+          "type": "unordered",
+          "template": "lists",
+          "options": [
+            {
+              "contents": [
+                {
+                  "template": "link",
+                  "attributes": {
+                    "href": "page.jsp"
+                  },
+                  "text": "TP Sum"
+                }
+              ]
+            },
+            {
+              "contents": [
+                {
+                  "template": "link",
+                  "attributes": {
+                    "href": "page.jsp"
+                  },
+                  "text": "Active Exception"
+                }
+              ]
+            },
+            {
+              "contents": [
+                {
+                  "template": "link",
+                  "attributes": {
+                    "href": "page.jsp"
+                  },
+                  "text": "Name History"
+                }
+              ],
+              "selected": true
+            },
+            {
+              "contents": [
+                {
+                  "template": "link",
+                  "attributes": {
+                    "href": "page.jsp"
+                  },
+                  "text": "Address Sum"
+                }
+              ]
+            },
+            {
+              "contents": [
+                {
+                  "template": "link",
+                  "attributes": {
+                    "href": "page.jsp"
+                  },
+                  "text": "Events"
+                }
+              ]
+            },
+            {
+              "contents": [
+                {
+                  "template": "link",
+                  "attributes": {
+                    "href": "page.jsp"
+                  },
+                  "text": "Correspondence"
+                }
+              ]
+            }
+          ],
+          "collapse": true,
+          "title": "Tabset menu title"
+        },
+        "page": {
+          "title": "Active Exception"
+        },
+        "buttons": {
+          "retrieve": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "retrieve-button",
+                "name": "retrieve-button",
+                "className": "cui-button-primary emp-search-retrieve",
+                "tabindex": 1,
+                "type": "submit"
+              },
+              "text": "Retrieve"
+            }
+          },
+          "clear": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "clear-button",
+                "name": "clear-button",
+                "className": "emp-button-search-clear",
+                "tabindex": 1,
+                "title": "Leave ID and clear the rest",
+                "type": "button"
+              },
+              "text": "Clear"
+            }
+          },
+          "clearAll": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "clear-all-button",
+                "name": "clear-all-button",
+                "className": "emp-button-search-clear-all",
+                "tabindex": 1,
+                "title": "Clear all fields in search box",
+                "type": "button"
+              },
+              "text": "All"
+            }
+          },
+          "hideSearchBox": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attributes": {
+                "id": "emp-search-toggle",
+                "className": "emp-search-toggle",
+                "tabindex": 1,
+                "title": "Hide the search box",
+                "type": "button"
+              },
+              "text": "Hide the search box"
+            }
+          },
+          "sendID": {
+            "template": "link",
+            "attributes": {
+              "role": "button"
+            },
+            "text": "Send ID"
+          },
+          "getID": {
+            "template": "link",
+            "attributes": {
+              "role": "button"
+            },
+            "text": "Get ID"
+          },
+          "switch": {
+            "type": "button",
+            "template": "field",
+            "input": {
+              "attribute": {
+                "type": "button"
+              },
+              "text": "Switch"
+            }
+          }
+        }
+      },
+      {
+        "template": "pagebody",
+        "contents": [
+          {
+            "readOnly": true,
+            "attributes": {
+             
+            },
+            "type": "form",
+            "contents": [
+              {
+                "template": "universal",
+                "attributes": {
+                  "id": "emp-exception"
+                },
+                "contents": [
+                  {
+                    "readOnly": true,
+                    "attributes": {},
+                    "type": "section",
+                    "contents": [
+                      {
+                        "template": "group",
+                        "title": "Active Exception",
+                        "readOnly": true,
+                        "type": "header"
+                      },
+                      {
+                        "template": "table",
+                        "attributes": {
+                          "id": "table_checkboxes"
+                        },
+                        "headerControls": {
+                          "contents": [
+                            {
+                              "type": "select",
+                              "template": "field",
+                              "label": {
+                                "attributes": {
+                                  "for": "E_FUNCTIONAL_AREA"
+                                },
+                                "text": "Functional Area:"
+                              },
+                              "input": {
+                                "attributes": {
+                                  "id": "E_FUNCTIONAL_AREA",
+                                  "name": "E_FUNCTIONAL_AREA",
+                                  "tabindex": "1"
+                                },
+                                "options": {
+                                  "all": {
+                                    "text": "All",
+                                    "value": "all"
+                                  },
+                                  "nr": {
+                                    "text": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                                    "value": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                  }
+                                },
+                                "value": "all"
+                              }
+                            }
+                          ]
+                        },
+                        "head": {
+                          "rows": [
+                            {
+                              "columns": [
+                                {
+                                  "type": "header",
+                                  "text": "Override",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "control",
+                                    "data-columnType": "text",
+                                    "data-sort": "alpha"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "text": "Clear",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "control",
+                                    "data-columnType": "text",
+                                    "data-sort": "alpha"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "text": "Exception",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "alpha",
+                                    "data-columnType": "text",
+                                    "data-sort": "alpha"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "style": "min-width",
+                                  "text": "Non Reviewable",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "alpha",
+                                    "data-columnType": "text",
+                                    "data-sort": "alpha"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "text": "DLN",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "alpha",
+                                    "data-columnType": "text",
+                                    "data-sort": "numeric"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "text": "Form",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "alpha",
+                                    "data-columnType": "text",
+                                    "data-sort": "alpha"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "text": "Liability Period Begin Date",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "alpha",
+                                    "data-columnType": "text",
+                                    "data-sort": "date"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "text": "Liability Period End Date",
+                                  "sortable": "true",
+                                  "attributes": {
+                                    "data-type": "alpha",
+                                    "data-columnType": "text",
+                                    "data-sort": "date"
+                                  }
+                                },
+                                {
+                                  "type": "header",
+                                  "style": "min-width",
+                                  "text": "Drill Down to More Details",
+                                  "attributes": {
+                                    "data-type": "button"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "body": {
+                          "rows": [
+                            {
+                              "columns": [
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "table_my_table_1_0",
+                                          "title": "Row 0",
+                                          "name": "table_my_table_1_0",
+                                          "value": "0",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 0",
+                                          "attributes": {
+                                            "for": "table_my_table_1_0"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "table_my_table_1_1",
+                                          "title": "Row 1",
+                                          "name": "table_my_table_1_1",
+                                          "value": "0",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 1",
+                                          "attributes": {
+                                            "for": "table_my_table_1_1"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "id": "table_my_table_1_2",
+                                          "title": "Row 2",
+                                          "name": "table_my_table_1_2",
+                                          "type": "checkbox",
+                                          "checked": "true"
+                                        },
+                                        "label": {
+                                          "text": "Row 2",
+                                          "attributes": {
+                                            "for": "table_my_table_1_2"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "id": "table_my_table_1_3",
+                                          "title": "Row 3",
+                                          "name": "table_my_table_1_3",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 3",
+                                          "attributes": {
+                                            "for": "table_my_table_1_3"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "table_my_table_1_4",
+                                          "title": "Row 4",
+                                          "name": "table_my_table_1_4",
+                                          "value": "0",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 4",
+                                          "attributes": {
+                                            "for": "table_my_table_1_4"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "table_my_table_1_5",
+                                          "title": "Row 5",
+                                          "name": "table_my_table_1_5",
+                                          "value": "0",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 5",
+                                          "attributes": {
+                                            "for": "table_my_table_1_5"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                          "id": "table_my_table_1_6",
+                                          "title": "Row 6",
+                                          "name": "table_my_table_1_6",
+                                          "value": "0",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 6",
+                                          "attributes": {
+                                            "for": "table_my_table_1_6"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "columns": [
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "checkbox",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "table_my_table_1_7",
+                                          "title": "Row 7",
+                                          "name": "table_my_table_1_7",
+                                          "value": "0",
+                                          "type": "checkbox"
+                                        },
+                                        "label": {
+                                          "text": "Row 7",
+                                          "attributes": {
+                                            "for": "table_my_table_1_7"
+                                          }
+                                        },
+                                        "type": "checkbox"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "contents": []
+                                },
+                                {
+                                  "text": "1320 - TAX DUE DISCREPANCY"
+                                },
+                                {
+                                  "contents": [
+                                    {
+                                      "type": "static",
+                                      "template": "notifier",
+                                      "attributes": {
+                                        "alt": "Non Reviewable",
+                                        "title": "Non Reviewable"
+                                      },
+                                      "text": "NR"
+                                    }
+                                  ],
+                                  "style": "min-width"
+                                },
+                                {
+                                  "text": "123456789"
+                                },
+                                {
+                                  "text": "CT-30"
+                                },
+                                {
+                                  "text": "01/01/2012"
+                                },
+                                {
+                                  "text": "01/01/2013"
+                                },
+                                {
+                                  "style": "min-width",
+                                  "contents": [
+                                    {
+                                      "type": "button",
+                                      "template": "field",
+                                      "input": {
+                                        "attributes": {
+                                          "id": "E_BTN_DRILLDOWN",
+                                          "onclick": "",
+                                          "type": "button",
+                                          "title": "Drill Down to More Details"
+                                        },
+                                        "icon": "drill-down",
+                                        "text": "Drill Down to More Details"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "readOnly": true,
+                        "contents": [
+                          {
+                            "template": "group",
+                            "title": "Details",
+                            "readOnly": true,
+                            "type": "header"
+                          },
+                          {
+                            "template": "grid",
+                            "readOnly": true,
+                            "contents": [
+                              {
+                                "template": "grid",
+                                "readOnly": true,
+                                "contents": [
+                                  {
+                                    "template": "field",
+                                    "input": {
+                                      "readOnly": true,
+                                      "attributes": {
+                                        "id": "E_CREATE_DATE",
+                                        "name": "E_CREATE_DATE",
+                                        "type": "text",
+                                        "value": "03/10/2005"
+                                      },
+                                      "required": true
+                                    },
+                                    "readOnly": true,
+                                    "label": {
+                                      "text": "Create Date:",
+                                      "attributes": {
+                                        "for": "E_CREATE_DATE"
+                                      }
+                                    },
+                                    "type": "text"
+                                  }
+                                ],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                              },
+                              {
+                                "template": "grid",
+                                "readOnly": true,
+                                "contents": [
+                                  {
+                                    "template": "field",
+                                    "input": {
+                                      "readOnly": true,
+                                      "attributes": {
+                                        "id": "E_DOCUMENT_TYPE",
+                                        "name": "E_DOCUMENT_TYPE",
+                                        "type": "text",
+                                        "value": "RETURN"
+                                      }
+                                    },
+                                    "readOnly": true,
+                                    "label": {
+                                      "text": "Document Type:",
+                                      "attributes": {
+                                        "for": "E_DOCUMENT_TYPE"
+                                      }
+                                    },
+                                    "type": "text"
+                                  }
+                                ],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                              }
+                            ],
+                            "attributes": {},
+                            "type": "row"
+                          },
+                          {
+                            "template": "grid",
+                            "readOnly": true,
+                            "contents": [
+                              {
+                                "template": "grid",
+                                "readOnly": true,
+                                "contents": [
+                                  {
+                                    "template": "field",
+                                    "input": {
+                                      "readOnly": true,
+                                      "attributes": {
+                                        "id": "E_TAX_TYPE",
+                                        "name": "E_TAX_TYPE",
+                                        "type": "text",
+                                        "value": "CORP"
+                                      },
+                                      "required": true
+                                    },
+                                    "readOnly": true,
+                                    "label": {
+                                      "text": "Tax Type:",
+                                      "attributes": {
+                                        "for": "E_TAX_TYPE"
+                                      }
+                                    },
+                                    "type": "text"
+                                  }
+                                ],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                              },
+                              {
+                                "template": "grid",
+                                "readOnly": true,
+                                "contents": [
+                                  {
+                                    "template": "field",
+                                    "input": {
+                                      "readOnly": true,
+                                      "attributes": {
+                                        "id": "E_TAX_SUB_TYPE",
+                                        "name": "E_TAX_SUB_TYPE",
+                                        "type": "text",
+                                        "value": "9A - 209.1 / S"
+                                      }
+                                    },
+                                    "readOnly": true,
+                                    "label": {
+                                      "text": "Tax Sub Type:",
+                                      "attributes": {
+                                        "for": "E_TAX_SUB_TYPE"
+                                      }
+                                    },
+                                    "type": "text"
+                                  }
+                                ],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                              }
+                            ],
+                            "attributes": {},
+                            "type": "row"
+                          },
+                          {
+                            "template": "grid",
+                            "readOnly": true,
+                            "contents": [
+                              {
+                                "template": "grid",
+                                "readOnly": true,
+                                "contents": [
+                                  {
+                                    "template": "field",
+                                    "input": {
+                                      "readOnly": true,
+                                      "attributes": {
+                                        "id": "E_TAX_SUB_TYPE_DESC",
+                                        "name": "E_TAX_SUB_TYPE_DESC",
+                                        "type": "text",
+                                        "value": "CT3, 3S, CT3, 4S Business Corp"
+                                      }
+                                    },
+                                    "readOnly": true,
+                                    "label": {
+                                      "text": "Tax Sub Type Desc:",
+                                      "attributes": {
+                                        "for": "E_TAX_SUB_TYPE_DESC"
+                                      }
+                                    },
+                                    "type": "text"
+                                  },
+                                  {
+                                    "template": "field",
+                                    "input": {
+                                      "attributes": {
+                                        "id": "_E_ACCEPT_INVENTORY_2",
+                                        "name": "_E_ACCEPT_INVENTORY_2",
+                                        "value": "false",
+                                        "type": "hidden"
+                                      }
+                                    },
+                                    "type": "hidden"
+                                  }
+                                ],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                              }
+                            ],
+                            "attributes": {},
+                            "type": "row"
+                          }
+                        ],
+                        "attributes": {},
+                        "type": "section"
+                      },
+                      {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                          {
+                            "type": "column",
+                            "template": "buttonGroup",
+                            "align": "right",
+                            "contents": [
+                              {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                  "attributes": {
+                                    "id": "E_BTN_CLEAR_EXCEPTION",
+                                    "type": "button",
+                                    "onclick": ""
+                                  },
+                                  "text": "Clear Exception"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "template": "field",
+                    "input": {
+                      "attributes": {
+                        "id": "fw_session_id",
+                        "name": "fw_session_id",
+                        "value": "fw_default_session_id",
+                        "type": "hidden"
+                      }
+                    },
+                    "type": "hidden"
+                  },
+                  {
+                    "template": "field",
+                    "input": {
+                      "attributes": {
+                        "id": "fw_popup_ind",
+                        "name": "fw_popup_ind",
+                        "value": "false",
+                        "type": "hidden"
+                      }
+                    },
+                    "type": "hidden"
+                  }
+                ]
+              },
+              {
+                "type": "row",
+                "template": "buttonGroup",
+                "contents": [
+                    {
+                        "type": "column",
+                        "template": "buttonGroup",
+                        "align": "right",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "exceptionControlOne",
+                                        "type":"button",
+                                        "onclick": "emp.functionCall(event, {0: {'function': 'emp.requestException', 'args': [{'url': 'http://localhost:3000/activeExceptionSetOne'}]} })"
+                                    },
+                                    "text": "Replace Exceptions Set One"
+                                }
+                            }
+                        ]
+                    }
+                ]
+              },
+              {
+                "type": "row",
+                "template": "buttonGroup",
+                "contents": [
+                    {
+                        "type": "column",
+                        "template": "buttonGroup",
+                        "align": "right",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "exceptionControlTwo",
+                                        "type":"button",
+                                        "onclick": "emp.functionCall(event, {0: {'function': 'emp.requestException', 'args': [{'url': 'http://localhost:3000/activeExceptionSetTwo'}]} })"
+                                    },
+                                    "text": "Replace Exceptions Set Two"
+                                }
+                            }
+                        ]
+                    }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "menu": {
+    "items": [
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Client Information"
+      },
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Account Information"
+      },
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Work Management"
+      },
+      {
+        "items": [
+          {
+            "label": "link1",
+            "url": "#"
+          }
+        ],
+        "label": "Special Services"
+      }
+    ]
+  }
+}    
+</script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

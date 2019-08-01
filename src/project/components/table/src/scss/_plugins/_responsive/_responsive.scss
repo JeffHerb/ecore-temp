@@ -1,0 +1,394 @@
+// Button Menu Pane
+$table-responsive-pane-bg-color: #fff;
+$table-responsive-pane-border: 1px solid rgba(0, 0, 0, 0.15) !default;
+$table-responsive-pane-color: #373a3c !default;
+$table-responsive-pane-padding: 5px 0;
+
+// Button Menu Pane List Items
+$table-responsive-option-item-bg-color: transparent !default;
+$table-responsive-option-item-bg-color-hover: #f5f5f5 !default;
+$table-responsive-option-item-bg-color-selected: #f5f5f5 !default;
+
+// Button Menu Pane Buttons
+$table-responsive-pane-button-bg-color: transparent !default;
+$table-responsive-pane-button-padding: 5px 7px;
+
+// Button Column Control
+$table-responsive-close-button-font-size: 14px;
+$table-responsive-column-button-padding: 4px 20px 3px 10px;
+
+// Column Control Pane
+$table-responsive-column-pane-border: 1px solid rgba(0, 0, 0, 0.15) !default;
+$table-responsive-column-pane-color: #373a3c !default;
+$table-responsive-column-pane-padding: 5px 0;
+
+// Column Control Pane List Item
+$table-responsive-column-pane-list-bg-color: transparent !default;
+$table-responsive-column-pane-list-bg-color-hover: #f5f5f5 !default;
+$table-responsive-column-pane-list-bg-color-selected: #f5f5f5 !default;
+
+// Column Control Pane Button
+$table-responsive-column-pane-button-bg-color: transparent !default;
+$table-responsive-column-pane-button-padding: 5px 20px 5px 25px;
+
+// Column Control Pane Button Selected
+$table-responsive-column-pane-button-checkmark-bg-color: #f5f5f5 !default;
+$table-responsive-column-pane-button-checkmark-border: solid #373a3c !default;
+$table-responsive-column-pane-button-checkmark-border-width: 0 2px 2px 0 !default;
+$table-responsive-column-pane-button-checkmark-height: 9px !default;
+$table-responsive-column-pane-button-checkmark-width: 6px !default;
+
+// Revert Undo control
+$table-responsive-column-pane-button-undo-revert: #fff6cc;
+
+// Close link
+$table-responsive-close-button-padding: 3px 20px;
+
+.table-responsive-copy {
+    position: absolute;
+    visibility: hidden;
+    height: 1px;
+    width: 1px;
+
+    .view-wrapper {
+        overflow: inherit;
+    }
+}
+
+.emp-icon-responsive-table-menu {
+    background: url($emp-images-path + "emp-hamburger.svg") no-repeat 2px 3px transparent;
+    display: inline-block;
+}
+
+@media print {
+    .ie .emp-icon-responsive-table-menu {
+        background: url($emp-images-path + "emp-hamburger.png") no-repeat 2px 3px transparent;
+    }
+}
+
+
+.emp-imgbtn-responsive-table-menu {
+    border: 0;
+    img {
+        border: 0 !important;
+        height: 18px;
+        left: -2px;
+        margin-top: 3px;
+        margin-left: 4px;
+        position: relative;
+        width: 18px;
+    }
+}
+
+// Button Menu Pane
+.emp-table-responsive-button-menu-cell {
+    position: relative;
+}
+
+.emp-table-responsive-button-menu-pane {
+    background: #fff;
+    border: $table-responsive-pane-border;
+    color: $table-responsive-pane-color;
+    list-style: none;
+    height: 1px;
+    min-width: 150px;
+    padding: $table-responsive-pane-padding;
+    position: absolute;
+    right: 32px;
+    top: 0;
+    visibility: hidden;
+    z-index: 900;
+
+    &.emp-selected {
+        height: auto;
+        visibility: visible;
+    }
+
+    li {
+        background: #FFF;
+        border-bottom: 1px solid #CCC;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+
+        &:hover {
+            background: $table-responsive-option-item-bg-color-hover;
+        }
+
+        &:last-child {
+            border: 0;
+        }
+
+        button {
+            color: #333;
+        }
+
+        button, a {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            height: auto;
+            padding: 7px;
+            text-align: left;
+            text-indent: inherit;
+            width: 100%;
+        }
+
+        button:hover {
+            background: $table-responsive-option-item-bg-color-hover;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+        }
+
+    }
+
+}
+
+.external-app.emp-orpts-subtheme{
+    .emp-table-responsive-button-menu-pane {
+        border: $table-responsive-pane-border;
+        color: $table-responsive-pane-color;
+        list-style: none;
+        height: 1px;
+        min-width: 150px;
+        padding: 1em 1em 0.6em 1em;
+        margin-right: 8px;
+        position: absolute;
+        right: 32px;
+        top: 0;
+        visibility: hidden;
+        z-index: 900;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-shadow: -1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    
+        &.emp-selected {
+            height: auto;
+            visibility: visible;
+        }
+    
+        li {
+            background: #FFF;
+            border-bottom: none;
+            display: block;
+            overflow: hidden;
+            width: 100%;
+    
+            &:last-child {
+                border: 0;
+                display: none;
+            }
+    
+            a {
+                display: block;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            button, a {
+                color: #19a6e2;
+
+                &:hover{
+                    color: #333;
+                }
+
+                &:a:visited, a:visited:hover{
+                    color: #1484b4
+                }
+            }
+    
+            button, a {
+                background: transparent;
+                border: 0;
+                border-radius: 0;
+                height: auto;
+                padding: 7px;
+                text-align: left;
+                text-indent: inherit;
+                width: 100%;
+            }
+
+            //hide Close button - appended by JS script
+            &::last-child{
+                display: none;
+            }
+    
+        }
+
+        &:after{
+            content: "";
+            position: absolute;            
+            background: #fff;
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            width: 10px;
+            height: 10px;
+            transform: rotate(135deg);
+            top: 10px;
+            left: 100%;
+            margin-left: -5px;
+        }
+    
+    }
+}
+
+.emp-table-responsive-column-control {
+    font-size: $table-responsive-close-button-font-size !important;
+    padding: $table-responsive-column-button-padding;
+    position: relative;
+
+    &:after {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #84827B;
+        content: "";
+        display: block;
+        height: 10px;
+        position: absolute;
+        right: 7px;
+        top: 8px;
+        width: 10px;
+    }
+
+    // When columns are hidden
+    &.emp-table-responsive-has-hidden-columns {
+        color: $cui-color-warning-text;
+        background-color: $cui-color-warning-background;
+        border-color: $cui-color-warning-border;
+    }
+}
+
+.emp-table-responsive-column-menu {
+    display: none;
+    background: #fff;
+    border: $table-responsive-column-pane-border;
+    color: $table-responsive-column-pane-color;
+    height: 1px;
+    list-style: none;
+    padding: $table-responsive-pane-padding;
+    position: absolute;
+    visibility: hidden;
+    z-index: 1500;
+
+    &.emp-selected {
+        display: inline-block;
+        height: auto;
+        visibility: visible;
+    }
+
+    li {
+        background: $table-responsive-column-pane-list-bg-color;
+        padding: 0;
+
+        &:hover {
+            background: $table-responsive-column-pane-list-bg-color-hover;
+        }
+
+        a {
+            display: block;
+            padding: $table-responsive-column-pane-button-padding;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        button {
+            background: $table-responsive-column-pane-button-bg-color;
+            border: 0;
+            position: relative;
+            padding: $table-responsive-column-pane-button-padding;
+            text-align: left;
+            width: 100%;
+
+            &.emp-selected {
+                background: $table-responsive-column-pane-list-bg-color-selected;
+
+                &:before {
+                    background: $table-responsive-column-pane-button-checkmark-bg-color;
+                    content: "";
+                    border: $table-responsive-column-pane-button-checkmark-border;
+                    border-width: $table-responsive-column-pane-button-checkmark-border-width;
+                    display: block;
+                    height: $table-responsive-column-pane-button-checkmark-height;
+                    left: 11px;
+                    position: absolute;
+                    top: calc(50% - 6px);
+                    transform: rotate(45deg);
+                    width: $table-responsive-column-pane-button-checkmark-width;
+                }
+
+            }
+
+        }
+
+        &.emp-table-static-save-text {
+
+            &:hover {
+                background: transparent;
+            }
+
+            span {
+                display: inline-block;
+                text-align: center;
+                padding-bottom: 5px;
+                width: 100%;
+            }
+        }
+
+        &.menu-divider-container {
+            line-height: 10px;
+            padding: 0 15px 10px;
+
+            &:hover {
+                background: transparent;
+            }
+
+            .menu-divider {
+                border-bottom: $table-responsive-pane-border;
+                display: inline-block;
+                width: 100%;
+            }
+        }
+
+        &.emp-table-static-undo-revert-link {
+            background: $table-responsive-column-pane-button-undo-revert !important;
+        }
+
+    }
+}
+
+.emp-table-responsive-hidden-column {
+   display: none;
+}
+
+.emp-external-actions-menu {
+    color: inherit;
+    background: transparent !important;
+    border: 1px solid #a5a5a3;
+    height: auto;
+    overflow: visible;
+    padding: 4px 20px 4px 7px;
+    position: relative;
+    text-indent: 0;
+    width: auto;
+
+    &::after {
+        content: "";
+        display: table-cell;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #84827B;
+        right: 4px;
+        top: 10px;
+    }
+}

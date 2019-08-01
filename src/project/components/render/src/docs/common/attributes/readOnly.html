@@ -1,0 +1,294 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="readOnly Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>readOnly</h2>
+
+                <p>
+                    The <code>readOnly</code> attribute controls whether an input renders in a readonly or updatable state. By default all pages load in either level true (readonly) or level false (updatable) modes. This attribute allows developers to toogle this rendering modes at the field level.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h3>Example</h2>
+                <h4>Custom Tag</h4>
+                <pre class="code">
+&lt;E2:Text type="text" viewKey="demo" readOnly="true" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Read Only Text Label:",
+        "attributes": {
+            "for": "demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "Read Only Value",
+        },
+        "readOnly": true
+    }
+}
+                </pre>
+                <p>
+                    For the purposes of this example we are using a <code>&lt;E2:TextField&gt;</code>. For the full <a href="#requestedMode-support">support list</a> see below. We are also assuming that in this case, the page loaded in <em>update mode</em>.
+                </p>
+
+                <p>
+                    As shown in the JSON, by including the readOnly mode attribute on a input JSP tag, an additional input property of <code>readOnly</code> has been created in the JSON. The value the developer specifies the value for the attribute; a value of <em>ture</em> being readonly and a value of <em>false</em> being editable (update mode).
+                </p>
+
+                <h4>Rendered Examples</h4>
+
+                <section id="requestedMode-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+
+                <ul id="requestedMode-support">
+                    <li><a href="../../tags/checkbox.html">Checkbox</a></li>
+                    <li><a href="../../tags/date.html">Date</a></li>
+                    <li><a href="../../tags/selectBox.html">selectBox</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                    <li><a href="../../tags/textArea.html">Textarea</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h3>Example</h2>
+                <h4>RadioGroup Tag</h4>
+                <pre class="code">
+&lt;E2:RadioGroup viewKey="colorValue">
+    &lt;E2:Radio label="Blue" value="blue" />
+    &lt;E2:Radio label="Red" value="red" />
+&lt;/E2:RadioGroup>
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "radio",
+    "template": "inputGroup",
+    "legend": "Pick a color",
+    "options": [
+        {
+            "type": "radio",
+            "template": "field",
+            "label": {
+                "text": "Blue",
+                "attributes": {
+                    "for": "demo_1"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "demo",
+                    "id": "demo_1",
+                    "type": "radio",
+                    "value": "blue"
+                }
+            }
+        },
+        {
+            "type": "radio",
+            "template": "field",
+            "label": {
+                "text": "Red",
+                "attributes": {
+                    "for": "demo_2"
+                }
+            },
+            "input": {
+                "attributes": {
+                    "name": "demo",
+                    "id": "demo_2",
+                    "type": "radio",
+                    "value": "red",
+                    "checked": true
+                }
+            }
+        }
+    ],
+    "readOnly": true
+}
+                </pre>
+
+
+                <h4>Rendered Examples</h4>
+
+                <section id="radioGroup-example">
+                </section>
+
+<p>
+                    For the purposes of this example we are using a <code>&lt;E2:RadioGroup&gt;</code>. For the full <a href="#group-support">support list</a> see below. We are also assuming that in this case, the page loaded in <em>update mode</em>.
+                </p>
+
+                <p>
+                    Group elements normally provide users with more than one option or value to pick from. When turned into a <code>readOnly</code> field though only the selected values are actually displayed. The value of course being the label text value is normally visible to users in its updatable state.
+                </p>
+
+                <ul id="group-support">
+                    <li><a href="../../tags/checkboxGroup.html">CheckboxGroup</a></li>
+                    <li><a href="../../tags/radioGroup.html">RadioGroup</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <script>
+            var requestedMode = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                   {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Read Only Text Label:",
+                                            "attributes": {
+                                                "for": "demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "value": "Read Only Value",
+                                            },
+                                            "readOnly": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var radioGroup = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "radio",
+                                        "template": "inputGroup",
+                                        "legend": "Pick a color",
+                                        "options": [
+                                            {
+                                                "type": "radio",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Blue",
+                                                    "attributes": {
+                                                        "for": "demo_1"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "demo",
+                                                        "id": "demo_1",
+                                                        "type": "radio",
+                                                        "value": "blue"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "radio",
+                                                "template": "field",
+                                                "label": {
+                                                    "text": "Red",
+                                                    "attributes": {
+                                                        "for": "demo_2"
+                                                    }
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "name": "demo",
+                                                        "id": "demo_2",
+                                                        "type": "radio",
+                                                        "value": "red",
+                                                        "checked": true
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "readOnly": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var requestedModeExample = document.getElementById("requestedMode-example");
+                var radioGroupExample = document.getElementById("radioGroup-example");
+
+                // Create the generic example
+                render.page(requestedModeExample, requestedMode, function() {
+
+                    console.log("Basic Input Done");
+
+                    render.page(radioGroupExample, radioGroup, function() {
+
+                        console.log("Radio/Checkbox Group Example Done")
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

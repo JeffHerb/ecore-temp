@@ -1,0 +1,34 @@
+{{! Returns a row }}
+{{#ifCond v1=this.type op='in' v2='row'~}}
+
+    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"cui-row"}' extend=this.extend addClass=this.addClass width=this.width style=this.style scope="grid-row"))}}></div>
+{{/ifCond~}}
+
+{{! Returns a column }}
+{{#ifCond v1=this.type op='==' v2='column'~}}
+
+    {{#if this.noWidth}}
+
+        <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' addClass=this.addClass extend=this.extend push=this.push style=this.style scope="grid-column"))}}></div>
+
+    {{else}}
+
+        {{! Check to see if a size attribute is defined, if not force the item to be full size}}
+        {{#if this.width~}}
+
+            <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' width=this.width extend=this.extend addClass=this.addClass push=this.push style=this.style scope="grid-column"))}}></div>
+        {{~else~}}
+
+            {{#if this.cuiSize~}}
+
+                <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' push=this.push extend=this.extend addClass=this.addClass cuiSize=this.cuiSize style=this.style scope="grid-column"))}}></div>
+            {{~else~}}
+
+                <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-col-full"}' extend=this.extend addClass=this.addClass width=this.width style=this.style scope="grid-column")) }}></div>
+            {{/if~}}
+
+        {{/if~}}
+
+    {{/if}}
+
+{{/ifCond~}}

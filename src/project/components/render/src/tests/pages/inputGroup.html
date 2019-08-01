@@ -1,0 +1,191 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Editable Text Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "input",
+                                        "template": "inputGroup",
+                                        "legend": "Input Group:",
+                                        "options": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_1",
+                                                        "name": "E_FIELD_1",
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_1"
+                                                    },
+                                                    "text": "Field 1:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_2",
+                                                        "name": "E_FIELD_2",
+                                                        "maxLength": "4",
+                                                        "size": "4"
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_2"
+                                                    },
+                                                    "text": "Field 2:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_3",
+                                                        "name": "E_FIELD_3",
+                                                        "maxLength": "35",
+                                                        "size": "35"
+                                                    }
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_3"
+                                                    },
+                                                    "text": "Field 3:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    // Required
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "input",
+                                        "template": "inputGroup",
+                                        "legend": "Required Input Group:",
+                                        "options": [
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_1",
+                                                        "name": "E_FIELD_1",
+                                                    },
+                                                    "required": true
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_1"
+                                                    },
+                                                    "text": "Field 1:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_2",
+                                                        "name": "E_FIELD_2",
+                                                        "maxLength": "4",
+                                                        "size": "4"
+                                                    },
+                                                    "required": true
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_2"
+                                                    },
+                                                    "text": "Field 2:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_FIELD_3",
+                                                        "name": "E_FIELD_3",
+                                                        "maxLength": "35",
+                                                        "size": "35"
+                                                    },
+                                                    "required": true
+                                                },
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_FIELD_3"
+                                                    },
+                                                    "text": "Field 3:",
+                                                    "visibility": "hidden",
+                                                    "hasLayout": false
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

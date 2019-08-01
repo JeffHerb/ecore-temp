@@ -1,0 +1,1442 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preferences test page</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <div id="body-wrapper"></div>
+</body>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+var fwData = {
+    "tabset": {
+        "id": "CMTEST01",
+        "url": "\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S",
+        "text": "Employee Maintenance",
+    },
+    "screen": {
+        "id": "CM0060S",
+    },
+     "globalPrefs": {
+        "fontSize": 56,
+        "tabsetPinned": "It's bananas!",
+        "theme": "teal"
+    },
+    "tabsetPrefs": {
+        "pages": {
+            "CM0060S": {
+                "tables": {
+                    "orgMemberShipList": {
+                        "visibleCols": [1, 2, 4, 7, 8]
+                    },
+                    {
+                        "visibleCols": [1, 2, 4, 7, 8]
+                    },
+                    "xxxxxxxxxx": {
+                        "visibleCols": []
+                    },
+                    "orgMemberShipList2": {
+                        "visibleCols": [1, 2, 9000, 4]
+                    }
+                }
+            }
+        }
+    },
+    "page": {
+        "contents": [
+            {
+                "template": "globalHeader",
+                "search": {
+                    "row": [{
+                        "fields": [{
+                            "template": "field",
+                            "input": {
+                                "readOnly": false,
+                                "value": "01",
+                                "attributes": {
+                                    "id": "S_ORGANIZATION_TYPE",
+                                    "title": "Organization Type",
+                                    "name": "S_ORGANIZATION_TYPE",
+                                    "type": "text"
+                                },
+                                "options": {
+                                    "01": {
+                                        "text": "Audit",
+                                        "value": "01"
+                                    },
+                                    "02": {
+                                        "text": "Criminal Investigation Division",
+                                        "value": "02"
+                                    }
+                                }
+                            },
+                            "label": {
+                                "text": "Organization Type",
+                                "attributes": {
+                                    "for": "S_ORGANIZATION_TYPE"
+                                }
+                            },
+                            "type": "select"
+                        }]
+                    },
+                    {
+                        "fields": [{
+                            "template": "field",
+                            "input": {
+                                "readOnly": false,
+                                "attributes": {
+                                    "id": "S_ORGANIZATION_ID",
+                                    "title": "Organization ID",
+                                    "maxlength": 3,
+                                    "name": "S_ORGANIZATION_ID",
+                                    "type": "text",
+                                    "size": 3
+                                }
+                            },
+                            "label": {
+                                "text": "Organization ID",
+                                "attributes": {
+                                    "for": "S_ORGANIZATION_ID"
+                                }
+                            },
+                            "type": "text"
+                        },
+                        {
+                            "template": "field",
+                            "input": {
+                                "readOnly": false,
+                                "attributes": {
+                                    "id": "S_EMPLOYEE_ID",
+                                    "title": "Employee ID",
+                                    "maxlength": 5,
+                                    "name": "S_EMPLOYEE_ID",
+                                    "value": "40731",
+                                    "type": "text",
+                                    "size": 5
+                                }
+                            },
+                            "label": {
+                                "text": "Employee ID",
+                                "attributes": {
+                                    "for": "S_EMPLOYEE_ID"
+                                }
+                            },
+                            "type": "text"
+                        }]
+                    },
+                    {
+                        "fields": [{
+                            "template": "field",
+                            "input": {
+                                "readOnly": false,
+                                "value": "AL",
+                                "attributes": {
+                                    "id": "S_VIEW_7",
+                                    "title": "View",
+                                    "name": "S_VIEW_7",
+                                    "type": "text"
+                                },
+                                "options": {
+                                    "AC": {
+                                        "text": "ACTIVE",
+                                        "value": "AC"
+                                    },
+                                    "AL": {
+                                        "text": "ALL",
+                                        "value": "AL"
+                                    },
+                                    "IA": {
+                                        "text": "INACTIVE",
+                                        "value": "IA"
+                                    }
+                                }
+                            },
+                            "label": {
+                                "text": "View",
+                                "attributes": {
+                                    "for": "S_VIEW_7"
+                                }
+                            },
+                            "type": "select"
+                        }]
+                    }],
+                    "url": "\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/search"
+                },
+                "page": {
+                    "title": "Employee Maintenance"
+                },
+                "buttons": {
+                    "clear": {
+                        "template": "field",
+                        "input": {
+                            "text": "Clear",
+                            "primary": false,
+                            "attributes": {
+                                "id": "clear-button",
+                                "title": "Leave ID and clear the rest",
+                                "name": "clear-button",
+                                "tabindex": "1",
+                                "className": "emp-button-search-clear",
+                                "type": "button"
+                            }
+                        },
+                        "type": "button"
+                    },
+                    "hideSearchBox": {
+                        "template": "field",
+                        "input": {
+                            "text": "hide\/Show",
+                            "primary": false,
+                            "attributes": {
+                                "id": "emp-search-toggle",
+                                "title": "Hide\/Show search box",
+                                "name": "emp-search-toggle",
+                                "tabindex": "1",
+                                "className": "emp-search-toggle",
+                                "type": "button"
+                            }
+                        },
+                        "type": "button"
+                    },
+                    "retrieve": {
+                        "template": "field",
+                        "input": {
+                            "text": "Search",
+                            "primary": false,
+                            "attributes": {
+                                "id": "search",
+                                "title": "Search",
+                                "name": "Search",
+                                "type": "submit"
+                            }
+                        },
+                        "type": "button"
+                    },
+                    "clearAll": {
+                        "template": "field",
+                        "input": {
+                            "text": "Clear All",
+                            "primary": false,
+                            "attributes": {
+                                "id": "clear-all-button",
+                                "title": "Clear all fields in search box",
+                                "name": "clear-all-button",
+                                "tabindex": "1",
+                                "className": "emp-button-search-clear-all",
+                                "type": "button"
+                            }
+                        },
+                        "type": "button"
+                    }
+                },
+                "tabsets": {
+                    "template": "lists",
+                    "title": "Case Management Tabset Test",
+                    "attributes": {
+                        "className": "emp-tabset"
+                    },
+                    "type": "unordered",
+                    "options": [{
+                        "template": "link",
+                        "text": "Employee Maintenance",
+                        "attributes": {
+                            "href": "\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S"
+                        }
+                    },
+                    {
+                        "template": "link",
+                        "text": "Organization Definition",
+                        "attributes": {
+                            "href": "\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0040S"
+                        },
+                        "selected": true,
+                    },
+                    {
+                        "template": "link",
+                        "text": "AUDIT_SELECTION",
+                        "attributes": {
+                            "href": "\/empr2-amp\/gateway\/CMTEST01.tabset\/AMP183S"
+                        }
+                    }],
+                    "collapse": "true"
+                }
+            },
+            {
+                "template": "pagebody",
+                "contents": [{
+                    "contents": [{
+                        "contents": [{
+                            "template": "group",
+                            "title": "Employee Details",
+                            "type": "header"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_EMPLOYEE_ID",
+                                            "data-validation": "isAlphaNumeric(document.form.name)",
+                                            "maxlength": 5,
+                                            "name": "empDetail.empID",
+                                            "value": "40731",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Employee ID:",
+                                        "attributes": {
+                                            "for": "E_EMPLOYEE_ID"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            },
+                            {
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_EMPLOYEE_NAME",
+                                            "maxlength": 34,
+                                            "name": "empDetail.empName",
+                                            "value": "BRAD E BIONDO",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Employee Name:",
+                                        "attributes": {
+                                            "for": "E_EMPLOYEE_NAME"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_EMPLOYEE_TITLE",
+                                            "maxlength": 30,
+                                            "name": "empDetail.empTitle",
+                                            "value": "TAX COMPLNC AGT 2",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Employee Title:",
+                                        "attributes": {
+                                            "for": "E_EMPLOYEE_TITLE"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            },
+                            {
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_EMPLOYEE_GRADE",
+                                            "maxlength": 5,
+                                            "name": "empDetail.empGrade",
+                                            "value": "23",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Employee Grade:",
+                                        "attributes": {
+                                            "for": "E_EMPLOYEE_GRADE"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "E_APPROVAL_LEVEL_V2",
+                                            "maxlength": 5,
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Approval Level:",
+                                        "attributes": {
+                                            "for": "E_APPROVAL_LEVEL_V2"
+                                        }
+                                    },
+                                    "type": "text"
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            },
+                            {
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "E_APPROVER",
+                                            "name": "empDetail.approval",
+                                            "value": "Y",
+                                            "type": "checkbox",
+                                            "checked": "checked"
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Approver",
+                                        "attributes": {
+                                            "for": "E_APPROVER"
+                                        }
+                                    },
+                                    "type": "checkbox"
+                                },
+                                {
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "_E_APPROVER",
+                                            "name": "_empDetail.approval",
+                                            "value": "false",
+                                            "type": "hidden"
+                                        }
+                                    },
+                                    "type": "hidden"
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            },
+                            {
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "E_FORCE_APPROVAL",
+                                            "name": "empDetail.forceApproval",
+                                            "value": "Y",
+                                            "type": "checkbox"
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Force Approval",
+                                        "attributes": {
+                                            "for": "E_FORCE_APPROVAL"
+                                        }
+                                    },
+                                    "type": "checkbox"
+                                },
+                                {
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "_E_FORCE_APPROVAL",
+                                            "name": "_empDetail.forceApproval",
+                                            "value": "false",
+                                            "type": "hidden"
+                                        }
+                                    },
+                                    "type": "hidden"
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_CREATED_DATE",
+                                            "data-validation": "dateValidator(document.form.name)",
+                                            "maxlength": 10,
+                                            "name": "empDetail.createDt",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Created Date:",
+                                        "attributes": {
+                                            "for": "E_CREATED_DATE"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            },
+                            {
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_CREATED_BY",
+                                            "maxlength": 5,
+                                            "name": "empDetail.createBy",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Created By:",
+                                        "attributes": {
+                                            "for": "E_CREATED_BY"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_LAST_UPDATED",
+                                            "data-validation": "dateValidator(document.form.name)",
+                                            "maxlength": 10,
+                                            "name": "empDetail.lastUpdate",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Last Updated:",
+                                        "attributes": {
+                                            "for": "E_LAST_UPDATED"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            },
+                            {
+                                "template": "grid",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "readOnly": true,
+                                        "attributes": {
+                                            "id": "E_LAST_UPDATED_BY",
+                                            "maxlength": 8,
+                                            "name": "empDetail.lastUpdateBy",
+                                            "type": "text",
+                                            "size": 10
+                                        }
+                                    },
+                                    "label": {
+                                        "text": "Last Updated By:",
+                                        "attributes": {
+                                            "for": "E_LAST_UPDATED_BY"
+                                        }
+                                    },
+                                    "type": "text",
+                                    "readonly": true
+                                }],
+                                "width": "half",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "grid",
+                            "contents": [{
+                                "template": "grid",
+                                "contents": [{
+                                    "contents": [{
+                                        "template": "group",
+                                        "title": "Organization Membership",
+                                        "type": "header"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [{
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_MEMBERSHIP_TYPE",
+                                                        "name": "orgDetail.membershipType"
+                                                    },
+                                                    "options": {
+                                                        "3": {
+                                                            "text": "unasigned",
+                                                            "value": "3"
+                                                        },
+                                                        "2": {
+                                                            "text": "Approval",
+                                                            "value": "2"
+                                                        },
+                                                        "1": {
+                                                            "text": "Home",
+                                                            "value": "1"
+                                                        }
+                                                    }
+                                                },
+                                                "label": {
+                                                    "text": "Memebership Type:",
+                                                    "attributes": {
+                                                        "for": "E_MEMBERSHIP_TYPE"
+                                                    }
+                                                },
+                                                "type": "select"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        }],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [{
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "composite",
+                                                "parts": {
+                                                    "text": {
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "id": "E_DIVISION_V3",
+                                                                "maxlength": 30,
+                                                                "name": "orgDetail.divdison",
+                                                                "type": "text",
+                                                                "size": 10
+                                                            }
+                                                        },
+                                                        "type": "text"
+                                                    },
+                                                    "button": {
+                                                        "template": "selection",
+                                                        "icon": "popup",
+                                                        "text": "pop",
+                                                        "attributes": {
+                                                            "onclick": "emp.functionCall(event, 'emp.selectionPopup', [{'url':'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_EMP_POPUP', 'data':{}},{'E_DIVISION_V3':'2','E_DIRECTOR':'3','E_AUDIT_ORG_UNIT':'1','E_OFFICE_V3':'4','E_TEAM':'7','E_SECTION_V3':'6','E_AUDIT_GROUP_PROGRAM':'5'}])"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "template": "field",
+                                                        "label": {
+                                                            "text": "Division:",
+                                                            "attributes": {
+                                                                "for": "E_DIVISION_V3"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "type": "search"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        },
+                                        {
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "grid",
+                                                "contents": [{
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_DIRECTOR",
+                                                            "maxlength": 30,
+                                                            "name": "orgDetail.director",
+                                                            "type": "text",
+                                                            "size": 10
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "text": "Director:",
+                                                        "attributes": {
+                                                            "for": "E_DIRECTOR"
+                                                        }
+                                                    },
+                                                    "type": "text"
+                                                }],
+                                                "width": "half",
+                                                "attributes": {},
+                                                "type": "column"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        }],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [{
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_OFFICE_V3",
+                                                        "maxlength": 30,
+                                                        "name": "orgDetail.office",
+                                                        "type": "text",
+                                                        "size": 10
+                                                    }
+                                                },
+                                                "label": {
+                                                    "text": "Office:",
+                                                    "attributes": {
+                                                        "for": "E_OFFICE_V3"
+                                                    }
+                                                },
+                                                "type": "text"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        },
+                                        {
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_AUDIT_GROUP_PROGRAM",
+                                                        "maxlength": 30,
+                                                        "name": "orgDetail.group",
+                                                        "type": "text",
+                                                        "size": 10
+                                                    }
+                                                },
+                                                "label": {
+                                                    "text": "Audit Group\/Program:",
+                                                    "attributes": {
+                                                        "for": "E_AUDIT_GROUP_PROGRAM"
+                                                    }
+                                                },
+                                                "type": "text"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        }],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [{
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_SECTION_V3",
+                                                        "maxlength": 30,
+                                                        "name": "orgDetail.section",
+                                                        "type": "text",
+                                                        "size": 10
+                                                    }
+                                                },
+                                                "label": {
+                                                    "text": "Section:",
+                                                    "attributes": {
+                                                        "for": "E_SECTION_V3"
+                                                    }
+                                                },
+                                                "type": "text"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        },
+                                        {
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_TEAM",
+                                                        "maxlength": 30,
+                                                        "name": "orgDetail.team",
+                                                        "type": "text",
+                                                        "size": 10
+                                                    }
+                                                },
+                                                "label": {
+                                                    "text": "Team:",
+                                                    "attributes": {
+                                                        "for": "E_TEAM"
+                                                    }
+                                                },
+                                                "type": "text"
+                                            }],
+                                            "width": "half",
+                                            "attributes": {},
+                                            "type": "column"
+                                        }],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "buttonGroup",
+                                        "contents": [{
+                                            "template": "buttonGroup",
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "text": "Add\/Update Membership",
+                                                    "primary": true,
+                                                    "attributes": {
+                                                        "id": "E_BTN_ADD_UPD_MEMBR_8",
+                                                        "title": "Add\/Update Membership",
+                                                        "accessKey": " ",
+                                                        "name": "E_BTN_ADD_UPD_MEMBR_8",
+                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_ORGADDUPDATED_ACTION'}])",
+                                                        "type": "button"
+                                                    }
+                                                },
+                                                "type": "button"
+                                            }],
+                                            "align": "right",
+                                            "type": "column"
+                                        }],
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [{
+                                            "template": "grid",
+                                            "contents": [{
+                                                "template": "table",
+                                                "body": {
+                                                    "rows": [{
+                                                        "columns": [{
+                                                            "text": "Home",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division\/Audit Division Directors\/Capital Region District Office\/Income Franchise\/Section 5\/Team D",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "2015-11-09 10:46:24.604",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "9999-09-23 10:10:10.0",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "contents": [{
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "icon": "iEditImage.gif",
+                                                                    "text": "E_BTN_EDIT",
+                                                                    "primary": false,
+                                                                    "attributes": {
+                                                                        "id": "E_BTN_EDIT_3_Audit Division",
+                                                                        "title": "Edit",
+                                                                        "accessKey": " ",
+                                                                        "name": "E_BTN_EDIT_3_Audit Division",
+                                                                        "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','orgMemberShipList','setCurrentIndex',[]]},1:{'function':'emp.form.submit','args':[{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_ORG_EDIT_ACTION'}]}})",
+                                                                        "type": "button"
+                                                                    }
+                                                                },
+                                                                "type": "button"
+                                                            }]
+                                                        },
+                                                        {
+                                                            "text": "01",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Capital Region District Office",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division Directors",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "20",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Income Franchise",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Section 5",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Team D",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "1",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        }],
+                                                        "key": "Audit Division"
+                                                    },
+                                                    {
+                                                        "columns": [{
+                                                            "text": "Approval",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division\/Audit Division Directors\/Capital Region District Office\/Income Franchise\/Section 5\/Team D",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "2015-11-09 12:31:22.0",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "9999-09-23 10:10:10.0",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "contents": [{
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "icon": "iDeleteImage.gif",
+                                                                    "text": "E_BTN_DELETE",
+                                                                    "primary": false,
+                                                                    "attributes": {
+                                                                        "id": "E_BTN_DELETE_4_Audit Division",
+                                                                        "title": "Delete",
+                                                                        "accessKey": " ",
+                                                                        "name": "E_BTN_DELETE_4_Audit Division",
+                                                                        "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','orgMemberShipList','setCurrentIndex',[]]},1:{'function':'emp.form.submit','args':[{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_ORG_DELETE_ACTION'}]}})",
+                                                                        "type": "button"
+                                                                    }
+                                                                },
+                                                                "type": "button"
+                                                            }]
+                                                        },
+                                                        {
+                                                            "contents": [{
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "icon": "iEditImage.gif",
+                                                                    "text": "E_BTN_EDIT",
+                                                                    "primary": false,
+                                                                    "attributes": {
+                                                                        "id": "E_BTN_EDIT_3_Audit Division",
+                                                                        "title": "Edit",
+                                                                        "accessKey": " ",
+                                                                        "name": "E_BTN_EDIT_3_Audit Division",
+                                                                        "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','orgMemberShipList','setCurrentIndex',[]]},1:{'function':'emp.form.submit','args':[{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_ORG_EDIT_ACTION'}]}})",
+                                                                        "type": "button"
+                                                                    }
+                                                                },
+                                                                "type": "button"
+                                                            }]
+                                                        },
+                                                        {
+                                                            "text": "01",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Capital Region District Office",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division Directors",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "20",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Income Franchise",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Section 5",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Team D",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "2",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        }],
+                                                        "key": "Audit Division"
+                                                    },
+                                                    {
+                                                        "columns": [{
+                                                            "text": "unasigned",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division\/Audit Division Directors\/Capital Region District Office\/Income Franchise\/Section 5\/Team D",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "2015-11-09 12:38:52.737",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "9999-09-23 10:10:10.0",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "contents": [{
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "icon": "iDeleteImage.gif",
+                                                                    "text": "E_BTN_DELETE",
+                                                                    "primary": false,
+                                                                    "attributes": {
+                                                                        "id": "E_BTN_DELETE_4_Audit Division",
+                                                                        "title": "Delete",
+                                                                        "accessKey": " ",
+                                                                        "name": "E_BTN_DELETE_4_Audit Division",
+                                                                        "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','orgMemberShipList','setCurrentIndex',[]]},1:{'function':'emp.form.submit','args':[{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_ORG_DELETE_ACTION'}]}})",
+                                                                        "type": "button"
+                                                                    }
+                                                                },
+                                                                "type": "button"
+                                                            }]
+                                                        },
+                                                        {
+                                                            "contents": [{
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "icon": "iEditImage.gif",
+                                                                    "text": "E_BTN_EDIT",
+                                                                    "primary": false,
+                                                                    "attributes": {
+                                                                        "id": "E_BTN_EDIT_3_Audit Division",
+                                                                        "title": "Edit",
+                                                                        "accessKey": " ",
+                                                                        "name": "E_BTN_EDIT_3_Audit Division",
+                                                                        "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','orgMemberShipList','setCurrentIndex',[]]},1:{'function':'emp.form.submit','args':[{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_ORG_EDIT_ACTION'}]}})",
+                                                                        "type": "button"
+                                                                    }
+                                                                },
+                                                                "type": "button"
+                                                            }]
+                                                        },
+                                                        {
+                                                            "text": "01",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Capital Region District Office",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division Directors",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "20",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Income Franchise",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Section 5",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Team D",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "3",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        },
+                                                        {
+                                                            "text": "Audit Division",
+                                                            "visibility": "hidden",
+                                                            "contents": []
+                                                        }],
+                                                        "key": "Audit Division"
+                                                    }]
+                                                },
+                                                "attributes": {
+                                                    "id": "orgMemberShipList"
+                                                },
+                                                "head": {
+                                                    "rows": [{
+                                                        "columns": [{
+                                                            "text": "Membership Type",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_membershipTypeDes"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "Membership Assigned to",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_memberAssigned"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "Effective Date",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_effDt"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "Expiration Date",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_expDt"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_Field3"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "text": "Edit",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "button",
+                                                                "data-colmap": "orgMemberShipList_Field4"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": true
+                                                        },
+                                                        {
+                                                            "text": "orgTypeCD",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_orgTypeCD"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "office",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_office"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "director",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_director"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "orgID",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_orgID"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "group",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_group"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "section",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_section"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "team",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_team"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "membershipType",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_membershipType"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "text": "Parent Organization ID",
+                                                            "visibility": "hidden",
+                                                            "sortable": false,
+                                                            "attributes": {
+                                                                "data-type": "alpha",
+                                                                "data-colmap": "orgMemberShipList_divdison"
+                                                            },
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        }]
+                                                    }]
+                                                },
+                                                "type": "table"
+                                            }],
+                                            "width": "full",
+                                            "attributes": {},
+                                            "type": "column"
+                                        }],
+                                        "attributes": {},
+                                        "type": "row"
+                                    }],
+                                    "attributes": {},
+                                    "type": "section"
+                                }],
+                                "width": "full",
+                                "attributes": {},
+                                "type": "column"
+                            }],
+                            "attributes": {},
+                            "type": "row"
+                        },
+                        {
+                            "template": "buttonGroup",
+                            "contents": [{
+                                "template": "buttonGroup",
+                                "contents": [{
+                                    "template": "field",
+                                    "input": {
+                                        "text": "Add\/Update Emp",
+                                        "primary": true,
+                                        "attributes": {
+                                            "id": "E_BTN_ADD_UPD_EMP_2",
+                                            "title": "Add\/Update Employee",
+                                            "accessKey": " ",
+                                            "name": "E_BTN_ADD_UPD_EMP_2",
+                                            "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_EMP_ADDUPDATED_ACTION'}])",
+                                            "type": "button"
+                                        }
+                                    },
+                                    "type": "button"
+                                },
+                                {
+                                    "template": "field",
+                                    "input": {
+                                        "text": "Clear",
+                                        "primary": false,
+                                        "attributes": {
+                                            "id": "E_BTN_CLEAR_7",
+                                            "title": "Clear",
+                                            "accessKey": "C",
+                                            "name": "E_BTN_CLEAR_7",
+                                            "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'emp-form',action:'\/empr2-amp\/gateway\/CMTEST01.tabset\/CM0060S\/CM0060S_CLEAR_ACTION'}])",
+                                            "type": "button"
+                                        }
+                                    },
+                                    "type": "button"
+                                }],
+                                "align": "right",
+                                "type": "column"
+                            }],
+                            "type": "row"
+                        }],
+                        "attributes": {},
+                        "type": "section"
+                    }],
+                    "attributes": {
+                        "id": "emp-form",
+                        "name": "emp-form",
+                        "action": "\/empr2-amp\/gateway\/\/CMTEST01.tabset\/CM0060S",
+                        "method": "post"
+                    },
+                    "type": "form"
+                }]
+            }
+        ]
+    }
+};
+</script>
+<script>
+require(["jquery", "emp", "domReady!"], function($, emp) {
+
+    // console.log("page is ready");
+
+});
+</script>
+</html>

@@ -1,0 +1,1041 @@
+//   ========================================================
+// * @name       _labeldata.scss
+// * @desc       Empire labels and data styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Label/data wrapper styles
+// * --------------------------------------------------------
+[class*="emp-col"],
+section {
+
+    .cui-label {
+        @include label();
+
+        .emp-boolean-input & {
+            margin-left: 0;
+        }
+
+        &.emp-hide-label-with-space {
+            min-height: 1px;
+        }
+
+        &.emp-min-width-label {
+            width: auto;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            padding-right: 0.3em;
+        }
+
+    }
+
+    fieldset {
+        .cui-label {
+
+            padding: 0;
+
+            @include pointbreak($cui-bp-large) {
+                width: $emp-label-width;
+
+                legend {
+                    width: $emp-label-width;
+                    margin-left: 0;
+                    margin-top: 3px;
+                }
+            }
+        }
+    }
+
+    .cui-readonly-group {
+        .cui-label {
+            padding: 0;
+
+            .cui-legend {
+                color: $emp-label-color;
+
+                .theme-teal & {
+                    @import "../_theme_teal.scss";
+                    color: $emp-label-color;
+                }
+
+                .theme-lilypad & {
+                    @import "../_theme_lilypad.scss";
+                    color: $emp-label-color;
+                }
+
+                .theme-eggplant & {
+                    @import "../_theme_eggplant.scss";
+                    color: $emp-label-color;
+                }
+
+                .theme-cobalt & {
+                    @import "../_theme_cobalt.scss";
+                    color: $emp-label-color;
+                }
+
+                .theme-hazel & {
+                    @import "../_theme_hazel.scss";
+                    color: $emp-label-color;
+                }
+
+                .theme-contrast & {
+                    @import "../_theme_contrast.scss";
+                    color: $emp-label-color;
+                }
+
+            }
+        }
+    }
+
+    .cui-label,
+    .cui-label label {
+        color: $emp-label-color;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            color: $emp-label-color;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            color: $emp-label-color;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            color: $emp-label-color;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            color: $emp-label-color;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            color: $emp-label-color;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            color: $emp-label-color;
+        }
+
+    }
+
+    .cui-data {
+        @include data();
+
+        // Section only being enforced by the editor
+        &.emp-allow-overflow {
+            overflow: visible;
+
+            @include pointbreak($cui-bp-large) {
+
+                & {
+                    margin-left: 230px;
+                }
+
+            }
+
+        }
+
+        button {
+            margin-top: 0;
+        }
+
+        span.emp-date {
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        &.cui-align-right {
+
+            span.emp-data {
+                text-align: right;
+                width: 12.5em;
+            }
+
+            input {
+                text-align: right;
+            }
+        }
+
+        i.emp-icon-redcheck:after,
+        i.emp-icon-greencheck:after {
+            top: 0.5em !important;
+            left: 0.5em !important;
+        }
+
+        .cui-selection-group {
+            margin-top: 5px;
+            padding-left: 5px;
+        }
+
+        textarea {
+            width: 100%;
+
+            &.emp-expanding {
+                min-height: 38px;
+                overflow: hidden;
+            }
+        }
+
+        p.emp-data:not(.emp-tooltip){
+            width: 100%;
+            word-wrap: break-word;
+            -ms-hyphens: auto;
+        }
+
+        &.emp-negative-number {
+            input {
+                color: $cui-color-error-text;
+            }
+        }
+
+        .emp-password-wrapper {
+            display: inline-block;
+            position: relative;
+            max-width: 200px;
+
+            button {
+                border: 0;
+                color: #1484b4;
+                font-size: 14px;
+                right: 10px;
+                padding: 0;
+                position: absolute;
+                top: 8px;
+            }
+        }
+
+    }
+
+    .cui-required {
+
+        .cui-label {
+
+            label {
+
+                &:after {
+                    font-size: 12px;
+                    right: -6px;
+                }
+            }
+        }
+    }
+
+    // Temp until calendar plug-in is added to components
+    .cui-c-datepicker {
+        vertical-align: middle;
+        margin-top: -6px !important;
+    }
+
+    // This is to reduce the line-height padding on long labels.
+    // Wonder if I should use this or let it go... On smaller devices though a bunch of labels will wrap so I may use a different approach.
+    .emp-long-wrapping-label {
+        line-height: normal;
+        margin-top: $cui-font-size / 3;
+
+        .theme-teal & {
+            @import "../_theme_teal.scss";
+            margin-top: $cui-font-size / 3;
+        }
+
+        .theme-lilypad & {
+            @import "../_theme_lilypad.scss";
+            margin-top: $cui-font-size / 3;
+        }
+
+        .theme-eggplant & {
+            @import "../_theme_eggplant.scss";
+            margin-top: $cui-font-size / 3;
+        }
+
+        .theme-cobalt & {
+            @import "../_theme_cobalt.scss";
+            margin-top: $cui-font-size / 3;
+        }
+
+        .theme-hazel & {
+            @import "../_theme_hazel.scss";
+            margin-top: $cui-font-size / 3;
+        }
+
+        .theme-contrast & {
+            @import "../_theme_contrast.scss";
+            margin-top: $cui-font-size / 3;
+        }
+    }
+
+    &.cui-align-right,
+    &.cui-align-right {
+        .emp-field {
+            display: inline-block;
+        }
+    }
+
+    .emp-composite {
+
+        &.emp-validation-error {
+
+            .cui-label {
+                label,
+                legend,
+                .emp-label {
+                    color: #b52c2c !important;
+                }
+            }
+
+        }
+
+        &.emp-composite-add-remove {
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            width: 100%;
+
+            & > div {
+                flex: 0 1;
+            }
+
+            .emp-add-remove-select-1,
+            .emp-add-remove-select-2 {
+                flex: 1 1 auto;
+
+                select {
+                    min-height: 105px;
+                    width: 100%
+                }
+            }
+
+            .emp-add-remove-select-1 {
+                margin-right: 10px;
+            }
+
+            .emp-add-remove-select-2 {
+                margin-left: 10px;
+            }
+
+            .emp-add-remove-controls {
+                flex: 0 0 150px;
+                justify-content: center;
+                text-align: center;
+                margin-top: 10px;
+
+                .emp-add-remove-control-1 {
+                    margin-bottom: 10px;
+
+                    span {
+                        position: relative;
+
+                        &:after {
+                            content: " ";
+                            border-top: 6px solid transparent;
+                            border-bottom: 6px solid transparent;
+                            border-left: 8px solid #707070;
+                            display: inline-block;
+                            position: absolute;
+                            right: -13px;
+                            top: 5px;
+                        }
+                    }
+                }
+
+                .emp-add-remove-control-2 {
+                    span {
+                        position: relative;
+
+                        &:after {
+                            content: " ";
+                            border-top: 6px solid transparent;
+                            border-bottom: 6px solid transparent;
+                            border-right: 8px solid #707070;
+                            display: inline-block;
+                            position: absolute;
+                            left: -13px;
+                            top: 5px;
+                        }
+                    }
+                }
+
+                button {
+                    display: inline-block;
+                    width: 100px;
+                }
+            }
+        }
+
+        &.emp-date-time-composite {
+            .emp-input-collection .emp-field{
+                display: inline-block;
+            }
+        }
+    }
+
+    .emp-field {
+        @include clearfix;
+        margin-bottom: 5px !important;
+
+        span {
+            @include fontSize(14px);
+            line-height: normal;
+        }
+
+        .cui-data {
+            font-size: 14px;
+        }
+
+        .cui-numeric,
+        .cui-currency {
+
+            input {
+                text-align: right;
+            }
+
+            .emp-data {
+                padding-right: 1.75em;
+            }
+
+            &.emp-currency-left {
+
+                span.emp-data {
+                    text-align: left !important;
+                }
+            }
+        }
+
+        &.emp-validation-error {
+
+            .cui-label {
+                label,
+                legend,
+                .emp-label {
+                    color: #b52c2c !important;
+                }
+            }
+        }
+
+        @include pointbreak($cui-bp-large) {
+
+            margin-bottom: 0;
+
+            &.cui-required {
+                .cui-label {
+                    &:after {
+                        right: 0;
+                        top: 7px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.cui-data-left {
+    @include clearfix;
+
+    .cui-label {
+        @include data();
+        overflow: visible !important;
+        font-weight: normal !important;
+
+        .emp-label {
+            display: inline-block;
+            margin-top: 3px;
+        }
+
+        label {
+            display: inline-block;
+            position: relative;
+        }
+    }
+
+    .cui-data {
+        @include label();
+
+        input[type="checkbox"] {
+            margin-left: 10px;
+        }
+    }
+
+    &.emp-boolean-image {
+        .cui-label {
+            padding-top: 3px;
+        }
+    }
+}
+
+table {
+    td.cui-numeric,
+    td.cui-currency {
+        .cui-data {
+            padding-right: 4px;
+            text-align: right;
+
+            span {
+                padding-right: 0px;
+                font-weight: normal;
+            }
+
+            input {
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+fieldset {
+
+    .cui-label {
+        margin-left: 0;
+    }
+
+    @include pointbreak($cui-bp-large) {
+
+        .cui-label {
+            display: inline-block;
+            padding-right: 0.3em;
+            margin-left: -0.3em;
+        }
+
+        &.cui-required {
+            .cui-label {
+
+                overflow: visible;
+
+                &:after {
+                    right: -6px;
+                    top: 7px;
+                }
+            }
+        }
+    }
+
+    .cui-data {
+        margin: 0;
+
+        @include pointbreak($cui-bp-large) {
+            margin-left: 0;
+        }
+
+        .emp-input-collection {
+            margin-left: 0;
+
+            .emp-field {
+                display: inline-block !important;  // This is required to ensure proper row wrapping in ie
+            }
+
+            @include pointbreak($cui-bp-large) {
+                margin-left: 0.4em;
+            }
+
+            .emp-data {
+                margin-top: 0;
+            }
+
+            .ie & {
+
+                button {
+                    padding-bottom: 6px;
+                }
+            }
+        }
+    }
+
+    &.emp-boolean-input-group {
+
+        & > .cui-data {
+            margin-top: 6px;
+        }
+    }
+}
+
+.emp-data[title] {
+    border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    text-decoration: none;
+    cursor: default;
+
+    .theme-teal & {
+        @import "../_theme_teal.scss";
+        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    }
+
+    .theme-lilypad & {
+        @import "../_theme_lilypad.scss";
+        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    }
+
+    .theme-eggplant & {
+        @import "../_theme_eggplant.scss";
+        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    }
+
+    .theme-cobalt & {
+        @import "../_theme_cobalt.scss";
+        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    }
+
+    .theme-hazel & {
+        @import "../_theme_hazel.scss";
+        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    }
+
+    .theme-contrast & {
+        @import "../_theme_contrast.scss";
+        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    }
+}
+
+p.emp-data[title] {
+    padding-bottom: 0;
+}
+
+.emp-field.emp-inline-label {
+    .cui-label {
+        display: inline-block !important;
+        width: auto !important;
+    }
+}
+
+.emp-composite.emp-search-composite {
+    @include row();
+    flex-flow: row wrap;
+
+    &.cui-required {
+        // This is for fixing IE only for asterisk on required fields
+        .cui-label {
+            //color: $emp-red-1;
+            overflow: visible;
+            font-size: 11px;
+            margin: 6px 0 0 0;
+
+            .emp-label {
+                &:after {
+                    right: -6.6px;
+                }
+            }
+        }
+    }
+
+    .cui-label {
+        margin: 0 0 3px 0;
+    }
+
+    @include pointbreak($cui-bp-large) {
+        .cui-label {
+            padding-right: 0.3em;
+            margin: 3px 0 0 0;
+            position: relative;
+            left: -4px;
+        }
+    }
+
+    .cui-data {
+        @include row();
+        flex: 1 1 auto;
+
+        input,
+        select,
+        button {
+            max-height: 28px;
+            //padding-bottom: 4px;
+            //padding-top: 4px;
+
+            .ie & {
+                padding-bottom: 6px;
+            }
+
+            // Adjust `max-height` to fit the various font size preferences so the input is not too short
+            //TODO: There must be a better way to handle this and tie it into the main `@mixin fontSize` so the same values are used
+            @for $i from 16 through 32 {
+                @if $i % 2 == 0 {
+                    .emp-fontsize-#{$i} & {
+                        max-height: $i + 10px;
+                    }
+                }
+            }
+        }
+
+        select {
+            padding-top: 2px;
+            padding-bottom: 2px;
+
+            .ie & {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+        }
+
+        select[multiple] {
+            max-height: inherit;
+        }
+
+        textarea {
+            margin-top: 4px;
+        }
+
+        // .emp-data {
+        //     margin-top: 6px;
+        // }
+
+        &.emp-search {
+            .emp-field > button {
+                margin-left: 0.5em;
+                page-break-after: always;
+                break-after: always;
+            }
+        }
+    }
+
+    .cui-messages {
+        display: inline-block;
+
+        .cui-error,
+        .cui-warning,
+        .cui-success,
+        .cui-informational {
+            @include fontSize($cui-text-size);
+        }
+    }
+
+    @include pointbreak($cui-bp-large) {
+        flex-direction: row;
+
+        .cui-label {
+            @include col();
+            flex: 0 0 230px;
+            justify-content: flex-start;
+            width: 1px !important;
+        }
+
+        .emp-composite-message {
+            flex-basis: 100%;
+            margin-left: 235px;
+
+            section & {
+                margin-left: 235px;
+            }
+
+        }
+
+        .cui-data {
+            padding-left: 5px;
+        }
+    }
+
+    &.emp-seach-composite-dynamic-label {
+
+        .cui-label {
+            display: block;
+            margin-bottom: 0;
+            width: auto;
+
+            span {
+                font-weight: normal;
+                display: inline-block;
+                margin-top: 10px;
+            }
+        }
+
+        @include pointbreak($cui-bp-large) {
+
+            .cui-label {
+                display: flex;
+                flex: 0 1 230px;
+                justify-content: flex-end;
+                margin-top: 0;
+
+                select {
+                    height: 25px;
+                    padding: 0 6px;
+                    margin-bottom: 0px;
+                    margin-top: 4px;
+                }
+            }
+
+        }
+
+        .emp-search {
+            margin-top: 4px;
+        }
+
+    }
+}
+
+fieldset.emp-search-composite {
+    .cui-label,
+    .cui-data {
+        display: block;
+        float: left;
+
+        button {
+            max-height: 25px;
+            margin-top: 2px;
+            padding-bottom: 4px;
+            padding-top: 4px;
+
+            .ie & {
+                padding-bottom: 6px;
+            }
+        }
+    }
+
+    .cui-data {
+        margin-left: 0;
+    }
+}
+
+// Federal Label
+
+// Normal Fields
+.emp-field.emp-federal-data {
+    .cui-label {
+        span:before,
+        label:before {
+            @include federal-badge;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            span:after,
+            label:after {
+                display: none;
+                speak: none;
+            }
+
+            span:before,
+            label:before {
+                @include federal-badge;
+            }
+        }
+    }
+}
+
+fieldset.emp-federal-data {
+    .cui-label {
+        legend:after {
+            @include federal-badge;
+            margin-left: 3px;
+            margin-right: 1px;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            legend:after {
+                display: none;
+                speak: none;
+            }
+
+            legend:before {
+                @include federal-badge;
+            }
+        }
+    }
+}
+
+.emp-search-composite.emp-federal-data {
+    .cui-label {
+        span:after,
+        label:after {
+            @include federal-badge;
+        }
+
+        @include pointbreak($cui-bp-large) {
+            label:after {
+                display: none;
+                speak: none;
+            }
+
+            label:before {
+                @include federal-badge;
+            }
+        }
+    }
+
+    &.emp-seach-composite-dynamic-label {
+
+        .cui-label:before {
+            @include federal-badge;
+            position: relative;
+            top: -2px;
+            margin-top: 10px;
+            height: 16px;
+            line-height: 1.5;
+        }
+    }
+}
+
+.emp-field.emp-labelInput-composite {
+
+    .cui-label {
+        margin-top: -3px;
+    }
+}
+
+/* Employee Name Search Widget */
+fieldset.emp-search-composite.emp-employee-search {
+    margin-top: 10px;
+
+    .cui-data {
+        margin-left: 0;
+
+        button {
+            max-height: 28px;
+            margin-top: 2px;
+            padding-bottom: 6px;
+            padding-top: 5px;
+            position: relative;
+        }
+    }
+
+    @include pointbreak($cui-bp-large) {
+
+        & > .cui-label {
+            margin-left: 0;
+
+            legend {
+                margin-top: 5px;
+            }
+        }
+
+        .cui-data {
+            margin-left: 0;
+        }
+    }
+
+    .emp-id-lookup-container,
+    .emp-name-lookup-container {
+        display: inline-block;
+    }
+
+
+    & + .emp-search-results {
+        margin-bottom: 10px;
+        margin-top: 5px;
+
+        .emp-remove-padding {
+            padding: 0;
+        }
+    }
+}
+
+.cui-popover.emp-tooltip-style {
+    overflow: visible;
+}
+
+.emp-field.cui-in-error {
+
+    .cui-label label,
+    .cui-label span {
+        color: $cui-color-error-text;
+    }
+}
+
+.cui-label.emp-inline-label {
+    flex: 1 0 auto !important;
+}
+
+.emp-entity-lookup {
+    white-space: nowrap;
+
+    legend {
+        position: absolute;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    .emp-entity-lookup-toggle {
+        float: left;
+        width: 230px;
+
+        .emp-field {
+            float: right;
+            display: inline-block;
+        }
+    }
+
+    .emp-entity-containers {
+        float: left;
+
+        .emp-entity-container {
+            display: none;
+
+            &.emp-show-container {
+                display: block;
+            }
+
+            fieldset {
+                .cui-label {
+                    width: 0;
+                }
+                .cui-data {
+                    margin-left: 0;
+                    padding-left: 0;
+                }
+            }
+
+            // Hide the first instance of a composite if it exists in a entity-lookup
+            & > .emp-search-composite {
+                & > .cui-label {
+                    display: inline-block;
+                    clip: rect(0,0,0,0) !important;
+                    clip: rect(0 0 0 0) !important;
+                    position:absolute;
+                }
+            }
+        }
+    }
+
+    &.emp-remove-label-padding {
+        .emp-entity-lookup-toggle {
+            width: auto;
+
+            .emp-field {
+                float: clear;
+            }
+        }
+    }
+
+    &.emp-entity-lookup-legend {
+        & > legend {
+            clip: auto;
+            display: inline-block !important;
+            float: left;
+            position: relative;
+            padding-right: 0.3em;
+            padding-top: 6px;
+            text-align: right;
+            width: 230px;
+        }
+        .emp-entity-lookup-toggle {
+            width: auto;
+
+            .cui-data {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@include pointbreak($cui-bp-large) {
+
+    .cui-label.emp-top-align-label {
+        display: block;
+        float: none;
+        text-align: left;
+        width: auto;
+
+        label {
+            text-align: left;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            width: auto;
+        }
+    }
+
+}

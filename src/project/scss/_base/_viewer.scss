@@ -1,0 +1,47 @@
+.emp-viewer-size-small {
+
+    .emp-viewer-contents {
+        //height: 220px;
+
+        .emp-pdf-object {
+            height: 155px;
+            padding: 10px;
+            width: 100%;
+        }
+    }
+
+}
+
+.emp-viewer-size-medium {
+
+    .emp-viewer-contents {
+        //height: 440px;
+
+        .emp-pdf-object {
+            height: 375px;
+            padding: 10px;
+            width: 100%;
+        }
+
+    }
+}
+
+.emp-viewer-size-large {
+
+    .emp-viewer-contents {
+        //height: 660px;
+
+        .emp-pdf-object {
+            height: 595px;
+            padding: 10px;
+            width: 100%;
+        }
+    }
+
+}
+
+.emp-document-viewer.emp-collapse {
+    .emp-viewer-contents {
+        height: 0;
+    }
+}

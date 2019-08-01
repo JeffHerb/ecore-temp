@@ -1,0 +1,383 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="Style Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Style Attribute</h2>
+                <div class="docs-badge cui-error">In Review</div>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The style attribute is used to define special reusable styles across multiple components. Multiple styles can be defined by adding the attribute to a supported component and comma seperated the different style values found below. When this attribute is applied to an element it will appear as the <code>style</code> property of the root object it is applied too. The style value is based
+                </p>
+
+                <ul>
+                    <li><a htef="#alignRight">align-right</a></li>
+                    <li><a href="#minWidth">min-width</a></li>
+                    <li><a href="#negative">negative-number</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Align Right -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="alignRight">Align Right</h3>
+
+                <p>
+                    Align right switches the text alignment from the default left to right.
+                </p>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:Text viewKey="text1" style="align-right" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Demo Text Label",
+        "attributes": {
+            "for": "demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "Example Text"
+        },
+        "style": "align-right"
+    }
+}
+                </pre>
+
+                <h4>Rendered Examples</h4>
+
+                <section id="alignRight-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+                <ul id="align-right-support">
+                    <li><a href="../../tags/tableColumn.html">TableColumn</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Mid Width -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="midWidth">Mid Width</h3>
+
+                <p>
+                    Min Width attribute forces columns to take up as little space as possible.
+                </p>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:TableColumn label="Index" name="index-col" hideLabel="true" style="mid-width" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "template": "table",
+    "head": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "type": "header",
+                        "text": "Index",
+                        "hideLabel": true,
+                        "style": "min-width"
+                    },
+                    {
+                        "type": "header",
+                        "text": "Full Name"
+                    },
+                ]
+            }
+        ]
+    },
+    "body": {
+        ... Omitted Body Rows ...
+    }
+}
+                </pre>
+
+                <h4>Rendered Examples</h4>
+
+                <section id="minWidth-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+
+                <ul id="min-width-support">
+                    <li><a href="../../tags/tableColumn.html">TableColumn</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Negative Numbers -->
+        <div class="cui-row">
+
+            <div class="cui-col-small-12">
+                <h3 id="negative">Negative Numbers</h3>
+
+                <p>
+                    Negative numbers will change the text color red.
+                </p>
+
+                <h4>Example JSP Tag</h4>
+
+                <pre class="code">
+&lt;E2:Text viewKey="text1" style="negative-number" />
+                </pre>
+
+                <h4>Example JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Demo Text Label",
+        "attributes": {
+            "for": "demo"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo",
+            "id": "demo",
+            "type": "text",
+            "value": "Example Text"
+        },
+        "style": "negative-number"
+    }
+}
+                </pre>
+
+                <h4>Rendered Examples</h4>
+
+                <section id="negativeNumber-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+                <ul id="align-right-support">
+                    <li><a href="../../tags/tableColumn.html">TableColumn</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <script>
+            var alignRight = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Demo Text Label",
+                                            "attributes": {
+                                                "for": "demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "value": "Example Text"
+                                            },
+                                            "style": "align-right"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var negativeNumber = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                            "text": "Demo Text Label",
+                                            "attributes": {
+                                                "for": "demo"
+                                            }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo",
+                                                "id": "demo",
+                                                "type": "text",
+                                                "value": "Example Text"
+                                            },
+                                            "style": "negative-number"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var minWidth = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "template": "table",
+                        "caption": "Generic Table",
+                        "highlightableRows": true,
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Index",
+                                            "hideLabel": true,
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Full Name"
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1"
+                                        },
+                                        {
+                                            "text": "John Doe"
+                                        },
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "Matt Smith"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "3"
+                                        },
+                                        {
+                                            "text": "Homer Simpson"
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Examples
+                var alignRightExample = document.getElementById("alignRight-example");
+                var minWidthExample = document.getElementById("minWidth-example");
+                var negativeNumberExample = document.getElementById("negativeNumber-example");
+
+                // Create the generic example
+                render.page(alignRightExample, alignRight, function () {
+
+                    console.log("Align Right Done");
+
+                    render.page(minWidthExample, minWidth, function () {
+
+                        console.log("Min Width Done");
+
+                        render.page(negativeNumberExample, negativeNumber, function () {
+
+                            console.log("Negative Number Done");
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

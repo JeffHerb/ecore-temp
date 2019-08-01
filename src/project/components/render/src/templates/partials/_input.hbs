@@ -1,0 +1,56 @@
+{{! Test for simple textbox controls }}
+{{#ifCond v1=this.type op="in" v2="text,email,month,number,range,search,tel,time,url,week,color,password"~}}
+
+    {{~> _text this ~}}
+
+{{/ifCond~}}
+
+{{! Test for date textbox controls }}
+{{#ifCond v1=this.type op="==" v2="date"~}}
+
+    {{~> _date this ~}}
+
+{{/ifCond~}}
+
+{{! Test for textarea controls }}
+{{#ifCond v1=this.type op="==" v2="textarea"~}}
+
+    {{~> _textArea this ~}}
+
+{{/ifCond~}}
+
+{{! Test for combo or select controls }}
+{{#ifCond v1=this.type op="==" v2="select"~}}
+
+    {{#if this.input.multiple~}}
+        {{~> _select this defaults='{"multiple": "", "size": 4}' mode="multi" ~}}
+    {{~else~}}
+        {{~> _select this defaults='{}' mode="single" ~}}
+    {{/if~}}
+
+{{/ifCond~}}
+
+{{! Test for buttons }}
+{{#ifCond v1=this.type op="==" v2="button"~}}
+
+    {{#ifCond v1=this.input.primary op="boolCheck" v2=true~}}
+        {{~> _button this defaults=(extendDefaults defaults='{"className":"cui-button-primary"}') ~}}
+    {{~else~}}
+        {{~> _button this defaults=(extendDefaults defaults='{}') ~}}
+    {{/ifCond~}}
+
+{{/ifCond~}}
+
+{{! Test for hidden controls }}
+{{#ifCond v1=this.type op="==" v2="hidden"~}}
+
+    {{~> _hidden this ~}}
+
+{{/ifCond~}}
+
+{{! Test for boolean controls }}
+{{#ifCond v1=this.type op="in" v2="radio,checkbox"~}}
+
+    {{~> _booleanInput this ~}}
+
+{{/ifCond~}}

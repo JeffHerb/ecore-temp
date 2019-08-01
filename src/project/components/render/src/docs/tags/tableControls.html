@@ -1,0 +1,230 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Table Controls Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Form Custom Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    All fields on a page are contained inside <code>form</code> tags.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+<pre class="code">
+&lt;E2:Table>
+    &lt;E2:TableControls>
+    &lt;/E2:TableControls>
+    &lt;E2:TableColumn label="Column 1" />
+    &lt;E2:TableColumn label="Column 2" />
+    &lt;E2:TableColumn label="Column 3" />
+&lt;/E2:Table>
+</pre>
+
+                <h3>Sample JSON</h3>
+                <pre class="code">
+{
+    "template": "table",
+    "title": "Table Control Example",
+    "attributes": {
+        "id": "table_id"
+    },
+    "controls": {
+        "contents": [
+            {
+                "type": "text",
+                "template": "field",
+                "label": {
+                    "attributes": {
+                        "for": "E_FILTERS"
+                    },
+                    "text": "Filters"
+                },
+                "input": {
+                    "attributes": {
+                        "type": "text",
+                        "id": "E_FILTERS",
+                        "name": "E_FILTERS",
+                    }
+                }
+            }
+        ]
+    },
+    ... Ommited the remaining of the table ...
+}
+</pre>
+
+                <p>
+                    <code>&lt;E2:Form&gt;</code> tag is a sepcial container used to place sever side table controls above a table. The tag itself accepts any other <code>E2</code>
+                </p>
+                <p>
+                    When turned into JSON, the values of the <code>E2:TableContorls</code> tag are stored inside of the table definition under the <code>controls</code> property. Inside of this property is a <code>contents</code> array property that is manually called by the render. The contents of the individal array items should follow the custom tag JSON requirements for the custom tags provided within.
+                </p>
+
+                <h2>Default example</h2>
+
+                <section id="default-example">
+                </section>
+
+            </div>
+        </div>
+
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var page = {
+                title: "Row Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "template": "table",
+                                        "title": "Table Control Example",
+                                        "attributes": {
+                                            "id": "table_id"
+                                        },
+                                        "controls": {
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_FILTERS"
+                                                        },
+                                                        "text": "Filters"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "text",
+                                                            "id": "E_FILTERS",
+                                                            "name": "E_FILTERS",
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "type": "header",
+                                                            "attributes": {
+                                                                "data-colmap": "table_id_column1",
+                                                                "data-type": "alpha"
+                                                            },
+                                                            "text": "Column 1"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "attributes": {
+                                                                "data-colmap": "table_id_column2",
+                                                                "data-type": "alpha"
+                                                            },
+                                                            "text": "Column 2"
+                                                        },
+                                                        {
+                                                            "type": "header",
+                                                            "attributes": {
+                                                                "data-colmap": "table_id_column3",
+                                                                "data-type": "alpha"
+                                                            },
+                                                            "text": "Column 3"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Value 1x1"
+                                                        },
+                                                        {
+                                                            "text": "Value 1x2"
+                                                        },
+                                                        {
+                                                            "text": "Value 1x3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Value 2x1"
+                                                        },
+                                                        {
+                                                            "text": "Value 2x2"
+                                                        },
+                                                        {
+                                                            "text": "Value 2x3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "text": "Value 3x1"
+                                                        },
+                                                        {
+                                                            "text": "Value 3x2"
+                                                        },
+                                                        {
+                                                            "text": "Value 3x3"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'modal', 'domReady!'], function(render, modal) {
+
+                // Default example
+                var defaultExample = document.getElementById("default-example");
+
+                render.page(defaultExample, page, function() {
+
+                    console.log("Default Done");
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

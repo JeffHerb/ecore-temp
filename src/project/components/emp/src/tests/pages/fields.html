@@ -1,0 +1,809 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Form Submit - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "form",
+                                                "attributes": {
+                                                    "id": "test-form1",
+                                                    "action": "www.test.com"
+                                                },
+                                                "contents": [
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "Textbox"
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "attributes": {
+                                                                                        "for": "test-text-box_1",
+                                                                                    },
+                                                                                    "text": "Textbox:"
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "type": "text",
+                                                                                        "name": "test-text-box",
+                                                                                        "id": "text-text-box_1",
+                                                                                        "value": "Textbox"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "text",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "attributes": {
+                                                                                        "for": "test-text-box_2",
+                                                                                    },
+                                                                                    "text": "Textbox:"
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "type": "text",
+                                                                                        "name": "test-text-box",
+                                                                                        "id": "text-text-box_2",
+                                                                                        "value": "Textbox"
+                                                                                    },
+                                                                                    "readOnly": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "Search Composite"
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "search",
+                                                                                "template": "composite",
+                                                                                "parts": {
+                                                                                    "label": {
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "attributes": {
+                                                                                                "for": "test-text-box_1",
+                                                                                            },
+                                                                                            "text": "Textbox:"
+                                                                                        }
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "text",
+                                                                                                "name": "test-text-box",
+                                                                                                "id": "text-text-box_1",
+                                                                                                "value": "Textbox"
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "button": {
+                                                                                        "type": "button",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "button",
+                                                                                                "name": "E_BTN_GO"
+                                                                                            },
+                                                                                            "text": "Go"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "search",
+                                                                                "template": "composite",
+                                                                                "parts": {
+                                                                                    "label": {
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "attributes": {
+                                                                                                "for": "test-text-box_1",
+                                                                                            },
+                                                                                            "text": "Textbox:"
+                                                                                        }
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "text",
+                                                                                                "name": "test-text-box",
+                                                                                                "id": "text-text-box_1",
+                                                                                                "value": "Textbox"
+                                                                                            },
+                                                                                            "readOnly": true
+                                                                                        }
+                                                                                    },
+                                                                                    "button": {
+                                                                                        "type": "button",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "button",
+                                                                                                "name": "E_BTN_GO",
+                                                                                                "className": "emp-icon-popup-view-list"
+                                                                                            },
+                                                                                            "text": "Go"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "Textarea"
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "textarea",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "attributes": {
+                                                                                        "for": "text-textarea-box_1",
+                                                                                    },
+                                                                                    "text": "Textbox:"
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "type": "textarea",
+                                                                                        "name": "text-textarea-box",
+                                                                                        "id": "text-textarea-box_1",
+                                                                                        "value": "Textbox"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "textarea",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "attributes": {
+                                                                                        "for": "test-textarea-box_2",
+                                                                                    },
+                                                                                    "text": "Textbox:"
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "type": "textarea",
+                                                                                        "name": "test-textarea-box",
+                                                                                        "id": "text-textarea-box_2",
+                                                                                        "value": "Textbox"
+                                                                                    },
+                                                                                    "readOnly": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "Search Composite"
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "search",
+                                                                                "template": "composite",
+                                                                                "parts": {
+                                                                                    "label": {
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "attributes": {
+                                                                                                "for": "text-textarea-box_3",
+                                                                                            },
+                                                                                            "text": "Textarea:"
+                                                                                        }
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "textarea",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "textarea",
+                                                                                                "name": "text-textarea-box_3",
+                                                                                                "id": "text-textarea-box_3",
+                                                                                                "value": "Textarea"
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    "button": {
+                                                                                        "type": "button",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "button",
+                                                                                                "name": "E_BTN_GO"
+                                                                                            },
+                                                                                            "text": "Go"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "search",
+                                                                                "template": "composite",
+                                                                                "parts": {
+                                                                                    "label": {
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "attributes": {
+                                                                                                "for": "text-textarea-box_3",
+                                                                                            },
+                                                                                            "text": "Textarea:"
+                                                                                        }
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "textarea",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "textarea",
+                                                                                                "name": "text-textarea-box_3",
+                                                                                                "id": "text-textarea-box_3",
+                                                                                                "value": "Textarea"
+                                                                                            },
+                                                                                            "readOnly": true
+                                                                                        }
+                                                                                    },
+                                                                                    "button": {
+                                                                                        "type": "button",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "button",
+                                                                                                "name": "E_BTN_GO"
+                                                                                            },
+                                                                                            "text": "Go"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "FieldSets"
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template":"grid",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "inputs",
+                                                                                "template": "inputGroup",
+                                                                                "legend": "Full Name:",
+                                                                                "options": [
+                                                                                    {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "First Name",
+                                                                                            "attributes": {
+                                                                                                "for": "E_FIRST_NAME"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_FIRST_NAME",
+                                                                                                "id": "E_FIRST_NAME",
+                                                                                                "type": "text",
+                                                                                                "value": "First",
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Middle Initial",
+                                                                                            "attributes": {
+                                                                                                "for": "E_MIDDLE_INITIAL"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_MIDDLE_INITIAL",
+                                                                                                "id": "E_MIDDLE_INITIAL",
+                                                                                                "type": "text",
+                                                                                                "value": "M",
+                                                                                                "size": 1
+                                                                                            }
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Last Name",
+                                                                                            "attributes": {
+                                                                                                "for": "E_LAST_NAME"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_LAST_NAME",
+                                                                                                "id": "E_LAST_NAME",
+                                                                                                "type": "text",
+                                                                                                "value": "Last",
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template":"grid",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "inputs",
+                                                                                "template": "inputGroup",
+                                                                                "legend": "Full Name:",
+                                                                                "options": [
+                                                                                    {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "First Name",
+                                                                                            "attributes": {
+                                                                                                "for": "E_FIRST_NAME"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_FIRST_NAME",
+                                                                                                "id": "E_FIRST_NAME",
+                                                                                                "type": "text",
+                                                                                                "value": "First",
+                                                                                            },
+                                                                                            "readOnly": true
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Middle Initial",
+                                                                                            "attributes": {
+                                                                                                "for": "E_MIDDLE_INITIAL"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_MIDDLE_INITIAL",
+                                                                                                "id": "E_MIDDLE_INITIAL",
+                                                                                                "type": "text",
+                                                                                                "value": "M",
+                                                                                                "size": 1
+                                                                                            },
+                                                                                            "readOnly": true
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Last Name",
+                                                                                            "attributes": {
+                                                                                                "for": "E_LAST_NAME"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_LAST_NAME",
+                                                                                                "id": "E_LAST_NAME",
+                                                                                                "type": "text",
+                                                                                                "value": "Last",
+                                                                                            },
+                                                                                            "readOnly": true
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "Search Composite"
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "search",
+                                                                                "template": "composite",
+                                                                                "parts": {
+                                                                                    "label": {
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "attributes": {
+                                                                                                "for": "text-textarea-box_3",
+                                                                                            },
+                                                                                            "text": "Full Name:"
+                                                                                        }
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "inputs",
+                                                                                        "template": "inputGroup",
+                                                                                        "legend": "Full Name:",
+                                                                                        "options": [
+                                                                                            {
+                                                                                                "type": "text",
+                                                                                                "template": "field",
+                                                                                                "label": {
+                                                                                                    "text": "First Name",
+                                                                                                    "attributes": {
+                                                                                                        "for": "E_FIRST_NAME"
+                                                                                                    },
+                                                                                                    "visibility": "hidden",
+                                                                                                    "hasLayout": false
+                                                                                                },
+                                                                                                "input": {
+                                                                                                    "attributes": {
+                                                                                                        "name": "E_FIRST_NAME",
+                                                                                                        "id": "E_FIRST_NAME",
+                                                                                                        "type": "text",
+                                                                                                        "value": "First",
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "text",
+                                                                                                "template": "field",
+                                                                                                "label": {
+                                                                                                    "text": "Middle Initial",
+                                                                                                    "attributes": {
+                                                                                                        "for": "E_MIDDLE_INITIAL"
+                                                                                                    },
+                                                                                                    "visibility": "hidden",
+                                                                                                    "hasLayout": false
+                                                                                                },
+                                                                                                "input": {
+                                                                                                    "attributes": {
+                                                                                                        "name": "E_MIDDLE_INITIAL",
+                                                                                                        "id": "E_MIDDLE_INITIAL",
+                                                                                                        "type": "text",
+                                                                                                        "value": "M",
+                                                                                                        "size": 1
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "text",
+                                                                                                "template": "field",
+                                                                                                "label": {
+                                                                                                    "text": "Last Name",
+                                                                                                    "attributes": {
+                                                                                                        "for": "E_LAST_NAME"
+                                                                                                    },
+                                                                                                    "visibility": "hidden",
+                                                                                                    "hasLayout": false
+                                                                                                },
+                                                                                                "input": {
+                                                                                                    "attributes": {
+                                                                                                        "name": "E_LAST_NAME",
+                                                                                                        "id": "E_LAST_NAME",
+                                                                                                        "type": "text",
+                                                                                                        "value": "Last",
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    "button": {
+                                                                                        "type": "button",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "button",
+                                                                                                "name": "E_BTN_GO"
+                                                                                            },
+                                                                                            "text": "Go"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "search",
+                                                                                "template": "composite",
+                                                                                "parts": {
+                                                                                    "label": {
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "attributes": {
+                                                                                                "for": "text-textarea-box_3",
+                                                                                            },
+                                                                                            "text": "Full Name:"
+                                                                                        }
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "inputs",
+                                                                                        "template": "inputGroup",
+                                                                                        "legend": "Full Name:",
+                                                                                        "options": [
+                                                                                            {
+                                                                                                "type": "text",
+                                                                                                "template": "field",
+                                                                                                "label": {
+                                                                                                    "text": "First Name",
+                                                                                                    "attributes": {
+                                                                                                        "for": "E_FIRST_NAME"
+                                                                                                    },
+                                                                                                    "visibility": "hidden",
+                                                                                                    "hasLayout": false
+                                                                                                },
+                                                                                                "input": {
+                                                                                                    "attributes": {
+                                                                                                        "name": "E_FIRST_NAME",
+                                                                                                        "id": "E_FIRST_NAME",
+                                                                                                        "type": "text",
+                                                                                                        "value": "First",
+                                                                                                    },
+                                                                                                    "readOnly": true
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "text",
+                                                                                                "template": "field",
+                                                                                                "label": {
+                                                                                                    "text": "Middle Initial",
+                                                                                                    "attributes": {
+                                                                                                        "for": "E_MIDDLE_INITIAL"
+                                                                                                    },
+                                                                                                    "visibility": "hidden",
+                                                                                                    "hasLayout": false
+                                                                                                },
+                                                                                                "input": {
+                                                                                                    "attributes": {
+                                                                                                        "name": "E_MIDDLE_INITIAL",
+                                                                                                        "id": "E_MIDDLE_INITIAL",
+                                                                                                        "type": "text",
+                                                                                                        "value": "M",
+                                                                                                        "size": 1
+                                                                                                    },
+                                                                                                    "readOnly": true
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "text",
+                                                                                                "template": "field",
+                                                                                                "label": {
+                                                                                                    "text": "Last Name",
+                                                                                                    "attributes": {
+                                                                                                        "for": "E_LAST_NAME"
+                                                                                                    },
+                                                                                                    "visibility": "hidden",
+                                                                                                    "hasLayout": false
+                                                                                                },
+                                                                                                "input": {
+                                                                                                    "attributes": {
+                                                                                                        "name": "E_LAST_NAME",
+                                                                                                        "id": "E_LAST_NAME",
+                                                                                                        "type": "text",
+                                                                                                        "value": "Last",
+                                                                                                    },
+                                                                                                    "readOnly": true
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    "button": {
+                                                                                        "type": "button",
+                                                                                        "template": "field",
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "type": "button",
+                                                                                                "name": "E_BTN_GO"
+                                                                                            },
+                                                                                            "text": "Go"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+    </script>
+    <script>
+
+        require(['domReady!'], function() {
+
+            console.log("page is ready");
+
+        });
+
+    </script>
+
+</html>

@@ -1,0 +1,28 @@
+@mixin menujs-list-no-outer-padding() {
+    margin: 0;
+    padding: 0;
+    //TODO: Are these all necessary? What about `-moz-` or `-o-`?
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+
+//TODO: Do we need this version or the one in CUI?
+@mixin menujs-transition($transition: "", $prefixes: "") {
+    // Do not enable GPU here otherwise it inconsistently adds gaps between some items (e.g. vertical menu items)
+    // http://caniuse.com/css-transitions
+
+    // In some browser/property combinations the value needs to be prefixed as well
+    @if $prefixes != "" {
+        @each $prefix in $prefixes {
+            -#{$prefix}-transition: -#{$prefix}-#{$transition};
+        }
+    }
+    // Safari always needs to prefix the property (for Safari 6.1 and Android 4.2, as of 8/2013)
+    @else {
+        -webkit-transition: #{$transition};
+    }
+    transition: #{$transition};
+}

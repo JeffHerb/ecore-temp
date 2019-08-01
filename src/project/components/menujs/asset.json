@@ -1,0 +1,5 @@
+{
+    "name": "menujs",
+    "lazy": true,
+    "sources": ["script", "style"]
+}

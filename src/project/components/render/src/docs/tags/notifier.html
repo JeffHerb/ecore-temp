@@ -1,0 +1,279 @@
+<!--(bake ../includes/header.html coreUIPath="../../../../dist/" docCSS="../css/" title="Notifier Tag -")-->
+
+        <div classe="cui-row">
+            <div class="cui-col-small-12">
+                <h1>Notification Tag</h1>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <p>
+                    The <code>&lt;E2:Notifier&gt;</code> is used to create notifiers.
+                </p>
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Notifier notifierID="noteStatic"></pre>
+
+                <h3>Static JSON</h3>
+                <pre class="code">
+{
+    "type": "static",
+    "template": "notifier",
+    "attributes": {
+        "alt": "Static Notifier",
+        "id": "noteStatic"
+    }
+    "text": "SN"
+}</pre>
+                <p>
+                    <code>&lt;E2:Notifier&gt;</code> tags are driven by their <code>notifierID</code> which is required. That ID comes from the notifier reference table and determines what type of a notifier to display.
+                </p>
+
+                <h3>Static Rendered Examples</h3>
+
+                <p>
+                    Notifiers that do not contain a reference to a specific <code>pageId</code> will render as a static notifier. This means the content of the notifier is rendered in a <code>&lt;span&gt;</code> element. Note that the attribute <code>id</code> should match the requested <code>notifierID</code> attribute.
+                </p>
+
+                <section id="default-static-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Examples</h2>
+
+                <h3>Custom Tag</h3>
+                <pre class="code">
+&lt;E2:Notifier notifierID="note1"></pre>
+
+                <h3>Interactive JSON</h3>
+                <pre class="code">
+{
+    "type": "interactive",
+    "template": "notifier",
+    "attributes": {
+        "alt": "Interactive Notifier",
+        "href": "internalpage.jsp",
+        "id": "noteInteractive"
+    },
+    "text": "IN"
+}</pre>
+                <p>
+                    When a <code>&lt;E2:Notifier&gt;</code> reference includes a <code>pageID</code> it will render as an <code>&lt;a&gt;</code> element. An additional <code>href</code> attribute needs to be included in the JSON as depicted above.
+                </p>
+
+                <h3>Interactive Rendered Examples</h3>
+
+                <section id="default-interactive-example">
+                </section>
+
+            </div>
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>Options</h2>
+                <table>
+                    <caption>Custom Tag Attributes</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Attribute Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Required
+                            </th>
+                            <th>
+                                Purpose
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>notifierID</th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                Yes
+                            </td>
+                            <td>
+                                The notifier ID used in the NOTF reference table.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                preSubmitScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Name and arguments to a function that is execute "onclick", but before the form has been submitted (<a href="../common/attributes/preSubmitScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                eventScript
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Any event-based JavaScript that needs to be executed. The string must include both event type and function name (<a href="../common/attributes/eventScript.html">more details</a>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                htmlAttributes
+                            </th>
+                            <td>
+                                String
+                            </td>
+                            <td>
+                                No
+                            </td>
+                            <td>
+                                Adds HTML attributes to the rendered <code>&lt;span&gt;</code> or <code>&lt;a&gt;</code> element (<a href="../common/attributes/htmlAttribute.html">more details</a>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Simulate the baked in page JSON -->
+        <script>
+
+            // Default example JSON
+            var staticNotification = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "unordered",
+                                        "template": "lists",
+                                        "attributes": {
+                                            "className": "emp-indicators"
+                                        },
+                                        "options": [
+                                            {
+                                                "type": "static",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Static Notifier",
+                                                    "id": "noteStatic"
+                                                },
+                                                "text": "SN"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var interactiveNotification = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "width": "half",
+                                "contents": [
+                                    {
+                                        "type": "unordered",
+                                        "template": "lists",
+                                        "attributes": {
+                                            "className": "emp-indicators"
+                                        },
+                                        "options": [
+                                            {
+                                                "type": "interactive",
+                                                "template": "notifier",
+                                                "attributes": {
+                                                    "alt": "Interactive Notifier",
+                                                    "href": "#",
+                                                    "id": "noteInteractive"
+                                                },
+                                                "text": "IN"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        </script>
+
+        <!--(bake ../includes/scripts.html jsPath="../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(["render", "domReady!"], function (render) {
+
+                // Default example
+                var staticExample = document.getElementById("default-static-example");
+                var interactiveExample = document.getElementById("default-interactive-example");
+
+                // Create the generic example
+                render.page(staticExample, staticNotification, function () {
+
+                    console.log("Default Done");
+
+                    render.page(interactiveExample, interactiveNotification, function () {
+
+                        console.log("Interactive Done");
+
+                    });
+
+                });
+
+            });
+        </script>
+
+<!--(bake ../includes/footer.html)-->

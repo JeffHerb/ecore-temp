@@ -1,0 +1,7423 @@
+/*jshint loopfunc: true, quotmark: false, sub: true */
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'preferences', 'favorites', 'external-menu', 'spin', 'detectIE', 'notifications', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'quill', 'refresh', 'errorReportIframe', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, preferences, favorites, externalMenu, spin, detectIE, notifications, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, quill, refresh, eri, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
+
+    function inIframe () {
+        try {
+            return window.self !== window.top;
+        } catch (e) {
+            return true;
+        }
+    }
+
+    var _priv = {
+        isInitialized: false,
+        $groupToggleControl: null,
+    };
+
+    var _disableReport = false;
+    var _disableForms = false;
+    var _disableAjax = false;
+
+    var $clickBlock = false;
+    var clickSource = false;
+
+    var $body = $(document.body);
+    var $window = $(window);
+
+    var hostname = window.location.hostname;
+
+    var pageScripts = false;
+
+    var prefs;
+    var $tabset;
+    var tabsetElem;
+    var $tabsetToggler;
+    var $tabsetPin;
+
+    var protocol = window.location.protocol;
+
+    var windows = {};
+
+    if (protocol.indexOf("http") !== -1) {
+        protocol = true;
+    }
+    else {
+        protocol = false;
+    }
+
+    var sessionTimeout = false;
+
+    var externalEmpire = false;
+
+    /**
+     * Sets up the page after its HTML has been rendered
+     * Adds event listeners, loads applicable plugins, etc
+     */
+    _priv.pageSetup = function _pageSetup(options, cb) {
+
+
+        // New Non-jQuery versions
+        var searchClearButton = document.querySelector('.emp-button-search-clear');
+        var searchClearAllButton = document.querySelector('.emp-button-search-clear-all');
+        var dNotifierPopups = document.querySelectorAll('.emp-page-info .emp-indicators a.popup');
+        var dSectionNotifierPopups = document.querySelectorAll('section ul.emp-indicators a.popup');
+
+        externalEmpire = (document.querySelector('html.external-app')) ? true : false;
+
+        // Older jQuery values
+        var $tabsetTitleBar;
+        var $searchBox = $('#form_search');
+        var $mainWrapper = $('main');
+        var $searchBoxToggle;
+        var $searchBoxToggleImg;
+        var searchBoxElem;
+        var $searchFields;
+        var searchFieldsElem;
+        var $tables = $('.emp-table table');
+        var $dateInputs = $('.emp-date');
+        var $dateCalenders = $('.cui-c-datepicker');
+        var $selectOtherBoxes = $('.emp-select-other-selectbox select');
+        var $selectOtherCheckbox = $('.emp-check-other-checkbox input');
+        var $ratingContainers = $('.emp-rating-stars-container');
+        var $fileUploads = $('.emp-file-upload');
+        var $viewDocumentSections = $('.emp-document-viewer');
+        var $entityLookup = $('.emp-entity-lookup .emp-entity-lookup-toggle select');
+        var $errorReportButton = $('#emp-header-error-report i');
+        var $errorReportIframe = $('#E_ERROR_REPORT_IFRAME');
+
+        // Ensure `fwData` and its required properties exist
+        _priv.stubOutFwData();
+
+        emp.isIE = false;
+        emp.isEdge = false;
+
+        session.setup();
+        showHidePassword.init();
+
+        var detectIntE = detectIE();
+
+        expandables.setup();
+        expandingTextArea.setup();
+
+        _priv.selectionListSetup();
+
+        if (detectIntE) {
+            $body.addClass('ie');
+            emp.isIE = true;
+
+            if (detectIntE.edge) {
+                emp.isEdge = true;
+            }
+        }
+
+        // Bind Error Report button
+        if ($errorReportButton.length) {
+            $errorReportButton.on('click', _priv.errorReportButton);
+        }
+
+        // These tabset variables must be defined before initializing the preferences
+        $tabset = $('.emp-tabset');
+        $tabsetToggler = $('.emp-tabset-toggle');
+        $tabsetPin = $('.emp-tabset-pin');
+
+        if ($tabset.length) {
+            tabsetElem = $tabset.get(0);
+        }
+
+        var localSessionID = store.get("sessionID");
+        var refreshSession = false;
+
+        // Check for a session ID;
+        if (fwData.context.screen && fwData.context.screen.id && (fwData.context.screen.type !== "framework-search" && fwData.context.screen.type !== "error" && fwData.context.urls  && fwData.context.urls.errorReport)) {
+
+            if (localSessionID) {
+
+                // Check to see if the local session matches the current session id
+                if (fwData.context.screen.id !== localSessionID) {
+
+                    journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'New session ID detected, updating');
+
+                    refreshSession = true;
+                }
+                else {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Session ID and Local Storage match!');
+                }
+
+            }
+            else {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'No session ID in localStorage!');
+
+                refreshSession = true;
+            }
+
+        }
+        else {
+
+            if (fwData.context.screen && (fwData.context.screen.type !== "framework-search" && fwData.context.screen.type !== "error" && fwData.context.screen.type !== "missing")) {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'No session ID was provided as part of the page screen object!');
+            }
+            else {
+
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Refresh blocked on none valid screen type');
+            }
+        }
+
+        if (refreshSession) {
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Session Refresh functions being called.');
+
+            if (fwData.context.urls.favorites && location.hostname !== 'localhost') {
+
+                refresh.favorites(function _favortiesFetch(favData, tabsetids) {
+
+                    // Save off the new sessionID
+                    store.set('sessionID', fwData.context.screen.id);
+
+                    // Reset the global just in case
+                    fwData.context.favorites = {
+                        data: favData,
+                        tabsetids: tabsetids
+                    };
+
+                    store.set("favorites", favData);
+                    store.set("tabsetAccess", tabsetids);
+
+                    // Execute favorites
+                    $('#emp-header-favorites').favorites();
+                });
+            }
+            else if (location.hostname === 'localhost') {
+
+                $('#emp-header-favorites').favorites();
+            }
+            else {
+
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Session Favorites Refresh skipped on error report pages.');
+
+            }
+
+        }
+        else {
+
+            if (fwData.context.urls && fwData.context.urls.favorites) {
+
+                // Setup favorites
+                $('#emp-header-favorites').favorites();
+
+            }
+        }
+
+        windowsM.setup();
+
+        if (window.fwData.preferences) {
+
+            // Setup user preferences
+            emp.prefs = $.prefs($('.emp-header-preferences'), store.get('globalPrefs'), store.get('tabsetPrefs'));
+        }
+
+        //Setup notifications plugin
+        //Disabled per framework request as we are not in phase 2 just yet! JAH
+        emp.notifications = $.notifications($('.emp-header-notifications'));
+
+        // Search box ID field special functionality
+        if ($('#HEADER_ID_TYPE').length === 1) {
+
+            $body.on('change', '#HEADER_ID_TYPE', function (evt) {
+
+                _events.searchHeaderTypeChange();
+            });
+        }
+
+        // // Group-collapsing functionality
+        // $('section:not(.emp-tabs)').find('> header').on('click', function _toggleGroup(evt) {
+        //     if (evt.target.nodeName !== 'INPUT' && evt.target.nodeName !== 'LABEL' && (evt.target.nodeName !== 'BUTTON' || (evt.target.nodeName === 'BUTTON' && evt.target.classList.contains('emp-icon-section-toggle-collapse') )) ) {
+        //         var $group = $(this).closest('section');
+
+        //         // Check for hook to disable expandability
+        //         if (!$group[0].classList.contains('emp-no-collapse')) {
+
+        //             // From opened to collapsed
+        //             if (!$group.is('.emp-collapse')) {
+        //                 _priv.group.collapse($group, this);
+        //             }
+
+        //             // From collapsed to opened
+        //             else {
+        //                 _priv.group.expand($group);
+        //             }
+        //         }
+
+        //     }
+        // });
+
+        // // Collapse all groups
+        // _priv.$groupToggleControl = $('.emp-icon-sections-toggle')
+        //     .on('click', _priv.group.toggleAll);
+        //     shortcut.register({
+        //         keys: 'shift+g',
+        //         callback: _priv.group.toggleAll,
+        //         description: 'Toggle all groups',
+        //         type: 'keydown',
+        //     });
+
+        // Search box collapsing
+        if ($searchBox.length) {
+            searchBoxElem = $searchBox.get(0);
+            $searchBoxToggle = $('.emp-search-toggle');
+            $searchBoxToggleImg = $searchBoxToggle.find('img');
+            $searchFields = $searchBox.find('.emp-search-fields');
+            searchFieldsElem = $searchFields.get(0);
+
+            //
+            // Expands or collapses the search box
+            // @param   {Event}  evt   Click event
+            //
+            var _toggleSearchBox = function (evt, doSetFocus) {
+                var currHeight;
+                var fullHeight;
+                var fullBorderWidth;
+
+                // From collapsed to opened
+                if ($searchBox.is('.emp-collapse')) {
+                    currHeight = $searchBox.height();
+
+                    // Temporarily expand the group so we can get its full (auto) height
+                    $searchBox
+                        .removeClass('emp-collapse')
+                        .css('min-height', 0) // Temporarily override the CSS value, otherwise the search box will immediately expand to this height before the animation begins
+                        .css('height', 'auto');
+
+                    fullHeight = getComputedStyle(searchBoxElem).height;
+
+                    // We need to temporarily turn off the thick border around the search fields. The fields will overlap the border during the animation such that it looks broken, like the fields are spilling out of the container (as if you didn't use `overflow:hidden`). It's just an optical illusion but the animation looks better if we hide the border until the animation is complete.
+                    fullBorderWidth = getComputedStyle(searchFieldsElem).borderBottomWidth;
+                    searchFieldsElem.style.borderBottomWidth = '0px';
+
+                    // Begin the process of expanding
+                    $searchBox
+                        .css('overflow', 'hidden') // Prevent contents from spilling out
+                        .height(currHeight) // The element needs a fixed height to use as a starting point
+                        // Animate from this height to the full height
+                        .animate({ height: fullHeight }, 150, '', function () {
+                            // Undo our temporary overrides and allow CSS to resume control of these properties
+                            searchBoxElem.style.removeProperty('min-height');
+                            searchBoxElem.style.removeProperty('overflow');
+                            searchBoxElem.style.removeProperty('height'); // This is set by `$.animate()`. If we didn't remove this, child elements wouldn't affect the search box's height properly
+
+                            // Now restore the bottom border's thickness
+                            $searchFields.animate({ borderBottomWidth: fullBorderWidth }, 20, function () {
+                                // Remove the inline style created by `$.animate()`
+                                searchFieldsElem.style.removeProperty('border-bottom-width');
+                            });
+
+                            // Set focus to the first input
+                            if (doSetFocus) {
+                                $searchFields.find('input').first().focus();
+                            }
+                        });
+
+                    // Update toggle button for a11y
+                    $searchBoxToggle.attr('title', 'Hide the search box');
+
+                    $searchBoxToggleImg
+                        .attr('title', 'Hide the search box')
+                        .attr('alt', 'Upward-facing triangle');
+
+                    _toggleSearchBoxEventHandlers();
+                }
+                // From opened to collapsed
+                else {
+                    $searchBox
+                        .css('overflow', 'hidden')
+                        .animate({ height: getComputedStyle($searchBox.get(0)).height }, 150, '', function () {
+                            $searchBox
+                                .addClass('emp-collapse');
+
+                            searchBoxElem.style.removeProperty('overflow');
+                            searchBoxElem.style.removeProperty('height');
+
+                            _toggleSearchBoxEventHandlers();
+                        });
+
+                    // Update toggle button for a11y
+                    $searchBoxToggle.attr('title', 'Show the search box');
+
+                    $searchBoxToggleImg
+                        .attr('title', 'Show the search box')
+                        .attr('alt', 'Downward-facing triangle');
+                }
+            };
+
+            shortcut.register({
+                keys: 'shift+s',
+                callback: _toggleSearchBox,
+                description: 'Toggle the search box',
+                type: 'keydown',
+                data: true, // Flag for setting focus to the first input
+            });
+
+            //
+            // Sets the appropriate event handlers on the search box based on its current state
+            //
+            var _toggleSearchBoxEventHandlers = function () {
+                // From collapsed to opened
+                if ($searchBox.is('.emp-collapse')) {
+                    // Move the event listener to the entire search box
+                    $searchBoxToggle.off('click', _toggleSearchBox);
+                    $searchBox.on('click', _toggleSearchBox);
+                }
+                // From opened to collapsed
+                else {
+                    // Move the event listener to just the toggle button
+                    $searchBox.off('click', _toggleSearchBox);
+                    $searchBoxToggle.on('click', _toggleSearchBox);
+                }
+            };
+
+            // Set up the event handlers based on the initial state of the page
+            _toggleSearchBoxEventHandlers();
+        }
+
+        // Tabset toggling
+        if ($tabset.length) {
+            var _toggleTabset = function _toggleTabset(evt) {
+                // Ignore clicks on the pin
+                if (!$(evt.target).is('.emp-tabset-pin')) {
+                    // From opened to collapsed
+                    if (!$tabset.is('.emp-collapse')) {
+                        _priv.tabset.close();
+                    }
+                    // From collapsed to opened
+                    else {
+                        _priv.tabset.open();
+                    }
+                }
+            };
+
+            var _toggleTabsetPin = function _toggleTabsetPin() {
+                // Is currently pinned, need to unpin it
+                if ($tabsetPin.is('.emp-selected')) {
+                    _priv.tabset.unpin();
+
+                    // Save preference
+                    emp.prefs.setGlobal('tabsetPinned', false);
+                }
+                // Is currently not pinned, need to pin it
+                else {
+                    _priv.tabset.pin();
+
+                    // Save preference
+                    emp.prefs.setGlobal('tabsetPinned', true);
+                }
+            };
+
+            $tabsetTitleBar = $('.emp-header-tabset-title');
+
+            // Setup the tabset pin button
+            $tabsetPin.on('click', _toggleTabsetPin);
+
+            // Per Jill the entire bar needs to be able to be clicked not just the toggle control.
+            $tabsetTitleBar.on('click', _toggleTabset);
+        }
+
+        // Default required Table plugins
+        if ($tables.length && !options.skipTable) {
+
+            $tables.table();
+
+            $tables.on('sort.table', function () {
+
+                var $ajaxTooltips = $tables.find('.emp-ajax-tooltip');
+
+                if ($ajaxTooltips.length) {
+
+                    $ajaxTooltips.each(function () {
+                        requestTooltip($(this));
+                    });
+                }
+
+            });
+
+            $tables.on('table.filter', function () {
+
+                var $ajaxTooltips = $tables.find('.emp-ajax-tooltip');
+
+                if ($ajaxTooltips.length) {
+
+                    $ajaxTooltips.each(function () {
+                        requestTooltip($(this));
+                    });
+                }
+
+            });
+        }
+
+        var $itag = $('button.emp-icon-help:not(.emp-legend-help)');
+
+        if ($itag.length) {
+
+            $itag.tooltip();
+        }
+
+        // Select other page binding
+        if ($selectOtherBoxes.length) {
+
+            // Loop through all of the selectOthers and bind the event
+            for (var so = 0, soLen = $selectOtherBoxes.length; so < soLen; so++) {
+
+                // Passing in the raw element at this point to by pas jQuery
+                events.otherDropdown($selectOtherBoxes[so]);
+
+            }
+
+        }
+
+        if ($selectOtherCheckbox.length) {
+
+            $selectOtherCheckbox.on('click', function (evt) {
+
+                _events.checkOther(evt);
+            });
+        }
+
+        // Add custom binding for when user types dates to auto add '/'s
+        dateMask($dateInputs);
+
+        // Bind the date picker to all date inputs.
+        $dateCalenders.datepicker();
+
+        // Setup clear and clear all buttons
+        if (searchClearButton) {
+            searchClearButton.addEventListener('click', events.clearSearchbox);
+            searchClearAllButton.addEventListener('click', events.clearAllSearchBox);
+        }
+
+        // Print icon
+        $('.emp-icon-print').on('click', function () {
+            // Not sure why we need this anonymous function wrapper, rather than passing `window.print` directly, but jQuery throws an 'illegal invocation' error without it
+            window.print();
+        });
+
+        // Just do a body binding for the tooltips.
+        $body.on('click', '.emp-tooltip, td span[title]', function (evt) {
+
+            function createTooltip($tooltip, force) {
+
+                if ($tooltip[0].hasAttribute("data-title")) {
+
+                    $tooltip.popover({
+                        display: {
+                            className: 'emp-tooltip-style'
+                        },
+                        html: '<span>' + $tooltip.attr("data-title") + '</span>'
+                    });
+
+                }
+                else {
+
+                    var tooltip = $tooltip.attr('title').replace(/[\n]/g, '<br>');
+
+                    $tooltip.popover({
+
+                        display: {
+                            className: 'emp-tooltip-style'
+                        },
+                        html: '<span>' + tooltip + '</span>'
+                    });
+                }
+
+                setTimeout(function () {
+
+                    $tooltip.trigger('click');
+
+                }, 100);
+            }
+
+            var $tooltip = $(this);
+
+            if (!$tooltip.hasClass('cui-popover-toggle')) {
+
+                if (require.defined('popover')) {
+
+                    createTooltip($tooltip);
+                }
+                else {
+
+                    clkblocker.add($tooltip);
+
+                    cui.load('popover', function _loadPopover() {
+
+                        clkblocker.remove();
+
+                        fastdom.mutate(function () {
+
+                            createTooltip($tooltip);
+                        });
+
+                    });
+                }
+            }
+        });
+
+        var $ajaxTooltips = $('.emp-ajax-tooltip');
+
+        if ($ajaxTooltips.length) {
+
+            $ajaxTooltips.each(function () {
+                requestTooltip($(this));
+            });
+        }
+
+        var $employeeSearch = $('.emp-employee-search .employee-search-select');
+
+        $employeeSearch.each(function (i) {
+
+            var $select = $(this);
+
+            $select.on('change', function (evt) {
+
+                _events.employeeSearchDropDown(evt);
+            });
+        });
+
+        // Rating search
+        if ($ratingContainers.length) {
+
+            // Loop through and bind all rating components
+            $ratingContainers.each(function () {
+
+                $(this).rating();
+
+            });
+        }
+
+        if ($fileUploads.length) {
+
+            $fileUploads.each(function () {
+
+                var $fileUploadContainer = $(this);
+                var $fakeButton = $fileUploadContainer.find('button');
+                var $realInput = $fileUploadContainer.find('input');
+                var $spanText = $fileUploadContainer.find('span');
+
+                var elmObject = {
+                    "$button": $fakeButton,
+                    "$input": $realInput,
+                    "$span": $spanText
+                };
+
+                // Bind the button click event
+                $fakeButton.on('click', elmObject, _events.fileUploadButton);
+
+                $realInput.on('change', elmObject, _events.fileUploadInput);
+
+            });
+        }
+
+        // Test to see if this window is a popup
+        if (window.isPopup || fwData.isPopup || fwData.popup) {
+
+            render.section(null, { "template": "closePopup" }, 'return', function (html) {
+
+                if (html) {
+                    $('#body-wrapper').append(html);
+                }
+                else {
+                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: '', func: 'popupWindow' }, 'Failed to build popup close control');
+                }
+            });
+        }
+
+        // Check for framework blinky's
+        $body.on('click', '.emp-icon-ghost', function (evt) {
+
+            _events.frameworkError(evt);
+
+        });
+
+        if (fwData.popup) {
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'pageSetup => popup detected' }, 'Detected window is a popup.');
+
+            window.opener.emp.showChild();
+        }
+
+        if ($viewDocumentSections.length) {
+
+            $viewDocumentSections.each(function () {
+
+                var $resizer = $(this).find('.emp-view-document-resizer');
+
+                if ($resizer.length === 1) {
+
+                    $resizer.on('click', _events.resizeDocumentViewer);
+                }
+
+            });
+        }
+
+        $rootForm = $('main').find('form:not(#form_asof)').eq(0);
+
+        if ($rootForm.length) {
+
+            $rootForm.on('keypress', function (e) {
+
+                if (e.keyCode === 13) {
+
+                    // Get the current control
+                    var $elm = $(':focus');
+
+                    if ($elm[0].nodeName !== "BUTTON" && $elm[0].nodeName !== "SELECT" && $elm[0].nodeName !== "TEXTAREA") {
+
+                        $compositeParent = $elm.parents('.emp-search-composite').eq(0);
+
+                        e.preventDefault();
+
+                        if ($compositeParent.length) {
+
+                            $compositeButton = $compositeParent.find('button');
+
+                            if ($compositeButton.length === 1) {
+
+                                $compositeButton.trigger('click');
+                            }
+                            else if ($compositeButton.length === 0) {
+
+                                journal.log({ type: 'warning', owner: 'UI', module: 'emp', func: 'pageSetup' }, 'Blocked enter key on field preventing composite action as no button was found.');
+                            }
+                            else {
+
+                                journal.log({ type: 'warning', owner: 'UI', module: 'emp', func: 'pageSetup' }, 'Blocked enter key on field preventing composite action as you have more than 1 button control!.');
+                            }
+                        }
+                        else {
+
+                            journal.log({ type: 'warning', owner: 'UI', module: 'emp', func: 'pageSetup' }, 'Blocked enter key on field preventing page from submitting.');
+                        }
+
+                    }
+                }
+
+            });
+        }
+
+        var $addRemoveList = $('.emp-add-remove-list');
+
+        if ($addRemoveList && $addRemoveList.length) {
+
+            $addRemoveList.addRemove();
+        }
+
+        // Setup tabs!
+        var $tabs = $('.emp-tabs');
+
+        if ($tabs.length) {
+
+            $tabs.tabs();
+        }
+
+        var $editor = $('.emp-quill-editor');
+
+        if ($editor.length) {
+
+            $editor.each(function (e) {
+
+                var $edit = $(this);
+                var $editorTA = $edit.find('.ql-editor');
+                var $editContainer = $edit.find('.emp-quill-container');
+                var $editToolbar = $edit.find('.emp-quill-toolbar');
+
+                var $editRoot = $edit.parents('.emp-field');
+                var editDataStorID = $editRoot.attr('data-store-id');
+                var editDataStore = ds.getStore(editDataStorID);
+
+                var $editorContentElm = false;
+
+                if ($editContainer.length === 1) {
+
+                    var $hidden = $('#' + $editContainer.attr('data-hidden'));
+
+                    if ($hidden.length === 1) {
+
+                        var editor = new quill($editContainer[0], {
+                            modules: {
+                                toolbar: {
+                                    container: $editToolbar[0],
+                                    handlers: {
+                                        undo: function() {
+
+                                            editor.history.undo();
+                                        },
+                                        redo: function() {
+
+                                            editor.history.redo();
+                                        }
+                                    }
+                                },
+                                // history: {
+                                //   delay: 2000,
+                                //   maxStack: 500,
+                                //   userOnly: true
+                                // },
+                                //toolbar: toolbarOptions,
+                                clipboard: {
+                                    matchVisual: true
+                                }
+                            },
+                            theme: 'snow'
+                        });
+
+                        var editorToolbar = editor.getModule('toolbar');
+
+                        editor.clipboard.addMatcher('p', function (node, delta) {
+
+                            if (!emp.isIE) {
+
+                                var deltaCopy = $.extend(true, {}, delta);
+
+                                var _newDelta = {
+                                    ops: []
+                                };
+
+                                for (var i = 0, len = delta.ops.length; i < len; i++) {
+
+                                    var copyOp = $.extend(true, {}, delta.ops[i]);
+
+                                    if (copyOp.insert.match(/((\d.\s{3,}\b)|(.\s{3,}\b))/)) {
+
+                                        var re = /((\d.\s{3,}\b)|(.\s{3,}\b))/;
+                                        var bulletParts = copyOp.insert.split(re);
+
+                                        var bullet = bulletParts[1];
+                                        var data = bulletParts[4];
+
+                                        var listType = (bullet.match(/\d/)) ? 'ordered' : 'bullet';
+
+                                        var bulletOps = {
+                                            insert: "\n",
+                                            attributes: {
+                                                list: listType
+                                            }
+                                        };
+
+                                        _newDelta.ops.push(bulletOps);
+
+                                        copyOp.insert = data;
+
+                                        _newDelta.ops.push(copyOp);
+
+                                    }
+                                    else {
+                                        _newDelta.ops.push(copyOp);
+                                    }
+
+
+                                }
+
+                                return _newDelta;
+                            }
+                            else {
+
+                                return delta;
+                            }
+
+                        });
+
+                        editor.on("text-change", function (delta, oldDelta, source) {
+
+                            var $contents = $(editor.root);
+                            var $hidden = $contents.parents('.emp-quill-editor').find('input[type="hidden"]');
+
+                            if (source === "user") {
+
+                                if (!emp.isIE) {
+
+                                    var $ULs = $editContainer.find('ul,ol');
+
+                                    $ULs.each(function () {
+
+                                        var $UL = $(this);
+
+                                        $LIs = $UL.children();
+                                        $sib = $UL.next();
+
+                                        if ($LIs.length === 1) {
+
+                                            if ($LIs[0].innerText.trim() === "" && $sib.length && $sib[0].nodeName === "P") {
+
+                                                $LIs[0].innerHTML = $sib[0].innerHTML;
+                                                $sib.remove();
+                                            }
+                                        }
+
+                                    });
+                                }
+                                else {
+
+                                    var $actualEditorContainer = $editContainer.children('.ql-editor').eq(0);
+
+                                    var $firstChild = $actualEditorContainer.children().eq(0);
+
+                                    if ($firstChild[0].nodeName === "P" && $firstChild[0].innerText.trim() === "") {
+                                        $firstChild.remove();
+                                    }
+
+                                }
+
+                            }
+
+                            // Update the hidden input
+                            $hidden.val($contents[0].innerHTML);
+
+                        });
+
+                        // This method is to fix editors that lose there range index/cursor positions after interacting with other dom elements.
+                        // This mainly is in place for the variable insert editors in the message center screen.
+                        $edit.on('click', function (event) {
+
+                            var oCurrentSelection = editor.getSelection();
+
+                            if(oCurrentSelection){
+
+                                $edit.attr('data-editor-last-cursor', oCurrentSelection.index);
+                            }
+
+                        });
+
+                        editorToolbar.addHandler('link', function(value) {
+
+                            if (value) {
+
+                                var range = this.quill.getSelection();
+
+                                if (range === null || range.length === 0) {
+
+                                    journal.log({ type: 'info', owner: 'UI', module: 'emp' }, 'Block Quill.js link action because no word was selected.');
+                                    return false;
+                                }
+
+                                var tooltip = this.quill.theme.tooltip;
+
+                                tooltip.edit('link', '');
+                            }
+                            else {
+                                this.quill.format('link', false);
+                            }
+
+                        });
+
+                        // Manually set the hidden field value
+                        if (editDataStore) {
+                            $hidden.val(editDataStore.input.attributes.value);
+                        }
+
+                        if (!emp.reference.editor) {
+                            emp.reference.editor = {};
+                        }
+
+                        // Save off a reference to this editor like we do with tables
+                        emp.reference.editor[$editContainer.attr('data-hidden')] = {
+                            editor: editor,
+                            dEditor: $editorTA.context,
+                            $toolbar: $editToolbar,
+                            $container: $editContainer
+                        };
+
+                    }
+                }
+                else {
+
+                    //journal.log();
+                }
+
+
+            });
+
+        }
+
+        var $pageSelects = $mainWrapper.find('select');
+
+        if ($pageSelects.length) {
+
+            $pageSelects.each(function () {
+
+                $body.on('change', 'main select', function () {
+
+                    var $select = $(this);
+
+                    var value = $select.val();
+
+                    var $option = $select.children('option[value="' + value + '"]');
+
+                    if ($option) {
+
+                        var dynamicSectionOpen = $option.attr('data-open-section');
+                        var dynamicSectionClose = $option.attr('data-close-section');
+
+                        if (dynamicSectionOpen || dynamicSectionClose) {
+
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'selectBoxChange' }, 'User changes dynamic section dropdown');
+
+                            var $section = false;
+
+                            if (dynamicSectionClose) {
+
+                                var closeSections = dynamicSectionClose.split(',');
+
+                                for (var c = 0, cLen = closeSections.length; c < cLen; c++) {
+
+                                    $section = $('#' + closeSections[c]);
+
+                                    if ($section.length && $section[0].nodeName === "SECTION") {
+
+                                        if (!$section.hasClass('emp-collapse')) {
+                                            $section.addClass('emp-collapse');
+                                        }
+
+                                    }
+                                    else {
+
+                                        journal.log({ type: 'error', owner: 'Developer', module: 'emp', function: 'selectBoxChange' }, 'Unable to find section with ID: ' + closeSections[c]);
+                                    }
+
+                                }
+
+                            }
+
+                            if (dynamicSectionOpen) {
+
+                                var openSections = dynamicSectionOpen.split(',');
+
+                                for (var o = 0, oLen = openSections.length; o < oLen; o++) {
+
+                                    $section = $('#' + openSections[o]);
+
+                                    if ($section.length && $section[0].nodeName === "SECTION") {
+
+                                        if ($section.hasClass('emp-collapse')) {
+                                            $section.removeClass('emp-collapse');
+                                        }
+
+                                    }
+                                    else {
+
+                                        journal.log({ type: 'error', owner: 'Developer', module: 'emp', function: 'selectBoxChange' }, 'Unable to find section with ID: ' + openSections[o]);
+                                    }
+
+                                }
+                            }
+
+                        }
+
+                    }
+
+
+                });
+
+            });
+        }
+
+        if(!externalEmpire){			
+	        gShortcuts.contextMenu();
+	        gShortcuts.lotusFormModal();        	
+        }
+
+        $body.trigger('setup.page');
+
+        $entityLookup.on('change', function(evt) {
+
+            _events.entityChange(evt, $(evt.target));
+        });
+
+        if ($errorReportIframe) {
+
+            $errorReportIframe.ready(function () {
+                eri.injectIframe($errorReportIframe[0]);
+            });
+        }
+
+        // Setup Page level notifiers that are clickable
+        if (dNotifierPopups && dNotifierPopups.length) {
+
+            for (var dNP = 0, dNPLen = dNotifierPopups.length; dNP < dNPLen; dNP++) {
+
+                dNotifierPopups[dNP].addEventListener('click', function(evt) {
+
+                    evt.preventDefault();
+
+                    var sHref = this.getAttribute('href');
+
+                    // ==================
+                    sHref += "?fw_popup_request_ind=true&fw_popup_name=window";
+                    // =====================
+
+
+                    var sPageNoteriferText = this.textContent.replace(' ', '').toLowerCase();
+                    var sPopupName = "pageNotifier" + sPageNoteriferText;
+
+                    var notificationPopup = windowsM.createReference(sPopupName);
+
+                    windowsM.open(sPopupName, sHref, false, true, undefined, false, function (openWindow) {
+
+                        openWindow.location = sHref;
+                    });
+
+                    //window.location = href;
+                });
+
+            }
+        }
+
+        // Setup Section level notifiers that are clickable
+        if (dSectionNotifierPopups && dSectionNotifierPopups.length) {
+
+            for (var dSNP = 0, dSNPLen = dSectionNotifierPopups.length; dSNP < dSNPLen; dSNP++) {
+
+                dSectionNotifierPopups[dSNP].addEventListener('click', function (evt) {
+
+                    evt.preventDefault();
+
+                    var sHref = this.getAttribute('href');
+
+                    // ==================
+                    sHref += "?fw_popup_request_ind=true&fw_popup_name=window";
+                    // =====================
+
+                    var sPageNoteriferText = this.textContent.replace(' ', '').toLowerCase();
+                    var sPopupName = "pageNotifier" + sPageNoteriferText;
+
+                    var notificationPopup = windowsM.createReference(sPopupName);
+
+                    windowsM.open(sPopupName, sHref, false, true, undefined, false, function (openWindow) {
+
+                        console.log(openWindow);
+
+                        openWindow.location = sHref;
+                    });
+
+                    //window.location = href;
+                });
+
+            }
+
+        }
+
+        function newItagContainer(headerText, tagContents, tagID) {
+
+            var wrapper = document.createElement('div');
+            wrapper.setAttribute('id', tagID);
+
+            wrapper.innerHTML = tagContents;
+
+            var header = document.createElement('header');
+            headerText = document.createTextNode(headerText);
+
+            header.appendChild(headerText);
+
+            wrapper.insertBefore(header, wrapper.firstChild);
+
+            return wrapper;
+        }
+
+        staticTree.init();
+
+        if (externalEmpire) {
+
+            var pageInstructionTooltip = document.querySelector('.emp-page-legend button.emp-page-itags');
+
+            if (pageInstructionTooltip) {
+
+                pageInstructionTooltip.addEventListener('click', function () {
+
+                    var instructionSection = document.querySelector('#emp-field-instructions');
+
+                    if (instructionSection) {
+
+                        if (instructionSection.classList.contains('showOnScreen')) {
+                            instructionSection.classList.remove('showOnScreen');
+                        }
+                        else {
+                            instructionSection.classList.add('showOnScreen');
+                        }
+                    }
+                    else {
+
+                        // Find all of the help text below
+                        var helpTagsButtons = document.querySelectorAll(
+                            '#body-wrapper .cui-row .emp-icon-help, #body-wrapper th .emp-icon-help, #body-wrapper section .emp-icon-help');
+
+                        var newInstructionSection = document.createElement('div');
+                        newInstructionSection.setAttribute('id', 'emp-field-instructions');
+                        newInstructionSection.classList.add('emp-field-instructions');
+                        newInstructionSection.classList.add('showOnScreen');
+
+                        for (var h = 0, hlen = helpTagsButtons.length; h < hlen; h++) {
+
+                            var fieldWrapper = false;
+                            var fieldSetWrapper = false;
+                            var tableColumnWrapper = false;
+                            var sectionWrapper = false;
+
+                            var helpTagButton = helpTagsButtons[h];
+                            var helpTagContents = helpTagButton.querySelector('.cui-hide-from-screen').innerHTML;
+
+                            var helpDataSource = helpTagButton.getAttribute('data-tooltip-source');
+
+                            if (!helpDataSource) {
+                                helpDataSource = guid();
+
+                                helpTagButton.setAttribute('data-tooltip-source', helpDataSource);
+                            }
+
+                            var parentNode = helpTagsButtons[h].parentNode;
+
+                            while (true) {
+
+                                if (parentNode.nodeName === "BODY") {
+                                    break;
+                                }
+                                else {
+                                    // Break at rows to speed up the looping
+                                    if (parentNode.nodeName === "DIV" && parentNode.classList.contains('cui-row'))  {
+                                        break;
+                                    }
+
+                                    if (parentNode.nodeName === "DIV" && parentNode.classList.contains('emp-field')) {
+                                        fieldWrapper = parentNode;
+                                    }
+
+                                    if (parentNode.nodeName === "FIELDSET") {
+                                        fieldSetWrapper = parentNode;
+                                    }
+
+                                    if (parentNode.nodeName === "TH") {
+                                        tableColumnWrapper = parentNode;
+                                    }
+
+                                    if (parentNode.nodeName === "SECTION") {
+                                        sectionWrapper = parentNode;
+                                    }
+                                }
+
+                                parentNode = parentNode.parentNode;
+                            }
+
+                            var helpTitle = false;
+
+                            if (fieldSetWrapper) {
+
+                                helpTitle = fieldSetWrapper.querySelector('.cui-label legend').innerText;
+                            }
+                            else if (fieldWrapper) {
+
+                                var fieldLabel = fieldWrapper.querySelector('.cui-label label, .cui-label span');
+
+                                helpTitle = fieldLabel.innerText;
+                            }
+                            else if (sectionWrapper) {
+                                helpTitle = sectionWrapper.querySelector('section h3').innerText;
+                            }
+
+                            var helpTagInstruction = newItagContainer(helpTitle, helpTagContents, helpDataSource);
+
+                            newInstructionSection.appendChild(helpTagInstruction);
+
+                        }
+
+                        // Add missing instruction section
+                        document.body.appendChild(newInstructionSection);
+                    }
+
+                });
+
+            }
+
+            externalApp.init();
+        }
+
+        if (typeof cb === "function") {
+            cb();
+        }
+
+    };
+
+    // Reinitialize a section of code that was added to the page after initial page load
+    sectionSetup = function _sectionSetup(section, options) {
+        var $section;
+        var $tabsetTitleBar;
+        var $searchBox;
+        var $headerID;
+        var $searchBoxToggle;
+        var $searchBoxToggleImg;
+        var $searchClearButton;
+        var $searchClearAllButton;
+        var searchBoxElem;
+        var $searchFields;
+        var searchFieldsElem;
+        var $tables;
+        var $dateInputs;
+        var $dateCalenders;
+        var $selectOtherBoxes;
+        var $ratingContainers;
+        var $fileUploads;
+        var $frameworkErrors;
+        var $tooltips;
+        var $ajaxTooltips;
+        var $printIcon;
+        var $groupSection;
+        var $employeeSearch;
+
+        function setupGroups($groupSection, options) {
+            //Find existing click functions, only add if no event is set.
+
+            $groupSection.each(function () {
+                var toggleEventSet = false;
+
+                headerEvents = $._data($(this).find('> header')[0], 'events');
+
+                if (headerEvents && headerEvents.click) {
+                    for (i = 0; i < headerEvents.click.length; i++) {
+                        if (headerEvents.click[i].handler.name == '_toggleGroup') {
+                            toggleEventSet = true;
+                        }
+                    }
+                }
+
+                if (!toggleEventSet) {
+
+                    $(this).find('> header').on('click', function _toggleGroup(evt) {
+
+                        if (evt.target.nodeName !== 'INPUT' && evt.target.nodeName !== 'LABEL') {
+                            var $group = $(this).closest('section');
+
+                            // From opened to collapsed
+                            if (!$group.is('.emp-collapse')) {
+                                _priv.group.collapse($group, this);
+                            }
+
+                            // From collapsed to opened
+                            else {
+                                _priv.group.expand($group);
+                            }
+                        }
+
+                    });
+                }
+            });
+        }
+
+        function setupSearchBox($searchBox, options) {
+
+            searchBoxElem = $searchBox.get(0);
+            $searchBoxToggle = $searchBox.find('.emp-search-toggle');
+            $searchBoxToggleImg = $searchBoxToggle.find('img');
+            $searchFields = $searchBox.find('.emp-search-fields');
+            searchFieldsElem = $searchFields.get(0);
+
+            //
+            // Expands or collapses the search box
+            // @param   {Event}  evt   Click event
+            //
+
+            var _toggleSearchBox = function (evt, doSetFocus) {
+                var currHeight;
+                var fullHeight;
+                var fullBorderWidth;
+
+                // From collapsed to opened
+                if ($searchBox.is('.emp-collapse')) {
+                    currHeight = $searchBox.height();
+
+                    // Temporarily expand the group so we can get its full (auto) height
+                    $searchBox
+                        .removeClass('emp-collapse')
+                        .css('min-height', 0) // Temporarily override the CSS value, otherwise the search box will immediately expand to this height before the animation begins
+                        .css('height', 'auto');
+
+                    fullHeight = getComputedStyle(searchBoxElem).height;
+
+                    // We need to temporarily turn off the thick border around the search fields. The fields will overlap the border during the animation such that it looks broken, like the fields are spilling out of the container (as if you didn't use `overflow:hidden`). It's just an optical illusion but the animation looks better if we hide the border until the animation is complete.
+                    fullBorderWidth = getComputedStyle(searchFieldsElem).borderBottomWidth;
+                    searchFieldsElem.style.borderBottomWidth = '0px';
+
+                    // Begin the process of expanding
+                    $searchBox
+                        .css('overflow', 'hidden') // Prevent contents from spilling out
+                        .height(currHeight) // The element needs a fixed height to use as a starting point
+                        // Animate from this height to the full height
+                        .animate({ height: fullHeight }, 150, '', function () {
+                            // Undo our temporary overrides and allow CSS to resume control of these properties
+                            searchBoxElem.style.removeProperty('min-height');
+                            searchBoxElem.style.removeProperty('overflow');
+                            searchBoxElem.style.removeProperty('height'); // This is set by `$.animate()`. If we didn't remove this, child elements wouldn't affect the search box's height properly
+
+                            // Now restore the bottom border's thickness
+                            $searchFields.animate({ borderBottomWidth: fullBorderWidth }, 20, function () {
+                                // Remove the inline style created by `$.animate()`
+                                searchFieldsElem.style.removeProperty('border-bottom-width');
+                            });
+
+                            // Set focus to the first input
+                            if (doSetFocus) {
+                                $searchFields.find('input').first().focus();
+                            }
+                        });
+
+                    // Update toggle button for a11y
+                    $searchBoxToggle.attr('title', 'Hide the search box');
+
+                    $searchBoxToggleImg
+                        .attr('title', 'Hide the search box')
+                        .attr('alt', 'Upward-facing triangle');
+
+                    _toggleSearchBoxEventHandlers();
+                }
+                // From opened to collapsed
+                else {
+                    $searchBox
+                        .css('overflow', 'hidden')
+                        .animate({ height: getComputedStyle($searchBox.get(0)).height }, 150, '', function () {
+                            $searchBox
+                                .addClass('emp-collapse');
+
+                            searchBoxElem.style.removeProperty('overflow');
+                            searchBoxElem.style.removeProperty('height');
+
+                            _toggleSearchBoxEventHandlers();
+                        });
+
+                    // Update toggle button for a11y
+                    $searchBoxToggle.attr('title', 'Show the search box');
+
+                    $searchBoxToggleImg
+                        .attr('title', 'Show the search box')
+                        .attr('alt', 'Downward-facing triangle');
+                }
+            };
+
+            shortcut.register({
+                keys: 'shift+s',
+                callback: _toggleSearchBox,
+                description: 'Toggle the search box',
+                type: 'keydown',
+                data: true, // Flag for setting focus to the first input
+            });
+
+            //
+            // Sets the appropriate event handlers on the search box based on its current state
+            //
+            var _toggleSearchBoxEventHandlers = function () {
+                // From collapsed to opened
+                if ($searchBox.is('.emp-collapse')) {
+                    // Move the event listener to the entire search box
+                    $searchBoxToggle.off('click', _toggleSearchBox);
+                    $searchBox.on('click', _toggleSearchBox);
+                }
+                // From opened to collapsed
+                else {
+                    // Move the event listener to just the toggle button
+                    $searchBox.off('click', _toggleSearchBox);
+                    $searchBoxToggle.on('click', _toggleSearchBox);
+                }
+            };
+
+            // Set up the event handlers based on the initial state of the page
+            _toggleSearchBoxEventHandlers();
+        }
+
+        function setupTables($tables, options) {
+            $tables.each(function () {
+                $this = $(this);
+
+                var tableID = $this.attr("id");
+
+                if (tableID) {
+                    if (emp.reference.tables[tableID]) {
+                        // Remove Stylesheets to avoid conflicts
+                        emp.reference.tables[tableID].deleteStyleSheets();
+                        // Debind table
+                        emp.reference.tables[tableID].debind();
+                        // Delete table from emp.references
+                        delete emp.reference.tables[tableID];
+                    }
+                    // Add reference to new table in emp.reference.tables
+                    emp.reference.tables[tableID] = this;
+                }
+
+                // initialize table
+                $this.table();
+            });
+        }
+
+        function setupSelectOtherBoxes($selectOtherBoxes, options) {
+            $selectOtherBoxes.each(function () {
+                $(this).on('change', function (evt) {
+                    _events.selectOther(evt);
+                });
+            });
+        }
+
+        function setupDateInputs($dateInputs, options) {
+            $dateInputs.each(function () {
+                dateMask($(this));
+            });
+        }
+
+        function setupCalendars(dateCalenders, options) {
+            $dateCalenders.each(function () {
+                $(this).datepicker();
+            });
+        }
+
+        function setupPrintIcon($printIcon, options) {
+            $printIcon.each(function () {
+                $(this).on('click', function () {
+                    // Not sure why we need this anonymous function wrapper, rather than passing `window.print` directly, but jQuery throws an 'illegal invocation' error without it
+                    window.print();
+                });
+            });
+        }
+
+        function setupTooltips($tooltips, options) {
+            cui.load('popover', function _loadPopover() {
+                $tooltips.each(function () {
+
+                    var $tooltip = $(this);
+
+                    if ($tooltip[0].hasAttribute("data-title")) {
+
+                        $tooltip.popover({
+                            display: {
+                                className: 'emp-tooltip-style'
+                            },
+                            html: '<span>' + $tooltip.attr("data-title") + '</span>'
+                        });
+                    }
+                    else {
+
+                        $tooltip.popover({
+                            display: {
+                                className: 'emp-tooltip-style',
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        function setupAjaxTooltips($ajaxTooltips, options) {
+            $ajaxTooltips.each(function () {
+                ajaxTooltip($(this));
+            });
+        }
+
+        function setupEmployeeSearch($employeeSearch, options) {
+            $employeeSearch.each(function (i) {
+                var $select = $(this);
+                $select.on('change', function (evt) {
+                    _events.employeeSearchDropDown(evt);
+                });
+            });
+        }
+
+        function setupRatingContainers($ratingContainers, options) {
+            // Loop through and bind all rating components
+            $ratingContainers.each(function () {
+                $(this).rating();
+            });
+        }
+
+        function setupFileUploads($elements, options) {
+            $elements.each(function () {
+                var $fileUploadContainer = $(this);
+                var $fakeButton = $fileUploadContainer.find('button');
+                var $realInput = $fileUploadContainer.find('input');
+                var $spanText = $fileUploadContainer.find('span');
+
+                var elmObject = {
+                    "$button": $fakeButton,
+                    "$input": $realInput,
+                    "$span": $spanText
+                };
+
+                // Bind the button click event
+                $fakeButton.on('click', elmObject, _events.fileUploadButton);
+                $realInput.on('change', elmObject, _events.fileUploadInput);
+            });
+        }
+
+        function setupFrameworkErrors($frameworkErrors, options) {
+            $frameworkErrors.each(function () {
+                $frameworkErrors.on('click', _events.frameworkError);
+            });
+        }
+
+        if (section instanceof jQuery) {
+            $section = section;
+
+            //Find elements within the section
+            $searchBox = $section.find('#form_search');
+            $headerID = $section.find('#headerID');
+            $searchClearButton = $section.find('.emp-button-search-clear');
+            $searchClearAllButton = $section.find('.emp-button-search-clear-all');
+            $tables = $section.find('.emp-table table');
+            $dateInputs = $section.find('.emp-date');
+            $dateCalenders = $section.find('.cui-c-datepicker');
+            $selectOtherBoxes = $section.find('.emp-select-other-selectbox select');
+            $ratingContainers = $section.find('.emp-rating-stars-container');
+            $fileUploads = $section.find('.emp-file-upload');
+            $frameworkErrors = $section.find('.emp-icon-ghost');
+            $tooltips = $section.find('.emp-tooltip');
+            $ajaxTooltips = $('.emp-ajax-tooltip');
+            $printIcon = $section.find('.emp-icon-print');
+            $groupSection = $section.find('section');
+            $employeeSearch = $section.find('.emp-employee-search .employee-search-select');
+        }
+
+        if ($groupSection && $groupSection.length) {
+            setupGroups($groupSection, options);
+        }
+
+        // Search box
+        if ($searchBox && $searchBox.length) {
+            setupSearchBox($searchBox, options);
+        }
+
+        if ($tables && $tables.length) {
+            setupTables($tables, options);
+        }
+
+        // Select other page binding
+        if ($selectOtherBoxes && $selectOtherBoxes.length) {
+            setupSelectOtherBoxes($selectOtherBoxes, options);
+        }
+
+        // Add custom binding for when user types dates to auto add '/'s
+        if ($dateInputs && $dateInputs.length) {
+            setupDateInputs($dateInputs, options);
+        }
+
+        // Bind the date picker to all date inputs.
+        if ($dateCalenders && $dateCalenders.length) {
+            setupCalendars($dateCalenders, options);
+        }
+
+        // Print icon
+        if ($printIcon && $printIcon.length) {
+            setupPrintIcon($printIcon, options);
+        }
+
+        // Check for tooltips on the page
+        // If any tooltips are send them to the popover component for binding.
+        if ($tooltips && $tooltips.length) {
+            setupTooltips($tooltips, options);
+        }
+
+        //Ajax Tooltips
+        if ($ajaxTooltips && $ajaxTooltips.length) {
+            setupAjaxTooltips($ajaxTooltips, options);
+        }
+
+        // Employee Search
+        if ($employeeSearch && $employeeSearch.length) {
+            setupEmployeeSearch($employeeSearch, options);
+        }
+
+        // Rating Search
+        if ($ratingContainers && $ratingContainers.length) {
+            setupRatingContainers($ratingContainers, options);
+        }
+
+        // File Uploads
+        if ($fileUploads && $fileUploads.length) {
+            setupFileUploads($fileUploads, options);
+        }
+
+        // Framework Errors
+        if ($frameworkErrors && $frameworkErrors.length) {
+            setupFrameworkErros($frameworkErrors, options);
+        }
+    };
+
+    _priv.group = {};
+
+    /**
+     * Collapse a group
+     * @param   {jQuery}  $group       The `<section>` element
+     * @param   {Element}  headerElem  The `<header>` element (optional)
+     * @return  {jQuery}               The `<section>` element
+     */
+    _priv.group.collapse = function _priv_group_collapse($group, headerElem) {
+        if (!headerElem) {
+            headerElem = $group.find('> header').get(0);
+        }
+
+        // Header-less group
+        if (!headerElem) {
+            return null;
+        }
+
+        $groupCollapseButton = $group.find('button.emp-icon-section-toggle-collapse');
+
+        $group
+            .css('overflow', 'hidden')
+            .animate({ height: getComputedStyle(headerElem).height }, 150, '', function () {
+
+                if(!$group.hasClass('emp-tabs')){
+
+                    $group
+                        .addClass('emp-collapse');
+                }
+
+                $groupCollapseButton.attr('title', 'Show Section');
+
+                // Remove inline styles so the stylesheet can regain control
+                $group.get(0).style.removeProperty('overflow');
+                $group.get(0).style.removeProperty('height'); // Remove the static height set by `animate`, otherwise sub-groups won't affect this (parent) group's height properly
+            });
+
+        return $group;
+    };
+
+    /**
+     * Expand a group
+     * @param   {jQuery}  $group  The `<section>` element
+     * @return  {jQuery}          The `<section>` element
+     */
+    _priv.group.expand = function _priv_group_expand($group) {
+        var currHeight;
+        var fullHeight;
+
+        currHeight = $group.height();
+
+        // Temporarily expand the group so we can get its full (auto) height
+        $group.removeClass('emp-collapse').css('height', 'auto');
+
+        $groupCollapseButton = $group.find('button.emp-icon-section-toggle-collapse');
+
+        fullHeight = getComputedStyle($group.get(0)).height;
+
+        $group
+            .height(currHeight)
+            .animate({ height: fullHeight }, 150, '', function () {
+                // Remove the static height set by `animate`, otherwise sub-groups won't affect this (parent) group's height properly
+                $group.get(0).style.removeProperty('height');
+
+                $groupCollapseButton.attr('title', 'Hide Section');
+            });
+
+        return $group;
+    };
+
+    _priv.group.toggleAll = function _group_toggleAll(evt) {
+        // First time the user has clicked the icon: expand all sections
+        if (_priv.$groupToggleControl.hasClass('emp-initial-state')) {
+            // Remove this class, which has no styles. It's only used so we can track if the page is in its initial state
+            _priv.$groupToggleControl.removeClass('emp-initial-state');
+
+            // Find all collapse sections and expand them
+            $('section.emp-collapse').each(function () {
+                _priv.group.expand($(this));
+            });
+
+            // Update the toggle icon
+            _priv.$groupToggleControl
+                .addClass('emp-all-collapse')
+                .attr('title', 'Collapse all sections');
+        }
+        // Sections are currently collapsed, we need to expand them
+        else if (_priv.$groupToggleControl.hasClass('emp-all-collapse')) {
+            // Find all expanded sections and collapse them
+            $('section:not(.emp-collapse)').each(function () {
+                _priv.group.collapse($(this));
+            });
+
+            // Update the toggle icon
+            _priv.$groupToggleControl
+                .removeClass('emp-all-collapse')
+                .attr('title', 'Expand all sections');
+        }
+        // Sections are currently expanded, we need to collapse them
+        else {
+            // Find all collapse sections and expand them
+            $('section.emp-collapse').each(function () {
+                _priv.group.expand($(this));
+            });
+
+            // Update the toggle icon
+            _priv.$groupToggleControl
+                .addClass('emp-all-collapse')
+                .attr('title', 'Collapse all sections');
+        }
+    };
+
+    _priv.tabset = {};
+
+    /**
+     * Opens the tabset
+     */
+    _priv.tabset.open = function _tabset_open() {
+        var fullHeight;
+
+        // Temporarily expand the tabset so we can get its full (auto) height
+        $tabset
+            .removeClass('emp-collapse')
+            .css('height', 'auto');
+
+        fullHeight = getComputedStyle(tabsetElem).height;
+
+        // Begin the process of expanding
+        $tabset
+            .height(0) // Start with no height
+            .animate({ height: fullHeight }, 150, '', function () {
+                // Remove the static height set by `animate`, otherwise sub-groups won't affect this (parent) group's height properly
+                tabsetElem.style.removeProperty('height');
+            });
+
+        // Update the toggle button immediately so that it matches the dark color of the tabset that is unfolding below it
+        $tabsetToggler
+            .removeClass('emp-collapse');
+    };
+
+    /**
+     * Closes the tabset
+     */
+    _priv.tabset.close = function _tabset_close() {
+        $tabset
+            .css('overflow', 'hidden')
+            .animate({ height: 0 }, 150, '', function () {
+                $tabset
+                    .addClass('emp-collapse');
+
+                // Remove inline styles so CSS can regain control
+                tabsetElem.style.removeProperty('overflow');
+                tabsetElem.style.removeProperty('height'); // Set by `$.animate()`
+
+                // Update the toggle button, but not until the tabset is collapsed, otherwise the color appears to change too soon in conjunction with the animation (since the button is above the tabset and the tabset rolls upward)
+                $tabsetToggler
+                    .addClass('emp-collapse');
+            });
+    };
+
+    _priv.tabset.pin = function _tabset_pin() {
+        // Make sure the tabset is opened
+        // Normally it will be opened if the user clicks on the pin icon, but this function is also called programmatically, e.g. when applying the user's preferences on page load
+        if ($tabset.hasClass('emp-collapse')) {
+            emp.tabset.open();
+        }
+
+        $tabsetPin
+            .addClass('emp-selected')
+            .attr('title', 'Unpin the tabset')
+            .text('Unpin the tabset');
+    };
+
+    _priv.tabset.unpin = function _tabset_unpin() {
+        $tabsetPin
+            .removeClass('emp-selected')
+            .attr('title', 'Pin the tabset open')
+            .text('Pin the tabset open');
+    };
+
+    /**
+     * Pull date from table hidden fields and fill in other elements with those values
+     * @param   {string}    name        OPTIONAL - string name
+     * @param   {object}    map         The object ins dest:source format
+     * @param   {jQuery}    $source     jQuery reference for a `<table>` element
+     * @param   {function}  function    OPTIONAL - callback function
+     * @return  {boolean}               return true if it finishes without issue otherwise false
+     */
+    _priv.processMap = function _priv_processMap(name, map, $source, cb) {
+
+        var error = false;
+        var item;
+
+        // Since callback is optional we need to check to make sure that a callback is not stored in $source instead.
+        if (typeof $source === 'function' && cb === undefined) {
+            cb = $source;
+            $source = undefined;
+        }
+
+        // Check to see if name is an object, if it is then we can assume name is missing
+        if (typeof name === 'object') {
+
+            if (typeof map === 'function' && cb === undefined) {
+                cb = map;
+            }
+
+            if (map !== undefined && typeof map !== 'function') {
+                $source = map;
+            }
+
+            // Now give map its object
+            map = name;
+
+            // Reset name;
+            name = undefined;
+        }
+
+        function process(map) {
+
+            for (var def in map) {
+
+                // Get source value
+                var value;
+
+                if (map[def].src instanceof jQuery) {
+
+                    switch (map[def].src[0].nodeName) {
+
+                        case 'INPUT':
+                        case 'SELECT':
+                        case 'TEXTAREA':
+
+                            value = map[def].src.val();
+                            break;
+
+                        default:
+                            value = map[def].src.text();
+                            break;
+
+                    }
+
+                }
+                else {
+
+                    if (typeof map[def].src === "string") {
+
+                        if (map[def].src.indexOf(':') === -1) {
+
+                            value = map[def].src;
+                        }
+                        else {
+
+                            if (map[def].src === ':check') {
+                                value = true;
+                            }
+                            else if (map[def].src === ':uncheck') {
+                                value = false;
+                            }
+                            else {
+                                value = map[def].src;
+                            }
+                        }
+
+                    }
+                    else {
+
+                        value = map[def].src;
+
+                    }
+
+                }
+
+                // Apply value in dest
+                switch (map[def].dest[0].nodeName) {
+
+                    case 'INPUT':
+
+                        var type = map[def].dest.attr('type');
+
+                        if (type === 'checkbox' || type === 'radio') {
+
+                            if (typeof value === "boolean") {
+
+                                map[def].dest.prop('checked', value);
+                            }
+                            else {
+
+                                if (typeof value === "string") {
+
+                                    if (value === "true") {
+
+                                        map[def].dest.prop('checked', true);
+                                    }
+                                    else if (value === "false") {
+
+                                        map[def].dest.prop('checked', false);
+                                    }
+
+                                }
+                                else {
+
+                                    journal.log({ type: 'error', owner: 'Developer', module: 'emp', function: 'processMap' }, 'Process Map checkbox values should be a string or boolean. Acceptable string values include: \"true\", \"false\"');
+                                }
+                            }
+                        }
+                        else {
+
+                            //map[def].dest.attr('value', value);
+                            // Switched over to updating value using pure javascript
+                            map[def].dest[0].value = value;
+                        }
+
+                        break;
+
+                    case 'SELECT':
+
+                        var $options = $(map[def]).children('option[selected]');
+
+                        if ($options.length) {
+                            $options.removeAttr('selected');
+                        }
+
+                        map[def].dest.val(value);
+
+                        break;
+
+                    case 'TEXTAREA':
+                        map[def].dest.val(value);
+                        break;
+
+                    case 'SPAN':
+
+                        map[def].dest.text(value);
+                        break;
+
+                    case 'I':
+
+                        // Verify this is one of the approved icons
+                        if (map[def].dest.hasClass('emp-icon-redcheck') || map[def].dest.hasClass('emp-icon-stop')) {
+
+                            if (value === ":check" || value === ":check:") {
+
+                                if (map[def].dest.hasClass('emp-icon-stop')) {
+                                    map[def].dest.removeClass('emp-icon-stop');
+                                    map[def].dest.addClass('emp-icon-redcheck');
+                                }
+                            }
+                            else if (value === ":uncheck" || value === ":uncheck:") {
+
+                                if (map[def].dest.hasClass('emp-icon-redcheck')) {
+                                    map[def].dest.removeClass('emp-icon-redcheck');
+                                    map[def].dest.addClass('emp-icon-stop');
+                                }
+
+                            }
+                            else {
+
+                                journal.log({ type: 'error', owner: 'DEV', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' did not supply a supported value.');
+                            }
+                        }
+                        else {
+
+                            journal.log({ type: 'error', owner: 'DEV', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' was not a supported icon type.');
+                        }
+
+                        break;
+
+                    default:
+                        map[def].dest.text(value);
+                        break;
+
+                }
+
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' with value', ((value === '') ? '(empty string)' : value));
+
+            }
+        }
+
+        /* Source functions */
+        this.tableSources = function tableSource(needle, $table) {
+
+            // Get the table reference for the configs
+            var empTableRef = emp.reference.tables[$table.attr('id')];
+            var colName;
+
+            if (empTableRef !== undefined) {
+
+                // Check to see if we have a column index
+                if ((typeof needle === 'string' && !isNaN(needle)) || typeof needle === 'number') {
+
+                    if (typeof needle === 'string') {
+                        needle = parseInt(needle);
+                    }
+
+                    // Remove 1 from the list as framework starts with a index of 1;
+                    needle -= 1;
+
+                    // Lookup the colmap column name
+                    if (empTableRef.config.colmap.hasOwnProperty(needle)) {
+
+                        colName = empTableRef.config.colmap[needle];
+
+                        for (var i = 0, len = empTableRef.config.hiddenInputs.$columns.length; i < len; i++) {
+
+
+                            if (empTableRef.config.hiddenInputs.$columns[i][0].id === colName) {
+
+                                return empTableRef.config.hiddenInputs.$columns[i].val();
+                            }
+                        }
+
+                    }
+                    else {
+                        // Invalid column number
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Could not find reference unknown column: ', needle);
+
+                        return false;
+                    }
+
+                }
+                else if (typeof needle === 'string') {
+
+                    // Now the we have the name, lets get the hidden input
+                    if (empTableRef.config.hiddenInputs.current[colName]) {
+                        return empTableRef.config.hiddenInputs.current[colName];
+                    }
+                    else {
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Could not find reference to hidden table column field for: ', needle);
+
+                        return false;
+                    }
+                }
+                else {
+                    // This is not a number or a string so we can't continue
+                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Invalid table column parameter: ', needle);
+
+                    return false;
+                }
+            }
+        };
+
+        this.containerSources = function containerSources(needle, $section) {
+            // Since this is a container, we need to do lookup for the elements id (needle)
+            var $needle = $section.find('#' + needle);
+
+            if ($needle.length === 1) {
+                return $needle;
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'containerSources' }, 'Unable to find source with id of: ', needle);
+
+                return false;
+            }
+        };
+
+        // We need to build the process object map, so lets do so.
+        var newMap = {};
+        var allowedContainers = ['DIV', 'SECTION'];
+        var sourceSearch = null;
+
+        // Try to see if we can find an ide with this values name
+        if ($source instanceof jQuery) {
+
+            if ($source[0].nodeName === 'TABLE') {
+
+                sourceSearch = 'tableSources';
+
+            }
+            else if (allowedContainers.indexOf($source[0].nodeName) !== -1) {
+
+                sourceSearch = 'containerSources';
+
+            }
+
+        }
+        else if ($source !== undefined) {
+
+            if (typeof $source === "string" && $source !== ":strict:") {
+
+                $source = $('#' + $source);
+
+                // Verify that we did find something
+                if ($source.length === 1) {
+
+                    if ($source[0].nodeName === 'TABLE') {
+
+                        sourceSearch = 'tableSources';
+
+                    }
+                    else if (allowedContainers.indexOf($source[0].nodeName) !== -1) {
+
+                        sourceSearch = 'containerSources';
+
+                    }
+
+                }
+            }
+        }
+
+        // Loop through the map of objects and pull the column values based on the colIndex
+        for (item in map) {
+
+            // Select the item (it should be an id to something)
+            var $mapDest = $('#' + item);
+
+            if ($mapDest.length === 0) {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Mapping for destination: ', item, ' doesn\'t exist');
+            }
+
+            else {
+
+                // Now pull the source value
+                var mapSource = map[item];
+                var $mapSource = false;
+
+                // perform the search based on the needs
+                if (sourceSearch !== null) {
+
+                    $mapSource = this[sourceSearch].call(this, mapSource, $source);
+
+                }
+                else {
+
+                    // Check for state based value (check, uncheck)
+                    if (typeof mapSource === 'string' && mapSource.indexOf(':') === -1 && $source !== ":strict:") {
+
+                        // Just try to find the source regularly with an id (by searching the whole DOM!)
+                        $mapSource = $('#' + mapSource);
+
+                        // Check to see if the value was a jquery attribute
+                        if ($mapSource.length === 0) {
+                            // No length so lets assume the raw mapSource is the value
+                            $mapSource = mapSource;
+                        }
+                        else if ($mapSource.length > 1) {
+                            // Multiple items? lets just mark this as invalid
+                            $mapSource = false;
+                        }
+
+                    }
+                    else {
+
+                        $mapSource = mapSource;
+                    }
+                }
+
+                if ($mapSource !== false) {
+                    // Add the map definition
+                    newMap[item] = {
+                        'dest': $mapDest,
+                        'src': $mapSource
+                    };
+
+                    // Check for display version of the field.
+                    var $mapDestDisplay = $('#' + item + "_DISPLAY");
+
+                    if ($mapDestDisplay.length === 1) {
+
+                        newMap[item + "_display"] = {
+                            'dest': $mapDestDisplay,
+                            'src': $mapSource
+                        };
+
+                    }
+
+                }
+                else {
+                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Could not generate a good mapping between dest: ', item, ' and source: ', mapSource);
+
+                    return false;
+                }
+            }
+        }
+
+        // Checks for error, if found return false
+        if (error) {
+            return false;
+        }
+        else {
+
+            // And process it!
+            process(newMap);
+
+            // Check for callback function, if none are provided return true
+            if (typeof cb === 'function') {
+                cb(true);
+            }
+            else {
+                return true;
+            }
+
+            return true;
+        }
+    };
+
+    /**
+     * Pull date from table hidden fields and fill in other elements with those values
+     * @param   {string}    name        OPTIONAL - string name
+     * @param   {object}    map         The object ins dest:source format
+     * @param   {jQuery}    $source     jQuery reference for a `<table>` element
+     * @param   {function}  function    OPTIONAL - callback function
+     * @return  {boolean}               return true if it finishes without issue otherwise false
+     */
+    _priv.dataMap = function _priv_data_map(map, cb) {
+        // Stubbing out for now.
+    };
+
+    // Sourcer map create an object key value pairs string for all input declared within a given section. Only inputs care collected
+    _priv.sourceMap = function _priv_sourceMap($section) {
+
+        var sectionMap = {};
+
+        // We have a form so lets get all of the field
+        var $inputs = $section.find('input, select, textarea');
+
+        $inputs.each(function (i) {
+
+            var $input = $(this);
+
+            if ($input[0].nodeName === "INPUT") {
+
+                var type = $input.attr('type');
+
+                // Filter out check and radio
+                if ((type === "checkbox" || type === "radio")) {
+
+                    // Check to see if its checked
+                    if ($input.is(':checked')) {
+
+                        // Use the name as the key and value as value
+                        sectionMap[$input.attr('name')] = $input.val();
+                    }
+                }
+                else {
+
+                    // Use the name as the key and value as value
+                    sectionMap[$input.attr('name')] = $input.val();
+                }
+            }
+            else {
+
+                // Use the name as the key and value as value
+                sectionMap[$input.attr('name')] = $input.val();
+            }
+
+
+        });
+
+        return sectionMap;
+    };
+
+    // Element map is used to update an key value pair object where the current value is the id of an element on the page that holds the true value for the given key.
+    _priv.elementMap = function _priv_elementMap(elmMap) {
+
+        function getValue(lookup) {
+
+            var $source = $('#' + lookup);
+
+            if ($source.length === 1) {
+
+                var value;
+
+                switch ($source[0].nodeName) {
+
+                    case 'INPUT':
+                    case 'SELECT':
+                    case 'TEXTAREA':
+                        value = $source.val().trim();
+                        break;
+
+                    default:
+                        value = $source.text().trim();
+                        break;
+                }
+
+                return value;
+
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: '', func: 'elementMap' }, 'Element Map failed, manual source map could not find refernce for source: ', lookup);
+
+                return undefined;
+            }
+
+        }
+
+        var returnMap = {};
+        var value = null;
+
+        if (Array.isArray(elmMap)) {
+
+            for (var i = 0, len = elmMap.length; i < len; i++) {
+
+                value = getValue(elmMap[i]);
+
+                if (value === undefined) {
+
+                    return false;
+                }
+                else {
+
+                    returnMap[elmMap[i]] = value;
+                }
+
+            }
+
+        }
+        else if (typeof elmMap === "object") {
+
+            //  We need to process the source map before making the data request
+            for (var key in elmMap) {
+
+                value = getValue(elmMap[key]);
+
+                if (value === undefined) {
+
+                    return false;
+                }
+                else {
+
+                    returnMap[key] = value;
+                }
+            }
+
+        }
+
+        return returnMap;
+    };
+
+    _priv.processValidation = function _priv_processValidation(validationObj) {
+
+        function processField(field, id) {
+            var test;
+
+            var $messageLoc;
+
+            if (field.$reference && field.$reference[0]) {
+
+                $messageParent = $(field.$reference[0]).parent();
+
+                if (field.$reference[0].nodeName === 'TABLE') {
+                    $messageParent = field.$reference.parents('.emp-table').eq(0);
+                }
+
+                if ($messageParent.find('.cui-messages')[0]) {
+
+                    $messageLoc = $($messageParent.find('.cui-messages')[0]);
+                }
+                else {
+                    $messageLoc = $('<ul/>', {
+                        'class': 'cui-hidden cui-messages cui-field-message'
+                    });
+
+                    if (field.$reference[0].nodeName === 'TABLE') {
+
+                        $messageParent.prepend($messageLoc);
+                    }
+                    else {
+
+                        $messageParent.append($messageLoc);
+                    }
+                }
+            }
+
+            // check to see if the field is in the reference
+            if (!reference.fields.hasOwnProperty(id)) {
+
+                // This field reference is not currently known so add it
+                reference.fields[id] = field;
+
+                field = reference.fields[id];
+
+                // Check to see if the field failed validation
+                if (!field.result) {
+
+                    // loop through all of the test related to the field.
+                    for (test in field.tests) {
+
+                        if (typeof field.tests[test].message === 'string') {
+
+                            if ($messageLoc) {
+                                field.tests[test].message = empMessage.createMessage({ text: field.tests[test].message, type: "error" }, { scroll: true, field: id, msgLocation: $messageLoc });
+                            }
+                            else {
+                                // field.tests[test].message = _priv.pageMessage({text:field.tests[test].message, type:"error"}, true);
+                                field.tests[test].message = empMessage.createMessage({ text: field.tests[test].message, type: "error" });
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+
+                // Get a reference to each set of tests
+                var oldResult = reference.fields[id];
+                var newResult = field;
+                var oldTests = [];
+                var newTests = [];
+                var oldOnly = [];
+                var newOnly = [];
+                var commonTest = [];
+                var len;
+                var i;
+
+                var changeFieldResult = false;
+
+                // Get the name of all the test in the previous run
+                for (test in oldResult.tests) {
+                    oldTests.push(test);
+
+                    if (test in newResult.tests) {
+                        commonTest.push(test);
+                    }
+                    else {
+                        oldOnly.push(test);
+                    }
+                }
+
+                // Get the name of all the test in the current run
+                for (test in newResult.tests) {
+                    newTests.push(test);
+
+                    if (!(test in oldResult.tests)) {
+                        newOnly.push(test);
+                    }
+                }
+
+                // Start by looping common tests
+                for (i = 0, len = commonTest.length; i < len; i++) {
+
+                    test = commonTest[i];
+
+                    $parentSections = false;
+
+                    //Add test to determine if result or message has changed or been updated. Navivate the newResult.tests[test] message and determine if it is present on the screen, if not rebuild the message.
+
+                    // Check if this status has changes
+                    if (oldResult.tests[test].result !== newResult.tests[test].result) {
+
+                        if (typeof oldResult.tests[test].result === 'boolean' && typeof newResult.tests[test].result === 'boolean') {
+
+                            changeFieldResult = true;
+
+                            // The test state changed, check to see if its now false
+                            if (newResult.tests[test].result) {
+
+                                // Since the test is now true, remove the old message
+                                empMessage.removeMessage(oldResult.tests[test].message, $messageLoc);
+
+                                //If there are still error messages present, scroll back to the top
+                                empMessage.scrollToMessage();
+                            }
+                            else {
+
+                                if ($messageLoc) {
+                                    newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" }, { scroll: false, field: id, msgLocation: $messageLoc });
+                                }
+                                else {
+                                    newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" });
+                                }
+                            }
+                        } // Check to see if the string error is just another string error
+                        else if (typeof oldResult.tests[test].result === 'string' && typeof newResult.tests[test].result === 'string') {
+                            // Remove the old message first
+                            empMessage.removeMessage(oldResult.tests[test].message, $messageLoc);
+
+                            // Generate the new message
+                            if ($messageLoc) {
+                                newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" }, { scroll: false, field: id, msgLocation: $messageLoc });
+                            }
+                            else {
+                                newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" });
+                            }
+                        }
+                        else if (typeof oldResult.tests[test].result === 'string' && typeof newResult.tests[test].result === 'boolean') {
+                            // This condition should only bee meet when the string error value is returning true.
+                            if (newResult.tests[test].result) {
+
+                                // Remove the old message first
+                                empMessage.removeMessage(oldResult.tests[test].message, $messageLoc);
+
+                                //If there are still error messages present, scroll back to the top
+                                empMessage.scrollToMessage();
+                            }
+                            else {
+                                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processValidation' }, 'Validation change from string code to false boolean');
+                            }
+                        }
+                        else if (typeof oldResult.tests[test].result === 'boolean' && typeof newResult.tests[test].result === 'string') {
+                            // This condition should only bee meet when old message was true.
+                            if (oldResult.tests[test].result) {
+                                // Remove the old message first
+
+                                if ($messageLoc) {
+                                    newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" }, { scroll: false, field: id, msgLocation: $messageLoc });
+                                }
+                                else {
+                                    newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" });
+                                }
+                            }
+                            else {
+                                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processValidation' }, 'Validation change from string code to false boolean');
+                            }
+                        }
+
+                        // Update the old reference with the new info
+                        oldResult.tests[test] = newResult.tests[test];
+                    }
+                    else if (!newResult.tests[test].result) {
+
+                        var message = oldResult.tests[test].message;
+                        var messageExists = field.$reference.parent().find(message[0]);
+
+                        //Verify that page message is still set
+                        if (messageExists.length === 0 && message) {
+                            changeFieldResult = true;
+                            if ($messageLoc) {
+                                newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" }, { scroll: false, field: id, msgLocation: $messageLoc });
+                            }
+                            else {
+                                newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" });
+                            }
+                            // Update the old reference with the new info
+                            oldResult.tests[test].message = newResult.tests[test].message;
+                        }
+                        else {
+                            // make sure field level notifier is present.
+                            empMessage.scrollToMessage();
+                        }
+                    }
+                }
+
+                // Now we to look over any new injected tests
+                if (newOnly.length > 0) {
+                    for (i = 0, len = newOnly.length; i < len; i++) {
+                        test = newOnly[i];
+
+                        // Check to see if this new test failed
+                        if (!newResult.tests[test].result) {
+                            // Mark the overall change to failed
+                            changeFieldResult = true;
+
+                            if ($messageLoc) {
+                                newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" }, { scroll: false, field: id, msgLocation: $messageLoc });
+                            }
+                            else {
+                                newResult.tests[test].message = empMessage.createMessage({ text: newResult.tests[test].message, type: "error" });
+                            }
+                        }
+
+                        // Add the new test.
+                        oldResult.tests[test] = newResult.tests[test];
+                    }
+                }
+
+                // Now we to look over any test that may have been dynamically removed
+                if (oldOnly.length > 0) {
+
+                    for (i = 0, len = oldOnly.length; i < len; i++) {
+
+                        test = oldOnly[i];
+
+                        // Check to see if this new test failed
+                        if (!oldResult.tests[test].result) {
+
+                            // Since the test is now invalid, remove the old message
+                            empMessage.removeMessage(oldResult.tests[test].message, $messageLoc);
+
+                            //If there are still error messages present, scroll back to the top
+                            empMessage.scrollToMessage($messageLoc);
+                        }
+
+                        // Dump the old test reference
+                        delete oldResult.tests[test];
+
+                    }
+
+                }
+
+                if (changeFieldResult) {
+
+                    // Update the over all
+                    oldResult.result = newResult.result;
+                }
+            }
+        }
+
+        var field;
+        var fieldID;
+
+        var $messageLoc = $('#body-wrapper').find('ul.cui-messages.emp-messages').eq(0);
+
+        // Check to see if this is an array/form of fields
+        if (validationObj.fields) {
+
+            // Loop through every field in validation object.
+            var fields = validationObj.fields;
+
+            for (var i = 0, len = fields.length; i < len; i++) {
+
+                field = fields[i];
+                fieldID = field.$reference.attr('id');
+
+                processField(field, fieldID);
+
+                if (!fields[i].result) {
+
+                    $parentSections = fields[i].$reference.parents('section.emp-collapse');
+
+                    if ($parentSections.length) {
+
+                        $parentSections.each(function () {
+
+                            $(this).removeClass('emp-collapse');
+                        });
+                    }
+                }
+
+            }
+
+        }
+        else if (validationObj.$reference) {
+
+            field = validationObj;
+            fieldID = field.$reference.attr('id');
+
+            processField(field, fieldID);
+
+            if (!field.result) {
+
+                $parentSections = field.$reference.parents('section.emp-collapse');
+
+                if ($parentSections.length) {
+
+                    $parentSections.each(function () {
+
+                        $(this).removeClass('emp-collapse');
+                    });
+                }
+            }
+        }
+    };
+
+    _priv.insertCharIntoString = function _priv_insertCharIntoString(pos, source, insertChar) {
+
+        return source.substring(0, pos) + insertChar + source.substring(pos, source.length);
+    };
+
+    /**
+     * Fills in missing properties of the `fwData` global
+     */
+    _priv.stubOutFwData = function _stubOutFwData() {
+        // Main container
+        if (!window.fwData) {
+            window.fwData = {};
+            window.fwData.context = {};
+        }
+
+        if (!window.fwData.context) {
+            window.fwData.context = {};
+        }
+
+        // Tabset
+        if (!window.fwData.context.tabset) {
+            window.fwData.context.tabset = {};
+        }
+
+        if (!window.fwData.context.tabset.id) {
+            window.fwData.context.tabset.id = window.location.href.replace(/\W/g, '_');
+        }
+
+        if (!window.fwData.context.tabset.url) {
+            window.fwData.context.tabset.url = window.location.pathname;
+        }
+
+        if (!window.fwData.context.tabset.name) {
+            window.fwData.context.tabset.name = $('.emp-header-tabset-title').find('h1').text();
+        }
+
+        // Screen (page)
+        if (!window.fwData.context.screen) {
+            window.fwData.context.screen = {
+                type: "missing"
+            };
+        }
+
+        if (!window.fwData.context.screen.id) {
+            // Try to get a reasonable ID from the URL
+            if (window.location.pathname.indexOf('/') !== -1) {
+                // The end of the URL after the last slash (i.e. file name)
+                window.fwData.context.screen.id = window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1);
+            }
+            else {
+                window.fwData.context.screen.id = window.location.pathname;
+            }
+
+            window.fwData.context.screen.id = window.fwData.context.screen.id.replace(/\W/g, '_');
+        }
+
+        if (window.fwData.preferences === undefined && window.fwData.preferences !== false) {
+
+            console.log("setup prefernces");
+
+            window.fwData.preferences = {};
+        }
+
+        // Global preferences
+        if (window.fwData.preferences && !window.fwData.preferences.global) {
+            window.fwData.preferences.global = {};
+
+            // Note: do not stub out `fwData.globalPrefs.data`. This will cause the Preferences component to think that there is valid data which means the component will not generate a new prefs object.
+        }
+
+        if (window.fwData.preferences && !window.fwData.preferences.global.timestamp) {
+            window.fwData.preferences.global.timestamp = 1451624400; // This corresponds to 01/01/2016
+        }
+
+        if (window.fwData.preferences && !window.fwData.preferences.global.url) {
+            window.fwData.preferences.global.url = {};
+        }
+
+        // Tabset preferences
+        if (window.fwData.preferences && !window.fwData.preferences.tabset) {
+            window.fwData.preferences.tabset= {
+                timestamp: {
+                    client: 1451624400, // This corresponds to 01/01/2016
+                },
+            };
+
+            // Note: do not stub out `fwData.tabsetPrefs.data`. This will cause the Preferences component to think that there is valid data which means the component will not generate a new prefs object.
+        }
+
+        if (window.fwData.preferences && !window.fwData.preferences.tabset.timestamp) {
+            window.fwData.preferences.tabset.timestamp = 1451624400; // This corresponds to 01/01/2016
+        }
+
+        // Notifications
+        if (!window.fwData.notifications) {
+            window.fwData.notifications = {
+                messages: [],
+            };
+        }
+
+        // Menu
+        if (!window.fwData.menus) {
+            window.fwData.menus = {};
+            window.fwData.menus.global = {};
+        }
+
+        // Favorites
+        if (!window.fwData.context.favorites) {
+            window.fwData.context.favorites = {};
+
+            // Note: do not stub out `fwData.favorites.data`. This will cause the Favorites component to think that there is valid data which means the component will not generate a new favorites object.
+        }
+
+        if (!window.fwData.context.favorites.timestamp) {
+            window.fwData.context.favorites.timestamp = 1451624400; // This corresponds to 01/01/2016
+        }
+    };
+
+    _priv.errorReportButton = function _error_Report_Button() {
+
+        if (!_disableReport) {
+
+            journal.log({type: 'info', owner: 'UI', module: 'emp', func: 'errorReportButton'}, 'Generating Error Report!');
+
+            var jsonModalContents = {
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "textarea",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_UI_ERROR_REPORT"
+                                            },
+                                            "text": "Please describe your error:",
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_UI_ERROR_REPORT",
+                                                "id": "E_UI_ERROR_REPORT",
+                                                "rows": "4",
+                                                "cols": "50"
+                                            },
+                                            "style": "top-align-label"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "template": "buttonGroup",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "buttonGroup",
+                                "style": "align-right",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "id": "E_UI_ERROR_REPORT_CANCEL",
+                                            },
+                                            "text": "Cancel"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "id": "E_UI_ERROR_REPORT_SUBMIT",
+                                            },
+                                            "text": "Submit Error",
+                                            "primary": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            render.section(undefined, jsonModalContents, 'return', function(html) {
+
+                var $errorModal = false;
+
+                // Load a modal on click
+                cui.load('modal', function _error_report_modal() {
+
+                    $errorModal = $.modal({
+                        autoOpen: true,
+                        html: html,
+                        closeDestroy: true,
+                    });
+
+                    $cancel = $errorModal.$self.find('#E_UI_ERROR_REPORT_CANCEL');
+
+                    $cancel.on('click', { modal: $errorModal }, function (evt) {
+
+                        var modal = evt.data.modal;
+
+                        modal.destroy();
+                    });
+
+                    $submitError = $errorModal.$self.find('#E_UI_ERROR_REPORT_SUBMIT');
+
+                    $submitError.on('click', { modal: $errorModal }, function (evt) {
+
+                        var modal = evt.data.modal;
+                        var fwContext = {};
+
+                        if (fwData.fwContext) {
+                            fwContext = fwData.fwContext;
+                        }
+
+                        var uiContext = {};
+
+                        // Get localStorage values
+                        var global = store.get("globalPrefs");
+                        var tabset = store.get("tabsetPrefs");
+                        var faves = store.get("favorites");
+                        var access = store.get("tabsetAccess");
+
+                        // Copy everything sent over with the page.
+                        uiContext.page = $.extend(true, {}, fwData);
+
+                        // Get everything currently stored in the browsers localstorage
+                        uiContext.localStorage = {
+                            tabset: (typeof tabset === "object") ? tabset : false,
+                            global: (typeof global === "object") ? global : false,
+                            faves: (typeof faves === "object") ? faves : false,
+                            access: (typeof access === "object") ? access : false,
+                        };
+
+                        // Get the current journal history
+                        uiContext.journal = journal.getStorage();
+
+                        var $userComment = modal.$self.find('#E_UI_ERROR_REPORT');
+                        fwContext.userComments = $userComment.val();
+
+                        if (fwData.context.urls && fwData.context.urls.errorReport && fwData.context.urls.errorReport.send) {
+
+                            var req = {
+                                url: fwData.context.urls.errorReport.send,
+                            };
+
+                            req.data = {
+                                "uiContext": JSON.stringify(uiContext),
+                                "fwContext": JSON.stringify(fwContext)
+                            };
+                            req.method = "POST";
+                            req.cache = false;
+
+                            var res = {};
+
+                            res.done = function _error_report_done(done) {
+
+                                if (done.status === "success") {
+
+                                    var resultID = done.result[0].body.contents[0].id;
+
+                                    _disableReport = resultID;
+
+                                    empMessage.createMessage(
+                                        {
+                                            "type": "success",
+                                            "text": "Your error report was successfully submitted. Please contact the help desk and provide the following error report number: " + resultID
+                                        },
+                                        { scroll: false }
+                                    );
+                                }
+                                else {
+
+                                    empMessage.createMessage(
+                                        {
+                                            "type": "error",
+                                            "text": "Your error report faild to submit correctly. Please contact the helpdesk for assitional assistance"
+                                        },
+                                        { scroll: false }
+                                    );
+                                }
+
+                            };
+
+                            res.fail = function _error_report_fail(fail) {
+
+                                empMessage.createMessage(
+                                    {
+                                        "type": "error",
+                                        "text": "Your error report faild to submit correctly. Please contact the helpdesk for assitional assistance"
+                                    },
+                                    { scroll: false }
+                                );
+                            };
+
+                            ajax.request(req, res, true);
+                        }
+                        else {
+
+                            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'errorReportButton' }, 'Error report URL is not defined or incorrect.');
+                        }
+
+                        modal.destroy();
+                    });
+                });
+
+            });
+
+        }
+        else {
+
+            journal.log({type: 'warning', owner: 'UI', module: 'emp', func: 'errorReportButton'}, 'Error report was already submtted.');
+
+            empMessage.createMessage(
+                {
+                    "type": "error",
+                    "text": "You have already submitted a error report."
+                },
+                { scroll: false }
+            );
+        }
+
+
+    };
+
+    _priv.printFormContents = function _print_form_contents ($form) {
+        var $inputs = $form.find('input, select, textarea');
+
+        if ($inputs.length > 0) {
+            $inputs.each(function (i) {
+                var $input = $(this);
+                var name = $input.attr('name');
+                var value = $input.val();
+
+                if (typeof value === "string") {
+                    value = value.trim();
+                }
+
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'printFormContents' }, 'Form input: ', name, ' with value', ((value === '') ? '(empty string)' : value));
+            });
+        }
+        else {
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'printFormContents' }, 'Form contained no contents.');
+        }
+    };
+
+    /*
+     * _priv.setInputSelection and _priv.setInputPos modified from:
+     * http://stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area
+     */
+    _priv.setInputSelection = function _set_input_selection(input, selectionStart, selectionEnd) {
+
+        if (input.setSelectionRange) {
+            input.focus();
+            input.setSelectionRange(selectionStart, selectionEnd);
+        }
+        else if (input.createTextRange) {
+            var range = input.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', selectionEnd);
+            range.moveStart('character', selectionStart);
+            range.select();
+        }
+    };
+
+    _priv.setInputPos = function _set_input_pos(input, pos) {
+
+        _priv.setInputSelection(input, pos, pos);
+    };
+
+    _priv.selectionListSetup = function _selection_list_setup(){
+    	var selectionListItems = document.querySelectorAll(".emp-selection-list-field-container");
+
+    	for(var i=0; i < selectionListItems.length; i++){
+    		var listItem = selectionListItems[i];
+    		listItem.addEventListener('expandableChange', function (e) {
+
+    			var selectedRadio = e.target;
+    			var radioName = selectedRadio.getAttribute('name').trim();
+
+                // Get all radio groups with this name
+                var familyRadios = document.querySelectorAll('input[name="' + radioName + '"]');
+
+                for(var j=0;j<familyRadios.length;j++){
+                	var currentRadio = familyRadios[j];
+                	var parentSection = $(currentRadio).closest(".emp-selection-list-field-container").get(0);
+
+                	if(parentSection){
+                		if(currentRadio.getAttribute("aria-expanded") == "true"){
+                			parentSection.classList.add("emp-selection-list-active");
+	                	}
+	                	else{
+	                		parentSection.classList.remove("emp-selection-list-active");
+	                	}
+                	}
+                }
+    		}, false);
+    	}
+    };
+
+    // Event driven functions
+    var _events = {};
+
+    _events.entityChange = function (evt, $select) {
+
+        // Get current selected value
+        var selectedValue = $select.val();
+
+        var $parentContainer = $select.parents('.emp-composite.emp-entity-lookup').eq(0);
+        var $containerRoot = $parentContainer.children('.emp-entity-containers');
+
+        // Try and find the container with the same select value as data-entity-key;
+        var $openSection = $containerRoot.children('div[data-entity-key="' + selectedValue + '"]');
+
+        if (!$openSection.hasClass('emp-show-container')) {
+
+            var $alreadyOpenContainers = $containerRoot.children('.emp-show-container');
+
+            $alreadyOpenContainers.removeClass('emp-show-container');
+
+            $openSection.addClass('emp-show-container');
+        }
+        else {
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: '_events.entityChange' }, 'entity change blocked because section is already open');
+        }
+
+    };
+
+    // Formats a date with slashes
+    _events.dateMasking = function (evt, $input) {
+
+        if (evt.keyCode >= 35 && evt.keyCode <= 40 || evt.keyCode == 16) {
+            // Skip arrow keys, home/end and shift. Allows for highlighting contents within the date field.
+        } else {
+
+            // Get the current input value
+            var originalText = $input.val().trim();
+            var inputText = originalText + '';
+            var parts;
+            var month;
+            var day;
+            var year;
+            var pressedNonNumber = ((evt.keyCode < 48 || evt.keyCode > 57) && (evt.keyCode < 96 || evt.keyCode > 105));
+            var cursorPos;
+
+            currentCursorPos = $input.getCursorPosition();
+
+            if (currentCursorPos !== $input.val().length) {
+
+                cursorPos = true;
+            }
+            else {
+
+                cursorPos = false;
+            }
+
+            //If the user entered two "//" remove the last slash and return.
+            if (originalText.length > 1 && ((originalText.substr(originalText.length - 2, 2)) == "//")) {
+                evt.target.value = evt.target.value.slice(0, evt.target.value.length - 1);
+                if (cursorPos) {
+
+                    _priv.setInputPos($input[0], currentCursorPos);
+                }
+
+                return true;
+            }
+
+
+            // Only continue if the user just typed a number. If they pressed any other key (slash, arrow key, backspace) then they are most likely editing the field so we should stay out of the way.
+            if (pressedNonNumber || originalText.length === 0 || (originalText.length !== $input.getCursorPosition())) {
+
+                // Remove any stray character keys from the match input
+                evt.target.value = evt.target.value.replace(/[^0-9\.\/]/g, '');
+
+                if (cursorPos) {
+
+                    _priv.setInputPos($input[0], currentCursorPos);
+                }
+
+                return true;
+            }
+
+            // Remove any consecutive slashes
+            inputText = inputText.replace(/\/+/g, '/');
+
+            // 1 number typed
+            if (/^\d$/.test(inputText)) {
+                parts = /^\d$/.exec(inputText);
+                month = parseInt(parts[1], 10);
+            }
+            // 2 numbers typed without a slash
+            else if (/^(\d)(\d)$/.test(inputText)) {
+                parts = /^(\d)(\d)$/.exec(inputText);
+                month = parseInt(parts[1], 10);
+            }
+            // 3 numbers typed without a slash
+            else if (/^\d{3}$/.test(inputText)) {
+                // The value could be a month and partial day, or a month and day, or a month and day and partial year (`552` = `05/05/2___`)
+                // We need to insert a slash somewhere
+
+                // Split up the digits
+                parts = inputText.split('');
+                // These variables don't necessarily correspond to the month, day, and year. We're just reusing the variable names for easy access to the individual characters.
+                month = parseInt(parts[0], 10);
+                day = parseInt(parts[1], 10);
+                year = parts[2];
+
+                // Value represents the month plus a partial day (`012` => `01/2_` or `123` => `12/3`)
+                if (month === 0 || parseInt(parts[0] + parts[1], 10) < 13) {
+                    inputText = '' + month + day + '/'; // Starts out with an empty string to make sure `month + day` is treated as a string concatenation rather than a numerical operation
+
+                    inputText += year;
+                }
+                // Value represents the month plus the full day (`412` => `04/12`)
+                else if (month > 1 || parseInt(parts[1] + year, 10) < 32) {
+                    inputText = month + '/' + day + year;
+                }
+            }
+            // 4+ numbers typed without a slash
+            else if (/^\d{4,}$/.test(inputText)) {
+                // This condition doesn't happen often, but if you press the keys quickly enough in just the right manner it can happen. (Normally, typing 4 numbers would have triggered one of the conditions above which would insert a slash so this condition shouldn't be possible.) For example, you can type `1245` by placing two fingers on the `1` and `1` keys, pressing down on them separately, but releasing both at the same time. Repeat this with `4` and `5` and you will only have triggered two `keyup` events: one after typing `12` (which isn't enough to warrant adding a slash) and the second one after the `45`.
+
+                // We can't say for sure what the user is trying to type. `1111` could be `11/11` or `11/1/1___` or `1/11/1___` or `1/1/11___`. So we just have to make our best guess.
+                // Methodology: try to extract the month first, modifying `inputText` to contain the leftovers. Then extract the day from that, and so on.
+
+                // Get the first digit
+                parts = parseInt(inputText.substr(0, 1), 10);
+
+                // Month is just the first digit
+                // First digit is greater than 1 (Feb-Sep) or the first two characters combined are greater than 12
+                if (parts > 1 || (parts === 1 && parseInt(inputText.substr(1, 1), 10) > 2)) {
+                    month = parts;
+
+                    // Remove this digit from the rest of the value
+                    inputText = inputText.substr(1);
+                }
+                // Month is formed by the first two characters together
+                else {
+                    month = inputText.substr(0, 2);
+
+                    // Remove these characters from the rest of the value
+                    inputText = inputText.substr(2);
+                }
+
+                // Get the new 'first' digit
+                parts = parseInt(inputText.substr(0, 1), 10);
+
+                // Day is just the first digit
+                // First digit is greater than 3
+                if (parts > 3) {
+                    day = parts;
+
+                    // Remove this digit from the rest of the value
+                    inputText = inputText.substr(1);
+                }
+                // Day is formed by the first two characters together
+                else {
+                    day = inputText.substr(0, 2);
+
+                    // Remove these characters from the rest of the value
+                    inputText = inputText.substr(2);
+                }
+
+                // The rest of the characters, if any, must represent the year
+                year = inputText;
+
+                // Reconstruct the date
+                inputText = month + '/' + day + '/' + year;
+            }
+            // 2-4 numbers typed with a slash
+            else if (/^(\d{1,2})\/(\d{1,2})$/.test(inputText)) {
+
+            }
+            // 3-10 numbers typed with two slashes
+            else if (/^(\d{1,2})\/(\d{1,2})\/(\d{1,4})$/.test(inputText)) {
+
+            }
+            // 4-10 numbers typed with one slashes
+            else if (/^(\d{1,2})\/(\d{3,})$/.test(inputText)) {
+                // The value must be month/day and a year, so it needs a slash inserted in front of the year
+                parts = /^(\d{1,2})\/(\d{3,})$/.exec(inputText);
+                month = parts[1];
+                day = parts[2];
+                year = '';
+
+
+                //If the date part is longer than 2 characters, insert the final slash and start the year value.
+                if (day.length > 2) {
+                    year = day.substr(2);
+                    day = day.substr(0, 2);
+                }
+
+                inputText = month + '/' + day + '/' + year;
+            }
+            // Else: it's an invalid format at the moment and/or there's nothing we can do
+
+            if (inputText.length > 10) {
+                inputText = inputText.substring(0, 10);
+            }
+
+            // Update the input field only if we've changed the value
+            if (originalText !== inputText) {
+                $input.val(inputText);
+            }
+
+        }
+    };
+
+    _events.searchHeaderTypeChange = function _search_header_type_change(newValue, type) {
+
+        var ctrl = $('#HEADER_ID_TYPE');
+
+        // Get the searchbox location
+        var target = document.getElementById('search-box-inputs');
+
+        // Get the values out of the data store sent with page load
+        var headerData = ds.getStore('globalHeader');
+
+        var data = {};
+
+        if (newValue !== undefined && type !== undefined) {
+
+            data = {
+                template: 'partialCaller',
+                partialTemp: 'searchInputBox',
+                arguments: {
+                    selection: type,
+                    values: newValue,
+                },
+            };
+
+            render.section(null, data, 'return', function (html) {
+
+                // Apply the new searchbox
+                $('#search-box-inputs').html(html);
+
+                ctrl.val(type);
+
+                $('#HEADER_ID_NUMBER').val(newValue);
+
+                if (headerData.search.showDup) {
+                    var $showDup = $('#emp-showDup-container');
+
+                    if (headerData.search.showDupApplicable.indexOf(selected) !== -1) {
+                        // Check to see if its already hidden and needs to be show
+                        if ($showDup.hasClass('cui-hidden')) {
+                            $showDup.removeClass('cui-hidden');
+                        }
+                    }
+                    else {
+                        // Check to see if its already visible and needs to be hidden
+                        if (!$showDup.hasClass('cui-hidden')) {
+                            $showDup.addClass('cui-hidden');
+                        }
+                    }
+                }
+
+            });
+
+        }
+        else {
+
+            var selected = ctrl.val();
+
+            var inputValues = {};
+
+            // Get a closer look at the default values stored in the orignal header
+            var headerDefaults = headerData.search.headerID.defaultValues;
+
+            // Check to see if the header has
+            if (headerDefaults.hasOwnProperty(selected)) {
+                inputValues = headerDefaults[selected];
+            }
+
+            data = {
+                template: 'partialCaller',
+                partialTemp: 'searchInputBox',
+                arguments: {
+                    selection: selected,
+                    values: inputValues,
+                },
+            };
+
+            render.section(null, data, 'return', function (html) {
+                $('#search-box-inputs').html(html);
+
+                if (headerData.search.showDup) {
+                    var $showDup = $('#emp-showDup-container');
+
+                    if (headerData.search.showDupApplicable.indexOf(selected) !== -1) {
+                        // Check to see if its already hidden and needs to be show
+                        if ($showDup.hasClass('cui-hidden')) {
+                            $showDup.removeClass('cui-hidden');
+                        }
+                    }
+                    else {
+                        // Check to see if its already visible and needs to be hidden
+                        if (!$showDup.hasClass('cui-hidden')) {
+                            $showDup.addClass('cui-hidden');
+                        }
+                    }
+                }
+            });
+        }
+    };
+
+    _events.employeeSearchDropDown = function (evt) {
+
+        var $typeDropDown = $(evt.target);
+
+        // Find the parnet container
+        var $employeeSearchContainer = $typeDropDown.parents('.emp-employee-search').eq(0);
+
+        var $idInput = $employeeSearchContainer.find('.emp-id-search');
+        var $nameInput = $employeeSearchContainer.find('.emp-name-search');
+
+        if ($typeDropDown.val() === 'id') {
+
+            $idInput.removeClass('cui-hidden');
+            $nameInput.addClass('cui-hidden');
+        }
+        else {
+
+            $idInput.addClass('cui-hidden');
+            $nameInput.removeClass('cui-hidden');
+        }
+    };
+
+    _events.employeeLookup = function (evt, mapping) {
+
+        var $button = $(evt.target);
+        var $fieldSet = $button.parents('.emp-employee-search');
+        var $dropdown = $fieldSet.find('.emp-employee-search');
+        var $idContainer = $fieldSet.find('.emp-id-lookup-container');
+        var $nameContainer = $fieldSet.find('.emp-name-lookup-container');
+
+        var $id = $idContainer.find('.employee-lookup-id');
+
+        var $fname = $nameContainer.find('.employee-lookup-fname');
+        var $mname = $nameContainer.find('.employee-lookup-mname');
+        var $lname = $nameContainer.find('.employee-lookup-lname');
+
+        var ajaxURL = $button.attr('data-ajaxurl') || false;
+
+
+        if (ajaxURL) {
+
+            var req = {
+                url: ajaxURL,
+                method: 'POST',
+                data: {}
+            };
+
+            if ($dropdown.val() === "id") {
+
+                req.data.id = $id.val();
+            }
+            else {
+
+                req.data.fname = $fname.val();
+                req.data.mname = $mname.val();
+                req.data.lname = $lname.val();
+            }
+
+            specialSelectionPopup(evt, req, mapping, false, false, { "type": "employeeLookup" });
+
+        }
+        else {
+
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'employeeLookup' }, 'Employee search button was clicked but does not have teh value for data-ajaxurl');
+        }
+    };
+
+    _events.frameworkError = function (evt) {
+
+        var $target = $(evt.target);
+
+        function createModal(text) {
+
+            var modal = $.modal({
+                autoOpen: true,
+                html: text,
+                closeDestroy: true,
+            });
+
+        }
+
+        // Check to see if the require module
+        if (require.defined('modal')) {
+
+            // Create the modal
+            createModal($target.text());
+        }
+        else {
+
+            // Load the require module and then create the modal
+            cui.load('modal', function _selection_modal() {
+                createModal($target.text());
+            });
+        }
+    };
+
+    _events.checkOther = function(evt) {
+
+        var $checkbox = $(evt.target);
+        var $checkboxDiv = $checkbox.parents('.emp-check-other-checkbox').eq(0);
+        var $otherDiv = $checkboxDiv.next();
+
+        if ($checkbox.is(':checked')) {
+
+            $otherDiv.removeClass('cui-hidden');
+        }
+        else {
+            $otherDiv.addClass('cui-hidden');
+        }
+
+    };
+
+    _events.fileUploadButton = function (evt) {
+
+        evt.preventDefault();
+
+        var elms = evt.data;
+
+        if (elms.$button.val() === undefined || elms.$button.val() === "") {
+
+            elms.$input.trigger('click');
+        }
+        else {
+
+            elms.$input.val('').trigger('change');
+        }
+    };
+
+    _events.fileUploadInput = function (evt) {
+
+        var elms = evt.data;
+
+        // Check to see if a file was selected
+        if (evt.target.value) {
+
+            elms.$span.text(evt.target.value);
+
+            elms.$button.text("Clear");
+            elms.$button.val(true);
+        }
+        else {
+
+            elms.$span.text("Select a file");
+
+            elms.$button.text("Browse");
+            elms.$button.val("");
+        }
+    };
+
+    _events.resizeDocumentViewer = function (evt) {
+
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        $button = $(evt.target);
+
+        var $viewerSection = $button.parents('section.emp-document-viewer').eq(0);
+
+        if ($viewerSection.length === 1) {
+
+            var classes = $viewerSection.attr('class').split(/\s+/);
+
+            var size = false;
+
+            for (var i = 0, len = classes.length; i < len; i++) {
+
+                if (classes[i].indexOf('emp-viewer-size-') !== -1) {
+
+                    size = classes[i];
+                    break;
+                }
+
+            }
+
+            if (size) {
+
+                size = size.replace('emp-viewer-size-', '');
+            }
+
+            switch (size) {
+
+                case "small":
+
+                    $viewerSection.removeClass('emp-viewer-size-' + size);
+                    $viewerSection.addClass('emp-viewer-size-medium');
+                    break;
+
+                case "medium":
+
+                    $viewerSection.removeClass('emp-viewer-size-' + size);
+                    $viewerSection.addClass('emp-viewer-size-large');
+                    break;
+
+                case "large":
+
+                    $viewerSection.removeClass('emp-viewer-size-' + size);
+                    $viewerSection.addClass('emp-viewer-size-small');
+                    break;
+            }
+
+        }
+    };
+
+    //////////////////////
+    // Public Functions //
+    //////////////////////
+    var init = function init(options, cb) {
+
+        if (options === undefined) {
+            options = {};
+        }
+
+        if (!_priv.isInitialized) {
+
+            var scripts = require.s.contexts._.config.paths;
+            var pageScript = false;
+
+            var targets = {
+                header: document.getElementById('header-wrapper'),
+                page: document.getElementById('body-wrapper'),
+                footer: document.getElementById('footer-wrapper')
+            };
+
+            var renderData = {
+                header: (fwData.header) ? fwData.header : false,
+                page: fwData.page,
+                footer: (fwData.footer) ? fwData.footer : false
+            };
+
+            // Start by rendering the global page
+            if (window.fwData && window.fwData.page) {
+
+                if (fwData.screen && fwData.screen.id && scripts[fwData.screen.id]) {
+
+                    cui.load(fwData.screen.id, function (script) {
+
+                        // Expose all the scripts
+                        emp.pageScripts = script;
+
+                        pageScript = script;
+
+                        render.page(targets, renderData, function _renderPage() {
+
+                            _priv.pageSetup(options, function() {
+
+                                // Check for an init function
+                                if (pageScript.init) {
+
+                                    script.init();
+
+                                    journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
+                                }
+
+                                setTimeout(function() {
+
+                                    var loadingSplash = document.querySelector('#emp-page-loading');
+                                    loadingSplash.parentNode.removeChild(loadingSplash);
+
+                                }, 1000);
+
+                                // Initialize main menu
+                                // cui.load('menujs', function _loadMenujs() {
+
+                                //     // Create the menu definition
+                                //     var menuDefinition = $.extend(true, {}, fwData.menus.global, { display: { className: 'emp' } });
+
+                                //     $('#emp-header-menu-main').menujs(menuDefinition);
+                                // });
+
+                            });
+
+
+                        });
+
+                    });
+
+                }
+                else {
+
+                    // Expose all the scripts
+                    emp.pageScripts = false;
+
+                    render.page(targets, renderData, function _renderPage() {
+
+                        _priv.pageSetup(options, function() {
+
+                            // Check for an init function
+                            if (pageScript.init) {
+
+                                script.init();
+
+                                journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
+
+                            }
+
+                            setTimeout(function () {
+
+                                var loadingSplash = document.querySelector('#emp-page-loading');
+                                loadingSplash.parentNode.removeChild(loadingSplash);
+
+                            }, 1000);
+
+                            // Initialize main menu
+                            // cui.load('menujs', function _loadMenujs() {
+
+                            //     // Create the menu definition
+                            //     var menuDefinition = $.extend(true, {}, fwData.menus.global, { display: { className: 'emp' } });
+
+                            //     $('#emp-header-menu-main').menujs(menuDefinition);
+                            // });
+                        });
+
+                    });
+
+                }
+
+            }
+            else {
+
+                // This could be a mockup, which would not utilize the renderer, so setup the page immediately
+                _priv.pageSetup(options);
+
+                if (window.fwData.menus.global) {
+
+                    // Initialize main menu
+                    cui.load('menujs', function _loadMenujs() {
+
+                        // Create the menu definition
+                        var menuDefinition = $.extend(true, {}, fwData.menus.global, { display: { className: 'emp' } });
+
+                        $('#emp-header-menu-main').menujs(menuDefinition);
+                    });
+                }
+            }
+
+            // Make it so init can not be call so easily.
+            _priv.isInitialized = true;
+
+            if (typeof cb === "function") {
+
+                cb();
+            }
+        }
+    };
+
+    /*
+     * References
+     */
+    var reference = {
+        fields: {},
+        tables: {}
+    };
+
+    /**
+     * Ajax functionality
+     * @type  {Object}
+     */
+    var ajax = {};
+
+    /*
+     * Ajax Request
+     * ===========
+     * req - object
+     *         url - [required] - string - valid request url
+     *         method - string - either GET or POST
+     *         data - object - key value pair of values
+     *
+     * res - object
+     *        done - function - function that executes when a response returns with no errors
+     *        fail - function - funtion that executes on connection based errors
+     *        always - function - function that executes no matter the type of response and is always last.
+     *
+     */
+    ajax.request = function _request(req, res, noPageWrap, disableRedirect) {
+
+        var ajaxSessionTimeout = function () {
+
+            var href = window.location.href;
+            var domain = window.location.host;
+            var port = window.location.port;
+            var path = "";
+
+            var protocol = href.split(domain)[0];
+
+            var contents = href.split(domain)[1].split('/')[1];
+
+            if (port !== 80 && port !== 443) {
+
+                path = protocol + domain + "/" + contents + "/SessionExplorer.jsp";
+            }
+            else {
+
+                path = protocol + domain + ":" + port + "/" + context + "/SessionExplorer.jsp";
+            }
+
+            window.location.replace(path);
+        };
+
+        // The default actions do nothing, Developer must overide these
+        var orig = {
+            done: function done() {
+                try {
+
+                } catch (e) {
+
+                }
+            },
+            fail: function fail() {
+                try {
+
+                } catch (e) {
+
+                }
+            },
+            always: function always() {
+                try {
+
+                } catch (e) {
+
+                }
+            }
+        };
+
+        var response = {};
+
+        // Function cleans up ajax responses an removes unneeded arrays if they are found
+        function cleanResponse(data, cb) {
+
+            if (typeof data === "object") {
+
+                // Check for the status/response attributes
+                if ((data.response && data.result) || (data.status && data.result)) {
+
+                    // New standard return everything to the handler function as of 1/4/2017 JAH
+                    if (data.status) {
+
+                        cb(undefined, data);
+                    }
+
+                    if (data.response) {
+
+                        journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request => cleanResponse' }, 'AJAX request was wrapped but its using the older standard! This should be updated!');
+
+                        if (data.response === "success") {
+
+                            cb(undefined, data.result);
+                        }
+                        else {
+
+                            cb(true, data.result);
+                        }
+
+                    }
+
+                }
+                else {
+
+                    journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request => cleanResponse' }, 'AJAX request was returned that did not meet the new response.result wrapping standard');
+
+                    cb(undefined, data);
+                }
+
+            }
+            else if (Array.isArray(data)) {
+
+                if (data.length === 1) {
+
+                    data = data.shift();
+                }
+
+                cb(undefined, data);
+            }
+            else {
+
+                cb(true, false);
+            }
+        }
+
+        function removePageWrapper(data) {
+
+            // Check to make sure data was recieved, that the page object property exists and it has contes
+            if (data && data.hasOwnProperty('page') && data.page.hasOwnProperty('contents')) {
+
+                if (data.page.contents.length === 1) {
+
+                    // Remove the page layer.
+                    data = data.page.contents[0];
+
+                    // Check to see if we have a pagebody layer
+                    if (data.hasOwnProperty('template') && data.template === 'pagebody' && data.hasOwnProperty('contents')) {
+
+                        if (Array.isArray(data.contents)) {
+
+                            return data.contents;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            return data;
+        }
+
+        if (typeof req === "string") {
+
+            req = {
+                url: req,
+                cache: false,
+                method: "POST"
+            };
+        }
+
+        // Make sure there is a request URL provided
+        if (typeof req === 'object' && req.hasOwnProperty('url')) {
+
+            if (res === undefined) {
+                res = {};
+            }
+
+            // Merge the default ajax response actions with any user defined actions
+            response = $.extend(true, response, orig, res);
+
+            // Request Cleanup
+            // Check to see if the user provided data
+            if (req.hasOwnProperty('data')) {
+
+                // Do req.data cleanup
+                if (typeof req.data !== 'object') {
+
+                    // We have a data parameter defintion, but its not an object
+                    if (typeof req.data === 'string') {
+
+                        // Check to see if we have a form element reference
+                        var $section = $('#' + req.data);
+
+                        if ($section.length === 1) {
+                            // Get the parameter source map
+                            // Change req.data back to an object
+                            req.data = _priv.sourceMap($section);
+                        }
+                        else {
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request' }, 'Request data parameter referenced unknown section or form: ', req.data);
+
+                            return false;
+                        }
+                    }
+                }
+                else {
+                    // Check to see if the source map has been defined and not an hard coded set of values
+                    if (req.hasOwnProperty('sourceMap')) {
+                        var elementMap = _priv.elementMap(req.data);
+
+                        if (elementMap !== false) {
+                            req.data = elementMap;
+                        }
+                        else {
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request' }, 'Request data parameter failed because of invalid source map');
+
+                            return false;
+                        }
+                    }
+                }
+            }
+            else {
+
+                req.data = null;
+            }
+
+            // Build the basis request object
+            var request = {
+                url: req.url,
+                data: req.data,
+            };
+
+            if (!req.cache) {
+                request.cahce = false;
+            }
+
+            if ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && location.port === "8888") {
+
+                journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request' }, 'Request method being forced to "GET"');
+
+                req.method = 'GET';
+            }
+            else {
+
+                // Add method only if needed
+                if (req.method) {
+                    request.method = req.method;
+                }
+                else {
+                    request.method = "POST";
+                }
+            }
+
+            if (!_disableAjax) {
+
+                // Make the request
+                $.ajax(request)
+                    .done(function (data, status, ajaxObj) {
+
+                        if (data !== undefined) {
+
+                            // Cleaup the data before callback
+                            cleanResponse(data, function (err, data) {
+
+                                if (err) {
+
+                                    response.done(data);
+                                }
+                                else {
+
+                                    if (noPageWrap) {
+                                        data = removePageWrapper(data);
+                                    }
+
+                                    // Call the done callback
+                                    response.done(data);
+                                }
+                            });
+                        }
+                        else {
+
+                            console.log("Undefined ajax returned!");
+                        }
+
+
+                    })
+                    .fail(function (ajaxObj, status) {
+
+                        switch (ajaxObj.status) {
+
+                            case 0:
+                            case 440:
+
+                                if (!disableRedirect) {
+
+                                    ajaxSessionTimeout();
+                                }
+                                else {
+
+                                    response.fail(ajaxObj);
+                                }
+
+
+                                break;
+
+                            default:
+
+                                if (ajaxObj !== undefined) {
+
+                                    // Cleaup the data before callback
+                                    cleanResponse(ajaxObj, function (err, data) {
+
+                                        if (err) {
+
+                                            response.fail(ajaxObj);
+                                        }
+                                        else {
+
+                                            // Call the done callback
+                                            response.fail(ajaxObj);
+                                        }
+                                    });
+                                }
+                                else {
+
+                                    response.fail(ajaxObj);
+                                }
+
+
+                                break;
+                        }
+
+                    })
+                    .always(function (data) {
+
+                        // Cleaup the data before callback
+                        cleanResponse(data, function (err, data) {
+
+                            if (err) {
+
+                                response(data);
+                            }
+                            else {
+
+                                // Call the done callback
+                                response.always(data);
+                            }
+                        });
+                    });
+            }
+            else {
+
+                journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'ajax', func: 'request' }, 'Ajax Request blocked by developer.', request);
+
+            }
+
+        }
+    };
+
+    ajax.requestData = function _requestData(req, res) {
+
+        // Check to see if we need to use our own res object
+        if (res === undefined) {
+
+            // Create our own res
+            res = {};
+
+            res.done = function _done(data) {
+
+                if (data.body) {
+                    data = data.body;
+                }
+
+                if (!Array.isArray(data)) {
+                    data = [data];
+                }
+
+                // Loop through all of the responses
+                for (var i = 0, len = data.length; i < len; i++) {
+
+                    var response = data[i];
+
+                    switch (response.type) {
+
+                        case 'data':
+
+
+                            if (response.strict) {
+
+                                // Execute the process map
+                                _priv.processMap(undefined, response.contents, ":strict:", function (result) {
+                                    if (!result) {
+                                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'requestData' }, 'Error when processing returned ajax requested data');
+                                        return false;
+                                    }
+                                });
+
+                            }
+                            else {
+
+                                // Execute the process map
+                                _priv.processMap(response.contents, function (result) {
+                                    if (!result) {
+                                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'requestData' }, 'Error when processing returned ajax requested data');
+                                        return false;
+                                    }
+                                });
+                            }
+
+
+                            break;
+
+                        // Check for the possible respons object
+                        case 'message':
+
+                            // _priv.pageMessage(response.contents, false, false);
+                            empMessage.createMessage(response.contents, { scroll: false });
+
+                            break;
+
+                        case 'error':
+
+                            // _priv.pageMessage(response.contents, true, false);
+                            empMessage.createMessage(response.contents, { scroll: true });
+
+                            break;
+
+                        default:
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'requestData' }, 'Unknown problem or response has been encountered');
+
+                            break;
+
+                    }
+
+                }
+
+            };
+
+            res.fail = function _fail() {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'requestData' }, 'Request data failed');
+
+                return false;
+            };
+
+        }
+
+        ajax.request(req, res);
+    };
+
+    ajax.requestSection = function _requestSection(req, target, method) {
+        // Create our own res
+        var res = {};
+
+        res.done = function _done(data) {
+
+            if (data.body) {
+                data = data.body;
+            }
+
+            // Force into array format
+            if (!Array.isArray(data)) {
+                data = [data];
+            }
+
+            for (var i = 0, len = data.length; i < len; i++) {
+                var response = data[i];
+
+                switch (response.type) {
+                    case 'section':
+                        // Call the render module and build the section out
+                        render.section(response.contents, function (html) {
+                            if (html !== false) {
+                                switch (method) {
+                                    case 'prepend':
+                                        $target.prepend(html);
+
+                                        break;
+
+                                    case 'replace':
+
+                                        // Special rules on replace
+                                        switch ($target[0].nodeName) {
+                                            case 'TABLE':
+                                                // Flush this reference.
+                                                var tableID = $target.attr('id');
+                                                var tableDS = $target.attr('data-store-id');
+
+                                                // Remove the old reference as we are replacing the table.
+                                                if (emp.reference.tables.hasOwnProperty[tableID]) {
+                                                    delete emp.reference.tables[tableID];
+                                                }
+
+                                                // Remove the old datastore reference as well
+                                                if (ds.hasStore(tableDS)) {
+                                                    ds.deleteStore(tableDS);
+                                                }
+
+                                                // Update target
+                                                $target = $target.parents('.emp-table').eq(0);
+
+                                                // Find the new table reference
+                                                var $newTable = $(html).find('table');
+
+                                                $target.replaceWith(html);
+
+                                                // Setup the new table
+                                                $newTable.table();
+
+                                                break;
+
+                                            case 'INPUT':
+                                            case 'SELECT':
+                                            case 'TEXTAREA':
+                                                $target = $target.parents('.emp-field').eq(0);
+
+                                                $target.replaceWith(html);
+
+                                                break;
+
+                                            // All 'normal elements that can be simply replaced'
+                                            default:
+
+                                                $target.replaceWith(html);
+
+                                                break;
+                                        }
+
+                                        break;
+
+                                    case 'append':
+                                    case undefined:
+
+                                        break;
+
+                                    default:
+
+                                        $target.append(html);
+
+                                        break;
+                                }
+                            }
+                            else {
+                                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'requestData' }, 'Request section failed. Renderer returned false');
+                            }
+                        });
+
+                        break;
+
+                    // Check for the possible respons object
+                    case 'message':
+
+                        // _priv.pageMessage(response.contents, false, true);
+                        empMessage.createMessage(response.contents, { scroll: false });
+
+                        break;
+
+                    case 'error':
+
+                        // _priv.pageMessage(response.contents, true, true);
+                        empMessage.pageMessage(response.contents, { scroll: true });
+
+                        break;
+
+                    default:
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'requestData' }, 'Unknown problem or response has been encountered');
+
+                        break;
+                }
+            }
+        };
+
+        res.fail = function _fail() {
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'responseFail' }, 'Request section failed');
+
+            return false;
+        };
+
+        var $target = (target instanceof jQuery) ? target : $('#' + target);
+
+        if ($target.length === 1) {
+            ajax.request(req, res);
+        }
+        else {
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'responseFail' }, 'Request section failed. Unknown ID specified: "', target, '"');
+        }
+    };
+
+    var ajaxSection = function (evt, source, method, req) {
+
+        var $srcControl = $(evt.target);
+
+        if (typeof method !== "string" || ['replace', 'insertBefore', 'insertAfter'].indexOf(method) === -1) {
+            req = method;
+            method = undefined;
+        }
+
+        if (typeof req === "string") {
+
+            req = {
+                url: req
+            };
+        }
+
+        if (req.url) {
+
+            // Check for submit method
+            if (req.method) {
+                req.method = "POST";
+            }
+
+            req.cache = false;
+
+            // We already have a function that will scrap (_priv.sourceMap)
+            req.data = source;
+
+            // Build Response object
+            var res = {};
+
+            res.done = function _done(data) {
+
+                if (typeof data === "object") {
+
+                    if (data.status) {
+
+                        if (data.status === "success") {
+
+                            // Check for body contents
+                            if (data.result && data.result.body) {
+
+                                journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'ajaxSection' }, 'Response contained new body contents');
+
+                                render.section(source, data.result.body, data.result.method, function (html) {
+
+                                    var $section = null;
+
+                                    if (data.result.method === "replace") {
+
+                                        $section = $('#' + source);
+                                    }
+                                    else if (data.result.method === "insertBefore") {
+
+                                        $section = $('#' + source).prev();
+                                    }
+                                    else {
+
+                                        $section = $('#' + source).next();
+                                    }
+
+                                    if ($section !== null && $section.length === 1) {
+
+                                        sectionSetup($section);
+                                    }
+
+                                });
+
+                            }
+
+                            if (data.result && data.result.message) {
+                                _priv.pageMessage(data.result.message, true);
+                            }
+
+                        }
+                        else if (data.status === "error") {
+
+                            console.log("An error with AJAXSection has occured");
+
+                        }
+                        else {
+
+                            journal.log({ type: 'error', owner: 'DEV|FRW', module: 'emp', func: 'ajaxSection' }, 'Response object return unknown response type: ' + data.response);
+                        }
+
+                    }
+                    else {
+
+                        journal.log({ type: 'error', owner: 'DEV|FRW', module: 'emp', func: 'ajaxSection' }, 'Response object was returned but missing valid response code.');
+                    }
+
+                }
+                else {
+                    journal.log({ type: 'error', owner: 'DEV|FRW', module: 'emp', func: 'ajaxSection' }, 'Request returned but it was not an object');
+                }
+
+            };
+
+            res.fail = function _fail(data) {
+            };
+
+            ajax.request(req, res);
+
+        }
+        else {
+
+            journal.log({ type: 'error', owner: 'DEV|FRW', module: 'emp', func: 'ajaxSection' }, 'Request failed because no URL was provided');
+        }
+    };
+
+    /*
+     * openWindow
+     * ==========
+     * url - [required] - string - page url
+     * title - [required] - string - window title
+     * features - [required] - string - window specail features
+     */
+    var openWindow = function openWindow(url, title, features) {
+
+        // Polyfill missing features with defaults
+        if (features === undefined) {
+            features = 'scrollbars=yes,menubar=yes,resizable=yes,toolbar=no,width=900,height=700';
+        }
+
+        window.open(url, title, features);
+
+        return true;
+    };
+
+    /*
+     * functionCall
+     * ============
+     * evt - [required] - object - object event
+     * funcName - [required] - string - name of the function to be called
+     * args - array - arguments that will be passed to the function
+     */
+    var functionCall = function functionCall(evt, funcName, args, settings) {
+
+        // Shift variables just in case the event object is not included
+        if (typeof evt === 'string' && (Array.isArray(funcName) || funcName === undefined)) {
+            // Shift all the variables.
+            settings = args;
+            args = funcName;
+            funcName = evt;
+            evt = false;
+        }
+
+        // If event exists prevent the default action
+        if (evt) {
+            evt.preventDefault();
+        }
+
+        if (args === undefined) {
+            args = [];
+        }
+        else {
+            //console.log(args);
+        }
+
+        function callFunction(evt, funcName, args, settings, remainingSteps) {
+
+            var $srcControl = $(evt.target);
+
+            // Check to see if they function is in a namespace
+            if (funcName.indexOf('.') === -1) {
+
+                // No namespace assume this is a global (window) function
+                // Check to make sure we are calling a real function first.
+                if (typeof (window[funcName]) === 'function') {
+
+                    return window[funcName].apply(this, args);
+                }
+                else {
+                    console.error('window[' + funcName + '] is not a function');
+                }
+            }
+            else {
+
+                var context = window;
+                var namespace = funcName.split('.');
+                var firstPart = namespace.shift();
+
+                if (context[firstPart]) {
+                    var textContext = firstPart;
+
+                    context = context[firstPart];
+
+                    // Loop through remaining spaces
+                    for (var i = 0, len = namespace.length; i < len; i++) {
+
+                        var testSpace = context[namespace[i]];
+
+                        if (testSpace) {
+                            // Update context and text name
+                            context = testSpace;
+                            textContext += '.' + namespace[i];
+                        }
+                        else {
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'Namespace breaks down at depth: "', textContext + '.' + namespace[i], '"');
+
+                            return false;
+                        }
+
+                    }
+
+                    // We reached the end make sure the namespace is a function
+                    if (typeof context === 'function') {
+
+                        switch (funcName) {
+
+                            // Functions that need to include the event.
+                            case 'emp.form.submit':
+
+                                // Check to make sure only one argument (the submit options object) is currently in places
+                                if (args.length === 1) {
+
+                                    // See if special emp.functionCall setting were past in we can extend.
+                                    if (typeof args[0] === 'object' && typeof settings === 'object') {
+                                        args[0] = $.extend({}, args[0], settings);
+                                    }
+
+                                    // Include the event instance.
+                                    args.unshift(evt);
+
+                                }
+                                else {
+                                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'callFunction', func: 'emp.form.submit' }, 'This function should only have 1 argument being passed to it via the arguments array');
+
+                                    return false;
+                                }
+
+                                break;
+
+                            case 'emp.confirm':
+
+                                // add on the original event object
+                                args.unshift(evt);
+                                args.push(remainingSteps);
+
+                                break;
+
+                            //case 'emp.processMap':
+                            case 'emp.selectionPopup':
+                            case 'emp.specialSelectionPopup':
+                            case 'emp.referenceCall':
+                            case 'emp.download':
+                            case 'emp.dropdown':
+                            case 'emp.ajaxSection':
+                            case 'emp.link.newWindow':
+                            case 'emp.form.virtual':
+
+                                args.unshift(evt);
+                                break;
+
+                        }
+
+                        var returnCode = context.apply(this, args);
+
+                        return returnCode;
+                    }
+                    else {
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'Window namespace is not a function: ', textContext);
+                    }
+
+                }
+                else {
+                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'Window namespace does not exist');
+                }
+            }
+        }
+
+        // Check to see what the function call type is.
+        if (typeof funcName === 'string') {
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'Calling function: ' + funcName);
+
+            result = callFunction(evt, funcName, args, settings);
+
+            // Bypass error message
+            if (funcName.indexOf('validation') === -1 && funcName.indexOf('validate') === -1) {
+
+                if (!result) {
+                    empMessage.createMessage({ text: "An error has occured. Please contact the help desk.", type: "error" }, { scroll: true });
+                }
+            }
+
+            return result;
+        }
+        else {
+
+            if (typeof funcName === 'object') {
+
+                // Make a copy of the object of functions
+                var functionCalls = $.extend({}, funcName);
+                var functionKeys = [];
+
+                for (var func in functionCalls) {
+                    functionKeys.push(func);
+                }
+
+                var priorReturn;
+                var currentIndex = 0;
+                var priorReturns = [];
+
+                (function callFunctions(keys) {
+
+                    // Get a copy of the function object
+                    var funcObj = functionCalls[keys.shift()];
+
+                    var remainingSteps = {};
+
+                    for (var i = 0, len = keys.length; i < len; i++) {
+                        remainingSteps[i] = functionCalls[keys[i]];
+                    }
+
+                    // Check to see if we can include the prior return
+                    if (priorReturn !== undefined) {
+
+                        if (Array.isArray(funcObj.args)) {
+                            funcObj.args.push();
+                        }
+                        else if (typeof funcObj.args === 'object') {
+                            funcObj.args.priorReturn = priorReturn;
+                        }
+                        else {
+                            funcObj.args = [priorReturn];
+                        }
+                    }
+
+                    try {
+
+                        // Call the function and get its return type
+                        var funcReturn = callFunction(evt, funcObj.function, funcObj.args, settings, remainingSteps);
+
+                        priorReturn = funcReturn;
+                        priorReturns.push(funcReturn);
+
+                        // Check to see if the return failed.
+                        if (funcReturn === false) {
+                            // Override the array and make it blank to force the function execution to stop
+                            keys = [];
+
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'EventScript failed - Function ', funcObj.function, ' returned a failure code: ', funcReturn, '. Stoping eventScript execution loop.');
+
+                            empMessage.createMessage({ text: "An error has occured. Please contact the help desk.", type: "error" }, { scroll: true });
+                        }
+                        else if (funcReturn === "stop") {
+
+                            keys = [];
+                        }
+                    }
+                    catch (e) {
+
+                        keys = [];
+
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'EventScript failed - Function ', funcObj.function, ' execution failed.', e);
+                    }
+
+                    if (keys.length) {
+
+                        // Update the index
+                        currentIndex += 1;
+
+                        callFunctions(keys);
+                    }
+                    else {
+
+                        if (typeof priorReturn === "boolean" || (typeof priorReturn === "object" && !priorReturn.preserveBlocker)) {
+
+                            if (clkblocker.check) {
+
+                                journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: 'callFunction' }, 'Removing click blocker because prevereBlocker was not part of the return.');
+
+                                clkblocker.remove();
+                            }
+                        }
+
+                        return priorReturns;
+                    }
+
+                })(functionKeys);
+            }
+        }
+    };
+
+    var referenceCall = function referenceCall(evt, refType, refId, func, args) {
+
+        if (this.emp.reference.hasOwnProperty(refType)) {
+            var reference = emp.reference[refType];
+
+            if (reference.hasOwnProperty(refId)) {
+                // Update references.
+                reference = reference[refId];
+
+                // Check the refernce arguments quick,
+                //if (args.length === 0) {
+
+                // Push the event object
+                args.unshift(evt);
+
+                // Push the referenced object
+                //args.push(reference);
+                //}
+
+                // Call the reference function and pass remaining args
+                reference[func].apply(reference, args);
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'referenceCall' }, 'Reference call requested a reference not currently in the reference context "', refId, '". Please verify that an element with that reference ID exists');
+
+                return false;
+            }
+        }
+        else {
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'referenceCall' }, 'Reference call for type "', refType, '" failed because it does not exist');
+
+            return false;
+        }
+    };
+
+    var dropdown = function dropdown(evt, target, source, reqType) {
+
+        if (typeof target === "string") {
+
+            // Find the target
+            var $target = $('#' + target);
+
+            // Find the target parent wrapper
+            $parentWrapper = $target.parents('.emp-field').eq(0);
+
+            // Get the target dataStore
+            var dStore = ds.getStore($parentWrapper.attr('data-store-id'));
+
+            // Check to see if the source values are part of the fwData object, buy detecting reqType is "data"
+            if (reqType === "data") {
+
+                if (fwData.data[source]) {
+
+                    var sourceValue = $('#' + source).val();
+
+                    if (sourceValue === "") {
+
+                        if (dStore.input.options) {
+                            delete dStore.input.options;
+                        }
+
+                        render.section($parentWrapper[0], dStore, 'replace');
+
+                    }
+                    else if (fwData.data[source][sourceValue]) {
+
+                        dStore.input.options = fwData.data[source][sourceValue];
+
+                        render.section($parentWrapper[0], dStore, 'replace');
+
+                    }
+                    else {
+
+                        journal.log({ type: 'error', owner: 'Framework', module: 'emp', submodule: 'dropdown' }, 'Invalid data provided or missing in the fwData object');
+                    }
+                }
+                else {
+
+                    journal.log({ type: 'error', owner: 'Framework', module: 'emp', submodule: 'dropdown' }, 'Invalid data provided or missing in the fwData object');
+                }
+
+            }
+            // This drop down must be running in ajax
+            else {
+
+                // Verify that the source is a object, and has the properties of url and data
+                if (typeof source === "object" && source.url && source.data) {
+
+                    if (Object.keys(source.data).length >= 1) {
+
+                        var req = source;
+
+                        // Save off the original just in case
+                        var origData = $.extend(true, {}, source.data);
+
+                        for (var id in source.data) {
+
+                            $field = $('#' + source.data[id]);
+
+                            if ($field.length === 1) {
+
+                                var value = null;
+
+                                switch ($field[0].nodeName) {
+                                    case 'INPUT':
+                                    case 'TEXTAREA':
+                                    case 'SELECT':
+
+                                        value = $field.val();
+                                        break;
+
+                                    default:
+
+                                        source.data[id] = $field.text();
+                                        break;
+                                }
+
+                                source.data[id] = value;
+
+                                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Map executed for:', id, ' with value', ((value === '') ? '(empty string)' : value));
+
+                            }
+                            else {
+
+                                journal.log({ type: 'warn', owner: 'UI', module: 'emp', submodule: 'dropdown' }, 'Provided map included a reference to a value that did not exist, assuming the value is hardcodded: "' + id + ":" + source.data[id] + ' "');
+                            }
+
+                        }
+
+                        req.cache = false;
+
+                        var res = {
+
+                            done: function (data) {
+
+                                if (data.status === "success" && data.result.length === 1) {
+
+                                    data = data.result[0].body;
+
+                                    var $target = $('#' + target);
+
+                                    var $targetFieldWrap = $target.parents('.emp-field').eq(0);
+
+                                    var selectDSID = $targetFieldWrap.attr('data-store-id');
+
+                                    var targetDS = ds.getStore(selectDSID);
+
+                                    if (targetDS) {
+
+                                        targetDS.input.options = data;
+
+                                        render.section(undefined, targetDS, 'return', function (html) {
+
+                                            var currentDropdown = $targetFieldWrap[0];
+                                            var parentContainer = currentDropdown.parentNode;
+
+                                            parentContainer.insertBefore(html.firstChild, currentDropdown);
+
+                                            parentContainer.removeChild(currentDropdown);
+
+                                        });
+
+                                    }
+                                    else {
+
+                                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown failed because dataStore had no reference for:', selectDSID);
+                                    }
+
+                                }
+                                else {
+
+                                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown returned with invalid ajax response wrapper!');
+                                }
+
+                            },
+                            fail: function (data) {
+
+                                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown failed on ajax request: "' + source.url + '"');
+                            }
+
+                        };
+
+                        ajax.requestData(req, res);
+                    }
+                    else {
+                        journal.log({ type: 'error', owner: 'Developer', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown has no defined mapping for the parameters needed to look up values');
+                    }
+
+                }
+                else {
+
+                    journal.log({ type: 'error', owner: 'Framework', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown based on ajax require both url and data attributes');
+                }
+            }
+
+            return true;
+        }
+    };
+
+    /*
+     * Download Control
+     * ================
+     */
+    var download = function _download(evt, url, readyText) {
+        var spinnerOpts = {
+            lines: 7, // The number of lines to draw
+            length: 3, // The length of each line
+            width: 2, // The line thickness
+            radius: 3, // The radius of the inner circle
+            corners: 0.5, // Corner roundness (0..1)
+            rotate: 75, // The rotation offset
+            color: '#000', // #rgb or #rrggbb
+            speed: 1, // Rounds per second
+            trail: 75, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: true, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: '50%', // Top position relative to parent in px
+            left: '13px', // Left position relative to parent in px
+        };
+
+        // Get the sourc control
+        var $control = $(evt.target);
+
+        // Remove the original onlcikc as it shouldnt be needed
+        $control.removeAttr('onclick');
+        $control.addClass('emp-active-spinner');
+
+        window.spin = spin;
+
+        var spinner = new spin(spinnerOpts).spin();
+
+        $control[0].appendChild(spinner.el);
+
+        var req = {};
+
+        // Check to see if we have a string url or object
+        if (typeof url === 'string') {
+            req.url = url;
+        }
+        else if (typeof url === 'object') {
+            req = $.extend(true, {}, url);
+        }
+
+        var res = {
+            done: function (data) {
+
+                if (data.body) {
+                    data = data.body;
+                }
+
+                if (data.url) {
+                    // window.location = data.url;
+                    setTimeout(function () {
+                        // Mark the control as finished
+                        $control.text(readyText).removeClass('emp-active-spinner');
+
+                        // Stop/remove the spinner
+                        spinner.stop();
+
+                        $control.text('Download Letter').on('click', function () {
+                            window.location = data.url;
+                        });
+
+                        // Initial call to download the generate file.
+                        window.location = data.url;
+                    }, 2000);
+                }
+            },
+            fail: function () {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'download' }, 'Ajax request failed');
+            }
+        };
+
+        ajax.request(req, res, false);
+    };
+
+    /*
+     * Override Private
+     * ================
+     * name - [require] - string - name of private variable
+     * value - [require] - any -  replacement value
+     * cb - function - function to execute after change is complete
+     */
+    var overridePrivate = function overridePrivate(name, value, cb) {
+
+        if (_priv[name]) {
+
+            // Reset private value
+            _priv[name] = value;
+
+            if (typeof cb === 'function') {
+
+                cb();
+
+            }
+            else {
+                return true;
+            }
+
+        }
+        else {
+
+            return false;
+        }
+    };
+
+    var specialSelectionPopup = function _special_selection_popup(event, settings) {
+
+        var skipRequest = false;
+
+        if (settings) {
+
+            var selectionPopupPageMessages = function (msgArray) {
+
+                for (var m = 0, mLen = msgArray.length; m < mLen; m++) {
+
+                    if (!msgArray[m].template) {
+                        msgArray[m].template = 'message';
+                    }
+
+                    empMessage.createMessage(msgArray[m], {});
+                }
+            };
+
+            var sendIDSecondRequest = function _send_id_second_request(type, modal, table) {
+
+                var req = {
+                    url: false,
+                    method: false,
+                    data: {}
+                };
+
+                var $form = modal.$self.find('form');
+
+                // Get the URL
+                req.url = $form.attr('action');
+                req.method = $form.attr('method');
+
+                req.data.userId = modal.$self.find('#sendIdResults_userId').val();
+                req.data.mnemonic = modal.$self.find('#sendIdResults_mnemonicId').val();
+                req.data.network = modal.$self.find('#sendIdResults_netNameId').val();
+                req.data.empId = modal.$self.find('#sendIdResults_empId').val();
+                req.data.intTpId = modal.$self.find('#sendIdResults_intTpId').val();
+                req.data.extTpId = modal.$self.find('#sendIdResults_extTpId').val();
+                req.data.rowId = modal.$self.find('#sendIdResults_rowId').val();
+
+                return req;
+            };
+
+            var getIDSecondRequest = function _get_id_second_request(type, modal, table) {
+
+                var req = {
+                    url: false,
+                    method: false,
+                    data: {}
+                };
+
+                var $form = modal.$self.find('form');
+
+                // Get the URL
+                req.url = $form.attr('action');
+                req.method = $form.attr('method');
+
+                req.data.id = modal.$self.find('#getIdResults_id').val();
+                req.data.legalName = modal.$self.find('#getIdResults_legalName').val();
+                req.data.tpType = modal.$self.find('#getIdResults_tpType').val();
+
+                return req;
+            };
+
+            switch (settings.type) {
+
+                case 'associateSelection':
+
+                    // New selection function
+                    settings.selectFunc = function _select_func(event, modal, table, settings) {
+
+                        if (settings && settings.secondRequest && settings.secondRequest.request) {
+
+                            var req = {};
+
+                            var sr = settings.secondRequest;
+
+                            if (typeof sr.request === "string") {
+
+                                req.url = sr.request;
+                            }
+                            else if (typeof sr.request === "object" && sr.request.url) {
+
+                                req.url = sr.request.url;
+                            }
+
+                            var columnValues = table.getHiddenInputValues();
+
+                            for (var col in columnValues) {
+
+                                if (col.indexOf('_temp') === -1 && col.indexOf('_checked_index') === -1 && col.indexOf('_selected_index') === -1) {
+
+                                    if (!req.data) {
+                                        req.data = {};
+                                    }
+
+                                    req.data[col] = columnValues[col];
+
+                                }
+                            }
+
+                            requestAssociate(req, modal, table);
+
+                        }
+                        else {
+
+                            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'Associate Selection failed as its missing the secondRequest Object or secondRequest.request property.');
+                        }
+
+                    };
+
+                    // Change a few settings before executing the first request
+                    settings.autoSingleSelect = false;
+
+                    if (!settings.removeClear) {
+                        settings.removeClear = true;
+                    }
+
+                    break;
+
+                case 'duplicatePopup':
+
+                    // New selection function
+                    settings.selectFunc = function _select_func(event, modal, table, mapping) {
+
+                        var req = {};
+                        var settings = {};
+
+                        if (specialActions.redirect) {
+                            settings.redirect = specialActions.redirect;
+                        }
+
+                        if (specialActions.url) {
+
+                            req.url = specialActions.url;
+                        }
+                        else {
+
+                            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'Sepcial Selection Popup function requires that a url be passed with part of the specialActions object.');
+
+                            return false;
+                        }
+
+                        if (specialActions.mapping) {
+
+                            // Loop each column
+                            for (var dest in specialActions.mapping) {
+
+                                var value = specialActions.mapping[dest];
+
+                                if (table.config.colmap[value]) {
+
+                                    var name = table.config.colmap[value];
+
+                                    specialActions.mapping[dest] = table.config.hiddenInputs.current[name].val();
+
+                                }
+                                else {
+
+                                    journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'Sepcial Selection Popup associate function requested an invalid column from the selection popup table.');
+                                }
+
+                            }
+
+                            req.data = specialActions.mapping;
+
+                        }
+
+                        // Pass the ajax request to the associate request
+                        requestDuplicate(req, specialActions.action, mapping, modal, table, settings);
+
+                    };
+
+                    if (!settings.removeClear) {
+                        settings.removeClear = true;
+                    }
+
+                    break;
+
+                case 'sendID':
+
+                    // Controls weather or not if the selection popup pre-renders, if one row is returned,
+                    // the modal render is disabled as Framewrok will already know in the context and send
+                    // the value to the session. If mutliple records exist the table will be rendered.
+                    settings.preRenderCheck = function _pre_render_check_send_id(evt, data) {
+
+                        var errorMsg = false;
+
+                        if (data.messages && data.messages.length) {
+
+                            selectionPopupPageMessages(data.messages);
+
+                            for (var m = 0, mLen = data.messages.length; m < mLen; m++) {
+
+                                if (data.messages[m].type === "error") {
+                                    errorMsg = true;
+                                }
+                            }
+
+                        }
+
+                        if (!errorMsg && data.status === "success") {
+
+                            if (data.result.length === 1) {
+
+                                var formBody = data.result[0].body.contents[0];
+
+                                if (formBody.type === "form" && formBody.contents && formBody.contents.length) {
+
+                                    var tableRef = false;
+
+                                    for (var i = 0, len = formBody.contents.length; i < len; i++) {
+
+                                        if (formBody.contents[i].template === "table") {
+                                            tableRef = formBody.contents[i];
+
+                                            break;
+                                        }
+                                    }
+
+                                    if (tableRef) {
+
+                                        if (tableRef.body && tableRef.body.rows && tableRef.body.rows.length === 1) {
+
+                                            return false;
+                                        }
+                                        else if (tableRef.body && tableRef.body.rows && tableRef.body.rows.length === 0) {
+
+                                            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'SendID table has zero rows inside of popup.');
+                                        }
+                                        else {
+
+                                            // More than one row
+                                            return true;
+                                        }
+
+                                    }
+                                    else {
+
+                                        journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'SendID missing table inside of popup.');
+                                    }
+
+                                }
+                                else {
+
+                                    journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'SendID missing form inside of popup.');
+                                }
+
+                                return true;
+                            }
+
+                            return undefined;
+                        }
+
+                        return undefined;
+                    };
+
+                    // Select Function only executed when the more than one mainframe session is open on the users machine.
+                    settings.selectFunc = function _select_func_send_id(event, modal, table, settings) {
+
+                        var errorMsg = [
+                            {
+                                "type": "error",
+                                "template": "message",
+                                "text": "Send ID request failed. Please contact the help desk to report this issue."
+                            }
+                        ];
+
+                        var req = sendIDSecondRequest("send", modal, table);
+                        var res = {
+                            done: function (data) {
+
+                                if (data.status === "success") {
+
+                                    if (data.messages) {
+                                        selectionPopupPageMessages(data.messages);
+                                    }
+
+                                    modal.destroy();
+                                }
+                                else {
+
+                                    res.fail(data);
+                                }
+
+                            },
+                            fail: function (data) {
+
+                                if (data && data.messages && data.messages.length) {
+
+                                    data.messages.push(errorMsg[0]);
+
+                                    selectionPopupPageMessages(data.messages);
+                                }
+                                else {
+
+                                    selectionPopupPageMessages(errorMsg);
+                                }
+
+                                modal.destroy();
+                            }
+                        };
+
+                        if (req.url && req.method) {
+
+                            ajax.request(req, res);
+                        }
+                        else {
+
+                            selectionPopupPageMessages(errorMsg);
+
+                            modal.destroy();
+
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'specialSelectionPopup => sendID' }, 'Failed to generate second request from sendID session (selection) popup table.');
+                        }
+                    };
+
+                    // Function used for auto select
+                    settings.autoSingleSelectFunc = function _auto_single_select_func_send_id(data) {
+
+                        var req = {};
+                        var res = {};
+
+                        // We know the stucture is valid from the rendercheck so just get the references
+                        var formAttributes = data.result[0].body.contents[0].attributes;
+                        var tableRef = false;
+
+                        for (var i = 0, len = data.result[0].body.contents[0].contents.length; i < len; i++) {
+
+                            if (data.result[0].body.contents[0].contents[i].template === "table") {
+
+                                tableRef = data.result[0].body.contents[0].contents[i];
+                                break;
+                            }
+                        }
+
+                        if (formAttributes && tableRef) {
+
+                            req.url = formAttributes.action;
+                            req.method = formAttributes.method;
+                            req.cache = false;
+
+                            var tableID = tableRef.attributes.id;
+
+                            req.data = {};
+
+                            for (var t = 0, tLen = tableRef.head.rows[0].columns.length; t < tLen; t++) {
+
+                                req.data[tableRef.head.rows[0].columns[t].attributes['data-colmap'].split('_')[1]] = tableRef.body.rows[0].columns[t].text;
+                            }
+
+                            res.done = function (data) {
+
+                                if (data.status === "success") {
+
+                                    if (data.messages) {
+                                        selectionPopupPageMessages(data.messages);
+                                    }
+                                }
+                                else {
+
+                                    res.fail(data);
+                                }
+
+                            };
+
+                            res.fail = function (data) {
+
+                                var errorMsg = [
+                                    {
+                                        "type": "error",
+                                        "template": "message",
+                                        "text": "Send ID request failed. Please contact the help desk to report this issue."
+                                    }
+                                ];
+
+                                if (data && data.messages && data.messages.length) {
+
+                                    data.messages.push(errorMsg[0]);
+
+                                    selectionPopupPageMessages(data.messages);
+                                }
+                                else {
+
+                                    selectionPopupPageMessages(errorMsg);
+                                }
+                            };
+
+                            ajax.request(req, res);
+                        }
+                        else {
+
+                            // Error out one is missing
+                        }
+                    };
+
+                    // Turn auto select off and we will use preRenderCheck to control everything manually
+                    settings.autoSingleSelect = true;
+                    settings.removeClear = true;
+
+                    break;
+
+                case 'getID':
+
+                    settings.preRenderCheck = function _pre_render_check_get_id(evt, data) {
+
+                        var errorMsg = false;
+
+                        if (data.messages && data.messages.length) {
+
+                            selectionPopupPageMessages(data.messages);
+
+                            for (var m = 0, mLen = data.messages.length; m < mLen; m++) {
+
+                                if (data.messages[m].type === "error") {
+                                    errorMsg = true;
+                                }
+                            }
+
+                        }
+
+                        if (!errorMsg && data.status === "success") {
+
+                            if (data.result.length === 1) {
+
+                                var formBody = data.result[0].body.contents[0];
+
+                                if (formBody.type === "form" && formBody.contents && formBody.contents.length) {
+
+                                    var tableRef = false;
+
+                                    for (var i = 0, len = formBody.contents.length; i < len; i++) {
+
+                                        if (formBody.contents[i].template === "table") {
+                                            tableRef = formBody.contents[i];
+
+                                            break;
+                                        }
+                                    }
+
+                                    if (tableRef) {
+
+                                        if (tableRef.body && tableRef.body.rows && tableRef.body.rows.length === 1) {
+
+                                            return false;
+                                        }
+                                        else if (tableRef.body && tableRef.body.rows && tableRef.body.rows.length === 0) {
+
+                                            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'specialSelectionPopup' }, 'GetID table has zero rows inside of popup.');
+                                        }
+                                        else {
+
+                                            // More than one row
+                                            return true;
+                                        }
+
+                                    }
+
+                                }
+                            }
+
+                        }
+
+                        return undefined;
+                    };
+
+                    settings.selectFunc = function _select_func_get_id(event, modal, table, mapping) {
+
+                        var errorMsg = [
+                            {
+                                "type": "error",
+                                "template": "message",
+                                "text": "Get ID request failed. Please contact the help desk to report this issue."
+                            }
+                        ];
+
+                        var req = getIDSecondRequest("send", modal, table);
+                        var res = {
+                            done: function (data) {
+
+                                if (data.status === "success") {
+
+                                    if (data.messages) {
+                                        selectionPopupPageMessages(data.messages);
+                                    }
+
+                                    _events.searchHeaderTypeChange(data.result[0].id, data.result[0].tpType);
+
+                                    modal.destroy();
+                                }
+                                else {
+
+                                    res.fail(data);
+                                }
+
+                            },
+                            fail: function(data) {
+
+                                if (data && data.messages && data.messages.length) {
+
+                                    data.messages.push(errorMsg[0]);
+
+                                    selectionPopupPageMessages(data.messages);
+                                }
+                                else {
+
+                                    selectionPopupPageMessages(errorMsg);
+                                }
+
+                                modal.destroy();
+                            }
+                        };
+
+                        if (req.url && req.method) {
+
+                            ajax.request(req, res);
+                        }
+                        else {
+
+                            selectionPopupPageMessages(errorMsg);
+
+                            modal.destroy();
+
+                            journal.log({type: 'error', owner: 'UI', module: 'emp', func: 'specialSelectionPopup => sendID'}, 'Failed to generate second request from sendID session (selection) popup table.');
+                        }
+
+                    };
+
+                    settings.autoSingleSelectFunc = function _auto_single_select_func_send_id(data) {
+
+                        // We know the stucture is valid from the rendercheck so just get the references
+                        var formAttributes = data.result[0].body.contents[0].attributes;
+                        var tableRef = false;
+
+                        for (var i = 0, len = data.result[0].body.contents[0].contents.length; i < len; i++) {
+
+                            if (data.result[0].body.contents[0].contents[i].template === "table") {
+
+                                tableRef = data.result[0].body.contents[0].contents[i];
+                                break;
+                            }
+                        }
+
+                        if (tableRef) {
+
+                            console.log(tableRef);
+
+                            var columns = tableRef.body.rows[0].columns;
+
+                            // Now grab the id value and the type value
+                            var id = columns[0].text;
+                            var type = columns[2].text;
+
+                            // Set the new id and toogle the right view if its not in place
+                            _events.searchHeaderTypeChange(columns[0].text, columns[2].text);
+                        }
+                    };
+
+                    // Turn auto select off and we will use preRenderCheck to control everything manually
+                    settings.autoSingleSelect = true;
+                    settings.removeClear = true;
+
+                    break;
+            }
+
+            if (!skipRequest) {
+                selectionPopup(event, settings);
+            }
+
+        }
+        else {
+
+            journal.log({ type: 'error', owner: 'Developer', module: 'emp', func: 'specialSelectionPopup' }, 'Sepcial Selection Popup function was called, but the additional specialActions parameters is missing. Routing request to the original selectionPopup function.');
+        }
+    };
+
+    var requestAssociate = function _request_associate(req, modal, table) {
+
+        // Check to see if a url is the only thing provided and change it to a object
+        if (typeof req === "string") {
+            req = {
+                url: req
+            };
+        }
+
+        // Check to make sure the request object is valid
+        if (typeof req !== "object" || !req.url) {
+
+            return false;
+        }
+
+        var res = {
+
+            done: function (data) {
+
+                if (clkblocker.check) {
+
+                    clkblocker.remove();
+                }
+
+                if (data.body) {
+                    data = data.body;
+                }
+
+                // Wrap the data in a function caller
+                data = {
+                    template: 'partialCaller',
+                    partialTemp: 'header-jointTaxPayer',
+                    arguments: data,
+                };
+
+                // Re-render the section
+                render.section($('#emp-tp-info-joint')[0], data, 'replace');
+
+                modal.destroy();
+
+            },
+            fail: function () {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'callFunction' }, 'Request for tax payer associate header failed.');
+
+                if (clkblocker.check) {
+
+                    clkblocker.remove();
+                }
+            }
+
+        };
+
+        // Make the ajax request
+        ajax.requestData(req, res);
+    };
+
+    var requestException = function _request_exception(req) {
+        var wrapperID = "emp-exception";
+        var exceptionWrapper = "#" + wrapperID;
+
+        // Check to see if a url is the only thing provided and change it to a object
+        if (typeof req === "string") {
+            req = {
+                url: req
+            };
+        }
+
+        // Check to make sure the request object is valid
+        if (typeof req !== "object" || !req.url) {
+
+            return false;
+        }
+
+        var res = {
+
+            done: function (data) {
+
+                if (data.body) {
+                    data = data.body;
+                }
+
+                render.section($(exceptionWrapper)[0], data, 'return', function (html) {
+                    var htmlContent = html;
+                    var $newExceptions = $(document.createDocumentFragment());
+
+                    $newExceptions.append(htmlContent);
+
+                    //Add wrapping div if not present present.
+                    if ($newExceptions.find(exceptionWrapper).length <= 0) {
+                        $newExceptions.wrapInner("<div id='" + wrapperID + "'></div>");
+                    }
+
+                    //Find all previous tables in exceptionWrapper
+                    var previousTables = $(exceptionWrapper).find('table').each(function () {
+                        var tableID = $(this).attr("id");
+                        if (tableID) {
+
+                            // Remove table from emp.reference.table
+                            if (emp.reference.tables[tableID]) {
+                                // Remove Stylesheets to avoid conflicts
+                                emp.reference.tables[tableID].deleteStyleSheets();
+                                // Debind table
+                                emp.reference.tables[tableID].debind();
+                                // Delete table from emp.references
+                                delete emp.reference.tables[tableID];
+                            }
+                        }
+                    });
+
+                    // Re-render the Active Exception section
+                    $(exceptionWrapper).replaceWith($newExceptions);
+
+                    //Find all new tables in newExceptions
+                    var currentTables = $(exceptionWrapper).find('table').each(function () {
+                        var tableID = $(this).attr("id");
+                        if (tableID) {
+                            // Add reference to new table in emp.reference.tables
+                            emp.reference.tables[tableID] = this;
+                        }
+                        // initialize table
+                        $(this).table();
+                    });
+
+                    // Re-bind Group-collapsing functionality
+                    $(exceptionWrapper).find('section').find('> header').on('click', function _toggleGroup(evt) {
+                        if (evt.target.nodeName !== 'INPUT' && evt.target.nodeName !== 'LABEL') {
+                            var $group = $(this).closest('section');
+
+                            // From opened to collapsed
+                            if (!$group.is('.emp-collapse')) {
+                                _priv.group.collapse($group, this);
+                            }
+
+                            // From collapsed to opened
+                            else {
+                                _priv.group.expand($group);
+                            }
+                        }
+                    });
+
+                });
+
+            },
+            fail: function () {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'callFunction' }, 'Request for Active Exceptions failed.');
+            }
+        };
+
+        // Make the ajax request
+        ajax.requestData(req, res);
+    };
+
+    var requestDuplicate = function _request_duplicate(req, action, mapping, modal, table, settings) {
+
+        var res = {
+
+            done: function (data) {
+
+                if (data.body) {
+                    data = data.body;
+                }
+
+                // Merge the mapping with
+                for (var item in mapping) {
+
+                    if (data.hasOwnProperty(mapping[item])) {
+
+                        mapping[item] = data[mapping[item]];
+                    }
+                    else {
+
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'requestDuplicate' }, 'Requested duplicate mapping source not found in data:' + mapping[item]);
+
+                        return false;
+                    }
+
+                }
+
+                switch (action) {
+
+                    case "submit":
+
+                        if (settings.redirect) {
+
+                            form.virtual({ 'action': settings.redirect }, mapping, true, false, 'strict');
+                        }
+
+                        break;
+
+                    case "map":
+
+                        if (typeof mapping === "object") {
+
+                            _priv.processMap(undefined, mapping, ":strict:", function () {
+
+                                modal.destroy();
+                            });
+
+                        }
+                        else {
+
+                            journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'requestDuplicate' }, 'Requested duplicate page with process map, but the `false` map was sent instead of object.');
+                        }
+
+                        break;
+
+                }
+
+            },
+
+            fail: function () {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'requestDuplicate' }, 'Request for duplicate page data failed.');
+            }
+
+        };
+
+        ajax.requestData(req, res);
+    };
+
+    var requestTooltip = function requestTooltip($ajaxTooltip) {
+
+        var spinnerOpts = {
+            lines: 7,      // The number of lines to draw
+            length: 3,     // The length of each line
+            width: 2,      // The line thickness
+            radius: 3,     // The radius of the inner circle
+            corners: 0.5,  // Corner roundness (0..1)
+            rotate: 75,    // The rotation offset
+            color: '#000', // #rgb or #rrggbb
+            speed: 1,      // Rounds per second
+            trail: 75,     // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: true, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 900,   // The z-index (defaults to 2000000000)
+            left: '0px',
+        };
+
+        var defaultInitialTitleText = "Click to load data.";
+
+        var loadingClass = 'emp-ajax-tooltip-loading';
+        var ajaxTooltipClass = 'emp-ajax-tooltip-style';
+        var ajaxErrorClass = 'emp-ajax-error';
+        var ajaxURL = $ajaxTooltip.attr('data-tooltip-url');
+
+        var retrievalMessages = {};
+        retrievalMessages.seeMore = 'Click to see more.';
+        retrievalMessages.noData = 'UI: Invalid data returned.';
+        retrievalMessages.error = 'UI: Ajax endpoint is down.';
+
+        //Takes a standard ajax messages object. If valid will display the message on the field.
+        var showResponseMessages = function (messages) {
+            var messageDisplayed = false;
+            var messageType = "message";
+            var messageOptions = {
+                scroll: false,
+                field: $ajaxTooltip,
+                pageNotifier: false
+            };
+
+            for (var m = 0; m < messages.length; m++) {
+
+                if (messages[m].text && (messages[m].text !== "" && messages[m].text !== null)) {
+
+                    messageType = "message";
+
+                    //Set Message Type
+                    if (messages[m].type) {
+                        messageType = messages[m].type;
+                    }
+
+                    //Create Message
+                    empMessage.createMessage({ text: messages[m].text, type: messageType }, messageOptions);
+                    messageDisplayed = true;
+                }
+            }
+            return messageDisplayed;
+        };
+
+        if (ajaxURL !== undefined) {
+
+            var req = {};
+            req.url = ajaxURL;
+            req.cache = false;
+
+            //Add Default title to tooltip if none is set
+            if ($ajaxTooltip.attr('title') === undefined) {
+                $ajaxTooltip.attr('title', defaultInitialTitleText);
+            }
+
+            var $ajaxTooltipParent = $ajaxTooltip.parent();
+
+            var ajaxRequestValue = $ajaxTooltip.text().trim();
+
+            req.data = { 'entityId': ajaxRequestValue };
+
+            $ajaxTooltip.on('click', function () {
+                var messageOptions;
+
+                $ajaxTooltipParent.addClass('emp-ajax-tooltip-loading');
+                $ajaxTooltip.removeAttr('title');
+
+                //Setup Spinner
+                var spinner = new spin(spinnerOpts).spin();
+
+                fastdom.mutate(function () {
+                    $ajaxTooltipParent[0].appendChild(spinner.el);
+                });
+
+                var res = {
+
+                    done: function (data) {
+
+                        //Unbind the ajax build click event
+                        $ajaxTooltip.unbind('click');
+
+                        var $messageLoc;
+                        var messages = false;
+                        var messageType;
+
+                        //Check status
+                        if (data.status && data.status === "success" && data.result.length === 1) {
+                            var tooltipContent = '';
+
+                            data = data.result[0];
+
+                            //Grab employee information
+                            tooltipContent = data.body;
+
+                            if (tooltipContent !== '') {
+                                cui.load('popover', function _loadPopover() {
+                                    $ajaxTooltip.popover({
+                                        display: {
+                                            className: ajaxTooltipClass
+                                        },
+                                        html: '<span>' + tooltipContent.trim() + '</span>'
+                                    });
+                                });
+
+                                $ajaxTooltip.attr('title', tooltipContent.trim());
+                            }
+                            else {
+
+                                //Check for any second level messages
+                                if (data.messages && data.messages.length >= 1) {
+                                    //Determine if messages were displayed from the reponse.
+                                    if (showResponseMessages(data.messages)) {
+                                        messages = true;
+                                    }
+                                }
+
+                                //No messages were displayed from the ajax response so create an appropriate error message
+                                if (!messages) {
+                                    messageOptions = {
+                                        scroll: false,
+                                        field: $ajaxTooltip,
+                                        pageNotifier: false
+                                    };
+
+                                    empMessage.createMessage({ text: retrievalMessages.noData, type: "error" }, messageOptions);
+                                }
+
+                                //Ajax call failed to return valid data, add ajax error class
+                                $ajaxTooltip.addClass(ajaxErrorClass);
+                            }
+                        }
+                        else {
+
+                            // If there are any top level messages display them
+                            if (data.messages && data.messages.length >= 1) {
+                                //Determine if messages were displayed from the reponse.
+                                if (showResponseMessages(data.messages)) {
+                                    messages = true;
+                                }
+                            }
+
+                            // If there are any internal messages display them
+                            if (data.result) {
+                                for (var i = 0; i < data.result.length; i++) {
+                                    if (data.result[i].messages && data.result[i].messages.length >= 1) {
+                                        if (showResponseMessages(data.result[i].messages)) {
+                                            messages = true;
+                                        }
+                                    }
+                                }
+                            }
+
+                            //No messages were displayed from the ajax response so create an appropriate error message
+                            if (!messages) {
+                                messageOptions = {
+                                    scroll: false,
+                                    field: $ajaxTooltip,
+                                    pageNotifier: false
+                                };
+
+                                empMessage.createMessage({ text: retrievalMessages.error, type: "error" }, messageOptions);
+                            }
+
+                            //Ajax call failed to return valid data, add ajax error class
+                            $ajaxTooltip.addClass(ajaxErrorClass);
+                        }
+
+                        fastdom.mutate(function () {
+                            $ajaxTooltipParent.find('.spinner').remove();
+                        });
+
+                        //Loading complete, remove the loading class
+                        $ajaxTooltipParent.removeClass('emp-ajax-tooltip-loading');
+                    },
+
+                    fail: function (data) {
+                        //Unbind the ajax build click event
+                        $ajaxTooltip.unbind('click');
+
+                        messageOptions = {
+                            scroll: false,
+                            field: $ajaxTooltip,
+                            pageNotifier: false
+                        };
+
+                        empMessage.createMessage({ text: retrievalMessages.error, type: "error" }, messageOptions);
+
+                        $ajaxTooltip.addClass(ajaxErrorClass);
+
+                        fastdom.mutate(function () {
+                            $ajaxTooltipParent.find('.spinner').remove();
+                        });
+
+                        $ajaxTooltipParent.removeClass('emp-ajax-tooltip-loading');
+                    }
+                };
+
+                ajax.request(req, res, true);
+            });
+        }
+    };
+
+    var processMap = function processMap(evt, map, $source, cb) {
+
+        var $sourceLookup;
+
+        // Function to handle the creation of
+        function tableSetIndex($elm, $table) {
+            var empTableRef = emp.reference.tables[$table.attr('id')];
+
+            if (empTableRef !== undefined) {
+                var row = $elm.parents('tr').eq(0).index();
+
+                empTableRef.setCurrentIndex(row);
+            }
+        }
+
+        // Check to see if we have event based information
+        if (evt instanceof Event || evt instanceof jQuery.Event) {
+            var $elm = $(evt.target);
+
+            // Move callback into the argument if $source was not provided
+            if (typeof $soruce === 'function') {
+                cb = $source;
+                $source = undefined;
+            }
+            else if ($source !== undefined) {
+                // Check to see if the source is a string and look it up the jQuery element
+                if (typeof $source === 'string') {
+
+                    if ($source === ':strict:') {
+
+                        _priv.processMap(undefined, map, $source);
+                    }
+                    else {
+
+                        // try to find a jQuery reference
+                        $sourceLookup = $('#' + $source);
+
+                        if ($sourceLookup.length === 1) {
+                            $source = $sourceLookup;
+
+                            if ($source[0].tagName === 'TABLE') {
+                                tableSetIndex($elm, $source);
+                            }
+                        }
+                        else {
+                            $source = undefined;
+                        }
+                    }
+                }
+                else if (!($source instanceof jQuery)) {
+                    journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'processMap' }, 'Provided source is not a valid source, ignoring');
+
+                    $source = undefined;
+                }
+            }
+        }
+        else {
+
+            // Check to see if the we have everything except event
+            if (arguments.length <= 3) {
+
+                // shift everything to the right
+                cb = $source;
+                $source = map;
+                map = evt;
+                evt = undefined;
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'processMap' }, 'Invalid amount of events passed without an event begin first');
+
+                return false;
+            }
+
+            if (!($source instanceof jQuery) && typeof $source === 'string') {
+
+                if ($source === ":strict:") {
+
+                    _priv.processMap(undefined, map, $source);
+                }
+                else {
+
+                    $sourceLookup = $('#' + $source);
+
+                    if ($sourceLookup.length === 1) {
+                        $source = $sourceLookup;
+                    }
+                    else {
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'processMap' }, 'Invalid source container defined');
+
+                        $source = undefined;
+                    }
+                }
+            }
+            else if ($source !== undefined) {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'processMap' }, 'Unknown source type begin');
+
+                $source = undefined;
+            }
+        }
+
+        // One last chance to make sure we have a proper map
+        if (typeof map === 'object') {
+            // Name is undefiend for now, and is an enhancement for later when we have more free time.
+            _priv.processMap(undefined, map, $source, function (result) {
+                if (typeof cb === 'function') {
+                    cb(true);
+                }
+                else {
+                    return true;
+                }
+            });
+        }
+        else {
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'processMap' }, 'Map object could not be found, or an internal argument mismatch');
+
+            return false;
+        }
+
+        return true;
+    };
+
+    /**
+     * Use a browser confrim message
+     * @param   {string}    msg        Message that should be displayed
+     * @param   {function}  yesFunc    OPTIONAL - Function to execute if the user selectes ok
+     * @return  {boolean}              return true if it finishes without issue otherwise false
+     */
+    var confirm = function confirm(origEvt, msg, yesFuncObject) {
+
+        var $confirm;
+
+        // Message
+        var $message = $('<p>').text(msg);
+
+        // Button Row
+        var $yesButton = $('<button/>', {
+            'type': 'button',
+            'id': 'emp-confirm-yes-button',
+            'class': 'emp-confirm-yes-button'
+        }).text('Yes');
+
+        var $noButton = $('<button/>', {
+            'type': 'button',
+            'id': 'emp-confirm-no-button',
+            'class': 'cui-button-primary emp-confirm-no-button'
+        })
+            .text('No');
+
+        // Create the button container and put it all together
+        var $buttonContainer = $('<div/>', {
+            "class": "emp-confirm-button-container"
+        })
+            .append($noButton)
+            .append($yesButton);
+
+        var _priv = {};
+
+        _priv.destroyModal = function _destory_modal($modal) {
+
+            $modal.hide();
+        };
+
+        _priv.setupModal = function _setup_modal($modal) {
+
+            $modal.$self.find('.emp-confirm-yes-button').on('click', { modal: $modal }, _event.yes);
+            $modal.$self.find('.emp-confirm-no-button').on('click', { modal: $modal }, _event.no).focus();
+        };
+
+        _priv.onHide = function _on_hide_modal($modal) {
+        };
+
+        var _event = {};
+
+        _event.no = function _event_no(event) {
+
+            var $modal = event.data.modal;
+
+            _priv.destroyModal($modal);
+        };
+
+        _event.yes = function _event_yes(event) {
+
+            var $modal = event.data.modal;
+
+            _priv.destroyModal($modal);
+
+            if (typeof yesFuncObject === "function") {
+
+                yesFuncObject();
+            }
+            else {
+
+                functionCall(origEvt, yesFuncObject);
+            }
+        };
+
+        $confirm = $.modal({
+            html: $message,
+            footer: {
+                "html": $buttonContainer.html()
+            },
+            modalClass: 'emp-confirm-modal',
+            onCreate: function (modal) {
+
+                _priv.setupModal(modal);
+            },
+            //onHide: _priv.onHide,
+            hideDestroy: true
+        });
+
+        $confirm.show();
+
+        // Special return function that will prevent the rest of the functionCall functions from running.
+        return "stop";
+    };
+
+    /**
+     * Adds masking (automatic slashes) to a date input
+     *
+     * @param   {jQuery}  $input  Input element
+     * @return  {Boolean}         Success/failure
+     */
+    var dateMask = function _dateMask($input) {
+
+        if (typeof $input !== 'object' || !($input instanceof jQuery)) {
+            journal.log({ type: 'error', module: 'emp', owner: 'UI', func: 'dateMask' }, 'Input must be a jQuery object');
+
+            return false;
+        }
+
+        $input.on('keyup', function _dateMask_onKeyup(evt) {
+            _events.dateMasking(evt, $(this));
+        });
+
+        return true;
+    };
+
+    ///////////
+    // Forms //
+    ///////////
+
+    var form = {};
+
+    _priv.childWindow = false;
+
+    form.virtual = forms.virtual;
+
+    /**
+     * Submits a form
+     *
+     * @param   {Event}   evt      User event (click, etc)
+     * @param   {Object}  options  Includes the form's ID and action
+     *
+     * @return  {boolean}          Success/failure
+     */
+    form.submit = function _submit(evt, options, settings) {
+
+        journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submit called: ", arguments);
+
+        var frm = false;
+        var validation = true;
+
+        if (evt && evt.target) {
+
+            if (!evt.target.hasAttribute('data-skip-blocker')) {
+                clkblocker.add($(evt.target));
+            }
+            else {
+                journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Click blocker skipped per developer as data-skip-blocker attribute on element.");
+            }
+
+        }
+        else {
+
+            clkblocker.add();
+        }
+
+        // Look over the event object and verify that it is not an event type object or a jquery event object.
+        if (!(evt instanceof Event) && typeof evt !== 'object' && (typeof evt === 'object' && !evt.hasOwnProperty('target'))) {
+            options = evt;
+            evt = undefined;
+        }
+
+        // Extend setting wit options
+        var submitSettings = $.extend({}, { id: '', action: '' }, options);
+
+        // Identify the proper form by option id or by the buttons native form
+        if (options.id && typeof options.id === 'string') {
+
+            frm = document.getElementById(options.id);
+        }
+        else if (evt instanceof Event) {
+
+            frm = evt.target.form;
+
+            // default blocker incase the
+            evt.preventDefault();
+        }
+
+        // Get the event type and use it to get a reference to what was just clicked.
+        if (evt instanceof Event || evt instanceof jQuery.Event) {
+            var validAttr = $(evt.target).attr('data-validation');
+
+            if (validAttr === false || validAttr === 'false') {
+                validation = false;
+            }
+        }
+
+        if (frm) {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submitting form:", frm);
+
+            if (submitSettings.action && submitSettings.action !== '') {
+
+                frm.setAttribute('action', submitSettings.action);
+            }
+
+            if (submitSettings.preventSubmit) {
+
+                clkblocker.remove();
+
+                // Report that the action still completed.
+                return true;
+            }
+            else {
+
+                // Check to see if the form can be validated
+                if (validation) {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Running validation on form.");
+
+                    // validate the form
+                    var formValidation = validate.form(frm);
+
+                    //console.log(formValidation);
+
+                    // If the results passed, allow the form to submit.
+                    if (formValidation) {
+
+                        if (!_disableForms) {
+
+                            _priv.printFormContents($(frm));
+
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+
+                            frm.submit();
+
+                            return true;
+                        }
+                        else {
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion blocked by developer, form:", options.id);
+
+                            _priv.printFormContents($(frm));
+
+                            clkblocker.remove();
+
+                            return true;
+                        }
+                    }
+                    else {
+
+                        clkblocker.remove();
+
+                        return true;
+                    }
+                }
+                else {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Validation skipped!");
+
+                    if (!_disableForms) {
+
+                        _priv.printFormContents($(frm));
+
+                        journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+
+                        frm.submit();
+
+                        return true;
+                    }
+                    else {
+                        journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion blocked by developer, form settings:", options.id);
+
+                        _priv.printFormContents($(frm));
+
+                        clkblocker.remove();
+
+                        return true;
+                    }
+                }
+
+            }
+
+        }
+        else {
+            // Log the error and quit
+            if (submitSettings.id !== '') {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'No form with ID "', submitSettings.id, '"');
+            }
+            else if (evt instanceof Event) {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'Unable to find form related to "#', evt.target.id, '" from element ', evt.target);
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'Unable to find form ', submitSettings);
+            }
+
+            return false;
+        }
+    };
+
+    var showChild = function _show_child() {
+
+        if (_priv.childWindow) {
+
+            _priv.childWindow.focus();
+        }
+    };
+
+    // Gets form names and values and submits them via POST to a new window
+    //
+    // Description:
+    //
+    // Functionality:
+    //  - Breaks down the action into an action and parameters and their values
+    //  - Submits the new form via POST into a new popup window
+    //  - Updates the values of parameters in the action with new values specified in the sourceForm
+    //  - Applies values to parameters that are mapped elsewhere in the sourceForm, denoted by curly braces
+    //    Example:     action -> A=1&B=2&C=3
+    //                 params -> A=5&C={D}&D=7
+    //        Result: A is updated to 5, B is left at 2,
+    //                C becomes 7 because it is mapped to D's value, and
+    //                D itself is not added to the targetForm because it does not exist in the action initially
+    //
+    form.externalSubmit = function _externalSubmit(options) {
+        var i;
+        var temp = [];
+        var form = document.createElement('form'); // The form to be submitted
+        var defaults = {
+            src: '',         // Pre-existing `<form>` element (or the `name` attribute of a form) which will provide the new values
+            params: '',      // References to fields in the action which should be updated with values in the `src` form
+            dest: '',        // `name` attribute of new `<form>` to which all values are submitted
+            action: '',      // URL to be split into form fields and values, as well as the `dest` form's action
+            returnURL: false // Whether to return the new URL instead of creating a form and submitting it
+        };
+        var settings = $.extend({}, defaults, options);
+
+        // Remove braces from a string
+        var removeBraces = function removeBraces(s) {
+            return s.replace(/\{/, '')
+                .replace(/\}/, '');
+        };
+
+        // Split a string into the parameters and values and return one of them
+        //
+        // The string is split on ampersands, followed by equals signs. The 'side'
+        // argument dictates whether to return an array of the values on the 'left'
+        // or 'right' side of the equals sign.
+        //
+        var splitContents = function splitContents(stringToSplit, side) {
+            var contents = [];
+            var theSide = [];
+            var i;
+            var temp;
+
+            if (stringToSplit) {
+                contents = stringToSplit.split('&');
+
+                if (side === 'left') {
+                    side = 0;
+                }
+                else if (side === 'right') {
+                    side = 1;
+                }
+
+                for (i = 0; i < contents.length; i++) {
+                    temp = contents[i].split('=');
+                    theSide[i] = temp[side];
+                }
+
+                return theSide;
+            }
+            else {
+                return 0;
+            }
+        };
+
+        // Get parameters or values from a form element
+        var getFormData = function getFormData(theForm, mapping) {
+            // Get the data from the form
+            for (var i = 0; i < theForm.elements.length; i++) {
+                if (theForm.elements[i].name === mapping) {
+                    if (theForm.elements[i].value) {
+                        return theForm.elements[i].value;
+                    }
+                    else {
+                        return '';
+                    }
+                }
+            }
+        };
+
+        // Opens a new window and submits the final form
+        var openInNewWindow = function openInNewWindow(form) {
+            // Create a name for a window so we can target it
+            var winName = 'NewWindow_' + getCookie('JSESSIONID').replace(/\W/g, 'a');
+
+            // Open a blank window
+            window.open('', winName, 'scrollbars=yes,menubar=yes,resizable=yes,toolbar=no,width=900,height=700');
+
+            // Set the target to the blank window
+            form.target = winName;
+
+            // Submit
+            form.submit();
+        };
+
+        var actn;              // the target form's 'action' value (a URL)
+        var urlParamList = []; // stores the parameters only, from the URL, to be passed to the final form
+        var urlValueList = []; // stores the values only, from the URL, to be passed to the final form
+
+        // Checks to see if settings.returnURL was sent as a parameter or not (no method overloading in JavaScript - so optional param used)
+        if (!settings.returnURL) {
+            settings.returnURL = false;
+        }
+
+        // Check arguments
+        if ((!settings.dest && !settings.returnURL) || !settings.action) {
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'externalSubmit' }, 'Missing required arguments');
+
+            return;
+        }
+
+        // Check for the source `<form>`
+        var srcForm;
+
+        if (typeof settings.src === 'string') {
+            srcForm = document.forms[settings.src];
+        }
+        else {
+            srcForm = settings.src;
+        }
+
+        if (kind(srcForm) !== 'element') {
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'externalSubmit' }, 'Source form not provided');
+
+            return false;
+        }
+
+        //
+        // Get base URL for form's action
+        //
+
+        // Set the action to everything before the question mark
+        if (settings.action.substr(0, settings.action.indexOf('?') - 1)) {
+            actn = settings.action.substr(0, settings.action.indexOf('?'));
+        }
+        else if (settings.action) {
+            actn = settings.action;
+        }
+
+        // Get parameters
+
+        // targetUrl (get everything after the equals sign)
+        temp = settings.action.split('?');
+
+        // Parameters and values are present in the URL
+        if (temp[1]) {
+            urlParamList = temp[1];
+            urlValueList = temp[1];
+            urlParamList = splitContents(urlParamList, 'left');
+            urlValueList = splitContents(urlValueList, 'right');
+        }
+        // No parameters, so just open the URL as-is without creating or submitting a form
+        else if (!settings.params || !settings.params.length) {
+            window.open(settings.action, 'window_name_' + getCookie('JSESSIONID').replace(/\W/g, 'a'));
+
+            return;
+        }
+
+        // Check to see if the settings.action contained any braced values
+        // If so, replaced it with an empty string
+        for (i = 0; i < urlValueList.length; i++) {
+            if (urlValueList[i].match(/\{/) && urlValueList[i].match(/\}/)) {
+                urlValueList[i] = '';
+            }
+        }
+
+        // Update targetUrl values based on sourceMappingParameters
+        //    Check for references to targetUrl parameters in the
+        //    sourceMappingParameters. When a reference is found,
+        //    update the value that was assigned to the parameter by
+        //    the targetUrl.
+        //
+
+        // Check that the form was actually found and mappings are defined
+        if (settings.params && srcForm) {
+            // Create arrays of params/values
+            var srcParamList = settings.params;
+            var srcValueList = settings.params;
+            srcParamList = splitContents(settings.params, 'left');
+            srcValueList = splitContents(settings.params, 'right');
+
+            // Find and update values
+            for (i = 0; i < srcValueList.length; i++) {
+                // If it's just a constant value (no braces)
+                if (!(/\{/.test(srcValueList[i]) && /\}/.test(srcValueList[i]))) {
+                    // Check that the parameter was in the targetUrl
+                    if (urlParamList.indexOf(srcParamList[i]) > -1) {
+                        urlValueList[urlParamList.indexOf(srcParamList[i])] = srcValueList[i];
+                    }
+                    // Otherwise, add it to the list
+                    else {
+                        urlParamList[urlParamList.length] = srcParamList[i];
+                        urlValueList[urlValueList.length] = srcValueList[i];
+                    }
+                }
+                // If it's a mapped value (in braces)
+                else if (/\{/.test(srcValueList[i]) && /\}/.test(srcValueList[i])) {
+                    // Get the value from the sourceForm, if a value exists, and apply it to the parameter in targetUrl
+                    if (getFormData(srcForm, removeBraces(srcValueList[i]))) {
+                        urlValueList[urlParamList.indexOf(srcParamList[i])] = getFormData(srcForm, removeBraces(srcValueList[i]));
+                    }
+                    // If the parameter has no value, assign an empty string
+                    else {
+                        urlValueList[urlParamList.indexOf(srcParamList[i])] = '';
+                    }
+                }
+            }
+        }
+
+        if (settings.returnURL) {
+            // Create URL
+            //  - Use previously gathered parameters and values
+            //  - Returns built URL
+
+            //parameters variable
+            var queryString = '?';
+
+            //create <input>s and set attributes
+            for (i = 0; i < urlParamList.length; i++) {
+                queryString += urlParamList[i] + '=' + urlValueList[i] + '&';
+            }
+
+            // Get rid of last empty parameter concatenator
+            if (queryString.charAt(queryString.length - 1) === '&') {
+                queryString = queryString.substr(0, queryString.length - 1);
+            }
+
+            // Return URL with parameters
+            return (actn + queryString);
+        }
+        else {
+            // Create form:
+            //  - Use previously gathered parameters and values
+            //  - One line of HTML for each set of data
+            //  - POST method
+
+            var input;
+
+            // Reset and empty the form object
+            while (form.hasChildNodes()) {
+                form.removeChild(form.firstChild);
+            }
+
+            // Set up the form
+            form.setAttribute('name', settings.dest);
+            form.setAttribute('method', 'post');
+            form.setAttribute('target', 'newwindow');
+            form.setAttribute('action', actn);
+
+            // Create <input>s and set attributes
+            for (i = 0; i < urlParamList.length; i++) {
+                input = document.createElement('input');
+                input.setAttribute('name', urlParamList[i]);
+                input.setAttribute('value', urlValueList[i]);
+                input.setAttribute('type', 'hidden');
+                form.appendChild(input);
+                input = null;
+            }
+
+            // Append the form to the document
+            document.body.appendChild(form);
+
+            // Open the submitted form in a new window
+            openInNewWindow(form);
+        }
+    };
+
+    var link = {};
+
+    link.newWindow = function _link_new_window(evt) {
+
+        var $link = $(evt.target);
+
+        if (!$link.hasClass('emp-header-preferences')) {
+            clkblocker.add($link);
+        }
+
+
+        var dest = false;
+
+        if (arguments.length > 1 && typeof arguments[1] === "object" && arguments[1].url) {
+
+            dest = arguments[1].url;
+
+        }
+        else {
+
+            var href = $link.attr('href');
+
+            if (href.length) {
+                dest = href;
+            }
+
+        }
+
+        if (dest) {
+
+            openWindow(dest);
+        }
+
+        if (!$link.hasClass('emp-header-preferences')) {
+            clkblocker.remove();
+        }
+
+        return true;
+    };
+
+    var renderComment = function (data, cb) {
+
+        if (!data.template) {
+            data.template = "workflowComments";
+        }
+
+        var headerHtml = '<header>Workflow Comments</header>';
+
+        var footerHtml = '<footer><div class="emp-button-row"><div class="emp-col-full cui-align-right"><button type="button" id="workflow-comments-cancel">Cancel</button><button class="cui-button-primary" type="button" id="workflow-comments-add">Add Comment</button></div></div></footer>';
+
+        render.section(null, data, 'return', function (html) {
+
+            htmlContent = html;
+
+            fastdom.mutate(function () {
+
+                // Build the modal
+                var workflowComments = $.modal({
+                    autoOpen: true,
+                    html: htmlContent,
+                    header: {
+                        html: headerHtml,
+                    },
+                    footer: {
+                        html: footerHtml,
+                    },
+                    hideDestroy: true,
+                    modalClass: "emp-workflow-modal"
+                });
+
+                // Setup the cancel button to destory the modal.
+                workflowComments.$self.find('#workflow-comments-cancel').on('click', function () {
+
+                    workflowComments.destroy();
+                });
+
+                workflowComments.$self.find('#workflow-comments-add').on('click', function () {
+
+                    var formData = {};
+
+                    var $form = workflowComments.$self.find('#emp-workflow-comments');
+
+                    // Validate the form
+                    var validation = validate.form($form[0], true);
+
+                    if (validation) {
+
+                        var inputObj = $form.find('input, select, textarea').each(function (i) {
+
+                            var $this = $(this);
+
+                            var iName = $this.attr('name');
+                            var iVal = $this.val();
+
+                            if (!formData[iName]) {
+                                formData[iName] = iVal;
+                            }
+                        });
+
+                        var req = {
+                            cache: false,
+                            contentType: 'application/json; charset=utf-8',
+                            data: formData,
+                            dataType: 'json',
+                            method: 'POST',
+                            url: $form.attr('action'),
+                        };
+
+                        var res = {
+                            done: function (data) {
+
+                                if (data.status === "success") {
+
+                                    workflowComments.destroy();
+
+                                    // Check for return message
+                                    if (data.messages && data.messages.length) {
+
+                                        journal.log({ type: 'info', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Workflow comments JSON POST successful!');
+
+                                        for (var i = 0, len = data.messages.length; i < len; i++) {
+
+                                            var message = data.messages[i];
+
+                                            message.template = "messages";
+
+                                            empMessage.createMessage(message, {});
+                                        }
+
+                                    }
+                                    else {
+
+                                        journal.log({ type: 'info', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Workflow comments JSON POST successful! - No return message provided.');
+                                    }
+
+                                    if (typeof cb === "function") {
+
+                                        cb(true);
+                                    }
+                                }
+                            },
+                            fail: function () {
+
+                                journal.log({ type: 'error', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Workflow comments JSON POST returned with error state.');
+
+                                if (typeof cb === "function") {
+
+                                    cb(false);
+                                }
+                            }
+                        };
+
+                        if (!_disableAjax) {
+
+                            // Now perform the AJAX request.
+                            ajax.requestData(req, res);
+
+                        }
+                        else {
+
+                            journal.log({ type: 'info', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Ajax Request blocked by developer.', req);
+                        }
+                    }
+                    else {
+
+                        $commentBox = $form.find('textarea');
+
+                        var errMsg = {
+                            "type": "error",
+                            "text": "A comment must be provided!",
+                            "scroll": false
+                        };
+
+                        empMessage.createMessage(errMsg, { pageNotifier: false, field: $commentBox });
+
+                        workflowComments.adjustCSS();
+                        workflowComments.adjustHeight();
+                        workflowComments.center();
+                    }
+
+                    return true;
+                });
+            });
+        });
+    };
+
+    var workflowComments = function _workflow_comments(request, cb) {
+
+        if (request !== undefined) {
+
+            var req = {};
+
+            if (typeof request === "string") {
+
+                req.url = request;
+                req.data = {};
+
+            }
+            else if (request.url) {
+
+                req.url = request.url;
+
+                if (request.data && typeof request.data === "object") {
+
+                    req.data = request.data;
+                }
+            }
+
+            if (req.url) {
+
+                var res = {};
+
+                res.done = function _done(data) {
+
+                    if (data.status && data.status === "success") {
+
+                        data = data.result[0].body;
+                    }
+                    else if (data.body) {
+
+                        data = data.body;
+                    }
+
+                    renderComment(data, cb);
+                };
+
+
+                if (!_disableAjax) {
+
+                    // Now perform the AJAX request.
+                    ajax.request(req, res, true);
+
+                }
+                else {
+
+                    journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'ajax', func: 'workflowComments' }, 'Ajax Request blocked by developer.', request);
+                }
+            }
+            else {
+
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowComments' }, 'Unable to build the workflow comments request object correctly');
+
+                return false;
+            }
+
+        }
+        else {
+
+            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'workflowComments' }, 'No URL was passed to pull workflow comments.');
+
+            return false;
+        }
+
+        return true;
+    };
+
+    var workflowAction = function _workflow_action(req) {
+
+        if (req.url && typeof req.url === "string") {
+
+            // Get the workflow drop down value
+            var $workflowDropdown = $('#fw_babe_action');
+
+            var workflowDropdownValue = $workflowDropdown.val();
+
+            var $workflowForm = $workflowDropdown.parents('form').eq(0);
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow value when workflow button clicked: ' + workflowDropdownValue);
+
+            if (!req.data) {
+                req.data = {};
+            }
+
+            req.data['fw_babe_action'] = workflowDropdownValue;
+
+            var res = {
+
+                done: function (data) {
+
+                    if (Array.isArray(data) && data.length === 1) {
+                        data = data[0];
+                    }
+
+                    if (data.status === "success" && data.result.length) {
+
+                        journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action request returned results that indicate we have steps that need to be executed.');
+
+                        (function nextStep(steps) {
+
+                            var currentStep = steps.shift().body;
+
+                            if (currentStep.hasOwnProperty('confirm')) {
+
+                                confirm(null, currentStep.confirm.message, function () {
+
+                                    if (steps.length) {
+
+                                        nextStep(steps);
+                                    }
+                                    else {
+
+                                        $workflowForm.submit();
+                                    }
+
+                                });
+                            }
+                            else if (currentStep.hasOwnProperty('workflow_comments')) {
+
+                                var comments = currentStep.workflow_comments;
+
+                                renderComment(comments, function () {
+
+                                    if (steps.length) {
+
+                                        nextStep(steps);
+                                    }
+                                    else {
+
+                                        $workflowForm.submit();
+                                    }
+
+                                });
+                            }
+                            else {
+
+                                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Unkown step reached in workflow actions');
+                            }
+
+                        })(data.result.concat());
+
+                    }
+                    else if (data.status === "success" && data.result.length === 0) {
+
+                        if (data.messages.length) {
+
+                            var actionError = false;
+
+                            for (var i = 0, len = data.messages.length; i < len; i++) {
+
+                                var message = data.messages[i];
+
+                                empMessage.createMessage(message, {});
+
+                                if (message.type === "error") {
+
+                                    actionError = true;
+                                }
+                            }
+
+                            if (actionError) {
+
+                                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action go request returned error message.');
+
+                                return false;
+                            }
+                            else {
+
+                                journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action completed successfully.');
+
+                                // Need to hide controls
+                                //$('.emp-icon-workflow-item-comments').hide();
+                                //$('.emp-workflow-actions').hide();
+
+                                $workflowForm.submit();
+                            }
+
+                        }
+                        else {
+
+                            $workflowForm.submit();
+                        }
+                    }
+                    else {
+
+                        journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action go request failed, but 200 on the request.');
+
+                        return false;
+                    }
+
+                },
+
+                fail: function (data) {
+
+                    journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action go request failed.');
+                }
+            };
+
+            ajax.request(req, res);
+
+        }
+        else {
+
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action url missing');
+        }
+
+        return true;
+    };
+
+    var switchToAssociate = function _switch_to_associate() {
+
+        var associateId = $('.emp-tp-joint-id .emp-data').text().trim();
+
+        if (associateId.length !== 0) {
+
+            var form = document.getElementById('form_tp_info');
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'switchToAssociate' }, 'User clicked to switch to associate taxpayer.');
+
+            form.submit();
+
+        }
+        else {
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'switchToAssociate' }, 'User clicked to switch to associate taxpayer but non was loaded into context.');
+        }
+    };
+
+    var validate = {};
+
+    validate.field = function _validateField(field) {
+        var results = validation.field(field);
+
+        _priv.processValidation(results);
+
+        if (results.result) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
+    validate.form = function _validateForm(form, skipProc) {
+
+        var results = validation.form(form);
+
+        if (!skipProc) {
+            _priv.processValidation(results);
+        }
+
+        if (results.endResult) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
+    // cui load passthrough
+    var load = function _load() {
+
+        cui.load.apply(cui, arguments);
+    };
+
+    // Utility function for test pages
+    var getProperty = function (name) {
+
+        switch (name) {
+
+            case '_disableForms':
+
+                return _disableForms;
+
+            case '_disableAjax':
+
+                return _disableAjax;
+
+            default:
+
+                return null;
+        }
+    };
+
+    var disable = {};
+
+    disable.form = function _disable_form(bool) {
+
+        if (typeof bool === 'boolean') {
+            _disableForms = bool;
+
+            forms.setDisable(bool);
+        }
+        // Check for string equivalent
+        else if (typeof bool === 'string') {
+
+            if (bool === "true") {
+
+                bool = true;
+            }
+
+            if (bool === "false") {
+
+                bool = false;
+            }
+
+            _disableForms = bool;
+
+            forms.setDisable(bool);
+        }
+
+        if (bool) {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'disable', func: 'form' }, 'Forms submits disabled by the developer.');
+        }
+        else {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'disable', func: 'form' }, 'Forms submits enabled by the developer.');
+        }
+
+        return true;
+    };
+
+    disable.ajax = function _disable_ajax(bool) {
+
+        if (typeof bool === 'boolean') {
+            _disableAjax = bool;
+
+        }
+        // Check for string equivalent
+        else if (typeof bool === 'string') {
+
+            if (bool === "true") {
+
+                bool = true;
+            }
+
+            if (bool === "false") {
+
+                bool = false;
+            }
+
+            _disableAjax = bool;
+
+        }
+
+        if (_disableAjax) {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'disable', func: 'ajax' }, 'Ajax submits disabled by the developer.');
+        }
+        else {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'disable', func: 'ajax' }, 'Ajax submits enabled by the developer.');
+        }
+
+        return true;
+    };
+
+    var tracker = {};
+
+    var getPreformance = function _get_preformance(name) {
+
+        if (!tracker[name]) {
+
+            tracker[name] = {
+                start: performance.now(),
+                end: false
+            };
+        }
+        else {
+
+            tracker[name].end = performance.now();
+
+        }
+
+        if (tracker[name].start && tracker[name].end) {
+            console.log("Preformance Tracker for", name, tracker[name].end - tracker[name].start, " in milliseconds.");
+
+            delete tracker[name];
+        }
+
+    };
+
+    //flush localStorage -tabsetPrefs
+    var flushLocalStorage = function(str, customObj){
+        var lStorage = store;
+
+        if(lStorage){
+            //remove localStorage tabsetprefs
+            lStorage.remove(str);
+        }
+        //set custom tabsetPrefs to localStages
+        lStorage.set('tabsetPrefs', customObj);
+    };
+
+    ////////////////
+    // Public API //
+    ////////////////
+
+    return {
+        ajax: {
+            request: ajax.request,
+            requestData: ajax.requestData,
+            requestSection: ajax.requestSection
+        },
+        ajaxSection: ajaxSection,
+        clickblocker: clkblocker,
+        confirm: confirm,
+        dateMask: dateMask,
+
+        // External flag
+        external: externalEmpire,
+
+        eri: eri,
+        fw: fw,
+
+        // Exposing for table filters till we can write date.js component
+        dateMasking: _events.dateMasking,
+        dropdown: dropdown,
+        download: download,
+        ds: ds,
+        load: load,
+        functionCall: functionCall,
+        referenceCall: referenceCall,
+
+        // Framework request scripts
+        requestAssociate: requestAssociate,
+        requestException: requestException,
+        switchToAssociate: switchToAssociate,
+
+        // Testing item
+        getPreformance: getPreformance,
+        flushLocalStorage: flushLocalStorage,
+
+        init: init,
+        reference: reference,
+        selectionPopup: selectionPopup,
+        specialSelectionPopup: specialSelectionPopup,
+        overridePrivate: overridePrivate,
+        openWindow: openWindow,
+        //processMap: processMap,
+        processMap: processM.directMap,
+        form: {
+            externalSubmit: form.externalSubmit,
+            submit: form.submit,
+            virtual: form.virtual,
+        },
+        disable: {
+            ajax: disable.ajax,
+            form: disable.form
+        },
+        validate: {
+            form: validate.form,
+            field: validate.field
+        },
+
+        link: link,
+
+        windows: windowsM,
+
+        showChild: showChild,
+        getCookie: getCookie,
+        getProperty: getProperty,
+        tabset: {
+            open: _priv.tabset.open,
+            close: _priv.tabset.close,
+            pin: _priv.tabset.pin,
+            unpin: _priv.tabset.unpin,
+        },
+
+        workflowAction: workflowAction,
+        workflowComments: workflowComments,
+
+        uiPopup: uiPopup,
+
+        prefs: prefs,
+        pageScripts: pageScripts,
+        sectionSetup: sectionSetup,
+
+        isPage: ((protocol) ? true : false),
+        isFile: ((!protocol) ? true : false),
+
+        // Cached elements
+        $body: $body,
+        $window: $window,
+
+        // Expose modules through `emp`
+        cui: cui,
+        render: render,
+
+        //Message Plugin exposed for testing pages
+        empMessage: empMessage,
+        store: store,
+
+        //manualInit: manualInit
+    };
+});

@@ -1,0 +1,188 @@
+//   ========================================================
+// * @name       _message.scss
+// * @desc       Empire messages styles
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    Default message styles
+// * --------------------------------------------------------
+.cui-messages {
+	list-style: none;
+	width: auto !important;
+
+	.cui-informational,
+	.cui-error,
+	.cui-warning,
+    .cui-success,
+    .emp-federal {
+        padding: 5px 2em 6px;
+
+        section & {
+            display: inline-block;
+        }
+    }
+
+    .emp-federal {
+        color: #806900;
+        background: #fff6cc;
+        border: 1px solid #ffe366;
+        position: relative;
+        margin-bottom: 2.8px;
+        border-radius: 4px;
+        padding-left: 46px;
+        height: 32px;
+
+        &:before {
+            background: #000;
+            content: "FED";
+            color: #FFF;
+            border: 1px solid #FFF;
+            padding: 2px 5px;
+            position: absolute;
+            left: 4px;
+            top: 3px;
+            border-radius: 4px;
+        }
+    }
+}
+
+.emp-messages {
+    display: block;
+
+    &.emp-collapse {
+        display: none;
+    }
+}
+
+
+// * @section    Tooltips
+// * --------------------------------------------------------
+.emp-tooltip {
+    cursor: pointer !important;
+}
+
+.cui-popover.emp-tooltip-style span {
+    background-color: #666;
+    border-radius: 3px;
+    color: #FFF;
+    display: inline-block;
+    padding: 4px 5px;
+}
+
+// * @section    Ajax Tooltips
+// * --------------------------------------------------------
+.emp-ajax-tooltip {
+    cursor: pointer !important;
+}
+
+.emp-ajax-tooltip-loading .spinner{
+    position: relative !important;
+    transform:translate(-50%, 0);
+    display:inline-block;
+    margin-left:10px;
+    height:3px;
+}
+
+.cui-popover.emp-ajax-tooltip-style span {
+    background-color: #666;
+    border-radius: 3px;
+    color: #FFF;
+    display: inline-block;
+    padding: 4px 5px;
+}
+
+.emp-ajax-tooltip.emp-ajax-error{
+    cursor: auto !important;
+}
+
+.emp-table td .emp-data.emp-ajax-tooltip{
+    font-weight:normal
+}
+
+// * @section    Forms
+// * --------------------------------------------------------
+.emp-field,
+.emp-composite.emp-search-composite {
+    .cui-data .cui-messages {
+    		.cui-informational,
+			.cui-error,
+			.cui-warning,
+			.cui-success {
+				display: inline-block;
+				padding: 5px 8px 6px 2em;
+				margin-bottom: 5px;
+			}
+    }
+
+    .cui-messages{
+        flex-wrap:wrap;
+    }
+}
+
+.cui-row [class*="emp-col"] > .emp-field .cui-data-left{
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: auto;
+
+    .cui-data{
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+    }
+
+    .cui-label{
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+    }
+
+    .cui-messages{
+        -ms-grid-row: 3;
+    }
+
+    @include pointbreak($cui-bp-large) {
+        grid-template-columns: 230px auto;
+
+        .cui-data{
+            -ms-grid-column: 1;
+        }
+
+        .cui-label{
+            -ms-grid-column: 2;
+            -ms-grid-row: 1;
+        }
+
+        .cui-messages{
+            grid-column: 2;
+            -ms-grid-column: 2;
+            -ms-grid-row: 2;
+        }
+    }
+}
+
+body.ie{
+    .cui-data-left{
+        .cui-messages{
+            display: block;
+        }
+    }
+}
+
+fieldset {
+
+    @include pointbreak($cui-bp-large) {
+        .cui-messages {
+            .cui-informational,
+            .cui-error,
+            .cui-warning,
+            .cui-success {
+                display: inline-block;
+                padding: 5px 8px 6px 2em;
+                //commented out due to alignment bug - JBM - 6/18/2018;
+                //margin-left: $emp-label-width + 4;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

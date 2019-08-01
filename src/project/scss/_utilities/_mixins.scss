@@ -1,0 +1,302 @@
+//   ========================================================
+// * @name       _utilities/_mixins.scss
+// * @desc       Empire sass mixins
+// * @author     Manolo Farfan, Craig Patik
+// * @version    1.0.0.20150206
+// * @see        https://github.com/ny/frg-empire
+//   ========================================================
+
+
+// * @section    General
+// * --------------------------------------------------------
+@mixin set-fixed-width($val) {
+    width: $val;
+    min-width: $val;
+}
+
+// Emits all font size options available in user preferences
+@mixin fontSize($standard) {
+    font-size: $standard;
+
+    // Check for `em` value
+    @if str-index(to-string($standard), "em") {
+        .emp-fontsize-8 & {
+            font-size: $standard - 0.375em;
+        }
+
+        .emp-fontsize-10 & {
+            font-size: $standard - 0.25em;
+        }
+
+        .emp-fontsize-12 & {
+            font-size: $standard - 0.125em;
+        }
+
+        // For larger sizes, add this many EMs: (n-14)/16
+
+        .emp-fontsize-16 & {
+            font-size: $standard + 0.125em;
+        }
+
+        .emp-fontsize-18 & {
+            font-size: $standard + 0.25em;
+        }
+
+        .emp-fontsize-20 & {
+            font-size: $standard + 0.375em;
+        }
+
+        .emp-fontsize-22 & {
+            font-size: $standard + 0.5em;
+        }
+
+        .emp-fontsize-24 & {
+            font-size: $standard + 0.625em;
+        }
+
+        .emp-fontsize-26 & {
+            font-size: $standard + 0.75em;
+        }
+
+        .emp-fontsize-28 & {
+            font-size: $standard + 0.875em;
+        }
+
+        .emp-fontsize-30 & {
+            font-size: $standard + 1em;
+        }
+
+        .emp-fontsize-32 & {
+            font-size: $standard + 1.125em;
+        }
+    }
+    // Assume pixels
+    @else {
+        .emp-fontsize-8 & {
+            font-size: $standard - 6px;
+        }
+
+        .emp-fontsize-10 & {
+            font-size: $standard - 4px;
+        }
+
+        .emp-fontsize-12 & {
+            font-size: $standard - 2px;
+        }
+
+        .emp-fontsize-16 & {
+            font-size: $standard + 2px;
+        }
+
+        .emp-fontsize-18 & {
+            font-size: $standard + 4px;
+        }
+
+        .emp-fontsize-20 & {
+            font-size: $standard + 6px;
+        }
+
+        .emp-fontsize-22 & {
+            font-size: $standard + 8px;
+        }
+
+        .emp-fontsize-24 & {
+            font-size: $standard + 10px;
+        }
+
+        .emp-fontsize-26 & {
+            font-size: $standard + 12px;
+        }
+
+        .emp-fontsize-28 & {
+            font-size: $standard + 14px;
+        }
+
+        .emp-fontsize-30 & {
+            font-size: $standard + 16px;
+        }
+
+        .emp-fontsize-32 & {
+            font-size: $standard + 18px;
+        }
+    }
+}
+
+// Convert a value to a string
+@function to-string($value) {
+    @return inspect($value);
+}
+
+
+// * @section    General
+// * --------------------------------------------------------
+@mixin general-header-spacing() {
+    padding-top: $emp-tp-header-separator-padding-top-small;
+    margin-top: $emp-tp-header-separator-margin-top-small;
+    border-top: $emp-tp-header-separator-border-top-small;
+
+    @include pointbreak($cui-bp-large) {
+        padding-top: $emp-tp-header-separator-padding-top-large;
+        margin-top: $emp-tp-header-separator-margin-top-large;
+        border-top: $emp-tp-header-separator-border-top-large;
+    }
+}
+
+// * @section    Label-data
+// * --------------------------------------------------------
+@mixin section-row-spacing() {
+    & > .cui-row,
+    .emp-button-row {
+        padding: $emp-group-row-padding;
+        margin: $emp-group-row-margin;
+
+        @include pointbreak($cui-bp-large) {
+            padding: $emp-group-row-padding;
+        }
+
+        & > [class*="cui-col-"],
+        & > [class*="emp-col-"] {
+            margin: 1px 0;
+        }
+    }
+}
+
+@mixin section-table-spacing() {
+    & > .emp-table-controls {
+        padding: $emp-group-row-padding;
+        margin: $emp-group-row-margin;
+
+        @include pointbreak($cui-bp-large) {
+            padding: $emp-group-row-padding;
+        }
+
+        & > [class*="cui-col-"],
+        & > [class*="emp-col-"] {
+            margin: 1px 0;
+        }
+    }
+}
+
+@mixin label() {
+    position: relative;
+    //width: 100%;
+    font-size: $cui-font-size;
+
+    // Side-by-side with data (like .col-fixed-)
+    @include pointbreak($cui-bp-large) {
+        display: block;
+        float: left;
+        width: $emp-label-width;
+        //overflow: hidden; // JH: Remove 8/23/2016
+        text-align: right;
+        margin-top: 3px;
+
+        legend {
+            display: inline-block;
+            //float: right;
+            text-align: right;
+        }
+    }
+
+    // Inputs that act as labels
+    input,
+    select {
+        margin: $emp-group-element-margin; // More spacing between "label" and data
+    }
+
+    .cui-icon {
+        vertical-align: middle;
+    }
+
+    .emp-icon-redcheck:after {
+        top: -0.25em;
+        left: 5px;
+    }
+
+}
+
+@mixin data() {
+    width: 100%;
+    padding: 0;
+
+    &,
+    input:not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]),
+    select,
+    textarea {
+        font-size: $cui-font-size - 2;
+        max-width: 100%; // Prevent the input from running off the edge of the screen (especially on smaller screens)
+        display: inline-block; // Need this since `max-width` doesn't work for inline elements
+    }
+
+    input:not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]) {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+    button,
+    input[type="submit"],
+    input[type="button"] {
+        padding-top: 6px;
+        padding-bottom: 5px;
+    }
+
+    // Side-by-side with label (like .cui-filler)
+    @include pointbreak($cui-bp-large) {
+        display: block;
+        width: auto;
+        overflow: hidden;
+        padding-left: $emp-data-padding-left;
+        text-align: left;
+    }
+
+    button {
+        margin-top: $emp-data-button-margin-top;
+        margin-left: $emp-data-button-margin-left;
+        vertical-align: $emp-data-button-vertical-align;
+    }
+
+    .cui-icon {
+        vertical-align: middle;
+    }
+
+    .emp-data {
+        display: inline-block;
+        line-height: normal;
+        margin-top: 3px;
+        vertical-align: text-top;
+    }
+
+    .emp-section-header-field,
+    .emp-input-collection .emp-field {
+        //replaced inline-block to inline-grid due to alignment bug - JBM - 6/18/2018;
+        display: inline-grid; 
+        
+    }
+}
+
+@mixin federal-badge() {
+    content: "Fed";
+    color: #FFF;
+    font-size: 10px;
+    background: $emp-federal-badge-color;
+    border-radius: 3px;
+    padding: 1px 3px;
+    position: relative;
+    top: -1px;
+    margin-right: 3px;
+}
+
+@mixin button-image($width: $cui-button-icon-width, $height: $cui-button-icon-height) {
+    position: relative;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    padding: $cui-button-icon-padding;
+    margin: $cui-button-icon-margin;
+    font-size: $cui-font-size;
+    color: transparent;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    vertical-align: top;
+}

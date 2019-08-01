@@ -1,0 +1,31 @@
+{{#ifCond v1=this.readOnly op="boolCheck" v2="true" ~}}
+    <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' linkType=this.type state="disabled" scope="link" )) skip="role,href,title"}}>
+        {{#if this.disabledText~}}
+            {{~this.disabledText~}}
+        {{~else~}}
+            {{~this.text~}}
+        {{/if~}}
+    </span>
+{{~else~}}
+
+    {{#ifCond v1=this.section op="===" v2="globalHeader"~}}
+
+        {{#ifCond v1=this.scope op="===" v2="sendID"~}}
+
+            <a {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-button-send-id"}' linkType=this.type state="active" selected=this.selected scope="link" ))}}>Send ID</a>
+
+        {{/ifCond~}}
+
+        {{#ifCond v1=this.scope op="===" v2="getID"~}}
+
+            <a {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-button-get-id"}' linkType=this.type state="active" selected=this.selected scope="link" ))}}>Get ID</a>
+
+        {{/ifCond~}}
+
+    {{~else~}}
+
+        <a {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' linkType=this.type state="active" style=this.style selected=this.selected scope="link" ))}}>
+            {{~this.text~}}{{#if this.popup}}{{~> _popup this scope="link"}}{{/if}}</a>
+    {{/ifCond~}}
+
+{{/ifCond~}}

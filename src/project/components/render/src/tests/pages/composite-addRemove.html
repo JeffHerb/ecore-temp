@@ -1,0 +1,197 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "addRemove",
+                                        "template": "composite",
+                                        "parts": {
+                                            "checklist": [
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-1",
+                                                            "name": "check-1",
+                                                            "value": "check-1"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-1"
+                                                        },
+                                                        "text": "Checkbox 1"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-2",
+                                                            "name": "check-2",
+                                                            "value": "check-2"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-2"
+                                                        },
+                                                        "text": "Checkbox 2"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-3",
+                                                            "name": "check-3",
+                                                            "value": "check-3"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-3"
+                                                        },
+                                                        "text": "Checkbox 3"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-4",
+                                                            "name": "check-4",
+                                                            "value": "check-4",
+                                                            "checked": true
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-4"
+                                                        },
+                                                        "text": "Checkbox 4"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-5",
+                                                            "name": "check-5",
+                                                            "value": "check-5",
+                                                            "checked": true
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-5"
+                                                        },
+                                                        "text": "Checkbox 5"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-6",
+                                                            "name": "check-6",
+                                                            "value": "check-6",
+                                                            "checked": true
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-6"
+                                                        },
+                                                        "text": "Checkbox 6"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "checkbox",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "checkbox",
+                                                            "id": "check-7",
+                                                            "name": "check-7",
+                                                            "value": "check-7"
+                                                        }
+                                                    },
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "check-7"
+                                                        },
+                                                        "text": "Text wrapping Checkbox 7"
+                                                    }
+                                                }
+                                            ],
+                                            "selectedOrder": {
+                                                "type": "hidden",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "selectedOrder",
+                                                        "name": "selectedOrder",
+                                                        "value": "check-6,check-5,check-4",
+                                                        "type": "hidden"
+                                                    },
+                                                }
+                                            }
+                                        },
+                                        "properties": {
+                                            "listName": "List Name:",
+                                            "listOrderName": "Selected Items:",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

@@ -1,0 +1,1905 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "type": "form",
+                        "contents": [
+                            // Default Selectbox
+                            {
+                                "template": "table",
+                                "title": "Data Only Table (Selectionless)",
+                                "attributes": {
+                                    "id": "E_STANDARD_TABLE"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Multi Selection Table
+                            {
+                                "template": "table",
+                                "title": "Multiple Select Table",
+                                "attributes": {
+                                    "id": "E_STANDARD_CHECKBOX_SELECT"
+                                },
+                                "selectable": true,
+                                "selectionType": "mulitple",
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Single Selection Table
+                            {
+                                "template": "table",
+                                "title": "Single Select Table",
+                                "attributes": {
+                                    "id": "E_STANDARD_RADIO_SELECT"
+                                },
+                                "selectable": true,
+                                "selectionType": "single",
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Multi Selection with select all Table
+                            {
+                                "template": "table",
+                                "title": "Multiple Select with Select All Table",
+                                "attributes": {
+                                    "id": "E_STANDARD_CHECKBOX_SELECT_ALL"
+                                },
+                                "selectAll": "true",
+                                "selectable": true,
+                                "selectionType": "mulitple",
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Multi Selection with select all with all Selected at load
+                            {
+                                "template": "table",
+                                "title": "Multiple Select with Select All Table",
+                                "attributes": {
+                                    "id": "E_STANDARD_CHECKBOX_SELECT_ALL_ALL_SELECTED"
+                                },
+                                "selectAll": "true",
+                                "selectable": true,
+                                "selectionType": "mulitple",
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            // Multiple Select Readonly, Checked, Empty
+                            {
+                                "template": "table",
+                                "title": "Multiple Select Readonly, Checked, Empty",
+                                "attributes": {
+                                    "id": "E_STANDARD_RADIO_READ_ONLY_CHECKED_EMPTY"
+                                },
+                                "selectable": true,
+                                "selectAll": true,
+                                "selectionType": "mulitple",
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": false,
+                                                "readOnly": false
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true,
+                                                "readOnly": false,
+                                                "empty": false
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true,
+                                                "readOnly": true,
+                                                "empty": false
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true,
+                                                "readOnly": true,
+                                                "empty": true
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": false,
+                                                "readOnly": true,
+                                                "empty": false
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            // Single Select Readonly, Checked, Empty
+                            {
+                                "template": "table",
+                                "title": "Single Select Readonly, Checked, Empty",
+                                "attributes": {
+                                    "id": "E_STANDARD_CHECKBOX_READ_ONLY_CHECKED_EMPTY"
+                                },
+                                "selectable": true,
+                                "selectionType": "single",
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": false,
+                                                "readOnly": false,
+                                                "empty": false
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true,
+                                                "readOnly": false,
+                                                "empty": false
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true,
+                                                "readOnly": true,
+                                                "empty": false
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": true,
+                                                "readOnly": true,
+                                                "empty": true
+                                            }
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                }
+                                            ],
+                                            "selection": {
+                                                "checked": false,
+                                                "readOnly": true,
+                                                "empty": false
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            // Empty table
+                            {
+                                "template": "table",
+                                "title": "Empty Table",
+                                "attributes": {
+                                    "id": "EMPTY_TABLE"
+                                },
+                                "selectAll": true,
+                                "selectionType": "mulitple",
+                                "selection": true,
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 6"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 7"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 8"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 9"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 10"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Table with primary button
+                            {
+                                "template": "table",
+                                "title": "Button Test Table",
+                                "attributes": {
+                                    "id": "E_BUTTON_TEST_TABLE"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Dummy Column 1",
+                                                    "attributes": {
+                                                        "id": "button-col-1",
+                                                        "data-type": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Dummy Column 2",
+                                                    "attributes": {
+                                                        "id": "button-col-2",
+                                                        "data-type": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Dummy Column 3",
+                                                    "attributes": {
+                                                        "id": "button-col-3",
+                                                        "data-type": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Dummy Column 4",
+                                                    "attributes": {
+                                                        "id": "button-col-4",
+                                                        "data-type": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Dummy Column 5",
+                                                    "attributes": {
+                                                        "id": "button-col-5",
+                                                        "data-type": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Dummy Column 6",
+                                                    "attributes": {
+                                                        "id": "button-col-6",
+                                                        "data-type": "alpha"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Button 1",
+                                                    "attributes": {
+                                                        "id": "button-col-7",
+                                                        "data-type": "button",
+                                                    },
+                                                    "style": "min-width",
+                                                    "hideLabel": true
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Button 2",
+                                                    "attributes": {
+                                                        "id": "button-col-8",
+                                                        "data-type": "button",
+                                                    },
+                                                    "style": "min-width",
+                                                    "hideLabel": true
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Button 3",
+                                                    "attributes": {
+                                                        "id": "button-col-9",
+                                                        "data-type": "button",
+                                                    },
+                                                    "style": "min-width",
+                                                    "hideLabel": true
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Primary Button",
+                                                    "attributes": {
+                                                        "id": "button-col-10",
+                                                        "data-type": "primaryButton",
+                                                    },
+                                                    "responsive": {
+                                                        "primaryButton": true
+                                                    },
+                                                    "style": "min-width",
+                                                    "hideLabel": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "1x1"
+                                                },
+                                                {
+                                                    "text": "1x2"
+                                                },
+                                                {
+                                                    "text": "1x3"
+                                                },
+                                                {
+                                                    "text": "1x4"
+                                                },
+                                                {
+                                                    "text": "1x5"
+                                                },
+                                                {
+                                                    "text": "1x6"
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_TEST_BUTTON_1_7"
+                                                                },
+                                                                "text": "Text Button 1x7"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_TEST_BUTTON_1_8"
+                                                                },
+                                                                "text": "Text Button 1x8"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_TEST_BUTTON_1_8"
+                                                                },
+                                                                "text": "Text Button 1x9"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_TEST_BUTTON_PRIMARY_1"
+                                                                },
+                                                                "text": "Primary Row 1"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Pageing table
+                            {
+                                "template": "table",
+                                "title": "Paging table",
+                                "attributes": {
+                                    "id": "E_PAGING_TEST_TABLE"
+                                },
+                                "paging": {
+                                    "previous": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "E_Previous",
+                                                "id": "E_Previous"
+                                            },
+                                            "text": "Previous"
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "type": "button",
+                                                "name": "E_Next",
+                                                "id": "E_Next"
+                                            },
+                                            "text": "Next"
+                                        }
+                                    },
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Footer Hover
+                            {
+                                "template": "table",
+                                "title": "Footer Hover Test",
+                                "attributes": {
+                                    "id": "E_FOOTER_HOVER_TEST"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 6"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Aggragate Column"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "footer": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {},
+                                                {},
+                                                {},
+                                                {},
+                                                {},
+                                                {},
+                                                {
+                                                    "text": "300.00",
+                                                    "style": "currency"
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1x1"
+                                                },
+                                                {
+                                                    "text": "Column 1x2"
+                                                },
+                                                {
+                                                    "text": "Column 1x3"
+                                                },
+                                                {
+                                                    "text": "Column 1x4"
+                                                },
+                                                {
+                                                    "text": "Column 1x5"
+                                                },
+                                                {
+                                                    "text": "Column 1x6"
+                                                },
+                                                {
+                                                    "text": "100.00",
+                                                    "style": "currency"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 2x1"
+                                                },
+                                                {
+                                                    "text": "Column 2x2"
+                                                },
+                                                {
+                                                    "text": "Column 2x3"
+                                                },
+                                                {
+                                                    "text": "Column 2x4"
+                                                },
+                                                {
+                                                    "text": "Column 2x5"
+                                                },
+                                                {
+                                                    "text": "Column 2x6"
+                                                },
+                                                {
+                                                    "text": "100.00",
+                                                    "style": "currency"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 3x1"
+                                                },
+                                                {
+                                                    "text": "Column 3x2"
+                                                },
+                                                {
+                                                    "text": "Column 3x3"
+                                                },
+                                                {
+                                                    "text": "Column 3x4"
+                                                },
+                                                {
+                                                    "text": "Column 3x5"
+                                                },
+                                                {
+                                                    "text": "Column 3x6"
+                                                },
+                                                {
+                                                    "text": "100.00",
+                                                    "style": "currency"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Exceeding max column length
+                            {
+                                "template": "table",
+                                "title": "Too Many Showable Columns",
+                                "attributes": {
+                                    "id": "E_TOO_MANY_COLUMNS"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 6"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 7"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 8"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 9"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 10"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 11"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 12"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 13"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 14"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 15"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 16"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 17"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 18"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 19"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 20"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 21"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 22",
+                                                    "visibility": "hidden"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Delete row",
+                                                    "style": "min-width",
+                                                    "hideLabel": true,
+                                                    "attributes": {
+                                                        "data-type": "button"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Edit row",
+                                                    "style": "min-width",
+                                                    "hideLabel": true,
+                                                    "attributes": {
+                                                        "data-type": "button"
+                                                    },
+                                                    "responsive": {
+                                                        "primaryButton": true
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 25",
+                                                    "visibility": "hidden"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 26",
+                                                    "visibility": "hidden"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                },
+                                                {
+                                                    "text": "Column 6"
+                                                },
+                                                {
+                                                    "text": "Column 7"
+                                                },
+                                                {
+                                                    "text": "Column 8"
+                                                },
+                                                {
+                                                    "text": "Column 9"
+                                                },
+                                                {
+                                                    "text": "Column 10"
+                                                },
+                                                {
+                                                    "text": "Column 11"
+                                                },
+                                                {
+                                                    "text": "Column 12"
+                                                },
+                                                {
+                                                    "text": "Column 13"
+                                                },
+                                                {
+                                                    "text": "Column 14"
+                                                },
+                                                {
+                                                    "text": "Column 15"
+                                                },
+                                                {
+                                                    "text": "Column 16"
+                                                },
+                                                {
+                                                    "text": "Column 17"
+                                                },
+                                                {
+                                                    "text": "Column 18"
+                                                },
+                                                {
+                                                    "text": "Column 19"
+                                                },
+                                                {
+                                                    "text": "Column 20"
+                                                },
+                                                {
+                                                    "text": "Column 21"
+                                                },
+                                                {
+                                                    "text": "Column 22",
+                                                    "visibility": "hidden"
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_EDIT_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "icon": "delete",
+                                                                "text": "Delete"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_EDIT_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "icon": "edit",
+                                                                "text": "Edit"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "text": "Column 25",
+                                                    "visibility": "hidden"
+                                                },
+                                                {
+                                                    "text": "Column 26",
+                                                    "visibility": "hidden"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Just making it with notifiers and buttons
+                            {
+                                "template": "table",
+                                "title": "Just enough data columns to render",
+                                "attributes": {
+                                    "id": "E_JUST_ENOUGH_WITH_SPECIAL_COLUMNS"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 6"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 7"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 8"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 9"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 10"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 11"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 12"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 13"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 14"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 15"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Notifier 1",
+                                                    "style": "min-width",
+                                                    "hideLabel": true,
+                                                    "attributes": {
+                                                        "data-type": "notifier",
+                                                        "data-columntype": "notifier"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Notifier 2",
+                                                    "style": "min-width",
+                                                    "hideLabel": true,
+                                                    "attributes": {
+                                                        "data-type": "notifier",
+                                                        "data-columntype": "notifier"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Button Menu",
+                                                    "hideLabel": true,
+                                                    "attributes": {
+                                                        "data-type": "buttonMenu",
+                                                        "data-columntype": "buttonMenu"
+                                                    },
+                                                    "style": "min-width"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Edit row",
+                                                    "style": "min-width",
+                                                    "hideLabel": true,
+                                                    "attributes": {
+                                                        "data-type": "primaryButton"
+                                                    },
+                                                    "responsive": {
+                                                        "primaryButton": true
+                                                    }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 16",
+                                                    "visibility": "hidden"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 17",
+                                                    "visibility": "hidden"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "text": "Column 5"
+                                                },
+                                                {
+                                                    "text": "Column 6"
+                                                },
+                                                {
+                                                    "text": "Column 7"
+                                                },
+                                                {
+                                                    "text": "Column 8"
+                                                },
+                                                {
+                                                    "text": "Column 9"
+                                                },
+                                                {
+                                                    "text": "Column 10"
+                                                },
+                                                {
+                                                    "text": "Column 11"
+                                                },
+                                                {
+                                                    "text": "Column 12"
+                                                },
+                                                {
+                                                    "text": "Column 13"
+                                                },
+                                                {
+                                                    "text": "Column 14"
+                                                },
+                                                {
+                                                    "text": "Column 15"
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "static",
+                                                            "template": "notifier",
+                                                            "text": "ABC"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "static",
+                                                            "template": "notifier",
+                                                            "text": "XYZ"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "button",
+                                                                    "title": "Button Menu"
+                                                                },
+                                                                "text": "Button Menu",
+                                                                "icon": "responsive-table-menu"
+                                                            },
+                                                            "options": [
+                                                                {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "BTN_DELETE_1",
+                                                                            "type": "button"
+                                                                        },
+                                                                        "icon": "delete",
+                                                                        "text": "Delete"
+                                                                    }
+                                                                }
+                                                            ],
+                                                        }
+                                                    ],
+                                                    "style": "min-width",
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_EDIT_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "icon": "edit",
+                                                                "text": "Edit"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "text": "Column 25",
+                                                    "visibility": "hidden"
+                                                },
+                                                {
+                                                    "text": "Column 26",
+                                                    "visibility": "hidden"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Cell Spans
+                            {
+                                "template": "table",
+                                "title": "Span Cell Test",
+                                "attributes": {
+                                    "id": "E_TABLE_SPAN_CELL"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    contents: [
+                                                        {
+                                                            "type": "span",
+                                                            "template": "span",
+                                                            "attributes": {
+                                                                "data-title": "This is the hidden value!"
+                                                            },
+                                                            "text": "Value!"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Controls
+                            {
+                                "template": "table",
+                                "title": "Table with Input Controls",
+                                "attributes": {
+                                    "id": "E_TABLE_CONTROLS"
+                                },
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    contents: [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "text",
+                                                                    "name": "E_TABLE_TEXT_CONTROL",
+                                                                    "id": "E_TABLE_TEXT_CONTROL",
+                                                                    "value": "1.30"
+                                                                }
+                                                            },
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_TABLE_TEXT_CONTROL"
+                                                                },
+                                                                "text": "Test Text Control",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            // Disable Controls
+                            {
+                                "template": "table",
+                                "title": "Disabled Controls",
+                                "attributes": {
+                                    "id": "E_DISABLED CONTORLS_TABLE"
+                                },
+                                "style": 'noFilter,noColumns,noResize',
+                                "head": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 1"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 2"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 3"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 4"
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Column 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "body": {
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "text": "Data 1"
+                                                },
+                                                {
+                                                    "text": "Data 2"
+                                                },
+                                                {
+                                                    "text": "Data 3"
+                                                },
+                                                {
+                                                    "text": "Data 4"
+                                                },
+                                                {
+                                                    "text": "Data 5"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

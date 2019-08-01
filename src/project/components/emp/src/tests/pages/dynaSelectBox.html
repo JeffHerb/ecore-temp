@@ -1,0 +1,156 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Form Submit - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_PLATFORM"
+                                                    },
+                                                    "text": "Application Type:"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_PLATFORM",
+                                                        "onchange": "emp.functionCall(event, 'emp.dropdown', ['E_LANGUAGE', 'E_PLATFORM', 'data'])"
+                                                    },
+                                                    "options": {
+                                                        "web": {
+                                                            "text": "Web",
+                                                            "value": "web",
+                                                        },
+                                                        "desktop": {
+                                                            "text": "Desktop",
+                                                            "value": "desktop",
+                                                        },
+                                                        "mobile": {
+                                                            "text": "Mobile",
+                                                            "value": "mobile",
+                                                        },
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "column",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "select",
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_LANGUAGE"
+                                                    },
+                                                    "text": "Pick Language"
+                                                },
+                                                "input": {
+                                                    "attributes": {
+                                                        "id": "E_LANGUAGE",
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },                      
+                        ]
+                    }
+                ]
+            },
+            "data": {
+                "E_PLATFORM": {
+                    "web": {
+                        "javascript": {
+                            "text": "JavaScript",
+                            "value": "javascript",
+                        },
+                        "css": {
+                            "text": "CSS",
+                            "value": "css",
+                        },
+                        "html": {
+                            "text": "HTML",
+                            "value": "html",
+                        },
+                    },
+                    "desktop": {
+                        "java": {
+                            "text": "Java",
+                            "value": "java",
+                        },
+                        "c++": {
+                            "text": "C++",
+                            "value": "c++"
+                        },
+                        "python": {
+                            "text": "Python",
+                            "value": "python"
+                        }
+                    },
+                    "mobile": {
+                        "ios": {
+                            "text": "iOS",
+                            "value": "ios",
+                        },
+                        "android": {
+                            "text": "Android",
+                            "value": "android"
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <script>
+
+        function changed() {
+            console.log("Selectbox Changed.");
+        }
+
+        require(['domReady!'], function() {
+
+            console.log("page is ready");
+
+        });
+
+    </script>
+
+</html>

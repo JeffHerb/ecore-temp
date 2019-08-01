@@ -1,0 +1,43 @@
+@mixin twoColGrid {
+    display: -ms-grid;
+    display: grid;
+    
+    -ms-grid-columns: calc(50% - 5px) calc(50% - 5px);
+    grid-template-columns: repeat(2, calc(50% - 5px));
+    
+}
+
+@mixin calcHalf {
+    width: calc(50% - 5px);
+    min-width: calc(50% - 5px);
+}
+
+@mixin displayGrid{
+	display:-ms-grid !important;
+	display:grid !important;
+}
+
+@mixin gridTemplateColumns($cols){
+	-ms-grid-columns:$cols !important;
+   	grid-template-columns:$cols !important;
+}
+
+@mixin gridTemplateRows($rows){
+	-ms-grid-rows:$rows !important;
+   	grid-template-rows:$rows !important;
+}
+
+@mixin gridColumn($col){
+	grid-column: $col !important;
+	-ms-grid-column:$col !important;
+}
+
+@mixin gridColumnSpan($start, $end){
+	grid-column-start: $start !important;
+  	grid-column-end: $end !important;
+}
+
+@mixin gridRow($row){
+	grid-row: $row !important;
+	-ms-grid-row:$row !important;
+}

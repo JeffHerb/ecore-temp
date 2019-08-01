@@ -1,0 +1,668 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Removed the html 5 shiv for testing purposes -->
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+</body>
+<script>
+    var fwData ={
+        "page": {
+            "contents": [
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "type": "header",
+                                    "template": "group",
+                                    "title": "Legendless Entity"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_SOTHER"
+                                                        },
+                                                        "text": "Something:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "name": "E_SOTHER",
+                                                            "id": "E_SOTHER",
+                                                            "value": "100.00"
+                                                        },
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "entityLookup",
+                                                    "template": "composite",
+                                                    "parts": {
+                                                        "select": {
+                                                            "type": "select",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_ENTITY_COMPOSITE_SELECT",
+                                                                    "name": "E_ENTITY_COMPOSITE_SELECT"
+                                                                },
+                                                                "options": [
+                                                                    {
+                                                                        "text": "Id",
+                                                                        "value": "id"
+                                                                    },
+                                                                    {
+                                                                        "text": "Name",
+                                                                        "value": "name"
+                                                                    }
+                                                                ],
+                                                                "noBlankOption": true
+                                                            },
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_ENTITY_COMPOSITE_SELECT"
+                                                                },
+                                                                "text": "Entity Search Type:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            }
+                                                        },
+                                                        "sections": {
+                                                            "type": "entityLookupSections",
+                                                            "template": "composite",
+                                                            "parts": {
+                                                                "id": {
+                                                                    "type": "search",
+                                                                    "template": "composite",
+                                                                    "parts": {
+                                                                        "text": {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "attributes": {
+                                                                                    "for": "E_ID"
+                                                                                },
+                                                                                "text": "ID:",
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "type": "text",
+                                                                                    "id": "E_ID",
+                                                                                    "name": "E_ID"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "button": {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "E_LOOKUP_ON_ID"
+                                                                                },
+                                                                                "text": "Lookup"
+                                                                            },
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "name": {
+                                                                    "text": "inputs",
+                                                                    "template": "inputGroup",
+                                                                    "legend": "Name:",
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "First Name",
+                                                                                "attributes": {
+                                                                                    "for": "E_FIRST_NAME_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_FIRST_NAME_1",
+                                                                                    "id": "E_FIRST_NAME_1",
+                                                                                    "type": "text",
+                                                                                    "size": 16,
+                                                                                    "max-length": 16,
+                                                                                    "value": "John"
+                                                                                },
+                                                                                "required": true,
+                                                                                "federal": true
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "Middle Initial",
+                                                                                "attributes": {
+                                                                                    "for": "E_MIDDLE_INITIAL_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_MIDDLE_INITIAL_1",
+                                                                                    "id": "E_MIDDLE_INITIAL_1",
+                                                                                    "type": "text",
+                                                                                    "size": 1,
+                                                                                    "maxlength": 1
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "Last Name",
+                                                                                "attributes": {
+                                                                                    "for": "E_LAST_NAME_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_LAST_NAME_1",
+                                                                                    "id": "E_LAST_NAME_1",
+                                                                                    "type": "text",
+                                                                                    "size": 40,
+                                                                                    "maxlength": 161,
+                                                                                    "value": "Smith"
+                                                                                },
+                                                                                "required": true
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "select",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "attributes": {
+                                                                                    "for": "E_NAME_SUFFIX"
+                                                                                },
+                                                                                "text": "Suffix",
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "E_NAME_SUFFIX",
+                                                                                    "name": "E_NAME_SUFFIX"
+                                                                                },
+                                                                                "options": {
+                                                                                    "jr": {
+                                                                                        "text": "Jr",
+                                                                                        "value": "jr"
+                                                                                    },
+                                                                                    "sr": {
+                                                                                        "text": "Sr",
+                                                                                        "value": "sr"
+                                                                                    },
+                                                                                    "ii": {
+                                                                                        "text": "II",
+                                                                                        "value": "ii"
+                                                                                    },
+                                                                                    "iii": {
+                                                                                        "text": "III",
+                                                                                        "value": "iii"
+                                                                                    },
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "E_LOOKUP_ON_ID"
+                                                                                },
+                                                                                "text": "Lookup"
+                                                                            },
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "property": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "entityLookup",
+                                                    "template": "composite",
+                                                    "parts": {
+                                                        "select": {
+                                                            "type": "select",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_ENTITY_COMPOSITE_SELECT",
+                                                                    "name": "E_ENTITY_COMPOSITE_SELECT"
+                                                                },
+                                                                "options": [
+                                                                    {
+                                                                        "text": "Home",
+                                                                        "value": "home"
+                                                                    },
+                                                                    {
+                                                                        "text": "Work",
+                                                                        "value": "work"
+                                                                    }
+                                                                ],
+                                                                "noBlankOption": true
+                                                            },
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_ENTITY_COMPOSITE_SELECT"
+                                                                },
+                                                                "text": "Entity Search Type:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            }
+                                                        },
+                                                        "sections": {
+                                                            "type": "entityLookupSections",
+                                                            "template": "composite",
+                                                            "parts": {
+                                                                "home": {
+                                                                    "type": "search",
+                                                                    "template": "composite",
+                                                                    "parts": {
+                                                                        "text": {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "attributes": {
+                                                                                    "for": "E_ID"
+                                                                                },
+                                                                                "text": "ID:",
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "type": "text",
+                                                                                    "id": "E_ID",
+                                                                                    "name": "E_ID"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "work": {
+                                                                    "text": "inputs",
+                                                                    "template": "inputGroup",
+                                                                    //"legend": "Name:",
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "First Name",
+                                                                                "attributes": {
+                                                                                    "for": "E_FIRST_NAME_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_FIRST_NAME_1",
+                                                                                    "id": "E_FIRST_NAME_1",
+                                                                                    "type": "text",
+                                                                                    "size": 16,
+                                                                                    "max-length": 16
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "Extension",
+                                                                                "attributes": {
+                                                                                    "for": "E_EXTENSION"
+                                                                                }
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_EXTENSION",
+                                                                                    "id": "E_EXTENSION",
+                                                                                    "type": "text",
+                                                                                    "size": 5,
+                                                                                    "maxlength": 5
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "property": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "type": "header",
+                                    "template": "group",
+                                    "title": "Legend Entity"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_SOTHER"
+                                                        },
+                                                        "text": "Something:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "name": "E_SOTHER",
+                                                            "id": "E_SOTHER",
+                                                            "value": "100.00"
+                                                        },
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "entityLookup",
+                                                    "template": "composite",
+                                                    "parts": {
+                                                        "select": {
+                                                            "type": "select",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_ENTITY_COMPOSITE_SELECT",
+                                                                    "name": "E_ENTITY_COMPOSITE_SELECT"
+                                                                },
+                                                                "options": [
+                                                                    {
+                                                                        "text": "Id",
+                                                                        "value": "id"
+                                                                    },
+                                                                    {
+                                                                        "text": "Name",
+                                                                        "value": "name"
+                                                                    }
+                                                                ],
+                                                                "noBlankOption": true
+                                                            },
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_ENTITY_COMPOSITE_SELECT"
+                                                                },
+                                                                "text": "Entity Search Type:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            }
+                                                        },
+                                                        "sections": {
+                                                            "type": "entityLookupSections",
+                                                            "template": "composite",
+                                                            "parts": {
+                                                                "id": {
+                                                                    "type": "search",
+                                                                    "template": "composite",
+                                                                    "parts": {
+                                                                        "text": {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "attributes": {
+                                                                                    "for": "E_ID"
+                                                                                },
+                                                                                "text": "ID:",
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "type": "text",
+                                                                                    "id": "E_ID",
+                                                                                    "name": "E_ID"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "button": {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "E_LOOKUP_ON_ID"
+                                                                                },
+                                                                                "text": "Lookup"
+                                                                            },
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "name": {
+                                                                    "text": "inputs",
+                                                                    "template": "inputGroup",
+                                                                    "legend": "Name:",
+                                                                    "options": [
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "First Name",
+                                                                                "attributes": {
+                                                                                    "for": "E_FIRST_NAME_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_FIRST_NAME_1",
+                                                                                    "id": "E_FIRST_NAME_1",
+                                                                                    "type": "text",
+                                                                                    "size": 16,
+                                                                                    "max-length": 16,
+                                                                                    "value": "John"
+                                                                                },
+                                                                                "required": true,
+                                                                                "federal": true
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "Middle Initial",
+                                                                                "attributes": {
+                                                                                    "for": "E_MIDDLE_INITIAL_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_MIDDLE_INITIAL_1",
+                                                                                    "id": "E_MIDDLE_INITIAL_1",
+                                                                                    "type": "text",
+                                                                                    "size": 1,
+                                                                                    "maxlength": 1
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "text",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "text": "Last Name",
+                                                                                "attributes": {
+                                                                                    "for": "E_LAST_NAME_1"
+                                                                                },
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "name": "E_LAST_NAME_1",
+                                                                                    "id": "E_LAST_NAME_1",
+                                                                                    "type": "text",
+                                                                                    "size": 40,
+                                                                                    "maxlength": 161,
+                                                                                    "value": "Smith"
+                                                                                },
+                                                                                "required": true
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "select",
+                                                                            "template": "field",
+                                                                            "label": {
+                                                                                "attributes": {
+                                                                                    "for": "E_NAME_SUFFIX"
+                                                                                },
+                                                                                "text": "Suffix",
+                                                                                "visibility": "hidden",
+                                                                                "hasLayout": false
+                                                                            },
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "E_NAME_SUFFIX",
+                                                                                    "name": "E_NAME_SUFFIX"
+                                                                                },
+                                                                                "options": {
+                                                                                    "jr": {
+                                                                                        "text": "Jr",
+                                                                                        "value": "jr"
+                                                                                    },
+                                                                                    "sr": {
+                                                                                        "text": "Sr",
+                                                                                        "value": "sr"
+                                                                                    },
+                                                                                    "ii": {
+                                                                                        "text": "II",
+                                                                                        "value": "ii"
+                                                                                    },
+                                                                                    "iii": {
+                                                                                        "text": "III",
+                                                                                        "value": "iii"
+                                                                                    },
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "button",
+                                                                            "template": "field",
+                                                                            "input": {
+                                                                                "attributes": {
+                                                                                    "id": "E_LOOKUP_ON_ID"
+                                                                                },
+                                                                                "text": "Lookup"
+                                                                            },
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "properties": {
+                                                        "showLegend": true,
+                                                        "legendText": "To Taxpayer:"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

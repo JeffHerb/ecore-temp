@@ -1,0 +1,143 @@
+<!--(bake ../../includes/header.html coreUIPath="../../../../../dist/" docCSS="../../css/" title="accessKey Attribute -")-->
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h2>accessKey</h2>
+
+                <p>
+                    The <code>accessKey</code> attribute is an accessibility feature found in all browsers. It allows users to jump around page to different elements by using a keyboard shortcut, generally the <code>alt</code> key and a letter designated by the developer. For system and browser specifics key combinations see <a href="http://webaim.org/techniques/keyboard/accesskey#spec">this WebAIM article</a>.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="cui-row">
+            <div class="cui-col-small-12">
+                <h3>Examples</h2>
+                <h4>Custom Tag</h4>
+                <pre class="code">
+&lt;E2:Text type="text" viewKey="demo" accessKey="G" />
+                </pre>
+
+                <h4>Sample JSON</h4>
+                <pre class="code">
+{
+    "type": "text",
+    "template": "field",
+    "label": {
+        "text": "Press Alt+G to focus",
+        "attributes": {
+            "for": "demo4"
+        }
+    },
+    "input": {
+        "attributes": {
+            "name": "demo4",
+            "id": "demo4",
+            "type": "text",
+            "placeholder": "Press G to get focus",
+            "accesskey": "G"
+        },
+    }
+}
+                </pre>
+                <p>
+                    For the purposes of this example we are using a <code>&lt;E2:TextField&gt;</code>. For the full <a href="#accesskey-support">support list</a> see below.
+                </p>
+
+                <p>
+                    To create an <code>accesskey</code> on any supported custom tag, simply call the attribute provide it a letter value. Note that each accesskey used on a page must be unique.  When the tag is converted to JSON, the accessKey property should appear inside the attributes property of the primary interactive element. Interactive elements include: <code>buttons</code>, <code>inputs</code>, <code>select</code> boxes; or any other element an end user might click or enter data.
+                </p>
+
+                <h4>Rendered Examples</h4>
+                <p>
+                    For the purposes of this example, press the "G" key, with the correct corresponding system and browser accesskey combination. The browser should focus directly onto this input.
+                </p>
+
+                <section id="accesskey-example">
+                </section>
+
+                <p>
+                    This attribute can be set on the following custom tags:
+                </p>
+
+                <ul id="accesskey-support">
+                    <li><a href="../../tags/button.html">Button</a></li>
+                    <li><a href="../../tags/checkbox.html">Checkbox</a></li>
+                    <li><a href="../../tags/date.html">Date</a></li>
+                    <li><a href="../../tags/selectBox.html">SelectBox</a></li>
+                    <li><a href="../../tags/passwordField.html">Password</a></li>
+                    <li><a href="../../tags/radio.html">Radio</a></li>
+                    <li><a href="../../tags/text.html">Text</a></li>
+                    <li><a href="../../tags/textArea.html">Textarea</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <script>
+            var accessKeyScript = {
+                title: "Column Test Page",
+                attributes: {
+                    className: "render-container"
+                },
+                contents: [
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "size": "half",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "template": "field",
+                                        "label": {
+                                                "text": "Press Alt+G to focus",
+                                                "attributes": {
+                                                    "for": "demo5"
+                                                }
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "demo5",
+                                                "id": "demo5",
+                                                "type": "text",
+                                                "placeholder": "Press G to get focus",
+                                                "accesskey": "G"
+                                            },
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+        </script>
+
+        <!--(bake ../../includes/scripts.html jsPath="../../../../../dist/")-->
+
+        <!-- page script ... maybe this should be in project? -->
+        <script>
+
+            require(['render', 'domReady!'], function(render) {
+
+                // Examples
+                var accessKeyExample = document.getElementById("accesskey-example");
+
+                // Create the generic example
+                render.page(accessKeyExample, accessKeyScript, function() {
+
+                    console.log("Access Key Done");
+
+                });
+
+            });
+
+        </script>
+
+<!--(bake ../../includes/footer.html)-->

@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "table",
+                        "title": "Test Table - Old Rendering With Selection",
+                        "selectable": true,
+                        "selectionType": "multiple",
+                        "selectAll": true,
+                        "attributes":{
+                            "id": "test_table1_for_selenium"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 6"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 7"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 8"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 9"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 10"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 11"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 12"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 13"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 15"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "notifier"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "responsive": {
+                                                "primaryButton": true
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "visibility": "hidden"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1"
+                                        },
+                                        {
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "3"
+                                        },
+                                        {
+                                            "text": "4"
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "text": "7"
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "9"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Test Notifier",
+                                                        "id": "test-notifier"
+                                                    },
+                                                    "text": "TST"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "delete"
+                                                        },
+                                                        "text": "Action 1A",
+                                                        "icon": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "deleted"
+                                                        },
+                                                        "text": "Action 2A",
+                                                        "icon": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "edit"
+                                                        },
+                                                        "text": "Edit",
+                                                        "icon": "edit"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "visibility": "hidden",
+                                            "text": "Hidden"
+                                        }
+
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "template": "table",
+                        "title": "Test Table - New Rendering With Selection",
+                        "selectable": true,
+                        "selectionType": "multiple",
+                        "selectAll": true,
+                        "attributes":{
+                            "id": "test_table2_for_selenium"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 6"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 7"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 8"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 9"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 10"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 11"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 12"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 13"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 15"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "notifier"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Button Menu",
+                                            "hideLabel": true,
+                                            "attributes": {
+                                                "data-type": "buttonMenu",
+                                                "data-columntype": "buttonMenu"
+                                            },
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "responsive": {
+                                                "primaryButton": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1"
+                                        },
+                                        {
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "3"
+                                        },
+                                        {
+                                            "text": "4"
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "text": "7"
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "9"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Test Notifier",
+                                                        "id": "test-notifier"
+                                                    },
+                                                    "text": "TSA"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "button",
+                                                            "title": "Button Menu"
+                                                        },
+                                                        "text": "Button Menu",
+                                                        "icon": "responsive-table-menu"
+                                                    },
+                                                    "options": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_DELETE_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "icon": "delete",
+                                                                "text": "Action 1B"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_DELETE_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "text": "Action 2B",
+                                                                "icon": "delete"
+
+                                                            }
+                                                        }
+                                                    ],
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "edit"
+                                                        },
+                                                        "text": "Edit",
+                                                        "icon": "edit"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "template": "table",
+                        "title": "Test Table - New Rendering With Selection and Priority",
+                        "selectable": true,
+                        "selectionType": "multiple",
+                        "selectAll": true,
+                        "attributes":{
+                            "id": "test_table3_for_selenium_priority"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1 ($)"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "responsive": {
+                                                "priority": "15"
+                                            },
+                                            "text": "Column 4-PR15"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 6"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "dataRange",
+                                                "data-columnEditable": "false",
+                                            },
+                                            "responsive": {
+                                                "priority": "15"
+                                            },
+                                            "text": "Column 7-PR14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 8"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 9"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 10"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 11"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "responsive": {
+                                                "priority": "15"
+                                            },
+                                            "text": "Column 12-PR13"
+
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 13"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 15"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "notifier"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Button Menu",
+                                            "hideLabel": true,
+                                            "attributes": {
+                                                "data-type": "buttonMenu",
+                                                "data-columntype": "buttonMenu"
+                                            },
+                                            "style": "min-width"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "responsive": {
+                                                "primaryButton": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1,545.45"
+                                        },
+                                        {
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "3"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#",
+                                                        "tabindex": "1"
+                                                    },
+                                                    "text": "Filed on 12/31/2011"
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "#",
+                                                        "tabindex": "1"
+                                                    },
+                                                    "text": "09/09/2011 - 12/31/2011"
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "85"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12,000,184.78"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Test Notifier",
+                                                        "id": "test-notifier"
+                                                    },
+                                                    "text": "TSA"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "type": "button",
+                                                            "title": "Button Menu"
+                                                        },
+                                                        "text": "Button Menu",
+                                                        "icon": "responsive-table-menu"
+                                                    },
+                                                    "options": [
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_DELETE_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "icon": "delete",
+                                                                "text": "Action 1C"
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "button",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "BTN_DELETE_1",
+                                                                    "type": "button"
+                                                                },
+                                                                "text": "Action 2C",
+                                                                "icon": "delete"
+
+                                                            }
+                                                        }
+                                                    ],
+                                                }
+                                            ],
+                                            "style": "min-width",
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "edit"
+                                                        },
+                                                        "text": "Edit",
+                                                        "icon": "edit"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "template": "table",
+                        "title": "Test Table - Old Rendering With Selection and Custom TabsetPrefs",
+                        "selectable": true,
+                        "selectionType": "multiple",
+                        "selectAll": true,
+                        "attributes":{
+                            "id": "test_table4_for_selenium_custom_tabsetprefs"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 6"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 7"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 8"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 9"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 10"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 11"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 12"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 13"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 15"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "notifier"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "responsive": {
+                                                "primaryButton": true
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "visibility": "hidden"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1"
+                                        },
+                                        {
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "3"
+                                        },
+                                        {
+                                            "text": "4"
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "text": "7"
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "9"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Test Notifier",
+                                                        "id": "test-notifier"
+                                                    },
+                                                    "text": "TST"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "delete"
+                                                        },
+                                                        "text": "Action 1A",
+                                                        "icon": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "deleted"
+                                                        },
+                                                        "text": "Action 2A",
+                                                        "icon": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "edit"
+                                                        },
+                                                        "text": "Edit",
+                                                        "icon": "edit"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "visibility": "hidden",
+                                            "text": "Hidden"
+                                        }
+
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "template": "table",
+                        "title": "Test Table - Responsive Disabled, but Button Menu Not",
+                        "selectable": true,
+                        "selectionType": "multiple",
+                        "selectAll": true,
+                        "attributes": {
+                            "id": "test_table5_for_selenium_custom_tabsetprefs",
+                            "data-responsive": "false"
+                        },
+                        "head": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "type": "header",
+                                            "text": "Column 1"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 2"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 3"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 4"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 5"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 6"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 7"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 8"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 9"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 10"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 11"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 12"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 13"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 14"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "text": "Column 15"
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "notifier"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "attributes": {
+                                                "data-type": "button"
+                                            },
+                                            "responsive": {
+                                                "primaryButton": true
+                                            }
+                                        },
+                                        {
+                                            "type": "header",
+                                            "visibility": "hidden"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "body": {
+                            "rows": [
+                                {
+                                    "columns": [
+                                        {
+                                            "text": "1"
+                                        },
+                                        {
+                                            "text": "2"
+                                        },
+                                        {
+                                            "text": "3"
+                                        },
+                                        {
+                                            "text": "4"
+                                        },
+                                        {
+                                            "text": "5"
+                                        },
+                                        {
+                                            "text": "6"
+                                        },
+                                        {
+                                            "text": "7"
+                                        },
+                                        {
+                                            "text": "8"
+                                        },
+                                        {
+                                            "text": "9"
+                                        },
+                                        {
+                                            "text": "10"
+                                        },
+                                        {
+                                            "text": "11"
+                                        },
+                                        {
+                                            "text": "12"
+                                        },
+                                        {
+                                            "text": "13"
+                                        },
+                                        {
+                                            "text": "14"
+                                        },
+                                        {
+                                            "text": "15"
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "static",
+                                                    "template": "notifier",
+                                                    "attributes": {
+                                                        "alt": "Test Notifier",
+                                                        "id": "test-notifier"
+                                                    },
+                                                    "text": "TST"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "delete"
+                                                        },
+                                                        "text": "Action 1A",
+                                                        "icon": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "deleted"
+                                                        },
+                                                        "text": "Action 2A",
+                                                        "icon": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "edit"
+                                                        },
+                                                        "text": "Edit",
+                                                        "icon": "edit"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "visibility": "hidden",
+                                            "text": "Hidden"
+                                        }
+
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+
+            }
+        };
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>

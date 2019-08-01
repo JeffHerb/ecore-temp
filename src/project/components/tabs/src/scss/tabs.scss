@@ -1,0 +1,276 @@
+// Core UI settings
+@import "../../../../../cui/scss/_settings";
+// Core UI mixins
+@import "../../../../../cui/scss/_utilities/mixins";
+
+@import "../../../../scss/_settings";
+
+.emp-tabs {
+    padding-bottom: 0;
+
+   & > header {
+        display: none;
+        cursor: default;
+        padding: 3px 5px 0;
+
+        a {
+            background: #B8B8B8;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 1px solid #808589;
+            color: $cui-heading-color;
+            cursor: pointer;
+            display: inline-block;
+            padding: 7px 10px 4px;
+            position: relative;
+            text-decoration: none;
+            top: 1px;
+            margin-right: 3px;
+
+            &:hover {
+                background: #A0A0A0;
+                color: $cui-heading-color;
+            }
+
+            &.emp-selected {
+                background: #fff;
+                border: 1px solid #808589;
+                border-bottom-color: #fff;
+
+                &:hover {
+                    background: #F8F8F8;
+                    border-bottom-color: #F8F8F8;
+                }
+
+                &:focus {
+                    color: $cui-heading-color;
+                }
+            }
+
+        }
+
+        @include pointbreak($cui-bp-large) {
+            display: block;
+        }
+
+    }
+
+    .emp-tab-container {
+
+        .emp-tab {
+            background-color: $emp-group-header-bg-color;
+            border-left: 0;
+            border-right: 0;
+            margin: 0;
+
+            .theme-teal & {
+                @import "../../../../scss/_theme_teal.scss";
+                background-color: $emp-group-header-bg-color;
+            }
+
+            .theme-lilypad & {
+                @import "../../../../scss/_theme_lilypad.scss";
+                background-color: $emp-group-header-bg-color;
+            }
+
+            .theme-eggplant & {
+                @import "../../../../scss/_theme_eggplant.scss";
+                background-color: $emp-group-header-bg-color;
+            }
+
+            .theme-cobalt & {
+                @import "../../../../scss/_theme_cobalt.scss";
+                background-color: $emp-group-header-bg-color;
+            }
+
+            .theme-hazel & {
+                @import "../../../../scss/_theme_hazel.scss";
+                background-color: $emp-group-header-bg-color;
+            }
+
+            .theme-contrast & {
+                @import "../../../../scss/_theme_contrast.scss";
+                background-color: $emp-group-header-bg-color;
+            }
+
+            @include pointbreak($cui-bp-large) {
+                background-color: #FFF;
+                position: relative;
+
+                .theme-teal &,
+                .theme-lilypad &,
+                .theme-eggplant &,
+                .theme-cobalt &,
+                .theme-hazel &,
+                .theme-contrast &  {
+                    background-color: #fff !important;
+                }
+            }
+
+            .emp-accordion-tab {
+                border-top: 1px solid $emp-group-border-color;
+                background: #FFF;
+                cursor: pointer;
+                color: $cui-heading-color;
+                cursor: pointer;
+                display: block;
+                padding: 7px 5px;
+                text-decoration: none;
+                width: 100%;
+
+                @include pointbreak($cui-bp-large) {
+                    display: none;
+                }
+
+                .theme-teal & {
+                    @import "../../../../scss/_theme_teal.scss";
+                    background-color: $emp-group-header-bg-color;
+                    border-top-color: $emp-group-border-color;
+
+                    &:hover {
+                        background-color: darken($emp-group-header-bg-color, 25%);
+                    }
+                }
+
+                .theme-lilypad & {
+                    @import "../../../../scss/_theme_lilypad.scss";
+                    background-color: $emp-group-header-bg-color;
+                    border-top-color: $emp-group-border-color;
+
+                    &:hover {
+                        background-color: darken($emp-group-header-bg-color, 25%);
+                    }
+                }
+
+                .theme-eggplant & {
+                    @import "../../../../scss/_theme_eggplant.scss";
+                    background-color: $emp-group-header-bg-color;
+                    border-top-color: $emp-group-border-color;
+
+                    &:hover {
+                        background-color: darken($emp-group-header-bg-color, 25%);
+                    }
+                }
+
+                .theme-cobalt & {
+                    @import "../../../../scss/_theme_cobalt.scss";
+                    background-color: $emp-group-header-bg-color;
+                    border-top-color: $emp-group-border-color;
+
+                    &:hover {
+                        background-color: darken($emp-group-header-bg-color, 25%);
+                    }
+                }
+
+                .theme-hazel & {
+                    @import "../../../../scss/_theme_hazel.scss";
+                    background-color: $emp-group-header-bg-color;
+                    border-top-color: $emp-group-border-color;
+
+                    &:hover {
+                        background-color: darken($emp-group-header-bg-color, 25%);
+                    }
+                }
+
+                .theme-contrast & {
+                    @import "../../../../scss/_theme_contrast.scss";
+                    background-color: $emp-group-header-bg-color;
+                    border-top-color: $emp-group-border-color;
+
+                    &:hover {
+                        background-color: darken($emp-group-header-bg-color, 25%);
+                    }
+                }
+            }
+
+            &.emp-active-tab {
+
+                background: #FFF;
+
+                .emp-accordion-tab {
+
+                    border-bottom: 1px solid $emp-group-border-color;
+
+                    .theme-teal & {
+                        @import "../../../../scss/_theme_teal.scss";
+                        border-bottom-color: $emp-group-border-color;
+                    }
+
+                    .theme-lilypad & {
+                        @import "../../../../scss/_theme_lilypad.scss";
+                        border-bottom-color: $emp-group-border-color;
+                    }
+
+                    .theme-eggplant & {
+                        @import "../../../../scss/_theme_eggplant.scss";
+                        border-bottom-color: $emp-group-border-color;
+                    }
+
+                    .theme-cobalt & {
+                        @import "../../../../scss/_theme_cobalt.scss";
+                        border-bottom-color: $emp-group-border-color;
+                    }
+
+                    .theme-hazel & {
+                        @import "../../../../scss/_theme_hazel.scss";
+                        border-bottom-color: $emp-group-border-color;
+                    }
+
+                    .theme-contrast & {
+                        @import "../../../../scss/_theme_contrast.scss";
+                        border-bottom-color: $emp-group-border-color;
+                    }
+                }
+
+            }
+            .emp-tab-contents {
+                border-bottom: 0;
+                height: 1px;
+                visibility: hidden;
+                position: relative;
+
+                .emp-accordion-tab {
+                    border-top: 1px solid #000;
+                }
+
+                div.cui-row {
+
+                    div[class*="emp-col-"] {
+                        margin-top: 0px;
+                    }
+                }
+
+                @include pointbreak($cui-bp-large) {
+                    height: 1px;
+                }
+
+                & > .emp-table .emp-table-wrapper {
+                    margin-top: 0 !important;
+                }
+
+            }
+
+            &.emp-active-tab .emp-tab-contents {
+                height: auto;
+                padding-top: 10px;
+                visibility: visible;
+                top: 0 !important;
+
+                @include pointbreak($cui-bp-large) {
+                    padding-top: 0;
+                }
+
+                > .emp-table {
+                    margin-bottom: 10px;
+                }
+            }
+
+        }
+
+        .emp-tab:first-child {
+            .emp-accordion-tab {
+                border-top: 0;
+            }
+        }
+    }
+
+}

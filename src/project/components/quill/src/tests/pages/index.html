@@ -1,0 +1,144 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    <script>
+    var fwData = {
+        "page": {
+            "contents": [
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "type": "section",
+                            "contents": [
+                                {
+                                    "type": "header",
+                                    "template": "group",
+                                    "title": "Basic Rich Text Editor"
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "type": "textarea",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_EDITOR_TEST"
+                                                        },
+                                                        "text": "Editior Test:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "name": "E_EDITOR_TEST",
+                                                            "id": "E_EDITOR_TEST",
+                                                            "value": "<p>This is the editor window!</p><p>other line</p><p>&nbsp</p><p>last line</p>"
+                                                        },
+                                                        "style": "editor"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "onclick": "emp.functionCall(event, 'window.injectValue', [])"
+                                                },
+                                                "text": "Inject Value"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+    </script>
+
+    <script>
+
+        //var editor = emp.reference.editor['E_EDITOR_TEST'];
+
+        function injectValue() {
+            
+            // Get the editor reference
+            var oEditorRef = emp.reference.editor['E_EDITOR_TEST'];
+
+            var oEditor = oEditorRef.editor;
+
+            // Get the current editor delta.
+            var delta = oEditor.editor.delta;
+
+            var currentEditorLocation = oEditorRef.editor.getSelection();
+
+            if (currentEditorLocation && currentEditorLocation.index >= 0) {
+
+                delta.ops[0].insert = delta.ops[0].insert.slice(0, currentEditorLocation.index) + '{ test }' + delta.ops[0].insert.slice(currentEditorLocation.index);
+
+            }
+            else {
+
+                delta.ops[0].insert = delta.ops[0].insert + " test!";
+            }
+
+            oEditor.setContents(delta);
+
+        }
+    </script>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+    require(['domReady!'], function() {
+
+        console.log("page is done");
+
+        var editor = emp.reference.editor['E_EDITOR_TEST'].editor;
+
+        // var editorDelta = editor.getContents();
+
+        // var editorLines = editor.getLines();
+
+        // console.log(editorDelta);
+        // console.log(editorLines);
+
+
+
+    });
+    </script>
+    </body>
+
+</html>

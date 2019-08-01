@@ -1,0 +1,9 @@
+{
+    "type": "library",
+    "lazy": false,
+    "sources": {
+        "script": {
+            "ext": ["js"]
+        }
+    }
+}

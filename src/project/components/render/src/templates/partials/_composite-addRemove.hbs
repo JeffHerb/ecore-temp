@@ -1,0 +1,47 @@
+<div class="emp-add-remove-list">
+    <div class="emp-add-remove-list-box">
+        <div class="emp-add-remove-container">
+            <header>{{this.listName}}</header>
+            <ul>
+                <li>    
+                    <div class="emp-field emp-check-include-all-div"> 
+                        <div class="cui-data-left">
+                            <div class="cui-data">
+                                <input tabindex="1" type="checkbox" id="check-all" class="emp-check-include-all">
+                            </div>
+                            <div class="cui-label"> 
+                                <label for="check-all">Include All</label> 
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{#each this.checklist ~}}
+                    <li>{{~> (getPartialName this.template) this ~}}</li>
+                {{/each ~}}
+            </ul>
+        </div>
+        <div class="emp-order-list-container">
+            <header>{{this.listOrderName}}</header>
+            <ol>
+                {{#each (splitString hiddenValue=this.selectedOrder.input.attributes.value) as |value key|}}
+                    {{#each ../checklist as |checkboxValue checkbox|}}
+                        {{#ifCond v1=value op="===" v2=this.input.attributes.value}}
+                            <li data-checkValue="{{value}}" tabindex="1"><span>{{this.label.text}}<span></li>
+                        {{/ifCond}}
+                    {{/each}}
+                {{/each}}
+            </ol>
+        </div>
+        <div class="emp-order-list-move-controls-container">
+            <div class="emp-order-list-move-controls">
+                <button class="emp-add-remove-up-button" title="Select an item from the right list and press to move it up.">
+                    Move item up
+                </button>
+                <button class="emp-add-remove-down-button" title="Select an item from the right list and press to move it down.">
+                    Move item down
+                </button>
+            </div>
+        </div>
+        {{~> (getPartialName this.selectedOrder.template) this.selectedOrder ~}}
+    </div>
+</div>

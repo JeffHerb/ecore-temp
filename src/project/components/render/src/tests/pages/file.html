@@ -1,0 +1,194 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // Editable Text Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "file",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_FILE"
+                                            },
+                                            "text": "Test File:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_FILE",
+                                                "id": "E_TEST_FILE",
+                                                "type": "file"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    // Required File
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "file",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_FILE_REQUIRED"
+                                            },
+                                            "text": "Test File:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_FILE_REQUIRED",
+                                                "id": "E_TEST_FILE_REQUIRED",
+                                                "type": "file"
+                                            },
+                                            "required": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    // Hide Label
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "file",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_FILE_HIDE_LABEL"
+                                            },
+                                            "text": "Test File:",
+                                            "visibility": "hidden"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_FILE_HIDE_LABEL",
+                                                "id": "E_TEST_FILE_HIDE_LABEL",
+                                                "type": "file"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    // Hide Label without space
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "file",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_FILE_HIDE_LABEL_WITHOUT_SPACE"
+                                            },
+                                            "text": "Test File:",
+                                            "visibility": "hidden",
+                                            "hasLayout": false
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_FILE_HIDE_LABEL_WITHOUT_SPACE",
+                                                "id": "E_TEST_FILE_HIDE_LABEL_WITHOUT_SPACE",
+                                                "type": "file"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    // Error Message Input Example
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "file",
+                                        "template": "field",
+                                        "label": {
+                                            "attributes": {
+                                                "for": "E_TEST_FILE_MESSAGE"
+                                            },
+                                            "text": "Test File:"
+                                        },
+                                        "input": {
+                                            "attributes": {
+                                                "name": "E_TEST_FILE_MESSAGE",
+                                                "id": "E_TEST_FILE_MESSAGE",
+                                                "type": "file"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "error",
+                                            "text": "This field is required!"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>

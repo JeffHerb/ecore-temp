@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+  <polygon opacity="0.51" fill="none" stroke="#0D4870" stroke-miterlimit="10" points="21.5 22.5 1.5 22.5 1.5 8.5 1.812 8.5 8.051 8.5 8.36 8.5 21.5 8.5 "/>
+  <path fill="#0A557F" d="M22 23H1V8.5L1.383 6H8.48l0.309 2H22V23zM2 22h19V9H7.931L7.623 7H2.24L1.994 8.577 2 22z"/>
+  <path fill="#C1272D" stroke="#000000" stroke-miterlimit="10" d="M21.5 18.5h-9c0 0 0 1.408 0 1.522 0 0.432 1.835 0.73 4.5 0.73s4.5-0.274 4.5-0.705C21.5 19.926 21.5 18.5 21.5 18.5z"/>
+  <ellipse fill="#C1272D" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" cx="17.031" cy="18.398" rx="4.825" ry="0.781"/>
+  <path fill="#F9F9F9" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" d="M17.629 10.647c1.192-0.92 3.233-3.042 3.233-4.421 0-1.798-1.794-3.256-4.006-3.256s-4.006 1.458-4.006 3.256c0 1.41 1.94 3.611 3.187 4.491 -1.177 0.928-3.195 3.081-3.174 4.464 0.029 1.797 1.847 3.236 4.059 3.213s3.981-1.5 3.953-3.298C20.853 13.689 18.889 11.519 17.629 10.647z"/>
+  <path fill="#C1272D" stroke="#000000" stroke-miterlimit="10" d="M21.5 2.5h-9c0 0 0 0.853 0 0.967 0 0.431 1.835 0.73 4.5 0.73s4.5-0.274 4.5-0.705C21.5 3.37 21.5 2.5 21.5 2.5z"/>
+  <ellipse fill="#C1272D" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" cx="17.031" cy="1.843" rx="4.825" ry="0.781"/>
+</svg>

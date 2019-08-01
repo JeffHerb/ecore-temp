@@ -1,0 +1,922 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMP100S Audit Case Creation</title>
+<link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+<!--
+===============================================================================
+eMPIRE2 | AMP100S Audit Case Creation
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Date        Initials  Comments
+09/15/2015  JJ        Page Created
+09/17/2015  DB        This page has been Registered with the exception of all
+                      fields that are tied to reference tables.
+10/06/2015  DB        This code has been checked.
+10/20/2015  JJ        Updating as per meeting with Jill
+11/03/2015  DB        Making changes per Bonnie Burroughs after her meeting with
+                      Jill in the afternoon.
+11/04/2015  JJ        Making changes as per Jill
+11/12/2015  DB        Changing the icon for mag glass to the right code.
+03/25/2015  DB        Changing the Employee Search.  Employee ID Search has the Go
+                      it will bring back the Employee ID and Name in read-only fields.
+                      No Employee Name Search for Phase I.  For Phase II there will
+                      be a new search built in for the ID and Name.
+===============================================================================
+-->
+</head>
+<body>
+<div id="body-wrapper">
+  <!-- ==================== -->
+  <!-- ACCESSIBILITY CUES   -->
+  <!-- ==================== -->
+  <div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+
+  <!-- ==================== -->
+  <!-- GLOBAL HEADER        -->
+  <!-- ==================== -->
+  <header>
+    <!-- Logo and main menu -->
+    <div class="emp-header-row-first">
+      <div class="emp-header-logo"> Empire </div>
+      <nav id="emp-header-menu-main"> Main Menu </nav>
+      <div id="emp-header-favorites"> &#9734; </div>
+    </div>
+    <!-- Title, notifiers and secondary menu -->
+    <div class="emp-header-row-second">
+      <div class="emp-header-tabset-title">
+        <button type="button" class="emp-tabset-toggle" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+        <h1>Tabset menu title</h1>
+      </div>
+      <ul class="emp-header-links">
+        <li class="emp-header-employee"><a role="button">Employee</a></li>
+        <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+        <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+        <li class="emp-header-help"><a role="button">Help</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ==================== -->
+  <!-- TABSET               -->
+  <!-- ==================== -->
+  <ul class="emp-tabset emp-collapse">
+    <li class="emp-selected"><a href="#" title="Audit Case Creation" tabindex="1">Audit Case Creation</a></li>
+    <li><a href="#" title="Events" tabindex="1">Events</a></li>
+    <li><a href="#" title="Correspondence" tabindex="1">Correspondence</a></li>
+  </ul>
+
+  <!-- ==================== -->
+  <!-- PAGE TITLE           -->
+  <!-- ==================== -->
+  <div class="emp-page-title">
+    <!-- Page title -->
+    <div class="emp-text">
+      <h2>Audit Case Creation <span>Page mode</span></h2>
+    </div>
+    <!-- Page actions -->
+    <ul class="emp-actions">
+      <li>
+        <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+      </li>
+      <li>
+        <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+      </li>
+      <li>
+        <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ==================== -->
+  <!-- GENERAL HEADER       -->
+  <!-- ==================== -->
+  <form name="form_tp_info" id="form_tp_info" class="emp-tp-header" action="http://www.tax.ny.gov" method="post">
+    <!-- Taxpayer info -->
+    <!-- The emp-tpinfo-* classes used at this level are for distinguishing buttons that may appear for both taxpayers (e.g. legal rep) -->
+    <div class="emp-tp-info">
+      <!-- Main taxpayer -->
+      <div class="emp-tp-info-main">
+        <div class="cui-row">
+          <div class="emp-tp-indicators"> <a class="emp-button-send-id" role="button" tabindex="1">Send ID</a> <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span> <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+            <button type="button" class="emp-icon-add-event" title="Popup add event" tabindex="1">Popup add event</button>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-tp-id"> <span class="emp-data">123-45-6789 (IND)</span> </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-tp-name"> <span class="emp-data">John H. Smith</span> </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-tp-address"> <span class="emp-data">1943 Crossing Stone Ct., Albany, NY 12227</span>
+            <button type="button" class="emp-icon-diff-mail" title="Mailing address is different" tabindex="1">Mailing address is different</button>
+          </div>
+        </div>
+      </div>
+      <!-- Joint taxpayer -->
+      <div class="emp-tp-info-joint">
+        <div class="cui-row">
+          <div class="emp-tp-indicators"> <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span> <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+            <button type="button" class="emp-icon-data-joint" title="Popup Data for Joint Taxpayer" tabindex="1">Popup Data for Joint Taxpayer</button>
+            <button type="button" class="emp-icon-list-joint" title="View Joint Taxpayer List" tabindex="1">View Joint Taxpayer List</button>
+            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-tp-joint-id">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Associated ID:</span> </div>
+              <div class="cui-data"> <span class="emp-data">234-56-7890 (IND)</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-tp-joint-name">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Associated Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data">Jane M. Johnson-Smith</span> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="emp-tp-header-buttons">
+      <button class="emp-button-switch" tabindex="1">Switch</button>
+    </div>
+  </form>
+
+  <!-- ==================== -->
+  <!-- SEARCH BOX           -->
+  <!-- ==================== -->
+  <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+  <form name="form_search" id="form_search" class="emp-search-box emp-collapse" action="http://www.tax.ny.gov" method="post">
+    <div class="emp-search-fields">
+      <div class="cui-row">
+        <div class="emp-search-box-field">
+          <div class="emp-field">
+            <div class="cui-label">
+              <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+              <select id="HEADER_ID_TYPE" tabindex="1">
+                <option value="AC">Audit Case ID</option>
+                <option value="BN">Business Name</option>
+                <option value="BT">Business Taxpayer ID</option>
+                <option value="IN">Individual Name</option>
+                <option value="IT">Individual Taxpayer ID</option>
+                <option value="NC" selected="selected">9 Character ID</option>
+              </select>
+            </div>
+            <div class="cui-data">
+              <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+              <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons -->
+    <div class="emp-search-buttons">
+      <div class="cui-row">
+        <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+      </div>
+      <div class="cui-row">
+        <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+        <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+      </div>
+      <div class="cui-row"> <a role="button" class="emp-button-get-id" id="btn_get_id" tabindex="1">Get ID</a> </div>
+    </div>
+    <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+  </form>
+
+  <!-- ==================== -->
+  <!-- PAGE MESSAGES        -->
+  <!-- ==================== -->
+  <ul class="cui-messages emp-messages emp-collapse">
+    <li class="cui-error">
+      <p>Error message</p>
+    </li>
+    <li class="cui-warning">
+      <p>Warning message</p>
+    </li>
+    <li class="cui-informational">
+      <p>Informational message</p>
+    </li>
+    <li class="cui-success">
+      <p>Successful message</p>
+    </li>
+  </ul>
+
+  <!-- ####################### -->
+  <!-- DEVELOPER'S CODE (JSP)  -->
+  <!-- ####################### -->
+  <main role="main">
+    <div class="emp-page-info">
+
+      <!-- ==================== -->
+      <!-- INDICATORS           -->
+      <!-- ==================== -->
+      <ul class="emp-indicators">
+        <li><span title="Corp Tax File Exists" tabindex="1">CT</span></li>
+        <li><span title="Sales Tax Profile Exists" tabindex="1">Sales</span></li>
+        <li><span title="Withholding Tax Profile Exists" tabindex="1">WT</span></li>
+        <li><span title="Sales Tax Profile Exists" tabindex="1">HUT</span></li>
+        <li><span title="IFTA Tax Profile Exists" tabindex="1">IFTA</span></li>
+        <li><span title="Limited Liability Corp Tax Profile Exists" tabindex="1">LLC</span></li>
+        <li><span title="Petroleum Business Tax Profile Exists" tabindex="1">PBT</span></li>
+        <li><span title="Cigarette Tax Profile Exists" tabindex="1">CIG</span></li>
+        <li><span title="Alcoholic Beverage Tax Profile Exists" tabindex="1">ABT</span></li>
+        <li><span title="Partnership Profile Exists" tabindex="1">PT</span></li>
+        <li><span title="Hazardous Waste Tax Profile Exists" tabindex="1">HW</span></li>
+        <li><span title="Real Estate Property Tax Profile Exists" tabindex="1">Real Prop</span></li>
+        <li><span title="Boxing and Wrestling/Taxicab Tax" tabindex="1">Boxing/Taxi</span></li>
+      </ul>
+    </div>
+    <form name="form_content" id="form_content" action="www.tax.ny.gov" method="post" role="main">
+
+      <!-- ++++++++++++++++++++++++++++++++ -->
+      <!-- SECTION: .Audit Case Details     -->
+      <!-- ++++++++++++++++++++++++++++++++ -->
+      <section>
+        <header>
+          <div class="emp-section-title">
+            <h3>Audit Case Details</h3>
+          </div>
+          <div class="emp-section-field">
+            <div class="emp-section-header-field">
+              <input type="checkbox" id="E_RETAIN_DATA" value="true" tabindex="1">
+              <label for="E_RETAIN_DATA">Retain Data<span class="cui-hide-from-screen"> for this section</span></label>
+            </div>
+          </div>
+          <div class="emp-section-controls">
+            <ul>
+              <li>
+                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field cui-required">
+              <div class="cui-label">
+                <label for="E_TAX_TYPE_ARTICLE">Tax Type/Article:</label>
+              </div>
+              <div class="cui-data">
+                <select id="E_TAX_TYPE_ARTICLE" tabindex="1">
+                  <option value="1"></option>
+                  <option value='2'>Alcoholic Beverage Tax</option>
+                  <option value='3'>Box/Wrestling & Taxi Tax</option>
+                  <option value='4'>Cigarette/Tobacco Tax</option>
+                  <option value='5'>Corporation Tax</option>
+                  <option value='6'>Fuel Use Tax</option>
+                  <option value='7'>Highway Use Tax</option>
+                  <option value='8'>Limited Liability Tax</option>
+                  <option value='9'>New Profile Info Tax</option>
+                  <option value='10'>Petroleum Business-Diesel</option>
+                  <option value='11'>Petroleum Business-Motor</option>
+                  <option value='12'>Petroleum Business Tax</option>
+                  <option selected="selected" value='13'>Personal Income Tax</option>
+                  <option value='14'>Partnership Tax</option>
+                  <option value='15'>Representative</option>
+                  <option value='16'>Real Property Tax</option>
+                  <option value='17'>Sales Tax</option>
+                  <option value='18'>Taxpayer</option>
+                  <option value='19'>Withholding Tax</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-composite emp-search-composite">
+              <div class="cui-label">
+                <label for="E_OWNER_V2">Owner:</label>
+              </div>
+              <div class="cui-data emp-search">
+                <div class="emp-field"> <span class="emp-data" id="E_OWNER_V2">Income Franchise Field Audit</span> </div>
+                <div class="emp-field">
+                  <button type="button" id="E_BTN_POPUP" class="emp-icon-popup-view-list" title="Select Owner, Category and Program" tabindex="1">Select Owner, Category and Program</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Category:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_CATEGORY_V5">Personal Income Non-Resident</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Program:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_PROGRAM_V5">ADHOC</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-composite emp-search-composite">
+              <div class="cui-label">
+                <label for="E_PRIMARY_ISSUE_V3">Primary Issue:</label>
+              </div>
+              <div class="cui-data emp-search">
+                <div class="emp-field"> <span class="emp-data" id="E_PRIMARY_ISSUE_V3">Some Primary Issue</span> </div>
+                <div class="emp-field">
+                  <button type="button" id="E_BTN_POPUP" class="emp-icon-popup-view-list" title="Select Primary Issue" tabindex="1">Select Primary Issue</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_AUDIT_PERIOD_BEGIN">Audit Period Begin:</label>
+              </div>
+              <div class="cui-data">
+                <input type="text" id="E_AUDIT_PERIOD_BEGIN" class="emp-date" maxlength="10" tabindex="1">
+                <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_AUDIT_PERIOD_END">Audit Period End:</label>
+              </div>
+              <div class="cui-data">
+                <input type="text" id="E_AUDIT_PERIOD_END" class="emp-date" maxlength="10" tabindex="1">
+                <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+              </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_ESTIMATED_REVENUE_V2">Estimated Revenue ($):</label>
+              </div>
+              <div class="cui-data cui-currency">
+                <input type="text" id="E_ESTIMATED_REVENUE_V2" size="20" maxlength="23" aria-required="true" value="1,345,789,123,567,901.34" tabindex="1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_CLAIM_RECEIVED_DATE">Claim Received Date:</label>
+              </div>
+              <div class="cui-data">
+                <input type="text" id="E_CLAIM_RECEIVED_DATE" class="emp-date" maxlength="10" tabindex="1">
+                <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+              </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_TAXPAYER_REQUESTED_REFUND">TP Requested Refund ($):</label>
+              </div>
+              <div class="cui-data cui-currency">
+                <input type="text" id="E_TAXPAYER_REQUESTED_REFUND" size="20" maxlength="23" aria-required="true" value="1,345,789,123,567,901.34" tabindex="1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-composite emp-search-composite">
+              <div class="cui-label">
+                <label for="E_JOINT_TAXPAYER_ID">Joint Taxpayer ID:</label>
+              </div>
+              <div class="cui-data emp-search">
+                <div class="emp-field">
+                  <input type="text" id="E_JOINT_TAXPAYER_ID" size="20" maxlength="23" value="12345678901" tabindex="1">
+                </div>
+                <div class="emp-field">
+                  <button id="E_BTN_GO" value="Go" tabindex="1">Go</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Joint Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_JOINT_NAME_V2">Linda R Smith</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label">
+                <label for="E_NOTES_V4">Notes:</label>
+              </div>
+              <div class="cui-data">
+                <textarea id="E_NOTES_V4" aria-required="true" rows="3" cols="100" tabindex="1">Enter notes here.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Last Updated:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_LAST_UPDATED">06/26/2013</span> </div>
+            </div>
+          </div>
+          <div class="emp-col-half">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Last Updated By:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_LAST_UPDATED_BY">123456789</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="cui-row">
+          <div class="emp-col-full">
+            <div class="emp-field">
+              <div class="cui-label"> <span class="emp-label">Last Updated By Name:</span> </div>
+              <div class="cui-data"> <span class="emp-data" id="E_LAST_UPDATED_BY_NAME">John Jacob Jinglehimerschmit</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="emp-button-row">
+          <div class="emp-col-full">
+            <button type="button" id="E_BTN_NOTES" title="Popup Notes" tabindex="1">Notes</button>
+          </div>
+        </div>
+        <!-- ++++++++++++++++++++++++++++++++ -->
+        <!-- SECTION: .Case Assignment Details -->
+        <!-- ++++++++++++++++++++++++++++++++ -->
+        <section>
+          <header>
+            <div class="emp-section-title">
+              <h3>Case Assignment Details</h3>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="cui-row">
+            <div class="emp-col-full">
+              <div class="emp-field cui-required">
+                <div class="cui-label">
+                  <label for="E_ORGANIZATION_TYPE">Organization Type:</label>
+                </div>
+                <div class="cui-data">
+                  <select id="E_ORGANIZATION_TYPE" tabindex="1">
+                    <option value="1"></option>
+                    <option value='2'>Audit</option>
+                    <option value='3'>CID</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-composite emp-search-composite">
+                <div class="cui-label">
+                  <label for="E_DIVISION_V3">Division:</label>
+                </div>
+                <div class="cui-data emp-search">
+                  <div class="emp-field"> <span class="emp-data" id="E_DIVISION_V3">Audit</span> </div>
+                  <div class="emp-field">
+                    <button type="button" id="E_BTN_POPUP" class="emp-icon-popup-view-list" title="Select Division" tabindex="1">Select Division</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Director:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_DIRECTOR">John Smith</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Office:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_OFFICE_V3">Field Audit Management</span> </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Audit Group/Program:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_AUDIT_GROUP_PROGRAM">Syracuse</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Section:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_SECTION_V3">Section A</span> </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Team:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_TEAM">Team A</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-full">
+              <div class="emp-composite emp-search-composite">
+                <div class="cui-label">
+                  <label for="E_EMPLOYEE_ID_SEARCH">Employee ID Search:</label>
+                </div>
+                <div class="cui-data emp-search">
+                  <div class="emp-field">
+                    <input type="text" id="E_EMPLOYEE_ID" size="5" maxlength="5" value="" tabindex="1">
+                  </div>
+                  <div class="emp-field">
+                    <button id="E_BTN_GO" value="Go" tabindex="1">Go</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Employee ID:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_EMPLOYEE_ID"></span> </div>
+              </div>
+            </div>
+            <div class="emp-col-half">
+              <div class="emp-field">
+                <div class="cui-label"> <span class="emp-label">Employee Name:</span> </div>
+                <div class="cui-data"> <span class="emp-data" id="E_EMPLOYEE_NAME"></span> </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- SECTION: .Return Information for Audit Period -->
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+        <section>
+          <header>
+            <div class="emp-section-title">
+              <h3>Return Information for Audit Period</h3>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="emp-button-row">
+            <div class="emp-col-full">
+              <button type="button" name="E_BTN_GET_RETURNS" tabindex="1">Get Returns</button>
+            </div>
+          </div>
+          <!-- Main table wrapper with class of emp-table should always have an id="table_{something}" -->
+          <div class="emp-table">
+            <table id="table_my_table_1">
+              <thead>
+                <tr data-key="table-row">
+                  <th class="table-control-col emp-min-width"> <label class="cui-hide-from-screen" for="table_my_table_1_all">Select All</label>
+                    <input type="checkbox" value="" tabindex="1">
+                  </th>
+                  <th data-sort="date" data-table-column-priority="1">Liability Period Begin</th>
+                  <th data-sort="date" data-table-column-priority="1">Liability Period End</th>
+                  <th data-sort="alpha" data-table-column-priority="2">Period Status</th>
+                  <th data-sort="alpha" data-table-column-priority="3">Return DLN</th>
+                  <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Joint Liability Period Exists">Joint Liability Period Exists</span> </th>
+                  <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Non-Obligated Spouse">Non-Obligated Spouse</span> </th>
+                  <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Return Linked to Case">Return Linked to Case</span> </th>
+                  <th data-sort="alpha" data-table-column-priority="4">Return Status</th>
+                  <th data-sort="alpha" data-table-column-priority="5">Filing Status</th>
+                  <th data-sort="date" data-table-column-priority="6">Filed Date</th>
+                  <th data-sort="alpha" data-table-column-priority="7">Statute Date</th>
+                  <th data-sort="alpha" data-table-column-priority="8">Form</th>
+                  <th data-sort="alpha" data-table-column-priority="9">Composition Reason</th>
+                  <th data-sort="alpha" data-table-column-priority="10">Download</th>
+                  <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Return Linked to Case">Return Linked to Case</span> </th>
+                  <th class="emp-min-width"> <span class="cui-hide-from-screen" title="View Image"> View Image </span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="table-control-col emp-min-width"><label for="table_my_table_1_0" class="cui-hide-from-screen">Row 0</label>
+                    <input type="checkbox" name="table_my_table_1" value="0"></td>
+                  <td>01/01/2012</td>
+                  <td>12/31/2012</td>
+                  <td>Period Status Data</td>
+                  <td>12345678901234567 </td>
+                  <td class="emp-min-width"><span class="emp-indicator-1" title="Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))">J</span></td>
+                  <td class="emp-min-width"><span class="emp-indicator-3" title="Non-Obligated Spouse">NOB</span></td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Return Linked to Case">LK</span></td>
+                  <td>Return Status Data</td>
+                  <td>Married Filing Single</td>
+                  <td>12/31/2015</td>
+                  <td>12/31/2015</td>
+                  <td>IT-203C</td>
+                  <td>Amended</td>
+                  <td>Requested Return</td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Return Linked to Case">LK</span></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image" tabindex="1"> View image </button></td>
+                </tr>
+                <tr>
+                  <td class="table-control-col emp-min-width"><label for="table_my_table_1_0" class="cui-hide-from-screen">Row 0</label>
+                    <input type="checkbox" name="table_my_table_1" value="0"></td>
+                  <td>01/01/2012</td>
+                  <td>12/31/2012</td>
+                  <td>Period Status Data</td>
+                  <td>12345678901234567 </td>
+                  <td class="emp-min-width"><span class="emp-indicator-1" title="Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))">J</span></td>
+                  <td class="emp-min-width"><span class="emp-indicator-3" title="Non-Obligated Spouse">NOB</span></td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Return Linked to Case">LK</span></td>
+                  <td>Return Status Data</td>
+                  <td>Married Filing Single</td>
+                  <td>12/31/2015</td>
+                  <td>12/31/2015</td>
+                  <td>IT-203C</td>
+                  <td>Amended</td>
+                  <td>Available</td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Return Linked to Case">LK</span></td>
+                  <td class="emp-min-width"><button class="emp-icon-view-image" title="View Image" tabindex="1"> View image </button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cui-row">
+            <div class="emp-col-half">
+              <div class="emp-field emp-inline-label">
+                <div class="cui-label">
+                  <label for="E_ACTION">Action:</label>
+                </div>
+                <div class="cui-data">
+                  <select id="E_ACTION" tabindex="1">
+                    <option selected="selected"></option>
+                    <option>Link Return</option>
+                    <option>Unlink Return</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- +++++++++++++++++++++ -->
+        <!-- SECTION: .Other Cases -->
+        <!-- +++++++++++++++++++++ -->
+
+        <section class="emp-collapse">
+          <header>
+            <div class="emp-section-title">
+              <h3>Other Cases</h3>
+            </div>
+            <div class="emp-section-field">
+              <div class="emp-section-header-field"> <i class="emp-icon-redcheck">Red check mark</i> Review Details </div>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="emp-table">
+            <div class="emp-table-controls">
+              <div class="emp-header-controls">
+                <div class="emp-composite emp-search-composite">
+                  <div class="cui-label">
+                    <label for="E_VIEW">View:</label>
+                  </div>
+                  <div class="cui-data emp-search">
+                    <div class="emp-field">
+                      <select id="E_VIEW" name="E_VIEW" tabindex="1">
+                        <option selected="" value="0">All</option>
+                        <option value="1">Closed</option>
+                        <option value="2">Open</option>
+                      </select>
+                    </div>
+                    <div class="emp-field">
+                      <button type="button" name="E_BTN_FILTER">Filter </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table id="table_other_cases">
+              <thead>
+                <tr>
+                  <th data-sort="alpha" data-table-column-priority="1">Case ID</th>
+                  <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Case Open/Close">Case Open/Close</span>
+                    </td>
+                  <th data-sort="alpha" data-table-column-priority="2">Case Type</th>
+                  <th data-sort="alpha" data-table-column-priority="3">Tax Type/Article</th>
+                  <th data-sort="alpha" data-table-column-priority="4">Primary Issue</th>
+                  <th data-sort="date" data-table-column-priority="5">Period Begin</th>
+                  <th data-sort="date" data-table-column-priority="6">Period End</th>
+                  <th data-sort="date" data-table-column-priority="7">Assigned Employee ID</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#" title="AMP" tabindex="1">C012345660</a></td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Case Open">OP</span></td>
+                  <td>Candidate</td>
+                  <td>Income</td>
+                  <td>Days Resident New York</td>
+                  <td>01/01/2012</td>
+                  <td>12/31/2012</td>
+                  <td>43516</td>
+                </tr>
+                <tr>
+                  <td><a href="#" title="" tabindex="1">K987654321</a></td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Case Open">OP</span></td>
+                  <td>Informal Protest</td>
+                  <td>Sales</td>
+                  <td>Disputes ST Filing Frequency</td>
+                  <td>01/01/2012</td>
+                  <td>12/31/2012</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><a href="\\isilon\dtf_shared\Share\e-mpire\UserInterface\XHTML-UI\Release3.5\CISS\CH3460SCollectionHistory.html" title="View CH3460S Collection History" tabindex="1">E123456789</a></td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Case Open">OP</span></td>
+                  <td>Collection</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>66151</td>
+                </tr>
+                <tr>
+                  <td><a href="#" title="" tabindex="1">T000281811</a></td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Case Closed">CL</span></td>
+                  <td>Formal Protest</td>
+                  <td>Income</td>
+                  <td>Household Credit</td>
+                  <td>01/01/2012</td>
+                  <td>12/31/2012</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- +++++++++++++++++++++++++++ -->
+        <!-- SECTION: .Other Audit Cases -->
+        <!-- This section comes up when  -->
+        <!-- the case id is selected.    -->
+        <!-- Will only be on Case ID Mode-->
+        <!-- +++++++++++++++++++++++++++ -->
+        <section >
+          <header>
+            <div class="emp-section-title">
+              <h3>Other Audit Cases</h3>
+            </div>
+            <div class="emp-section-controls">
+              <ul>
+                <li>
+                  <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="emp-table">
+            <table id="table_other_audit_case_summary">
+              <thead>
+                <tr>
+                  <th data-sort="alpha" data-table-column-priority="1">Case ID</th>
+                  <th data-sort="alpha" class="emp-min-width"><span class="cui-hide-from-screen" title="Open">Open</span></th>
+                  <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen">Voluntary Disclosure &amp; Compliance</span> </th>
+                  <th data-sort="alpha">Tax Type/Article</th>
+                  <th data-sort="alpha">Primary Issue</th>
+                  <th data-sort="alpha">Audit Period Begin</th>
+                  <th data-sort="alpha">Audit Period End</th>
+                  <th data-sort="alpha">Audit Case Status</th>
+                  <th data-sort="alpha">Assignment</th>
+                  <th data-type="button" class="emp-min-width"> <span class="cui-hide-from-screen" title="Button Menu"> Button Menu </span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>X596847522 </td>
+                  <td class="emp-min-width"><span class="emp-indicator-2" title="Open">OP</span></td>
+                  <td class="emp-min-width"><span class="emp-indicator-3" alt="Voluntary Disclosure &amp; Compliance">VDC</span></td>
+                  <td>Income</td>
+                  <td>Days Resident New York</td>
+                  <td>01/01/2013</td>
+                  <td>12/31/2013</td>
+                  <td>Supervisory Review</td>
+                  <td>Syracuse</td>
+                  <td class="emp-min-width"><button class="emp-icon-dollar-sign" title="Go to Audit Case Details" tabindex="1" name="E_BTN_DETAILS">Audit Case Details </button>
+                    <button class="emp-icon-view-image" title="Popup Audit Case Details" tabindex="1" name="E_BTN_DETAILS2"> Audit Case Details <span class="emp-popup" title="Popup View Image"></span></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div class="emp-button-row">
+          <div class="emp-col-half"> </div>
+          <div class="emp-col-half cui-align-right">
+            <button type="button" name="E_BTN_SEC_CANCEL" tabindex="1">Cancel</button>
+            <button type="button" name="E_BTN_UPDATE" class="cui-button-primary" tabindex="1">Update</button>
+            <button type="button" name="E_BTN_CLEAR" tabindex="1">Clear</button>
+            <button type="button" name="E_BTN_ADD" class="cui-button-primary" tabindex="1">Add</button>
+          </div>
+        </div>
+      </section>
+      <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+      <!-- SECTION: .Audit Case Summary -->
+      <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+      <section>
+        <header>
+          <div class="emp-section-title">
+            <h3>Audit Case Summary</h3>
+          </div>
+          <div class="emp-section-controls">
+            <ul>
+              <li>
+                <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="emp-table">
+          <table id="table_audit_case_summary">
+            <thead>
+              <tr data-key="table-row">
+                <th data-sort="alpha" data-table-column-priority="1">Case ID</th>
+                <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen" title="Case Open/Close">Case Open/Close</span>
+                  </td>
+                <th data-sort="alpha" class="emp-min-width"> <span class="cui-hide-from-screen">Voluntary Disclosure &amp; Compliance</span> </th>
+                <th data-sort="alpha">Tax Type/Article</th>
+                <th data-sort="alpha">Primary Issue</th>
+                <th data-sort="alpha">Audit Period Begin</th>
+                <th data-sort="alpha">Audit Period End</th>
+                <th data-sort="alpha">Audit Case Status</th>
+                <th data-sort="alpha">Assignment</th>
+                <th data-type="button" class="emp-min-width" data-table-primary-button="true"> <span class="cui-hide-from-screen" title="Edit/View Record">Edit/View Record</span> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#" tabindex="1" title="Go to View Return">C658934785</a></td>
+                <td class="emp-min-width"><span class="emp-indicator-2" title="Open Case">OP</span></td>
+                <td class="emp-min-width"><span class="emp-indicator-3" alt="Voluntary Disclosure &amp; Compliance">VDC</span></td>
+                <td>Income</td>
+                <td>Days Resident of New York</td>
+                <td>04/15/2012</td>
+                <td>05/05/2012</td>
+                <td>Supervisory Review</td>
+                <td>Syracuse</td>
+                <td class="emp-min-width"><button class="emp-icon-edit" name="E_BTN_EDIT" title="Edit Record">Edit Record</button></td>
+              </tr>
+              <tr>
+                <td><a href="#" tabindex="1" title="Go to View Return">C639854712</a></td>
+                <td class="emp-min-width"><span class="emp-indicator-2" title="Closed Case">CL</span></td>
+                <td></td>
+                <td>Sales</td>
+                <td>Days Resident New York</td>
+                <td>04/15/2012</td>
+                <td>05/05/2012</td>
+                <td>Awaiting Screening</td>
+                <td>Buffalo</td>
+                <td class="emp-min-width"><button class="emp-icon-more-info" title="View Details" name="E_BTN_DETAILS">View Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </form>
+  </main>
+</div>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+       require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+            // Elements in the page that need to be turned into a data store
+            uiMockup.createPageDataStore(function(results) {
+                emp.init();
+            });
+    });
+</script>
+</body>
+</html>
