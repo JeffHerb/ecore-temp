@@ -15,28 +15,23 @@
     <ul class="agency-support-login">
         {{#if this.userAcct}}
         <li>
-            <button id="userAcct">
+            <button id="userAcct" role="button">
                 <span class="user-icon"></span>
                 <span class="label">{{this.userAcct.text}}</span>
             </button>
         </li>
         {{/if}}
         {{#if this.support}}
-            {{#ifCond v1=this.support.type op="===" v2="simple"}}
-            <li>
-                <a id="agencyHelp" href="{{this.support.contents.0.attributes.href}}">
-                    <span class="support-icon"></span>
-                    <span class="label">{{this.support.contents.0.text}}</span>
-                </a>
-            </li>
-            {{else}}
-            <li>
-                <button id="agencyHelp">
-                    <span class="support-icon"></span>
-                    <span class="label">{{this.support.contents.0.text}}</span>
-                </button>
-            </li>
-            {{/ifCond}}
+        <li>
+            <a id="agencyHelp" href="#">
+                <span class="support-icon"></span>
+                {{#if this.support.text}}
+                    <span class="label">{{this.support.text}}</span>
+                {{else}}
+                    <span class="label">Get Support</span>
+                {{/if}}
+            </a>
+        </li>
         {{/if}}
     </ul>
 </div>

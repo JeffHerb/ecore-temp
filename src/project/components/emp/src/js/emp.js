@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'preferences', 'favorites', 'external-menu', 'spin', 'detectIE', 'notifications', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'quill', 'refresh', 'errorReportIframe', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, preferences, favorites, externalMenu, spin, detectIE, notifications, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, quill, refresh, eri, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'favorites', 'external-menu', 'spin', 'detectIE', 'notifications', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'quill', 'refresh', 'errorReportIframe', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, favorites, externalMenu, spin, detectIE, notifications, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, quill, refresh, eri, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
 
     function inIframe () {
         try {
@@ -27,12 +27,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
     var hostname = window.location.hostname;
 
     var pageScripts = false;
-
-    var prefs;
-    var $tabset;
-    var tabsetElem;
-    var $tabsetToggler;
-    var $tabsetPin;
 
     var protocol = window.location.protocol;
 
@@ -113,15 +107,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         // Bind Error Report button
         if ($errorReportButton.length) {
             $errorReportButton.on('click', _priv.errorReportButton);
-        }
-
-        // These tabset variables must be defined before initializing the preferences
-        $tabset = $('.emp-tabset');
-        $tabsetToggler = $('.emp-tabset-toggle');
-        $tabsetPin = $('.emp-tabset-pin');
-
-        if ($tabset.length) {
-            tabsetElem = $tabset.get(0);
         }
 
         var localSessionID = store.get("sessionID");
@@ -212,12 +197,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
         windowsM.setup();
 
-        if (window.fwData.preferences) {
-
-            // Setup user preferences
-            emp.prefs = $.prefs($('.emp-header-preferences'), store.get('globalPrefs'), store.get('tabsetPrefs'));
-        }
-
         //Setup notifications plugin
         //Disabled per framework request as we are not in phase 2 just yet! JAH
         emp.notifications = $.notifications($('.emp-header-notifications'));
@@ -229,198 +208,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                 _events.searchHeaderTypeChange();
             });
-        }
-
-        // // Group-collapsing functionality
-        // $('section:not(.emp-tabs)').find('> header').on('click', function _toggleGroup(evt) {
-        //     if (evt.target.nodeName !== 'INPUT' && evt.target.nodeName !== 'LABEL' && (evt.target.nodeName !== 'BUTTON' || (evt.target.nodeName === 'BUTTON' && evt.target.classList.contains('emp-icon-section-toggle-collapse') )) ) {
-        //         var $group = $(this).closest('section');
-
-        //         // Check for hook to disable expandability
-        //         if (!$group[0].classList.contains('emp-no-collapse')) {
-
-        //             // From opened to collapsed
-        //             if (!$group.is('.emp-collapse')) {
-        //                 _priv.group.collapse($group, this);
-        //             }
-
-        //             // From collapsed to opened
-        //             else {
-        //                 _priv.group.expand($group);
-        //             }
-        //         }
-
-        //     }
-        // });
-
-        // // Collapse all groups
-        // _priv.$groupToggleControl = $('.emp-icon-sections-toggle')
-        //     .on('click', _priv.group.toggleAll);
-        //     shortcut.register({
-        //         keys: 'shift+g',
-        //         callback: _priv.group.toggleAll,
-        //         description: 'Toggle all groups',
-        //         type: 'keydown',
-        //     });
-
-        // Search box collapsing
-        if ($searchBox.length) {
-            searchBoxElem = $searchBox.get(0);
-            $searchBoxToggle = $('.emp-search-toggle');
-            $searchBoxToggleImg = $searchBoxToggle.find('img');
-            $searchFields = $searchBox.find('.emp-search-fields');
-            searchFieldsElem = $searchFields.get(0);
-
-            //
-            // Expands or collapses the search box
-            // @param   {Event}  evt   Click event
-            //
-            var _toggleSearchBox = function (evt, doSetFocus) {
-                var currHeight;
-                var fullHeight;
-                var fullBorderWidth;
-
-                // From collapsed to opened
-                if ($searchBox.is('.emp-collapse')) {
-                    currHeight = $searchBox.height();
-
-                    // Temporarily expand the group so we can get its full (auto) height
-                    $searchBox
-                        .removeClass('emp-collapse')
-                        .css('min-height', 0) // Temporarily override the CSS value, otherwise the search box will immediately expand to this height before the animation begins
-                        .css('height', 'auto');
-
-                    fullHeight = getComputedStyle(searchBoxElem).height;
-
-                    // We need to temporarily turn off the thick border around the search fields. The fields will overlap the border during the animation such that it looks broken, like the fields are spilling out of the container (as if you didn't use `overflow:hidden`). It's just an optical illusion but the animation looks better if we hide the border until the animation is complete.
-                    fullBorderWidth = getComputedStyle(searchFieldsElem).borderBottomWidth;
-                    searchFieldsElem.style.borderBottomWidth = '0px';
-
-                    // Begin the process of expanding
-                    $searchBox
-                        .css('overflow', 'hidden') // Prevent contents from spilling out
-                        .height(currHeight) // The element needs a fixed height to use as a starting point
-                        // Animate from this height to the full height
-                        .animate({ height: fullHeight }, 150, '', function () {
-                            // Undo our temporary overrides and allow CSS to resume control of these properties
-                            searchBoxElem.style.removeProperty('min-height');
-                            searchBoxElem.style.removeProperty('overflow');
-                            searchBoxElem.style.removeProperty('height'); // This is set by `$.animate()`. If we didn't remove this, child elements wouldn't affect the search box's height properly
-
-                            // Now restore the bottom border's thickness
-                            $searchFields.animate({ borderBottomWidth: fullBorderWidth }, 20, function () {
-                                // Remove the inline style created by `$.animate()`
-                                searchFieldsElem.style.removeProperty('border-bottom-width');
-                            });
-
-                            // Set focus to the first input
-                            if (doSetFocus) {
-                                $searchFields.find('input').first().focus();
-                            }
-                        });
-
-                    // Update toggle button for a11y
-                    $searchBoxToggle.attr('title', 'Hide the search box');
-
-                    $searchBoxToggleImg
-                        .attr('title', 'Hide the search box')
-                        .attr('alt', 'Upward-facing triangle');
-
-                    _toggleSearchBoxEventHandlers();
-                }
-                // From opened to collapsed
-                else {
-                    $searchBox
-                        .css('overflow', 'hidden')
-                        .animate({ height: getComputedStyle($searchBox.get(0)).height }, 150, '', function () {
-                            $searchBox
-                                .addClass('emp-collapse');
-
-                            searchBoxElem.style.removeProperty('overflow');
-                            searchBoxElem.style.removeProperty('height');
-
-                            _toggleSearchBoxEventHandlers();
-                        });
-
-                    // Update toggle button for a11y
-                    $searchBoxToggle.attr('title', 'Show the search box');
-
-                    $searchBoxToggleImg
-                        .attr('title', 'Show the search box')
-                        .attr('alt', 'Downward-facing triangle');
-                }
-            };
-
-            shortcut.register({
-                keys: 'shift+s',
-                callback: _toggleSearchBox,
-                description: 'Toggle the search box',
-                type: 'keydown',
-                data: true, // Flag for setting focus to the first input
-            });
-
-            //
-            // Sets the appropriate event handlers on the search box based on its current state
-            //
-            var _toggleSearchBoxEventHandlers = function () {
-                // From collapsed to opened
-                if ($searchBox.is('.emp-collapse')) {
-                    // Move the event listener to the entire search box
-                    $searchBoxToggle.off('click', _toggleSearchBox);
-                    $searchBox.on('click', _toggleSearchBox);
-                }
-                // From opened to collapsed
-                else {
-                    // Move the event listener to just the toggle button
-                    $searchBox.off('click', _toggleSearchBox);
-                    $searchBoxToggle.on('click', _toggleSearchBox);
-                }
-            };
-
-            // Set up the event handlers based on the initial state of the page
-            _toggleSearchBoxEventHandlers();
-        }
-
-        // Tabset toggling
-        if ($tabset.length) {
-            var _toggleTabset = function _toggleTabset(evt) {
-                // Ignore clicks on the pin
-                if (!$(evt.target).is('.emp-tabset-pin')) {
-                    // From opened to collapsed
-                    if (!$tabset.is('.emp-collapse')) {
-                        _priv.tabset.close();
-                    }
-                    // From collapsed to opened
-                    else {
-                        _priv.tabset.open();
-                    }
-                }
-            };
-
-            var _toggleTabsetPin = function _toggleTabsetPin() {
-                // Is currently pinned, need to unpin it
-                if ($tabsetPin.is('.emp-selected')) {
-                    _priv.tabset.unpin();
-
-                    // Save preference
-                    emp.prefs.setGlobal('tabsetPinned', false);
-                }
-                // Is currently not pinned, need to pin it
-                else {
-                    _priv.tabset.pin();
-
-                    // Save preference
-                    emp.prefs.setGlobal('tabsetPinned', true);
-                }
-            };
-
-            $tabsetTitleBar = $('.emp-header-tabset-title');
-
-            // Setup the tabset pin button
-            $tabsetPin.on('click', _toggleTabsetPin);
-
-            // Per Jill the entire bar needs to be able to be clicked not just the toggle control.
-            $tabsetTitleBar.on('click', _toggleTabset);
         }
 
         // Default required Table plugins
@@ -1020,9 +807,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             });
         }
 
-        if(!externalEmpire){			
+        if(!externalEmpire){
 	        gShortcuts.contextMenu();
-	        gShortcuts.lotusFormModal();        	
+	        gShortcuts.lotusFormModal();
         }
 
         $body.trigger('setup.page');
@@ -1752,74 +1539,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                 .addClass('emp-all-collapse')
                 .attr('title', 'Collapse all sections');
         }
-    };
-
-    _priv.tabset = {};
-
-    /**
-     * Opens the tabset
-     */
-    _priv.tabset.open = function _tabset_open() {
-        var fullHeight;
-
-        // Temporarily expand the tabset so we can get its full (auto) height
-        $tabset
-            .removeClass('emp-collapse')
-            .css('height', 'auto');
-
-        fullHeight = getComputedStyle(tabsetElem).height;
-
-        // Begin the process of expanding
-        $tabset
-            .height(0) // Start with no height
-            .animate({ height: fullHeight }, 150, '', function () {
-                // Remove the static height set by `animate`, otherwise sub-groups won't affect this (parent) group's height properly
-                tabsetElem.style.removeProperty('height');
-            });
-
-        // Update the toggle button immediately so that it matches the dark color of the tabset that is unfolding below it
-        $tabsetToggler
-            .removeClass('emp-collapse');
-    };
-
-    /**
-     * Closes the tabset
-     */
-    _priv.tabset.close = function _tabset_close() {
-        $tabset
-            .css('overflow', 'hidden')
-            .animate({ height: 0 }, 150, '', function () {
-                $tabset
-                    .addClass('emp-collapse');
-
-                // Remove inline styles so CSS can regain control
-                tabsetElem.style.removeProperty('overflow');
-                tabsetElem.style.removeProperty('height'); // Set by `$.animate()`
-
-                // Update the toggle button, but not until the tabset is collapsed, otherwise the color appears to change too soon in conjunction with the animation (since the button is above the tabset and the tabset rolls upward)
-                $tabsetToggler
-                    .addClass('emp-collapse');
-            });
-    };
-
-    _priv.tabset.pin = function _tabset_pin() {
-        // Make sure the tabset is opened
-        // Normally it will be opened if the user clicks on the pin icon, but this function is also called programmatically, e.g. when applying the user's preferences on page load
-        if ($tabset.hasClass('emp-collapse')) {
-            emp.tabset.open();
-        }
-
-        $tabsetPin
-            .addClass('emp-selected')
-            .attr('title', 'Unpin the tabset')
-            .text('Unpin the tabset');
-    };
-
-    _priv.tabset.unpin = function _tabset_unpin() {
-        $tabsetPin
-            .removeClass('emp-selected')
-            .attr('title', 'Pin the tabset open')
-            .text('Pin the tabset open');
     };
 
     /**
@@ -2741,43 +2460,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             window.fwData.context.screen.id = window.fwData.context.screen.id.replace(/\W/g, '_');
         }
 
-        if (window.fwData.preferences === undefined && window.fwData.preferences !== false) {
-
-            console.log("setup prefernces");
-
-            window.fwData.preferences = {};
-        }
-
-        // Global preferences
-        if (window.fwData.preferences && !window.fwData.preferences.global) {
-            window.fwData.preferences.global = {};
-
-            // Note: do not stub out `fwData.globalPrefs.data`. This will cause the Preferences component to think that there is valid data which means the component will not generate a new prefs object.
-        }
-
-        if (window.fwData.preferences && !window.fwData.preferences.global.timestamp) {
-            window.fwData.preferences.global.timestamp = 1451624400; // This corresponds to 01/01/2016
-        }
-
-        if (window.fwData.preferences && !window.fwData.preferences.global.url) {
-            window.fwData.preferences.global.url = {};
-        }
-
-        // Tabset preferences
-        if (window.fwData.preferences && !window.fwData.preferences.tabset) {
-            window.fwData.preferences.tabset= {
-                timestamp: {
-                    client: 1451624400, // This corresponds to 01/01/2016
-                },
-            };
-
-            // Note: do not stub out `fwData.tabsetPrefs.data`. This will cause the Preferences component to think that there is valid data which means the component will not generate a new prefs object.
-        }
-
-        if (window.fwData.preferences && !window.fwData.preferences.tabset.timestamp) {
-            window.fwData.preferences.tabset.timestamp = 1451624400; // This corresponds to 01/01/2016
-        }
-
         // Notifications
         if (!window.fwData.notifications) {
             window.fwData.notifications = {
@@ -3636,7 +3318,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             };
 
             // Start by rendering the global page
-            if (window.fwData && window.fwData.page) {
+            if (window.fwData && (window.fwData.page || window.fwData.header || window.fwData.footer)) {
 
                 if (fwData.screen && fwData.screen.id && scripts[fwData.screen.id]) {
 
@@ -3724,6 +3406,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
             }
             else {
+
+
+                console.log("Else definition");
 
                 // This could be a mockup, which would not utilize the renderer, so setup the page immediately
                 _priv.pageSetup(options);
@@ -7387,19 +7072,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         showChild: showChild,
         getCookie: getCookie,
         getProperty: getProperty,
-        tabset: {
-            open: _priv.tabset.open,
-            close: _priv.tabset.close,
-            pin: _priv.tabset.pin,
-            unpin: _priv.tabset.unpin,
-        },
 
         workflowAction: workflowAction,
         workflowComments: workflowComments,
 
         uiPopup: uiPopup,
 
-        prefs: prefs,
         pageScripts: pageScripts,
         sectionSetup: sectionSetup,
 
