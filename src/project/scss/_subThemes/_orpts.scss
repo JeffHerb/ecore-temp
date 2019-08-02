@@ -1034,7 +1034,9 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
     // Fixing Popover Style for the header items
 
-    .cui-uiBox.cui-popover.emp-account-popup {
+    .cui-uiBox.cui-popover.emp-account-popup,
+    .cui-uiBox.cui-popover.emp-support-popup
+     {
         border: 1px solid #ccc;
         box-shadow: 2px 4px 0px 1px rgba(0, 0, 0, 0.2);
         min-width: 300px;

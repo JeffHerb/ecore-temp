@@ -4,15 +4,59 @@ define(['render'], function (render) {
     var _events = {};
 
     _priv.$userPopover = false;
+    _priv.$supportPopover = false;
 
-    _events.userAccountPopover = function(userAcctJSON) {
+    _events.getSupportPopover = function(supportJSON, evt) {
+
+        //evt.preventDefault();
+
+        console.log("Popover clicked");
+
+        console.log(supportJSON.contents);
+
+        var generatePopver = function() {
+
+            var $supportButton = $('#agencyHelp');
+
+            render.section(undefined, supportJSON, 'return', function(html) {
+
+                console.log(html);
+                _priv.$supportPopover = $.popover($supportButton, {
+                    html: html,
+                    display: {
+                        className: 'emp-support-popup'
+                    }
+                });
+            });
+        };
+
+        emp.load('popover', function _load_support_popover() {
+
+            if (!_priv.$supportPopover) {
+                generatePopver();
+
+                _priv.$supportPopover.show();
+            }
+        });
+
+    };
+
+    _events.userAccountPopover = function(userAcctJSON, evt) {
+
+        //evt.preventDefault();
+
+        console.log("Popover clicked");
+
+        console.log(userAcctJSON.contents);
 
         var generatePopver = function() {
 
             var $userAccountButton = $('#userAcct');
 
             // Generate the contents
-            render.section(undefined, userAcctJSON.userAcct.contents[0], 'return', function(html) {
+            render.section(undefined, userAcctJSON.popover, 'return', function(html) {
+
+                console.log(html);
                 _priv.$userPopover = $.popover($userAccountButton, {
                     html: html,
                     display: {
@@ -81,13 +125,40 @@ define(['render'], function (render) {
 
             if (fwData.header && fwData.header.contents) {
 
+                // Find user and support controls
                 var dUserAccountButton = document.querySelector('#userAcct');
-                var userAccountJSON = fwData.header.contents[1];
+                var dSupportButton = document.querySelector('#agencyHelp');
+
+                var userAccountJSON = false;
+                var supportJSON = false;
+
+                for (var hc = 0, hcLen = fwData.header.contents.length; hc < hcLen; hc++) {
+
+                    if (fwData.header.contents[hc].template && fwData.header.contents[hc].template === "agency-header") {
+                        
+                        // Save off the user account information
+                        if (fwData.header.contents[hc].userAcct) {
+                            userAccountJSON = fwData.header.contents[hc].userAcct;
+                        }
+
+                        // Save off the support button information
+                        if (fwData.header.contents[hc].support) {
+                            supportJSON = fwData.header.contents[hc].support;
+                        }
+
+                        break;
+                    }
+
+                }
     
                 if (dUserAccountButton && userAccountJSON) {
     
                     dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountJSON));
+                }
+
+                if (dSupportButton && supportJSON) {
     
+                    dSupportButton.addEventListener('click', _events.getSupportPopover.bind(null, supportJSON));
                 }
             }
 

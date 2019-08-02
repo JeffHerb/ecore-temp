@@ -1,14 +1,55 @@
-<ul {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-static-tree"}' expandRoot=this.root)) }}>
-    {{#each this.items}}
-        <li>
-            {{#if this.items}}
-                <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-expanding-control"}' collapseChildren=this.collapse scope="expandable-control")) }}>
-                    {{this.text}}
-                </span>
-                {{> _tree this scope="tree" root=false }}
-            {{else}}
-                {{~> (getPartialName this.template) this scope="treeItem" ~}}
-            {{/if}}
-        </li>
-    {{/each}}
-</ul>
+{{log this}}
+{{#ifCond v1=this.type op="===" v2="draggable"}}
+    <ul {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-draggable-tree"}' treeRoot=this.root)) }}>
+        {{#ifCond v1=this op="hasProperty" v2="items"}}
+            {{#each this.items}}
+                <li>
+                    {{#if this.items}}
+                        <div class="emp-draggable-container" draggable="true">
+                            <div class="emp-menu-item-container-info">
+                                <span class="emp-menu-item">
+                                    <span class="emp-menu-item-title">{{text}}</span>
+                                    <div class="emp-menu-item-controls">
+                                        <button class="emp-icon-delete">Delete</button>
+                                        <button class="emp-icon-edit">Edit</button>
+                                    </div>
+                                </span>
+                            </div>
+                            {{> _tree this scope="tree" root=false type="draggable" }}
+                        </div>
+                    {{else}}
+                        <span class="emp-draggable-item" draggable="true">
+                            <span class="emp-menu-item">
+                                <div class="emp-menu-above-placeholder"></div>
+                                <div class="emp-menu-item-wrapper">
+                                    <span class="emp-menu-item-title">{{text}}</span>
+                                    <div class="emp-menu-item-controls">
+                                        <button class="emp-icon-delete">Delete</button>
+                                        <button class="emp-icon-edit">Edit</button>
+                                    </div>
+                                </div>
+                                <div class="emp-menu-below-placeholder"></div>
+                            </span>
+
+                        </span>
+                    {{/if}}
+                </li>
+            {{/each}}
+        {{/ifCond}}
+    </ul>
+{{else}}
+    <ul {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-static-tree"}' expandRoot=this.root)) }}>
+        {{#each this.items}}
+            <li>
+                {{#if this.items}}
+                    <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-expanding-control"}' collapseChildren=this.collapse scope="expandable-control")) }}>
+                        {{this.text}}
+                    </span>
+                    {{> _tree this scope="tree" root=false }}
+                {{else}}
+                    {{~> (getPartialName this.template) this scope="treeItem" ~}}
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+{{/ifCond}}

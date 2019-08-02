@@ -211,68 +211,73 @@
                         "userAcct": {
                             "type": "interactive",
                             "text": "John Smith",
-                            "contents": [
-                                {
-                                    "template": "popover",
-                                    "contents": [
-                                        {
-                                            "type": "external-auth-user",
-                                            "template": "composite",
-                                            "properties": {
-                                                "realName": "John Smith",
-                                                "companyName": "ABC Company",
-                                                "userid": "123-45-6789"
-                                            }
-                                        },
-                                        {
-                                            "type": "external-account-demo",
-                                            "template": "composite",
-                                            "properties": {
-                                                "account": "Tax Professioal",
-                                                "role": "Administrator"
-                                            }
-                                        },
-                                        {
-                                            "template": "tree",
-                                            "contents": [
-                                                {
-                                                    "type": "button",
-                                                    "template": "field",
-                                                    "input" :{
-                                                        "attributes": {
-                                                            "id": "EC_LOGOUT",
-                                                            "name": "EC_LOGOUT"
-                                                        },
-                                                        "text": "logout"
-                                                    }
+                            "popover": {
+                                "contents": [
+                                    {
+                                        "template": "popover",
+                                        "contents": [
+                                            {
+                                                "type": "external-auth-user",
+                                                "template": "composite",
+                                                "properties": {
+                                                    "realName": "John Smith",
+                                                    "companyName": "ABC Company",
+                                                    "userid": "123-45-6789"
                                                 }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ],
+                                            },
+                                            {
+                                                "type": "external-account-demo",
+                                                "template": "composite",
+                                                "properties": {
+                                                    "account": "Tax Professioal",
+                                                    "role": "Administrator"
+                                                }
+                                            },
+                                            {
+                                                "template": "tree",
+                                                "contents": [
+                                                    {
+                                                        "type": "button",
+                                                        "template": "field",
+                                                        "input" :{
+                                                            "attributes": {
+                                                                "id": "EC_LOGOUT",
+                                                                "name": "EC_LOGOUT"
+                                                            },
+                                                            "text": "logout"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
                         },
                         "support": {
+                            "type": "interactive",
                             "text": "Get Support",
-                            "contents": [
-                                {
-                                    "template": "popover",
-                                    "contents": [
-                                        {
-                                            "template": "tree",
-                                            "items": [
-                                                {
-                                                    "template": "link",
-                                                    "attributes": {
-                                                        "href": "#"
-                                                    },
-                                                    "text": "Contact Us"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
+                            "popover": {
+                                "contents": [
+                                    {
+                                        "template": "popover",
+                                        "contents": [
+                                            {
+                                                "template": "tree",
+                                                "items": [
+                                                    {
+                                                        "template": "link",
+                                                        "attributes": {
+                                                            "href": "#"
+                                                        },
+                                                        "text": "Contact Us"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
                         }
                     }
                 ]

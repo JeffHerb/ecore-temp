@@ -23,14 +23,14 @@
         {{/if}}
         {{#if this.support}}
         <li>
-            <a id="agencyHelp" href="#">
+            <button id="agencyHelp" role="button">
                 <span class="support-icon"></span>
                 {{#if this.support.text}}
                     <span class="label">{{this.support.text}}</span>
                 {{else}}
                     <span class="label">Get Support</span>
                 {{/if}}
-            </a>
+            </button>
         </li>
         {{/if}}
     </ul>

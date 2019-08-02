@@ -133,6 +133,8 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'fieldEvent', 'composite
             method = undefined;
         }
 
+        console.log("Remder data!", data)
+
         if (typeof data === "object") {
 
             procTemplates.render(data, false, function(html) {
