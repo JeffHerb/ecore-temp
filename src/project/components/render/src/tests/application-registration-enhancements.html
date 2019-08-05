@@ -217,65 +217,111 @@ var fwData = {
         },
     },
     "header": {
-        "contents": [
-            {
-                "template": "universal-header"
-            },
-            {
-                "type": "tax",
-                "template": "agency-header",
-                "bannerLink": "http://tax.ny.gov",
-                "title": "Virtual Demo Application",
-                "support": {
-                    "text": "Get Support",
-                    "popover": {
-                        "contents": [
-                            {
-                                "template": "popover",
-                                "contents": [
-                                    {
-                                        "template": "tree",
-                                        "items": [
-                                            {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "[LINK DEFINED BY HELO LINKS INPUT]"
+            "contents": [
+                {
+                    "template": "universal-header"
+                },
+                {
+                    "type": "tax",
+                    "template": "agency-header",
+                    "bannerLink": "http://tax.ny.gov",
+                    "title": "Demo Application",
+                    "support": {
+                        "text": "Get Support",
+                        "popover": {
+                            "contents": [
+                                {
+                                    "template": "popover",
+                                    "contents": [
+                                        {
+                                            "template": "tree",
+                                            "items": [
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "[LINK DEFINED BY HELO LINKS INPUT]"
+                                                    },
+                                                    "text": "Help Link"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "template": "tree",
+                                            "items": [
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "[LINK DEFINED BY SUPPORT LINK INPUT]"
+                                                    },
+                                                    "text": "Support"
                                                 },
-                                                "text": "Help Link"
+                                                {
+                                                    "template": "link",
+                                                    "attributes": {
+                                                        "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
+                                                    },
+                                                    "text": "Contact Us"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "userAcct": {
+                        "type": "interactive",
+                        "text": "John Smith",
+                        "popover": {
+                            "contents": [
+                                {
+                                    "template": "popover",
+                                    "contents": [
+                                        {
+                                            "type": "external-auth-user",
+                                            "template": "composite",
+                                            "properties": {
+                                                "realName": "John Smith",
+                                                "companyName": "ABC Company",
+                                                "userid": "123-45-6789"
                                             }
-                                        ]
-                                    },
-                                    {
-                                        "template": "tree",
-                                        "items": [
-                                            {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "[LINK DEFINED BY SUPPORT LINK INPUT]"
-                                                },
-                                                "text": "Support"
-                                            },
-                                            {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
-                                                },
-                                                "text": "Contact Us"
+                                        },
+                                        {
+                                            "type": "external-account-demo",
+                                            "template": "composite",
+                                            "properties": {
+                                                "account": "Tax Professioal",
+                                                "role": "Administrator"
                                             }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                                        },
+                                        {
+                                            "template": "tree",
+                                            "contents": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input" :{
+                                                        "attributes": {
+                                                            "id": "EC_LOGOUT",
+                                                            "name": "EC_LOGOUT"
+                                                        },
+                                                        "text": "logout"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
                     }
                 }
-            }
-        ]
-    },
+            ]
+        },
     "footer": {
         "contents": [
             {
-                "template": "overriden-agency-footer"
+                "template": "agency-footer"
             },
             {
                 "template": "universal-footer"

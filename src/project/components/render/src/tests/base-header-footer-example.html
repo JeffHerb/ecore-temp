@@ -190,99 +190,74 @@
     </div>
 
     <script>
-var fwData = {
-    "context": {
-        "ui": {
-            "baseurl": "http://localhost:8888/dist/",
-            "css": "css/main.css",
-            "js": "js/main.js",
-            "domain": "",
-            "version": "",
-            "cid": "01012019"
-        },
-        "fw": {
-            "timestamp": 1557239635641,
-            "server": "udmwas01_E_2",
-            "requestedURL": "/SAUDSPMTNC.tabset/CMFW01S-UA/CMFW01S_SEARCH_RETRIEVE_ACTION"
-        },
-        "app": {
-            "id": "EIVP",
-            "store": "ORPTS",
-            "type": "wizard"
-        },
-        "screen": {
-            "id": "CMFW01S-UA",
-            "session": "aEPsyw8bPDe-Mloj-HneffA",
-            "mode": "editable"
-        },
-    },
-    "header": {
-        "contents": [
-            {
-                "template": "universal-header"
+        var fwData = {
+            "context": {
+                "ui": {
+                    "baseurl": "http://localhost:8888/dist/",
+                    "css": "css/main.css",
+                    "js": "js/main.js",
+                    "domain": "",
+                    "version": "",
+                    "cid": "01012019"
+                }
             },
-            {
-                "type": "tax",
-                "template": "agency-header",
-                "bannerLink": "http://tax.ny.gov",
-                "title": "Virtual Demo Application",
-                "support": {
-                    "text": "Get Support",
-                    "popover": {
-                        "contents": [
-                            {
-                                "template": "popover",
+            "header": {
+                "contents": [
+                    {
+                        "template": "universal-header"
+                    },
+                    {
+                        "type": "tax",
+                        "template": "agency-header",
+                        "bannerLink": "http://tax.ny.gov",
+                        "support": {
+                            "text": "Get Support",
+                            "popover": {
                                 "contents": [
                                     {
-                                        "template": "tree",
-                                        "items": [
+                                        "template": "popover",
+                                        "contents": [
                                             {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "[LINK DEFINED BY HELO LINKS INPUT]"
-                                                },
-                                                "text": "Help Link"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "template": "tree",
-                                        "items": [
-                                            {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "[LINK DEFINED BY SUPPORT LINK INPUT]"
-                                                },
-                                                "text": "Support"
-                                            },
-                                            {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
-                                                },
-                                                "text": "Contact Us"
+                                                "template": "tree",
+                                                "items": [
+                                                    {
+                                                        "template": "link",
+                                                        "attributes": {
+                                                            "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
+                                                        },
+                                                        "text": "Contact Us"
+                                                    }
+                                                    {
+                                                        "template": "link",
+                                                        "attributes": {
+                                                            "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
+                                                        },
+                                                        "text": "Contact Us"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
                                 ]
                             }
-                        ]
+                        }
                     }
-                }
-            }
-        ]
-    },
-    "footer": {
-        "contents": [
-            {
-                "template": "overriden-agency-footer"
+                ]
             },
-            {
-                "template": "universal-footer"
+            "page": {
+                "contents": []
+            },
+            "footer": {
+                "contents": [
+                    {
+                        "template": "agency-footer"
+                    },
+                    {
+                        "template": "universal-footer"
+                    }
+                ]
             }
-        ]
-    }
-}
+        }
     </script>
 
     <script>

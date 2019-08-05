@@ -8,17 +8,13 @@ define(['render'], function (render) {
 
     _events.getSupportPopover = function(supportJSON, evt) {
 
-        //evt.preventDefault();
-
-        console.log("Popover clicked");
-
-        console.log(supportJSON.contents);
+        evt.preventDefault();
 
         var generatePopver = function() {
 
             var $supportButton = $('#agencyHelp');
 
-            render.section(undefined, supportJSON, 'return', function(html) {
+            render.section(undefined, supportJSON.popover, 'return', function(html) {
 
                 console.log(html);
                 _priv.$supportPopover = $.popover($supportButton, {
@@ -43,11 +39,7 @@ define(['render'], function (render) {
 
     _events.userAccountPopover = function(userAcctJSON, evt) {
 
-        //evt.preventDefault();
-
-        console.log("Popover clicked");
-
-        console.log(userAcctJSON.contents);
+        evt.preventDefault();
 
         var generatePopver = function() {
 

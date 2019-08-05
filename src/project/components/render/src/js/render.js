@@ -71,8 +71,6 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'fieldEvent', 'composite
             // Render the header
             procTemplates.render(data.header, true, function (headerHTML) {
 
-
-
                 target.header.appendChild(headerHTML);
 
                 // Check to see if we have a footer
@@ -81,18 +79,29 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'fieldEvent', 'composite
                     // Render the footer
                     procTemplates.render(data.footer, true, function (footerHTML) {
 
-                        target.footer.appendChild(footerHTML)
+                        target.footer.appendChild(footerHTML);
 
-                        // Render the page
-                        procTemplates.render(data.page, true, function (bodyHTML) {
+                        if (data.page && target.page) {
 
-                            target.page.appendChild(bodyHTML);
+                            // Render the page
+                            procTemplates.render(data.page, true, function (bodyHTML) {
 
+                                target.page.appendChild(bodyHTML);
+
+                                if (typeof cb === "function") {
+                                    cb();
+                                }
+
+                            });
+
+                        }
+                        else {
+                         
                             if (typeof cb === "function") {
                                 cb();
                             }
 
-                        });
+                        }
 
                     });
 
