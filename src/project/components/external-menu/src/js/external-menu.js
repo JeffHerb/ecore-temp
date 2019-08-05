@@ -79,11 +79,16 @@ define(['render', 'guid'], function(render, guid) {
 
     };
 
-    _priv.generate = function _generate(full) {
+    _priv.generate = function _generate(full, data) {
+
+        var outerMenuWrapper = false;
+        var globaMenuControlWrapper = false;
+        var globalMenuCloseControl = false;
+        var menuContensWrapper = false;
 
         if (full) {
 
-            var outerMenuWrapper = document.createElement('nav');
+            outerMenuWrapper = document.createElement('nav');
             outerMenuWrapper.setAttribute('id', 'emp-global-menu-wrapper');
             outerMenuWrapper.classList.add('emp-global-menu-wrapper');
 
@@ -91,10 +96,10 @@ define(['render', 'guid'], function(render, guid) {
             // Global Menu Control
             // #=====================
 
-            var globaMenuControlWrapper = document.createElement('div');
+            globaMenuControlWrapper = document.createElement('div');
             globaMenuControlWrapper.classList.add('emp-menu-control-container');
 
-            var globalMenuCloseControl = document.createElement('button');
+            globalMenuCloseControl = document.createElement('button');
             globalMenuCloseControl.setAttribute('type', 'button');
             globalMenuCloseControl.classList.add('emp-global-menu-close');
             globalMenuCloseControl.innerHTML = '&times';
@@ -136,9 +141,8 @@ define(['render', 'guid'], function(render, guid) {
             // Menu Wrapper
             // #=====================
 
-            var menuContensWrapper = document.createElement('div');
+            menuContensWrapper = document.createElement('div');
             menuContensWrapper.classList.add('emp-menu-contents');
-
 
             menuContensWrapper.addEventListener('click', function (evt) {
 
@@ -158,14 +162,18 @@ define(['render', 'guid'], function(render, guid) {
             dBodyWrapper.appendChild(outerMenuWrapper);
 
             _priv.isGenerated = true;
+
+            var menuElem = document.querySelector('#emp-global-menu-wrapper');
+
+            _priv.menuElem = menuElem;
         }
         else {
 
+            menuContensWrapper = document.querySelector('#emp-global-menu-wrapper .emp-menu-contents');
+
+            _priv.generateMenuContents(menuContensWrapper, data);
         }
 
-        var menuElem = document.querySelector('#emp-global-menu-wrapper');
-
-        _priv.menuElem = menuElem;
     };
 
     _priv.filterMenu = function _filter_menu(slug) {
@@ -219,7 +227,6 @@ define(['render', 'guid'], function(render, guid) {
             }
 
             return newMenuLevelArray;
-
         }
 
         var customRegEx = new RegExp(slug, 'g');
@@ -229,6 +236,7 @@ define(['render', 'guid'], function(render, guid) {
 
         var newMenu = searchItems(customRegEx, currentMenu);
 
+        return newMenu;
     };
 
     _events.menuClick = function _menu_click(evt) {
@@ -256,12 +264,19 @@ define(['render', 'guid'], function(render, guid) {
 
             if (_priv.isOpen) {
                 // _priv.menuElem.style.top = appBar.offsetHeight + 'px';
+                // box-shadow: #000 2px 2px 5px;
 
-                _priv.menuElem.style.transform = 'translateX(0)';
+                // _priv.menuElem.style.transform = 'translateX(0)';
+                // _priv.menuElem.style.boxShadow = '#000 2px 2px 5px';
+
+                _priv.menuElem.classList.add('active');
             }
             else {
                 // setting transform to null is not supported by IE11, use "" instead
-                _priv.menuElem.style.transform = "";
+                // _priv.menuElem.style.transform = "";
+                // _priv.menuElem.style.boxShadow = "";
+
+                _priv.menuElem.classList.remove('active');
             }
 
             // Update the menu control
@@ -317,6 +332,9 @@ define(['render', 'guid'], function(render, guid) {
 
         var updatedJSON = _priv.filterMenu(inputValue);
 
+        console.log(updatedJSON);
+
+        _priv.generate(false, updatedJSON);
     };
 
     var init = function _external_menu_init() {
