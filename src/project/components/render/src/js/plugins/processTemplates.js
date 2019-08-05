@@ -349,7 +349,7 @@ define(['dataStore', 'handlebars', 'handlebars-templates', 'handlebars-partials'
 		_dataShivs = dataShivs;
 		_templateShivs = templateShivs;
         _eventShivs = eventShivs;
-        
+
         if (external) {
             _external = true;
         }

@@ -7,6 +7,7 @@ define(['render', 'guid'], function(render, guid) {
     _priv.isOpen = false;
     _priv.inputTimeout = false;
     _priv.filterTolerance = 200;
+    _priv.init = false;
 
     _priv.generateMenuContents = function _generate_menu_contents(fragment, menuItems, level) {
 
@@ -120,7 +121,7 @@ define(['render', 'guid'], function(render, guid) {
                 if (_priv.inputTimeout) {
                     clearInterval(_priv.inputTimeout);
                 }
-        
+
                 _priv.inputTimeout = setTimeout(function() {
 
                     _events.filterInput(evt);
@@ -232,50 +233,61 @@ define(['render', 'guid'], function(render, guid) {
 
     _events.menuClick = function _menu_click(evt) {
 
-        if (!_priv.isGenerated) {
+        console.log("menu clicked!");
 
-            _priv.generate(true);
-        }
 
-        var menuButton = evt.target;
+        if (fwData.menus && fwData.menus.global && Object.keys(fwData.menus.global).length) {
 
-        while (menuButton.nodeName !== 'BUTTON') {
-            menuButton = menuButton.parentNode;
-        }
+            if (!_priv.isGenerated) {
 
-        var appBar = menuButton.parentNode.parentNode;
+                _priv.generate(true);
+            }
 
-        // Toogle the expanded state
-        _priv.isOpen = !_priv.isOpen;
+            var menuButton = evt.target;
 
-        if (_priv.isOpen) {
-            // _priv.menuElem.style.top = appBar.offsetHeight + 'px';            
+            while (menuButton.nodeName !== 'BUTTON') {
+                menuButton = menuButton.parentNode;
+            }
 
-            _priv.menuElem.style.transform = 'translateX(0)';
+            var appBar = menuButton.parentNode.parentNode;
+
+            // Toogle the expanded state
+            _priv.isOpen = !_priv.isOpen;
+
+            if (_priv.isOpen) {
+                // _priv.menuElem.style.top = appBar.offsetHeight + 'px';
+
+                _priv.menuElem.style.transform = 'translateX(0)';
+            }
+            else {
+                // setting transform to null is not supported by IE11, use "" instead
+                _priv.menuElem.style.transform = "";
+            }
+
+            // Update the menu control
+            menuButton.setAttribute('aria-expanded', _priv.isOpen);
         }
         else {
-        	// setting transform to null is not supported by IE11, use "" instead
-            _priv.menuElem.style.transform = "";
+
+            journal.log({ type: 'error', owner: 'FW', module: 'externalMenu', func: '_event.menuClick' }, 'Page JSON does not contain any global menu definition.');
         }
 
-        // Update the menu control
-        menuButton.setAttribute('aria-expanded', _priv.isOpen);
 
     };
 
     _events.closeMenu = function _close_global_menu(evt) {
-    	
+
     	var control = evt.target;
 
         if (control.classList.contains('emp-global-menu-close')) {
-        	
+
             _priv.isOpen = false;
 
             _priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
-			
+
 			// setting transform to null is not supported by IE11, use "" instead
             _priv.menuElem.style.transform = "";
-        }	
+        }
 
         return;
 
@@ -307,23 +319,30 @@ define(['render', 'guid'], function(render, guid) {
 
     };
 
-    var externalCheck = (document.querySelector('html').classList.contains('external-app')) ? true: false;
+    var init = function _external_menu_init() {
 
-    if (externalCheck) {
+        if (!_priv.init) {
 
-        var menuControl = document.querySelector('.emp-global-header .application-header button.menu-button');
+            var menuControl = document.querySelector('.emp-global-header .application-header button.menu-button');
 
-        if (menuControl) {
+            if (menuControl) {
 
-            _priv.menuControl = menuControl;
-    
-            menuControl.addEventListener('click', function(evt) {
-    
-                _events.menuClick(evt);
-    
-            });
+                _priv.menuControl = menuControl;
+
+                menuControl.addEventListener('click', function(evt) {
+
+                    _events.menuClick(evt);
+
+                });
+            }
+
+            _priv.init = true;
         }
 
-    }
+    };
+
+    return {
+        init: init
+    };
 
 });

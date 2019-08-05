@@ -1,7 +1,9 @@
 .emp-global-menu-wrapper {
     background: #333;
-    height: 100%;
+    box-shadow: #000 2px 2px 5px;
+    //height: 100%;
     max-width: 360px;
+    padding-bottom: 2em;
     position: absolute;
     top:0;
     transform: translateX(-100%);
