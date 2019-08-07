@@ -185,7 +185,7 @@
                     align-items:baseline;
 
                     .cui-label{
-                        width: auto;//initial;
+                        width: auto;
                         text-align: right;
                         -ms-grid-column: 1;
                         -ms-grid-row: 1;
@@ -259,7 +259,8 @@
                         }
 
                         legend{
-                            width: initial;
+                            width: auto;
+                            text-align: right;
                         }
                     }
 
@@ -282,7 +283,8 @@
                         text-align: right;
 
                         legend{
-                            width: initial;
+                            width: auto;
+                            text-align: right;
                         }
                     }
 
