@@ -6,7 +6,7 @@ define(['render', 'guid'], function(render, guid) {
     _priv.isGenerated = false;
     _priv.isOpen = false;
     _priv.inputTimeout = false;
-    _priv.filterTolerance = 200;
+    _priv.filterTolerance = 400;
     _priv.init = false;
 
     _priv.generateMenuContents = function _generate_menu_contents(fragment, menuItems, level) {
@@ -21,6 +21,10 @@ define(['render', 'guid'], function(render, guid) {
         for (var i = 0, len = menuItems.length; i < len; i++) {
 
             var menuItem = menuItems[i];
+
+            if (menuItem.hasOwnProperty('skip') && menuItem.skip) {
+                continue;
+            }
 
             var dMenuItem = document.createElement('li');
             var dMenuControlText = document.createTextNode(menuItem.text);
@@ -170,6 +174,14 @@ define(['render', 'guid'], function(render, guid) {
         else {
 
             menuContensWrapper = document.querySelector('#emp-global-menu-wrapper .emp-menu-contents');
+
+            // Flush the onld menu contents
+            var child = menuContensWrapper.lastElementChild;
+
+            while (child) {
+                menuContensWrapper.removeChild(child);
+                child = menuContensWrapper.lastElementChild;
+            }
 
             _priv.generateMenuContents(menuContensWrapper, data);
         }
