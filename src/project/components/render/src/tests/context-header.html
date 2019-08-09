@@ -190,17 +190,80 @@
     </div>
 
     <script>
-var fwData = {
-    "page": {
-        "contents": [
-            {
-                "template": "taxpayer-header-context",
-                "taxpayerID": "XXX-XX-1234",
-                "taxpayerName": "John Smith"
+        var fwData = {
+            "context": {
+                "ui": {
+                    "baseurl": "http://localhost:8888/dist/",
+                    "css": "css/main.css",
+                    "js": "js/main.js",
+                    "domain": "",
+                    "version": "",
+                    "cid": "01012019"
+                }
+            },
+            "header": {
+                "contents": [
+                    {
+                        "template": "universal-header"
+                    },
+                    {
+                        "type": "tax",
+                        "template": "agency-header",
+                        "bannerLink": "http://tax.ny.gov",
+                        "support": {
+                            "text": "Get Support",
+                            "popover": {
+                                "contents": [
+                                    {
+                                        "template": "popover",
+                                        "contents": [
+                                            {
+                                                "template": "tree",
+                                                "items": [
+                                                    {
+                                                        "template": "link",
+                                                        "attributes": {
+                                                            "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
+                                                        },
+                                                        "text": "Contact Us"
+                                                    }
+                                                    {
+                                                        "template": "link",
+                                                        "attributes": {
+                                                            "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
+                                                        },
+                                                        "text": "Contact Us"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "page": {
+                "contents": [
+                    {
+                        "template": "taxpayer-header-context",
+                        "taxpayerID": "XXX-XX-1234",
+                        "taxpayerName": "John Smith"
+                    }
+                ]
+            },
+            "footer": {
+                "contents": [
+                    {
+                        "template": "agency-footer"
+                    },
+                    {
+                        "template": "universal-footer"
+                    }
+                ]
             }
-        ]
-    }
-};
+        }
     </script>
 
     <script>

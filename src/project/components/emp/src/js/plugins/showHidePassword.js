@@ -14,6 +14,7 @@ define([], function() {
                 var currentInput = false;
                 var currentValue = false;
                 var newInput = false;
+                //var inputCurrentValue = "";
 
                 while(!parentWrapper.classList.contains('emp-password-wrapper')) {
                     parentWrapper = parentWrapper.parentNode;
@@ -48,6 +49,7 @@ define([], function() {
 
                 // Generate the new input
                 newInput = document.createElement('input');
+                newInput.value = currentValue;
 
                 for (var attrs in inputAttributes) {
                     newInput.setAttribute(attrs, inputAttributes[attrs]);
