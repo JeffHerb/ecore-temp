@@ -6,7 +6,8 @@ define(['render', 'guid'], function(render, guid) {
     _priv.isGenerated = false;
     _priv.isOpen = false;
     _priv.inputTimeout = false;
-    _priv.filterTolerance = 200;
+    _priv.filterTolerance = 400;
+    _priv.init = false;
 
     _priv.generateMenuContents = function _generate_menu_contents(fragment, menuItems, level) {
 
@@ -20,6 +21,10 @@ define(['render', 'guid'], function(render, guid) {
         for (var i = 0, len = menuItems.length; i < len; i++) {
 
             var menuItem = menuItems[i];
+
+            if (menuItem.hasOwnProperty('skip') && menuItem.skip) {
+                continue;
+            }
 
             var dMenuItem = document.createElement('li');
             var dMenuControlText = document.createTextNode(menuItem.text);
@@ -78,11 +83,16 @@ define(['render', 'guid'], function(render, guid) {
 
     };
 
-    _priv.generate = function _generate(full) {
+    _priv.generate = function _generate(full, data) {
+
+        var outerMenuWrapper = false;
+        var globaMenuControlWrapper = false;
+        var globalMenuCloseControl = false;
+        var menuContensWrapper = false;
 
         if (full) {
 
-            var outerMenuWrapper = document.createElement('nav');
+            outerMenuWrapper = document.createElement('nav');
             outerMenuWrapper.setAttribute('id', 'emp-global-menu-wrapper');
             outerMenuWrapper.classList.add('emp-global-menu-wrapper');
 
@@ -90,10 +100,10 @@ define(['render', 'guid'], function(render, guid) {
             // Global Menu Control
             // #=====================
 
-            var globaMenuControlWrapper = document.createElement('div');
+            globaMenuControlWrapper = document.createElement('div');
             globaMenuControlWrapper.classList.add('emp-menu-control-container');
 
-            var globalMenuCloseControl = document.createElement('button');
+            globalMenuCloseControl = document.createElement('button');
             globalMenuCloseControl.setAttribute('type', 'button');
             globalMenuCloseControl.classList.add('emp-global-menu-close');
             globalMenuCloseControl.innerHTML = '&times';
@@ -120,7 +130,7 @@ define(['render', 'guid'], function(render, guid) {
                 if (_priv.inputTimeout) {
                     clearInterval(_priv.inputTimeout);
                 }
-        
+
                 _priv.inputTimeout = setTimeout(function() {
 
                     _events.filterInput(evt);
@@ -135,9 +145,8 @@ define(['render', 'guid'], function(render, guid) {
             // Menu Wrapper
             // #=====================
 
-            var menuContensWrapper = document.createElement('div');
+            menuContensWrapper = document.createElement('div');
             menuContensWrapper.classList.add('emp-menu-contents');
-
 
             menuContensWrapper.addEventListener('click', function (evt) {
 
@@ -157,14 +166,26 @@ define(['render', 'guid'], function(render, guid) {
             dBodyWrapper.appendChild(outerMenuWrapper);
 
             _priv.isGenerated = true;
+
+            var menuElem = document.querySelector('#emp-global-menu-wrapper');
+
+            _priv.menuElem = menuElem;
         }
         else {
 
+            menuContensWrapper = document.querySelector('#emp-global-menu-wrapper .emp-menu-contents');
+
+            // Flush the onld menu contents
+            var child = menuContensWrapper.lastElementChild;
+
+            while (child) {
+                menuContensWrapper.removeChild(child);
+                child = menuContensWrapper.lastElementChild;
+            }
+
+            _priv.generateMenuContents(menuContensWrapper, data);
         }
 
-        var menuElem = document.querySelector('#emp-global-menu-wrapper');
-
-        _priv.menuElem = menuElem;
     };
 
     _priv.filterMenu = function _filter_menu(slug) {
@@ -218,7 +239,6 @@ define(['render', 'guid'], function(render, guid) {
             }
 
             return newMenuLevelArray;
-
         }
 
         var customRegEx = new RegExp(slug, 'g');
@@ -228,54 +248,73 @@ define(['render', 'guid'], function(render, guid) {
 
         var newMenu = searchItems(customRegEx, currentMenu);
 
+        return newMenu;
     };
 
     _events.menuClick = function _menu_click(evt) {
 
-        if (!_priv.isGenerated) {
+        console.log("menu clicked!");
 
-            _priv.generate(true);
-        }
 
-        var menuButton = evt.target;
+        if (fwData.menus && fwData.menus.global && Object.keys(fwData.menus.global).length) {
 
-        while (menuButton.nodeName !== 'BUTTON') {
-            menuButton = menuButton.parentNode;
-        }
+            if (!_priv.isGenerated) {
 
-        var appBar = menuButton.parentNode.parentNode;
+                _priv.generate(true);
+            }
 
-        // Toogle the expanded state
-        _priv.isOpen = !_priv.isOpen;
+            var menuButton = evt.target;
 
-        if (_priv.isOpen) {
-            // _priv.menuElem.style.top = appBar.offsetHeight + 'px';            
+            while (menuButton.nodeName !== 'BUTTON') {
+                menuButton = menuButton.parentNode;
+            }
 
-            _priv.menuElem.style.transform = 'translateX(0)';
+            var appBar = menuButton.parentNode.parentNode;
+
+            // Toogle the expanded state
+            _priv.isOpen = !_priv.isOpen;
+
+            if (_priv.isOpen) {
+                // _priv.menuElem.style.top = appBar.offsetHeight + 'px';
+                // box-shadow: #000 2px 2px 5px;
+
+                // _priv.menuElem.style.transform = 'translateX(0)';
+                // _priv.menuElem.style.boxShadow = '#000 2px 2px 5px';
+
+                _priv.menuElem.classList.add('active');
+            }
+            else {
+                // setting transform to null is not supported by IE11, use "" instead
+                // _priv.menuElem.style.transform = "";
+                // _priv.menuElem.style.boxShadow = "";
+
+                _priv.menuElem.classList.remove('active');
+            }
+
+            // Update the menu control
+            menuButton.setAttribute('aria-expanded', _priv.isOpen);
         }
         else {
-        	// setting transform to null is not supported by IE11, use "" instead
-            _priv.menuElem.style.transform = "";
+
+            journal.log({ type: 'error', owner: 'FW', module: 'externalMenu', func: '_event.menuClick' }, 'Page JSON does not contain any global menu definition.');
         }
 
-        // Update the menu control
-        menuButton.setAttribute('aria-expanded', _priv.isOpen);
 
     };
 
     _events.closeMenu = function _close_global_menu(evt) {
-    	
+
     	var control = evt.target;
 
         if (control.classList.contains('emp-global-menu-close')) {
-        	
+
             _priv.isOpen = false;
 
             _priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
-			
+
 			// setting transform to null is not supported by IE11, use "" instead
             _priv.menuElem.style.transform = "";
-        }	
+        }
 
         return;
 
@@ -305,25 +344,35 @@ define(['render', 'guid'], function(render, guid) {
 
         var updatedJSON = _priv.filterMenu(inputValue);
 
+        console.log(updatedJSON);
+
+        _priv.generate(false, updatedJSON);
     };
 
-    var externalCheck = (document.querySelector('html').classList.contains('external-app')) ? true: false;
+    var init = function _external_menu_init() {
 
-    if (externalCheck) {
+        if (!_priv.init) {
 
-        var menuControl = document.querySelector('.emp-global-header .application-header button.menu-button');
+            var menuControl = document.querySelector('.emp-global-header .application-header button.menu-button');
 
-        if (menuControl) {
+            if (menuControl) {
 
-            _priv.menuControl = menuControl;
-    
-            menuControl.addEventListener('click', function(evt) {
-    
-                _events.menuClick(evt);
-    
-            });
+                _priv.menuControl = menuControl;
+
+                menuControl.addEventListener('click', function(evt) {
+
+                    _events.menuClick(evt);
+
+                });
+            }
+
+            _priv.init = true;
         }
 
-    }
+    };
+
+    return {
+        init: init
+    };
 
 });

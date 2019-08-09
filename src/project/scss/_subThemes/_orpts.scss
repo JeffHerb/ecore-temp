@@ -33,10 +33,10 @@ $sectionHeaderBackgroundColor: #e7e7e6;
     }
 
     .nys-logo {
-        background: url('../../dist/images/unav-footer-logo.png') 0 0 no-repeat transparent;
+        background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
 
         &:hover {
-            background: url('../../dist/images/unav-footer-logo.png') 0 0 no-repeat transparent;
+            background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
         }
     }
 
@@ -498,7 +498,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                     flex: 1;
 
                     & > a {
-                        background: url('../../dist/images/nygov-logo.png') 0 12px no-repeat transparent;
+                        background: url('../images/nygov-logo.png') 0 12px no-repeat transparent;
                         display: inline-block;
                         font-weight: bold;
                         height: 90px;

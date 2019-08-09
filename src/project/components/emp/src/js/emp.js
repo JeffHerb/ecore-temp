@@ -1,13 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'favorites', 'external-menu', 'spin', 'detectIE', 'notifications', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'quill', 'refresh', 'errorReportIframe', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, favorites, externalMenu, spin, detectIE, notifications, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, quill, refresh, eri, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
-
-    function inIframe () {
-        try {
-            return window.self !== window.top;
-        } catch (e) {
-            return true;
-        }
-    }
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'favorites', 'external-menu', 'spin', 'detectIE', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'quill', 'refresh', 'errorReportIframe', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, favorites, externalMenu, spin, detectIE, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, quill, refresh, eri, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
 
     var _priv = {
         isInitialized: false,
@@ -49,24 +41,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
      */
     _priv.pageSetup = function _pageSetup(options, cb) {
 
-
-        // New Non-jQuery versions
-        var searchClearButton = document.querySelector('.emp-button-search-clear');
-        var searchClearAllButton = document.querySelector('.emp-button-search-clear-all');
-        var dNotifierPopups = document.querySelectorAll('.emp-page-info .emp-indicators a.popup');
-        var dSectionNotifierPopups = document.querySelectorAll('section ul.emp-indicators a.popup');
-
         externalEmpire = (document.querySelector('html.external-app')) ? true : false;
 
         // Older jQuery values
-        var $tabsetTitleBar;
-        var $searchBox = $('#form_search');
         var $mainWrapper = $('main');
-        var $searchBoxToggle;
-        var $searchBoxToggleImg;
-        var searchBoxElem;
-        var $searchFields;
-        var searchFieldsElem;
         var $tables = $('.emp-table table');
         var $dateInputs = $('.emp-date');
         var $dateCalenders = $('.cui-c-datepicker');
@@ -197,19 +175,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
         windowsM.setup();
 
-        //Setup notifications plugin
-        //Disabled per framework request as we are not in phase 2 just yet! JAH
-        emp.notifications = $.notifications($('.emp-header-notifications'));
-
-        // Search box ID field special functionality
-        if ($('#HEADER_ID_TYPE').length === 1) {
-
-            $body.on('change', '#HEADER_ID_TYPE', function (evt) {
-
-                _events.searchHeaderTypeChange();
-            });
-        }
-
         // Default required Table plugins
         if ($tables.length && !options.skipTable) {
 
@@ -276,17 +241,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         // Bind the date picker to all date inputs.
         $dateCalenders.datepicker();
 
-        // Setup clear and clear all buttons
-        if (searchClearButton) {
-            searchClearButton.addEventListener('click', events.clearSearchbox);
-            searchClearAllButton.addEventListener('click', events.clearAllSearchBox);
-        }
-
-        // Print icon
-        $('.emp-icon-print').on('click', function () {
-            // Not sure why we need this anonymous function wrapper, rather than passing `window.print` directly, but jQuery throws an 'illegal invocation' error without it
-            window.print();
-        });
 
         // Just do a body binding for the tooltips.
         $body.on('click', '.emp-tooltip, td span[title]', function (evt) {
@@ -355,29 +309,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
             $ajaxTooltips.each(function () {
                 requestTooltip($(this));
-            });
-        }
-
-        var $employeeSearch = $('.emp-employee-search .employee-search-select');
-
-        $employeeSearch.each(function (i) {
-
-            var $select = $(this);
-
-            $select.on('change', function (evt) {
-
-                _events.employeeSearchDropDown(evt);
-            });
-        });
-
-        // Rating search
-        if ($ratingContainers.length) {
-
-            // Loop through and bind all rating components
-            $ratingContainers.each(function () {
-
-                $(this).rating();
-
             });
         }
 
@@ -506,225 +437,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             $tabs.tabs();
         }
 
-        var $editor = $('.emp-quill-editor');
-
-        if ($editor.length) {
-
-            $editor.each(function (e) {
-
-                var $edit = $(this);
-                var $editorTA = $edit.find('.ql-editor');
-                var $editContainer = $edit.find('.emp-quill-container');
-                var $editToolbar = $edit.find('.emp-quill-toolbar');
-
-                var $editRoot = $edit.parents('.emp-field');
-                var editDataStorID = $editRoot.attr('data-store-id');
-                var editDataStore = ds.getStore(editDataStorID);
-
-                var $editorContentElm = false;
-
-                if ($editContainer.length === 1) {
-
-                    var $hidden = $('#' + $editContainer.attr('data-hidden'));
-
-                    if ($hidden.length === 1) {
-
-                        var editor = new quill($editContainer[0], {
-                            modules: {
-                                toolbar: {
-                                    container: $editToolbar[0],
-                                    handlers: {
-                                        undo: function() {
-
-                                            editor.history.undo();
-                                        },
-                                        redo: function() {
-
-                                            editor.history.redo();
-                                        }
-                                    }
-                                },
-                                // history: {
-                                //   delay: 2000,
-                                //   maxStack: 500,
-                                //   userOnly: true
-                                // },
-                                //toolbar: toolbarOptions,
-                                clipboard: {
-                                    matchVisual: true
-                                }
-                            },
-                            theme: 'snow'
-                        });
-
-                        var editorToolbar = editor.getModule('toolbar');
-
-                        editor.clipboard.addMatcher('p', function (node, delta) {
-
-                            if (!emp.isIE) {
-
-                                var deltaCopy = $.extend(true, {}, delta);
-
-                                var _newDelta = {
-                                    ops: []
-                                };
-
-                                for (var i = 0, len = delta.ops.length; i < len; i++) {
-
-                                    var copyOp = $.extend(true, {}, delta.ops[i]);
-
-                                    if (copyOp.insert.match(/((\d.\s{3,}\b)|(.\s{3,}\b))/)) {
-
-                                        var re = /((\d.\s{3,}\b)|(.\s{3,}\b))/;
-                                        var bulletParts = copyOp.insert.split(re);
-
-                                        var bullet = bulletParts[1];
-                                        var data = bulletParts[4];
-
-                                        var listType = (bullet.match(/\d/)) ? 'ordered' : 'bullet';
-
-                                        var bulletOps = {
-                                            insert: "\n",
-                                            attributes: {
-                                                list: listType
-                                            }
-                                        };
-
-                                        _newDelta.ops.push(bulletOps);
-
-                                        copyOp.insert = data;
-
-                                        _newDelta.ops.push(copyOp);
-
-                                    }
-                                    else {
-                                        _newDelta.ops.push(copyOp);
-                                    }
-
-
-                                }
-
-                                return _newDelta;
-                            }
-                            else {
-
-                                return delta;
-                            }
-
-                        });
-
-                        editor.on("text-change", function (delta, oldDelta, source) {
-
-                            var $contents = $(editor.root);
-                            var $hidden = $contents.parents('.emp-quill-editor').find('input[type="hidden"]');
-
-                            if (source === "user") {
-
-                                if (!emp.isIE) {
-
-                                    var $ULs = $editContainer.find('ul,ol');
-
-                                    $ULs.each(function () {
-
-                                        var $UL = $(this);
-
-                                        $LIs = $UL.children();
-                                        $sib = $UL.next();
-
-                                        if ($LIs.length === 1) {
-
-                                            if ($LIs[0].innerText.trim() === "" && $sib.length && $sib[0].nodeName === "P") {
-
-                                                $LIs[0].innerHTML = $sib[0].innerHTML;
-                                                $sib.remove();
-                                            }
-                                        }
-
-                                    });
-                                }
-                                else {
-
-                                    var $actualEditorContainer = $editContainer.children('.ql-editor').eq(0);
-
-                                    var $firstChild = $actualEditorContainer.children().eq(0);
-
-                                    if ($firstChild[0].nodeName === "P" && $firstChild[0].innerText.trim() === "") {
-                                        $firstChild.remove();
-                                    }
-
-                                }
-
-                            }
-
-                            // Update the hidden input
-                            $hidden.val($contents[0].innerHTML);
-
-                        });
-
-                        // This method is to fix editors that lose there range index/cursor positions after interacting with other dom elements.
-                        // This mainly is in place for the variable insert editors in the message center screen.
-                        $edit.on('click', function (event) {
-
-                            var oCurrentSelection = editor.getSelection();
-
-                            if(oCurrentSelection){
-
-                                $edit.attr('data-editor-last-cursor', oCurrentSelection.index);
-                            }
-
-                        });
-
-                        editorToolbar.addHandler('link', function(value) {
-
-                            if (value) {
-
-                                var range = this.quill.getSelection();
-
-                                if (range === null || range.length === 0) {
-
-                                    journal.log({ type: 'info', owner: 'UI', module: 'emp' }, 'Block Quill.js link action because no word was selected.');
-                                    return false;
-                                }
-
-                                var tooltip = this.quill.theme.tooltip;
-
-                                tooltip.edit('link', '');
-                            }
-                            else {
-                                this.quill.format('link', false);
-                            }
-
-                        });
-
-                        // Manually set the hidden field value
-                        if (editDataStore) {
-                            $hidden.val(editDataStore.input.attributes.value);
-                        }
-
-                        if (!emp.reference.editor) {
-                            emp.reference.editor = {};
-                        }
-
-                        // Save off a reference to this editor like we do with tables
-                        emp.reference.editor[$editContainer.attr('data-hidden')] = {
-                            editor: editor,
-                            dEditor: $editorTA.context,
-                            $toolbar: $editToolbar,
-                            $container: $editContainer
-                        };
-
-                    }
-                }
-                else {
-
-                    //journal.log();
-                }
-
-
-            });
-
-        }
-
         var $pageSelects = $mainWrapper.find('select');
 
         if ($pageSelects.length) {
@@ -818,79 +530,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
             _events.entityChange(evt, $(evt.target));
         });
-
-        if ($errorReportIframe) {
-
-            $errorReportIframe.ready(function () {
-                eri.injectIframe($errorReportIframe[0]);
-            });
-        }
-
-        // Setup Page level notifiers that are clickable
-        if (dNotifierPopups && dNotifierPopups.length) {
-
-            for (var dNP = 0, dNPLen = dNotifierPopups.length; dNP < dNPLen; dNP++) {
-
-                dNotifierPopups[dNP].addEventListener('click', function(evt) {
-
-                    evt.preventDefault();
-
-                    var sHref = this.getAttribute('href');
-
-                    // ==================
-                    sHref += "?fw_popup_request_ind=true&fw_popup_name=window";
-                    // =====================
-
-
-                    var sPageNoteriferText = this.textContent.replace(' ', '').toLowerCase();
-                    var sPopupName = "pageNotifier" + sPageNoteriferText;
-
-                    var notificationPopup = windowsM.createReference(sPopupName);
-
-                    windowsM.open(sPopupName, sHref, false, true, undefined, false, function (openWindow) {
-
-                        openWindow.location = sHref;
-                    });
-
-                    //window.location = href;
-                });
-
-            }
-        }
-
-        // Setup Section level notifiers that are clickable
-        if (dSectionNotifierPopups && dSectionNotifierPopups.length) {
-
-            for (var dSNP = 0, dSNPLen = dSectionNotifierPopups.length; dSNP < dSNPLen; dSNP++) {
-
-                dSectionNotifierPopups[dSNP].addEventListener('click', function (evt) {
-
-                    evt.preventDefault();
-
-                    var sHref = this.getAttribute('href');
-
-                    // ==================
-                    sHref += "?fw_popup_request_ind=true&fw_popup_name=window";
-                    // =====================
-
-                    var sPageNoteriferText = this.textContent.replace(' ', '').toLowerCase();
-                    var sPopupName = "pageNotifier" + sPageNoteriferText;
-
-                    var notificationPopup = windowsM.createReference(sPopupName);
-
-                    windowsM.open(sPopupName, sHref, false, true, undefined, false, function (openWindow) {
-
-                        console.log(openWindow);
-
-                        openWindow.location = sHref;
-                    });
-
-                    //window.location = href;
-                });
-
-            }
-
-        }
 
         function newItagContainer(headerText, tagContents, tagID) {
 
@@ -1025,6 +664,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             externalApp.init();
         }
 
+        // Execute menu Init!
+        externalMenu.init();
+
         if (typeof cb === "function") {
             cb();
         }
@@ -1035,15 +677,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
     sectionSetup = function _sectionSetup(section, options) {
         var $section;
         var $tabsetTitleBar;
-        var $searchBox;
-        var $headerID;
-        var $searchBoxToggle;
-        var $searchBoxToggleImg;
-        var $searchClearButton;
-        var $searchClearAllButton;
-        var searchBoxElem;
-        var $searchFields;
-        var searchFieldsElem;
         var $tables;
         var $dateInputs;
         var $dateCalenders;
@@ -1056,164 +689,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var $printIcon;
         var $groupSection;
         var $employeeSearch;
-
-        function setupGroups($groupSection, options) {
-            //Find existing click functions, only add if no event is set.
-
-            $groupSection.each(function () {
-                var toggleEventSet = false;
-
-                headerEvents = $._data($(this).find('> header')[0], 'events');
-
-                if (headerEvents && headerEvents.click) {
-                    for (i = 0; i < headerEvents.click.length; i++) {
-                        if (headerEvents.click[i].handler.name == '_toggleGroup') {
-                            toggleEventSet = true;
-                        }
-                    }
-                }
-
-                if (!toggleEventSet) {
-
-                    $(this).find('> header').on('click', function _toggleGroup(evt) {
-
-                        if (evt.target.nodeName !== 'INPUT' && evt.target.nodeName !== 'LABEL') {
-                            var $group = $(this).closest('section');
-
-                            // From opened to collapsed
-                            if (!$group.is('.emp-collapse')) {
-                                _priv.group.collapse($group, this);
-                            }
-
-                            // From collapsed to opened
-                            else {
-                                _priv.group.expand($group);
-                            }
-                        }
-
-                    });
-                }
-            });
-        }
-
-        function setupSearchBox($searchBox, options) {
-
-            searchBoxElem = $searchBox.get(0);
-            $searchBoxToggle = $searchBox.find('.emp-search-toggle');
-            $searchBoxToggleImg = $searchBoxToggle.find('img');
-            $searchFields = $searchBox.find('.emp-search-fields');
-            searchFieldsElem = $searchFields.get(0);
-
-            //
-            // Expands or collapses the search box
-            // @param   {Event}  evt   Click event
-            //
-
-            var _toggleSearchBox = function (evt, doSetFocus) {
-                var currHeight;
-                var fullHeight;
-                var fullBorderWidth;
-
-                // From collapsed to opened
-                if ($searchBox.is('.emp-collapse')) {
-                    currHeight = $searchBox.height();
-
-                    // Temporarily expand the group so we can get its full (auto) height
-                    $searchBox
-                        .removeClass('emp-collapse')
-                        .css('min-height', 0) // Temporarily override the CSS value, otherwise the search box will immediately expand to this height before the animation begins
-                        .css('height', 'auto');
-
-                    fullHeight = getComputedStyle(searchBoxElem).height;
-
-                    // We need to temporarily turn off the thick border around the search fields. The fields will overlap the border during the animation such that it looks broken, like the fields are spilling out of the container (as if you didn't use `overflow:hidden`). It's just an optical illusion but the animation looks better if we hide the border until the animation is complete.
-                    fullBorderWidth = getComputedStyle(searchFieldsElem).borderBottomWidth;
-                    searchFieldsElem.style.borderBottomWidth = '0px';
-
-                    // Begin the process of expanding
-                    $searchBox
-                        .css('overflow', 'hidden') // Prevent contents from spilling out
-                        .height(currHeight) // The element needs a fixed height to use as a starting point
-                        // Animate from this height to the full height
-                        .animate({ height: fullHeight }, 150, '', function () {
-                            // Undo our temporary overrides and allow CSS to resume control of these properties
-                            searchBoxElem.style.removeProperty('min-height');
-                            searchBoxElem.style.removeProperty('overflow');
-                            searchBoxElem.style.removeProperty('height'); // This is set by `$.animate()`. If we didn't remove this, child elements wouldn't affect the search box's height properly
-
-                            // Now restore the bottom border's thickness
-                            $searchFields.animate({ borderBottomWidth: fullBorderWidth }, 20, function () {
-                                // Remove the inline style created by `$.animate()`
-                                searchFieldsElem.style.removeProperty('border-bottom-width');
-                            });
-
-                            // Set focus to the first input
-                            if (doSetFocus) {
-                                $searchFields.find('input').first().focus();
-                            }
-                        });
-
-                    // Update toggle button for a11y
-                    $searchBoxToggle.attr('title', 'Hide the search box');
-
-                    $searchBoxToggleImg
-                        .attr('title', 'Hide the search box')
-                        .attr('alt', 'Upward-facing triangle');
-
-                    _toggleSearchBoxEventHandlers();
-                }
-                // From opened to collapsed
-                else {
-                    $searchBox
-                        .css('overflow', 'hidden')
-                        .animate({ height: getComputedStyle($searchBox.get(0)).height }, 150, '', function () {
-                            $searchBox
-                                .addClass('emp-collapse');
-
-                            searchBoxElem.style.removeProperty('overflow');
-                            searchBoxElem.style.removeProperty('height');
-
-                            _toggleSearchBoxEventHandlers();
-                        });
-
-                    // Update toggle button for a11y
-                    $searchBoxToggle.attr('title', 'Show the search box');
-
-                    $searchBoxToggleImg
-                        .attr('title', 'Show the search box')
-                        .attr('alt', 'Downward-facing triangle');
-                }
-            };
-
-            shortcut.register({
-                keys: 'shift+s',
-                callback: _toggleSearchBox,
-                description: 'Toggle the search box',
-                type: 'keydown',
-                data: true, // Flag for setting focus to the first input
-            });
-
-            //
-            // Sets the appropriate event handlers on the search box based on its current state
-            //
-            var _toggleSearchBoxEventHandlers = function () {
-                // From collapsed to opened
-                if ($searchBox.is('.emp-collapse')) {
-                    // Move the event listener to the entire search box
-                    $searchBoxToggle.off('click', _toggleSearchBox);
-                    $searchBox.on('click', _toggleSearchBox);
-                }
-                // From opened to collapsed
-                else {
-                    // Move the event listener to just the toggle button
-                    $searchBox.off('click', _toggleSearchBox);
-                    $searchBoxToggle.on('click', _toggleSearchBox);
-                }
-            };
-
-            // Set up the event handlers based on the initial state of the page
-            _toggleSearchBoxEventHandlers();
-        }
 
         function setupTables($tables, options) {
             $tables.each(function () {
@@ -1310,13 +785,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             });
         }
 
-        function setupRatingContainers($ratingContainers, options) {
-            // Loop through and bind all rating components
-            $ratingContainers.each(function () {
-                $(this).rating();
-            });
-        }
-
         function setupFileUploads($elements, options) {
             $elements.each(function () {
                 var $fileUploadContainer = $(this);
@@ -1364,15 +832,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             $employeeSearch = $section.find('.emp-employee-search .employee-search-select');
         }
 
-        if ($groupSection && $groupSection.length) {
-            setupGroups($groupSection, options);
-        }
-
-        // Search box
-        if ($searchBox && $searchBox.length) {
-            setupSearchBox($searchBox, options);
-        }
-
         if ($tables && $tables.length) {
             setupTables($tables, options);
         }
@@ -1390,11 +849,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         // Bind the date picker to all date inputs.
         if ($dateCalenders && $dateCalenders.length) {
             setupCalendars($dateCalenders, options);
-        }
-
-        // Print icon
-        if ($printIcon && $printIcon.length) {
-            setupPrintIcon($printIcon, options);
         }
 
         // Check for tooltips on the page
@@ -1429,118 +883,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         }
     };
 
-    _priv.group = {};
-
-    /**
-     * Collapse a group
-     * @param   {jQuery}  $group       The `<section>` element
-     * @param   {Element}  headerElem  The `<header>` element (optional)
-     * @return  {jQuery}               The `<section>` element
-     */
-    _priv.group.collapse = function _priv_group_collapse($group, headerElem) {
-        if (!headerElem) {
-            headerElem = $group.find('> header').get(0);
-        }
-
-        // Header-less group
-        if (!headerElem) {
-            return null;
-        }
-
-        $groupCollapseButton = $group.find('button.emp-icon-section-toggle-collapse');
-
-        $group
-            .css('overflow', 'hidden')
-            .animate({ height: getComputedStyle(headerElem).height }, 150, '', function () {
-
-                if(!$group.hasClass('emp-tabs')){
-
-                    $group
-                        .addClass('emp-collapse');
-                }
-
-                $groupCollapseButton.attr('title', 'Show Section');
-
-                // Remove inline styles so the stylesheet can regain control
-                $group.get(0).style.removeProperty('overflow');
-                $group.get(0).style.removeProperty('height'); // Remove the static height set by `animate`, otherwise sub-groups won't affect this (parent) group's height properly
-            });
-
-        return $group;
-    };
-
-    /**
-     * Expand a group
-     * @param   {jQuery}  $group  The `<section>` element
-     * @return  {jQuery}          The `<section>` element
-     */
-    _priv.group.expand = function _priv_group_expand($group) {
-        var currHeight;
-        var fullHeight;
-
-        currHeight = $group.height();
-
-        // Temporarily expand the group so we can get its full (auto) height
-        $group.removeClass('emp-collapse').css('height', 'auto');
-
-        $groupCollapseButton = $group.find('button.emp-icon-section-toggle-collapse');
-
-        fullHeight = getComputedStyle($group.get(0)).height;
-
-        $group
-            .height(currHeight)
-            .animate({ height: fullHeight }, 150, '', function () {
-                // Remove the static height set by `animate`, otherwise sub-groups won't affect this (parent) group's height properly
-                $group.get(0).style.removeProperty('height');
-
-                $groupCollapseButton.attr('title', 'Hide Section');
-            });
-
-        return $group;
-    };
-
-    _priv.group.toggleAll = function _group_toggleAll(evt) {
-        // First time the user has clicked the icon: expand all sections
-        if (_priv.$groupToggleControl.hasClass('emp-initial-state')) {
-            // Remove this class, which has no styles. It's only used so we can track if the page is in its initial state
-            _priv.$groupToggleControl.removeClass('emp-initial-state');
-
-            // Find all collapse sections and expand them
-            $('section.emp-collapse').each(function () {
-                _priv.group.expand($(this));
-            });
-
-            // Update the toggle icon
-            _priv.$groupToggleControl
-                .addClass('emp-all-collapse')
-                .attr('title', 'Collapse all sections');
-        }
-        // Sections are currently collapsed, we need to expand them
-        else if (_priv.$groupToggleControl.hasClass('emp-all-collapse')) {
-            // Find all expanded sections and collapse them
-            $('section:not(.emp-collapse)').each(function () {
-                _priv.group.collapse($(this));
-            });
-
-            // Update the toggle icon
-            _priv.$groupToggleControl
-                .removeClass('emp-all-collapse')
-                .attr('title', 'Expand all sections');
-        }
-        // Sections are currently expanded, we need to collapse them
-        else {
-            // Find all collapse sections and expand them
-            $('section.emp-collapse').each(function () {
-                _priv.group.expand($(this));
-            });
-
-            // Update the toggle icon
-            _priv.$groupToggleControl
-                .addClass('emp-all-collapse')
-                .attr('title', 'Collapse all sections');
-        }
-    };
-
     /**
      * Pull date from table hidden fields and fill in other elements with those values
      * @param   {string}    name        OPTIONAL - string name
@@ -1549,412 +891,412 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
      * @param   {function}  function    OPTIONAL - callback function
      * @return  {boolean}               return true if it finishes without issue otherwise false
      */
-    _priv.processMap = function _priv_processMap(name, map, $source, cb) {
+    // _priv.processMap = function _priv_processMap(name, map, $source, cb) {
 
-        var error = false;
-        var item;
+    //     var error = false;
+    //     var item;
 
-        // Since callback is optional we need to check to make sure that a callback is not stored in $source instead.
-        if (typeof $source === 'function' && cb === undefined) {
-            cb = $source;
-            $source = undefined;
-        }
+    //     // Since callback is optional we need to check to make sure that a callback is not stored in $source instead.
+    //     if (typeof $source === 'function' && cb === undefined) {
+    //         cb = $source;
+    //         $source = undefined;
+    //     }
 
-        // Check to see if name is an object, if it is then we can assume name is missing
-        if (typeof name === 'object') {
+    //     // Check to see if name is an object, if it is then we can assume name is missing
+    //     if (typeof name === 'object') {
 
-            if (typeof map === 'function' && cb === undefined) {
-                cb = map;
-            }
+    //         if (typeof map === 'function' && cb === undefined) {
+    //             cb = map;
+    //         }
 
-            if (map !== undefined && typeof map !== 'function') {
-                $source = map;
-            }
+    //         if (map !== undefined && typeof map !== 'function') {
+    //             $source = map;
+    //         }
 
-            // Now give map its object
-            map = name;
+    //         // Now give map its object
+    //         map = name;
 
-            // Reset name;
-            name = undefined;
-        }
+    //         // Reset name;
+    //         name = undefined;
+    //     }
 
-        function process(map) {
+    //     function process(map) {
 
-            for (var def in map) {
+    //         for (var def in map) {
 
-                // Get source value
-                var value;
+    //             // Get source value
+    //             var value;
 
-                if (map[def].src instanceof jQuery) {
+    //             if (map[def].src instanceof jQuery) {
 
-                    switch (map[def].src[0].nodeName) {
+    //                 switch (map[def].src[0].nodeName) {
 
-                        case 'INPUT':
-                        case 'SELECT':
-                        case 'TEXTAREA':
+    //                     case 'INPUT':
+    //                     case 'SELECT':
+    //                     case 'TEXTAREA':
 
-                            value = map[def].src.val();
-                            break;
+    //                         value = map[def].src.val();
+    //                         break;
 
-                        default:
-                            value = map[def].src.text();
-                            break;
+    //                     default:
+    //                         value = map[def].src.text();
+    //                         break;
 
-                    }
+    //                 }
 
-                }
-                else {
+    //             }
+    //             else {
 
-                    if (typeof map[def].src === "string") {
+    //                 if (typeof map[def].src === "string") {
 
-                        if (map[def].src.indexOf(':') === -1) {
+    //                     if (map[def].src.indexOf(':') === -1) {
 
-                            value = map[def].src;
-                        }
-                        else {
+    //                         value = map[def].src;
+    //                     }
+    //                     else {
 
-                            if (map[def].src === ':check') {
-                                value = true;
-                            }
-                            else if (map[def].src === ':uncheck') {
-                                value = false;
-                            }
-                            else {
-                                value = map[def].src;
-                            }
-                        }
+    //                         if (map[def].src === ':check') {
+    //                             value = true;
+    //                         }
+    //                         else if (map[def].src === ':uncheck') {
+    //                             value = false;
+    //                         }
+    //                         else {
+    //                             value = map[def].src;
+    //                         }
+    //                     }
 
-                    }
-                    else {
+    //                 }
+    //                 else {
 
-                        value = map[def].src;
+    //                     value = map[def].src;
 
-                    }
+    //                 }
 
-                }
+    //             }
 
-                // Apply value in dest
-                switch (map[def].dest[0].nodeName) {
+    //             // Apply value in dest
+    //             switch (map[def].dest[0].nodeName) {
 
-                    case 'INPUT':
+    //                 case 'INPUT':
 
-                        var type = map[def].dest.attr('type');
+    //                     var type = map[def].dest.attr('type');
 
-                        if (type === 'checkbox' || type === 'radio') {
+    //                     if (type === 'checkbox' || type === 'radio') {
 
-                            if (typeof value === "boolean") {
+    //                         if (typeof value === "boolean") {
 
-                                map[def].dest.prop('checked', value);
-                            }
-                            else {
+    //                             map[def].dest.prop('checked', value);
+    //                         }
+    //                         else {
 
-                                if (typeof value === "string") {
+    //                             if (typeof value === "string") {
 
-                                    if (value === "true") {
+    //                                 if (value === "true") {
 
-                                        map[def].dest.prop('checked', true);
-                                    }
-                                    else if (value === "false") {
+    //                                     map[def].dest.prop('checked', true);
+    //                                 }
+    //                                 else if (value === "false") {
 
-                                        map[def].dest.prop('checked', false);
-                                    }
+    //                                     map[def].dest.prop('checked', false);
+    //                                 }
 
-                                }
-                                else {
+    //                             }
+    //                             else {
 
-                                    journal.log({ type: 'error', owner: 'Developer', module: 'emp', function: 'processMap' }, 'Process Map checkbox values should be a string or boolean. Acceptable string values include: \"true\", \"false\"');
-                                }
-                            }
-                        }
-                        else {
+    //                                 journal.log({ type: 'error', owner: 'Developer', module: 'emp', function: 'processMap' }, 'Process Map checkbox values should be a string or boolean. Acceptable string values include: \"true\", \"false\"');
+    //                             }
+    //                         }
+    //                     }
+    //                     else {
 
-                            //map[def].dest.attr('value', value);
-                            // Switched over to updating value using pure javascript
-                            map[def].dest[0].value = value;
-                        }
+    //                         //map[def].dest.attr('value', value);
+    //                         // Switched over to updating value using pure javascript
+    //                         map[def].dest[0].value = value;
+    //                     }
 
-                        break;
+    //                     break;
 
-                    case 'SELECT':
+    //                 case 'SELECT':
 
-                        var $options = $(map[def]).children('option[selected]');
+    //                     var $options = $(map[def]).children('option[selected]');
 
-                        if ($options.length) {
-                            $options.removeAttr('selected');
-                        }
+    //                     if ($options.length) {
+    //                         $options.removeAttr('selected');
+    //                     }
 
-                        map[def].dest.val(value);
+    //                     map[def].dest.val(value);
 
-                        break;
+    //                     break;
 
-                    case 'TEXTAREA':
-                        map[def].dest.val(value);
-                        break;
+    //                 case 'TEXTAREA':
+    //                     map[def].dest.val(value);
+    //                     break;
 
-                    case 'SPAN':
+    //                 case 'SPAN':
 
-                        map[def].dest.text(value);
-                        break;
+    //                     map[def].dest.text(value);
+    //                     break;
 
-                    case 'I':
+    //                 case 'I':
 
-                        // Verify this is one of the approved icons
-                        if (map[def].dest.hasClass('emp-icon-redcheck') || map[def].dest.hasClass('emp-icon-stop')) {
+    //                     // Verify this is one of the approved icons
+    //                     if (map[def].dest.hasClass('emp-icon-redcheck') || map[def].dest.hasClass('emp-icon-stop')) {
 
-                            if (value === ":check" || value === ":check:") {
+    //                         if (value === ":check" || value === ":check:") {
 
-                                if (map[def].dest.hasClass('emp-icon-stop')) {
-                                    map[def].dest.removeClass('emp-icon-stop');
-                                    map[def].dest.addClass('emp-icon-redcheck');
-                                }
-                            }
-                            else if (value === ":uncheck" || value === ":uncheck:") {
+    //                             if (map[def].dest.hasClass('emp-icon-stop')) {
+    //                                 map[def].dest.removeClass('emp-icon-stop');
+    //                                 map[def].dest.addClass('emp-icon-redcheck');
+    //                             }
+    //                         }
+    //                         else if (value === ":uncheck" || value === ":uncheck:") {
 
-                                if (map[def].dest.hasClass('emp-icon-redcheck')) {
-                                    map[def].dest.removeClass('emp-icon-redcheck');
-                                    map[def].dest.addClass('emp-icon-stop');
-                                }
+    //                             if (map[def].dest.hasClass('emp-icon-redcheck')) {
+    //                                 map[def].dest.removeClass('emp-icon-redcheck');
+    //                                 map[def].dest.addClass('emp-icon-stop');
+    //                             }
 
-                            }
-                            else {
+    //                         }
+    //                         else {
 
-                                journal.log({ type: 'error', owner: 'DEV', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' did not supply a supported value.');
-                            }
-                        }
-                        else {
+    //                             journal.log({ type: 'error', owner: 'DEV', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' did not supply a supported value.');
+    //                         }
+    //                     }
+    //                     else {
 
-                            journal.log({ type: 'error', owner: 'DEV', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' was not a supported icon type.');
-                        }
+    //                         journal.log({ type: 'error', owner: 'DEV', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' was not a supported icon type.');
+    //                     }
 
-                        break;
+    //                     break;
 
-                    default:
-                        map[def].dest.text(value);
-                        break;
+    //                 default:
+    //                     map[def].dest.text(value);
+    //                     break;
 
-                }
+    //             }
 
-                journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' with value', ((value === '') ? '(empty string)' : value));
+    //             journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'processMap' }, 'Process Map executed for:', map[def].dest.attr('id'), ' with value', ((value === '') ? '(empty string)' : value));
 
-            }
-        }
+    //         }
+    //     }
 
-        /* Source functions */
-        this.tableSources = function tableSource(needle, $table) {
+    //     /* Source functions */
+    //     this.tableSources = function tableSource(needle, $table) {
 
-            // Get the table reference for the configs
-            var empTableRef = emp.reference.tables[$table.attr('id')];
-            var colName;
+    //         // Get the table reference for the configs
+    //         var empTableRef = emp.reference.tables[$table.attr('id')];
+    //         var colName;
 
-            if (empTableRef !== undefined) {
+    //         if (empTableRef !== undefined) {
 
-                // Check to see if we have a column index
-                if ((typeof needle === 'string' && !isNaN(needle)) || typeof needle === 'number') {
+    //             // Check to see if we have a column index
+    //             if ((typeof needle === 'string' && !isNaN(needle)) || typeof needle === 'number') {
 
-                    if (typeof needle === 'string') {
-                        needle = parseInt(needle);
-                    }
+    //                 if (typeof needle === 'string') {
+    //                     needle = parseInt(needle);
+    //                 }
 
-                    // Remove 1 from the list as framework starts with a index of 1;
-                    needle -= 1;
+    //                 // Remove 1 from the list as framework starts with a index of 1;
+    //                 needle -= 1;
 
-                    // Lookup the colmap column name
-                    if (empTableRef.config.colmap.hasOwnProperty(needle)) {
+    //                 // Lookup the colmap column name
+    //                 if (empTableRef.config.colmap.hasOwnProperty(needle)) {
 
-                        colName = empTableRef.config.colmap[needle];
+    //                     colName = empTableRef.config.colmap[needle];
 
-                        for (var i = 0, len = empTableRef.config.hiddenInputs.$columns.length; i < len; i++) {
+    //                     for (var i = 0, len = empTableRef.config.hiddenInputs.$columns.length; i < len; i++) {
 
 
-                            if (empTableRef.config.hiddenInputs.$columns[i][0].id === colName) {
+    //                         if (empTableRef.config.hiddenInputs.$columns[i][0].id === colName) {
 
-                                return empTableRef.config.hiddenInputs.$columns[i].val();
-                            }
-                        }
+    //                             return empTableRef.config.hiddenInputs.$columns[i].val();
+    //                         }
+    //                     }
 
-                    }
-                    else {
-                        // Invalid column number
-                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Could not find reference unknown column: ', needle);
+    //                 }
+    //                 else {
+    //                     // Invalid column number
+    //                     journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Could not find reference unknown column: ', needle);
 
-                        return false;
-                    }
+    //                     return false;
+    //                 }
 
-                }
-                else if (typeof needle === 'string') {
+    //             }
+    //             else if (typeof needle === 'string') {
 
-                    // Now the we have the name, lets get the hidden input
-                    if (empTableRef.config.hiddenInputs.current[colName]) {
-                        return empTableRef.config.hiddenInputs.current[colName];
-                    }
-                    else {
-                        journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Could not find reference to hidden table column field for: ', needle);
+    //                 // Now the we have the name, lets get the hidden input
+    //                 if (empTableRef.config.hiddenInputs.current[colName]) {
+    //                     return empTableRef.config.hiddenInputs.current[colName];
+    //                 }
+    //                 else {
+    //                     journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Could not find reference to hidden table column field for: ', needle);
 
-                        return false;
-                    }
-                }
-                else {
-                    // This is not a number or a string so we can't continue
-                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Invalid table column parameter: ', needle);
+    //                     return false;
+    //                 }
+    //             }
+    //             else {
+    //                 // This is not a number or a string so we can't continue
+    //                 journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'tableSources' }, 'Invalid table column parameter: ', needle);
 
-                    return false;
-                }
-            }
-        };
+    //                 return false;
+    //             }
+    //         }
+    //     };
 
-        this.containerSources = function containerSources(needle, $section) {
-            // Since this is a container, we need to do lookup for the elements id (needle)
-            var $needle = $section.find('#' + needle);
+    //     this.containerSources = function containerSources(needle, $section) {
+    //         // Since this is a container, we need to do lookup for the elements id (needle)
+    //         var $needle = $section.find('#' + needle);
 
-            if ($needle.length === 1) {
-                return $needle;
-            }
-            else {
-                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'containerSources' }, 'Unable to find source with id of: ', needle);
+    //         if ($needle.length === 1) {
+    //             return $needle;
+    //         }
+    //         else {
+    //             journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'containerSources' }, 'Unable to find source with id of: ', needle);
 
-                return false;
-            }
-        };
+    //             return false;
+    //         }
+    //     };
 
-        // We need to build the process object map, so lets do so.
-        var newMap = {};
-        var allowedContainers = ['DIV', 'SECTION'];
-        var sourceSearch = null;
+    //     // We need to build the process object map, so lets do so.
+    //     var newMap = {};
+    //     var allowedContainers = ['DIV', 'SECTION'];
+    //     var sourceSearch = null;
 
-        // Try to see if we can find an ide with this values name
-        if ($source instanceof jQuery) {
+    //     // Try to see if we can find an ide with this values name
+    //     if ($source instanceof jQuery) {
 
-            if ($source[0].nodeName === 'TABLE') {
+    //         if ($source[0].nodeName === 'TABLE') {
 
-                sourceSearch = 'tableSources';
+    //             sourceSearch = 'tableSources';
 
-            }
-            else if (allowedContainers.indexOf($source[0].nodeName) !== -1) {
+    //         }
+    //         else if (allowedContainers.indexOf($source[0].nodeName) !== -1) {
 
-                sourceSearch = 'containerSources';
+    //             sourceSearch = 'containerSources';
 
-            }
+    //         }
 
-        }
-        else if ($source !== undefined) {
+    //     }
+    //     else if ($source !== undefined) {
 
-            if (typeof $source === "string" && $source !== ":strict:") {
+    //         if (typeof $source === "string" && $source !== ":strict:") {
 
-                $source = $('#' + $source);
+    //             $source = $('#' + $source);
 
-                // Verify that we did find something
-                if ($source.length === 1) {
+    //             // Verify that we did find something
+    //             if ($source.length === 1) {
 
-                    if ($source[0].nodeName === 'TABLE') {
+    //                 if ($source[0].nodeName === 'TABLE') {
 
-                        sourceSearch = 'tableSources';
+    //                     sourceSearch = 'tableSources';
 
-                    }
-                    else if (allowedContainers.indexOf($source[0].nodeName) !== -1) {
+    //                 }
+    //                 else if (allowedContainers.indexOf($source[0].nodeName) !== -1) {
 
-                        sourceSearch = 'containerSources';
+    //                     sourceSearch = 'containerSources';
 
-                    }
+    //                 }
 
-                }
-            }
-        }
+    //             }
+    //         }
+    //     }
 
-        // Loop through the map of objects and pull the column values based on the colIndex
-        for (item in map) {
+    //     // Loop through the map of objects and pull the column values based on the colIndex
+    //     for (item in map) {
 
-            // Select the item (it should be an id to something)
-            var $mapDest = $('#' + item);
+    //         // Select the item (it should be an id to something)
+    //         var $mapDest = $('#' + item);
 
-            if ($mapDest.length === 0) {
-                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Mapping for destination: ', item, ' doesn\'t exist');
-            }
+    //         if ($mapDest.length === 0) {
+    //             journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Mapping for destination: ', item, ' doesn\'t exist');
+    //         }
 
-            else {
+    //         else {
 
-                // Now pull the source value
-                var mapSource = map[item];
-                var $mapSource = false;
+    //             // Now pull the source value
+    //             var mapSource = map[item];
+    //             var $mapSource = false;
 
-                // perform the search based on the needs
-                if (sourceSearch !== null) {
+    //             // perform the search based on the needs
+    //             if (sourceSearch !== null) {
 
-                    $mapSource = this[sourceSearch].call(this, mapSource, $source);
+    //                 $mapSource = this[sourceSearch].call(this, mapSource, $source);
 
-                }
-                else {
+    //             }
+    //             else {
 
-                    // Check for state based value (check, uncheck)
-                    if (typeof mapSource === 'string' && mapSource.indexOf(':') === -1 && $source !== ":strict:") {
+    //                 // Check for state based value (check, uncheck)
+    //                 if (typeof mapSource === 'string' && mapSource.indexOf(':') === -1 && $source !== ":strict:") {
 
-                        // Just try to find the source regularly with an id (by searching the whole DOM!)
-                        $mapSource = $('#' + mapSource);
+    //                     // Just try to find the source regularly with an id (by searching the whole DOM!)
+    //                     $mapSource = $('#' + mapSource);
 
-                        // Check to see if the value was a jquery attribute
-                        if ($mapSource.length === 0) {
-                            // No length so lets assume the raw mapSource is the value
-                            $mapSource = mapSource;
-                        }
-                        else if ($mapSource.length > 1) {
-                            // Multiple items? lets just mark this as invalid
-                            $mapSource = false;
-                        }
+    //                     // Check to see if the value was a jquery attribute
+    //                     if ($mapSource.length === 0) {
+    //                         // No length so lets assume the raw mapSource is the value
+    //                         $mapSource = mapSource;
+    //                     }
+    //                     else if ($mapSource.length > 1) {
+    //                         // Multiple items? lets just mark this as invalid
+    //                         $mapSource = false;
+    //                     }
 
-                    }
-                    else {
+    //                 }
+    //                 else {
 
-                        $mapSource = mapSource;
-                    }
-                }
+    //                     $mapSource = mapSource;
+    //                 }
+    //             }
 
-                if ($mapSource !== false) {
-                    // Add the map definition
-                    newMap[item] = {
-                        'dest': $mapDest,
-                        'src': $mapSource
-                    };
+    //             if ($mapSource !== false) {
+    //                 // Add the map definition
+    //                 newMap[item] = {
+    //                     'dest': $mapDest,
+    //                     'src': $mapSource
+    //                 };
 
-                    // Check for display version of the field.
-                    var $mapDestDisplay = $('#' + item + "_DISPLAY");
+    //                 // Check for display version of the field.
+    //                 var $mapDestDisplay = $('#' + item + "_DISPLAY");
 
-                    if ($mapDestDisplay.length === 1) {
+    //                 if ($mapDestDisplay.length === 1) {
 
-                        newMap[item + "_display"] = {
-                            'dest': $mapDestDisplay,
-                            'src': $mapSource
-                        };
+    //                     newMap[item + "_display"] = {
+    //                         'dest': $mapDestDisplay,
+    //                         'src': $mapSource
+    //                     };
 
-                    }
+    //                 }
 
-                }
-                else {
-                    journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Could not generate a good mapping between dest: ', item, ' and source: ', mapSource);
+    //             }
+    //             else {
+    //                 journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap' }, 'Could not generate a good mapping between dest: ', item, ' and source: ', mapSource);
 
-                    return false;
-                }
-            }
-        }
+    //                 return false;
+    //             }
+    //         }
+    //     }
 
-        // Checks for error, if found return false
-        if (error) {
-            return false;
-        }
-        else {
+    //     // Checks for error, if found return false
+    //     if (error) {
+    //         return false;
+    //     }
+    //     else {
 
-            // And process it!
-            process(newMap);
+    //         // And process it!
+    //         process(newMap);
 
-            // Check for callback function, if none are provided return true
-            if (typeof cb === 'function') {
-                cb(true);
-            }
-            else {
-                return true;
-            }
+    //         // Check for callback function, if none are provided return true
+    //         if (typeof cb === 'function') {
+    //             cb(true);
+    //         }
+    //         else {
+    //             return true;
+    //         }
 
-            return true;
-        }
-    };
+    //         return true;
+    //     }
+    // };
 
     /**
      * Pull date from table hidden fields and fill in other elements with those values
@@ -2483,227 +1825,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         if (!window.fwData.context.favorites.timestamp) {
             window.fwData.context.favorites.timestamp = 1451624400; // This corresponds to 01/01/2016
         }
-    };
-
-    _priv.errorReportButton = function _error_Report_Button() {
-
-        if (!_disableReport) {
-
-            journal.log({type: 'info', owner: 'UI', module: 'emp', func: 'errorReportButton'}, 'Generating Error Report!');
-
-            var jsonModalContents = {
-                "contents": [
-                    {
-                        "type": "row",
-                        "template": "grid",
-                        "contents": [
-                            {
-                                "type": "column",
-                                "template": "grid",
-                                "contents": [
-                                    {
-                                        "type": "textarea",
-                                        "template": "field",
-                                        "label": {
-                                            "attributes": {
-                                                "for": "E_UI_ERROR_REPORT"
-                                            },
-                                            "text": "Please describe your error:",
-                                        },
-                                        "input": {
-                                            "attributes": {
-                                                "name": "E_UI_ERROR_REPORT",
-                                                "id": "E_UI_ERROR_REPORT",
-                                                "rows": "4",
-                                                "cols": "50"
-                                            },
-                                            "style": "top-align-label"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "row",
-                        "template": "buttonGroup",
-                        "contents": [
-                            {
-                                "type": "column",
-                                "template": "buttonGroup",
-                                "style": "align-right",
-                                "contents": [
-                                    {
-                                        "type": "button",
-                                        "template": "field",
-                                        "input": {
-                                            "attributes": {
-                                                "type": "button",
-                                                "id": "E_UI_ERROR_REPORT_CANCEL",
-                                            },
-                                            "text": "Cancel"
-                                        }
-                                    },
-                                    {
-                                        "type": "button",
-                                        "template": "field",
-                                        "input": {
-                                            "attributes": {
-                                                "type": "button",
-                                                "id": "E_UI_ERROR_REPORT_SUBMIT",
-                                            },
-                                            "text": "Submit Error",
-                                            "primary": true
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            render.section(undefined, jsonModalContents, 'return', function(html) {
-
-                var $errorModal = false;
-
-                // Load a modal on click
-                cui.load('modal', function _error_report_modal() {
-
-                    $errorModal = $.modal({
-                        autoOpen: true,
-                        html: html,
-                        closeDestroy: true,
-                    });
-
-                    $cancel = $errorModal.$self.find('#E_UI_ERROR_REPORT_CANCEL');
-
-                    $cancel.on('click', { modal: $errorModal }, function (evt) {
-
-                        var modal = evt.data.modal;
-
-                        modal.destroy();
-                    });
-
-                    $submitError = $errorModal.$self.find('#E_UI_ERROR_REPORT_SUBMIT');
-
-                    $submitError.on('click', { modal: $errorModal }, function (evt) {
-
-                        var modal = evt.data.modal;
-                        var fwContext = {};
-
-                        if (fwData.fwContext) {
-                            fwContext = fwData.fwContext;
-                        }
-
-                        var uiContext = {};
-
-                        // Get localStorage values
-                        var global = store.get("globalPrefs");
-                        var tabset = store.get("tabsetPrefs");
-                        var faves = store.get("favorites");
-                        var access = store.get("tabsetAccess");
-
-                        // Copy everything sent over with the page.
-                        uiContext.page = $.extend(true, {}, fwData);
-
-                        // Get everything currently stored in the browsers localstorage
-                        uiContext.localStorage = {
-                            tabset: (typeof tabset === "object") ? tabset : false,
-                            global: (typeof global === "object") ? global : false,
-                            faves: (typeof faves === "object") ? faves : false,
-                            access: (typeof access === "object") ? access : false,
-                        };
-
-                        // Get the current journal history
-                        uiContext.journal = journal.getStorage();
-
-                        var $userComment = modal.$self.find('#E_UI_ERROR_REPORT');
-                        fwContext.userComments = $userComment.val();
-
-                        if (fwData.context.urls && fwData.context.urls.errorReport && fwData.context.urls.errorReport.send) {
-
-                            var req = {
-                                url: fwData.context.urls.errorReport.send,
-                            };
-
-                            req.data = {
-                                "uiContext": JSON.stringify(uiContext),
-                                "fwContext": JSON.stringify(fwContext)
-                            };
-                            req.method = "POST";
-                            req.cache = false;
-
-                            var res = {};
-
-                            res.done = function _error_report_done(done) {
-
-                                if (done.status === "success") {
-
-                                    var resultID = done.result[0].body.contents[0].id;
-
-                                    _disableReport = resultID;
-
-                                    empMessage.createMessage(
-                                        {
-                                            "type": "success",
-                                            "text": "Your error report was successfully submitted. Please contact the help desk and provide the following error report number: " + resultID
-                                        },
-                                        { scroll: false }
-                                    );
-                                }
-                                else {
-
-                                    empMessage.createMessage(
-                                        {
-                                            "type": "error",
-                                            "text": "Your error report faild to submit correctly. Please contact the helpdesk for assitional assistance"
-                                        },
-                                        { scroll: false }
-                                    );
-                                }
-
-                            };
-
-                            res.fail = function _error_report_fail(fail) {
-
-                                empMessage.createMessage(
-                                    {
-                                        "type": "error",
-                                        "text": "Your error report faild to submit correctly. Please contact the helpdesk for assitional assistance"
-                                    },
-                                    { scroll: false }
-                                );
-                            };
-
-                            ajax.request(req, res, true);
-                        }
-                        else {
-
-                            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'errorReportButton' }, 'Error report URL is not defined or incorrect.');
-                        }
-
-                        modal.destroy();
-                    });
-                });
-
-            });
-
-        }
-        else {
-
-            journal.log({type: 'warning', owner: 'UI', module: 'emp', func: 'errorReportButton'}, 'Error report was already submtted.');
-
-            empMessage.createMessage(
-                {
-                    "type": "error",
-                    "text": "You have already submitted a error report."
-                },
-                { scroll: false }
-            );
-        }
-
-
     };
 
     _priv.printFormContents = function _print_form_contents ($form) {
@@ -3390,14 +2511,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                             }, 1000);
 
-                            // Initialize main menu
-                            // cui.load('menujs', function _loadMenujs() {
-
-                            //     // Create the menu definition
-                            //     var menuDefinition = $.extend(true, {}, fwData.menus.global, { display: { className: 'emp' } });
-
-                            //     $('#emp-header-menu-main').menujs(menuDefinition);
-                            // });
                         });
 
                     });
@@ -3407,23 +2520,16 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             }
             else {
 
-
-                console.log("Else definition");
-
                 // This could be a mockup, which would not utilize the renderer, so setup the page immediately
-                _priv.pageSetup(options);
+                _priv.pageSetup(options, function() {
 
-                if (window.fwData.menus.global) {
+                    setTimeout(function () {
 
-                    // Initialize main menu
-                    cui.load('menujs', function _loadMenujs() {
+                        var loadingSplash = document.querySelector('#emp-page-loading');
+                        loadingSplash.parentNode.removeChild(loadingSplash);
 
-                        // Create the menu definition
-                        var menuDefinition = $.extend(true, {}, fwData.menus.global, { display: { className: 'emp' } });
-
-                        $('#emp-header-menu-main').menujs(menuDefinition);
-                    });
-                }
+                    }, 1000);
+                });
             }
 
             // Make it so init can not be call so easily.
@@ -5291,228 +4397,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         }
     };
 
-    var requestAssociate = function _request_associate(req, modal, table) {
-
-        // Check to see if a url is the only thing provided and change it to a object
-        if (typeof req === "string") {
-            req = {
-                url: req
-            };
-        }
-
-        // Check to make sure the request object is valid
-        if (typeof req !== "object" || !req.url) {
-
-            return false;
-        }
-
-        var res = {
-
-            done: function (data) {
-
-                if (clkblocker.check) {
-
-                    clkblocker.remove();
-                }
-
-                if (data.body) {
-                    data = data.body;
-                }
-
-                // Wrap the data in a function caller
-                data = {
-                    template: 'partialCaller',
-                    partialTemp: 'header-jointTaxPayer',
-                    arguments: data,
-                };
-
-                // Re-render the section
-                render.section($('#emp-tp-info-joint')[0], data, 'replace');
-
-                modal.destroy();
-
-            },
-            fail: function () {
-
-                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'callFunction' }, 'Request for tax payer associate header failed.');
-
-                if (clkblocker.check) {
-
-                    clkblocker.remove();
-                }
-            }
-
-        };
-
-        // Make the ajax request
-        ajax.requestData(req, res);
-    };
-
-    var requestException = function _request_exception(req) {
-        var wrapperID = "emp-exception";
-        var exceptionWrapper = "#" + wrapperID;
-
-        // Check to see if a url is the only thing provided and change it to a object
-        if (typeof req === "string") {
-            req = {
-                url: req
-            };
-        }
-
-        // Check to make sure the request object is valid
-        if (typeof req !== "object" || !req.url) {
-
-            return false;
-        }
-
-        var res = {
-
-            done: function (data) {
-
-                if (data.body) {
-                    data = data.body;
-                }
-
-                render.section($(exceptionWrapper)[0], data, 'return', function (html) {
-                    var htmlContent = html;
-                    var $newExceptions = $(document.createDocumentFragment());
-
-                    $newExceptions.append(htmlContent);
-
-                    //Add wrapping div if not present present.
-                    if ($newExceptions.find(exceptionWrapper).length <= 0) {
-                        $newExceptions.wrapInner("<div id='" + wrapperID + "'></div>");
-                    }
-
-                    //Find all previous tables in exceptionWrapper
-                    var previousTables = $(exceptionWrapper).find('table').each(function () {
-                        var tableID = $(this).attr("id");
-                        if (tableID) {
-
-                            // Remove table from emp.reference.table
-                            if (emp.reference.tables[tableID]) {
-                                // Remove Stylesheets to avoid conflicts
-                                emp.reference.tables[tableID].deleteStyleSheets();
-                                // Debind table
-                                emp.reference.tables[tableID].debind();
-                                // Delete table from emp.references
-                                delete emp.reference.tables[tableID];
-                            }
-                        }
-                    });
-
-                    // Re-render the Active Exception section
-                    $(exceptionWrapper).replaceWith($newExceptions);
-
-                    //Find all new tables in newExceptions
-                    var currentTables = $(exceptionWrapper).find('table').each(function () {
-                        var tableID = $(this).attr("id");
-                        if (tableID) {
-                            // Add reference to new table in emp.reference.tables
-                            emp.reference.tables[tableID] = this;
-                        }
-                        // initialize table
-                        $(this).table();
-                    });
-
-                    // Re-bind Group-collapsing functionality
-                    $(exceptionWrapper).find('section').find('> header').on('click', function _toggleGroup(evt) {
-                        if (evt.target.nodeName !== 'INPUT' && evt.target.nodeName !== 'LABEL') {
-                            var $group = $(this).closest('section');
-
-                            // From opened to collapsed
-                            if (!$group.is('.emp-collapse')) {
-                                _priv.group.collapse($group, this);
-                            }
-
-                            // From collapsed to opened
-                            else {
-                                _priv.group.expand($group);
-                            }
-                        }
-                    });
-
-                });
-
-            },
-            fail: function () {
-
-                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'callFunction' }, 'Request for Active Exceptions failed.');
-            }
-        };
-
-        // Make the ajax request
-        ajax.requestData(req, res);
-    };
-
-    var requestDuplicate = function _request_duplicate(req, action, mapping, modal, table, settings) {
-
-        var res = {
-
-            done: function (data) {
-
-                if (data.body) {
-                    data = data.body;
-                }
-
-                // Merge the mapping with
-                for (var item in mapping) {
-
-                    if (data.hasOwnProperty(mapping[item])) {
-
-                        mapping[item] = data[mapping[item]];
-                    }
-                    else {
-
-                        journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'requestDuplicate' }, 'Requested duplicate mapping source not found in data:' + mapping[item]);
-
-                        return false;
-                    }
-
-                }
-
-                switch (action) {
-
-                    case "submit":
-
-                        if (settings.redirect) {
-
-                            form.virtual({ 'action': settings.redirect }, mapping, true, false, 'strict');
-                        }
-
-                        break;
-
-                    case "map":
-
-                        if (typeof mapping === "object") {
-
-                            _priv.processMap(undefined, mapping, ":strict:", function () {
-
-                                modal.destroy();
-                            });
-
-                        }
-                        else {
-
-                            journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'requestDuplicate' }, 'Requested duplicate page with process map, but the `false` map was sent instead of object.');
-                        }
-
-                        break;
-
-                }
-
-            },
-
-            fail: function () {
-
-                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'requestDuplicate' }, 'Request for duplicate page data failed.');
-            }
-
-        };
-
-        ajax.requestData(req, res);
-    };
-
     var requestTooltip = function requestTooltip($ajaxTooltip) {
 
         var spinnerOpts = {
@@ -6460,383 +5344,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         return true;
     };
 
-    var renderComment = function (data, cb) {
-
-        if (!data.template) {
-            data.template = "workflowComments";
-        }
-
-        var headerHtml = '<header>Workflow Comments</header>';
-
-        var footerHtml = '<footer><div class="emp-button-row"><div class="emp-col-full cui-align-right"><button type="button" id="workflow-comments-cancel">Cancel</button><button class="cui-button-primary" type="button" id="workflow-comments-add">Add Comment</button></div></div></footer>';
-
-        render.section(null, data, 'return', function (html) {
-
-            htmlContent = html;
-
-            fastdom.mutate(function () {
-
-                // Build the modal
-                var workflowComments = $.modal({
-                    autoOpen: true,
-                    html: htmlContent,
-                    header: {
-                        html: headerHtml,
-                    },
-                    footer: {
-                        html: footerHtml,
-                    },
-                    hideDestroy: true,
-                    modalClass: "emp-workflow-modal"
-                });
-
-                // Setup the cancel button to destory the modal.
-                workflowComments.$self.find('#workflow-comments-cancel').on('click', function () {
-
-                    workflowComments.destroy();
-                });
-
-                workflowComments.$self.find('#workflow-comments-add').on('click', function () {
-
-                    var formData = {};
-
-                    var $form = workflowComments.$self.find('#emp-workflow-comments');
-
-                    // Validate the form
-                    var validation = validate.form($form[0], true);
-
-                    if (validation) {
-
-                        var inputObj = $form.find('input, select, textarea').each(function (i) {
-
-                            var $this = $(this);
-
-                            var iName = $this.attr('name');
-                            var iVal = $this.val();
-
-                            if (!formData[iName]) {
-                                formData[iName] = iVal;
-                            }
-                        });
-
-                        var req = {
-                            cache: false,
-                            contentType: 'application/json; charset=utf-8',
-                            data: formData,
-                            dataType: 'json',
-                            method: 'POST',
-                            url: $form.attr('action'),
-                        };
-
-                        var res = {
-                            done: function (data) {
-
-                                if (data.status === "success") {
-
-                                    workflowComments.destroy();
-
-                                    // Check for return message
-                                    if (data.messages && data.messages.length) {
-
-                                        journal.log({ type: 'info', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Workflow comments JSON POST successful!');
-
-                                        for (var i = 0, len = data.messages.length; i < len; i++) {
-
-                                            var message = data.messages[i];
-
-                                            message.template = "messages";
-
-                                            empMessage.createMessage(message, {});
-                                        }
-
-                                    }
-                                    else {
-
-                                        journal.log({ type: 'info', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Workflow comments JSON POST successful! - No return message provided.');
-                                    }
-
-                                    if (typeof cb === "function") {
-
-                                        cb(true);
-                                    }
-                                }
-                            },
-                            fail: function () {
-
-                                journal.log({ type: 'error', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Workflow comments JSON POST returned with error state.');
-
-                                if (typeof cb === "function") {
-
-                                    cb(false);
-                                }
-                            }
-                        };
-
-                        if (!_disableAjax) {
-
-                            // Now perform the AJAX request.
-                            ajax.requestData(req, res);
-
-                        }
-                        else {
-
-                            journal.log({ type: 'info', owner: 'Developer', module: 'emp', func: 'workflowComments' }, 'Ajax Request blocked by developer.', req);
-                        }
-                    }
-                    else {
-
-                        $commentBox = $form.find('textarea');
-
-                        var errMsg = {
-                            "type": "error",
-                            "text": "A comment must be provided!",
-                            "scroll": false
-                        };
-
-                        empMessage.createMessage(errMsg, { pageNotifier: false, field: $commentBox });
-
-                        workflowComments.adjustCSS();
-                        workflowComments.adjustHeight();
-                        workflowComments.center();
-                    }
-
-                    return true;
-                });
-            });
-        });
-    };
-
-    var workflowComments = function _workflow_comments(request, cb) {
-
-        if (request !== undefined) {
-
-            var req = {};
-
-            if (typeof request === "string") {
-
-                req.url = request;
-                req.data = {};
-
-            }
-            else if (request.url) {
-
-                req.url = request.url;
-
-                if (request.data && typeof request.data === "object") {
-
-                    req.data = request.data;
-                }
-            }
-
-            if (req.url) {
-
-                var res = {};
-
-                res.done = function _done(data) {
-
-                    if (data.status && data.status === "success") {
-
-                        data = data.result[0].body;
-                    }
-                    else if (data.body) {
-
-                        data = data.body;
-                    }
-
-                    renderComment(data, cb);
-                };
-
-
-                if (!_disableAjax) {
-
-                    // Now perform the AJAX request.
-                    ajax.request(req, res, true);
-
-                }
-                else {
-
-                    journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'ajax', func: 'workflowComments' }, 'Ajax Request blocked by developer.', request);
-                }
-            }
-            else {
-
-                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowComments' }, 'Unable to build the workflow comments request object correctly');
-
-                return false;
-            }
-
-        }
-        else {
-
-            journal.log({ type: 'error', owner: 'FW', module: 'emp', func: 'workflowComments' }, 'No URL was passed to pull workflow comments.');
-
-            return false;
-        }
-
-        return true;
-    };
-
-    var workflowAction = function _workflow_action(req) {
-
-        if (req.url && typeof req.url === "string") {
-
-            // Get the workflow drop down value
-            var $workflowDropdown = $('#fw_babe_action');
-
-            var workflowDropdownValue = $workflowDropdown.val();
-
-            var $workflowForm = $workflowDropdown.parents('form').eq(0);
-
-            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow value when workflow button clicked: ' + workflowDropdownValue);
-
-            if (!req.data) {
-                req.data = {};
-            }
-
-            req.data['fw_babe_action'] = workflowDropdownValue;
-
-            var res = {
-
-                done: function (data) {
-
-                    if (Array.isArray(data) && data.length === 1) {
-                        data = data[0];
-                    }
-
-                    if (data.status === "success" && data.result.length) {
-
-                        journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action request returned results that indicate we have steps that need to be executed.');
-
-                        (function nextStep(steps) {
-
-                            var currentStep = steps.shift().body;
-
-                            if (currentStep.hasOwnProperty('confirm')) {
-
-                                confirm(null, currentStep.confirm.message, function () {
-
-                                    if (steps.length) {
-
-                                        nextStep(steps);
-                                    }
-                                    else {
-
-                                        $workflowForm.submit();
-                                    }
-
-                                });
-                            }
-                            else if (currentStep.hasOwnProperty('workflow_comments')) {
-
-                                var comments = currentStep.workflow_comments;
-
-                                renderComment(comments, function () {
-
-                                    if (steps.length) {
-
-                                        nextStep(steps);
-                                    }
-                                    else {
-
-                                        $workflowForm.submit();
-                                    }
-
-                                });
-                            }
-                            else {
-
-                                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Unkown step reached in workflow actions');
-                            }
-
-                        })(data.result.concat());
-
-                    }
-                    else if (data.status === "success" && data.result.length === 0) {
-
-                        if (data.messages.length) {
-
-                            var actionError = false;
-
-                            for (var i = 0, len = data.messages.length; i < len; i++) {
-
-                                var message = data.messages[i];
-
-                                empMessage.createMessage(message, {});
-
-                                if (message.type === "error") {
-
-                                    actionError = true;
-                                }
-                            }
-
-                            if (actionError) {
-
-                                journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action go request returned error message.');
-
-                                return false;
-                            }
-                            else {
-
-                                journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action completed successfully.');
-
-                                // Need to hide controls
-                                //$('.emp-icon-workflow-item-comments').hide();
-                                //$('.emp-workflow-actions').hide();
-
-                                $workflowForm.submit();
-                            }
-
-                        }
-                        else {
-
-                            $workflowForm.submit();
-                        }
-                    }
-                    else {
-
-                        journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action go request failed, but 200 on the request.');
-
-                        return false;
-                    }
-
-                },
-
-                fail: function (data) {
-
-                    journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action go request failed.');
-                }
-            };
-
-            ajax.request(req, res);
-
-        }
-        else {
-
-            journal.log({ type: 'error', owner: 'UI', module: 'emp', func: 'workflowAction' }, 'Workflow action url missing');
-        }
-
-        return true;
-    };
-
-    var switchToAssociate = function _switch_to_associate() {
-
-        var associateId = $('.emp-tp-joint-id .emp-data').text().trim();
-
-        if (associateId.length !== 0) {
-
-            var form = document.getElementById('form_tp_info');
-
-            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'switchToAssociate' }, 'User clicked to switch to associate taxpayer.');
-
-            form.submit();
-
-        }
-        else {
-
-            journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'switchToAssociate' }, 'User clicked to switch to associate taxpayer but non was loaded into context.');
-        }
-    };
-
     var validate = {};
 
     validate.field = function _validateField(field) {
@@ -7034,11 +5541,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         functionCall: functionCall,
         referenceCall: referenceCall,
 
-        // Framework request scripts
-        requestAssociate: requestAssociate,
-        requestException: requestException,
-        switchToAssociate: switchToAssociate,
-
         // Testing item
         getPreformance: getPreformance,
         flushLocalStorage: flushLocalStorage,
@@ -7072,9 +5574,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         showChild: showChild,
         getCookie: getCookie,
         getProperty: getProperty,
-
-        workflowAction: workflowAction,
-        workflowComments: workflowComments,
 
         uiPopup: uiPopup,
 

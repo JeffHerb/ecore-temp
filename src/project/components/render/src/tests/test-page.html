@@ -199,6 +199,44 @@ var fwData = {
                 "taxpayerName": "John Smith"
             }
         ]
+    },
+    "menus": {
+        "global": {
+            "settings": {
+                "filter": true,
+                "closeButton": true
+            },
+            "items": [
+                {
+                    "text": "Reports",
+                    "isHeader": true,
+                    "items": [
+                        {
+                            "text": "Tax Rolls Generation",
+                            "href": "#Client"
+                        },
+                        {
+                            "text": "Star",
+                            "items": [
+                                {
+                                    "text": "Basic Star",
+                                    "href": "#basic",
+                                    "selected": true
+                                },
+                                {
+                                    "text": "Enhanced Star",
+                                    "href": "#enhanced"
+                                },
+                                {
+                                    "text": "Income Verification",
+                                    "href": "#income"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     }
 };
     </script>

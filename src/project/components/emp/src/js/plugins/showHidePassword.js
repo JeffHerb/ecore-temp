@@ -14,7 +14,6 @@ define([], function() {
                 var currentInput = false;
                 var currentValue = false;
                 var newInput = false;
-                //var inputCurrentValue = "";
 
                 while(!parentWrapper.classList.contains('emp-password-wrapper')) {
                     parentWrapper = parentWrapper.parentNode;

@@ -83,7 +83,6 @@ module.exports = function(grunt) {
                         'external-menu': 'empty:',
                         'spin': 'empty:',
                         'detectIE': 'empty:',
-                        'notifications': 'empty:',
                         'shortcut': 'empty:',
                         'clickblocker': 'empty:',
                         'message': 'empty:',
