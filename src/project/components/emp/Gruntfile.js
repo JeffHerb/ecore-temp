@@ -78,8 +78,6 @@ module.exports = function(grunt) {
                         'datepicker': 'empty:',
                         'validation': 'empty:',
                         'kind': 'empty:',
-                        'preferences': 'empty:',
-                        'favorites': 'empty:',
                         'external-menu': 'empty:',
                         'spin': 'empty:',
                         'detectIE': 'empty:',
@@ -90,8 +88,6 @@ module.exports = function(grunt) {
                         'getCursorPosition': 'empty:',
                         'fastdom': 'empty:',
                         'journal': 'empty:',
-                        'quill': 'empty:',
-                        'errorReportIframe': 'empty:',
                         'fetchWrapper': 'empty:',
                         'deepmerge': 'empty:',
                         'staticTree': 'empty:'

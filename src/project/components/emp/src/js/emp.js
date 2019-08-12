@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'favorites', 'external-menu', 'spin', 'detectIE', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'quill', 'refresh', 'errorReportIframe', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, favorites, externalMenu, spin, detectIE, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, quill, refresh, eri, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'refresh', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, refresh, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
 
     var _priv = {
         isInitialized: false,
@@ -54,8 +54,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var $fileUploads = $('.emp-file-upload');
         var $viewDocumentSections = $('.emp-document-viewer');
         var $entityLookup = $('.emp-entity-lookup .emp-entity-lookup-toggle select');
-        var $errorReportButton = $('#emp-header-error-report i');
-        var $errorReportIframe = $('#E_ERROR_REPORT_IFRAME');
 
         // Ensure `fwData` and its required properties exist
         _priv.stubOutFwData();
@@ -80,11 +78,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             if (detectIntE.edge) {
                 emp.isEdge = true;
             }
-        }
-
-        // Bind Error Report button
-        if ($errorReportButton.length) {
-            $errorReportButton.on('click', _priv.errorReportButton);
         }
 
         var localSessionID = store.get("sessionID");
@@ -125,51 +118,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             else {
 
                 journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Refresh blocked on none valid screen type');
-            }
-        }
-
-        if (refreshSession) {
-
-            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Session Refresh functions being called.');
-
-            if (fwData.context.urls.favorites && location.hostname !== 'localhost') {
-
-                refresh.favorites(function _favortiesFetch(favData, tabsetids) {
-
-                    // Save off the new sessionID
-                    store.set('sessionID', fwData.context.screen.id);
-
-                    // Reset the global just in case
-                    fwData.context.favorites = {
-                        data: favData,
-                        tabsetids: tabsetids
-                    };
-
-                    store.set("favorites", favData);
-                    store.set("tabsetAccess", tabsetids);
-
-                    // Execute favorites
-                    $('#emp-header-favorites').favorites();
-                });
-            }
-            else if (location.hostname === 'localhost') {
-
-                $('#emp-header-favorites').favorites();
-            }
-            else {
-
-                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: '', func: 'pageSetup' }, 'Session Favorites Refresh skipped on error report pages.');
-
-            }
-
-        }
-        else {
-
-            if (fwData.context.urls && fwData.context.urls.favorites) {
-
-                // Setup favorites
-                $('#emp-header-favorites').favorites();
-
             }
         }
 
@@ -1815,16 +1763,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             window.fwData.menus.global = {};
         }
 
-        // Favorites
-        if (!window.fwData.context.favorites) {
-            window.fwData.context.favorites = {};
-
-            // Note: do not stub out `fwData.favorites.data`. This will cause the Favorites component to think that there is valid data which means the component will not generate a new favorites object.
-        }
-
-        if (!window.fwData.context.favorites.timestamp) {
-            window.fwData.context.favorites.timestamp = 1451624400; // This corresponds to 01/01/2016
-        }
     };
 
     _priv.printFormContents = function _print_form_contents ($form) {
@@ -5528,8 +5466,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
         // External flag
         external: externalEmpire,
-
-        eri: eri,
         fw: fw,
 
         // Exposing for table filters till we can write date.js component
