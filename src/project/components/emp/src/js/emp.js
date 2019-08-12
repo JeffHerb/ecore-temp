@@ -1902,6 +1902,14 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
     	}
     };
 
+    _priv.removeLoadingSplash = function _remove_loading_splash(){
+    	var loadingSplash = document.querySelector('#emp-page-loading');
+        
+    	if(loadingSplash){
+    		loadingSplash.parentNode.removeChild(loadingSplash);	
+    	}        
+    };
+
     // Event driven functions
     var _events = {};
 
@@ -2464,8 +2472,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                                 setTimeout(function() {
 
-                                    var loadingSplash = document.querySelector('#emp-page-loading');
-                                    loadingSplash.parentNode.removeChild(loadingSplash);
+                                    _priv.removeLoadingSplash();
 
                                 }, 1000);
 
@@ -2506,8 +2513,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                             setTimeout(function () {
 
-                                var loadingSplash = document.querySelector('#emp-page-loading');
-                                loadingSplash.parentNode.removeChild(loadingSplash);
+                                _priv.removeLoadingSplash();
 
                             }, 1000);
 
@@ -2525,8 +2531,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                     setTimeout(function () {
 
-                        var loadingSplash = document.querySelector('#emp-page-loading');
-                        loadingSplash.parentNode.removeChild(loadingSplash);
+						_priv.removeLoadingSplash();
 
                     }, 1000);
                 });
