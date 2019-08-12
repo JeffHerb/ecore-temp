@@ -247,10 +247,33 @@
             "page": {
                 "contents": [
                     {
-                        "template": "taxpayer-header-context",
-                        "taxpayerID": "XXX-XX-1234",
-                        "taxpayerName": "John Smith"
-                    }
+                        "help": [
+                            {
+                                "raw": true,
+                                "template": "output"
+                            }
+                        ],
+                        "instructions": [
+                            {
+                                "raw": true,
+                                "template": "output",
+                                "text": "<p>Enter the requested information for every property owner and any non-owner resident spouse.<p>"
+                            }
+                        ],
+                        "contextHeader": [
+                            {
+                                "template": "taxpayer-header-context",
+                                "taxpayerID": "XXX-XX-1234",
+                                "taxpayerName": "John Smith"
+                            }
+                        ],
+                        "title": "Owner/Non-Owner Details",
+                        "template": "external-pageinfo",
+                        "pageLegend": {
+                            "helpText": true,
+                            "required": true
+                        }
+                    },
                 ]
             },
             "footer": {

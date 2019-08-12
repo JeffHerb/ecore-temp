@@ -203,7 +203,7 @@ var fwData = {
         "fw": {
             "timestamp": 1557239635641,
             "server": "udmwas01_E_2",
-            "requestedURL": "/AFTER/DOMAIN/PATH"
+            "requestedURL": "/SAUDSPMTNC.tabset/CMFW01S-UA/CMFW01S_SEARCH_RETRIEVE_ACTION"
         },
         "app": {
             "id": "EIVP",
@@ -211,12 +211,169 @@ var fwData = {
             "type": "wizard"
         },
         "screen": {
-            "type": "page",
             "id": "CMFW01S-UA",
             "session": "aEPsyw8bPDe-Mloj-HneffA",
+            "mode": "editable"
         },
+    },
+    "header": {
+        "contents": [
+            {
+                "template": "universal-header"
+            },
+            {
+                "type": "tax",
+                "template": "agency-header",
+                "bannerLink": "http://tax.ny.gov",
+                "title": "Demo Application",
+                "support": {
+                    "text": "Get Support",
+                    "popover": {
+                        "contents": [
+                            {
+                                "template": "popover",
+                                "contents": [
+                                    {
+                                        "template": "tree",
+                                        "items": [
+                                            {
+                                                "template": "link",
+                                                "attributes": {
+                                                    "href": "[LINK DEFINED BY HELO LINKS INPUT]"
+                                                },
+                                                "text": "Help Link"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "template": "tree",
+                                        "items": [
+                                            {
+                                                "template": "link",
+                                                "attributes": {
+                                                    "href": "[LINK DEFINED BY SUPPORT LINK INPUT]"
+                                                },
+                                                "text": "Support"
+                                            },
+                                            {
+                                                "template": "link",
+                                                "attributes": {
+                                                    "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
+                                                },
+                                                "text": "Contact Us"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "userAcct": {
+                    "type": "interactive",
+                    "text": "John Smith",
+                    "popover": {
+                        "contents": [                                
+                            {
+                                "template": "popover",
+                                "contents": [
+                                    {
+                                        "type": "external-auth-user",
+                                        "template": "composite",
+                                        "properties": {
+                                            "realName": "John Smith",
+                                            "companyName": "ABC Company",
+                                            "userid": "123-45-6789"
+                                        }
+                                    },
+                                    {
+                                        "type": "external-account-demo",
+                                        "template": "composite",
+                                        "properties": {
+                                            "account": "Tax Professioal",
+                                            "role": "Administrator"
+                                        }
+                                    },
+                                    {
+                                        "template": "tree",
+                                        "contents": [
+                                            {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input" :{
+                                                    "attributes": {
+                                                        "id": "EC_ECOMM",
+                                                    },
+                                                    "text": "Electronic communications"
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input" :{
+                                                    "attributes": {
+                                                        "id": "EC_STOL",
+                                                    },
+                                                    "text": "Edit personal information"
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input" :{
+                                                    "attributes": {
+                                                        "id": "EC_DELETE",
+                                                    },
+                                                    "text": "Delete my account"
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input" :{
+                                                    "attributes": {
+                                                        "id": "EC_LOCK",
+                                                    },
+                                                    "text": "Lock my account permanently"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "template": "tree",
+                                        "contents": [
+                                            {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input" :{
+                                                    "attributes": {
+                                                        "id": "EC_LOGOUT",
+                                                        "name": "EC_LOGOUT"
+                                                    },
+                                                    "text": "logout"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "footer": {
+        "contents": [
+            {
+                "template": "agency-footer"
+            },
+            {
+                "template": "universal-footer"
+            }
+        ]
     }
-};
+}
     </script>
 
     <script>

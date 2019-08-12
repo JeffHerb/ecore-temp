@@ -194,49 +194,34 @@ var fwData = {
     "page": {
         "contents": [
             {
-                "template": "taxpayer-header-context",
-                "taxpayerID": "XXX-XX-1234",
-                "taxpayerName": "John Smith"
-            }
-        ]
-    },
-    "menus": {
-        "global": {
-            "settings": {
-                "filter": true,
-                "closeButton": true
-            },
-            "items": [
-                {
-                    "text": "Reports",
-                    "isHeader": true,
-                    "items": [
-                        {
-                            "text": "Tax Rolls Generation",
-                            "href": "#Client"
-                        },
-                        {
-                            "text": "Star",
-                            "items": [
-                                {
-                                    "text": "Basic Star",
-                                    "href": "#basic",
-                                    "selected": true
-                                },
-                                {
-                                    "text": "Enhanced Star",
-                                    "href": "#enhanced"
-                                },
-                                {
-                                    "text": "Income Verification",
-                                    "href": "#income"
-                                }
-                            ]
-                        }
-                    ]
+                "help": [
+                    {
+                        "raw": true,
+                        "template": "output"
+                    }
+                ],
+                "instructions": [
+                    {
+                        "raw": true,
+                        "template": "output",
+                        "text": "<p>Enter the requested information for every property owner and any non-owner resident spouse.<p>"
+                    }
+                ],
+                "contextHeader": [
+                    {
+                        "template": "taxpayer-header-context",
+                        "taxpayerID": "XXX-XX-1234",
+                        "taxpayerName": "John Smith"
+                    }
+                ],
+                "title": "Owner/Non-Owner Details",
+                "template": "external-pageinfo",
+                "pageLegend": {
+                    "helpText": true,
+                    "required": true
                 }
-            ]
-        }
+            },
+        ]
     }
 };
     </script>
