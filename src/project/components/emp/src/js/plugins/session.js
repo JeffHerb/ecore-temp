@@ -78,7 +78,7 @@ define(['render', 'keepAlive'], function (render, keepAlive) {
                         var sessionExpiredButton = document.querySelector('#sessionExpired');
 
                         sessionExpiredButton.addEventListener('click', function() {
-                                
+
                             modal.destroy();
                         });
 
@@ -170,7 +170,7 @@ define(['render', 'keepAlive'], function (render, keepAlive) {
                             _priv.currentModalTimer = setTimeout(_priv.timeoutModal, _priv.fiveMinutes);
 
                             extendSessionCancelButton.addEventListener('click', function() {
-                                
+
                                 _priv.currentModal.destroy();
                             });
 
@@ -206,16 +206,16 @@ define(['render', 'keepAlive'], function (render, keepAlive) {
         if (!_priv.e2Expired) {
 
             keepAlive.e1(fwData.urls.keepAlive.e2, function(result) {
-    
+
                 if (!result) {
-    
+
                 }
                 else {
-    
+
                     // Re-setup the E1 timer to kick up in the expected number of miliseconds
                     _priv.e1RefreshTimer = setTimeout(_priv.refreshE1, fwData.screen.e1Timeout);
                 }
-    
+
             });
         }
 
@@ -260,10 +260,10 @@ define(['render', 'keepAlive'], function (render, keepAlive) {
         }
         else {
 
-            console.log("Missing e1 session info");
+            //console.log("Missing e1 session info");
         }
 
-        
+
     };
 
     return {

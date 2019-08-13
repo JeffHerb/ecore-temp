@@ -34,14 +34,24 @@ define([], function () {
 
     _priv.setupRegion = function _setup_regions(ariaControls) {
 
+
         // Now that we know all the expandable sections we need to add a targetting class
         for (var ac = 0, acLen = ariaControls.length; ac < acLen; ac++) {
+
             var expandRegion = document.querySelector('#' + ariaControls[ac]);
 
-            if (!expandRegion.classList.contains('emp-expandable-region')) {
+            if (expandRegion) {
 
-                expandRegion.classList.add('emp-expandable-region');
+                if (!expandRegion.classList.contains('emp-expandable-region')) {
+
+                    expandRegion.classList.add('emp-expandable-region');
+                }
             }
+            else {
+
+                journal.log({ type: 'error', owner: 'DEV', module: 'emp', submodule: 'expandables', func: '_priv.setupRegion' }, 'Expandable region with id: ' + ariaControls[ac] + ' does not exist on this page.');
+            }
+
         }
 
     };
@@ -157,12 +167,12 @@ define([], function () {
 
                                 // Get the active radios expands for reference
                                 var activeRadio = ariaBreakdown[radioValue];
-                                
+
                                 // Loop through all collapse first
                                 for (var c = 0, cLen = activeRadio.collapse.length; c < cLen; c++) {
-                                 
+
                                     var collapseSection = document.querySelector('#' + activeRadio.collapse[c]);
-                                    
+
                                     if (!collapseSection.classList.contains('emp-collapse')) {
                                         collapseSection.classList.add('emp-collapse');
                                     }
@@ -170,30 +180,30 @@ define([], function () {
 
                                 // Loop through and expand all items that need to be
                                 for (var e = 0, eLen = activeRadio.expand.length; e < eLen; e++) {
-                                 
+
                                     var expandSection = document.querySelector('#' + activeRadio.expand[e]);
-                                    
+
                                     if (expandSection.classList.contains('emp-collapse')) {
-                                        expandSection.classList.remove('emp-collapse');                                                                                
+                                        expandSection.classList.remove('emp-collapse');
                                     }
 
                                 }
 
                                 //Update aria-expanded values for all items in ariaBreakdown
-                                var ariaKeys = Object.keys(ariaBreakdown);		                        
+                                var ariaKeys = Object.keys(ariaBreakdown);
 		                        for(var i = 0; i < ariaKeys.length; i++){
 		                        	if(ariaKeys[i] == radioValue){
 		                        		ariaBreakdown[ariaKeys[i]].radio.setAttribute("aria-expanded", "true");
 		                        	}
-		                        	else{									
+		                        	else{
 										ariaBreakdown[ariaKeys[i]].radio.setAttribute("aria-expanded", "false");
 		                        	}
 		                        }
-								
+
 								//Send custom event that section has been expanded
 								var event = document.createEvent('Event');
 								event.initEvent('expandableChange', true, true);
-								radio.dispatchEvent(event);	
+								radio.dispatchEvent(event);
                             }
 
                     	//}.bind(null, JSON.parse(JSON.stringify(ariaBreakdown))), false);
@@ -239,7 +249,7 @@ define([], function () {
 
                                 if (checkExpands.length) {
                                     for (var ce = 0, ceLen = checkExpands.length; ce < ceLen; ce++) {
-                                        
+
                                         if (checkedState) {
 
                                             _priv.expandRegion(checkExpands[ce], true);
@@ -248,7 +258,7 @@ define([], function () {
 
                                             _priv.expandRegion(checkExpands[ce], false);
                                         }
-                        
+
                                     }
                                 }
 
@@ -305,11 +315,11 @@ define([], function () {
 
                                         // Check to see if this option is the option we are currently looking at
                                         if (selectElemValue === optionValue) {
-                                            
+
                                             regionToExpand.push(containerElem);
                                         }
                                         else {
-        
+
                                             regionToClose.push(containerElem);
                                         }
                                     }
@@ -329,7 +339,7 @@ define([], function () {
                         // Collapse any sections that need to be hidden
                         if (regionToClose.length) {
                             for (var rtc = 0, rtcLen = regionToClose.length; rtc < rtcLen; rtc++) {
-                                
+
                                 _priv.expandRegion(regionToClose[rtc], false);
 
                             }
@@ -338,7 +348,7 @@ define([], function () {
                         // Expand any sections that need to be hidden
                         if (regionToExpand.length) {
                             for (var rte = 0, rteLen = regionToExpand.length; rte < rteLen; rte++) {
-                                
+
                                 _priv.expandRegion(regionToExpand[rte], true);
 
                             }

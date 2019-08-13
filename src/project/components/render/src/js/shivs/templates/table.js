@@ -154,12 +154,6 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
             // Loop through and fix the footer if it exists
             if (data.footer && data.footer.rows.length > 0) {
 
-                console.log(buttonIndex);
-                console.log(primaryButtonIndex);
-
-                console.log(data.head.rows);
-                console.log(data.footer.rows);
-
                 for (var i = 0, len = data.footer.rows.length; i < len; i++) {
 
                     for (var j = 0, jLen = buttonIndex.length; j < jLen; j++) {
@@ -187,8 +181,6 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
         var buttonColIndex = [];
         var pimaryButtonIndex = false;
-
-        console.log(data);
 
         if (!data.hasOwnProperty('enabledButtonMenu')) {
             data.enabledButtonMenu = true;
