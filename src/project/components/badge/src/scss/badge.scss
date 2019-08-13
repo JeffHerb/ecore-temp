@@ -18,10 +18,10 @@
     border-radius: 50%;
     padding: 2px 6px;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../../../../scss/_theme_teal.scss";
         background-color: $emp-red-2;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../../../../scss/_theme_lilypad.scss";

@@ -12,10 +12,10 @@
 body {
     color: $cui-text-color;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-text-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";

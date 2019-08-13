@@ -28,12 +28,12 @@
     border-radius: $emp-indicator-border-radius;
     color: $cui-color-white;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $emp-indicator-bg-color;
         border: $emp-indicator-border;
         color: $cui-color-white;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -147,11 +147,11 @@
         background-color: $emp-indicator-bg-color;
         color: $emp-indicator-color;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             background-color: $emp-indicator-bg-color;
             color: $emp-indicator-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -267,10 +267,10 @@
         transform: rotate(45deg);
         width: 8px;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-color: $emp-icon-redcheck-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -394,10 +394,10 @@
         transform: rotate(45deg);
         width: 8px;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-color: $emp-icon-greencheck-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -432,10 +432,10 @@
         &:after {
             color: $emp-icon-redcheck-color-group-header;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $emp-icon-redcheck-color-group-header;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
