@@ -20,10 +20,10 @@ main {
     min-height: $emp-header-min-height;
     border: $emp-header-border;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         border: $emp-header-border;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -71,10 +71,10 @@ main {
             position: relative; // For positioning the Favorites star
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             background-color: $emp-menu-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -105,10 +105,10 @@ main {
     .emp-header-row-second {
         background-color: $emp-header-bg-color;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             background-color: $emp-header-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -156,11 +156,11 @@ main {
             min-width: 100%;
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             color: $emp-header-logo-color;
             background-color: $emp-header-logo-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -213,12 +213,12 @@ main {
             order: 2;
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border: $emp-menu-border;
             background-color: $emp-menu-bg-color;
             color: $cui-color-white;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -335,10 +335,10 @@ main {
             padding-right: 10px; // Gap between tabset title and links
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             min-height: $cui-touch-min-height;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -434,10 +434,10 @@ main {
 
                 color: $emp-header-links-color;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal";
                     color: $emp-header-links-color;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad";
@@ -467,10 +467,10 @@ main {
                 &:hover {
                     color: $emp-header-links-color-hover;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../_theme_teal";
                         color: $emp-header-links-color-hover;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../_theme_lilypad";
@@ -573,11 +573,11 @@ main {
             flex-direction: row;
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal";
             padding: $emp-tp-header-padding;
             background-color: $emp-tp-header-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad";
@@ -624,11 +624,11 @@ main {
                 }
             }
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 padding: $emp-padding;
                 padding-top: $emp-tp-header-separator-padding-top-small;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -679,10 +679,10 @@ main {
                 text-decoration: $emp-search-box-sendid-underline;
                 cursor: pointer;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     color: $emp-search-box-sendid-color;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -741,11 +741,11 @@ main {
             background-color: $emp-tp-info-joint-bg-color;
             border-bottom: $emp-tp-info-joint-border-bottom;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 background-color: $emp-tp-info-joint-bg-color;
                 border-top: $emp-tp-info-joint-border;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -806,11 +806,11 @@ main {
                 border-left: $emp-tp-info-joint-border;
                 border-bottom: $emp-tp-info-joint-border;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     border-left: $emp-tp-info-joint-border;
                     border-bottom: $emp-tp-info-joint-border;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -881,10 +881,10 @@ main {
         justify-content: flex-end;
     }
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $emp-workflow-bg-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -967,10 +967,10 @@ main {
         &:hover {
             background-color: $emp-tabset-bg-color-hover;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 background-color: $emp-tabset-bg-color-hover;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -1016,11 +1016,11 @@ main {
             text-decoration: $emp-tabset-item-text-decoration;
             width: 100%;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $emp-tabset-color;
                 padding: $emp-tabset-item-anchor-padding;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -1056,11 +1056,11 @@ main {
                 border: $emp-tabset-item-border-selected;
                 background-color: $emp-tabset-item-bg-color-selected;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     border: $emp-tabset-item-border-selected;
                     background-color: $emp-tabset-item-bg-color-selected;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -1100,10 +1100,10 @@ main {
                 background-color: $emp-tabset-item-bg-color-selected;
                 color: $emp-tabset-color-hover;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     color: $emp-tabset-color-hover;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -1134,10 +1134,10 @@ main {
 
     }
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $emp-tabset-bg-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -1190,10 +1190,10 @@ main {
     background-color: $emp-tabset-bg-color;
     padding: 0;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $emp-tabset-bg-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -1227,10 +1227,10 @@ main {
     &:hover { // Override standard `button:hover` styles
         background-color: $emp-tabset-toggle-bg-color-hover;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             background-color: $emp-tabset-toggle-bg-color-hover;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";

@@ -39,11 +39,11 @@ section {
         }
     }
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         border-top: $emp-group-border;
         border-bottom: $emp-group-border;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -92,12 +92,12 @@ section {
         border-right: $emp-group-border;
         border-radius: $emp-group-border-radius;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-left: $emp-group-border;
             border-right: $emp-group-border;
             border-radius: $emp-group-border-radius;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -149,12 +149,12 @@ section {
             page-break-inside: avoid;
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-bottom: $emp-group-header-border-bottom;
             background-color: $emp-group-header-bg-color;
             color: $emp-group-header-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -199,10 +199,10 @@ section {
         h3 {
             color: $emp-group-header-color;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $emp-group-header-color;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -514,10 +514,10 @@ section {
             h3 {
                 color: $emp-subgroup-header-color;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     color: $emp-subgroup-header-color;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -553,10 +553,10 @@ section {
         & > header {
             border: $emp-group-border; // Is this needed? Under the old theming structure this selector was necessary just for added specificity so the theme would take effect
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 border: $emp-group-border;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -632,11 +632,11 @@ section {
         border-color: $emp-group-header-border-color-collapsed;
         border-bottom-width: 2px;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             background-color: $emp-group-header-bg-color-collapsed;
             border-color: $emp-group-header-border-color-collapsed;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -699,10 +699,10 @@ body section.emp-collapse { // `body` was added to give this selector specificit
         border: $emp-group-border;
         border-radius: $emp-group-border-radius;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border: $emp-group-border;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";

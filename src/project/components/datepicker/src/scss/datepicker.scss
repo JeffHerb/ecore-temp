@@ -214,10 +214,10 @@
                 @include triangle("left", 5px, $emp-grey-3);
             }
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../../../../scss/_theme_teal";
                 @include triangle("left", 5px, $emp-grey-3);
-            }
+            // }
 
             .theme-hazel & {
                 @import "../../../../scss/_theme_hazel";
@@ -250,10 +250,10 @@
                 @include triangle("right", 5px, $emp-grey-3);
             }
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../../../../scss/_theme_teal";
                 @include triangle("right", 5px, $emp-grey-3);
-            }
+            // }
 
             .theme-hazel & {
                 @import "../../../../scss/_theme_hazel";
@@ -447,10 +447,10 @@
             color: $cui-link-color;
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../../../../scss/_theme_teal";
             color: $cui-link-color;
-        }
+        // }
 
         .theme-hazel & {
             @import "../../../../scss/_theme_hazel";

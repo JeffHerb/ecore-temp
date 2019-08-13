@@ -21,11 +21,11 @@ button {
         border-color: $cui-button-border-color;
         background-color: $cui-button-bg-color;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-color: $cui-button-border-color;
             background-color: $cui-button-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -58,13 +58,13 @@ button {
 }
 
 .cui-button-primary {
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-button-primary-color;
         border: $cui-button-primary-border;
         background-color: $cui-button-primary-bg-color;
         text-shadow: $cui-button-primary-text-shadow;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -105,11 +105,11 @@ button {
     }
 
     &:hover {
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-color: $cui-button-primary-border-hover-color;
             background-color: $cui-button-primary-bg-color-hover;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";

@@ -55,10 +55,10 @@
         text-decoration: none;
         color: $cui-color-dark-gray;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             color: $cui-color-dark-gray;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";

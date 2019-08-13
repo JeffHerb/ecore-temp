@@ -197,10 +197,10 @@
             text-align: left;
             color: $cui-color-dark-gray-alt;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $cui-color-dark-gray-alt;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -235,10 +235,10 @@
         text-align: left;
         border: $emp-table-cell-border;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border: $emp-table-cell-border;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -366,12 +366,12 @@
         padding: $emp-table-header-cell-padding;
         background-color: $emp-table-header-bgcolor;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             color: $emp-table-header-color;
             padding: $emp-table-header-cell-padding;
             background-color: $emp-table-header-bgcolor;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -434,10 +434,10 @@
             text-decoration: none;
             cursor: default;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -513,17 +513,17 @@
         border-width: 3px 0 0 0;
 
         // Repeat the footer styles to maintain specificity over `.theme-X .emp-table td`
-        .theme-teal &,
+        // .theme-teal &,
         .theme-lilypad &,
         .theme-eggplant &,
         .theme-cobalt & {
             border-width: 3px 0 0 0;
         }
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -570,10 +570,10 @@
             &.emp-highlight-row {
                 background: $emp-table-highlight !important;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     background: $emp-table-highlight !important;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -604,10 +604,10 @@
                 &:hover th {
                     background: $emp-table-highlight-hover !important;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../_theme_teal.scss";
                         background: $emp-table-highlight-hover !important;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../_theme_lilypad.scss";
@@ -638,10 +638,10 @@
                 th {
                     background: $emp-table-highlight !important;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../_theme_teal.scss";
                         background: $emp-table-highlight !important;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../_theme_lilypad.scss";
@@ -783,11 +783,11 @@
                 border: 1px solid $emp-table-cell-border-color;
                 border-top: 3px solid $emp-table-cell-border-color;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     border: 1px solid $emp-table-cell-border-color;
                     border-top: 3px solid $emp-table-cell-border-color;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -837,10 +837,10 @@
         [class*="emp-table-paging-"]:before {
             color: $cui-color-dark-gray;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $cui-color-dark-gray;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -871,10 +871,10 @@
         [class*="emp-table-paging-prev"]:before {
             @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -905,10 +905,10 @@
         [class*="emp-table-paging-next"]:before {
             @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -972,10 +972,10 @@ section {
 table:not([class*="cui-no-stripes"]) tbody tr:not(.cui-hidden):not(.cui-ui-only):nth-child(even) {
     background-color: $cui-table-row-bg-alt-color;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $cui-table-row-bg-alt-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -1006,10 +1006,10 @@ table:not([class*="cui-no-stripes"]) tbody tr:not(.cui-hidden):not(.cui-ui-only)
 table.cui-no-stripes tr.manual-strip {
     background-color: $cui-table-row-bg-alt-color;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $cui-table-row-bg-alt-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -1041,10 +1041,10 @@ tbody tr:hover,
 table tbody tr:nth-child(even):hover {
     background-color: $cui-table-row-bg-hover-color;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $cui-table-row-bg-hover-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";

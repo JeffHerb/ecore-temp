@@ -36,10 +36,10 @@ button {
 .emp-negative-number {
     color: $cui-color-error-text !important;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-color-error-text;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -158,10 +158,10 @@ h6 {
     line-height: normal;
     color: $cui-heading-color;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-heading-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -218,10 +218,10 @@ h6 {
     @include fontSize($emp-header-font-size);
     color: $cui-heading-color-alt;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-heading-color-alt;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";

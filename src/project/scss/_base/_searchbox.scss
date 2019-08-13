@@ -12,10 +12,10 @@
     padding: $emp-search-box-padding;
     margin-bottom: 10px;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         padding: $emp-search-box-padding;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -152,10 +152,10 @@
         @include row;
     }
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         background-color: $emp-search-box-bg-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -191,12 +191,12 @@
         min-height: $emp-search-box-toggle-icon-height + $cui-grid-gutter-width + 2;
         cursor: pointer;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-top: $emp-search-box-collapsed-border;
             border-bottom: $emp-search-box-collapsed-border;
             background-color: $emp-search-box-collapsed-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -254,10 +254,10 @@
         // Thin border on small screens
         border-top: 1px solid $emp-search-box-search-fields-border-color;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-top: 1px solid $emp-search-box-search-fields-border-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -293,13 +293,13 @@
             border-bottom: $emp-search-box-search-fields-border-bottom;
             border-left: $emp-search-box-search-fields-border-left;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 border-top: $emp-search-box-search-fields-border-top;
                 border-right: $emp-search-box-search-fields-border-right;
                 border-bottom: $emp-search-box-search-fields-border-bottom;
                 border-left: $emp-search-box-search-fields-border-left;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -461,10 +461,10 @@
         background-color: $emp-search-box-button-area-bg-color;
         text-align: $emp-search-box-button-text-align;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             background-color: $emp-search-box-button-area-bg-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -521,12 +521,12 @@
                     box-shadow: $emp-search-box-button-retrieve-shadow;
                     color: $emp-search-box-button-retrieve-color;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../_theme_teal.scss";
                         background-color: $emp-search-box-button-retrieve-bg-color;
                         box-shadow: $emp-search-box-button-retrieve-shadow;
                         color: $emp-search-box-button-retrieve-color;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../_theme_lilypad.scss";
@@ -566,10 +566,10 @@
                     &:hover {
                         background-color: $emp-search-box-button-retrieve-bg-color-hover;
 
-                        .theme-teal & {
+                        // .theme-teal & {
                             @import "../_theme_teal.scss";
                             background-color: $emp-search-box-button-retrieve-bg-color-hover;
-                        }
+                        // }
 
                         .theme-lilypad & {
                             @import "../_theme_lilypad.scss";
@@ -634,10 +634,10 @@
                     cursor: pointer;
                     @include fontSize($emp-em-size);
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../_theme_teal.scss";
                         color: $emp-search-box-sendid-color;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../_theme_lilypad.scss";

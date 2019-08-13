@@ -114,10 +114,10 @@ body {
         &:after {
             color: $cui-color-dark-gray;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $cui-color-dark-gray;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -270,12 +270,12 @@ body {
         padding: 4px 5px 5px;
         position: relative;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             color: $emp-indicator-color;
             background-color: $emp-indicator-bg-color;
             border: $emp-indicator-border;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -384,10 +384,10 @@ body {
             font-weight: normal;
             text-decoration: none;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 color: $emp-indicator-link-color;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";
@@ -418,10 +418,10 @@ body {
         a:hover {
             background-color: $emp-indicator-bg-color-hover;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../_theme_teal.scss";
                 background-color: $emp-indicator-bg-color-hover;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../_theme_lilypad.scss";

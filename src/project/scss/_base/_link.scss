@@ -31,10 +31,10 @@ a:link {
     color: $cui-link-color;
     text-decoration: underline;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-link-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -66,10 +66,10 @@ a:hover,
 a:focus {
     color: $cui-link-color-hover;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-link-color-hover;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -101,10 +101,10 @@ a:visited,
 a:visited:hover {
     color: $cui-link-color-visited;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         color: $cui-link-color-visited;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
