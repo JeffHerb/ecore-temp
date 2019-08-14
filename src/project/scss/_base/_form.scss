@@ -34,65 +34,15 @@ input,
 textarea,
 select {
     // .theme-teal & {
-        @import "../_theme_teal.scss";
+        // @import "../_theme_teal.scss";
         border-color: $cui-input-border-color;
     // }
 
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        border-color: $cui-input-border-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        border-color: $cui-input-border-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        border-color: $cui-input-border-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        border-color: $cui-input-border-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        border-color: $cui-input-border-color;
-    }
-
     &:focus {
         // .theme-teal & {
-            @import "../_theme_teal.scss";
+            // @import "../_theme_teal.scss";
             border-color: $cui-input-border-color-focus;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-color: $cui-input-border-color-focus;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-color: $cui-input-border-color-focus;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-color: $cui-input-border-color-focus;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-color: $cui-input-border-color-focus;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-color: $cui-input-border-color-focus;
-        }
+        // }       
     }
 }
 

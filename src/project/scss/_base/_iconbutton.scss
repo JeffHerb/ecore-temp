@@ -29,48 +29,11 @@
     color: $cui-color-white;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $emp-indicator-bg-color;
-        border: $emp-indicator-border;
-        color: $cui-color-white;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $emp-indicator-bg-color;
-        border: $emp-indicator-border;
-        color: $cui-color-white;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $emp-indicator-bg-color;
-        border: $emp-indicator-border;
-        color: $cui-color-white;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $emp-indicator-bg-color;
-        border: $emp-indicator-border;
-        color: $cui-color-white;
-    }
-
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $emp-indicator-bg-color;
-        border: $emp-indicator-border;
-        color: $cui-color-white;
-    }
-
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $emp-indicator-bg-color;
-        border: $emp-indicator-border;
-        color: $cui-color-white;
-    }
+        // @import "../_theme_teal.scss";
+        // background-color: $emp-indicator-bg-color;
+        // border: $emp-indicator-border;
+        // color: $cui-color-white;
+    // }    
 }
 
 // Indicators in the header
@@ -148,40 +111,10 @@
         color: $emp-indicator-color;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            background-color: $emp-indicator-bg-color;
-            color: $emp-indicator-color;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            background-color: $emp-indicator-bg-color;
-            color: $emp-indicator-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            background-color: $emp-indicator-bg-color;
-            color: $emp-indicator-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            background-color: $emp-indicator-bg-color;
-            color: $emp-indicator-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            background-color: $emp-indicator-bg-color;
-            color: $emp-indicator-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            background-color: $emp-indicator-bg-color;
-            color: $emp-indicator-color;
-        }
+            // @import "../_theme_teal.scss";
+            // background-color: $emp-indicator-bg-color;
+            // color: $emp-indicator-color;
+        // }       
     }
 
     .emp-indicator.emp-federal-data {
@@ -257,7 +190,8 @@
         background: transparent;
         content: "";
         border-style: solid;
-        border-color: #ee3300;
+        // border-color: #ee3300;
+        border-color: $emp-icon-redcheck-color;
         border-width: 0 3px 3px 0;
         display: block;
         height: 15px;
@@ -268,36 +202,9 @@
         width: 8px;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-color: $emp-icon-redcheck-color;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-color: $emp-icon-redcheck-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-color: $emp-icon-redcheck-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-color: $emp-icon-redcheck-color;
-        }
-
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-color: $emp-icon-redcheck-color;
-        }
-
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-color: $emp-icon-redcheck-color;
-        }
+            // @import "../_theme_teal.scss";
+            // border-color: $emp-icon-redcheck-color;
+        // }      
     }
 }
 
@@ -384,7 +291,8 @@
         background: transparent;
         content: "";
         border-style: solid;
-        border-color: #3C763D;
+        // border-color: #3C763D;
+        border-color: $emp-icon-greencheck-color;
         border-width: 0 3px 3px 0;
         display: block;
         height: 15px;
@@ -395,34 +303,9 @@
         width: 8px;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-color: $emp-icon-greencheck-color;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-color: $emp-icon-greencheck-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-color: $emp-icon-greencheck-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-color: $emp-icon-greencheck-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-color: $emp-icon-greencheck-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-color: $emp-icon-greencheck-color;
-        }
+            // @import "../_theme_teal.scss";
+            // border-color: $emp-icon-greencheck-color;
+        // }       
     }
 }
 
@@ -433,34 +316,9 @@
             color: $emp-icon-redcheck-color-group-header;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $emp-icon-redcheck-color-group-header;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $emp-icon-redcheck-color-group-header;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $emp-icon-redcheck-color-group-header;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $emp-icon-redcheck-color-group-header;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $emp-icon-redcheck-color-group-header;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $emp-icon-redcheck-color-group-header;
-            }
+                // @import "../_theme_teal.scss";
+                // color: $emp-icon-redcheck-color-group-header;
+            // }           
         }
     }
 }

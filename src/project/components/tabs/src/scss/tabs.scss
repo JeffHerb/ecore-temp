@@ -4,6 +4,7 @@
 @import "../../../../../cui/scss/_utilities/mixins";
 
 @import "../../../../scss/_settings";
+@import "../../../../scss/_themeVars";
 
 .emp-tabs {
     padding-bottom: 0;
@@ -63,47 +64,13 @@
             margin: 0;
 
             // .theme-teal & {
-                @import "../../../../scss/_theme_teal.scss";
-                background-color: $emp-group-header-bg-color;
+                // @import "../../../../scss/_theme_teal.scss";
+                // background-color: $emp-group-header-bg-color;
             // }
-
-            .theme-lilypad & {
-                @import "../../../../scss/_theme_lilypad.scss";
-                background-color: $emp-group-header-bg-color;
-            }
-
-            .theme-eggplant & {
-                @import "../../../../scss/_theme_eggplant.scss";
-                background-color: $emp-group-header-bg-color;
-            }
-
-            .theme-cobalt & {
-                @import "../../../../scss/_theme_cobalt.scss";
-                background-color: $emp-group-header-bg-color;
-            }
-
-            .theme-hazel & {
-                @import "../../../../scss/_theme_hazel.scss";
-                background-color: $emp-group-header-bg-color;
-            }
-
-            .theme-contrast & {
-                @import "../../../../scss/_theme_contrast.scss";
-                background-color: $emp-group-header-bg-color;
-            }
 
             @include pointbreak($cui-bp-large) {
                 background-color: #FFF;
                 position: relative;
-
-                // .theme-teal &,
-                .theme-lilypad &,
-                .theme-eggplant &,
-                .theme-cobalt &,
-                .theme-hazel &,
-                .theme-contrast &  {
-                    background-color: #fff !important;
-                }
             }
 
             .emp-accordion-tab {
@@ -122,64 +89,14 @@
                 }
 
                 // .theme-teal & {
-                    @import "../../../../scss/_theme_teal.scss";
+                    // @import "../../../../scss/_theme_teal.scss";
                     background-color: $emp-group-header-bg-color;
                     border-top-color: $emp-group-border-color;
 
                     &:hover {
                         background-color: darken($emp-group-header-bg-color, 25%);
                     }
-                // }
-
-                .theme-lilypad & {
-                    @import "../../../../scss/_theme_lilypad.scss";
-                    background-color: $emp-group-header-bg-color;
-                    border-top-color: $emp-group-border-color;
-
-                    &:hover {
-                        background-color: darken($emp-group-header-bg-color, 25%);
-                    }
-                }
-
-                .theme-eggplant & {
-                    @import "../../../../scss/_theme_eggplant.scss";
-                    background-color: $emp-group-header-bg-color;
-                    border-top-color: $emp-group-border-color;
-
-                    &:hover {
-                        background-color: darken($emp-group-header-bg-color, 25%);
-                    }
-                }
-
-                .theme-cobalt & {
-                    @import "../../../../scss/_theme_cobalt.scss";
-                    background-color: $emp-group-header-bg-color;
-                    border-top-color: $emp-group-border-color;
-
-                    &:hover {
-                        background-color: darken($emp-group-header-bg-color, 25%);
-                    }
-                }
-
-                .theme-hazel & {
-                    @import "../../../../scss/_theme_hazel.scss";
-                    background-color: $emp-group-header-bg-color;
-                    border-top-color: $emp-group-border-color;
-
-                    &:hover {
-                        background-color: darken($emp-group-header-bg-color, 25%);
-                    }
-                }
-
-                .theme-contrast & {
-                    @import "../../../../scss/_theme_contrast.scss";
-                    background-color: $emp-group-header-bg-color;
-                    border-top-color: $emp-group-border-color;
-
-                    &:hover {
-                        background-color: darken($emp-group-header-bg-color, 25%);
-                    }
-                }
+                // }               
             }
 
             &.emp-active-tab {
@@ -191,34 +108,9 @@
                     border-bottom: 1px solid $emp-group-border-color;
 
                     // .theme-teal & {
-                        @import "../../../../scss/_theme_teal.scss";
-                        border-bottom-color: $emp-group-border-color;
-                    // }
-
-                    .theme-lilypad & {
-                        @import "../../../../scss/_theme_lilypad.scss";
-                        border-bottom-color: $emp-group-border-color;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../../../../scss/_theme_eggplant.scss";
-                        border-bottom-color: $emp-group-border-color;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../../../../scss/_theme_cobalt.scss";
-                        border-bottom-color: $emp-group-border-color;
-                    }
-
-                    .theme-hazel & {
-                        @import "../../../../scss/_theme_hazel.scss";
-                        border-bottom-color: $emp-group-border-color;
-                    }
-
-                    .theme-contrast & {
-                        @import "../../../../scss/_theme_contrast.scss";
-                        border-bottom-color: $emp-group-border-color;
-                    }
+                        // @import "../../../../scss/_theme_teal.scss";
+                        // border-bottom-color: $emp-group-border-color;
+                    // }                   
                 }
 
             }

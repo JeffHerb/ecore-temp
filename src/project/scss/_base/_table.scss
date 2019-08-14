@@ -198,34 +198,9 @@
             color: $cui-color-dark-gray-alt;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $cui-color-dark-gray-alt;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $cui-color-dark-gray-alt;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $cui-color-dark-gray-alt;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $cui-color-dark-gray-alt;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $cui-color-dark-gray-alt;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $cui-color-dark-gray-alt;
-            }
+                // @import "../_theme_teal.scss";
+                // color: $cui-color-dark-gray-alt;
+            // }          
         }
     }
 
@@ -236,34 +211,9 @@
         border: $emp-table-cell-border;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border: $emp-table-cell-border;
+            // @import "../_theme_teal.scss";
+            // border: $emp-table-cell-border;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border: $emp-table-cell-border;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border: $emp-table-cell-border;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border: $emp-table-cell-border;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border: $emp-table-cell-border;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border: $emp-table-cell-border;
-        }
 
         &.cui-align-right {
             text-align: right;
@@ -367,46 +317,11 @@
         background-color: $emp-table-header-bgcolor;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            color: $emp-table-header-color;
-            padding: $emp-table-header-cell-padding;
-            background-color: $emp-table-header-bgcolor;
+            // @import "../_theme_teal.scss";
+            // color: $emp-table-header-color;
+            // padding: $emp-table-header-cell-padding;
+            // background-color: $emp-table-header-bgcolor;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            color: $emp-table-header-color;
-            padding: $emp-table-header-cell-padding;
-            background-color: $emp-table-header-bgcolor;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            color: $emp-table-header-color;
-            padding: $emp-table-header-cell-padding;
-            background-color: $emp-table-header-bgcolor;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            color: $emp-table-header-color;
-            padding: $emp-table-header-cell-padding;
-            background-color: $emp-table-header-bgcolor;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            color: $emp-table-header-color;
-            padding: $emp-table-header-cell-padding;
-            background-color: $emp-table-header-bgcolor;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            color: $emp-table-header-color;
-            padding: $emp-table-header-cell-padding;
-            background-color: $emp-table-header-bgcolor;
-        }
 
         &[data-columntype="score"] {
             min-width: 150px;
@@ -435,34 +350,9 @@
             cursor: default;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            }
+                // @import "../_theme_teal.scss";
+                // border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+            // }           
         }
 
         &.cui-align-right {
@@ -521,34 +411,9 @@
         }
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
+            // @import "../_theme_teal.scss";
             border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        }
+        // }      
 
     }
 
@@ -571,102 +436,27 @@
                 background: $emp-table-highlight !important;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    background: $emp-table-highlight !important;
-                // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    background: $emp-table-highlight !important;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    background: $emp-table-highlight !important;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    background: $emp-table-highlight !important;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    background: $emp-table-highlight !important;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    background: $emp-table-highlight !important;
-                }
+                    // @import "../_theme_teal.scss";
+                    // background: $emp-table-highlight !important;
+                // }               
 
                 &:hover,
                 &:hover th {
                     background: $emp-table-highlight-hover !important;
 
                     // .theme-teal & {
-                        @import "../_theme_teal.scss";
-                        background: $emp-table-highlight-hover !important;
-                    // }
-
-                    .theme-lilypad & {
-                        @import "../_theme_lilypad.scss";
-                        background: $emp-table-highlight-hover !important;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../_theme_eggplant.scss";
-                        background: $emp-table-highlight-hover !important;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../_theme_cobalt.scss";
-                        background: $emp-table-highlight-hover !important;
-                    }
-
-                    .theme-hazel & {
-                        @import "../_theme_hazel.scss";
-                        background: $emp-table-highlight-hover !important;
-                    }
-
-                    .theme-contrast & {
-                        @import "../_theme_contrast.scss";
-                        background: $emp-table-highlight-hover !important;
-                    }
+                        // @import "../_theme_teal.scss";
+                        // background: $emp-table-highlight-hover !important;
+                    // }                  
                 }
 
                 th {
                     background: $emp-table-highlight !important;
 
                     // .theme-teal & {
-                        @import "../_theme_teal.scss";
-                        background: $emp-table-highlight !important;
-                    // }
-
-                    .theme-lilypad & {
-                        @import "../_theme_lilypad.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../_theme_eggplant.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../_theme_cobalt.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-hazel & {
-                        @import "../_theme_hazel.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-contrast & {
-                        @import "../_theme_contrast.scss";
-                        background: $emp-table-highlight !important;
-                    }
+                        // @import "../_theme_teal.scss";
+                        // background: $emp-table-highlight !important;
+                    // }                   
                 }
             }
 
@@ -784,40 +574,10 @@
                 border-top: 3px solid $emp-table-cell-border-color;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    border: 1px solid $emp-table-cell-border-color;
-                    border-top: 3px solid $emp-table-cell-border-color;
-                // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    border: 1px solid $emp-table-cell-border-color;
-                    border-top: 3px solid $emp-table-cell-border-color;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    border: 1px solid $emp-table-cell-border-color;
-                    border-top: 3px solid $emp-table-cell-border-color;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    border: 1px solid $emp-table-cell-border-color;
-                    border-top: 3px solid $emp-table-cell-border-color;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    border: 1px solid $emp-table-cell-border-color;
-                    border-top: 3px solid $emp-table-cell-border-color;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    border: 1px solid $emp-table-cell-border-color;
-                    border-top: 3px solid $emp-table-cell-border-color;
-                }
+                    // @import "../_theme_teal.scss";
+                    // border: 1px solid $emp-table-cell-border-color;
+                    // border-top: 3px solid $emp-table-cell-border-color;
+                // }               
             }
         }
     }
@@ -838,102 +598,27 @@
             color: $cui-color-dark-gray;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $cui-color-dark-gray;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $cui-color-dark-gray;
-            }
+                // @import "../_theme_teal.scss";
+                // color: $cui-color-dark-gray;
+            // }           
         }
 
         [class*="emp-table-paging-prev"]:before {
             @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
+                // @import "../_theme_teal.scss";
+                // @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
+            // }           
         }
 
         [class*="emp-table-paging-next"]:before {
             @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            }
+                // @import "../_theme_teal.scss";
+                // @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
+            // }           
         }
     }
 
@@ -973,68 +658,18 @@ table:not([class*="cui-no-stripes"]) tbody tr:not(.cui-hidden):not(.cui-ui-only)
     background-color: $cui-table-row-bg-alt-color;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
+        // @import "../_theme_teal.scss";
+        // background-color: $cui-table-row-bg-alt-color;
+    // }   
 }
 
 table.cui-no-stripes tr.manual-strip {
     background-color: $cui-table-row-bg-alt-color;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $cui-table-row-bg-alt-color;
-    } 
+        // @import "../_theme_teal.scss";
+        // background-color: $cui-table-row-bg-alt-color;
+    // }   
 }
 
 tbody tr:hover,
@@ -1042,34 +677,9 @@ table tbody tr:nth-child(even):hover {
     background-color: $cui-table-row-bg-hover-color;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $cui-table-row-bg-hover-color;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $cui-table-row-bg-hover-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $cui-table-row-bg-hover-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $cui-table-row-bg-hover-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $cui-table-row-bg-hover-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $cui-table-row-bg-hover-color;
-    }
+        // @import "../_theme_teal.scss";
+        // background-color: $cui-table-row-bg-hover-color;
+    // }   
 }
 
 // Selection Popups

@@ -3,16 +3,15 @@
 // * @see        https://github.com/ny/frg-coreui
 //   ========================================================
 
-@import "_settings";
-
 // * @section    Colors
 // * --------------------------------------------------------
-$emp-themecolor-1:  #025aa5; // Site logo, accented text, primary buttons
-$emp-themecolor-2:  #0275d8; // Main menu
-$emp-themecolor-3:  #5bc0de; //
-$emp-themecolor-4:  #C5E9F3; // Group headers, table headers, TP header background; Same as `lighten($emp-themecolor-3, 25%)`
-$emp-themecolor-5:  #DDF2F8; // Light bg
-$emp-themecolor-6:  #f7f7f9; // Very light bg; Joint TP header background
+
+// Colors from the graphics team's mockup
+// Numbers go in order from darkest (1) to lightest. The line comments do not include all instances where the color is used, just enough to give you an idea.
+$emp-themecolor-1:  #007681; // Site logo, accented text, primary buttons
+$emp-themecolor-2:  #7FA9AE; // Main menu
+$emp-themecolor-3:  #B6CFD0; // Sub-group headers, maybe not being used anymore?
+$emp-themecolor-4:  #DAEBEC; // TP header background, group headers
 
 $emp-grey-1:  #101820; // Group toggle icon
 $emp-grey-2:  #1C1C1C; // Text
@@ -34,11 +33,14 @@ $emp-grey-15: rgb(204, 204, 204); // Search box border
 $emp-grey-16: rgb(238, 238, 238); // Search box background
 $emp-grey-17: rgb(221, 221, 221); // Table header background
 
-$emp-red-1:   rgb(204,  0,  0); // Required asterisk, icons
+$emp-red-1:   #ee3300; // Required asterisk, icons
 $emp-red-2:   rgb(163,  46,  42); // Notifiers, indicators, notifications badge
 
 $emp-grey-med-dark: #707070; // From graphics mockup
 $emp-grey-dark:     #363636; // From graphics mockup
+
+// Cluster official branding
+$frg-yellow:      #ffd100;
 
 
 // * @section    General settings
@@ -53,6 +55,7 @@ $cui-link-color-hover:  $emp-themecolor-2;
 $cui-button-bg-color:     white;
 $cui-button-border-color: $emp-grey-7;
 $cui-color-error-text:    $emp-red-2;
+// $cui-color-warning-text:  $frg-yellow;
 
 
 // * @section    Empire header
@@ -73,7 +76,7 @@ $emp-menu-border: none;
 
 // * @section    Taxpayer header
 // * --------------------------------------------------------
-$emp-tp-header-bg-color: $emp-themecolor-5;
+$emp-tp-header-bg-color: $emp-themecolor-4;
 $emp-workflow-bg-color:  $emp-tp-header-bg-color;
 $emp-tp-header-margin:   6px $emp-margin; // Not used directly, but sets the value of another variable below
 
@@ -84,7 +87,7 @@ $emp-tp-header-separator-border-top-small:  1px solid lighten(#a5c9ff, 4%);
 $emp-tp-info-main-border-top-color: $emp-grey-1;
 $emp-tp-info-main-border-top:    $emp-tp-info-width $emp-tp-info-style $emp-tp-info-main-border-top-color;
 
-$emp-tp-info-joint-bg-color:     $emp-themecolor-6;
+$emp-tp-info-joint-bg-color:     $emp-grey-13;
 $emp-tp-info-joint-border-color: $emp-grey-2;
 $emp-tp-info-joint-border-bottom-color: $emp-grey-1;
 $emp-tp-info-joint-border:       $emp-tp-info-width $emp-tp-info-style $emp-tp-info-joint-border-color;
@@ -95,7 +98,6 @@ $emp-tp-info-joint-border-bottom:       $emp-tp-info-width $emp-tp-info-style $e
 // * --------------------------------------------------------
 $emp-tabset-color:             white;
 $emp-tabset-color-selected:    darken($emp-tabset-color, 15%);
-$emp-tabset-border-color:      transparent;
 $emp-tabset-bg-color:          $emp-grey-med-dark;
 $emp-tabset-bg-color-hover:    lighten($emp-tabset-bg-color, 28%);
 $emp-tabset-border-color:      $emp-tabset-bg-color;
@@ -110,8 +112,8 @@ $emp-tabset-item-border-selected:   1px solid $emp-tabset-item-border-color-sele
 
 // * @section    Search box
 // * --------------------------------------------------------
-$emp-search-box-bg-color:          $emp-themecolor-6; // Inner area
-$emp-search-box-bg-color-accent:   $emp-themecolor-4; // Border
+$emp-search-box-bg-color:          $emp-grey-16;
+$emp-search-box-bg-color-accent:   $emp-grey-15;
 
 $emp-search-box-button-area-bg-color:   $emp-search-box-bg-color-accent;
 $emp-search-box-button-retrieve-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.2);
@@ -149,7 +151,7 @@ $emp-indicator-border:         1px solid rgb(84, 6, 8); //TODO: move this color 
 
 // * @section    Fields
 // * --------------------------------------------------------
-$cui-input-border-color:       $emp-themecolor-1;
+$cui-input-border-color:       $emp-grey-8;
 
 $cui-button-primary-bg-color:           $emp-themecolor-1;
 $cui-button-primary-bg-color-hover:     $emp-themecolor-2;
@@ -164,13 +166,17 @@ $emp-table-has-popover-bg-color:     $emp-data-has-title-underline-color;
 $emp-table-has-popover-border-color: lighten($cui-text-color, 30%);
 
 
+// * @section    Headers
+// * --------------------------------------------------------
+$emp-group-header-color:         $cui-text-color;
+$emp-group-header-bg-color:      $emp-themecolor-4;
+$emp-subgroup-header-color:      $cui-text-color;
+
+
 // * @section    Groups
 // * --------------------------------------------------------
-$emp-group-border-color:          $emp-themecolor-3;
+$emp-group-border-color:          $emp-grey-6;
 $emp-group-border:                $emp-group-border-color $emp-group-border-width $emp-group-border-style;
-
-$emp-group-header-color:          $cui-text-color;
-$emp-group-header-bg-color:       $emp-themecolor-4;
 
 $emp-group-header-border-color:   $emp-group-border-color;
 $emp-group-header-border-width:   $emp-group-border-width;
@@ -181,23 +187,19 @@ $emp-group-header-border-bottom:  $emp-group-header-border-color $emp-group-head
 $emp-group-header-bg-color-collapsed:     $cui-color-white;
 $emp-group-header-border-color-collapsed: darken($emp-group-header-bg-color-collapsed, 18);
 
-$emp-subgroup-header-color:      $emp-group-header-color;
-
 
 // * @section    Tables
 // * --------------------------------------------------------
 $emp-table-header-button-margin: 0 0 0 0.5em;
 
 
-$emp-table-header-bgcolor:     $emp-themecolor-4;
+$emp-table-header-bgcolor:     $emp-grey-17;
 $emp-table-header-color:       $emp-label-color;
-$emp-table-cell-border-color:  darken($emp-themecolor-1, 10%);
+$emp-table-cell-border-color:  $emp-grey-5;
 $emp-table-cell-border:        $emp-table-cell-border-width $emp-table-cell-border-style $emp-table-cell-border-color;
 
-$cui-table-cell-border-color: $emp-table-cell-border-color;
-
-$cui-table-row-bg-alt-color:   lighten($emp-themecolor-4, 10%);
-$cui-table-row-bg-hover-color: $emp-themecolor-5;
+$cui-table-row-bg-alt-color:   $emp-grey-12;
+$cui-table-row-bg-hover-color: $emp-themecolor-4;
 
 $emp-table-highlight: rgba(255, 235, 59, 0.5);
 $emp-table-highlight-hover: darken($emp-table-highlight, 5%);

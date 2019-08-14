@@ -4,6 +4,7 @@
 
 // Project settings
 @import "../../../../../../scss/_settings";
+@import "../../../../../../scss/_themeVars";
 
 // Implementer settings
 //@import "../../_settings";
@@ -12,9 +13,4 @@
 @import "_base/_sort";
 
 // Themes
-@import "_themes/_theme_teal";
-@import "_themes/_theme_lilypad";
-@import "_themes/_theme_eggplant";
-@import "_themes/_theme_cobalt";
-@import "_themes/_theme_hazel";
-@import "_themes/_theme_contrast";
+// @import "_themes/_theme_teal";

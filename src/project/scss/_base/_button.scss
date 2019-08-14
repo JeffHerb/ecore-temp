@@ -22,122 +22,28 @@ button {
         background-color: $cui-button-bg-color;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-color: $cui-button-border-color;
-            background-color: $cui-button-bg-color;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-color: $cui-button-border-color;
-            background-color: $cui-button-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-color: $cui-button-border-color;
-            background-color: $cui-button-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-color: $cui-button-border-color;
-            background-color: $cui-button-bg-color;
-        }
-         .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-color: $cui-button-border-color;
-            background-color: $cui-button-bg-color;
-        }
-         .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-color: $cui-button-border-color;
-            background-color: $cui-button-bg-color;
-        }
+            // @import "../_theme_teal.scss";
+            // border-color: $cui-button-border-color;
+            // background-color: $cui-button-bg-color;
+        // }    
     }
 }
 
 .cui-button-primary {
     // .theme-teal & {
-        @import "../_theme_teal.scss";
+        // @import "../_theme_teal.scss";
         color: $cui-button-primary-color;
         border: $cui-button-primary-border;
         background-color: $cui-button-primary-bg-color;
         text-shadow: $cui-button-primary-text-shadow;
     // }
 
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        color: $cui-button-primary-color;
-        border: $cui-button-primary-border;
-        background-color: $cui-button-primary-bg-color;
-        text-shadow: $cui-button-primary-text-shadow;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        color: $cui-button-primary-color;
-        border: $cui-button-primary-border;
-        background-color: $cui-button-primary-bg-color;
-        text-shadow: $cui-button-primary-text-shadow;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        color: $cui-button-primary-color;
-        border: $cui-button-primary-border;
-        background-color: $cui-button-primary-bg-color;
-        text-shadow: $cui-button-primary-text-shadow;
-    }
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        color: $cui-button-primary-color;
-        border: $cui-button-primary-border;
-        background-color: $cui-button-primary-bg-color;
-        text-shadow: $cui-button-primary-text-shadow;
-    }
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        color: $cui-button-primary-color;
-        border: $cui-button-primary-border;
-        background-color: $cui-button-primary-bg-color;
-        text-shadow: $cui-button-primary-text-shadow;
-    }
-
     &:hover {
         // .theme-teal & {
-            @import "../_theme_teal.scss";
+            // @import "../_theme_teal.scss";
             border-color: $cui-button-primary-border-hover-color;
             background-color: $cui-button-primary-bg-color-hover;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-color: $cui-button-primary-border-hover-color;
-            background-color: $cui-button-primary-bg-color-hover;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-color: $cui-button-primary-border-hover-color;
-            background-color: $cui-button-primary-bg-color-hover;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-color: $cui-button-primary-border-hover-color;
-            background-color: $cui-button-primary-bg-color-hover;
-        }
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-color: $cui-button-primary-border-hover-color;
-            background-color: $cui-button-primary-bg-color-hover;
-        }
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-color: $cui-button-primary-border-hover-color;
-            background-color: $cui-button-primary-bg-color-hover;
-        }
+        // }      
     }
 
     // Override to disable primary button styles in tables.
