@@ -46,7 +46,7 @@ _priv.generateTasks = function _generatee_tasks (task, type, componentName, file
 
                     if (type === 'scripts') {
 
-                        if (files[0].fullpath.indexOf('pageScript') !== -1) {
+                        if ((files[0].fullpath.indexOf('pageScript') !== -1) || (files[0].fullpath.indexOf('appScript') !== -1)) {
 
                             registerPaths[componentName] = fs.pathJoin('js', 'scripts', files[0].name.replace('.js', ''));
                         }
@@ -80,7 +80,7 @@ _priv.generateTasks = function _generatee_tasks (task, type, componentName, file
                             if (count === 1) {
                                 if (type === 'scripts') {
 
-                                    if (file.fullpath.indexOf('pageScript') !== -1) {
+                                    if ((file.fullpath.indexOf('pageScript') !== -1) || (file.fullpath.indexOf('appScript') !== -1)) {
 
                                         registerPaths[componentName] = fs.pathJoin('js', 'scripts', file.name.replace('.js', ''));
 
@@ -98,7 +98,7 @@ _priv.generateTasks = function _generatee_tasks (task, type, componentName, file
                                 if (type === 'scripts') {
                                     if (file.name.replace('.', '') === componentName) {
 
-                                        if (file.fullpath.indexOf('pageScript') !== -1) {
+                                        if ((file.fullpath.indexOf('pageScript') !== -1) || (file.fullpath.indexOf('appScript') !== -1)) {
 
 
                                             registerPaths[componentName] = fs.pathJoin('js', 'scripts', file.name.replace('.js', ''));
@@ -111,7 +111,7 @@ _priv.generateTasks = function _generatee_tasks (task, type, componentName, file
                                     }
                                     else {
 
-                                        if (file.fullpath.indexOf('pageScript') !== -1) {
+                                        if ((file.fullpath.indexOf('pageScript') !== -1) || (file.fullpath.indexOf('appScript') !== -1)) {
 
                                             registerPaths[componentName + '-' + file.name.replace('.', '')] = fs.pathJoin('js', 'components', file.name.replace('.js', ''));
 
