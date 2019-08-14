@@ -104,6 +104,23 @@ var process = function _process () {
                     // Loop through the returned results looking for key actions
                     var resultKeys = Object.keys(resultObject);
 
+                    if (componentName === "appScripts") {
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                        console.log("=======================================");
+                    }
+
                     // Sketchy fix for now as we have more important fixes to too.... JH 1/4/2017
                     if ((componentName === "pageScripts") || (componentName === "appScripts")) {
 

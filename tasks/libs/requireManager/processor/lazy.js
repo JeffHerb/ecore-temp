@@ -76,6 +76,8 @@ _priv.generateTasks = function _generatee_tasks (task, type, componentName, file
 
                             tempObj.files.src.push(file.fullpath);
 
+                            console.log(file.fullpath);
+
                             // Create a registerName (lazy path)
                             if (count === 1) {
                                 if (type === 'scripts') {
@@ -397,7 +399,7 @@ var lazy = function _lazy () {
                                 // Scripts and styles are easy, just need to make a copy task.
                                 case 'scripts':
 
-                                    if (component.settings.pageScripts) {
+                                    if ((component.settings.pageScripts) || (component.settings.appScripts)) {
 
                                         var dest = fs.pathJoin('dist', 'js', 'scripts');
                                     }

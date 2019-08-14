@@ -1,0 +1,8 @@
+{
+    "name": "appScript",
+    "lazy": true,
+    "registerFiles": {
+        "TESTAPP": "TESTAPP"
+    },
+    "appScripts": true
+}
