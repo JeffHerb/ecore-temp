@@ -4,6 +4,7 @@
 
 // Project settings
 @import "../../../../scss/_settings";
+@import "../../../../scss/_themeVars";
 @import "../../../../scss/_utilities/_mixins";
 
 // Implementer settings
@@ -146,7 +147,8 @@
             display: block;
             content: "";
             position: absolute;
-            @include triangle("left", 5px);
+            // @include triangle("left", 5px);
+            @include triangle("left", 5px, $emp-grey-3);
             top: 4px;
             left: 8px
         }
@@ -161,7 +163,8 @@
             display: block;
             content: "";
             position: absolute;
-            @include triangle("left", 5px);
+            // @include triangle("left", 5px);
+            @include triangle("left", 5px, $emp-grey-3);
             top: 4px;
             left: 11px;
         }
@@ -172,7 +175,8 @@
             display: block;
             content: "";
             position: absolute;
-            @include triangle("right", 5px);
+            // @include triangle("right", 5px);
+            @include triangle("right", 5px, $emp-grey-3);
             top: 4px;
             right: 11px;
         }
@@ -184,7 +188,8 @@
             display: block;
             content: "";
             position: absolute;
-            @include triangle("right", 5px);
+            // @include triangle("right", 5px);
+            @include triangle("right", 5px, $emp-grey-3);
             top: 4px;
             right: 8px
         }
@@ -199,35 +204,10 @@
     .navPrevMon {
         &:before,
         &:after {
-            .theme-cobalt & {
-                @import "../../../../scss/_theme_cobalt";
-                @include triangle("left", 5px, $emp-grey-3);
-            }
-
-            .theme-eggplant & {
-                @import "../../../../scss/_theme_eggplant";
-                @include triangle("left", 5px, $emp-grey-3);
-            }
-
-            .theme-lilypad & {
-                @import "../../../../scss/_theme_lilypad";
-                @include triangle("left", 5px, $emp-grey-3);
-            }
-
             // .theme-teal & {
-                @import "../../../../scss/_theme_teal";
-                @include triangle("left", 5px, $emp-grey-3);
+                // @import "../../../../scss/_theme_teal";
+                // @include triangle("left", 5px, $emp-grey-3);
             // }
-
-            .theme-hazel & {
-                @import "../../../../scss/_theme_hazel";
-                @include triangle("left", 5px, $emp-grey-3);
-            }
-
-            .theme-contrast & {
-                @import "../../../../scss/_theme_hazel";
-                @include triangle("left", 5px, $emp-grey-3);
-            }
         }
     }
 
@@ -235,35 +215,10 @@
     .fastNavNextQtr {
         &:before,
         &:after {
-            .theme-cobalt & {
-                @import "../../../../scss/_theme_cobalt";
-                @include triangle("right", 5px, $emp-grey-3);
-            }
-
-            .theme-eggplant & {
-                @import "../../../../scss/_theme_eggplant";
-                @include triangle("right", 5px, $emp-grey-3);
-            }
-
-            .theme-lilypad & {
-                @import "../../../../scss/_theme_lilypad";
-                @include triangle("right", 5px, $emp-grey-3);
-            }
-
             // .theme-teal & {
-                @import "../../../../scss/_theme_teal";
-                @include triangle("right", 5px, $emp-grey-3);
+                // @import "../../../../scss/_theme_teal";
+                // @include triangle("right", 5px, $emp-grey-3);
             // }
-
-            .theme-hazel & {
-                @import "../../../../scss/_theme_hazel";
-                @include triangle("right", 5px, $emp-grey-3);
-            }
-
-            .theme-contrast & {
-                @import "../../../../scss/_theme_hazel";
-                @include triangle("right", 5px, $emp-grey-3);
-            }
         }
     }
 
@@ -432,35 +387,10 @@
         background: transparent;
         color: $cui-link-color;
 
-        .theme-cobalt & {
-            @import "../../../../scss/_theme_cobalt";
-            color: $cui-link-color;
-        }
-
-        .theme-eggplant & {
-            @import "../../../../scss/_theme_eggplant";
-            color: $cui-link-color;
-        }
-
-        .theme-lilypad & {
-            @import "../../../../scss/_theme_lilypad";
-            color: $cui-link-color;
-        }
-
         // .theme-teal & {
-            @import "../../../../scss/_theme_teal";
-            color: $cui-link-color;
+            // @import "../../../../scss/_theme_teal";
+            // color: $cui-link-color;
         // }
-
-        .theme-hazel & {
-            @import "../../../../scss/_theme_hazel";
-            color: $cui-link-color;
-        }
-
-        .theme-contrast & {
-            @import "../../../../scss/_theme_hazel";
-            color: $cui-link-color;
-        }
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.4);

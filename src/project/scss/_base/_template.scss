@@ -115,34 +115,9 @@ body {
             color: $cui-color-dark-gray;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $cui-color-dark-gray;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $cui-color-dark-gray;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $cui-color-dark-gray;
-            }
+                // @import "../_theme_teal.scss";
+                // color: $cui-color-dark-gray;
+            // }           
         }
     }
 }
@@ -271,47 +246,12 @@ body {
         position: relative;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            color: $emp-indicator-color;
-            background-color: $emp-indicator-bg-color;
-            border: $emp-indicator-border;
+            // @import "../_theme_teal.scss";
+            // color: $emp-indicator-color;
+            // background-color: $emp-indicator-bg-color;
+            // border: $emp-indicator-border;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            color: $emp-indicator-color;
-            background-color: $emp-indicator-bg-color;
-            border: $emp-indicator-border;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            color: $emp-indicator-color;
-            background-color: $emp-indicator-bg-color;
-            border: $emp-indicator-border;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            color: $emp-indicator-color;
-            background-color: $emp-indicator-bg-color;
-            border: $emp-indicator-border;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            color: $emp-indicator-color;
-            background-color: $emp-indicator-bg-color;
-            border: $emp-indicator-border;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            color: $emp-indicator-color;
-            background-color: $emp-indicator-bg-color;
-            border: $emp-indicator-border;
-        }
-
+       
         @include pointbreak($cui-bp-large) {
             margin: $emp-indicator-li-margin;
         }
@@ -385,68 +325,18 @@ body {
             text-decoration: none;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $emp-indicator-link-color;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $emp-indicator-link-color;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $emp-indicator-link-color;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $emp-indicator-link-color;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $emp-indicator-link-color;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $emp-indicator-link-color;
-            }
+                // @import "../_theme_teal.scss";
+                // color: $emp-indicator-link-color;
+            // }      
         }
 
         a:hover {
             background-color: $emp-indicator-bg-color-hover;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                background-color: $emp-indicator-bg-color-hover;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                background-color: $emp-indicator-bg-color-hover;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                background-color: $emp-indicator-bg-color-hover;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                background-color: $emp-indicator-bg-color-hover;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                background-color: $emp-indicator-bg-color-hover;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                background-color: $emp-indicator-bg-color-hover;
-            }
+                // @import "../_theme_teal.scss";
+                // background-color: $emp-indicator-bg-color-hover;
+            // }     
         }
 
     }

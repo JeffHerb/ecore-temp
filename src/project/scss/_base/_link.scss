@@ -32,34 +32,9 @@ a:link {
     text-decoration: underline;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        color: $cui-link-color;
+        // @import "../_theme_teal.scss";
+        // color: $cui-link-color;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        color: $cui-link-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        color: $cui-link-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        color: $cui-link-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        color: $cui-link-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        color: $cui-link-color;
-    }
 }
 
 a:hover,
@@ -67,34 +42,9 @@ a:focus {
     color: $cui-link-color-hover;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        color: $cui-link-color-hover;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        color: $cui-link-color-hover;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        color: $cui-link-color-hover;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        color: $cui-link-color-hover;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        color: $cui-link-color-hover;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        color: $cui-link-color-hover;
-    }
+        // @import "../_theme_teal.scss";
+        // color: $cui-link-color-hover;
+    // }  
 }
 
 a:visited,
@@ -102,34 +52,10 @@ a:visited:hover {
     color: $cui-link-color-visited;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        color: $cui-link-color-visited;
+        // @import "../_theme_teal.scss";
+        // color: $cui-link-color-visited;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        color: $cui-link-color-visited;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        color: $cui-link-color-visited;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        color: $cui-link-color-visited;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        color: $cui-link-color-visited;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        color: $cui-link-color-visited;
-    }
+ 
 }
 
 a[role="button"] {

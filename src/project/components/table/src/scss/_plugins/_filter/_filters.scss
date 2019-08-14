@@ -7,6 +7,7 @@
 
 // Project settings
 @import "../../../../../../scss/_settings";
+@import "../../../../../../scss/_themeVars";
 @import "../../../../../../scss/_utilities/_mixins";
 
 // Component settings
@@ -291,37 +292,10 @@ button.emp-tablefilter-input {
     &.emp-selected {
         background-color: $emp-group-header-bg-color;
 
-        .theme-teal & {
-            @import "../../../../../../scss/_theme_teal.scss";
-            background-color: $emp-group-header-bg-color;
-        }
-
-        .theme-lilypad & {
-            @import "../../../../../../scss/_theme_lilypad.scss";
-            background-color: $emp-group-header-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../../../../../../scss/_theme_eggplant.scss";
-            background-color: $emp-group-header-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../../../../../../scss/_theme_cobalt.scss";
-            background-color: $emp-group-header-bg-color;
-        }
-
-
-        .theme-hazel & {
-            @import "../../../../../../scss/_theme_hazel.scss";
-            background-color: $emp-group-header-bg-color;
-        }
-
-
-        .theme-contrast & {
-            @import "../../../../../../scss/_theme_contrast.scss";
-            background-color: $emp-group-header-bg-color;
-        }
+        // .theme-teal & {
+            // @import "../../../../../../scss/_theme_teal.scss";
+            // background-color: $emp-group-header-bg-color;
+        // }
     }
 
     .emp-date {

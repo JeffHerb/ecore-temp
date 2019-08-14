@@ -58,35 +58,9 @@ section {
                 color: $emp-label-color;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    color: $emp-label-color;
-                // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    color: $emp-label-color;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    color: $emp-label-color;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    color: $emp-label-color;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    color: $emp-label-color;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    color: $emp-label-color;
-                }
-
+                    // @import "../_theme_teal.scss";
+                    // color: $emp-label-color;
+                // }              
             }
         }
     }
@@ -96,35 +70,9 @@ section {
         color: $emp-label-color;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            color: $emp-label-color;
+            // @import "../_theme_teal.scss";
+            // color: $emp-label-color;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            color: $emp-label-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            color: $emp-label-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            color: $emp-label-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            color: $emp-label-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            color: $emp-label-color;
-        }
-
     }
 
     .cui-data {
@@ -243,34 +191,9 @@ section {
         margin-top: $cui-font-size / 3;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            margin-top: $cui-font-size / 3;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            margin-top: $cui-font-size / 3;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            margin-top: $cui-font-size / 3;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            margin-top: $cui-font-size / 3;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            margin-top: $cui-font-size / 3;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            margin-top: $cui-font-size / 3;
-        }
+            // @import "../_theme_teal.scss";
+            // margin-top: $cui-font-size / 3;
+        // }       
     }
 
     &.cui-align-right,
@@ -563,34 +486,9 @@ fieldset {
     cursor: default;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    }
+        // @import "../_theme_teal.scss";
+        // border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
+    // }  
 }
 
 p.emp-data[title] {

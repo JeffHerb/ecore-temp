@@ -6,6 +6,18 @@
 // * @see        https://github.com/ny/frg-empire
 //   ========================================================
 
+
+.external-app{
+	.nys-logo {
+        background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
+
+        &:hover {
+            background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
+        }
+    }
+}
+
+
 #body-wrapper,
 main {
     @media print {
@@ -21,34 +33,9 @@ main {
     border: $emp-header-border;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        border: $emp-header-border;
+        // @import "../_theme_teal.scss";
+        // border: $emp-header-border;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        border: $emp-header-border;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        border: $emp-header-border;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        border: $emp-header-border;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        border: $emp-header-border;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        border: $emp-header-border;
-    }
 
     .emp-header-row-first,
     .emp-header-row-second {
@@ -72,68 +59,19 @@ main {
         }
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            background-color: $emp-menu-bg-color;
+            // @import "../_theme_teal.scss";
+            // background-color: $emp-menu-bg-color;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            background-color: $emp-menu-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            background-color: $emp-menu-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            background-color: $emp-menu-bg-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            background-color: $emp-menu-bg-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            background-color: $emp-menu-bg-color;
-        }
     }
 
     .emp-header-row-second {
         background-color: $emp-header-bg-color;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            background-color: $emp-header-bg-color;
+            // @import "../_theme_teal.scss";
+            // background-color: $emp-header-bg-color;
         // }
 
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            background-color: $emp-header-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            background-color: $emp-header-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            background-color: $emp-header-bg-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            background-color: $emp-header-bg-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            background-color: $emp-header-bg-color;
-        }
     }
 
     // First row contents
@@ -157,40 +95,10 @@ main {
         }
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            color: $emp-header-logo-color;
-            background-color: $emp-header-logo-bg-color;
+            // @import "../_theme_teal.scss";
+            // color: $emp-header-logo-color;
+            // background-color: $emp-header-logo-bg-color;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            color: $emp-header-logo-color;
-            background-color: $emp-header-logo-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            color: $emp-header-logo-color;
-            background-color: $emp-header-logo-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            color: $emp-header-logo-color;
-            background-color: $emp-header-logo-bg-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            color: $emp-header-logo-color;
-            background-color: $emp-header-logo-bg-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            color: $emp-header-logo-color;
-            background-color: $emp-header-logo-bg-color;
-        }
 
         // Render text case as `eMPIRE`
         text-transform: uppercase;
@@ -214,46 +122,11 @@ main {
         }
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border: $emp-menu-border;
-            background-color: $emp-menu-bg-color;
-            color: $cui-color-white;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border: $emp-menu-border;
-            background-color: $emp-menu-bg-color;
-            color: $cui-color-white;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border: $emp-menu-border;
-            background-color: $emp-menu-bg-color;
-            color: $cui-color-white;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border: $emp-menu-border;
-            background-color: $emp-menu-bg-color;
-            color: $cui-color-white;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border: $emp-menu-border;
-            background-color: $emp-menu-bg-color;
-            color: $cui-color-white;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border: $emp-menu-border;
-            background-color: $emp-menu-bg-color;
-            color: $cui-color-white;
-        }
+            // @import "../_theme_teal.scss";
+            // border: $emp-menu-border;
+            // background-color: $emp-menu-bg-color;
+            // color: $cui-color-white;
+        // }        
     }
 
     #emp-header-favorites {
@@ -266,16 +139,7 @@ main {
 
             // Same background color as the logo, otherwise it looks like the star goes with the main menu
             // Must be transparent so that it's not noticeable when the star spins (when clicked)
-            background-color: transparent;
-
-            .theme-teal &,
-            .theme-lilypad &,
-            .theme-eggplant &,
-            .theme-cobalt &,
-            .theme-hazel &,
-            .theme-contrast & {
-                background-color: transparent;
-            }
+            background-color: transparent;           
         }
     }
 
@@ -301,16 +165,7 @@ main {
 
             // Same background color as the logo, otherwise it looks like the star goes with the main menu
             // Must be transparent so that it's not noticeable when the star spins (when clicked)
-            background-color: transparent;
-
-            .theme-teal &,
-            .theme-lilypad &,
-            .theme-eggplant &,
-            .theme-cobalt &,
-            .theme-hazel &,
-            .theme-contrast & {
-                background-color: transparent;
-            }
+            background-color: transparent;            
         }
     }
 
@@ -336,34 +191,9 @@ main {
         }
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            min-height: $cui-touch-min-height;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            min-height: $cui-touch-min-height;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            min-height: $cui-touch-min-height;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            min-height: $cui-touch-min-height;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            min-height: $cui-touch-min-height;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            min-height: $cui-touch-min-height;
-        }
+            // @import "../_theme_teal.scss";
+            // min-height: $cui-touch-min-height;
+        // }        
 
         // Tabset title
         h1 {
@@ -435,67 +265,17 @@ main {
                 color: $emp-header-links-color;
 
                 // .theme-teal & {
-                    @import "../_theme_teal";
-                    color: $emp-header-links-color;
+                    // @import "../_theme_teal";
+                    // color: $emp-header-links-color;
                 // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad";
-                    color: $emp-header-links-color;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant";
-                    color: $emp-header-links-color;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt";
-                    color: $emp-header-links-color;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel";
-                    color: $emp-header-links-color;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast";
-                    color: $emp-header-links-color;
-                }
-
+               
                 &:hover {
                     color: $emp-header-links-color-hover;
 
                     // .theme-teal & {
-                        @import "../_theme_teal";
-                        color: $emp-header-links-color-hover;
-                    // }
-
-                    .theme-lilypad & {
-                        @import "../_theme_lilypad";
-                        color: $emp-header-links-color-hover;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../_theme_eggplant";
-                        color: $emp-header-links-color-hover;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../_theme_cobalt";
-                        color: $emp-header-links-color-hover;
-                    }
-
-                    .theme-hazel & {
-                        @import "../_theme_hazel";
-                        color: $emp-header-links-color-hover;
-                    }
-
-                    .theme-contrast & {
-                        @import "../_theme_contrast";
-                        color: $emp-header-links-color-hover;
-                    }
+                        // @import "../_theme_teal";
+                        // color: $emp-header-links-color-hover;
+                    // }                    
                 }
             }
         }
@@ -505,6 +285,8 @@ main {
         margin: 0;
     }
 }
+
+
 
 
 // * @section    Page title
@@ -574,40 +356,10 @@ main {
         }
 
         // .theme-teal & {
-            @import "../_theme_teal";
-            padding: $emp-tp-header-padding;
-            background-color: $emp-tp-header-bg-color;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad";
-            padding: $emp-tp-header-padding;
-            background-color: $emp-tp-header-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant";
-            padding: $emp-tp-header-padding;
-            background-color: $emp-tp-header-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt";
-            padding: $emp-tp-header-padding;
-            background-color: $emp-tp-header-bg-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel";
-            padding: $emp-tp-header-padding;
-            background-color: $emp-tp-header-bg-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast";
-            padding: $emp-tp-header-padding;
-            background-color: $emp-tp-header-bg-color;
-        }
+            // @import "../_theme_teal";
+            // padding: $emp-tp-header-padding;
+            // background-color: $emp-tp-header-bg-color;
+        // }        
 
         // Shared styles between main and joint
         .emp-tp-info-main,
@@ -625,40 +377,10 @@ main {
             }
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
+                // @import "../_theme_teal.scss";
                 padding: $emp-padding;
                 padding-top: $emp-tp-header-separator-padding-top-small;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                padding: $emp-padding;
-                padding-top: $emp-tp-header-separator-padding-top-small;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                padding: $emp-padding;
-                padding-top: $emp-tp-header-separator-padding-top-small;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                padding: $emp-padding;
-                padding-top: $emp-tp-header-separator-padding-top-small;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                padding: $emp-padding;
-                padding-top: $emp-tp-header-separator-padding-top-small;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                padding: $emp-padding;
-                padding-top: $emp-tp-header-separator-padding-top-small;
-            }
+            // }           
         }
 
         .emp-tp-info-main {
@@ -680,32 +402,9 @@ main {
                 cursor: pointer;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    color: $emp-search-box-sendid-color;
+                    // @import "../_theme_teal.scss";
+                    // color: $emp-search-box-sendid-color;
                 // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    color: $emp-search-box-sendid-color;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    color: $emp-search-box-sendid-color;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    color: $emp-search-box-sendid-color;
-                }
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    color: $emp-search-box-sendid-color;
-                }
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    color: $emp-search-box-sendid-color;
-                }
 
                 &:hover {
                     text-decoration: $emp-search-box-sendid-underline-hover;
@@ -714,13 +413,7 @@ main {
 
             @include pointbreak($cui-bp-large) {
                 border-top-width: 0;
-            }
-
-            .theme-contrast & {
-                @include pointbreak($cui-bp-large) {
-                    border-top-width: 1px;
-                }
-            }
+            }            
 
         }
 
@@ -742,40 +435,10 @@ main {
             border-bottom: $emp-tp-info-joint-border-bottom;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                background-color: $emp-tp-info-joint-bg-color;
-                border-top: $emp-tp-info-joint-border;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                background-color: $emp-tp-info-joint-bg-color;
-                border-top: $emp-tp-info-joint-border;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                background-color: $emp-tp-info-joint-bg-color;
-                border-top: $emp-tp-info-joint-border;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                background-color: $emp-tp-info-joint-bg-color;
-                border-top: $emp-tp-info-joint-border;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                background-color: $emp-tp-info-joint-bg-color;
-                border-top: $emp-tp-info-joint-border;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                background-color: $emp-tp-info-joint-bg-color;
-                border-top: $emp-tp-info-joint-border;
-            }
+                // @import "../_theme_teal.scss";
+                // background-color: $emp-tp-info-joint-bg-color;
+                // border-top: $emp-tp-info-joint-border;
+            // }           
 
             .emp-tp-indicators {
                 // Vertically align with the data side
@@ -807,40 +470,10 @@ main {
                 border-bottom: $emp-tp-info-joint-border;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    border-left: $emp-tp-info-joint-border;
-                    border-bottom: $emp-tp-info-joint-border;
+                    // @import "../_theme_teal.scss";
+                    // border-left: $emp-tp-info-joint-border;
+                    // border-bottom: $emp-tp-info-joint-border;
                 // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    border-left: $emp-tp-info-joint-border;
-                    border-bottom: $emp-tp-info-joint-border;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    border-left: $emp-tp-info-joint-border;
-                    border-bottom: $emp-tp-info-joint-border;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    border-left: $emp-tp-info-joint-border;
-                    border-bottom: $emp-tp-info-joint-border;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    border-left: $emp-tp-info-joint-border;
-                    border-bottom: $emp-tp-info-joint-border;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    border-left: $emp-tp-info-joint-border;
-                    border-bottom: $emp-tp-info-joint-border;
-                }
 
                 .cui-row {
                     padding-left: 40px;
@@ -882,35 +515,10 @@ main {
     }
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $emp-workflow-bg-color;
+        // @import "../_theme_teal.scss";
+        // background-color: $emp-workflow-bg-color;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $emp-workflow-bg-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $emp-workflow-bg-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $emp-workflow-bg-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $emp-workflow-bg-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $emp-workflow-bg-color;
-    }
-
+   
     .emp-workflow-options,
     .emp-workflow-actions {}
 
@@ -968,34 +576,9 @@ main {
             background-color: $emp-tabset-bg-color-hover;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                background-color: $emp-tabset-bg-color-hover;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                background-color: $emp-tabset-bg-color-hover;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                background-color: $emp-tabset-bg-color-hover;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                background-color: $emp-tabset-bg-color-hover;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                background-color: $emp-tabset-bg-color-hover;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                background-color: $emp-tabset-bg-color-hover;
-            }
+                // @import "../_theme_teal.scss";
+                // background-color: $emp-tabset-bg-color-hover;
+            // }           
 
             a {
                 text-decoration: none;
@@ -1017,80 +600,20 @@ main {
             width: 100%;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $emp-tabset-color;
-                padding: $emp-tabset-item-anchor-padding;
+                // @import "../_theme_teal.scss";
+                // color: $emp-tabset-color;
+                // padding: $emp-tabset-item-anchor-padding;
             // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $emp-tabset-color;
-                padding: $emp-tabset-item-anchor-padding;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $emp-tabset-color;
-                padding: $emp-tabset-item-anchor-padding;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $emp-tabset-color;
-                padding: $emp-tabset-item-anchor-padding;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $emp-tabset-color;
-                padding: $emp-tabset-item-anchor-padding;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $emp-tabset-color;
-                padding: $emp-tabset-item-anchor-padding;
-            }
 
             &.emp-selected {
                 border: $emp-tabset-item-border-selected;
                 background-color: $emp-tabset-item-bg-color-selected;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    border: $emp-tabset-item-border-selected;
-                    background-color: $emp-tabset-item-bg-color-selected;
-                // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    border: $emp-tabset-item-border-selected;
-                    background-color: $emp-tabset-item-bg-color-selected;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    border: $emp-tabset-item-border-selected;
-                    background-color: $emp-tabset-item-bg-color-selected;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    border: $emp-tabset-item-border-selected;
-                    background-color: $emp-tabset-item-bg-color-selected;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    border: $emp-tabset-item-border-selected;
-                    background-color: $emp-tabset-item-bg-color-selected;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    border: $emp-tabset-item-border-selected;
-                    background-color: $emp-tabset-item-bg-color-selected;
-                }
+                    // @import "../_theme_teal.scss";
+                    // border: $emp-tabset-item-border-selected;
+                    // background-color: $emp-tabset-item-bg-color-selected;
+                // }                
 
             }
 
@@ -1101,68 +624,18 @@ main {
                 color: $emp-tabset-color-hover;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    color: $emp-tabset-color-hover;
-                // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    color: $emp-tabset-color-hover;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    color: $emp-tabset-color-hover;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    color: $emp-tabset-color-hover;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    color: $emp-tabset-color-hover;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    color: $emp-tabset-color-hover;
-                }
+                    // @import "../_theme_teal.scss";
+                    // color: $emp-tabset-color-hover;
+                // }               
             }
         }
 
     }
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $emp-tabset-bg-color;
+        // @import "../_theme_teal.scss";
+        // background-color: $emp-tabset-bg-color;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $emp-tabset-bg-color;
-    }
 
     &.emp-collapse {
         display: none;
@@ -1191,35 +664,10 @@ main {
     padding: 0;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $emp-tabset-bg-color;
+        // @import "../_theme_teal.scss";
+        // background-color: $emp-tabset-bg-color;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $emp-tabset-bg-color;
-    }
-
+   
     &:focus {
         outline: none;
     }
@@ -1228,34 +676,9 @@ main {
         background-color: $emp-tabset-toggle-bg-color-hover;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            background-color: $emp-tabset-toggle-bg-color-hover;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            background-color: $emp-tabset-toggle-bg-color-hover;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            background-color: $emp-tabset-toggle-bg-color-hover;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            background-color: $emp-tabset-toggle-bg-color-hover;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            background-color: $emp-tabset-toggle-bg-color-hover;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            background-color: $emp-tabset-toggle-bg-color-hover;
-        }
+            // @import "../_theme_teal.scss";
+            // background-color: $emp-tabset-toggle-bg-color-hover;
+        // }        
     }
 }
 
