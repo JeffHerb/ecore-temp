@@ -62,10 +62,10 @@
             border-right: 0;
             margin: 0;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../../../../scss/_theme_teal.scss";
                 background-color: $emp-group-header-bg-color;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../../../../scss/_theme_lilypad.scss";
@@ -96,7 +96,7 @@
                 background-color: #FFF;
                 position: relative;
 
-                .theme-teal &,
+                // .theme-teal &,
                 .theme-lilypad &,
                 .theme-eggplant &,
                 .theme-cobalt &,
@@ -121,7 +121,7 @@
                     display: none;
                 }
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../../../../scss/_theme_teal.scss";
                     background-color: $emp-group-header-bg-color;
                     border-top-color: $emp-group-border-color;
@@ -129,7 +129,7 @@
                     &:hover {
                         background-color: darken($emp-group-header-bg-color, 25%);
                     }
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../../../../scss/_theme_lilypad.scss";
@@ -190,10 +190,10 @@
 
                     border-bottom: 1px solid $emp-group-border-color;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../../../../scss/_theme_teal.scss";
                         border-bottom-color: $emp-group-border-color;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../../../../scss/_theme_lilypad.scss";

@@ -57,10 +57,10 @@ section {
             .cui-legend {
                 color: $emp-label-color;
 
-                .theme-teal & {
+                // .theme-teal & {
                     @import "../_theme_teal.scss";
                     color: $emp-label-color;
-                }
+                // }
 
                 .theme-lilypad & {
                     @import "../_theme_lilypad.scss";
@@ -95,10 +95,10 @@ section {
     .cui-label label {
         color: $emp-label-color;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             color: $emp-label-color;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -242,10 +242,10 @@ section {
         line-height: normal;
         margin-top: $cui-font-size / 3;
 
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             margin-top: $cui-font-size / 3;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";
@@ -562,10 +562,10 @@ fieldset {
     text-decoration: none;
     cursor: default;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";

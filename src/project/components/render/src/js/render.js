@@ -96,7 +96,7 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'fieldEvent', 'composite
 
                         }
                         else {
-                         
+
                             if (typeof cb === "function") {
                                 cb();
                             }
@@ -141,8 +141,6 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'fieldEvent', 'composite
             cb = method;
             method = undefined;
         }
-
-        console.log("Remder data!", data)
 
         if (typeof data === "object") {
 

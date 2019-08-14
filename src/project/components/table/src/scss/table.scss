@@ -60,10 +60,10 @@
             padding-right: 0.5em;
             position: relative;
 
-            .theme-teal & {
+            // .theme-teal & {
                 @import "../../../../scss/_theme_teal.scss";
                 border-right: $emp-table-cell-border;
-            }
+            // }
 
             .theme-lilypad & {
                 @import "../../../../scss/_theme_lilypad.scss";
@@ -351,12 +351,12 @@
 
                     will-change: transform;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../../../../scss/_theme_teal.scss";
                         background: $emp-table-header-bgcolor;
-                        border-bottom: $emp-table-cell-border;
+                        border-bottom: none;
                         border-top: $emp-table-cell-border;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../../../../scss/_theme_lilypad.scss";
@@ -457,12 +457,12 @@
                         //Resolves issue of border not appearing when printing on IE
                         z-index:-1;
 
-                        .theme-teal & {
+                        // .theme-teal & {
                             @import "../../../../scss/_theme_teal.scss";
                             background: $emp-table-header-bgcolor;
                             border-top: $emp-table-cell-border;
                             border-left: $emp-table-cell-border;
-                        }
+                        // }
 
                         .theme-lilypad & {
                             @import "../../../../scss/_theme_lilypad.scss";

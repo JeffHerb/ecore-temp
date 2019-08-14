@@ -1842,10 +1842,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
     _priv.removeLoadingSplash = function _remove_loading_splash(){
     	var loadingSplash = document.querySelector('#emp-page-loading');
-        
+
     	if(loadingSplash){
-    		loadingSplash.parentNode.removeChild(loadingSplash);	
-    	}        
+    		loadingSplash.parentNode.removeChild(loadingSplash);
+    	}
     };
 
     // Event driven functions
@@ -4309,8 +4309,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                         }
 
                         if (tableRef) {
-
-                            console.log(tableRef);
 
                             var columns = tableRef.body.rows[0].columns;
 

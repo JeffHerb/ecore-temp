@@ -33,10 +33,10 @@ input.emp-date {
 input,
 textarea,
 select {
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         border-color: $cui-input-border-color;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";
@@ -64,10 +64,10 @@ select {
     }
 
     &:focus {
-        .theme-teal & {
+        // .theme-teal & {
             @import "../_theme_teal.scss";
             border-color: $cui-input-border-color-focus;
-        }
+        // }
 
         .theme-lilypad & {
             @import "../_theme_lilypad.scss";

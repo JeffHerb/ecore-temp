@@ -29,10 +29,10 @@ section,
 section.emp-tabs div.emp-tab-contents {
     @include section-row-spacing;
 
-    .theme-teal & {
+    // .theme-teal & {
         @import "../_theme_teal.scss";
         @include section-row-spacing;
-    }
+    // }
 
     .theme-lilypad & {
         @import "../_theme_lilypad.scss";

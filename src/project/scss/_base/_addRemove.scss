@@ -96,10 +96,10 @@
                 &.emp-selected-item {
                     background: $emp-table-highlight !important;
 
-                    .theme-teal & {
+                    // .theme-teal & {
                         @import "../_theme_teal.scss";
                         background: $emp-table-highlight !important;
-                    }
+                    // }
 
                     .theme-lilypad & {
                         @import "../_theme_lilypad.scss";

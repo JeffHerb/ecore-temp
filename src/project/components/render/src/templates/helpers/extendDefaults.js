@@ -273,7 +273,7 @@ Handlebars.registerHelper('extendDefaults', function (params) {
     };
 
     _extendFuncs.theme = function(theme, section, scope, state) {
-        
+
         switch (theme) {
             case 'orpts':
                 addValue('className', 'emp-orpts-subtheme');
@@ -396,7 +396,7 @@ Handlebars.registerHelper('extendDefaults', function (params) {
             addValue('className', 'emp-total');
 
         }else if(def.totalLine || def.totalLine === 'true'){
-            
+
             addValue('className', 'emp-total-line');
         }
     }
@@ -923,7 +923,7 @@ Handlebars.registerHelper('extendDefaults', function (params) {
     };
 
     _extendFuncs.expands = function _expandable_contorl(control, section, scope, state ) {
-        
+
         switch (control.type) {
 
             case "select":
@@ -971,8 +971,6 @@ Handlebars.registerHelper('extendDefaults', function (params) {
 
             case "radio":
             case "checkbox":
-
-            console.log("Found radio!");
 
                 if (control.input && control.input.expands) {
 
