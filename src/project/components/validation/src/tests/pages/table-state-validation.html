@@ -1,0 +1,349 @@
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Table State Validation Test Page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script>
+		var fwData = {
+            "screen":{
+                "type":"framework-search"
+            },
+            "page":{
+                "contents":[
+                    {
+                        "template":"pagebody",
+                        "contents":[
+                        {
+                            "contents":[
+                                {
+                                    "contents":[
+                                    {
+                                        "template":"group",
+                                        "title":"Table State Validation",
+                                        "type":"header"
+                                    },
+                                    {
+                                        "optimize":false,
+                                        "template":"table",
+                                        "selectable":true,
+                                        "selectAll": true,
+                                        "selectionType":"multiple",
+                                        "attributes":{
+                                            "id":"table-table-state"
+                                        },
+                                        "body":{
+                                            "rows":[
+                                                {
+                                                "columns":[
+                                                    {
+                                                        //"text":"Smith, Susan",
+                                                        "contents":[
+                                                            {
+                                                                "template": "link",
+                                                                "attributes": {
+                                                                    "href": "#",
+                                                                },
+                                                                "text": "Smith, John"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "text":"XXX-XX-4962",
+                                                        "contents":[
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        "text":"Spouse of property owner - not an owner",
+                                                        "contents":[
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        "text":"04/02/1950",
+                                                        "contents":[
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        "text":"John Smith (spouse)",
+                                                        "contents":[
+
+                                                        ]
+                                                    }
+                                                ],
+                                                "selection":{
+
+                                                },
+                                                "key":"PTD002331500"
+                                                },
+                                                {
+                                                    "columns":[
+                                                        {
+                                                            //"text":"Smith, John",
+                                                            "contents":[
+                                                                {
+                                                                    "template": "link",
+                                                                    "attributes": {
+                                                                        "href": "#",
+                                                                    },
+                                                                    "text": "Smith, John"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text":"XXX-XX-1234",
+                                                            "contents":[
+
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text":"Property owner",
+                                                            "contents":[
+
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text":"02/04/1945",
+                                                            "contents":[
+
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text":"Susan Smith (spouse)",
+                                                            "contents":[
+
+                                                            ]
+                                                        }
+                                                    ],
+                                                "selection":{
+
+                                                },
+                                                "key":"PTD002405400"
+                                                }
+                                            ]
+                                        },
+                                        "head":{
+                                            "rows":[
+                                                {
+                                                    "columns":[
+                                                        {
+                                                            "text":"Name",
+                                                            "sortable":true,
+                                                            "responsive":{
+
+                                                            },
+                                                            "attributes":{
+                                                                "data-colmap":"results_name"
+                                                            },
+                                                            "type":"header",
+                                                            "hideLabel":false
+                                                        },
+                                                        {
+                                                            "text":"Social Security number (SSN)",
+                                                            "sortable":true,
+                                                            "responsive":{
+
+                                                            },
+                                                            "attributes":{
+                                                                "data-colmap":"results_ssn"
+                                                            },
+                                                            "type":"header",
+                                                            "hideLabel":false
+                                                        },
+                                                        {
+                                                            "text":"Owner/spouse",
+                                                            "sortable":true,
+                                                            "responsive":{
+
+                                                            },
+                                                            "attributes":{
+                                                                "data-colmap":"results_ownerspouse"
+                                                            },
+                                                            "type":"header",
+                                                            "hideLabel":false
+                                                        },
+                                                        {
+                                                            "text":"Date of birth",
+                                                            "sortable":true,
+                                                            "responsive":{
+
+                                                            },
+                                                            "attributes":{
+                                                                "data-colmap":"results_dob"
+                                                            },
+                                                            "type":"header",
+                                                            "hideLabel":false
+                                                        },
+                                                        {
+                                                            "text":"Relationships",
+                                                            "sortable":true,
+                                                            "responsive":{
+
+                                                            },
+                                                            "attributes":{
+                                                                "data-colmap":"results_relationships"
+                                                            },
+                                                            "type":"header",
+                                                            "hideLabel":false
+                                                        },
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "footerControls": {
+                                            "contents": [
+                                                {
+                                                    "type": "search",
+                                                    "template": "composite",
+                                                    "attributes": {
+                                                    },
+                                                    "parts": {
+                                                        "label": {
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "E_R_F_R_O"
+                                                                },
+                                                                "text": "Reason for removing owner(s):"
+                                                            }
+                                                        },
+                                                        "text": {
+                                                            "type": "select",
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "E_R_F_R_O",
+                                                                    "name": "E_R_F_R_O",
+                                                                },
+                                                                "options": {
+                                                                    "1": {
+                                                                        "text": "Select one",
+                                                                        "value": "1"
+                                                                    },
+                                                                    "2": {
+                                                                        "text": "No longer owner's primary residence",
+                                                                        "value": "2"
+                                                                    },
+                                                                    "3": {
+                                                                        "text": "Deceased",
+                                                                        "value": "3"
+                                                                    },
+                                                                    "4": {
+                                                                        "text": "Property sold",
+                                                                        "value": "4"
+                                                                    },
+                                                                    "5": {
+                                                                        "text": "Not age qualified",
+                                                                        "value": "5"
+                                                                    }
+                                                                },
+                                                                "noBlankOption": true
+                                                            }
+                                                        },
+                                                        "button": {
+                                                            "template": "field",
+                                                            "type": "button",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "type": "button",
+                                                                    "name": "E_R",
+                                                                    "id": "E_R",
+                                                                    "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.tableState', args:[]},1: { 'function': 'emp.confirm', args:['Are you sure you want to edit this record?']} })",
+                                                                },
+                                                                "text": "Remove"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                    ],
+                                    "attributes":{
+
+                                    },
+                                    "type":"section"
+                                },
+                                {
+                                    "template":"field",
+                                    "input":{
+                                    "attributes":{
+                                        "id":"FW_PARAM_DUPE_RESOLVED_ID",
+                                        "name":"FW_PARAM_DUPE_RESOLVED_ID",
+                                        "type":"hidden"
+                                    }
+                                    },
+                                    "type":"hidden"
+                                },
+                                {
+                                    "template":"field",
+                                    "input":{
+                                    "attributes":{
+                                        "id":"FW_ATTR_TARGET_URL",
+                                        "name":"FW_ATTR_TARGET_URL",
+                                        "value":"\/empr2-col\/gateway\/ACCLEU01.tabset\/CH2120S\/search",
+                                        "type":"hidden"
+                                    }
+                                    },
+                                    "type":"hidden"
+                                },
+                                {
+                                    "template":"field",
+                                    "input":{
+                                    "attributes":{
+                                        "id":"form_content_fw_session_id",
+                                        "name":"fw_session_id",
+                                        "value":"fw_default_session_id",
+                                        "type":"hidden"
+                                    }
+                                    },
+                                    "type":"hidden"
+                                },
+                                {
+                                    "template":"field",
+                                    "input":{
+                                    "attributes":{
+                                        "id":"form_content_fw_popup_ind",
+                                        "name":"fw_popup_ind",
+                                        "value":"false",
+                                        "type":"hidden"
+                                    }
+                                    },
+                                    "type":"hidden"
+                                }
+                            ],
+                            "attributes":{
+                                "id":"form_content",
+                                "name":"form_content",
+                                "action":"\/empr2-col\/gateway\/ACCLEU01.tabset\/CH2120S\/empr2-col\/gateway\/ACCLEU01.tabset\/CH2120S\/search",
+                                "method":"post"
+                            },
+                            "type":"form"
+                        }
+                        ]
+                    }
+                ]
+            },
+            "assetsPath":{
+                "js":"js\/main.js",
+                "domain":"\/emp\/",
+                "cid":"01052018",
+                "css":"css\/main.css",
+                "version":"v1.5"
+            }
+        };
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+</html>
