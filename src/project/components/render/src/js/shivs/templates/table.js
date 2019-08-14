@@ -6,12 +6,73 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
 	_priv.fixData = function _fix_data(data, external) {
 
-        if (external) {
-            data.isExternal = true;
-        }
-
+        // Ensure a type attribute is set on the table
         if (data.attributes && data.attributes['data-type'] && !data.type) {
             data.type = data.attributes['data-type'];
+        }
+
+        // Now explode out the style attributes
+        if (data.style && data.style.length >= 1) {
+
+            if (data.style.indexOf('noFilter') !== -1) {
+
+                if (data.attributes && !data.attributes['data-filter']) {
+                    data.attributes['data-filter'] = false;
+                }
+            }
+
+            if (data.style.indexOf('noResize') !== -1) {
+
+                if (data.attributes && !data.attributes['data-resize']) {
+                    data.attributes['data-resize'] = false;
+                }
+            }
+
+            if (data.style.indexOf('noColumns') !== -1) {
+
+                if (data.attributes && !data.attributes['data-responsive']) {
+                    data.attributes['data-responsive'] = false;
+                }
+            }
+
+            if (data.style.indexOf('changeReturn') !== -1) {
+
+                if (data.attributes && !data.attributes['data-changereturn']) {
+                    data.attributes['data-changereturn'] = true;
+                }
+            }
+
+            if (data.style.indexOf('noSticky') !== -1) {
+
+                if (data.attributes && !data.attributes['data-sticky']) {
+
+                    data.attributes['data-sticky'] = false;
+                }
+            }
+
+        }
+        else {
+
+            if (data.attributes && !data.attributes['data-filter']) {
+                data.attributes['data-filter'] = false;
+            }
+
+            if (data.attributes && !data.attributes['data-resize']) {
+                data.attributes['data-resize'] = false;
+            }
+
+            if (data.attributes && !data.attributes['data-responsive']) {
+                data.attributes['data-responsive'] = false;
+            }
+
+            if (data.attributes && !data.attributes['data-changereturn']) {
+                data.attributes['data-changereturn'] = true;
+            }
+
+            if (data.attributes && !data.attributes['data-sticky']) {
+
+                data.attributes['data-sticky'] = false;
+            }
         }
 
         var buttonMenuIndex = false;
@@ -306,30 +367,6 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                     data.body.loadMore = false
                 }
             }
-        }
-
-        if (data.style && data.style.length >=1) {
-
-            if (data.style.indexOf('noFilter') !== -1) {
-
-                data.attributes['data-filter'] = false;
-            }
-
-            if (data.style.indexOf('noResize') !== -1) {
-
-                data.attributes['data-resize'] = false;
-            }
-
-            if (data.style.indexOf('noColumns') !== -1) {
-
-                data.attributes['data-responsive'] = false;
-            }
-
-            if (data.style.indexOf('changeReturn') !== -1) {
-
-                data.attributes['data-changereturn'] = true;
-            }
-
         }
 
         // Fix table for data-type of order
