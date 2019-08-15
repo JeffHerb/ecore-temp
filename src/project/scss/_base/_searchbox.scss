@@ -13,34 +13,10 @@
     margin-bottom: 10px;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        padding: $emp-search-box-padding;
+        // @import "../_theme_teal.scss";
+        // padding: $emp-search-box-padding;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        padding: $emp-search-box-padding;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        padding: $emp-search-box-padding;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        padding: $emp-search-box-padding;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        padding: $emp-search-box-padding;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        padding: $emp-search-box-padding;
-    }
+  
 
     &.emp-collapse {
     }
@@ -153,34 +129,11 @@
     }
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        background-color: $emp-search-box-bg-color;
+        // @import "../_theme_teal.scss";
+        // background-color: $emp-search-box-bg-color;
     // }
 
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        background-color: $emp-search-box-bg-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        background-color: $emp-search-box-bg-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        background-color: $emp-search-box-bg-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        background-color: $emp-search-box-bg-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        background-color: $emp-search-box-bg-color;
-    }
+   
 
     // Collapsed
     &.emp-collapse {
@@ -192,46 +145,13 @@
         cursor: pointer;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-top: $emp-search-box-collapsed-border;
-            border-bottom: $emp-search-box-collapsed-border;
-            background-color: $emp-search-box-collapsed-bg-color;
+            // @import "../_theme_teal.scss";
+            // border-top: $emp-search-box-collapsed-border;
+            // border-bottom: $emp-search-box-collapsed-border;
+            // background-color: $emp-search-box-collapsed-bg-color;
         // }
 
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-top: $emp-search-box-collapsed-border;
-            border-bottom: $emp-search-box-collapsed-border;
-            background-color: $emp-search-box-collapsed-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-top: $emp-search-box-collapsed-border;
-            border-bottom: $emp-search-box-collapsed-border;
-            background-color: $emp-search-box-collapsed-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-top: $emp-search-box-collapsed-border;
-            border-bottom: $emp-search-box-collapsed-border;
-            background-color: $emp-search-box-collapsed-bg-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-top: $emp-search-box-collapsed-border;
-            border-bottom: $emp-search-box-collapsed-border;
-            background-color: $emp-search-box-collapsed-bg-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-top: $emp-search-box-collapsed-border;
-            border-bottom: $emp-search-box-collapsed-border;
-            background-color: $emp-search-box-collapsed-bg-color;
-        }
+       
 
         // Hide everything except the toggle button
         & > *:not(.emp-search-toggle) {
@@ -255,34 +175,10 @@
         border-top: 1px solid $emp-search-box-search-fields-border-color;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-top: 1px solid $emp-search-box-search-fields-border-color;
+            // @import "../_theme_teal.scss";
+            // border-top: 1px solid $emp-search-box-search-fields-border-color;
         // }
 
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-top: 1px solid $emp-search-box-search-fields-border-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-top: 1px solid $emp-search-box-search-fields-border-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-top: 1px solid $emp-search-box-search-fields-border-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-top: 1px solid $emp-search-box-search-fields-border-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-top: 1px solid $emp-search-box-search-fields-border-color;
-        }
 
         // Thick border and flex box for medium and larger screens
         //@include pointbreak($cui-bp-medium) {
@@ -294,52 +190,14 @@
             border-left: $emp-search-box-search-fields-border-left;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                border-top: $emp-search-box-search-fields-border-top;
-                border-right: $emp-search-box-search-fields-border-right;
-                border-bottom: $emp-search-box-search-fields-border-bottom;
-                border-left: $emp-search-box-search-fields-border-left;
+                // @import "../_theme_teal.scss";
+                // border-top: $emp-search-box-search-fields-border-top;
+                // border-right: $emp-search-box-search-fields-border-right;
+                // border-bottom: $emp-search-box-search-fields-border-bottom;
+                // border-left: $emp-search-box-search-fields-border-left;
             // }
 
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                border-top: $emp-search-box-search-fields-border-top;
-                border-right: $emp-search-box-search-fields-border-right;
-                border-bottom: $emp-search-box-search-fields-border-bottom;
-                border-left: $emp-search-box-search-fields-border-left;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                border-top: $emp-search-box-search-fields-border-top;
-                border-right: $emp-search-box-search-fields-border-right;
-                border-bottom: $emp-search-box-search-fields-border-bottom;
-                border-left: $emp-search-box-search-fields-border-left;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                border-top: $emp-search-box-search-fields-border-top;
-                border-right: $emp-search-box-search-fields-border-right;
-                border-bottom: $emp-search-box-search-fields-border-bottom;
-                border-left: $emp-search-box-search-fields-border-left;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                border-top: $emp-search-box-search-fields-border-top;
-                border-right: $emp-search-box-search-fields-border-right;
-                border-bottom: $emp-search-box-search-fields-border-bottom;
-                border-left: $emp-search-box-search-fields-border-left;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                border-top: $emp-search-box-search-fields-border-top;
-                border-right: $emp-search-box-search-fields-border-right;
-                border-bottom: $emp-search-box-search-fields-border-bottom;
-                border-left: $emp-search-box-search-fields-border-left;
-            }
+            
         }
 
         // No flex box on small screens
@@ -462,34 +320,11 @@
         text-align: $emp-search-box-button-text-align;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            background-color: $emp-search-box-button-area-bg-color;
+            // @import "../_theme_teal.scss";
+            // background-color: $emp-search-box-button-area-bg-color;
         // }
 
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            background-color: $emp-search-box-button-area-bg-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            background-color: $emp-search-box-button-area-bg-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            background-color: $emp-search-box-button-area-bg-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            background-color: $emp-search-box-button-area-bg-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            background-color: $emp-search-box-button-area-bg-color;
-        }
+       
 
         @include pointbreak($cui-bp-medium) {
             min-height: $emp-search-box-min-height;
@@ -522,79 +357,23 @@
                     color: $emp-search-box-button-retrieve-color;
 
                     // .theme-teal & {
-                        @import "../_theme_teal.scss";
-                        background-color: $emp-search-box-button-retrieve-bg-color;
-                        box-shadow: $emp-search-box-button-retrieve-shadow;
-                        color: $emp-search-box-button-retrieve-color;
+                        // @import "../_theme_teal.scss";
+                        // background-color: $emp-search-box-button-retrieve-bg-color;
+                        // box-shadow: $emp-search-box-button-retrieve-shadow;
+                        // color: $emp-search-box-button-retrieve-color;
                     // }
 
-                    .theme-lilypad & {
-                        @import "../_theme_lilypad.scss";
-                        background-color: $emp-search-box-button-retrieve-bg-color;
-                        box-shadow: $emp-search-box-button-retrieve-shadow;
-                        color: $emp-search-box-button-retrieve-color;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../_theme_eggplant.scss";
-                        background-color: $emp-search-box-button-retrieve-bg-color;
-                        box-shadow: $emp-search-box-button-retrieve-shadow;
-                        color: $emp-search-box-button-retrieve-color;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../_theme_cobalt.scss";
-                        background-color: $emp-search-box-button-retrieve-bg-color;
-                        box-shadow: $emp-search-box-button-retrieve-shadow;
-                        color: $emp-search-box-button-retrieve-color;
-                    }
-
-                    .theme-hazel & {
-                        @import "../_theme_hazel.scss";
-                        background-color: $emp-search-box-button-retrieve-bg-color;
-                        box-shadow: $emp-search-box-button-retrieve-shadow;
-                        color: $emp-search-box-button-retrieve-color;
-                    }
-
-                    .theme-contrast & {
-                        @import "../_theme_contrast.scss";
-                        background-color: $emp-search-box-button-retrieve-bg-color;
-                        box-shadow: $emp-search-box-button-retrieve-shadow;
-                        color: $emp-search-box-button-retrieve-color;
-                    }
+                    
 
                     &:hover {
                         background-color: $emp-search-box-button-retrieve-bg-color-hover;
 
                         // .theme-teal & {
-                            @import "../_theme_teal.scss";
-                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
+                            // @import "../_theme_teal.scss";
+                            // background-color: $emp-search-box-button-retrieve-bg-color-hover;
                         // }
 
-                        .theme-lilypad & {
-                            @import "../_theme_lilypad.scss";
-                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
-                        }
-
-                        .theme-eggplant & {
-                            @import "../_theme_eggplant.scss";
-                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
-                        }
-
-                        .theme-cobalt & {
-                            @import "../_theme_cobalt.scss";
-                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
-                        }
-
-                        .theme-hazel & {
-                            @import "../_theme_hazel.scss";
-                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
-                        }
-
-                        .theme-contrast & {
-                            @import "../_theme_contrast.scss";
-                            background-color: $emp-search-box-button-retrieve-bg-color-hover;
-                        }
+                       
                     }
                 }
             }
@@ -635,35 +414,11 @@
                     @include fontSize($emp-em-size);
 
                     // .theme-teal & {
-                        @import "../_theme_teal.scss";
-                        color: $emp-search-box-sendid-color;
+                        // @import "../_theme_teal.scss";
+                        // color: $emp-search-box-sendid-color;
                     // }
 
-                    .theme-lilypad & {
-                        @import "../_theme_lilypad.scss";
-                        color: $emp-search-box-sendid-color;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../_theme_eggplant.scss";
-                        color: $emp-search-box-sendid-color;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../_theme_cobalt.scss";
-                        color: $emp-search-box-sendid-color;
-                    }
-
-                    .theme-hazel & {
-                        @import "../_theme_hazel.scss";
-                        color: $emp-search-box-sendid-color;
-                    }
-
-                    .theme-contrast & {
-                        @import "../_theme_contrast.scss";
-                        color: $emp-search-box-sendid-color;
-                    }
-
+                   
                     // Make it line up with the toggle button
                     display: block;
                     height: 32px;

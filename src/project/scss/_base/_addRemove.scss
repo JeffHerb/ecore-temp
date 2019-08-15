@@ -97,34 +97,9 @@
                     background: $emp-table-highlight !important;
 
                     // .theme-teal & {
-                        @import "../_theme_teal.scss";
-                        background: $emp-table-highlight !important;
-                    // }
-
-                    .theme-lilypad & {
-                        @import "../_theme_lilypad.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../_theme_eggplant.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../_theme_cobalt.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-hazel & {
-                        @import "../_theme_hazel.scss";
-                        background: $emp-table-highlight !important;
-                    }
-
-                    .theme-contrast & {
-                        @import "../_theme_contrast.scss";
-                        background: $emp-table-highlight !important;
-                    }
+                        // @import "../_theme_teal.scss";
+                        // background: $emp-table-highlight !important;
+                    // }                   
                 }
             }
         }

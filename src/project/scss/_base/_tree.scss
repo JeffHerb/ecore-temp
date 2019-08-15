@@ -56,34 +56,9 @@
         color: $cui-color-dark-gray;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            color: $cui-color-dark-gray;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            color: $cui-color-dark-gray;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            color: $cui-color-dark-gray;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            color: $cui-color-dark-gray;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            color: $cui-color-dark-gray;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            color: $cui-color-dark-gray;
-        }
+            // @import "../_theme_teal.scss";
+            // color: $cui-color-dark-gray;
+        // }      
     }
 
     a:hover,

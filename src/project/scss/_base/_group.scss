@@ -40,40 +40,10 @@ section {
     }
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        border-top: $emp-group-border;
-        border-bottom: $emp-group-border;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        border-top: $emp-group-border;
-        border-bottom: $emp-group-border;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        border-top: $emp-group-border;
-        border-bottom: $emp-group-border;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        border-top: $emp-group-border;
-        border-bottom: $emp-group-border;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        border-top: $emp-group-border;
-        border-bottom: $emp-group-border;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        border-top: $emp-group-border;
-        border-bottom: $emp-group-border;
-    }
+        // @import "../_theme_teal.scss";
+        // border-top: $emp-group-border;
+        // border-bottom: $emp-group-border;
+    // }   
 
     // Need an extra tag to override the specificity in the default CUI styles
     body & {
@@ -93,46 +63,12 @@ section {
         border-radius: $emp-group-border-radius;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-left: $emp-group-border;
-            border-right: $emp-group-border;
-            border-radius: $emp-group-border-radius;
+            // @import "../_theme_teal.scss";
+            // border-left: $emp-group-border;
+            // border-right: $emp-group-border;
+            // border-radius: $emp-group-border-radius;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-left: $emp-group-border;
-            border-right: $emp-group-border;
-            border-radius: $emp-group-border-radius;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-left: $emp-group-border;
-            border-right: $emp-group-border;
-            border-radius: $emp-group-border-radius;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-left: $emp-group-border;
-            border-right: $emp-group-border;
-            border-radius: $emp-group-border-radius;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-left: $emp-group-border;
-            border-right: $emp-group-border;
-            border-radius: $emp-group-border-radius;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-left: $emp-group-border;
-            border-right: $emp-group-border;
-            border-radius: $emp-group-border-radius;
-        }
+      
     }
 
     & > header {
@@ -150,46 +86,11 @@ section {
         }
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border-bottom: $emp-group-header-border-bottom;
-            background-color: $emp-group-header-bg-color;
-            color: $emp-group-header-color;
+            // @import "../_theme_teal.scss";
+            // border-bottom: $emp-group-header-border-bottom;
+            // background-color: $emp-group-header-bg-color;
+            // color: $emp-group-header-color;
         // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border-bottom: $emp-group-header-border-bottom;
-            background-color: $emp-group-header-bg-color;
-            color: $emp-group-header-color;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border-bottom: $emp-group-header-border-bottom;
-            background-color: $emp-group-header-bg-color;
-            color: $emp-group-header-color;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border-bottom: $emp-group-header-border-bottom;
-            background-color: $emp-group-header-bg-color;
-            color: $emp-group-header-color;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border-bottom: $emp-group-header-border-bottom;
-            background-color: $emp-group-header-bg-color;
-            color: $emp-group-header-color;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border-bottom: $emp-group-header-border-bottom;
-            background-color: $emp-group-header-bg-color;
-            color: $emp-group-header-color;
-        }
 
         &:nth-of-type(1) {
             margin-bottom: $emp-group-padding-bottom + $emp-group-row-padding-top;
@@ -200,34 +101,10 @@ section {
             color: $emp-group-header-color;
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                color: $emp-group-header-color;
+                // @import "../_theme_teal.scss";
+                // color: $emp-group-header-color;
             // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                color: $emp-group-header-color;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                color: $emp-group-header-color;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                color: $emp-group-header-color;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                color: $emp-group-header-color;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                color: $emp-group-header-color;
-            }
+           
         }
 
         &:not(.emp-flex-header) {
@@ -515,34 +392,9 @@ section {
                 color: $emp-subgroup-header-color;
 
                 // .theme-teal & {
-                    @import "../_theme_teal.scss";
-                    color: $emp-subgroup-header-color;
-                // }
-
-                .theme-lilypad & {
-                    @import "../_theme_lilypad.scss";
-                    color: $emp-subgroup-header-color;
-                }
-
-                .theme-eggplant & {
-                    @import "../_theme_eggplant.scss";
-                    color: $emp-subgroup-header-color;
-                }
-
-                .theme-cobalt & {
-                    @import "../_theme_cobalt.scss";
-                    color: $emp-subgroup-header-color;
-                }
-
-                .theme-hazel & {
-                    @import "../_theme_hazel.scss";
-                    color: $emp-subgroup-header-color;
-                }
-
-                .theme-contrast & {
-                    @import "../_theme_contrast.scss";
-                    color: $emp-subgroup-header-color;
-                }
+                    // @import "../_theme_teal.scss";
+                    // color: $emp-subgroup-header-color;
+                // }               
             }
         }
     }
@@ -554,34 +406,9 @@ section {
             border: $emp-group-border; // Is this needed? Under the old theming structure this selector was necessary just for added specificity so the theme would take effect
 
             // .theme-teal & {
-                @import "../_theme_teal.scss";
-                border: $emp-group-border;
-            // }
-
-            .theme-lilypad & {
-                @import "../_theme_lilypad.scss";
-                border: $emp-group-border;
-            }
-
-            .theme-eggplant & {
-                @import "../_theme_eggplant.scss";
-                border: $emp-group-border;
-            }
-
-            .theme-cobalt & {
-                @import "../_theme_cobalt.scss";
-                border: $emp-group-border;
-            }
-
-            .theme-hazel & {
-                @import "../_theme_hazel.scss";
-                border: $emp-group-border;
-            }
-
-            .theme-contrast & {
-                @import "../_theme_contrast.scss";
-                border: $emp-group-border;
-            }
+                // @import "../_theme_teal.scss";
+                // border: $emp-group-border;
+            // }          
         }
 
         // Top-level sections
@@ -633,40 +460,10 @@ section {
         border-bottom-width: 2px;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            background-color: $emp-group-header-bg-color-collapsed;
-            border-color: $emp-group-header-border-color-collapsed;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            background-color: $emp-group-header-bg-color-collapsed;
-            border-color: $emp-group-header-border-color-collapsed;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            background-color: $emp-group-header-bg-color-collapsed;
-            border-color: $emp-group-header-border-color-collapsed;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            background-color: $emp-group-header-bg-color-collapsed;
-            border-color: $emp-group-header-border-color-collapsed;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            background-color: $emp-group-header-bg-color-collapsed;
-            border-color: $emp-group-header-border-color-collapsed;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            background-color: $emp-group-header-bg-color-collapsed;
-            border-color: $emp-group-header-border-color-collapsed;
-        }
+            // @import "../_theme_teal.scss";
+            // background-color: $emp-group-header-bg-color-collapsed;
+            // border-color: $emp-group-header-border-color-collapsed;
+        // }       
     }
 
     section.emp-collapse & {
@@ -700,34 +497,9 @@ body section.emp-collapse { // `body` was added to give this selector specificit
         border-radius: $emp-group-border-radius;
 
         // .theme-teal & {
-            @import "../_theme_teal.scss";
-            border: $emp-group-border;
-        // }
-
-        .theme-lilypad & {
-            @import "../_theme_lilypad.scss";
-            border: $emp-group-border;
-        }
-
-        .theme-eggplant & {
-            @import "../_theme_eggplant.scss";
-            border: $emp-group-border;
-        }
-
-        .theme-cobalt & {
-            @import "../_theme_cobalt.scss";
-            border: $emp-group-border;
-        }
-
-        .theme-hazel & {
-            @import "../_theme_hazel.scss";
-            border: $emp-group-border;
-        }
-
-        .theme-contrast & {
-            @import "../_theme_contrast.scss";
-            border: $emp-group-border;
-        }
+            // @import "../_theme_teal.scss";
+            // border: $emp-group-border;
+        // }      
     }
 
     // @media print {

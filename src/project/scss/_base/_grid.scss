@@ -30,35 +30,10 @@ section.emp-tabs div.emp-tab-contents {
     @include section-row-spacing;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        @include section-row-spacing;
+        // @import "../_theme_teal.scss";
+        // @include section-row-spacing;
     // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        @include section-row-spacing;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        @include section-row-spacing;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        @include section-row-spacing;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        @include section-row-spacing;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        @include section-row-spacing;
-    }
-
+   
     .cui-row {
         @include pointbreak($cui-bp-large-minus, true) {
             padding-top: 5px;
@@ -243,3 +218,712 @@ section.emp-tabs div.emp-tab-contents {
 .emp-flexgrid-col-fixed-300 {
     @include set-fixed-width(300px);
 }
+
+// Orpts style merge
+#body-wrapper {
+
+    main, form {
+        margin: 0;
+    }
+
+    .cui-row{
+        min-height: 1.5em;
+
+        @include pointbreak("720px"){
+            margin: 0 auto 15px auto;
+        }
+    }
+
+    [class*="emp-col"] .cui-label, section .cui-label{
+        margin-top: 0px;
+    }
+
+    [class*="emp-col"] .cui-data{
+        button:not(.emp-icon-popup-view-list), button:not(.cui-icon.cui-c-datepicker){
+            padding-top: 5px;
+        }
+    }
+
+    [class*="emp-col"] .cui-data{
+        > button.cui-icon.cui-c-datepicker{
+            vertical-align: -webkit-baseline-middle;
+        }
+    }
+
+    .emp-col-full{
+
+
+    	&:last-child{
+    		margin-bottom: 0 !important;
+    	}
+
+
+        .cui-label, .emp-check-other-checkbox .cui-data{
+            padding-right: 15px;
+
+            select{
+                margin-bottom: 0.25em;
+            }
+        }
+
+        .cui-data{
+            input{
+                margin-bottom: 0.25em;
+            }
+
+            @include pointbreak("720px", true){
+                margin-top: 3px;
+                margin-right: 3px;
+            }
+        }
+
+        .emp-field.cui-data-left .cui-data{
+            padding-right: 15px;
+        }
+
+        .cui-data, .emp-field.cui-data-left .cui-label,
+        .emp-check-other-checkbox .cui-label,
+        fieldset .cui-label,
+        .emp-input-collection,
+        fieldset .cui-data .cui-selection-group{
+            padding-left: 0px;
+            margin-left: 0px;
+        }
+
+        .emp-composite.emp-search-composite .cui-label{
+            left: 0px;
+        }
+
+        .emp-field .cui-data input:not([type="checkbox"]),
+        .emp-field .cui-data select,
+        .emp-search-composite .cui-data .emp-input-collection select,
+        .emp-input-collection select,
+        .emp-input-collection button,
+        .emp-composite.emp-search-composite .cui-data input,
+        .emp-composite.emp-search-composite .cui-data select,
+        .emp-composite.emp-search-composite.emp-seach-composite-dynamic-label .cui-label select,
+        .emp-composite.emp-search-composite .cui-data button:not(.emp-icon-popup-view-list) {
+            min-height: 29px;
+            max-height: 29px;
+        }
+
+        .emp-composite.emp-composite.emp-search-composite .emp-data{
+            margin-top: 3px;
+        }
+
+        .emp-composite.emp-search-composite .cui-data.emp-search .emp-field > button{
+            margin-left: 5px;
+        }
+
+        .emp-validation-error .cui-messages{
+            padding: 0.1em 0px;
+        }
+
+        @include pointbreak("720px"){
+            min-height: 1.5em;
+            margin: 0px 16px !important;
+
+            .emp-field:not(.cui-data-left){
+                margin-bottom: 0px !important;
+
+                > .cui-label label{
+                    display: inline-block;
+                }
+            }
+
+            .emp-field .cui-data .emp-icon-redcheck {
+                margin-top: -6px;
+            }
+
+            .emp-field .cui-data .emp-icon-stop {
+                margin-top: 0px;
+            }
+
+            .emp-composite.emp-search-composite.emp-validation-error .cui-label{
+                margin-top: 4px;
+            }
+
+            fieldset:not(.emp-search-composite):not(.emp-yes-no-component) .cui-label legend{
+                display: inline-block;
+                margin-top: 5px;
+            }
+
+            .cui-label, .emp-check-other-checkbox .cui-data{
+                padding-right: 15px;
+            }
+
+            .cui-label {
+                min-height: 24px;
+                label, span{
+                    vertical-align: sub;
+                }
+            }
+
+            .cui-data{
+                > input, span:not(.cui-input-append){
+                    vertical-align: sub;
+                }
+            }
+
+            .cui-data .emp-data{
+                margin-top: 0px;
+            }
+
+            .cui-data-left .cui-data{
+                margin-top: 0px;
+            }
+
+            .emp-field, section .emp-field{
+                margin-bottom: 0px !important;
+            }
+
+            .cui-data-left.emp-boolean-image .cui-label{
+                padding-top: 0px;
+            }
+
+            input, textarea, select{
+                border-radius: 4px;
+                border: 1px solid #bfbfbd;
+                padding: 4px 6px 4px 6px;
+                color: #333;
+                -webkit-transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;
+                transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;
+            }
+
+            .cui-data.emp-search .emp-field>button.emp-icon-popup-view-list {
+                margin-top: 0.2em;
+                margin-left: 0.2em;
+            }
+
+            >.emp-field:not(.cui-data-left),
+            .emp-select-other-selectbox .emp-field,
+            .emp-check-other-describe .emp-field,
+            .emp-select-other-describe .emp-field{
+                @include twoColGrid();
+
+                align-items:baseline;
+
+                .cui-label{
+                    width: auto;
+                    text-align: right;
+                    -ms-grid-column: 1;
+                    -ms-grid-row: 1;
+
+                }
+
+                .cui-data{
+                    -ms-grid-column: 2;
+                    -ms-grid-row: 1;
+                }
+
+                &.cui-data-left .cui-label{
+                    text-align: left;
+                }
+            }
+
+            >.emp-field.cui-data-left, .emp-check-other-checkbox .cui-data-left{
+                @include twoColGrid();
+
+                .cui-data{
+                    width: auto;
+                    -ms-grid-column: 1;
+                    -ms-grid-row: 1;
+                    text-align: right;
+                }
+
+                .cui-label{
+                    -ms-grid-column: 2;
+                    -ms-grid-row: 1;
+                }
+            }
+
+            .emp-composite.emp-search-composite.emp-validation-error{
+                @include twoColGrid();
+                .cui-label{
+                    width: auto !important;
+                    -ms-grid-column: 1;
+                    -ms-grid-row: 1;
+                }
+
+                .cui-data{
+                    -ms-grid-column: 2;
+                    -ms-grid-row: 1;
+                }
+
+                .emp-composite-message{
+                    grid-column-start: 2;
+                    -ms-grid-column: 2;
+                    -ms-grid-row: 2;
+                    margin-left: 0px;
+                }
+
+            }
+
+            .emp-composite.emp-search-composite.emp-seach-composite-dynamic-label,
+            .emp-composite.emp-search-composite,
+            fieldset.emp-search-composite{
+                .cui-label, .cui-data{
+                    @include calcHalf();
+                }
+
+                .emp-field button.emp-icon-popup-view-list{
+                    margin-top: 2px;
+                }
+
+                .cui-label{
+                    text-align: right;
+
+                    select{
+                        margin-top: 0px;
+                    }
+
+                    legend{
+                        width: auto;
+                        text-align: right;
+                    }
+                }
+
+                .cui-data{
+                    margin-top: 0px;
+
+                    .emp-input-collection .emp-field{
+                        margin-top: 3px;
+                    }
+                }
+            }
+
+            fieldset{
+                .cui-label, .cui-data{
+                    @include calcHalf();
+                }
+
+                .cui-label{
+                    display: inline-block;
+                    text-align: right;
+
+                    legend{
+                        width: auto;
+                        text-align: right;
+                    }
+                }
+
+                .cui-data{
+                    display: inline-flex;
+                }
+            }
+
+            fieldset.emp-composite.emp-entity-lookup{
+                .cui-label, .cui-data{
+                    width: unset;
+                    min-width: unset;
+                }
+            }
+
+            fieldset.emp-search-composite .cui-label{
+                margin-top: 6px;
+            }
+        }
+    }
+
+    .emp-col-half{
+        .emp-field{
+            .cui-data {
+                .emp-data{
+                    margin-top: 0px;
+                }
+
+                input{
+                    min-height: 29px;
+                    max-height: 29px;
+                }
+            }
+        }
+
+        @include pointbreak("720px"){
+            .cui-label label,span{
+                vertical-align: sub;
+            }
+        }
+    }
+
+    section .emp-button-group button{
+        margin: 1em 0.2em 0;
+    }
+
+    .emp-button-group button{
+        margin: 1em 0.2em 0;
+    }
+
+    .emp-inline-sections{
+        @include pointbreak("720px", true){
+            display: unset;
+        }
+    }
+
+    fieldset.cui-required .cui-label{
+        @include pointbreak("720px", true){
+            display: flex;
+            display: -webkit-flex;
+            display: -webkit-flex;
+            display: -webkit-flex;
+            display: moz-box;
+            display: ms-flexbox;
+            display: inline;
+        }
+    }
+
+    fieldset.emp-federal-data .cui-label legend:after{
+        @include pointbreak("720px", true){
+        }
+    }
+
+    .emp-table table td{
+        .emp-field{
+            display: inline-block;
+
+            & + button.emp-icon-help{
+                margin-top: 3px;
+            }
+        }
+
+        a + button.emp-icon-help,
+        span + button.emp-icon-help{
+            margin-top: -3px;;
+        }
+    }
+
+    .emp-table .emp-table-controls .emp-header-controls{
+        @include pointbreak("720px", true){
+            display: inline-grid;
+            display: -ms-inline-grid;
+
+            .cui-label{
+                margin-left: 0px;
+            }
+
+            .emp-composite{
+                padding-left: 0px;
+            }
+        }
+    }
+
+    .emp-table .emp-table-controls .emp-footer-controls{
+        .emp-composite{
+          margin: 0px;
+        }
+
+        @include pointbreak("720px"){
+            .cui-label label{
+                vertical-align: sub;
+            }
+        }
+    }
+
+    .emp-table .emp-table-wrapper .emp-paging-container-advance{
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .emp-table .emp-table-wrapper .emp-paging-container-advance button{
+        margin-right: 3px;
+    }
+
+    .emp-table .emp-table-wrapper .emp-table-pagination {
+        border: none;
+        text-align: center;
+    }
+
+    .emp-table .emp-table-wrapper .emp-paging-container-advance span {
+        margin-bottom: 6px;
+    }
+
+    .emp-table .emp-table-wrapper .table-control-row .emp-table-client-side-controls {
+        display: block;
+        float: none;
+        position: relative;
+    }
+
+    .emp-table + .cui-row {
+        padding-top: 0px !important;
+    }
+
+    .emp-table .table-control-col{
+        input[type="radio"],
+        input[type="checkbox"]{
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    section {
+
+        &.emp-instructional-header {
+
+            header {
+                flex-wrap: wrap;
+
+                div {
+                    width: 100%;
+                }
+
+                @include pointbreak("720px") {
+                    div.emp-section-instructions {
+                        margin-left: 5em;
+                    }
+                }
+            }
+        }
+    
+    }
+}
+
+.ie{
+    .cui-data {
+        > button.cui-c-datepicker{
+            vertical-align: sub;
+        }
+    }
+}
+
+.cui-uiBox.cui-popover {
+
+    .cui-popover-arrow {
+        background: #fff6cc;
+        border-left: 1px solid #ffe366;
+        border-top: 1px solid #ffe366;
+        color: transparent;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+        top: -4px;
+    }
+}
+
+.emp-tooltip-itag {
+    background: #fff6cc;
+    border: 1px solid #ffe366;
+    padding: 7px 10px;
+    border-radius: 5px;
+    outline: none;
+    max-width: 500px;
+
+    p {
+        padding: 0;
+    }
+}
+
+span.cui-input-append + button.cui-icon.emp-icon-help{
+    margin: 2px 4px;
+}
+
+.emp-input-collection button.cui-icon.emp-icon-help{
+    margin-bottom: 3px;
+}
+
+.emp-input-collection button.cui-c-datepicker{
+    margin-top: -3px !important;
+}
+
+.emp-field-instructions {
+    background: #FFF;
+    display: none;
+    padding: 10px;
+
+    div > header {
+        font-weight: bold;
+    }
+
+    &.showOnScreen {
+        display: block;
+    }
+
+}
+
+// .emp-page-title {
+//     margin: 0 16px;
+//     padding: 0.5em 0;
+// }
+
+
+// ===START: Form grid alignment using GRID===
+@media (min-width: 720px){
+	.external-app{
+
+		.cui-row{
+
+			.emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,
+			.emp-col-full > fieldset:not(.emp-selection-list)  > .emp-fieldset-contents,
+			.emp-col-half > .emp-composite:not(.emp-selection-list) ,
+			.emp-col-full > .emp-composite:not(.emp-selection-list) ,
+			.emp-col-half > .emp-field,
+			.emp-col-full > .emp-field{
+
+				@include twoColGrid();
+
+				line-height: 0 !important;
+				align-items:baseline !important;
+				margin-top:.3em;
+                overflow: visible;
+
+				& > .cui-label{
+
+					@include gridColumn(1);
+					@include gridRow(1);
+
+					// Reset any defined widths
+					width: auto !important;
+					min-width:auto !important;
+
+					display: inline-flex !important;
+					align-items: baseline !important;
+					line-height: normal !important;
+                	min-height: 1.5em;
+					text-align: right;
+
+                    &:not(.emp-top-align-label){
+                    	justify-content:flex-end !important;
+                    }
+
+                    &.emp-top-align-label{
+                    	grid-column-start: 1 !important;
+  						grid-column-end: -1 !important;
+  						-ms-grid-span: 2 !important;
+                    }
+				}
+
+				& > .cui-data{
+
+					// Reset any defined widths
+					width: auto !important;
+					min-width:auto !important;
+
+					@include gridColumn(2);
+					@include gridRow(1);
+
+					display: inline-flex !important;
+                    flex-wrap: wrap;
+                    align-items: baseline !important;
+                    line-height: normal !important;
+                    min-height: 1.5em;
+                    overflow: visible;
+
+    				input,
+					select,
+					textarea{
+						max-width:100%;
+					}
+
+					input,
+					select{
+						margin-right:6px !important;
+					}
+
+                    i{
+                    	margin-top:0 !important;
+                    	line-height: 1em !important;
+                    }
+
+    				.emp-icon-help{
+    					margin-left: 2px !important;
+					}
+
+
+					.emp-icon-redcheck:after{
+						top:2px !important;
+					}
+
+    				.cui-messages{
+    					width:100% !important;
+    					display: flex;
+    					flex:0 1 100%;
+    					flex-direction:column;
+    					align-items:flex-start;
+    				}
+
+    				&.cui-currency{
+    					.cui-input-append{
+    						margin-left:-11px !important;
+
+    						& + .emp-icon-help{
+    							margin-left:8px !important;
+    						}
+
+    					}
+    				}
+
+
+				}
+
+ 				& > .emp-top-align-label + .cui-data{
+                	grid-column-start: 1 !important;
+					grid-column-end: -1 !important;
+					-ms-grid-span: 2 !important;
+                	@include gridRow(2);
+                }
+
+				& > .emp-composite-message{
+					@include gridColumn(2);
+					@include gridRow(2);
+				}
+
+				&.cui-data-left{
+					& > .cui-label{
+						@include gridColumn(2);
+						@include gridRow(1);
+						justify-content:flex-start !important;
+					}
+
+					& > .cui-data{
+						@include gridColumn(1);
+						@include gridRow(1);
+						justify-content:flex-end !important;
+						align-self:normal !important;
+					}
+				}
+			}
+		}
+	}
+
+	.external-app{
+		.ie{
+
+			.cui-row{
+				.emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,
+				.emp-col-full > fieldset:not(.emp-selection-list)  > .emp-fieldset-contents,
+				.emp-col-half > .emp-composite:not(.emp-selection-list) ,
+				.emp-col-full > .emp-composite:not(.emp-selection-list) ,
+				.emp-col-half > .emp-field,
+				.emp-col-full > .emp-field{
+
+
+					// Simulate baseline offset since IE does not allow for grid alignment on baseline
+					& > .cui-label{
+						span,
+						label,
+						legend{
+							display:inline-block !important;
+							margin-top:5px !important;
+						}
+					}
+
+					& > .cui-data{
+						span.emp-data{
+							margin-top:5px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// ===END: Form grid alignment using GRID===
+
+
+@media print {
+    .emp-field-instructions {
+        display: block !important;
+    }
+}
+
+

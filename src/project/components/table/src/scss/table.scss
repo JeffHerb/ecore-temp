@@ -61,34 +61,9 @@
             position: relative;
 
             // .theme-teal & {
-                @import "../../../../scss/_theme_teal.scss";
+                // @import "../../../../scss/_theme_teal.scss";
                 border-right: $emp-table-cell-border;
             // }
-
-            .theme-lilypad & {
-                @import "../../../../scss/_theme_lilypad.scss";
-                border-right: $emp-table-cell-border;
-            }
-
-            .theme-eggplant & {
-                @import "../../../../scss/_theme_eggplant.scss";
-                border-right: $emp-table-cell-border;
-            }
-
-            .theme-cobalt & {
-                @import "../../../../scss/_theme_cobalt.scss";
-                border-right: $emp-table-cell-border;
-            }
-
-            .theme-hazel & {
-                @import "../../../../scss/_theme_hazel.scss";
-                border-right: $emp-table-cell-border;
-            }
-
-            .theme-contrast & {
-                @import "../../../../scss/_theme_contrast.scss";
-                border-right: $emp-table-cell-border;
-            }
 
             .emp-icon-first,
             .emp-icon-last,
@@ -352,46 +327,11 @@
                     will-change: transform;
 
                     // .theme-teal & {
-                        @import "../../../../scss/_theme_teal.scss";
-                        background: $emp-table-header-bgcolor;
-                        border-bottom: none;
-                        border-top: $emp-table-cell-border;
-                    // }
-
-                    .theme-lilypad & {
-                        @import "../../../../scss/_theme_lilypad.scss";
-                        background: $emp-table-header-bgcolor;
-                        border-bottom: $emp-table-cell-border;
-                        border-top: $emp-table-cell-border;
-                    }
-
-                    .theme-eggplant & {
-                        @import "../../../../scss/_theme_eggplant.scss";
-                        background: $emp-table-header-bgcolor;
-                        border-bottom: $emp-table-cell-border;
-                        border-top: $emp-table-cell-border;
-                    }
-
-                    .theme-cobalt & {
-                        @import "../../../../scss/_theme_cobalt.scss";
-                        background: $emp-table-header-bgcolor;
-                        border-bottom: $emp-table-cell-border;
-                        border-top: $emp-table-cell-border;
-                    }
-
-                    .theme-hazel & {
-                        @import "../../../../scss/_theme_hazel.scss";
-                        background: $emp-table-header-bgcolor;
-                        border-bottom: $emp-table-cell-border;
-                        border-top: $emp-table-cell-border;
-                    }
-
-                    .theme-contrast & {
-                        @import "../../../../scss/_theme_contrast.scss";
-                        background: $emp-table-header-bgcolor;
-                        border-bottom: $emp-table-cell-border;
-                        border-top: $emp-table-cell-border;
-                    }
+                        // @import "../../../../scss/_theme_teal.scss";
+                        // background: $emp-table-header-bgcolor;
+                        // border-bottom: none;
+                        // border-top: $emp-table-cell-border;
+                    // }                   
 
                     span {
                         display: table-cell;
@@ -458,46 +398,11 @@
                         z-index:-1;
 
                         // .theme-teal & {
-                            @import "../../../../scss/_theme_teal.scss";
+                            // @import "../../../../scss/_theme_teal.scss";
                             background: $emp-table-header-bgcolor;
                             border-top: $emp-table-cell-border;
                             border-left: $emp-table-cell-border;
-                        // }
-
-                        .theme-lilypad & {
-                            @import "../../../../scss/_theme_lilypad.scss";
-                            background: $emp-table-header-bgcolor;
-                            border-top: $emp-table-cell-border;
-                            border-left: $emp-table-cell-border;
-                        }
-
-                        .theme-eggplant & {
-                            @import "../../../../scss/_theme_eggplant.scss";
-                            background: $emp-table-header-bgcolor;
-                            border-top: $emp-table-cell-border;
-                            border-left: $emp-table-cell-border;
-                        }
-
-                        .theme-cobalt & {
-                            @import "../../../../scss/_theme_cobalt.scss";
-                            background: $emp-table-header-bgcolor;
-                            border-top: $emp-table-cell-border;
-                            border-left: $emp-table-cell-border;
-                        }
-
-                        .theme-hazel & {
-                            @import "../../../../scss/_theme_hazel.scss";
-                            background: $emp-table-header-bgcolor;
-                            border-top: $emp-table-cell-border;
-                            border-left: $emp-table-cell-border;
-                        }
-
-                        .theme-contrast & {
-                            @import "../../../../scss/_theme_contrast.scss";
-                            background: $emp-table-header-bgcolor;
-                            border-top: $emp-table-cell-border;
-                            border-left: $emp-table-cell-border;
-                        }
+                        // }                       
 
                         div.sticky-cell {
                             background: transparent;

@@ -1,10 +1,4 @@
-@import '../_subThemes/text';
-@import '../_subThemes/grid';
-@import '../_subThemes/print';
-@import '../_subThemes/_selectionList';
 
-
-$brandingTeal: #007681;
 $appHeader: #DDD;
 $footerGray: #b6cfd0;
 $footerBorderColor: #63666a;
@@ -32,13 +26,14 @@ $sectionHeaderBackgroundColor: #e7e7e6;
         height: 100%;
     }
 
-    .nys-logo {
-        background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
+    // _header.scss
+    // .nys-logo {
+    //     background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
 
-        &:hover {
-            background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
-        }
-    }
+    //     &:hover {
+    //         background: url('../images/unav-footer-logo.png') 0 0 no-repeat transparent;
+    //     }
+    // }
 
     .accessibly-hide-text {
         position: absolute;
@@ -556,7 +551,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
     }
 
     .agency-header {
-        background: $brandingTeal;
+        background: $emp-themecolor-1;
         display: flex;
         height: auto;//48px
         z-index: 10;
@@ -735,7 +730,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                     .support-icon {
                         background: #FFF;
-                        border-color: $brandingTeal;
+                        border-color: $emp-themecolor-1;
                         border-radius: 15px;
                         height: 5px;
                         margin: 11px 16px 11px 11px;
@@ -744,7 +739,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                         &:before {
                             background: #FFF;
-                            border-color: $brandingTeal;
+                            border-color: $emp-themecolor-1;
                             border-radius: 50px;
                             content: " ";
                             display: block;
@@ -756,7 +751,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                         &:after {
                             background: #FFF;
-                            border-color: $brandingTeal;
+                            border-color: $emp-themecolor-1;
                             border-radius: 50px;
                             content: " ";
                             display: block;
@@ -1119,316 +1114,5 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 }
 
 
-
-
-// ===START: Form grid alignment using FLEX===
-@media (min-width: 720px){
-	.flex-external-app{
-
-		.cui-row{
-			background:rgba(255,0,0,0.1) !important; //red
-
-			.emp-col-half > fieldset > .emp-fieldset-contents,
-			.emp-col-full > fieldset > .emp-fieldset-contents,
-			.emp-col-half > .emp-composite,
-			.emp-col-full > .emp-composite,
-			.emp-col-half > .emp-field,
-			.emp-col-full > .emp-field{
-				background:rgba(255,255,0,0.5) !important;  //yellow
-				width:100%;
-				min-width:0px;
-				display: flex !important;
-				// flex-wrap:nowrap !important;
-				flex-wrap:nowrap;
-				align-items:baseline !important;
-
-
-
-				& > .cui-label{
-					background:rgba(80,180,70,0.3) !important; //green
-
-					float:none;
-
-					min-height:1.5em !important;
-					justify-content:flex-end;
-					width: calc(50% - 5px) !important;
-					min-width: calc(50% - 5px)!important;
-					display:inline-block !important;
-
-					// display:inline-flex !important;
-					flex: 0 1 auto !important;
-					// flex: 0 1 calc(50% - 2px) !important;
-					// line-height: 1.5em !important;
-					align-items:baseline !important;
-                    line-height: 0 !important;
-
-					& label,
-                    & legend,
-					& span{
-                        width:auto;
-                        margin:0;
-                        line-height:normal;
-						// display:inline-block !important;
-					}
-				}
-
-				& > .cui-data{
-					background:rgba(2,90,160,0.3) !important; //blue-gray
-
-					float:none;
-					// width:auto !important;
-					// min-width: 1px !important;
-
-					min-height:1.5em !important;
-					width: calc(50% - 5px) !important;
-                    min-width: calc(50% - 5px)!important;
-					// display:inline-block !important;
-					// display:inline-flex !important;
-					flex: 0 1 auto !important;
-					// line-height: 1.5em !important;
-					align-items:baseline !important;
-                    line-height: normal !important;
-				}
-
-				input,
-				select{
-					max-height:initial !important;
-					min-height:auto !important;
-					height:auto !important;
-				}
-
-				select{
-					padding: 3px 6px !important;
-					line-height: 1em;
-				}
-
-				& > .emp-composite-message{
-					display: inline-flex;
-					flex:1 50%;
-					margin-left:48% !important;
-				}
-			}
-
-			.emp-col-half > fieldset,
-			.emp-col-full > fieldset{
-				width:100% !important;
-				display: inline-block !important;
-				font-size:0px;
-				flex-wrap:wrap;
-				& >.cui-label{
-					width: 48% !important;
-    				min-width: 48% !important;
-    				max-width: 48% !important;
-					// width: calc(50% - 2px) !important;
-    	// 			min-width: calc(50% - 2px) !important;
-    	// 			max-width: calc(50% - 2px) !important;
-					display: inline-flex !important;
-					font-size:16px;
-				}
-
-				& > .cui-data{
-					// width: calc(50% - 2px) !important;
-    	// 			min-width: calc(50% - 2px) !important;
-    	// 			max-width: calc(50% - 2px) !important;
-    				width: 50% !important;
-    				min-width: 50% !important;
-    				max-width: 50% !important;
-					display: inline-flex !important;
-					font-size:16px;
-					// margin-left: -4px !important;
-				}
-			}
-		}
-	}
-
-	.22external-app{
-		.ie{
-
-			.cui-row{
-				.emp-col-half > fieldset,
-				.emp-col-full > fieldset{
-					.cui-label{
-						box-sizing:content-box;
-					}
-				}
-			}
-		}
-	}
-}
-// ===END: Form grid alignment using FLEX===
-
-
-// ===START: Form grid alignment using GRID===
-@media (min-width: 720px){
-	.external-app{
-
-		.cui-row{
-
-			.emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,
-			.emp-col-full > fieldset:not(.emp-selection-list)  > .emp-fieldset-contents,
-			.emp-col-half > .emp-composite:not(.emp-selection-list) ,
-			.emp-col-full > .emp-composite:not(.emp-selection-list) ,
-			.emp-col-half > .emp-field,
-			.emp-col-full > .emp-field{
-
-				@include twoColGrid();
-
-				line-height: 0 !important;
-				align-items:baseline !important;
-				margin-top:.3em;
-                overflow: visible;
-
-				& > .cui-label{
-
-					@include gridColumn(1);
-					@include gridRow(1);
-
-					// Reset any defined widths
-					width: auto !important;
-					min-width:auto !important;
-
-					display: inline-flex !important;
-					align-items: baseline !important;
-					line-height: normal !important;
-                	min-height: 1.5em;
-					text-align: right;
-
-                    &:not(.emp-top-align-label){
-                    	justify-content:flex-end !important;
-                    }
-
-                    &.emp-top-align-label{
-                    	grid-column-start: 1 !important;
-  						grid-column-end: -1 !important;
-  						-ms-grid-span: 2 !important;
-                    }
-				}
-
-				& > .cui-data{
-
-					// Reset any defined widths
-					width: auto !important;
-					min-width:auto !important;
-
-					@include gridColumn(2);
-					@include gridRow(1);
-
-					display: inline-flex !important;
-                    flex-wrap: wrap;
-                    align-items: baseline !important;
-                    line-height: normal !important;
-                    min-height: 1.5em;
-                    overflow: visible;
-
-    				input,
-					select,
-					textarea{
-						max-width:100%;
-					}
-
-					input,
-					select{
-						margin-right:6px !important;
-					}
-
-                    i{
-                    	margin-top:0 !important;
-                    	line-height: 1em !important;
-                    }
-
-    				.emp-icon-help{
-    					margin-left: 2px !important;
-					}
-
-
-					.emp-icon-redcheck:after{
-						top:2px !important;
-					}
-
-    				.cui-messages{
-    					width:100% !important;
-    					display: flex;
-    					flex:0 1 100%;
-    					flex-direction:column;
-    					align-items:flex-start;
-    				}
-
-    				&.cui-currency{
-    					.cui-input-append{
-    						margin-left:-11px !important;
-
-    						& + .emp-icon-help{
-    							margin-left:8px !important;
-    						}
-
-    					}
-    				}
-
-
-				}
-
- 				& > .emp-top-align-label + .cui-data{
-                	grid-column-start: 1 !important;
-					grid-column-end: -1 !important;
-					-ms-grid-span: 2 !important;
-                	@include gridRow(2);
-                }
-
-				& > .emp-composite-message{
-					@include gridColumn(2);
-					@include gridRow(2);
-				}
-
-				&.cui-data-left{
-					& > .cui-label{
-						@include gridColumn(2);
-						@include gridRow(1);
-						justify-content:flex-start !important;
-					}
-
-					& > .cui-data{
-						@include gridColumn(1);
-						@include gridRow(1);
-						justify-content:flex-end !important;
-						align-self:normal !important;
-					}
-				}
-			}
-		}
-	}
-
-	.external-app{
-		.ie{
-
-			.cui-row{
-				.emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,
-				.emp-col-full > fieldset:not(.emp-selection-list)  > .emp-fieldset-contents,
-				.emp-col-half > .emp-composite:not(.emp-selection-list) ,
-				.emp-col-full > .emp-composite:not(.emp-selection-list) ,
-				.emp-col-half > .emp-field,
-				.emp-col-full > .emp-field{
-
-
-					// Simulate baseline offset since IE does not allow for grid alignment on baseline
-					& > .cui-label{
-						span,
-						label,
-						legend{
-							display:inline-block !important;
-							margin-top:5px !important;
-						}
-					}
-
-					& > .cui-data{
-						span.emp-data{
-							margin-top:5px !important;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-// ===END: Form grid alignment using GRID===
 
 

@@ -19,34 +19,9 @@
     padding: 2px 6px;
 
     // .theme-teal & {
-        @import "../../../../scss/_theme_teal.scss";
-        background-color: $emp-red-2;
+        // @import "../../../../scss/_theme_teal.scss";
+        // background-color: $emp-red-2;
     // }
-
-    .theme-lilypad & {
-        @import "../../../../scss/_theme_lilypad.scss";
-        background-color: $emp-red-2;
-    }
-
-    .theme-eggplant & {
-        @import "../../../../scss/_theme_eggplant.scss";
-        background-color: $emp-red-2;
-    }
-
-    .theme-cobalt & {
-        @import "../../../../scss/_theme_cobalt.scss";
-        background-color: $emp-red-2;
-    }
-
-    .theme-hazel & {
-        @import "../../../../scss/_theme_hazel.scss";
-        background-color: $emp-red-2;
-    }
-
-    .theme-contrast & {
-        @import "../../../../scss/_theme_contrast.scss";
-        background-color: $emp-red-2;
-    }
 
     // Indeterminate state (no displayed value)
     &.cui-badge-indeterminate {

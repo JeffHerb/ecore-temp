@@ -13,34 +13,9 @@ body {
     color: $cui-text-color;
 
     // .theme-teal & {
-        @import "../_theme_teal.scss";
-        color: $cui-text-color;
-    // }
-
-    .theme-lilypad & {
-        @import "../_theme_lilypad.scss";
-        color: $cui-text-color;
-    }
-
-    .theme-eggplant & {
-        @import "../_theme_eggplant.scss";
-        color: $cui-text-color;
-    }
-
-    .theme-cobalt & {
-        @import "../_theme_cobalt.scss";
-        color: $cui-text-color;
-    }
-
-    .theme-hazel & {
-        @import "../_theme_hazel.scss";
-        color: $cui-text-color;
-    }
-
-    .theme-contrast & {
-        @import "../_theme_contrast.scss";
-        color: $cui-text-color;
-    }
+        // @import "../_theme_teal.scss";
+        // color: $cui-text-color;
+    // }   
 }
 
 .emp-confirm-modal .cui-modal-footer-content button {
