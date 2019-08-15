@@ -370,6 +370,19 @@ define(['jquery', 'cui', 'kind', 'render'], function ($, cui, kind, render) {
                 if($fieldParent.find('.cui-messages')[0]){
                     $messageLoc = $($fieldParent.find('.cui-messages')[0]);
                 }
+                
+                if($fieldParent.parents('.emp-composite').eq(0)){
+
+                    $compositeWrapper = $fieldParent.parents('.emp-composite').eq(0);
+
+                    $messageLoc = $('<div/>', {
+                                    'class': 'cui-messages'
+                                }).wrap('</div>', {
+                                    'class': 'emp-composite-message'
+                                });
+
+                    $compositeWrapper.append($messageLoc);
+                }
                 else{
 
                     $messageLoc = $('<ul/>', {
