@@ -4687,96 +4687,114 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
      */
     var confirm = function confirm(origEvt, msg, yesFuncObject) {
 
-        var $confirm;
+        function create_modal() {
 
-        // Message
-        var $message = $('<p>').text(msg);
+            var $confirm;
 
-        // Button Row
-        var $yesButton = $('<button/>', {
-            'type': 'button',
-            'id': 'emp-confirm-yes-button',
-            'class': 'emp-confirm-yes-button'
-        }).text('Yes');
+            // Message
+            var $message = $('<p>').text(msg);
 
-        var $noButton = $('<button/>', {
-            'type': 'button',
-            'id': 'emp-confirm-no-button',
-            'class': 'cui-button-primary emp-confirm-no-button'
-        })
-            .text('No');
+            // Button Row
+            var $yesButton = $('<button/>', {
+                'type': 'button',
+                'id': 'emp-confirm-yes-button',
+                'class': 'emp-confirm-yes-button'
+            }).text('Yes');
 
-        // Create the button container and put it all together
-        var $buttonContainer = $('<div/>', {
-            "class": "emp-confirm-button-container"
-        })
-            .append($noButton)
-            .append($yesButton);
+            var $noButton = $('<button/>', {
+                'type': 'button',
+                'id': 'emp-confirm-no-button',
+                'class': 'cui-button-primary emp-confirm-no-button'
+            })
+                .text('No');
 
-        var _priv = {};
+            // Create the button container and put it all together
+            var $buttonContainer = $('<div/>', {
+                "class": "emp-confirm-button-container"
+            })
+                .append($noButton)
+                .append($yesButton);
 
-        _priv.destroyModal = function _destory_modal($modal) {
+            var _priv = {};
 
-            $modal.hide();
-        };
+            _priv.destroyModal = function _destory_modal($modal) {
 
-        _priv.setupModal = function _setup_modal($modal) {
+                $modal.hide();
+            };
 
-            $modal.$self.find('.emp-confirm-yes-button').on('click', { modal: $modal }, _event.yes);
-            $modal.$self.find('.emp-confirm-no-button').on('click', { modal: $modal }, _event.no).focus();
-        };
+            _priv.setupModal = function _setup_modal($modal) {
 
-        _priv.onHide = function _on_hide_modal($modal) {
-        };
+                $modal.$self.find('.emp-confirm-yes-button').on('click', { modal: $modal }, _event.yes);
+                $modal.$self.find('.emp-confirm-no-button').on('click', { modal: $modal }, _event.no).focus();
+            };
 
-        var _event = {};
+            _priv.onHide = function _on_hide_modal($modal) {
+            };
 
-        _event.no = function _event_no(event) {
+            var _event = {};
 
-            var $modal = event.data.modal;
+            _event.no = function _event_no(event) {
 
-            _priv.destroyModal($modal);
-        };
+                var $modal = event.data.modal;
 
-        _event.yes = function _event_yes(event) {
+                _priv.destroyModal($modal);
+            };
 
-            var $modal = event.data.modal;
+            _event.yes = function _event_yes(event) {
 
-            _priv.destroyModal($modal);
+                var $modal = event.data.modal;
 
-            if (typeof yesFuncObject === "function") {
+                _priv.destroyModal($modal);
 
-                yesFuncObject();
-            }
-            else {
+                if (typeof yesFuncObject === "function") {
 
-                functionCall(origEvt, yesFuncObject);
-            }
-        };
+                    yesFuncObject();
+                }
+                else {
 
-        $confirm = $.modal({
-            html: $message,
-            footer: {
-                "html": $buttonContainer.html()
-            },
-            modalClass: 'emp-confirm-modal',
-            onCreate: function (modal) {
+                    functionCall(origEvt, yesFuncObject);
+                }
+            };
 
-                _priv.setupModal(modal);
-            },
-            //onHide: _priv.onHide,
-            hideDestroy: true
-        });
+            $confirm = $.modal({
+                html: $message,
+                footer: {
+                    "html": $buttonContainer.html()
+                },
+                modalClass: 'emp-confirm-modal',
+                onCreate: function (modal) {
 
-        $confirm.show();
+                    _priv.setupModal(modal);
+                },
+                //onHide: _priv.onHide,
+                hideDestroy: true
+            });
 
-        // Special return function that will prevent the rest of the functionCall functions from running.
+            $confirm.show();
+
+            // Special return function that will prevent the rest of the functionCall functions from running.
+            return "stop";
+        }
+
+        // check and load modal if needed
+        if (require.defined('modal')) {
+
+            create_modal();
+        }
+        else{
+
+            cui.load('modal', function _error_report_modal() {
+
+                create_modal();
+            });
+        }
+
         return "stop";
     };
 
     /**
      * Validates table state and footer control action
-     * 
+     *
      */
     var tableState = function _table_state(evt){
 
@@ -4822,10 +4840,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                 //error msg
                 var tRowErrorMsg = createErrorMsg('Please select a row. [UI040]');
                     tRowErrorMsg.setAttribute('data-msg', 'table-msg');
-                
+
                 //empMessage.createMessage({ text: 'Please select a row. [UI040]', type: "error" }, {field: tableID});
 
-                //add msg 
+                //add msg
                 if(!rowError){
 
                     tFooterCtrls.insertAdjacentElement('afterend', tRowErrorMsg);
@@ -4833,7 +4851,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                 // Special return function that will prevent the rest of the functionCall functions from running.
                 return "stop";
-            
+
             }else{
 
                 //remove msg
@@ -4866,7 +4884,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                 tFooterCtrls.insertAdjacentElement('afterend', footerCtrlErrorMsg);
             }
-            
+
             // Special return function that will prevent the rest of the functionCall functions from running.
             return "stop";
 
