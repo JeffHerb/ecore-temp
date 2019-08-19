@@ -4805,48 +4805,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var tableID = evtTargetOffsetParent.querySelector('table').getAttribute('id');
         var selectElemID = selectElem.getAttribute('id');
 
-<<<<<<< HEAD
-        var tFooterCtrls = evtTargetOffsetParent.querySelector('.' + 'emp-footer-controls');
-
-        //validate table state
-        if(emp.reference.tables[tableID] && emp.reference.tables[tableID].dataStore.selectable){
-
-            var checkedIndex = emp.reference.tables['table-table-state'].getCheckedIndex();
-
-            if(!checkedIndex){
-
-                //error msg
-                var tRowErrorMsg = createErrorMsg('Please select a row. [UI040]');
-                    tRowErrorMsg.setAttribute('data-msg', 'table-msg');
-
-                //empMessage.createMessage({ text: 'Please select a row. [UI040]', type: "error" }, {field: tableID});
-
-                //add msg
-                if(!rowError){
-
-                    tFooterCtrls.insertAdjacentElement('afterend', tRowErrorMsg);
-                }
-
-                // Special return function that will prevent the rest of the functionCall functions from running.
-                return "stop";
-
-            }else{
-
-                //remove msg
-                if(rowError){
-
-                    rowError.parentElement.removeChild(rowError);
-                }
-            }
-
-        }
-
-        //validate table footer action
-        var selectElem = evtTargetOffsetParent.querySelector('select');
-        var tFooterComposite = evtTargetOffsetParent.querySelector('.' + 'emp-composite');
-=======
         var cuiMessage = evtTargetOffsetParent.querySelector('.' + 'cui-messages');
->>>>>>> 40346db056a4c84f32c2e90565bbe5ec8fcb0ec5
 
         var checkedIndex = emp.reference.tables[tableID].getCheckedIndex();
         var firstSelectOpt = selectElem.querySelector('option');
@@ -4863,7 +4822,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             return "stop";
         }else{
 
-            //remove msg 
+            //remove msg
             if(cuiMessage){
 
                 var $cuiEror = $(cuiMessage.children[0]);
