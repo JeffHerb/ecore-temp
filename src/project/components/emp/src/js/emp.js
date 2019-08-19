@@ -4780,107 +4780,40 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
      */
     var tableState = function _table_state(evt){
 
-        var createErrorMsg = function(msg){
+        var evtTargetOffsetParent = evt.target.offsetParent;
 
-            //create error msg elems
-            var ulElem = document.createElement('ul');
-                ulElem.classList.add('cui-messages', 'cui-field-message');
-
-            var liElem = document.createElement('li');
-                liElem.classList.add('cui-error');
-                liElem.innerText = msg;
-
-            var spanElem = document.createElement('span');
-                spanElem.classList.add('cui-hide-from-screen');
-                spanElem.innerText = 'Error message';
-
-            liElem.appendChild(spanElem);
-
-            ulElem.appendChild(liElem);
-
-            return ulElem;
-        };
-
-        var evtTarget = evt.target;
-
-        var evtTargetOffsetParent = evtTarget.offsetParent;
-
-        var rowError = evtTargetOffsetParent.querySelector('.' + 'cui-field-message[data-msg="table-msg"]');
-        var selectOptError = evtTargetOffsetParent.querySelector('.' + 'cui-field-message[data-msg="footer-msg"]');
+        var selectElem = evtTargetOffsetParent.querySelector('select');
 
         var tableID = evtTargetOffsetParent.querySelector('table').getAttribute('id');
+        var selectElemID = selectElem.getAttribute('id');
 
-        var tFooterCtrls = evtTargetOffsetParent.querySelector('.' + 'emp-footer-controls');
+        var cuiMessage = evtTargetOffsetParent.querySelector('.' + 'cui-messages');
 
-        //validate table state
-        if(emp.reference.tables[tableID] && emp.reference.tables[tableID].dataStore.selectable){
-
-            var checkedIndex = emp.reference.tables['table-table-state'].getCheckedIndex();
-
-            if(!checkedIndex){
-
-                //error msg
-                var tRowErrorMsg = createErrorMsg('Please select a row. [UI040]');
-                    tRowErrorMsg.setAttribute('data-msg', 'table-msg');
-                
-                //empMessage.createMessage({ text: 'Please select a row. [UI040]', type: "error" }, {field: tableID});
-
-                //add msg 
-                if(!rowError){
-
-                    tFooterCtrls.insertAdjacentElement('afterend', tRowErrorMsg);
-                }
-
-                // Special return function that will prevent the rest of the functionCall functions from running.
-                return "stop";
-            
-            }else{
-
-                //remove msg
-                if(rowError){
-
-                    rowError.parentElement.removeChild(rowError);
-                }
-            }
-
-        }
-
-        //validate table footer action
-        var selectElem = evtTargetOffsetParent.querySelector('select');
-        var tFooterComposite = evtTargetOffsetParent.querySelector('.' + 'emp-composite');
-
+        var checkedIndex = emp.reference.tables[tableID].getCheckedIndex();
         var firstSelectOpt = selectElem.querySelector('option');
 
-        if(firstSelectOpt.selected){
+        if(!checkedIndex || firstSelectOpt.selected){
 
-            //error msg
-            var footerCtrlErrorMsg = createErrorMsg('Please make a selection. [UI020]');
-                footerCtrlErrorMsg.setAttribute('data-msg', 'footer-msg');
+            //append msg
+            if(!cuiMessage){
 
-            //empMessage.createMessage({ text: 'Please make a selection. [UI030]', type: "error" }, {field: tFooterCtrls.id});
-
-            //add msg
-            if(!selectOptError){
-
-                tFooterComposite.classList.add('emp-validation-error');
-
-                tFooterCtrls.insertAdjacentElement('afterend', footerCtrlErrorMsg);
+                empMessage.createMessage({ text: 'Please verify a row and a valid dropdown option is selected. [UI040]', type: "error" }, {field: selectElemID});
             }
-            
+
             // Special return function that will prevent the rest of the functionCall functions from running.
             return "stop";
-
         }else{
 
-            //remove msg
-            if(selectOptError){
+            //remove msg 
+            if(cuiMessage){
 
-                tFooterComposite.classList.remove('emp-validation-error');
+                var $cuiEror = $(cuiMessage.children[0]);
 
-                selectOptError.parentElement.removeChild(selectOptError);
+                empMessage.removeMessage($cuiEror);
+
+                cuiMessage.parentElement.removeChild(cuiMessage);
             }
         }
-
     };
 
 
