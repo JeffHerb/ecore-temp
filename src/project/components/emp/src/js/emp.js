@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'shortcut', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'globalShortcuts', 'addRemove', 'forms', 'getCookie', 'refresh', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, shortcut, guid, store, clkblocker, empMessage, selectionPopup, gShortcuts, addRemove, forms, getCookie, refresh, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
 
     var _priv = {
         isInitialized: false,
@@ -465,11 +465,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                 });
 
             });
-        }
-
-        if(!externalEmpire){
-	        gShortcuts.contextMenu();
-	        gShortcuts.lotusFormModal();
         }
 
         $body.trigger('setup.page');
@@ -4802,7 +4797,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var evtTargetOffsetParent = origEvt.target.offsetParent;
 
         var tableID = evtTargetOffsetParent.querySelector('table').getAttribute('id');
-        
+
         var selectElemID = evtTargetOffsetParent.querySelector('select').getAttribute('id');
 
         var cuiMessage = evtTargetOffsetParent.querySelector('.' + 'cui-messages');
@@ -4826,7 +4821,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         }else{
 
             if(!cuiMessage){
-                
+
                 empMessage.createMessage({ text: 'Please select a row. [UI040]', type: "error" }, {field: selectElemID});
             }
         }
