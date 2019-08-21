@@ -3305,6 +3305,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                                 break;
 
                             case 'emp.confirm':
+                            case 'emp.tableConfirm':
                             case 'emp.tableState':
 
                                 // add on the original event object
@@ -4793,6 +4794,48 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
     };
 
     /**
+     * Validates table state and confirm user selection
+     *
+     */
+    var tableConfirm = function table_confirm(origEvt, msg, yesFuncObject){
+
+        var evtTargetOffsetParent = origEvt.target.offsetParent;
+
+        var tableID = evtTargetOffsetParent.querySelector('table').getAttribute('id');
+        
+        var selectElemID = evtTargetOffsetParent.querySelector('select').getAttribute('id');
+
+        var cuiMessage = evtTargetOffsetParent.querySelector('.' + 'cui-messages');
+
+        var checkedIndex = emp.reference.tables[tableID].getCheckedIndex();
+
+        if(checkedIndex){
+
+            //remove msg
+            if(cuiMessage){
+
+                var $cuiEror = $(cuiMessage.children[0]);
+
+                empMessage.removeMessage($cuiEror);
+
+                cuiMessage.parentElement.removeChild(cuiMessage);
+            }
+
+            emp.confirm(origEvt, msg, yesFuncObject);
+
+        }else{
+
+            if(!cuiMessage){
+                
+                empMessage.createMessage({ text: 'Please select a row. [UI040]', type: "error" }, {field: selectElemID});
+            }
+        }
+
+        // Special return function that will prevent the rest of the functionCall functions from running.
+        return "stop";
+    };
+
+    /**
      * Validates table state and footer control action
      *
      */
@@ -5527,6 +5570,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         ajaxSection: ajaxSection,
         clickblocker: clkblocker,
         confirm: confirm,
+        tableConfirm: tableConfirm,
         tableState: tableState,
         dateMask: dateMask,
 

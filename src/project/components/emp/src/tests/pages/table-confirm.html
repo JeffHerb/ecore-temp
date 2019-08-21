@@ -1,0 +1,225 @@
+
+<!doctype html>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script></body>
+
+    <script id="require" src="../../../dist/js/main.js"></script>
+
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "contents": [
+                                    {
+                                        "type": "section",
+                                        "contents": [
+                                            {
+                                                "type": "header",
+                                                "template": "group",
+                                                "title": "Table Confirm Validation"
+                                            },
+                                            {
+                                                "template": "table",
+                                                "selectable": true,
+                                                "selectionType": "multiple",
+                                                "selectAll": true,
+                                                "attributes": {
+                                                    "id": "table-confirm"
+                                                },
+                                                "head": {
+                                                    "rows": [
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Name"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Social Security number (SSN)"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Owner/spouse"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Date of birth"
+                                                                },
+                                                                {
+                                                                    "type": "header",
+                                                                    "text": "Relationships"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "body": {
+                                                    "rows": [
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "template": "link",
+                                                                            "attributes": {
+                                                                                "href": "#",
+                                                                            },
+                                                                            "text": "Smith, Susan"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "text": "XXX-XX-4962"
+                                                                },
+                                                                {
+                                                                    "text": "Spouse of property owner - not an owner"
+                                                                },
+                                                                {
+                                                                    "text": "04/02/1950"
+                                                                },
+                                                                {
+                                                                    "text": "	John Smith (spouse)"
+                                                                }
+                                                            ],
+                                                            "key": "0"
+                                                        },
+                                                        {
+                                                            "columns": [
+                                                                {
+                                                                    "contents": [
+                                                                        {
+                                                                            "template": "link",
+                                                                            "attributes": {
+                                                                                "href": "#",
+                                                                            },
+                                                                            "text": "Smith, John"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "text": "XXX-XX-1234"
+                                                                },
+                                                                {
+                                                                    "text": "Property owner"
+                                                                },
+                                                                {
+                                                                    "text": "02/04/1945"
+                                                                },
+                                                                {
+                                                                    "text": "Susan Smith (spouse)"
+                                                                }
+                                                            ],
+                                                            "key": "1"
+                                                        }
+                                                    ]
+                                                },
+                                                "footerControls": {
+                                                    "contents": [
+                                                        {
+                                                            "type": "search",
+                                                            "template": "composite",
+                                                            "parts": {
+                                                                "label": {
+                                                                    "template": "field",
+                                                                    "label": {
+                                                                        "attributes": {
+                                                                            "for": "E_R_F_R_O"
+                                                                        },
+                                                                        "text": "Reason for removing owner(s):"
+                                                                    }
+                                                                },
+                                                                "text": {
+                                                                    "type": "select",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "id": "E_R_F_R_O",
+                                                                            "name": "E_R_F_R_O",
+                                                                        },
+                                                                        "options": {
+                                                                            "1": {
+                                                                                "text": "Select one",
+                                                                                "value": "1"
+                                                                            },
+                                                                            "2": {
+                                                                                "text": "No longer owner's primary residence",
+                                                                                "value": "2"
+                                                                            },
+                                                                            "3": {
+                                                                                "text": "Deceased",
+                                                                                "value": "3"
+                                                                            },
+                                                                            "4": {
+                                                                                "text": "Property sold",
+                                                                                "value": "4"
+                                                                            },
+                                                                            "5": {
+                                                                                "text": "Not age qualified",
+                                                                                "value": "5"
+                                                                            }
+                                                                        },
+                                                                        "noBlankOption": true
+                                                                    }
+                                                                },
+                                                                "button": {
+                                                                    "type": "button",
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "attributes": {
+                                                                            "type": "button",
+                                                                            "name": "E_R",
+                                                                            "id": "E_R",
+                                                                            "onclick": "emp.functionCall(event, { 0: { 'function': 'emp.tableConfirm', 'args':['Are you sure you want to remove the owner(s)?']}, 1: { 'function': 'emp.form.submit', 'args':[{id:'form_content', action:''}] }})"
+                                                                        },
+                                                                        "text": "Remove"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "form",
+                        "attributes":{
+                            "id": "form_content",
+                            "name": "form_content",
+                            "method":"post",
+                        }
+                    }
+                ]
+            }
+        };             
+    </script>
+
+    <script>
+
+        require(['jquery', 'emp', 'domReady!'], function($, emp) {
+
+            console.log("page is ready");
+
+        });
+    </script>
+
+</html>
