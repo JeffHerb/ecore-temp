@@ -369,110 +369,6 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
             }
         }
 
-        // Fix table for data-type of order
-        if (data.type && data.type === "order") {
-
-            var ORDER_BUTTONS_HEADER = {
-                "attributes": {
-                    "data-type": "clientControls",
-                    "data-columnType": "button",
-                    "data-columnEditable": false,
-                    "title": "Reorder Record"
-                },
-                "sort": false,
-                "type": "header",
-                "text": "Reorder Record",
-                "style": 'min-width',
-                "hideLabel": true
-            };
-
-            var ORDER_BUTTONS_BODY = {
-                "type": "data",
-                "style": 'min-width',
-                "contents": [
-                    {
-                        "type": "div",
-                        "attributes": {
-                            "className": "emp-min-button-width"
-                        },
-                        "contents": [
-                            {
-                                "type": "button",
-                                "template": "field",
-                                "input": {
-                                    "attributes": {
-                                        "type": "button",
-                                        "title": "Move Record Up",
-                                    },
-                                    "text": "Move Record Up",
-                                    "icon": "order-table-move-up"
-                                }
-                            },
-                            {
-                                "type": "button",
-                                "template": "field",
-                                "input": {
-                                    "attributes": {
-                                        "type": "button",
-                                        "title": "Move Record Down",
-                                    },
-                                    "text": "Move Record Down",
-                                    "icon": "order-table-move-down"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            data.attributes['data-filter'] = false;
-
-            //data.attributes['data-responsive'] = false;
-
-            data.attributes['data-responsive-columns'] = false;
-
-            if (data.attributes && data.attributes.className) {
-
-                data.attributes['className'] += " emp-order-table";
-            }
-            else {
-                data.attributes['className'] = "emp-order-table";
-            }
-
-            for (var c = 0, cLen = data.head.rows[0].columns.length; c < cLen; c++) {
-                var column = data.head.rows[0].columns[c];
-
-                if (data.head.rows[0].columns[c].attributes && data.head.rows[0].columns[c].attributes['data-type'] && data.head.rows[0].columns[c].attributes['data-type'] === "buttonMenu") {
-
-                    if (buttonMenuIndex !== c) {
-
-                        buttonMenuIndex = c;
-                    }
-
-                }
-
-            }
-
-            if (buttonMenuIndex) {
-                orderButtonIndex = buttonMenuIndex;
-            }
-            else if (pimaryButtonIndex && !buttonMenuIndex) {
-                orderButtonIndex = pimaryButtonIndex;
-            }
-            else if (!buttonMenuIndex && !pimaryButtonIndex) {
-                orderButtonIndex = data.head.rows[0].columns.length + 1;
-            }
-
-            // Add column to the header
-            data.head.rows[0].columns.splice(orderButtonIndex, 0, ORDER_BUTTONS_HEADER);
-
-            // Now loop through and add a column to the body
-            for (var br = 0, brLen = data.body.rows.length; br < brLen; br++) {
-                data.body.rows[br].columns.splice(orderButtonIndex, 0, ORDER_BUTTONS_BODY);
-            }
-
-        }
-
         // Fix for external app tables
         if (external && data.type && data.type === "pivot") {
 
@@ -611,35 +507,34 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
         }
 
-        if (external && data.type && data.type === "css") {
+        // Do not remove, this may still be needed, but can be disabled for naw - JAH - 08222019
+        // if (external && data.type && data.type === "css") {
 
-            //console.log("CSS Table!");
+        //     //console.log("CSS Table!");
 
-            data.attributes['data-responsive'] = false;
-            data.attributes['data-filter'] = false;
-            data.attributes['data-resize'] = false;
-            data.attributes['data-sticky'] = false;
+        //     data.attributes['data-responsive'] = false;
+        //     data.attributes['data-filter'] = false;
+        //     data.attributes['data-resize'] = false;
+        //     data.attributes['data-sticky'] = false;
 
-            for (var bRow = 0, bRowLen = data.body.rows.length; bRow < bRowLen; bRow++) {
+        //     for (var bRow = 0, bRowLen = data.body.rows.length; bRow < bRowLen; bRow++) {
 
-                //console.log(data.body.rows[bRow]);
+        //         //console.log(data.body.rows[bRow]);
 
-                for (var bCol = 0, bColLen = data.body.rows[bRow].columns.length; bCol < bColLen; bCol++) {
+        //         for (var bCol = 0, bColLen = data.body.rows[bRow].columns.length; bCol < bColLen; bCol++) {
 
-                    var col = data.body.rows[bRow].columns[bCol];
+        //             var col = data.body.rows[bRow].columns[bCol];
 
-                    if (!col.attributes) {
-                        col.attributes = {};
-                    }
+        //             if (!col.attributes) {
+        //                 col.attributes = {};
+        //             }
 
-                    col.attributes['data-title'] = data.head.rows[0].columns[bCol].text;
+        //             col.attributes['data-title'] = data.head.rows[0].columns[bCol].text;
 
-                }
+        //         }
 
-            }
-        }
-
-
+        //     }
+        // }
 
         data.fixData = true;
 

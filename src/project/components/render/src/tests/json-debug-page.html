@@ -655,6 +655,18 @@ var fwData =
                                                                 "sortable": true,
                                                                 "type": "header",
                                                                 "text": "Relationships"
+                                                            },
+                                                            {
+                                                                "text": "Button Menu",
+                                                                "style": "min-width",
+                                                                "sortable": false,
+                                                                "responsive": {},
+                                                                "attributes": {
+                                                                    "data-type": "buttonMenu",
+                                                                    "data-colmap": "inputTableModelId_Field28"
+                                                                },
+                                                                "type": "header",
+                                                                "hideLabel": true
                                                             }
                                                         ]
                                                     }
@@ -694,6 +706,36 @@ var fwData =
                                                             {
                                                                 "contents": [],
                                                                 "text": "null null (Sibling)"
+                                                            },
+                                                            {
+                                                                "contents": [{
+                                                                    "template": "field",
+                                                                    "input": {
+                                                                        "text": "Actions",
+                                                                        "attributes": {
+                                                                            "type": "button"
+                                                                        },
+                                                                        "style": "action"
+                                                                    },
+                                                                    "style": "min-width",
+                                                                    "type": "button",
+                                                                    "options": [{
+                                                                        "template": "field",
+                                                                        "input": {
+                                                                            "icon": "iDeleteImage.gif",
+                                                                            "text": "Delete",
+                                                                            "attributes": {
+                                                                                "id": "E_BTN_DELETE_6_0",
+                                                                                "data-validation": false,
+                                                                                "title": "Delete",
+                                                                                "name": "E_BTN_DELETE_6_0",
+                                                                                "onclick": "emp.functionCall(event, {0:{'function':'emp.confirm','args':['Are you sure you want to delete this record?\\n\\n']},1:{'function':'emp.referenceCall','args':['tables','inputTableModelId','setFocus',[]]},2:{'function':'emp.form.submit','args':[{id:'form_content',action:'\/empr2-st\/gateway\/AACTGU01S.tabset\/MC3163S\/MC3163S_DELETE_JURISDICTION'}]}})",
+                                                                                "type": "button"
+                                                                            }
+                                                                        },
+                                                                        "type": "button"
+                                                                    }]
+                                                                }]
                                                             }
                                                         ],
                                                         "key": "0"

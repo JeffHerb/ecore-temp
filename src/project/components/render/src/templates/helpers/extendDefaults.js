@@ -258,6 +258,10 @@ Handlebars.registerHelper('extendDefaults', function (params) {
                         addValue('className', 'emp-collapse');
                         break;
 
+                    case "actions":
+                        addValue('className', 'emp-external-actions-menu');
+                        break;
+
                     // EMP TEST STYLES NOT FOR PRODUCTION USE
                     case 'active-green':
                         addValue('className', 'emp-active-green');

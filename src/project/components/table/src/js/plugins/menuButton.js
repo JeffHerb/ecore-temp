@@ -263,7 +263,7 @@ define(['render'], function (render) {
                 _events.buttonMenuClose();
             });
 
-            table.obj.$tbody.on('click', 'tr td button.emp-icon-responsive-table-menu', function (evt) {
+            table.obj.$tbody.on('click', 'tr td button.emp-icon-responsive-table-menu, tr td button.emp-external-actions-menu', function (evt) {
 
                 _events.buttonMenu(evt, table);
 
