@@ -7,7 +7,7 @@
                     <div class="emp-field emp-check-include-all-div"> 
                         <div class="cui-data-left">
                             <div class="cui-data">
-                                <input tabindex="1" type="checkbox" id="check-all" class="emp-check-include-all">
+                                <input type="checkbox" id="check-all" class="emp-check-include-all">
                             </div>
                             <div class="cui-label"> 
                                 <label for="check-all">Include All</label> 
@@ -26,7 +26,7 @@
                 {{#each (splitString hiddenValue=this.selectedOrder.input.attributes.value) as |value key|}}
                     {{#each ../checklist as |checkboxValue checkbox|}}
                         {{#ifCond v1=value op="===" v2=this.input.attributes.value}}
-                            <li data-checkValue="{{value}}" tabindex="1"><span>{{this.label.text}}<span></li>
+                            <li data-checkValue="{{value}}" tabindex="0"><span>{{this.label.text}}<span></li>
                         {{/ifCond}}
                     {{/each}}
                 {{/each}}

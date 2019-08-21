@@ -48,9 +48,9 @@
     {{~else~}}
 
         {{#if scope}}
-            <select tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults selectOther=this.otherValue required=this.input defaultSelection=this.input.defaultValue expands=this multipleSelection=this.input scope=this.scope)) }}>
+            <select {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults selectOther=this.otherValue required=this.input defaultSelection=this.input.defaultValue expands=this multipleSelection=this.input scope=this.scope)) }}>
         {{else}}
-            <select tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults selectOther=this.otherValue required=this.input defaultSelection=this.input.defaultValue expands=this multipleSelection=this.input scope="field")) }}>
+            <select {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults selectOther=this.otherValue required=this.input defaultSelection=this.input.defaultValue expands=this multipleSelection=this.input scope="field")) }}>
         {{/if}}
 
 
@@ -59,7 +59,7 @@
 
                 {{! unless told to ignore a blank option }}
                 {{#unless this.input.noBlankOption~}}
-                    <option tabindex="1" value=""></option>
+                    <option value=""></option>
                 {{/unless~}}
 
             {{/ifCond ~}}

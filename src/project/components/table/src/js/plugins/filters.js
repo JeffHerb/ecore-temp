@@ -960,7 +960,6 @@ define([], function () {
                                                             'class': CLASSES.filterInput,
                                                             'data-text': "text",
                                                             'type': 'text',
-                                                            'tabindex': '1',
                                                         })
                                                         .attr('size', '1') // This attribute must be present to control its size with CSS; the value doesn't matter
                                                         .on('keyup', {table: table}, _events.onInitialInputKeyup)
@@ -978,7 +977,6 @@ define([], function () {
                                                             'data-text': "date",
                                                             'type': 'button',
                                                             //'size': '1',
-                                                            'tabindex': '1',
                                                         })
                                                         .attr('size', '1')
                                                         .on('click', {table: table}, _events.onDateFilterButtonClick)
@@ -1002,7 +1000,6 @@ define([], function () {
                                                             'type': 'text',
                                                             'data-text': "numbers",
                                                             //'size': '1',
-                                                            'tabindex': '1',
                                                         })
                                                         .attr('size', '1')
                                                         .on('keyup',   {table: table}, _events.onInitialInputKeyup)
@@ -1038,7 +1035,6 @@ define([], function () {
                                                             {
                                                                 'id': table.id + '_input_filter_' + i,
                                                                 'class': CLASSES.filterInput,
-                                                                'tabindex': '1',
                                                             })
                                                             .attr('size', '1')
                                                             .append(
@@ -1093,7 +1089,6 @@ define([], function () {
                                                         {
                                                             'id': table.id + '_input_filter_' + i,
                                                             'class': CLASSES.filterInput,
-                                                            'tabindex': '1',
                                                         })
                                                         .attr('size', '1')
                                                         .append(
@@ -1188,7 +1183,6 @@ define([], function () {
                             {
                                 'value': 'gt',
                                 'type': 'button',
-                                'tabindex': '1',
                             })
                             .text('Greater than')
                             .on('click', {colRule: colRule, table: table}, _events.onNumericOptionButtonClick)
@@ -1204,7 +1198,6 @@ define([], function () {
                             {
                                 'value': 'gte',
                                 'type': 'button',
-                                'tabindex': '1',
                             })
                             .text('Greater than or equal to')
                             .on('click', {colRule: colRule, table: table}, _events.onNumericOptionButtonClick)
@@ -1219,7 +1212,6 @@ define([], function () {
                             {
                                 'value': 'eq',
                                 'type': 'button',
-                                'tabindex': '1',
                             })
                             .text('Equal to')
                             .on('click', {colRule: colRule, table: table}, _events.onNumericOptionButtonClick)
@@ -1234,7 +1226,6 @@ define([], function () {
                             {
                                 'value': 'lte',
                                 'type': 'button',
-                                'tabindex': '1',
                             })
                             .text('Less than or equal to')
                             .on('click', {colRule: colRule, table: table}, _events.onNumericOptionButtonClick)
@@ -1249,7 +1240,6 @@ define([], function () {
                             {
                                 'value': 'lt',
                                 'type': 'button',
-                                'tabindex': '1',
                             })
                             .text('Less than')
                             .on('click', {colRule: colRule, table: table}, _events.onNumericOptionButtonClick)
@@ -1264,7 +1254,6 @@ define([], function () {
                             {
                                 'value': 'co',
                                 'type': 'button',
-                                'tabindex': '1',
                             })
                             .text('Contains')
                             .on('click', {colRule: colRule, table: table}, _events.onNumericOptionButtonClick)
@@ -1279,7 +1268,7 @@ define([], function () {
                             {
                                 'class': CLASSES.optionPaneClose,
                                 'role': 'button',
-                                'tabindex': '1',
+                                'tabindex': '0',
                             })
                             .text('Close')
                             .on('click keydown', {colRule: colRule}, _events.onOptionPaneCloseClick)
@@ -1342,7 +1331,6 @@ define([], function () {
                                     'class': CLASSES.datePaneRangeRuleCheckbox,
                                     'type': 'checkbox',
                                     'value': 'range',
-                                    'tabindex': '1'
                                 })
                                 .on('change keyup', {table: table, colRule: colRule, type: 'range'}, _events.onDateTypeChange);
 
@@ -1381,7 +1369,6 @@ define([], function () {
                                         'id': id + '_range_begin',
                                         'class': CLASSES.datePaneRangeCheckbox,
                                         'type': 'checkbox',
-                                        'tabindex': '1',
                                     })
                                     .on('change keyup', {table: table, colRule: colRule, part: 'begin'}, _events.onDateRangeChange);
 
@@ -1394,7 +1381,6 @@ define([], function () {
                                         'type': 'text',
                                         'size': '10',
                                         'placeholder': 'MM/DD/YYYY',
-                                        'tabindex': '1',
                                     })
                                     // We need to watch `keyup` so we can update the UI live as the user types, and we also need to watch `change` because that's what the date picker will fire
                                     .on('change keyup', {table: table, colRule: colRule, part: 'begin'}, _events.onDateRangeChange);
@@ -1448,7 +1434,6 @@ define([], function () {
                                         'id': id + '_range_ending',
                                         'class': CLASSES.datePaneRangeCheckbox,
                                         'type': 'checkbox',
-                                        'tabindex': '1',
                                     })
                                     .on('change keyup', {table: table, colRule: colRule, part: 'end'}, _events.onDateRangeChange);
 
@@ -1459,7 +1444,6 @@ define([], function () {
                                     'type': 'text',
                                     'size': '10',
                                     'placeholder': 'MM/DD/YYYY',
-                                    'tabindex': '1',
                                 })
                                 .on('change keyup', {table: table, colRule: colRule, part: 'end'}, _events.onDateRangeChange);
 
@@ -1514,7 +1498,6 @@ define([], function () {
                                     'id': id + '_match_selection',
                                     'type': 'checkbox',
                                     'value': 'matching',
-                                    'tabindex': '1'
                                 })
                                 .on('change keyup', {table: table, colRule: colRule, type: 'matching'}, _events.onDateTypeChange);
 
@@ -1551,7 +1534,6 @@ define([], function () {
                                         'id': id + '_match_month',
                                         'class': CLASSES.datePaneMatchingMonth + ' ' + CLASSES.hideSpinner,
                                         'type': 'text',
-                                        'tabindex': '1',
                                         'placeholder': 'MM',
                                         'maxlength': '2',
                                         'size': '2'
@@ -1563,7 +1545,6 @@ define([], function () {
                                     'id': id + '_match_day',
                                     'class': CLASSES.datePaneMatchingDay + ' ' + CLASSES.hideSpinner,
                                     'type': 'number',
-                                    'tabindex': '1',
                                     'placeholder': 'DD',
                                     'maxlength': '2',
                                     'size': '2'
@@ -1575,7 +1556,6 @@ define([], function () {
                                     'id': id + '_match_year',
                                     'class': CLASSES.datePaneMatchingYear + ' ' + CLASSES.hideSpinner,
                                     'type': 'text',
-                                    'tabindex': '1',
                                     'placeholder': 'YYYY',
                                     'maxlength': '4',
                                     'size': '4'
@@ -1660,7 +1640,6 @@ define([], function () {
                                     'type': 'checkbox',
                                     'checked': 'checked',
                                     'value': 'include blank',
-                                    'tabindex': '1'
                                 })
                                 .on('change keyup',{table: table}, _events.onIncludeBlankChange);
 
@@ -1704,7 +1683,7 @@ define([], function () {
                             {
                                 'class': CLASSES.optionPaneClose,
                                 'role': 'button',
-                                'tabindex': '1',
+                                'tabindex': '0',
                             })
                             .text('Clear')
                             .on('click', {table: table, colRule: colRule}, _events.onDateClearButtonClick)
@@ -1720,7 +1699,7 @@ define([], function () {
                             {
                                 'class': CLASSES.optionPaneClose,
                                 'role': 'button',
-                                'tabindex': '1',
+                                'tabindex': '0',
                             })
                             .text('Close')
                             .on('click', {colRule: colRule}, _events.onOptionPaneCloseClick)
@@ -2311,7 +2290,7 @@ define([], function () {
         }
         // Check for Tab key, but not shift-tab
         else if (evt.which === 9 && !evt.shiftKey && colRule.$options) {
-            // Check whether the option pane is open
+        	// Check whether the option pane is open
             if (colRule.optionsVisibile) {
                 // Set focus to the first choice in the list
                 colRule.$options.find('[tabindex]').eq(0).focus();

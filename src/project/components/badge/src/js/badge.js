@@ -219,7 +219,7 @@ define(['jquery', 'cui'], function ($, cui) {
         var $badge = $('<div/>')
                             .addClass(CLASSES.badge)
                             .addClass(badge.config.display.className)
-                            .attr('tabindex', '1')
+                            .attr('tabindex', '0')
                             .css(badge.config.display.css)
                             .css('opacity', '0') // Keep it hidden for now
                             .appendTo(document.body);

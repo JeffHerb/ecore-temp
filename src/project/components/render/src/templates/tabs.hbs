@@ -1,7 +1,7 @@
 <section {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tabs"}'))}}>
     <header>
         {{#each this.tabs~}}
-            <a tabindex="1" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tab-item emp-header-tab emp-tab-control", "role":"button"}' selected=this.selected
+            <a tabindex="0" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tab-item emp-header-tab emp-tab-control", "role":"button"}' selected=this.selected
             tabIndex=@index scope="tab-control")) skip="id"}}>
                 {{~this.title~}}
             </a>
@@ -12,7 +12,7 @@
 
                 <div {{attribute (mergeAttributes false defaults=(extendDefaults defaults='{"className": "emp-tab"}' state=this.selected tabState=this scope="tab-container"))}}>
 
-                    <a tabindex="1" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tab-item emp-accordion-tab emp-tab-control", "role":"button"}' tabIndex=@index selected=this.selected scope="tab-control" )) skip="id"}}>
+                    <a tabindex="0" {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-tab-item emp-accordion-tab emp-tab-control", "role":"button"}' tabIndex=@index selected=this.selected scope="tab-control" )) skip="id"}}>
                         {{~this.title~}}
                     </a>
 

@@ -141,7 +141,7 @@ define(['spin'], function(spin) {
 			_priv.blocker = $('<div/>', {
 				'class': 'emp-click-blocker',
 				'id': 'emp-click-blocker',
-                'tabindex': '1'
+                'tabindex': '0'
 			}).on('keydown keyup mouseup', function(e) {
 
                 if(e.which == 9) {

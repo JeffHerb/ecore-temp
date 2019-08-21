@@ -85,7 +85,7 @@
 
         {{else}}
 
-            <textarea tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input style=this.input.style) dynamics=this.input.formats) skip="value" }}>{{this.input.attributes.value}}</textarea>
+            <textarea {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input style=this.input.style) dynamics=this.input.formats) skip="value" }}>{{this.input.attributes.value}}</textarea>
 
         {{/ifCond}}
 
