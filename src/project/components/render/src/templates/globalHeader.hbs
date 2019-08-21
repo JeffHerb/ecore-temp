@@ -14,14 +14,14 @@
                 <i role="button" class="emp-icon-error-report" title="Report an error">Report an error!</i>
             </div>
             {{#ifCond v1=this.popup op="!boolCheck" v2=true~}}
-                <div id="emp-header-favorites" role="button" tabindex="1" title="Favorites"><i class="emp-header-favorites-icon"></i>&#9734;</div>
+                <div id="emp-header-favorites" role="button" tabindex="0" title="Favorites"><i class="emp-header-favorites-icon"></i>&#9734;</div>
             {{/ifCond~}}
         </div>
         <!-- Title, notifiers and secondary menu -->
         <div class="emp-header-row-second">
             {{#if tabsets~}}
             <div class="emp-header-tabset-title">
-                <button type="button" class="emp-tabset-toggle{{#ifCond v1=tabsets.collapse op="boolCheck" v2=true }} emp-collapse{{/ifCond}}" title="Hide or show the tabset view" tabindex="1"></button>
+                <button type="button" class="emp-tabset-toggle{{#ifCond v1=tabsets.collapse op="boolCheck" v2=true }} emp-collapse{{/ifCond}}" title="Hide or show the tabset view"></button>
                 <h1>{{~tabsets.title~}}</h1>
             </div>
             {{/if~}}
@@ -52,7 +52,7 @@
             {{/if}}
         {{/each}}
         <li class="emp-tabset-pin-item" style="{{tabsetGridPlacement index=false pin=true}}">
-            <button type="button" tabindex="1" title="Pin the tabset open" class="emp-tabset-pin">
+            <button type="button" title="Pin the tabset open" class="emp-tabset-pin">
                 Pin the tabset
             </button>
         </li>
@@ -75,16 +75,16 @@
     <ul class="emp-actions">
         {{#unless this.noExpandable~}}
             <li>
-                <button type="button" class="emp-icon-sections-toggle emp-initial-state" title="Expand all sections" tabindex="1"></button>
+                <button type="button" class="emp-icon-sections-toggle emp-initial-state" title="Expand all sections" ></button>
             </li>
         {{/unless~}}
         <!--
         <li>
-            <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1"></button>
+            <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections"></button>
         </li>
         -->
         <li>
-            <button type="button" class="emp-icon-print" title="Print page" tabindex="1"></button>
+            <button type="button" class="emp-icon-print" title="Print page"></button>
         </li>
     </ul>
 </div>
@@ -248,7 +248,7 @@
                     <div class="emp-field emp-boolean-input">
                         <div class="cui-data-left">
                             <div class="cui-data">
-                                <input type="checkbox" id="FW_VK_DUPS_FLAG" name="FW_VK_DUPS_FLAG" value="Y" tabindex="1" />
+                                <input type="checkbox" id="FW_VK_DUPS_FLAG" name="FW_VK_DUPS_FLAG" value="Y"  />
                             </div>
                             <div class="cui-label">
                                 <label for="FW_VK_DUPS_FLAG">Show Duplicates</label>
@@ -265,7 +265,7 @@
                     <div class="emp-field emp-boolean-input">
                         <div class="cui-data-left">
                             <div class="cui-data">
-                                <input type="checkbox" id="FW_VK_DUPS_FLAG" name="FW_VK_DUPS_FLAG" value="Y" tabindex="1" />
+                                <input type="checkbox" id="FW_VK_DUPS_FLAG" name="FW_VK_DUPS_FLAG" value="Y"  />
                             </div>
                             <div class="cui-label">
                                 <label for="FW_VK_DUPS_FLAG">Show Duplicates</label>

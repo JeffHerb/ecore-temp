@@ -14,7 +14,7 @@
 						<span id="HEADER_STREET" class="static-value">{{~values.HEADER_STREET~}}</span>
 					{{~else~}}
 						<label for="HEADER_STREET">Street:</label>
-						<input tabIndex="1" id="HEADER_STREET" maxLength="30" size="25" name="HEADER_STREET" value="{{~values.HEADER_STREET~}}">
+						<input id="HEADER_STREET" maxLength="30" size="25" name="HEADER_STREET" value="{{~values.HEADER_STREET~}}">
 					{{/ifCond~}}
 				</span>
 				<span id="HEADER_CITYCID">
@@ -22,7 +22,7 @@
 						<span id="HEADER_CITY" class="static-value">{{~values.HEADER_CITY~}}</span>
 					{{~else~}}
 						<label for="HEADER_CITY">City:</label>
-						<input tabIndex="1" id="HEADER_CITY" maxLength="18" name="HEADER_CITY" value="{{~values.HEADER_CITY~}}">
+						<input id="HEADER_CITY" maxLength="18" name="HEADER_CITY" value="{{~values.HEADER_CITY~}}">
 					{{/ifCond~}}
 				</span>
 				<span id="HEADER_STATECID">
@@ -30,7 +30,7 @@
 						<span id="HEADER_STATE" class="static-value">{{~values.HEADER_STATE~}}</span>
 					{{~else~}}
 						<label for="HEADER_STATE">State:</label>
-						<input tabIndex="1" id="HEADER_STATE" maxLength="2" size="5" name="HEADER_STATE" value="{{~values.HEADER_STATE~}}">
+						<input id="HEADER_STATE" maxLength="2" size="5" name="HEADER_STATE" value="{{~values.HEADER_STATE~}}">
 					{{/ifCond~}}
 				</span>
 				<span id="HEADER_ZIPCID">
@@ -38,7 +38,7 @@
 						<span id="HEADER_ZIP" class="static-value">{{~values.HEADER_ZIP~}}</span>
 					{{~else~}}
 						<label for="HEADER_ZIP">Zip:</label>
-						<input tabIndex="1" id="HEADER_ZIP" maxLength="10" size="10" name="HEADER_ZIP" value="{{~values.HEADER_ZIP~}}">
+						<input id="HEADER_ZIP" maxLength="10" size="10" name="HEADER_ZIP" value="{{~values.HEADER_ZIP~}}">
 					{{/ifCond~}}
 				</span>
 				<span id="HEADER_COUNTRYCID">
@@ -46,7 +46,7 @@
 						<span id="HEADER_COUNTRY" class="static-value">{{~values.HEADER_COUNTRY~}}</span>
 					{{~else~}}
 						<label for="HEADER_COUNTRY">Country:</label>
-						<input tabIndex="1" id="HEADER_COUNTRY" maxLength="2" size="5" name="HEADER_COUNTRY" value="{{~values.HEADER_COUNTRY~}}">
+						<input id="HEADER_COUNTRY" maxLength="2" size="5" name="HEADER_COUNTRY" value="{{~values.HEADER_COUNTRY~}}">
 					{{/ifCond~}}
 				</span>
 			{{~else~}}
@@ -56,7 +56,7 @@
 						<span id="HEADER_LAST_NAME" class="static-value">{{~values.HEADER_LAST_NAME~}}</span>
 					{{~else~}}
 						<label for="HEADER_LAST_NAME">Last Name:</label>
-						<input tabIndex="1" id="HEADER_LAST_NAME" maxLength="39" size="30" name="HEADER_LAST_NAME" value="{{~values.HEADER_LAST_NAME~}}">
+						<input id="HEADER_LAST_NAME" maxLength="39" size="30" name="HEADER_LAST_NAME" value="{{~values.HEADER_LAST_NAME~}}">
 					{{/ifCond~}}
 				</span>
 				<span id="HEADER_FIRST_NAMECID">
@@ -64,7 +64,7 @@
 						<span id="HEADER_FIRST_NAME" class="static-value">{{~values.HEADER_FIRST_NAME~}}</span>
 					{{~else~}}
 						<label for="HEADER_FIRST_NAME">First Name:</label>
-						<input tabIndex="1" id="HEADER_FIRST_NAME" maxLength="16" size="16" name="HEADER_FIRST_NAME" value="{{~values.HEADER_FIRST_NAME~}}">
+						<input id="HEADER_FIRST_NAME" maxLength="16" size="16" name="HEADER_FIRST_NAME" value="{{~values.HEADER_FIRST_NAME~}}">
 					{{/ifCond~}}
 				</span>
 				<span id="HEADER_MIDDLE_INITIALCID">
@@ -72,7 +72,7 @@
 						<span id="HEADER_MIDDLE_INITIAL" class="static-value">{{~values.HEADER_MIDDLE_INITIAL~}}</span>
 					{{~else~}}
 						<label for="HEADER_MIDDLE_INITIAL">Middle Initial:</label>
-						<input tabIndex="1" id="HEADER_MIDDLE_INITIAL" maxLength="1" size="1" name="HEADER_MIDDLE_INITIAL" value="{{~values.HEADER_MIDDLE_INITIAL~}}">
+						<input id="HEADER_MIDDLE_INITIAL" maxLength="1" size="1" name="HEADER_MIDDLE_INITIAL" value="{{~values.HEADER_MIDDLE_INITIAL~}}">
 					{{/ifCond~}}
 				</span>
 			{{/ifCond~}}
@@ -84,7 +84,7 @@
 					<span id="HEADER_LAST_NAME" class="static-value">{{~values.HEADER_LAST_NAME~}}</span>
 				{{~else~}}
 					<label for="HEADER_LAST_NAME" class="cui-hide-from-screen">Name:</label>
-					<input tabIndex="1" id="HEADER_LAST_NAME" maxLength="39" size="30" name="HEADER_LAST_NAME" value="{{~values.HEADER_LAST_NAME~}}">
+					<input id="HEADER_LAST_NAME" maxLength="39" size="30" name="HEADER_LAST_NAME" value="{{~values.HEADER_LAST_NAME~}}">
 				{{/ifCond~}}
 			</span>
 		{{/ifCond~}}
@@ -96,7 +96,7 @@
 				<span id="USERNAME" class="static-value">{{~values.USERNAME~}}</span>
 			{{~else~}}
 				<label for="USERNAME" class="cui-hide-from-screen">ID:</label>
-				<input tabIndex="1" id="USERNAME" maxLength="60" name="USERNAME" value="{{~values.USERNAME~}}">
+				<input id="USERNAME" maxLength="60" name="USERNAME" value="{{~values.USERNAME~}}">
 			{{/ifCond~}}
 		</span>
 
@@ -110,7 +110,7 @@
                 <span id="HEADER_ID_NUMBER" class="static-value">{{~values.HEADER_ID_NUMBER~}}</span>
             {{~else~}}
                <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">ID:</label>
-               <input tabIndex="1" id="HEADER_ID_NUMBER" maxLength="17" name="HEADER_ID_NUMBER" value="{{~values.HEADER_ID_NUMBER~}}">
+               <input id="HEADER_ID_NUMBER" maxLength="17" name="HEADER_ID_NUMBER" value="{{~values.HEADER_ID_NUMBER~}}">
             {{/ifCond~}}
         </span>
     {{else}}
@@ -119,7 +119,7 @@
                 <span id="HEADER_ID_NUMBER" class="static-value">{{~values.HEADER_ID_NUMBER~}}</span>
             {{~else~}}
     	       <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">ID:</label>
-               <input tabIndex="1" id="HEADER_ID_NUMBER" maxLength="50" name="HEADER_ID_NUMBER" value="{{~values.HEADER_ID_NUMBER~}}">
+               <input id="HEADER_ID_NUMBER" maxLength="50" name="HEADER_ID_NUMBER" value="{{~values.HEADER_ID_NUMBER~}}">
             {{/ifCond~}}
     	</span>
     {{/ifCond~}}

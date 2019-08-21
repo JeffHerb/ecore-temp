@@ -2,7 +2,7 @@
 
 {{#ifCond v1=this.input.style op="===" v2="action"}}
 
-<button tabindex="1"
+<button 
     {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-external-actions-menu"}' iconClass=this.input.icon style=this.input.style section=this.section)) }}>
     Actions
 </button>
@@ -11,17 +11,17 @@
 {{#ifCond v1=this.scope op="===" v2="globalSwitch"~}}
 
 {{! Field button version }}
-<button tabindex="1"
+<button 
     {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-button-switch"}' iconClass=this.input.icon section=this.section)) }}>Switch</button>
 {{~else~}}
 
 {{! Field button version }}
 {{#if this.specialIcon}}
 {{! switching attribute and merge object here to support id replacement for previous next table buttons }}
-<button tabindex="1"
+<button 
     {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' iconClass=this.specialIcon style=this.input.style section=this.section idSuffix=this.idSuffix)) }}>
     {{else}}
-    <button tabindex="1"
+    <button
         {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' iconClass=this.input.icon style=this.input.style section=this.section primary=this.input.primary)) }}>
         {{/if}}
 
@@ -39,7 +39,7 @@
     {{~else~}}
 
     {{! Tab navigation version}}
-    <button tabindex="1"
+    <button
         {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' iconClass=this.icon style=this.input.style section=this.section primary=this.input.primary)) }}>
         {{~this.text~}}
         {{#if this.input.popup~}}

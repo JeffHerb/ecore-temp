@@ -1,9 +1,9 @@
 {{#ifCond v1=this.scope op="===" v2="tableColumn"~}}
-    <span  {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-framework-error emp-icon-ghost", "title":"click to see error message", "tabindex": 1}' scope="error" ))}}>
+    <span  {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-framework-error emp-icon-ghost", "title":"click to see error message", "tabindex": 0}' scope="error" ))}}>
         {{~this.text~}}
     </span>
 {{~else~}}
-    <span  {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-framework-error emp-icon-ghost", "title":"click to see error message", "tabindex": 1}' scope="error" ))}}>
+    <span  {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-framework-error emp-icon-ghost", "title":"click to see error message", "tabindex": 0}' scope="error" ))}}>
     	{{~this.text~}}
     </span>
 {{/ifCond~}}

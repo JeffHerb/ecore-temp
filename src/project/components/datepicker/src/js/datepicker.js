@@ -400,7 +400,7 @@ define(['jquery', 'cui'], function ($, cui) {
 
         // Calendar wrapper
         // ---------------------------
-        html += '<div id="dpCalWrap_' + inputId + '" class="dpCalWrap" tabindex="1">' +
+        html += '<div id="dpCalWrap_' + inputId + '" class="dpCalWrap" tabindex="0">' +
                     '<div class="dpCal">';
 
         // Calendar main
@@ -469,7 +469,7 @@ define(['jquery', 'cui'], function ($, cui) {
             titleDate = new Date(prevMon + '/' + (lastDayPrevMonth - weekday + 1) + '/' + prevYr);
 
             if (_priv.validateMinMaxRange({day: (lastDayPrevMonth - weekday + 1), month: prevMon, year: prevYr}, inputId)) {
-                html += '"><a href="#" role="button" title="' + _getDayTitle(titleDate) + '" tabindex="1">' + (lastDayPrevMonth - weekday + 1) + '</a></li>';
+                html += '"><a href="#" role="button" title="' + _getDayTitle(titleDate) + '" tabindex="0">' + (lastDayPrevMonth - weekday + 1) + '</a></li>';
             }
             else {
                 html += '"><span class="disabled">' + (lastDayPrevMonth - weekday + 1) + '</span></li>';
@@ -508,7 +508,7 @@ define(['jquery', 'cui'], function ($, cui) {
             // Validate date and show as clickable or read-only
             titleDate = new Date(dmyCal.month.toString() + '/' + (i + 1) + '/' + dmyCal.year.toString());
             if (_priv.validateMinMaxRange({day: (i + 1), month: dmyCal.month, year: dmyCal.year}, inputId)) {
-                html += '"><a href="#" role="button" title="' + _getDayTitle(titleDate) + '" tabindex="1">' + (i + 1) + '</a></li>';
+                html += '"><a href="#" role="button" title="' + _getDayTitle(titleDate) + '" tabindex="0">' + (i + 1) + '</a></li>';
             }
             else {
                 html += '"><span class="disabled">' + (i + 1) + '</span></li>';
@@ -534,7 +534,7 @@ define(['jquery', 'cui'], function ($, cui) {
             titleDate = new Date(nextMon + '/' + (i + 1) + '/' + nextYr);
 
             if (_priv.validateMinMaxRange({day: (i + 1), month: nextMon, year: nextYr}, inputId)) {
-                html += '"><a href="#" role="button" title="' + _getDayTitle(titleDate) + '" tabindex="1">' + (i + 1) + '</a></li>';
+                html += '"><a href="#" role="button" title="' + _getDayTitle(titleDate) + '" tabindex="0">' + (i + 1) + '</a></li>';
             }
             else {
                 html += '"><span class="disabled">' + (i + 1) + '</span></li>';
@@ -557,12 +557,12 @@ define(['jquery', 'cui'], function ($, cui) {
                             '<div class="dpFoot">' +
                                 '<div class="dpFootLeft">' +
                                     '<div class="dpPrevYear">' +
-                                        '<button type="button" class="dpPrevYearJan1" tabindex="1">Jan 1</button>' +
+                                        '<button type="button" class="dpPrevYearJan1" >Jan 1</button>' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class="dpFootRight">' +
                                     '<div class="dpPrevYear">' +
-                                        '<button type="button" class="dpPrevYearDec31" tabindex="1">Dec 31</button>' +
+                                        '<button type="button" class="dpPrevYearDec31">Dec 31</button>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +
@@ -574,7 +574,7 @@ define(['jquery', 'cui'], function ($, cui) {
 
         // Options
         // ---------------------------
-        html += '<div id="dpOptions_' + inputId + '" class="dpOptWrap ' + CLASSES.hidden + '" tabindex="1">';
+        html += '<div id="dpOptions_' + inputId + '" class="dpOptWrap ' + CLASSES.hidden + '" tabindex="0">';
 
         // Months
         html +=     '<div class="dpOpt">' +
@@ -586,11 +586,11 @@ define(['jquery', 'cui'], function ($, cui) {
         // Other
         html +=         '<div id="dpOther_' + inputId + '" class="dpOther">' +
                             '<div class="dpOtherL">' +
-                                '<a href="#" role="button" title="Today" tabindex="1">Today</a>' +
+                                '<a href="#" role="button" title="Today" tabindex="0">Today</a>' +
                             '</div>' +
                             '<div class="dpOtherR">' +
-                                '<a href="#" role="button" id="dpOK_' + inputId + '" title="OK" tabindex="1">OK</a>' +
-                                '<a href="#" role="button" title="Cancel" tabindex="1">Cancel</a>' +
+                                '<a href="#" role="button" id="dpOK_' + inputId + '" title="OK" tabindex="0">OK</a>' +
+                                '<a href="#" role="button" title="Cancel" tabindex="0">Cancel</a>' +
                             '</div>' +
                         '</div>';
 
@@ -614,18 +614,18 @@ define(['jquery', 'cui'], function ($, cui) {
             html += '<ul class="lIcons"><li><span class="grayedOut"></span></li><li><span class="grayedOut"></span></li></ul>';
         }
         else {
-            html += '<ul class="lIcons"><li><a href="#" class="fastNavPrevQtr" title="Previous quarter" tabindex="1"></a></li><li><a href="#" class="navPrevMon" title="Previous month" tabindex="1"></a></li></ul>';
+            html += '<ul class="lIcons"><li><a href="#" class="fastNavPrevQtr" title="Previous quarter" tabindex="0"></a></li><li><a href="#" class="navPrevMon" title="Previous month" tabindex="0"></a></li></ul>';
         }
 
         // Month year
-        html += '<div class="title"><a href="#" class="monthYear" title="' + OPTIONS_TOOLTIP.show + '" tabindex="1">' + MONTH_EN[dmyCal.month - 1] + ' ' + dmyCal.year.toString()  + '</a><input type="hidden" id="dpSel_' + inputId + '" value="' + dmyCal.month.toString() + '/' + dmyCal.year.toString() + '"></div>';
+        html += '<div class="title"><a href="#" class="monthYear" title="' + OPTIONS_TOOLTIP.show + '" tabindex="0">' + MONTH_EN[dmyCal.month - 1] + ' ' + dmyCal.year.toString()  + '</a><input type="hidden" id="dpSel_' + inputId + '" value="' + dmyCal.month.toString() + '/' + dmyCal.year.toString() + '"></div>';
 
         // Next navigation items
         if (dmyCal.month === (maxDate.getMonth() + 1) && dmyCal.year === maxDate.getFullYear()) {
             html += '<ul class="rIcons"><li><span class="grayedOut"></span></li><li><span class="grayedOut"></span></li></ul>';
         }
         else {
-            html += '<ul class="rIcons"><li><a href="#" class="navNextMon" title="Next month" tabindex="1"></a></li><li><a href="#" class="fastNavNextQtr" title="Next quarter" tabindex="1"></a></li></ul>';
+            html += '<ul class="rIcons"><li><a href="#" class="navNextMon" title="Next month" tabindex="0"></a></li><li><a href="#" class="fastNavNextQtr" title="Next quarter" tabindex="0"></a></li></ul>';
         }
 
         html += '</div>';
@@ -818,7 +818,7 @@ define(['jquery', 'cui'], function ($, cui) {
 
             // Validate date and show as clickable or read-only
             if (_priv.validateMinMaxRange({day: 0, month: 0, year: (dmyCal.year - (5 - i))}, inputId)) {
-                html += '"><a href="#" title="' + (dmyCal.year - (5 - i)) + '" tabindex="1">' + (dmyCal.year - (5 - i)) + '</a>';
+                html += '"><a href="#" title="' + (dmyCal.year - (5 - i)) + '" tabindex="0">' + (dmyCal.year - (5 - i)) + '</a>';
             }
             else {
                 html += '"><span class="disabled">' + (dmyCal.year - (5 - i)) + '</span>';
@@ -839,14 +839,14 @@ define(['jquery', 'cui'], function ($, cui) {
 
         // Option"s actions
         if (_priv.validateMinMaxRange({day: 0, month: 0, year: (dmyCal.year - 6)}, inputId)) {
-            html += '<li class="newLine"><a href="#" class="fastNavPrevYrs" title="Previous years" tabindex="1"></a></li>';
+            html += '<li class="newLine"><a href="#" class="fastNavPrevYrs" title="Previous years" tabindex="0"></a></li>';
         }
         else {
             html += '<li class="newLine"><span class="grayedOut"></span></li>';
         }
 
         if (_priv.validateMinMaxRange({day: 0, month: 0, year: (dmyCal.year + 5)}, inputId)) {
-            html += '<li><a href="#" class="fastNavNextYrs" title="Next years" tabindex="1"></a></li>';
+            html += '<li><a href="#" class="fastNavNextYrs" title="Next years" tabindex="0"></a></li>';
         }
         else {
             html += '<li><span class="grayedOut"></span></li>';
@@ -885,7 +885,7 @@ define(['jquery', 'cui'], function ($, cui) {
 
             // Validate date and show as clickable or read-only
             if (_priv.validateMinMaxRange({day: 1, month: (i + 1), year: dmyCal.year}, inputId) || _priv.validateMinMaxRange({day: _priv.getLastDayOfMonth(new Date((i + 1) + '/01/' + dmyCal.year)), month: (i + 1), year: dmyCal.year}, inputId)) {
-                html += '"><a href="#" title="' + MONTH_EN[i] + '" tabindex="1">' + MSHORT_EN[i] + '</a></li>';
+                html += '"><a href="#" title="' + MONTH_EN[i] + '" tabindex="0">' + MSHORT_EN[i] + '</a></li>';
             }
             else {
                 html += '"><span class="disabled">' + MSHORT_EN[i] + '</span></li>';

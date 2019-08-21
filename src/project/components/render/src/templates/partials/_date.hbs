@@ -10,8 +10,8 @@
         </span>
     {{~else~}}
 
-        <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-date"}' defaultSelection=this.input.defaultValue required=this.input) dynamics=this.input.formats) }} />
-        <button type="button" id="cal_{{this.input.attributes.id}}" class="cui-icon cui-c-datepicker" title="Select Date" tabindex="1">Date picker</button>
+        <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-date"}' defaultSelection=this.input.defaultValue required=this.input) dynamics=this.input.formats) }} />
+        <button type="button" id="cal_{{this.input.attributes.id}}" class="cui-icon cui-c-datepicker" title="Select Date" >Date picker</button>
     {{/ifCond~}}
 
     {{! Look for messages if this is not in a composite}}
