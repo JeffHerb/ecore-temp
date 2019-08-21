@@ -94,6 +94,7 @@ define(['render', 'guid'], function(render, guid) {
 
             outerMenuWrapper = document.createElement('nav');
             outerMenuWrapper.setAttribute('id', 'emp-global-menu-wrapper');
+            outerMenuWrapper.setAttribute('tabindex', '0');
             outerMenuWrapper.classList.add('emp-global-menu-wrapper');
 
             // #=====================
@@ -251,10 +252,25 @@ define(['render', 'guid'], function(render, guid) {
         return newMenu;
     };
 
+    _priv.closeMenu = function _close_global_menu (){
+    	_priv.isOpen = false;
+        _priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
+        _priv.menuElem.classList.remove('active');
+
+        //reset focus	
+        _priv.menuControl.focus();
+    };
+
+    _priv.openMenu = function _open_global_menu (){
+    	_priv.isOpen = true;
+		_priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
+    	_priv.menuElem.classList.add('active');
+
+    	// set focus    	
+    	_priv.menuElem.focus();
+    };
+
     _events.menuClick = function _menu_click(evt) {
-
-        console.log("menu clicked!");
-
 
         if (fwData.menus && fwData.menus.global && Object.keys(fwData.menus.global).length) {
 
@@ -275,49 +291,24 @@ define(['render', 'guid'], function(render, guid) {
             _priv.isOpen = !_priv.isOpen;
 
             if (_priv.isOpen) {
-                // _priv.menuElem.style.top = appBar.offsetHeight + 'px';
-                // box-shadow: #000 2px 2px 5px;
-
-                // _priv.menuElem.style.transform = 'translateX(0)';
-                // _priv.menuElem.style.boxShadow = '#000 2px 2px 5px';
-
-                _priv.menuElem.classList.add('active');
+                _priv.openMenu();                
             }
             else {
-                // setting transform to null is not supported by IE11, use "" instead
-                // _priv.menuElem.style.transform = "";
-                // _priv.menuElem.style.boxShadow = "";
-
-                _priv.menuElem.classList.remove('active');
-            }
-
-            // Update the menu control
-            menuButton.setAttribute('aria-expanded', _priv.isOpen);
+                _priv.closeMenu();                
+            }                       
         }
         else {
 
             journal.log({ type: 'error', owner: 'FW', module: 'externalMenu', func: '_event.menuClick' }, 'Page JSON does not contain any global menu definition.');
         }
-
-
     };
 
-    _events.closeMenu = function _close_global_menu(evt) {
-
+    _events.closeMenu = function _close_global_menu_event(evt) {
     	var control = evt.target;
-
         if (control.classList.contains('emp-global-menu-close')) {
-
-            _priv.isOpen = false;
-
-            _priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
-
-			// setting transform to null is not supported by IE11, use "" instead
-            _priv.menuElem.style.transform = "";
+        	_priv.closeMenu();
         }
-
         return;
-
     };
 
     _events.expandMenuLevel = function _expand_menu_level(evt) {
@@ -347,7 +338,7 @@ define(['render', 'guid'], function(render, guid) {
         console.log(updatedJSON);
 
         _priv.generate(false, updatedJSON);
-    };
+    };    
 
     var init = function _external_menu_init() {
 
