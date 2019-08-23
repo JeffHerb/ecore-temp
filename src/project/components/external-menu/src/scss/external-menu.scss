@@ -105,6 +105,7 @@
 
         button[aria-expanded="false"] + ul {
             height: 0;
+            display: none;
         }
 
         button[aria-expanded="true"] {
