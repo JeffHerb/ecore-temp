@@ -762,6 +762,8 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
                 selectionCellElm = document.createElement((section === "thead") ? 'th' : 'td');
 
+                selectionCellElm.setAttribute('tabindex', '0');
+
                 var selectColumnClass = document.createAttribute('class');
                 selectColumnClass.value = "table-control-col emp-min-width";
 
@@ -924,6 +926,11 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                 if (!cell.attributes) {
 
                     cell.attributes = {};
+                }
+
+                // Added tabindex of 0 for keyboard accessibility
+                if (!cell.attributes.tabindex) {
+                    cell.attributes.tabindex = 0;
                 }
 
                 var headerColumn = tableData.head.rows[0].columns[c];
