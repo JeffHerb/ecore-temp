@@ -1,60 +1,53 @@
-{{! Handle creating the section header element }}
-{{#ifCond v1=this.type op='==' v2='header'~}}
-    <header {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}') ) }}>
-        {{#if this.title~}}
-             <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-title"}') }}>
+{{#if this.type}}
+    {{#ifCond v1=this.type op="===" v2="title-instructions"}}
+        <section class="emp-instructional-header">
+            <header>
+                <div class="emp-section-title">
+                    <h3>
+                        {{this.title}}
+                        {{#if this.help}}
+                            {{~> _itag this.help}}
+                        {{/if}}
+                    </h3>
+                </div>
+                {{#if this.instructions}}
+                    <div class="emp-section-instructions">
+                        {{#each this.instructions}}
+                            {{> _output this raw=true}}
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if this.controls}}
+                    <div class="emp-section-controls cui-row emp-button-group">
+                        <div class="button-col emp-button-group cui-align-center">
+                            {{#each this.controls}}
+                                {{~> (getPartialName this.template) this ~}}
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/if}}
+            </header>
+        </section>
+    {{else}}
+    {{/ifCond}}
+{{else}}
+    <section>
+        <header>
+            <div class="emp-section-title">
                 <h3>
-                    {{~this.title~}}
-
-                    {{#if this.titleEnhancements~}}
-
-                        {{#each this.titleEnhancements.contents~}}
-                            {{~> (getPartialName this.template) this ~}}
-                        {{/each~}}
-
-                    {{/if~}}
-
+                    {{this.title}}
+                    {{#if this.help}}
+                        {{~> _itag this.help}}
+                    {{/if}}
                 </h3>
-             </div>
-        {{/if~}}
-
-        {{#each this.columns~}}
-            <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-field"}') }}>
-
-            {{#if this.contents~}}
-
-                {{#each this.contents~}}
-
-                    {{#if this.template~}}
-                        {{~> (getPartialName this.template) this sectionHeader="true"~}}
-                    {{~else~}}
-                        {{~this.text~}}
-                    {{/if~}}
-
-                {{/each~}}
-
-            {{~else~}}
-
-                {{#if this.template~}}
-                    {{~> (getPartialName this.template) this sectionHeader="true"~}}
-                {{~else~}}
-                    {{~this.text~}}
-                {{/if~}}
-
-            {{/if~}}
             </div>
-        {{/each~}}
-
-        {{#unless this.hideControls~}}
-            <div class="emp-section-controls">
-                <ul>
-                    <li>
-                        <button type="button" class="emp-icon-section-toggle-collapse" title="{{#if this.isCollapsed}}Show section{{else}}Hide section{{/if}}" ></button>
-                    </li>
-                </ul>
+        </header>
+        {{#if this.instructions}}
+            <div class="emp-section-instructions">
+                {{#each this.instructions}}
+                    {{> _output this raw=true}}
+                {{/each}}
             </div>
-        {{/unless~}}
-
-    </header>
-
-{{/ifCond~}}
+        {{/if}}
+    </section>
+{{/if}}
