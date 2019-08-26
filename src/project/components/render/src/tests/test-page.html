@@ -173,202 +173,308 @@
 		</div>
 	</div>
 	<script>
-		var fwData = {
-			"preferences": false,
-			"footer": {
-				"contents": [{
-					"template": "external-universal-footer"
-				}]
-			},
-			"context": {
-				"ui": {
-					"css": "css\/main.css",
-					"baseurl": "../../",
-					"js": "js\/main.js",
-					"version": "dist"
-				},
-				"screen": {
-					"type": "page"
-				}
-			},
-			"header": {
-				"contents": [{
-					"template": "external-universal-header"
-				}, {
-					"template": "external-agency-header",
-					"title": "Enhanced STAR Income Verification Program"
-				}]
-			},
-			"page": {
-				"contents": [{
-					"template": "external-pageinfo",
-					"instructions": [{
-						"template": "output",
-						"raw": true,
-						"text": "<p>Complete and verify the fields below. When finished, select <strong>Update Enrollment<\/strong> to save your changes.<\/p>"
-					}],
-					"help": [{
-						"template": "output",
-						"raw": true
-					}],
-					"pageLegend": {
-						"null": true
-					},
-					"title": "Property Details"
-				}, {
-					"template": "pagebody",
-					"contents": [{
-						"contents": [{
-							"template": "external-group",
-							"contents": [{
-								"template": "grid",
-								"contents": [{
-									"template": "grid",
-									"contents": [
-									{
-										"template": "yesno",
-										"no": {
-											"template": "field",
-											"input": {
-												"attributes": {
-													"name": "enrollment.property.lifeTrustInd",
-													"checked": "checked",
-													"id": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_NO",
-													"type": "radio",
-													"value": "N"
-												}
-											},
-											"label": {
-												"attributes": {
-													"for": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_NO"
-												},
-												"text": "No"
-											},
-											"type": "radio"
-										},
-										"legend": "Is this property held in a trust or life estate?",
-										"yes": {
-											"template": "field",
-											"input": {
-												"attributes": {
-													"name": "enrollment.property.lifeTrustInd",
-													"id": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_YES",
-													"type": "radio",
-													"value": "Y"
-												},
-												"style": "expandable-control",
-												"expands": "trustLifeEstateRegion"
-											},
-											"label": {
-												"attributes": {
-													"for": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_YES"
-												},
-												"text": "Yes"
-											},
-											"type": "radio"
-										},
-										"name": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST",
+		 var fwData = {
+            "preferences": false,
+            "footer": {
+                "contents": [{
+                    "template": "external-universal-footer"
+                }]
+            },
+            "context": {
+                "ui": {
+                    "css": "css\/main.css",
+                    "baseurl": "../../../../../",
+                    "js": "js\/main.js",
+                    "version": "dist"
+                },
+                "screen": {
+                    "type": "page"
+                }
+            },
+            "header": {
+                "contents": [{
+                    "template": "external-universal-header"
+                }, {
+                    "template": "external-agency-header",
+                    "title": "Enhanced STAR Income Verification Program"
+                }]
+            },
+            "page": {
+                "contents": [{
+                    "template": "external-pageinfo",
+                    "instructions": [{
+                        "template": "output",
+                        "raw": true,
+                        "text": "<p>Complete the information below about the property and select <strong>Search<\/strong>. The information you enter will be used to identify the best match on our database. In addition to the SWIS code and Levy year. Enter the information as it appears on the assessment roll in one of these field combinations:<\/p>\n\t\t\t\t\t<ul>\n\t\t\t\t\t<li>Print key<\/li>\n\t\t\t\t\t<li>Street number, Street name, Owner's last name, and ZIP\/postal code; or<\/li>\n\t\t\t\t\t<li>Owner's last name<\/li>\n\t\t\t\t\t<\/ul>"
+                    }],
+                    "help": [{
+                        "template": "output",
+                        "raw": true
+                    }],
+                    "pageLegend": {
+                        "null": true
+                    },
+                    "title": "Property Search"
+                }, {
+                    "template": "pagebody",
+                    "contents": [{
+                        "contents": [{
+                            "template": "external-group",
+                            "contents": [
+                            {
+                                "template": "table",
+                                "head": {
+                                    "rows": [{
+                                        "columns": [{
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_prntKey",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Print key",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_prptyAddress",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Street Address",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_ownrUnitNmbr",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Unit number",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_ownerNames",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Owner names",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_infoSrcCd",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Mobile home or Co-op",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_levyYr",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Levy year",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_Field26",
+                                                "data-type": "alphaNumeric"
+                                            },
+                                            "text": "Source",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_Field27",
+                                                "data-type": "date"
+                                            },
+                                            "text": "Closed date",
+                                            "sortable": true,
+                                            "type": "header",
+                                            "hideLabel": false
+                                        }, {
+                                            "responsive": {},
+                                            "attributes": {
+                                                "data-colmap": "prptyListModelId_Field28",
+                                                "data-type": "buttonMenu"
+                                            },
+                                            "style": "min-width",
+                                            "text": "Button Menu",
+                                            "sortable": false,
+                                            "type": "header",
+                                            "hideLabel": true
+                                        }]
+                                    }]
+                                },
+                                "prechecked": [],
+                                "optimize": false,
+                                "attributes": {
+                                    "id": "prptyListModelId"
+                                },
+                                // "paging": {
+                                //     "next": {
+                                //         "template": "field",
+                                //         "input": {
+                                //             "attributes": {
+                                //                 "data-validation": true,
+                                //                 "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'reg',action:'\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page\/nextpage'}])",
+                                //                 "name": "E_NEXT",
+                                //                 "id": "E_NEXT",
+                                //                 "type": "button",
+                                //                 "title": "Submit"
+                                //             },
+                                //             "text": "next(?)"
+                                //         },
+                                //         "type": "button"
+                                //     },
+                                //     "last": {
+                                //         "template": "field",
+                                //         "input": {
+                                //             "attributes": {
+                                //                 "data-validation": true,
+                                //                 "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'reg',action:'\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page\/lastpage'}])",
+                                //                 "name": "E_LAST",
+                                //                 "id": "E_LAST",
+                                //                 "type": "button",
+                                //                 "title": "Submit"
+                                //             },
+                                //             "text": "last(?)"
+                                //         },
+                                //         "type": "button"
+                                //     }
+                                // },
+                                "body": {
+                                    "rows": [
+                                    
+                                    {
+                                        "selection": {},
+                                        "columns": [{
+                                            "contents": [],
+                                            "text": "159.36-4-15"
+                                        }, {
+                                            "contents": [],
+                                            "text": "WA HARRIMAN CAMPUS ALBANY, NY-12227"
+                                        }, {
+                                            "contents": []
+                                        }, {
+                                            "contents": [],
+                                            "text": "David Bogusa"
+                                        }, {
+                                            "contents": []
+                                        }, {
+                                            "contents": [],
+                                            "text": "2020"
+                                        }, {
+                                            "contents": [],
+                                            "text": "Enhanced Enrollment"
+                                        }, {
+                                            "contents": []
+                                        }, {
+                                            "contents": [{
+                                                "template": "field",
+                                                "input": {
+                                                    "icon": "responsive-table-menu",
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "title": "Button Menu"
+                                                    },
+                                                    "text": "Button Menu"
+                                                },
+                                                "options": [{
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "data-validation": true,
+                                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page\/mergeEnrollment'}]}})",
+                                                            "name": "EC_MERGE_14",
+                                                            "id": "EC_MERGE_14",
+                                                            "type": "button",
+                                                            "title": "Merge"
+                                                        },
+                                                        "text": "Merge(?)"
+                                                    },
+                                                    "type": "button"
+                                                }, {
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "data-validation": true,
+                                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page\/splitEnrollment'}]}})",
+                                                            "name": "EC_SPLIT_14",
+                                                            "id": "EC_SPLIT_14",
+                                                            "type": "button",
+                                                            "title": "Split"
+                                                        },
+                                                        "text": "Split(?)"
+                                                    },
+                                                    "type": "button"
+                                                }, {
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "data-validation": true,
+                                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page\/closeEnrollment'}]}})",
+                                                            "name": "CLOSE_REG_14",
+                                                            "id": "CLOSE_REG_14",
+                                                            "type": "button",
+                                                            "title": "Close Enrollment"
+                                                        },
+                                                        "text": "Close Enrollment(?)"
+                                                    },
+                                                    "type": "button"
+                                                }, {
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "data-validation": true,
+                                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page\/editEnrollment'}]}})",
+                                                            "name": "EC_EDIT_ENROLL_14",
+                                                            "id": "EC_EDIT_ENROLL_14",
+                                                            "type": "button",
+                                                            "title": "Edit Enrollment"
+                                                        },
+                                                        "text": "Edit Enrollment(?)"
+                                                    },
+                                                    "type": "button"
+                                                }],
+                                                "style": "min-width",
+                                                "type": "button"
+                                            }]
+                                        }],
+                                        "key": "14"
+                                    }, 
 
-									}],
-									"width": "full",
-									"attributes": {},
-									"type": "column"
-								}],
-								"attributes": {},
-								"type": "row"
-							}, {
-								"template": "region",
-								"contents": [{
-									"template": "grid",
-									"contents": [{
-										"template": "grid",
-										"contents": [{
-											"template": "field",
-											"input": {
-												"noBlankOption": true,
-												"options": [{
-													"text": "Select one",
-													"value": ""
-												}, {
-													"text": "Trust",
-													"value": "T"
-												}, {
-													"text": "Life Estate",
-													"value": "L"
-												}],
-												"attributes": {
-													"name": "enrollment.property.lifeTrustCd",
-													"aria-required": false,
-													"id": "EC_TRUST_LIFE_EST"
-												}
-											},
-											"label": {
-												"attributes": {
-													"for": "EC_TRUST_LIFE_EST"
-												},
-												"text": "Trust or life estate:"
-											},
-											"type": "select"
-										}],
-										"width": "full",
-										"attributes": {},
-										"type": "column"
-									}],
-									"attributes": {},
-									"type": "row"
-								}],
-								"attributes": {},
-								"collapse": true
-							}, {
-								"template": "region",
-								"contents": [{
-									"template": "grid",
-									"contents": [{
-										"template": "grid",
-										"contents": [{
-											"template": "field",
-											"input": {
-												"attributes": {
-													"size": 100,
-													"maxlength": 100,
-													"name": "enrollment.property.lifeTrustDesc",
-													"aria-required": false,
-													"id": "EC_LEGAL_NAME_TRUST",
-													"type": "text"
-												}
-											},
-											"label": {
-												"attributes": {
-													"for": "EC_LEGAL_NAME_TRUST"
-												},
-												"text": "Legal name of trust:"
-											},
-											"type": "text"
-										}],
-										"width": "full",
-										"attributes": {},
-										"type": "column"
-									}],
-									"attributes": {},
-									"type": "row"
-								}],
-								"attributes": {},
-								"collapse": true
-							}],
-							"attributes": {},
-							"title": "Property Information"
-						}],
-						"attributes": {
-							"method": "post",
-							"name": "property",
-							"action": "\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_02.page",
-							"id": "property"
-						},
-						"type": "form"
-					}]
-				}]
-			}
-		};
+                                    ]
+                                }
+                            }],
+                            "attributes": {},
+                            "title": "Property Information."
+                        }, 
+                        ],
+                        "attributes": {
+                            "method": "post",
+                            "name": "reg",
+                            "action": "\/EIVP\/gateway\/EIVP\/EIVP_MAIN\/EIVP_01.page",
+                            "id": "reg"
+                        },
+                        "type": "form"
+                    }]
+                }]
+            }
+        };
 
 	</script>
 	<script>

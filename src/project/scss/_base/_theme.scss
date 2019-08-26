@@ -89,12 +89,8 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
         .emp-page-info{
             display: block !important;
-            margin: 0.75em 0.5em 0.75em 0.5em;
-
-            @include pointbreak('720px') {
-                margin-left: 16px;
-                margin-right: 16px;
-            }
+            margin-left: 16px;
+            margin-right: 16px;
 
             .emp-page-title{
                 padding-left: 0px;
@@ -181,16 +177,14 @@ $sectionHeaderBackgroundColor: #e7e7e6;
         }
 
         .cui-messages.emp-messages{
-            @include pointbreak('720px') {
-                margin-left: 16px !important;
-                margin-right: 16px !important;
-            }
+            margin-left: 16px !important;
+            margin-right: 16px !important;
         }
 
         section {
             border: 1px solid #a4a4a0;
-            margin-left: 10px;
-            margin-right: 10px;
+            /* margin-left: 10px;
+            margin-right: 10px; */
 
             @include pointbreak('720px') {
                 margin-left: 16px;
@@ -227,6 +221,10 @@ $sectionHeaderBackgroundColor: #e7e7e6;
         	.cui-data{
         		select{
 		        	// vertical-align: text-top;
+		        }
+
+		        span.emp-data{
+		        	min-height:1em;
 		        }
 		    }
         }
