@@ -250,8 +250,17 @@ section.emp-tabs div.emp-tab-contents {
         }
     }
 
-    .emp-col-full{
+    .emp-col-half{
+        @include pointbreak("720px"){
+            .cui-label,
+            .emp-check-other-checkbox .cui-data,
+            .emp-field.cui-data-left .cui-data{
+                padding-right: 15px; 
+            }
+        }
+    }
 
+    .emp-col-full{
 
     	&:last-child{
     		margin-bottom: 0 !important;
