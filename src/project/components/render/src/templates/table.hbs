@@ -37,18 +37,34 @@
                                 <div class="emp-paging-container-advance emp-table-pagination">
                                     {{#if this.paging.first}}
                                         {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
+                                    {{else}}
+                                    	{{#if this.paging.last}}
+                                        	<span class="emp-paging-spacer"></span>
+                                    	{{/if}} 
                                     {{/if}}
                                     {{#if this.paging.previous}}
                                         {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                                    {{else}}
+                                        {{#if this.paging.next}}
+                                        	<span class="emp-paging-spacer"></span>
+                                    	{{/if}}    
                                     {{/if}}
                                     <span class="emp-page-cursor">
                                         {{this.pagingText}}
                                     </span>
                                     {{#if this.paging.next}}
                                         {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                                    {{else}}
+                                    	{{#if this.paging.previous}}
+                                        	<span class="emp-paging-spacer"></span>
+                                    	{{/if}} 
                                     {{/if}}
                                     {{#if this.paging.last}}
                                         {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
+                                    {{else}}
+                                    	{{#if this.paging.first}}
+                                        	<span class="emp-paging-spacer"></span>
+                                    	{{/if}} 
                                     {{/if}}
                                 </div>
 
@@ -56,9 +72,17 @@
                                 <div class="emp-table-pagination">
                                     {{#if this.paging.previous}}
                                         {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                                    {{else}}
+                                    	{{#if this.paging.next}}
+                                        	<span class="emp-paging-spacer"></span>
+                                    	{{/if}} 
                                     {{/if}}
                                     {{#if this.paging.next}}
                                         {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                                    {{else}}
+                                    	{{#if this.paging.previous}}
+                                        	<span class="emp-paging-spacer"></span>
+                                    	{{/if}} 
                                     {{/if}}
                                 </div>
                             {{/ifCond}}
