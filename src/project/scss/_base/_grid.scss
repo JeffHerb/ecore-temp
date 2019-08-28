@@ -33,7 +33,7 @@ section.emp-tabs div.emp-tab-contents {
         // @import "../_theme_teal.scss";
         // @include section-row-spacing;
     // }
-   
+
     .cui-row {
         @include pointbreak($cui-bp-large-minus, true) {
             padding-top: 5px;
@@ -255,7 +255,7 @@ section.emp-tabs div.emp-tab-contents {
             .cui-label,
             .emp-check-other-checkbox .cui-data,
             .emp-field.cui-data-left .cui-data{
-                padding-right: 15px; 
+                padding-right: 15px;
             }
         }
     }
@@ -677,7 +677,7 @@ section.emp-tabs div.emp-tab-contents {
                 }
             }
         }
-    
+
     }
 }
 
@@ -890,6 +890,26 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 	}
 
 	.external-app{
+
+        .cui-row{
+            .emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,
+            .emp-col-full > fieldset:not(.emp-selection-list)  > .emp-fieldset-contents,
+            .emp-col-half > .emp-composite:not(.emp-selection-list) ,
+            .emp-col-full > .emp-composite:not(.emp-selection-list) ,
+            .emp-col-half > .emp-field,
+            .emp-col-full > .emp-field{
+
+                .cui-label {
+                    // Break to indicate a field is not registered!
+                    &.emp-unregistered-field {
+                        label, span.emp-label {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+
 		.ie{
 
 			.cui-row{
@@ -908,7 +928,14 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 						legend{
 							display:inline-block !important;
 							margin-top:5px !important;
-						}
+                        }
+
+                        // Break to indicate a field is not registered!
+                        &.emp-unregistered-field {
+                            label, span.emp-label {
+                                display: none !important;
+                            }
+                        }
 					}
 
 					& > .cui-data{
@@ -919,7 +946,7 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 				}
 			}
 		}
-	}
+    }
 }
 // ===END: Form grid alignment using GRID===
 

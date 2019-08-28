@@ -1093,6 +1093,10 @@ Handlebars.registerHelper('extendDefaults', function (params) {
                         addValue('className', 'emp-top-align-label');
                         break;
 
+                    case 'unregistered':
+                        addValue('className', 'emp-unregistered-field');
+                        break;
+
                     default:
                         break;
                 }

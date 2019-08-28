@@ -1,42 +1,52 @@
+{{log this}}
 {{#if this.input~}}
 
-{{#ifCond v1=this.input.style op="===" v2="action"}}
+    {{#ifCond v1=this.input.style op="===" v2="action"}}
 
-<button 
-    {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-external-actions-menu"}' iconClass=this.input.icon style=this.input.style section=this.section)) }}>
-    Actions
-</button>
-{{else}}
-
-{{#ifCond v1=this.scope op="===" v2="globalSwitch"~}}
-
-{{! Field button version }}
-<button 
-    {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-button-switch"}' iconClass=this.input.icon section=this.section)) }}>Switch</button>
-{{~else~}}
-
-{{! Field button version }}
-{{#if this.specialIcon}}
-{{! switching attribute and merge object here to support id replacement for previous next table buttons }}
-<button 
-    {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' iconClass=this.specialIcon style=this.input.style section=this.section idSuffix=this.idSuffix)) }}>
+        <button
+            {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-external-actions-menu"}' iconClass=this.input.icon style=this.input.style section=this.section)) }}>
+            Actions
+        </button>
     {{else}}
-    <button
-        {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' iconClass=this.input.icon style=this.input.style section=this.section primary=this.input.primary)) }}>
-        {{/if}}
 
-        {{~this.input.text~}}
+        {{#ifCond v1="unregistered" op="in" v2=this.input.style}}
 
-        {{#if this.input.popup~}}
-        {{> _popup this.input scope="button"}}
-        {{/if~}}
+            <button {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-button-switch"}' iconClass=this.input.icon section=this.section)) }}>
+                Unregistered Button
+                <span class="cui-hide-from-screen">{{~this.input.text~}}</span>
+            </button>
 
-    </button>
-    {{/ifCond~}}
+        {{else}}
+
+            {{#ifCond v1=this.scope op="===" v2="globalSwitch"~}}
+
+                {{! Field button version }}
+                <button {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-button-switch"}' iconClass=this.input.icon section=this.section)) }}>Switch</button>
+            {{~else~}}
+
+                {{! Field button version }}
+                {{#if this.specialIcon}}
+                    {{! switching attribute and merge object here to support id replacement for previous next table buttons }}
+                    <button {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' iconClass=this.specialIcon style=this.input.style section=this.section idSuffix=this.idSuffix)) }}>
+                {{else}}
+                    <button {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' iconClass=this.input.icon style=this.input.style section=this.section primary=this.input.primary)) }}>
+                {{/if}}
+
+                {{~this.input.text~}}
+
+                {{#if this.input.popup~}}
+                    {{> _popup this.input scope="button"}}
+                {{/if~}}
+
+                </button>
+            {{/ifCond~}}
+        {{/ifCond}}
+
+
     {{/ifCond}}
 
 
-    {{~else~}}
+{{~else~}}
 
     {{! Tab navigation version}}
     <button
@@ -46,4 +56,4 @@
         {{> _popup this.input scope="button"}}
         {{/if~}}
     </button>
-    {{/if~}}
+{{/if~}}
