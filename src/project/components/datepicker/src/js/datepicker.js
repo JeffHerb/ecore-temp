@@ -71,7 +71,7 @@ define(['jquery', 'cui'], function ($, cui) {
         };
 
     var SELECTORS = {
-            icon: '.calendar',
+            icon: '.cui-c-datepicker',
         };
 
     var ID_PREFIXES = {
@@ -551,23 +551,23 @@ define(['jquery', 'cui'], function ($, cui) {
         i = 0;
 
         // Footer
-        html +=                     '</ul>' +
-                                '</div>' +
-                            '</div>' +
-                            '<div class="dpFoot">' +
-                                '<div class="dpFootLeft">' +
-                                    '<div class="dpPrevYear">' +
-                                        '<button type="button" class="dpPrevYearJan1" >Jan 1</button>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="dpFootRight">' +
-                                    '<div class="dpPrevYear">' +
-                                        '<button type="button" class="dpPrevYearDec31">Dec 31</button>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>';
+        // html +=                     '</ul>' +
+        //                         '</div>' +
+        //                     '</div>' +
+        //                     '<div class="dpFoot">' +
+        //                         '<div class="dpFootLeft">' +
+        //                             '<div class="dpPrevYear">' +
+        //                                 '<button type="button" class="dpPrevYearJan1" >Jan 1</button>' +
+        //                             '</div>' +
+        //                         '</div>' +
+        //                         '<div class="dpFootRight">' +
+        //                             '<div class="dpPrevYear">' +
+        //                                 '<button type="button" class="dpPrevYearDec31">Dec 31</button>' +
+        //                             '</div>' +
+        //                         '</div>' +
+        //                     '</div>' +
+        //                 '</div>' +
+        //             '</div>';
 
         // End of calendar wrapper
         html += '</div>';
@@ -1828,6 +1828,7 @@ define(['jquery', 'cui'], function ($, cui) {
     };
 
     _events._inputBlur = function _inputBlur (ev) {
+
         var input = ev.target;
         var dateParsed = null;
         var settings = _priv.getSettings(input.id);
@@ -1853,6 +1854,10 @@ define(['jquery', 'cui'], function ($, cui) {
                 }
             }
         }
+    };
+
+    _events._inputTextBlur = function _inputBlur (ev) {
+
     };
 
     _events._calClick = function _calClick (ev) {
