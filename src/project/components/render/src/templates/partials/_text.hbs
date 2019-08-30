@@ -34,12 +34,12 @@
 
         {{#ifCond v1="password-toggle" op="in" v2=this.input.style}}
             <div class="emp-password-wrapper">
-                <input tabindex="1" type="password" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input.required defaultSelection=this.input.defaultValue isPassword=true scope="text") ) skip="type" }} />
+                <input type="password" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input.required defaultSelection=this.input.defaultValue isPassword=true scope="text") ) skip="type" }} />
                 <button type="button" class="emp-password-toggle">Show</button>
             </div>
 
         {{else}}
-            <input tabindex="1" {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input.required defaultSelection=this.input.defaultValue scope="text") ) }} />
+            <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults=defaults required=this.input.required defaultSelection=this.input.defaultValue scope="text") ) }} />
 
             {{!ecore appended 'cent' amount}}
             {{#if this.suffix}}
