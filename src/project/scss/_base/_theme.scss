@@ -191,6 +191,10 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 margin-right: 16px;
             }
 
+            .emp-section-title{
+                padding-left: 0px;
+            }
+
             header {
                 background-color: $sectionHeaderBackgroundColor;
                 margin: 0 0 16px 0;
@@ -199,16 +203,14 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 h3 {
                     color: #454545;
                     margin: 0px;
-                    padding: 8px 0px;
+                    padding: 8px 10px;
                 }
             }
         }
 
-
-
         .cui-row{
-        	margin-bottom:10px !important;
-
+            margin-bottom: 10px !important;
+            padding: 0px;
 
         	.cui-label{
         		span,
@@ -228,8 +230,6 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 		        }
 		    }
         }
-
-
 
         .emp-tabs .emp-tab-container a{
             background-color: $sectionHeaderBackgroundColor;
@@ -319,12 +319,8 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 }
 
                 .emp-icon-help {
-                    margin-top: -5px !important;
+                   // margin-top: -5px !important;
                 }
-            }
-
-            .cui-label{
-
             }
 
             .cui-data {

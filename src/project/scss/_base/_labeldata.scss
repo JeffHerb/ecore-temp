@@ -168,11 +168,15 @@ section {
 
         .cui-label {
 
-            label {
+            label, legend {
 
                 &:after {
                     font-size: 12px;
                     right: -6px;
+
+                    @include pointbreak("720px", true){
+                        left: -8px;
+                    }
                 }
             }
         }
@@ -301,9 +305,12 @@ section {
         }
     }
 
+    >.emp-field{
+        margin-bottom: 5px !important;
+    }
+
     .emp-field {
         @include clearfix;
-        margin-bottom: 5px !important;
 
         span {
             @include fontSize(14px);
