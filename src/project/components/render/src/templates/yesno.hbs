@@ -41,12 +41,12 @@
 	                        {{> _label this.no.label noWrap=true}}
 	                    {{else}}
 	                        <label for="{{this.no.input.attributes.id}}">No</label>
-	                    {{/if}}
-                        {{#if this.help}}
-                            {{~> _itag this.help}}
-                        {{/if}}
+	                    {{/if}}                       
 	                </div>
 	            </div>
+	            {{#if this.help}}
+                    {{~> _itag this.help}}
+                {{/if}}
 	        </div>
     	</div>
     </fieldset>
