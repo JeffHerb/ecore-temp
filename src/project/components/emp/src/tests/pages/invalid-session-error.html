@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="external-app emp-orpts-subtheme emp-fontsize-14 theme-teal">
+<html lang="en" class="external-app">
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -196,8 +196,8 @@
                 "context": {
                     "ui": {
                         "css": "css/main.css",
-                        "baseurl": "http://localhost:8888/dist",
-                        "version": "",
+                        "baseurl": "ecore/",
+                        "version": "v0.1",
                         "js": "js/main.js"
                     },
                     "screen": {
@@ -240,97 +240,7 @@
     </script>
 
     <script>
-
-                (function () {
-
-                    var hostname = window.location.hostname;
-
-                    var assetVersion = false;
-                    var overrideJSON = false;
-
-                    if (fwData) {
-
-                        // Only run these function in localhost or DEVM.
-                        if (hostname === "localhost" || hostname === "dvm.int.nystax.gov") {
-
-                            assetVersion = localStorage.getItem("asset-version");
-
-                            // Check for a framework data overwrite
-                            overrideJSON = localStorage.getItem("override-json");
-
-                            if (overrideJSON !== null && overrideJSON !== undefined) {
-
-                                if (overrideJSON && typeof overrideJSON === "string") {
-
-                                    try {
-
-                                        overrideJSON = JSON.parse(overrideJSON);
-
-                                        if (overrideJSON.screen && overrideJSON.screen.id === fwData.screen.id) {
-                                            fwData = overrideJSON;
-
-                                            console.warn("===============================================\nTHIS PAGE IS OVERRIDING THE RETURNED PAGE JSON!\n===============================================");
-                                        }
-                                        else {
-
-                                            console.log("Override JSON ignored!");
-                                        }
-
-                                    }
-                                    catch (e) {
-
-                                        console.log(e);
-                                        console.log("override ignored because parse error!");
-                                    }
-
-                                }
-                            }
-                        }
-
-                        if (typeof assetVersion !== "string") {
-
-                            assetVersion = fwData.context.ui.version;
-                        }
-
-                        var cssPath = fwData.context.ui.baseurl + assetVersion + "/" + "css/main.css?cid=" + fwData.context.ui.cid;
-                        var jsPath = fwData.context.ui.baseurl + assetVersion + "/" + "js/main.js?cid=" + fwData.context.ui.cid;
-
-                        var loadCSS = function _load_css() {
-                            var link = document.createElement('link');
-                            link.setAttribute('href', cssPath);
-                            link.setAttribute('rel', 'stylesheet');
-                            link.setAttribute('type', 'text/css');
-
-                            link.addEventListener('load', function () {
-
-                                loadJS();
-                            }, false);
-
-                            document.getElementsByTagName('head')[0].appendChild(link);
-                        }
-
-                        var loadJS = function _load_js() {
-                            var script = document.createElement('script');
-                            script.setAttribute('id', "require");
-                            script.setAttribute('src', jsPath);
-
-                            script.addEventListener('load', function () {
-
-                                //require(['jquery', 'emp', 'domReady!'], function ($, emp) { });
-                            }, false);
-
-                            document.body.appendChild(script);
-                        }
-
-                        loadCSS();
-                    }
-                    else {
-
-                        console.log("No fwData found!");
-                    }
-
-                })();
-
+        !function () { var e, t = window.location.hostname, o = !1, n = !1; if (fwData) { if (("localhost" === t || "dvm.int.nystax.gov" === t) && (o = localStorage.getItem("asset-version"), null != (n = localStorage.getItem("override-json")) && n && "string" == typeof n)) try { (n = JSON.parse(n)).screen && n.screen.id === fwData.screen.id ? (fwData = n, console.warn("===============================================\nTHIS PAGE IS OVERRIDING THE RETURNED PAGE JSON!\n===============================================")) : console.log("Override JSON ignored!") } catch (e) { console.log(e), console.log("override ignored because parse error!") } "string" != typeof o && (o = fwData.context.ui.version); var a = fwData.context.ui.baseurl + o + "/" + fwData.context.ui.css + "?cid=" + fwData.context.ui.cid, i = fwData.context.ui.baseurl + o + "/" + fwData.context.ui.js + "?cid=" + fwData.context.ui.cid, r = function () { var e = document.createElement("script"); e.setAttribute("id", "require"), e.setAttribute("src", i), e.addEventListener("load", function () { }, !1), document.body.appendChild(e) }; (e = document.createElement("link")).setAttribute("href", a), e.setAttribute("rel", "stylesheet"), e.setAttribute("type", "text/css"), e.addEventListener("load", function () { r() }, !1), document.getElementsByTagName("head")[0].appendChild(e) } else console.log("No fwData found!") }();
     </script>
 </body>
 
