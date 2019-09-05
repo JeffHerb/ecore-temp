@@ -37,12 +37,14 @@
 </div>
 <header class="emp-global-header external-view oprts-theme">
     <div class="application-header">
+        {{#unless this.disableMenu}}
         <button class="menu-button">
             <svg height="20" version="1" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#454545" d="M1 3h18v3H1zM1 9h18v3H1zM1 15h18v3H1z"></path>
             </svg>
             <span>Menu</span>
         </button>
+        {{/unless}}
         <h1 class="application-title">{{this.title}}</h1>
     </div>
 </header>

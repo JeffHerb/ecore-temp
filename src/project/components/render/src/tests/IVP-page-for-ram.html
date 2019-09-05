@@ -221,6 +221,27 @@
                       "page": {
                           "contents": [
                             {
+                                "help": [
+                                    {
+                                        "raw": true,
+                                        "template": "output"
+                                    }
+                                ],
+                                "instructions": [
+                                    {
+                                        "raw": true,
+                                        "template": "output",
+                                        "text": "<p>Complete the information below about the property and select <strong>Search</strong>. The information you enter will be used to identify the best match on our database. In addition to the SWIS code and Levy year. Enter the information as it appears on the assessment roll in one of these field combinations:</p>\n\t\t\t\t\t<ul>\n\t\t\t\t\t<li>Print key</li>\n\t\t\t\t\t<li>Street number, Street name, Owner's last name, and ZIP/postal code; or</li>\n\t\t\t\t\t<li>Owner's last name</li>\n\t\t\t\t\t</ul>"
+                                    }
+                                ],
+                                "title": "Property Search",
+                                "template": "external-pageinfo",
+                                "pageLegend": {
+                                    "required": true,
+                                    "help": true
+                                }
+                            },
+                            {
                                 "template": "external-group",
                                 "title": "New property registration information",
                                 "contents": [
@@ -506,7 +527,7 @@
                                                             {
                                                                 "type": "column",
                                                                 "template": "grid",
-                                                                "contents": [   
+                                                                "contents": [
                                                                     {
                                                                         "type": "text",
                                                                         "template": "field",

@@ -61,6 +61,17 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         emp.isIE = false;
         emp.isEdge = false;
 
+        var dApplicationTitle = document.querySelector('.application-title');
+        var dPageTitle = document.querySelector('title');
+        var sApplicationTitle = dApplicationTitle.textContent.trim();
+
+        console.log(dApplicationTitle);
+        console.log(sApplicationTitle);
+
+        if (sApplicationTitle.length === 0) {
+            dApplicationTitle.textContent = dPageTitle.textContent;
+        }
+
         session.setup();
         showHidePassword.init();
 
