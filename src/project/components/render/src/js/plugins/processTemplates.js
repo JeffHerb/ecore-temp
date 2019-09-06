@@ -54,38 +54,48 @@ define(['dataStore', 'handlebars', 'handlebars-templates', 'handlebars-partials'
         }
 
         // Start by rendering the handlebars template
-        var render = templates[data.template](data);
+        if (templates[data.template]) {
 
-    	var parsed = innerHTML(render).querySelector('body');
+            var render = templates[data.template](data);
 
-        if (parsed.childNodes.length) {
+            var parsed = innerHTML(render).querySelector('body');
 
-            var docFragement = document.createDocumentFragment();
+            if (parsed.childNodes.length) {
 
-            (function nextChild(childrenNodes) {
+                var docFragement = document.createDocumentFragment();
 
-                var node = childrenNodes.shift();
+                (function nextChild(childrenNodes) {
 
-                if (node && node.nodeType && node.nodeType === 1) {
-                    docFragement.appendChild(node);
-                }
+                    var node = childrenNodes.shift();
 
-                if (childrenNodes.length) {
+                    if (node && node.nodeType && node.nodeType === 1) {
+                        docFragement.appendChild(node);
+                    }
 
-                    nextChild(childrenNodes);
-                }
-                else {
+                    if (childrenNodes.length) {
 
-                    cb(docFragement);
-                }
+                        nextChild(childrenNodes);
+                    }
+                    else {
 
-            })(Array.prototype.slice.call(parsed.childNodes))
+                        cb(docFragement);
+                    }
 
+                })(Array.prototype.slice.call(parsed.childNodes))
+
+            }
+            else {
+
+                cb(false);
+            }
         }
         else {
 
+            console.error("Invalid templated requested:", data.template);
+
             cb(false);
         }
+
     };
 
     _priv.process = function _render(data, root, parentList, cb) {

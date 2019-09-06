@@ -9,27 +9,20 @@
     {{! Check to see if the input is read only }}
     {{#ifCond v1=this.input.readOnly op='boolCheck' v2=true ~}}
 
-        {{~#ifCond v1="commaColumnList" op="in" v2=this.input.style}}
+        {{~#ifCond v1="container" op="in" v2=this.input.style}}
 
-            {{> _readOnly_column_list this.input.attributes.value}}
+            <div {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes scope="textarea")) skip='value,name,aria-required,maxlength,data-validation' }}>
+                {{~{ standardTextFormat this.input.attributes.value }~}}
+            </div>
 
-        {{else}}
+        {{~else~}}
 
-            {{~#ifCond v1="container" op="in" v2=this.input.style}}
-
-                <div {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes scope="textarea")) skip='value,name,aria-required,maxlength,data-validation' }}>
-                    {{~{ standardTextFormat this.input.attributes.value }~}}
-                </div>
-
-            {{~else~}}
-
-                <p {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes scope="textarea")) skip='value,name,aria-required,maxlength,data-validation,type,rows,cols' }}>
-                    {{~{ standardTextFormat this.input.attributes.value }~}}
-                </p>
-
-            {{/ifCond}}
+            <p {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{"className":"emp-data"}' enhancedAttributes=this.input.attributes scope="textarea")) skip='value,name,aria-required,maxlength,data-validation,type,rows,cols' }}>
+                {{~{ standardTextFormat this.input.attributes.value }~}}
+            </p>
 
         {{/ifCond}}
+
 
     {{~else~}}
 
