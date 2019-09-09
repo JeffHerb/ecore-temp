@@ -1416,7 +1416,17 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                     }
                     else {
 
-                        $messageParent.append($messageLoc);
+                        //append to cui-data instead
+                        if($messageParent.hasClass('emp-password-wrapper')){
+
+                            $messageParent =  $($messageParent.parent());
+
+                            $messageParent.append($messageLoc);
+                        
+                        }else{
+
+                            $messageParent.append($messageLoc);
+                        }
                     }
                 }
             }
