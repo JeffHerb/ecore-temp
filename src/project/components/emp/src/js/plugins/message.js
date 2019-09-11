@@ -76,14 +76,25 @@ define(['jquery', 'cui', 'kind', 'render'], function ($, cui, kind, render) {
 
         options = _priv.extendOptions(options);
 
+        if (options.msgLocation && options.msgLocation.nodeType && options.msgLocation.nodeType === 1) {
+            options.msgLocation = $(options.msgLocation);
+        }
+
         //Determine wether to call page or field message.
-        if(options.field && typeof options.field[0] === 'object'){
+        if (options.field && options.field.nodeType === Node.ELEMENT_NODE ) {
+
+            options.field = $(options.field);
+
+            $message = _priv.createFieldMessage(msgObj, options);
+        }
+        else if(options.field && typeof options.field[0] === 'object'){
             $message = _priv.createFieldMessage(msgObj, options);
         }
         else if(options.field && typeof options.field === 'object'){
             $message = _priv.createFieldMessage(msgObj, options);
         }
         else if(options.field && typeof options.field === 'string'){
+
             if(options.field.indexOf('#')>0){
                 options.field = $(options.field);
             }
@@ -275,7 +286,7 @@ define(['jquery', 'cui', 'kind', 'render'], function ($, cui, kind, render) {
             $messageLoc = options.msgLocation;
         }
         else{
-            $messageLoc = $('#body-wrapper').find('ul.cui-messages.emp-messages').eq(0);
+            $messageLoc = $('#header-wrapper').find('ul.cui-messages.emp-messages').eq(0);
         }
 
         // Figure out if we need to build the messages or if we can use append them
