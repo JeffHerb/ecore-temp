@@ -60,6 +60,8 @@ module.exports = function(grunt) {
                         'expandables': 'plugins/expandables',
                         'session': 'plugins/session',
                         'showHidePassword': 'plugins/showHidePassword',
+                        'dynamicDropDown': 'plugins/dynamicDropDown',
+                        'findParent': 'plugins/findParent',
                         'tooltip': 'empty:',
                         'addRemove': 'empty:',
                         'guid': 'empty:',

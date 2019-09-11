@@ -225,37 +225,135 @@
                 "pageLegend": {
                     "null": true
                 },
-                "title": "Property Search"
-            },
-            {
-                "template": "pagebody",
-                "contents": [
-                    {
-                        "contents": [
-                            {
-                                "template": "external-group",
-                                "contents": [
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "noBlankOption": true,
-                                                            "options": [
-                                                                {
-                                                                    "text": "Select one",
-                                                                    "value": "Select one"
-                                                                }
-                                                            ],
-                                                            "attributes": {
-                                                                "name": "appDataBean.prptySrchCriteria.swissCd",
-                                                                "aria-required": true,
-                                                                "onchange": "emp.functionCall(event, 'emp.dropdown', ['EC_LEVY_YEAR',{'url':'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/getLevyYears','data':{'_fw_flowSessionKey':'EIVP_MAIN:EIVP_MAIN:search','EC_SWIS_CODE_I':'EC_SWIS_CODE_I','appDataBean.prptySrchCriteria.swissCd':'EC_SWIS_CODE_I'}},'ajax'])",
-                                                                "id": "EC_SWIS_CODE_I"
+                {
+                    "template": "pagebody",
+                    "contents": [
+                        {
+                            "contents": [
+                                {
+                                    "template": "external-group",
+                                    "contents": [
+                                        {
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "field",
+                                                            "input": {
+                                                                "options": [
+                                                                    {
+                                                                        "text": "Select one",
+                                                                        "value": ""
+                                                                    },
+                                                                    {
+                                                                        "text": "030200 Binghamton",
+                                                                        "value": "030200"
+                                                                    },
+                                                                    {
+                                                                        "text": "052800 Fleming",
+                                                                        "value": "052800"
+                                                                    },
+                                                                    {
+                                                                        "text": "473600 Southampton",
+                                                                        "value": "473600"
+                                                                    },
+                                                                    {
+                                                                        "text": "473601 North Haven",
+                                                                        "value": "473601"
+                                                                    },
+                                                                    {
+                                                                        "text": "473603 Quogue",
+                                                                        "value": "473603"
+                                                                    },
+                                                                    {
+                                                                        "text": "473605 Southampton",
+                                                                        "value": "473605"
+                                                                    },
+                                                                    {
+                                                                        "text": "473607 Westhampton Beach",
+                                                                        "value": "473607"
+                                                                    },
+                                                                    {
+                                                                        "text": "473611 Pine Valley",
+                                                                        "value": "473611"
+                                                                    },
+                                                                    {
+                                                                        "text": "473613 West Hampton Dunes",
+                                                                        "value": "473613"
+                                                                    },
+                                                                    {
+                                                                        "text": "473615 Sagaponack",
+                                                                        "value": "473615"
+                                                                    },
+                                                                    {
+                                                                        "text": "554800 Rye",
+                                                                        "value": "554800"
+                                                                    },
+                                                                    {
+                                                                        "text": "554801 Port Chester",
+                                                                        "value": "554801"
+                                                                    },
+                                                                    {
+                                                                        "text": "554805 Rye Brook",
+                                                                        "value": "554805"
+                                                                    }
+                                                                ],
+                                                                "attributes": {
+                                                                    "name": "appDataBean.rptCriteria.swissCd",
+                                                                    "aria-required": true,
+                                                                    "onchange": "emp.functionCall(event, 'emp.dropdown', ['EC_LEVY_YEAR',{'url':'http://localhost:3000/dropdown','data':{'_fw_flowSessionKey':'RIVP_MAIN:RIVP_MAIN:summary','appDataBean.rptCriteria.swissCd':'EC_SWIS_CODE','EC_SWIS_CODE':'EC_SWIS_CODE'}},'ajax'])",
+                                                                    "id": "EC_SWIS_CODE"
+                                                                },
+                                                                "required": true
+                                                            },
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "EC_SWIS_CODE"
+                                                                },
+                                                                "text": "SWIS code:"
+                                                            },
+                                                            "type": "select"
+                                                        }
+                                                    ],
+                                                    "width": "full",
+                                                    "attributes": {},
+                                                    "type": "column"
+                                                }
+                                            ],
+                                            "attributes": {},
+                                            "type": "row"
+                                        },
+                                        {
+                                            "template": "grid",
+                                            "contents": [
+                                                {
+                                                    "template": "grid",
+                                                    "contents": [
+                                                        {
+                                                            "template": "field",
+                                                            "input": {
+                                                                "options": [
+                                                                    {
+                                                                        "text": "Select one",
+                                                                        "value": ""
+                                                                    },
+                                                                    {
+                                                                        "text": "2019",
+                                                                        "value": "2019"
+                                                                    },
+                                                                    {
+                                                                        "text": "2020",
+                                                                        "value": "2020"
+                                                                    }
+                                                                ],
+                                                                "attributes": {
+                                                                    "name": "appDataBean.rptCriteria.levyYr",
+                                                                    "aria-required": true,
+                                                                    "id": "EC_LEVY_YEAR"
+                                                                },
+                                                                "required": true
                                                             },
                                                             "required": true
                                                         },

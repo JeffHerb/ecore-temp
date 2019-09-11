@@ -510,12 +510,38 @@ define(['utils'], function(utils) {
 
     };
 
+    var data = function(destSrc) {
+
+        if (destSrc && typeof destSrc === "object") {
+
+            var dataReturn = {};
+
+            for (var dest in destSrc) {
+
+                var src = destSrc[dest];
+
+                var srcValue = _priv.findSourceValue(src);
+
+                dataReturn[dest] = srcValue;
+            }
+
+            return dataReturn;
+
+        }
+        else {
+
+            journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'processMap', func: 'data' }, 'Data destSrc map is not valid or not an object.');
+        }
+
+    };
+
     return {
         // Used with static maps
         directMap: directMap,
         // Used with forms maps
         formMap: formMap,
-        queryString: queryString
+        queryString: queryString,
+        data: data
     };
 
 });
