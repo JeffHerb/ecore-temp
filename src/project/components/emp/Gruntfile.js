@@ -88,7 +88,8 @@ module.exports = function(grunt) {
                         'journal': 'empty:',
                         'fetchWrapper': 'empty:',
                         'deepmerge': 'empty:',
-                        'staticTree': 'empty:'
+                        'staticTree': 'empty:',
+                        'analytics': 'empty:'
                     },
                     optimize: 'none',
                     out: 'dist/js/emp.js',
