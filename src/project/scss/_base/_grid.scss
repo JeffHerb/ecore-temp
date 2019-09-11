@@ -250,16 +250,6 @@ section.emp-tabs div.emp-tab-contents {
         }
     }
 
-    .emp-col-half{
-        @include pointbreak("720px"){
-            .cui-label,
-            .emp-check-other-checkbox .cui-data,
-            .emp-field.cui-data-left .cui-data{
-                padding-right: 15px;
-            }
-        }
-    }
-
     .emp-col-full{
 
     	&:last-child{
@@ -283,6 +273,10 @@ section.emp-tabs div.emp-tab-contents {
             @include pointbreak("720px", true){
                 margin-top: 3px;
                 margin-right: 3px;
+
+                span{
+                    margin-top: 0px;
+                }
             }
         }
 
@@ -532,6 +526,11 @@ section.emp-tabs div.emp-tab-contents {
                 margin-top: 6px;
             }
         }
+
+        @include pointbreak("720px", true){
+            padding: 0px 15px;
+        }
+        
     }
 
     .emp-col-half{
@@ -552,6 +551,16 @@ section.emp-tabs div.emp-tab-contents {
             .cui-label label,span{
                 vertical-align: sub;
             }
+
+            .cui-label,
+            .emp-check-other-checkbox .cui-data,
+            .emp-field.cui-data-left .cui-data{
+                padding-right: 15px;
+            }
+        }
+
+        @include pointbreak("720px", true){
+            padding: 0px 15px;
         }
     }
 
@@ -577,7 +586,7 @@ section.emp-tabs div.emp-tab-contents {
             display: -webkit-flex;
             display: moz-box;
             display: ms-flexbox;
-            display: inline;
+            display: inline-block;
         }
     }
 
