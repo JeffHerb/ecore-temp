@@ -449,6 +449,7 @@ fieldset {
         }
 
         .emp-input-collection {
+            display: contents; // FF/Chrome validation msg fix.
             margin-left: 0;
 
             .emp-field {

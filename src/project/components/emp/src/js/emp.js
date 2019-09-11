@@ -1401,11 +1401,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                     $messageParent = field.$reference.parents('.emp-table').eq(0);
                 }
 
-                if ($messageParent.find('.cui-messages')[0]) {
+                if ($messageParent.find('.cui-messages')[0] || $messageParent.parent('.cui-data').find('.cui-messages')[0]) {
 
                     $messageLoc = $($messageParent.find('.cui-messages')[0]);
                 }
                 else {
+
                     $messageLoc = $('<ul/>', {
                         'class': 'cui-hidden cui-messages cui-field-message'
                     });
@@ -1578,7 +1579,17 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                     else if (!newResult.tests[test].result) {
 
                         var message = oldResult.tests[test].message;
-                        var messageExists = field.$reference.parent().find(message[0]);
+                        var messageExists;
+
+                        if(field.$reference.hasClass('emp-password-input')){
+
+                            //cui-data
+                            messageExists = field.$reference.parents().eq(1).find(message[0]);
+
+                        }else{
+
+                            messageExists = field.$reference.parent().find(message[0]);
+                        }
 
                         //Verify that page message is still set
                         if (messageExists.length === 0 && message) {
