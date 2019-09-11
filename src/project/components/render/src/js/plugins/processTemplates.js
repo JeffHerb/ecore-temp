@@ -56,6 +56,8 @@ define(['dataStore', 'handlebars', 'handlebars-templates', 'handlebars-partials'
         // Start by rendering the handlebars template
         if (templates[data.template]) {
 
+            console.log(data);
+
             var render = templates[data.template](data);
 
             var parsed = innerHTML(render).querySelector('body');

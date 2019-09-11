@@ -19,7 +19,7 @@
 
     {{!-- <input {{attribute (mergeAttributes this.input.attributes defaults=defaults)}} /> --}}
 
-    <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this) scope="boolean-input" ) }} />
+    <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this required=this.input.required) scope="boolean-input" ) }} />
 
     {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
         <input type="hidden" name="!{{this.input.attributes.name}}" id="!{{this.input.attributes.id}}" value="{{this.input.uncheckValue}}" />

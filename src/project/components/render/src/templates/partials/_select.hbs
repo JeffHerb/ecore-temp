@@ -100,6 +100,9 @@
                 {{/ifCond ~}}
             {{/each ~}}
         </select>
+        {{#if this.help}}
+            {{~> _itag this.help}}
+        {{/if}}
     {{/ifCond~}}
 
     {{! Look for messages if this is not in a composite}}
