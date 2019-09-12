@@ -64,15 +64,17 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var dApplicationTitle = document.querySelector('.application-title');
         var dPageTitle = document.querySelector('title');
         var sApplicationTitle = dApplicationTitle.textContent.trim();
+        var sPageTitle = dPageTitle.textContent.trim();
 
         console.log(dApplicationTitle);
         console.log(sApplicationTitle);
 
         if (sApplicationTitle.length === 0) {
             dApplicationTitle.textContent = dPageTitle.textContent;
-        }
-        
-        analytics.init();
+        }        
+
+        analytics.init();        
+        analytics.trackEvent('app', 'Page view', sApplicationTitle + ' | ' + sPageTitle, null, true);
 
         session.setup();
         showHidePassword.init();
