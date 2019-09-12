@@ -62,6 +62,7 @@ module.exports = function(grunt) {
                         'showHidePassword': 'plugins/showHidePassword',
                         'dynamicDropDown': 'plugins/dynamicDropDown',
                         'findParent': 'plugins/findParent',
+                        'errorPage': 'plugins/errorPage',
                         'tooltip': 'empty:',
                         'addRemove': 'empty:',
                         'guid': 'empty:',

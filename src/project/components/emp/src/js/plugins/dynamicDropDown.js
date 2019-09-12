@@ -1,4 +1,4 @@
-define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage'], function(fParent, process, fw, render, eMessage) {
+define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage', 'errorPage'], function(fParent, process, fw, render, eMessage, errPage) {
 
     var _priv = {};
 
@@ -13,7 +13,7 @@ define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage'], functi
 
             dFieldParent.appendChild(dFieldMessageLoc);
         }
-        
+
         return dFieldMessageLoc;
     };
 
@@ -32,11 +32,11 @@ define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage'], functi
             if (reqType) {
 
                 switch(reqType) {
-    
+
                     case 'data':
-    
+
                         break;
-    
+
                     case 'ajax':
 
                         if (source && typeof source === "object" && source.url && source.data) {
@@ -61,18 +61,18 @@ define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage'], functi
 
                                 journal.log({ type: 'info', owner: 'Developer|Framework', module: 'emp', submodule: 'dropdown - ajax' }, 'Source request for dynamic dropdown did not require any additional parameters');
                             }
-                            
+
                             res.done = function _dropdown_response_done(data) {
 
                                 if (data.status === "success" && data.result.length === 1) {
-    
+
                                     // Check to see if the current target specification has an options property, if not add it
                                     if (!oTargetDataStore.input.options) {
                                         oTargetDataStore.input.options = false;
                                     }
-    
+
                                     oTargetDataStore.input.options = data.result[0].body;
-    
+
                                     render.section(undefined, oTargetDataStore, 'return', function(html) {
 
                                         var dTargetFieldColumn = dTargetFieldWrapper.parentNode;
@@ -84,47 +84,38 @@ define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage'], functi
                                 }
                                 else {
 
-                                    var messageLoc = _priv.createFieldMessageLoc(dTarget);
-
-                                    if (data.messages && data.messages.length) {
-
-                                        eMessage.createMessage(data.messages[0], {field: dTarget, msgLocation: messageLoc});
-                                    }
-                                    else {
-                                        eMessage.createMessage({"type": "error", "text":emp.defaultErrorMessage}, {field: dTarget, msgLocation: messageLoc});
-                                    }
-
+                                    // Error out the user and relocate them to the standard error.jsp for the app
+                                    errPage.relocate('error');
                                 }
 
                             };
 
                             res.fail = function _dropdown_response_fail(err) {
 
-                                var messageLoc = _priv.createFieldMessageLoc(dTarget);
-
-                                eMessage.createMessage({"type": "error", "text":emp.defaultErrorMessage}, {field: dTarget, msgLocation: messageLoc});
+                                    // Error out the user and relocate them to the standard error.jsp for the app
+                                    errPage.relocate('error');
                             };
 
                             fw.request(req, res);
                         }
                         else {
-                        
+
                             journal.log({ type: 'error', owner: 'Developer|Framework', module: 'emp', submodule: 'dropdown - ajax' }, 'Source object is missing or missing url or data property. This is what we have: "' + source + '"');
                         }
-    
+
                         break;
-    
+
                     default:
-    
+
                         journal.log({ type: 'error', owner: 'Developer|Framework', module: 'emp', submodule: 'dropdown' }, 'Unknown request type returned "' + reqType + '"');
                         break;
-    
+
                 }
 
             }
             else {
 
-                journal.log({ type: 'error', owner: 'Developer|Framework', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown missing source request type');    
+                journal.log({ type: 'error', owner: 'Developer|Framework', module: 'emp', submodule: 'dropdown' }, 'Dynamic Dropdown missing source request type');
             }
 
         }

@@ -2953,7 +2953,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             if (funcName.indexOf('validation') === -1 && funcName.indexOf('validate') === -1) {
 
                 if (!result) {
-                    empMessage.createMessage({ text: "Please review the highlighted messages shown below before continuing", type: "error" }, { scroll: true });
+                    //empMessage.createMessage({ text: "Please review the highlighted messages shown below before continuing", type: "error" }, { scroll: true });
                 }
             }
 
