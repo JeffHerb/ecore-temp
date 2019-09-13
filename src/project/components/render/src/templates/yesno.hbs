@@ -55,6 +55,9 @@
 	            {{#if this.help}}
                     {{~> _itag this.help}}
                 {{/if}}
+                {{#if this.message~}}
+                    {{> _message this.message}}
+                {{/if~}}
 	        </div>
     	</div>
     </fieldset>
