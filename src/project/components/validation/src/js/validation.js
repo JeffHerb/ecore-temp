@@ -11,6 +11,26 @@ define(['jquery', 'kind'], function ($, kind) {
         code: "UI000"
     };
 
+    _rules.requiredFieldSet = {
+        test: function($field) {
+
+            var $fieldSetInputs = $field.find('input[required], input[aria-required="true"]');
+
+            for  (var fsi = 0, fsiLen = $fieldSetInputs.length; fsi < fsiLen; fsi++) {
+
+                var field = $fieldSetInputs[fsi];
+
+                if (field.checked) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
+        errorMsg: "This field is required.",
+        code: "UI000"
+    };
+
     _rules.isNumeric = {
         test: /^$|^[0-9,\.\s]+$/,
         errorMsg: "This field can only contain numbers.",
@@ -1486,8 +1506,16 @@ define(['jquery', 'kind'], function ($, kind) {
             // Create a test spaced
             fieldObj.tests.required = {};
 
-            // Add results object
-            fieldObj.tests.required.result = _priv.testRunner("required", $field);
+            if ($field[0].nodeName === "FIELDSET") {
+
+                fieldObj.tests.required.result = _priv.testRunner("requiredFieldSet", $field);
+            }
+            else {
+
+                // Add results object
+                fieldObj.tests.required.result = _priv.testRunner("required", $field);
+            }
+
         }
 
         // Check for validation functions
@@ -1666,13 +1694,24 @@ define(['jquery', 'kind'], function ($, kind) {
 
         // Get field demographics
         var $field = resultsObj.$reference;
-        var fieldId = $field.attr('id');
+        var fieldID = false;
         var fieldName;
 
-        var $fieldLabel = $('label[for="' + fieldId + '"]');
+        if ($field[0].nodeName === "FIELDSET") {
+            $subRef = $field.find('.emp-fieldset-contents').eq(0);
+            fieldID = $subRef.attr('aria-labelledby');
+        }
+        else {
+            fieldID = $field.attr('id');
+        }
+
+        var $fieldLabel = $('label[for="' + fieldID + '"]');
 
         if ($fieldLabel.length === 1) {
             fieldName = $fieldLabel.text();
+        }
+        else if ($field[0].nodeName === "FIELDSET") {
+            fieldName = $('#' + fieldID).text();
         }
         else {
             fieldName = fieldId;
@@ -1714,7 +1753,7 @@ define(['jquery', 'kind'], function ($, kind) {
 
     var field = function _field(field) {
 
-        var acceptableFields = ['INPUT', 'SELECT', 'TEXTAREA', 'TABLE'];
+        var acceptableFields = ['INPUT', 'SELECT', 'TEXTAREA', 'TABLE', 'FIELDSET'];
 
         // Test reference to ensure its valid.
         $field = _priv.findReference(field);
@@ -1724,7 +1763,17 @@ define(['jquery', 'kind'], function ($, kind) {
             // Check to see if the field has either of the aria-required or data-validation attributes
             if ($field.attr('aria-required') || $field.attr('data-validation')) {
 
-                journal.log({type: 'info', owner: 'UI', module: 'validation', func: 'field'}, "Form field being validated:", $field.attr('id'));
+                var fieldID = false;
+
+                if($field[0].nodeName==="FIELDSET") {
+                    $subRef = $field.find('.emp-fieldset-contents').eq(0);
+                    fieldID = $subRef.attr('aria-labelledby');
+                }
+                else {
+                    fieldID = $field.attr('id');
+                }
+
+                journal.log({ type: 'info', owner: 'UI', module: 'validation', func: 'field' }, "Form field being validated:", fieldID);
 
                 // Test the field
                 var fieldTest = _priv.validateField($field);
@@ -1817,10 +1866,10 @@ define(['jquery', 'kind'], function ($, kind) {
         if ($form.length === 1 && $form[0].nodeName === "FORM") {
 
             // Find all of the inputs in this form
-            var inputs = $form.find('input, select, textarea, table.emp-selectionRequired').not(':hidden');
+            var inputs = $form.find('input, select, textarea, table.emp-selectionRequired, fieldset.emp-yes-no-component').not(':hidden');
 
             //Add inputs that could be within hidden section resulting in display:none.
-            inputs = inputs.add($form.find('input[aria-required="true"], select[aria-required="true"], textarea[aria-required="true"], table.emp-selectionRequired[aria-required="true"]'));
+            inputs = inputs.add($form.find('input[aria-required="true"], select[aria-required="true"], textarea[aria-required="true"], table.emp-selectionRequired[aria-required="true"], fieldset.emp-yes-no-component[aria-required="true"]'));
 
             // Check to see if anything inputs were even found.
             if (inputs.length > 0) {

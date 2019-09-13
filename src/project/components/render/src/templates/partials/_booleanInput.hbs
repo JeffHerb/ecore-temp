@@ -19,11 +19,39 @@
 
     {{!-- <input {{attribute (mergeAttributes this.input.attributes defaults=defaults)}} /> --}}
 
-    <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this required=this.input.required) scope="boolean-input" ) }} />
 
-    {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
-        <input type="hidden" name="!{{this.input.attributes.name}}" id="!{{this.input.attributes.id}}" value="{{this.input.uncheckValue}}" />
-    {{/ifCond ~}}
+    {{#ifCond v1=this.scope op="===" v2="yesNo"}}
+
+
+        {{!-- Detect if the higher level yes no required value was set --}}
+        {{#if this.required}}
+
+            <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this required=this.required scope="boolean-input") ) }} />
+
+            {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
+            <input type="hidden" name="!{{this.input.attributes.name}}" id="!{{this.input.attributes.id}}"
+                value="{{this.input.uncheckValue}}" />
+            {{/ifCond ~}}
+
+        {{else}}
+
+            <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this required=this.input.required scope="boolean-input")) }} />
+
+            {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
+                <input type="hidden" name="!{{this.input.attributes.name}}" id="!{{this.input.attributes.id}}" value="{{this.input.uncheckValue}}" />
+            {{/ifCond ~}}
+        {{/if}}
+
+
+    {{else}}
+
+        <input {{attribute (mergeAttributes this.input.attributes defaults=(extendDefaults defaults='{}' expands=this required=this.input.required scope="boolean-input")) }} />
+
+        {{#ifCond v1=this.input.attributes.type op='===' v2="checkbox" ~}}
+            <input type="hidden" name="!{{this.input.attributes.name}}" id="!{{this.input.attributes.id}}" value="{{this.input.uncheckValue}}" />
+        {{/ifCond ~}}
+
+    {{/ifCond}}
 
 {{/ifCond~}}
 

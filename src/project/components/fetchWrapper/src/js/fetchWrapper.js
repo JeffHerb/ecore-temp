@@ -41,7 +41,18 @@ define(['promise'], function (Promise) {
         return response;
     }
 
-    var request = function request(req, res) {
+    function encodeFormData (oData) {
+
+        var aEncodedValues = [];
+
+        for (var key in oData) {
+            aEncodedValues.push(encodeURIComponent(key) + '=' + encodeURIComponent(oData[key]));
+        }
+
+        return aEncodedValues.join('&');
+    }
+
+    var request = function request(req, res, jsonSubmit) {
 
         if (req.url) {
 
@@ -49,10 +60,6 @@ define(['promise'], function (Promise) {
                 cache: 'no-cache',
                 method: req.method,
             };
-
-            if (req.data) {
-                fetchObj.data = req.data;
-            }
 
             if ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && location.port === "8888" && !req.ignoreLocal) {
 
@@ -86,17 +93,29 @@ define(['promise'], function (Promise) {
                     fetchObj.headers = req.headers;
                 }
 
-            }
+                if (req.body && typeof req.body === "object" && jsonSubmit) {
 
-
-            if (req.body) {
-
-                if (typeof req.body === "object") {
-
-                    req.body = JSON.stringify(req.body);
+                    req.data = JSON.stringify(req.body);
                 }
 
-                fetchObj.body = req.body;
+                if (jsonSubmit) {
+
+                    if (fetchObj.headers) {
+                        fetchObj.headers['Content-Type'] = 'application/json';
+                    }
+
+                    fetchObj.body = req.data;
+
+                }
+                else {
+
+                    if (fetchObj.headers) {
+                    	fetchObj.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                    }
+
+                    fetchObj.body = encodeFormData(req.data);
+                }
+
             }
 
             if (!req.ignoreResponse) {
@@ -134,11 +153,15 @@ define(['promise'], function (Promise) {
 
                         journal.log({ type: 'error', owner: 'UI', module: 'fetch', func: 'irequest' }, 'Fetch Data request failed!');
 
+                        console.log(err);
+
                         if (res.fail) {
 
                             res.fail(err);
                         }
                         else {
+
+                            console.log(res);
 
                         }
 

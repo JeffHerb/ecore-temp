@@ -1,6 +1,11 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
 define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
 
+    if (!Element.prototype.matches) {
+    	Element.prototype.matches = Element.prototype.msMatchesSelector ||
+    		Element.prototype.webkitMatchesSelector;
+    }
+
     var _priv = {
         isInitialized: false,
         $groupToggleControl: null,
@@ -982,6 +987,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                 if (field.$reference[0].nodeName === 'TABLE') {
                     $messageParent = field.$reference.parents('.emp-table').eq(0);
                 }
+                else if (field.$reference[0].nodeName === 'FIELDSET') {
+                    $messageParent = field.$reference.find('.emp-fieldset-contents .cui-data').eq(0);
+                }
 
                 if ($messageParent.find('.cui-messages')[0] || $messageParent.parent('.cui-data').find('.cui-messages')[0]) {
 
@@ -996,6 +1004,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
                     if (field.$reference[0].nodeName === 'TABLE') {
 
                         $messageParent.prepend($messageLoc);
+                    }
+                    else if (field.$reference[0].nodeName === 'FIELDSET') {
+
+                        $messageParent.append($messageLoc);
                     }
                     else {
 
@@ -3935,8 +3947,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
 
                     // validate the form
                     var formValidation = validate.form(frm);
-
-                    //console.log(formValidation);
 
                     // If the results passed, allow the form to submit.
                     if (formValidation) {

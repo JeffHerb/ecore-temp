@@ -20,15 +20,19 @@
         </div>
     </div>
 {{else}}
-    <fieldset class="emp-yes-no-component emp-boolean-input-group">
+    <fieldset {{attribute (mergeAttributes false defaults=(extendDefaults defaults='{"className": "emp-yes-no-component emp-boolean-input-group"}' required=this.required scope="yesNo"))}}>
         <div class="emp-fieldset-contents" role="group" aria-labelledby="{{this.name}}">
 	        <div class="cui-label">
-	            <legend id="{{this.name}}">{{this.legend}}</legend>
+	            <legend class="cui-required" id="{{this.name}}">{{this.legend}}</legend>
 	        </div>
 	        <div class="cui-data">
 	            <div class="emp-input-collection">
 	                <div class="emp-field cui-data-left">
-	                    {{> _booleanInput this.yes noWrap=true}}
+                        {{#if this.required}}
+                            {{> _booleanInput this.yes noWrap=true required=true scope="yesNo"}}
+                        {{else}}
+	                        {{> _booleanInput this.yes noWrap=true}}
+                        {{/if}}
 	                    {{#if this.yes.label}}
 	                        {{> _label this.yes.label noWrap=true}}
 	                    {{else}}
@@ -36,12 +40,16 @@
 	                    {{/if}}
 	                </div>
 	                <div class="emp-field cui-data-left">
-	                    {{> _booleanInput this.no noWrap=true}}
+                        {{#if this.required}}
+                            {{> _booleanInput this.no noWrap=true required=true scope="yesNo"}}
+                        {{else}}
+                            {{> _booleanInput this.no noWrap=true}}
+                        {{/if}}
 	                    {{#if this.no.label}}
 	                        {{> _label this.no.label noWrap=true}}
 	                    {{else}}
 	                        <label for="{{this.no.input.attributes.id}}">No</label>
-	                    {{/if}}                       
+	                    {{/if}}
 	                </div>
 	            </div>
 	            {{#if this.help}}

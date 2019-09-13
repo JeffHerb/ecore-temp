@@ -62,6 +62,8 @@ define(['findParent', 'process', 'fetchWrapper', 'render', 'empMessage', 'errorP
                                 journal.log({ type: 'info', owner: 'Developer|Framework', module: 'emp', submodule: 'dropdown - ajax' }, 'Source request for dynamic dropdown did not require any additional parameters');
                             }
 
+                            console.log(req.data);
+
                             res.done = function _dropdown_response_done(data) {
 
                                 if (data.status === "success" && data.result.length === 1) {
