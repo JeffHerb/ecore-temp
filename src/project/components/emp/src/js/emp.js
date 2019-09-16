@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function ($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, session) {
 
     if (!Element.prototype.matches) {
     	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -69,10 +69,14 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var dApplicationTitle = document.querySelector('.application-title');
         var dPageTitle = document.querySelector('title');
         var sApplicationTitle = dApplicationTitle.textContent.trim();
+        var sPageTitle = dPageTitle.textContent.trim();
 
         if (sApplicationTitle.length === 0) {
             dApplicationTitle.textContent = dPageTitle.textContent;
         }
+
+        analytics.init();
+        analytics.trackEvent('app', 'Page view', sApplicationTitle + ' | ' + sPageTitle, null, true);
 
         session.setup();
         showHidePassword.init();

@@ -1,0 +1,5 @@
+{
+    "name": "analytics",
+    "lazy": false,
+    "sources": ["script"]
+}
