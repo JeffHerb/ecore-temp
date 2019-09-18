@@ -62,6 +62,7 @@ module.exports = function(grunt) {
                         'showHidePassword': 'plugins/showHidePassword',
                         'dynamicDropDown': 'plugins/dynamicDropDown',
                         'findParent': 'plugins/findParent',
+                        'errorPage': 'plugins/errorPage',
                         'tooltip': 'empty:',
                         'addRemove': 'empty:',
                         'guid': 'empty:',
@@ -90,7 +91,8 @@ module.exports = function(grunt) {
                         'journal': 'empty:',
                         'fetchWrapper': 'empty:',
                         'deepmerge': 'empty:',
-                        'staticTree': 'empty:'
+                        'staticTree': 'empty:',
+                        'analytics': 'empty:'
                     },
                     optimize: 'none',
                     out: 'dist/js/emp.js',

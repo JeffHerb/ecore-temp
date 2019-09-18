@@ -28,4 +28,10 @@
             {{/if}}
         </div>
     {{/if}}
+
+    {{#if this.messages}}
+        {{> _message this.messages section="globalHeader"}}
+    {{else}}
+        <ul class="cui-messages emp-messages"></ul>
+    {{/if}}
 </div>

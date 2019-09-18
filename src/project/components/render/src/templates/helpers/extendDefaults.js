@@ -360,6 +360,11 @@ Handlebars.registerHelper('extendDefaults', function (params) {
 
             // Check the scope here as many elements are affected by a single value.
             switch (scope) {
+
+                case 'boolean-input':
+                    addValue('required', 'true');
+                    break;
+
                 case 'field':
                 case 'inputGroup':
                 case 'search-composite':
@@ -381,6 +386,16 @@ Handlebars.registerHelper('extendDefaults', function (params) {
 
             // Check the scope here as many elements are affected by a single value.
             switch (scope) {
+
+                case 'boolean-input':
+                    addValue('required', 'true');
+                    break;
+
+                case 'yesNo':
+                    addValue('className', 'cui-required');
+                    addValue('aria-required', 'true');
+                    break;
+
                 case 'field':
                 case 'inputGroup':
                 case 'search-composite':

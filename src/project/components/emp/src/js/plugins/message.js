@@ -286,7 +286,7 @@ define(['jquery', 'cui', 'kind', 'render'], function ($, cui, kind, render) {
             $messageLoc = options.msgLocation;
         }
         else{
-            $messageLoc = $('#header-wrapper').find('ul.cui-messages.emp-messages').eq(0);
+            $messageLoc = $('#body-wrapper').find('ul.cui-messages.emp-messages').eq(0);
         }
 
         // Figure out if we need to build the messages or if we can use append them
@@ -381,7 +381,7 @@ define(['jquery', 'cui', 'kind', 'render'], function ($, cui, kind, render) {
                 if($fieldParent.find('.cui-messages')[0]){
                     $messageLoc = $($fieldParent.find('.cui-messages')[0]);
                 }
-                
+
                 if($fieldParent.parents('.emp-composite').eq(0)){
 
                     $compositeWrapper = $fieldParent.parents('.emp-composite').eq(0);
@@ -488,7 +488,7 @@ define(['jquery', 'cui', 'kind', 'render'], function ($, cui, kind, render) {
 
         var $messageLoc = $('#body-wrapper').find('ul.cui-messages.emp-messages').eq(0);
         var fieldPageNotifierClass = "cui-field-error-notifier";
-        var fieldPageNotifierMessage = "UI: There are one or more errors on this page. Please see " + fieldLoc + ".";
+        var fieldPageNotifierMessage = "Please review the highlighted messages shown below before continuing.";
 
         if($messageLoc.find('.cui-field-error-notifier').eq(0).length === 0){
             $message = $('<li/>', {

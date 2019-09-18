@@ -7,32 +7,58 @@ define(['jquery', 'kind'], function ($, kind) {
     // Test that a field has contents other than a space
     _rules.required = {
         test: /[^\s-]/,
-        errorMsg: "This field is required. [UI000]"
+        errorMsg: "This field is required.",
+        code: "UI000"
+    };
+
+    _rules.requiredFieldSet = {
+        test: function($field) {
+
+            var $fieldSetInputs = $field.find('input[required], input[aria-required="true"]');
+
+            for  (var fsi = 0, fsiLen = $fieldSetInputs.length; fsi < fsiLen; fsi++) {
+
+                var field = $fieldSetInputs[fsi];
+
+                if (field.checked) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
+        errorMsg: "This field is required.",
+        code: "UI000"
     };
 
     _rules.isNumeric = {
         test: /^$|^[0-9,\.\s]+$/,
-        errorMsg: "This field can only contain numbers. [UI001]"
+        errorMsg: "This field can only contain numbers.",
+        code: "UI001"
     };
 
     _rules.isAlpha = {
         test: /^$|^[A-Za-z\s]+$/,
-        errorMsg: "This field can only contain letters and spaces [Code: UI002]"
+        errorMsg: "This field can only contain letters and spaces.",
+        code: "UI002"
     };
 
     _rules.isAlphaNumeric = {
         test: /^$|^[A-Za-z0-9\s]+$/,
-        errorMsg: "This field can only contain letters, spaces and numbers. [UI003]"
+        errorMsg: "This field can only contain letters, spaces and numbers.",
+        code: "UI003"
     };
 
     _rules.isStrictlyAlphaNumeric = {
         test: /^$|^[A-Za-z0-9]+$/,
-        errorMsg: "This field can only contain letters and numbers; without spaces. [UI004]"
+        errorMsg: "This field can only contain letters and numbers; without spaces.",
+        code: "UI004"
     };
 
     _rules.isEmail = {
         test: /^$|^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i,
-        errorMsg: "This field's value must be a valid email address. [UI005]"
+        errorMsg: "This field's value must be a valid email address.",
+        code: "UI005"
     };
 
     _rules.checkMaxLength = {
@@ -112,7 +138,8 @@ define(['jquery', 'kind'], function ($, kind) {
         errorMsg: function _max_length_error($field, fieldID) {
 
             var maxLimit = $field.attr('data-max-length');
-            var errorMsg = "This field's value cannot exceed + characters. [UI006]";
+            var errorMsg = "This field's value cannot exceed + characters.";
+            // code was : UI006
 
             return errorMsg.replace('~',fieldID).replace('+',maxLimit);
 
@@ -196,7 +223,8 @@ define(['jquery', 'kind'], function ($, kind) {
         errorMsg: function _min_length_error($field, fieldID) {
 
             var minLimit = $field.attr('data-min-length');
-            var errorMsg = "This field's value must be at least + characters long [UI007]";
+            var errorMsg = "This field's value must be at least + characters long";
+            // code was UI007
 
             return errorMsg.replace('~',fieldID).replace('+', minLimit);
 
@@ -226,7 +254,8 @@ define(['jquery', 'kind'], function ($, kind) {
             }
 
         },
-        errorMsg: "This field's value must be a number and can not be zero [UI008]"
+        errorMsg: "This field's value must be a number and can not be zero",
+        code: "UI008"
     };
 
     _rules.isCurrency = {
@@ -261,7 +290,8 @@ define(['jquery', 'kind'], function ($, kind) {
             }
 
         },
-        errorMsg: "This field's value must be a currency value. [UI009]"
+        errorMsg: "This field's value must be a currency value.",
+        code: "UI009"
     };
 
     _rules.validateName = {
@@ -313,7 +343,8 @@ define(['jquery', 'kind'], function ($, kind) {
             }
 
         },
-        errorMsg: "Names may only be contain letters, numbers, and spaces [UI010]"
+        errorMsg: "Names may only be contain letters, numbers, and spaces",
+        code: "UI010"
     };
 
     _rules.dateValidator = {
@@ -413,11 +444,12 @@ define(['jquery', 'kind'], function ($, kind) {
             }
         },
         errorMsg: {
-            "day": "Must be a valid day. [UI011]",
-            "month": "Must be a valid month [UI012]",
-            "year": "Enter year between 1800-2100. [UI013]",
-            "date": "Dates must be in MM/DD/YYYY format. [UI014]"
-        }
+            "day": "Must be a valid day.",
+            "month": "Must be a valid month.",
+            "year": "Enter year between 1800-2100.",
+            "date": "Dates must be in MM/DD/YYYY format."
+        },
+        // codes, day - UI011, month - UI012, year - UI013, date - UI014
     };
 
     _rules.validateListSize = {
@@ -473,7 +505,8 @@ define(['jquery', 'kind'], function ($, kind) {
         errorMsg: function _limit_size_error($field, fieldID) {
 
             var sizeLimit = $field.attr('data-size-limit');
-            var errorMsg = "Limit the selection to + or less. [UI015]";
+            var errorMsg = "Limit the selection to + or less.";
+            // code: UI015
 
             return errorMsg.replace('~',fieldID).replace('+', sizeLimit);
 
@@ -545,7 +578,8 @@ define(['jquery', 'kind'], function ($, kind) {
         errorMsg: function _check_max_allowed_error($field, fieldID) {
 
             var maxAllowed = $field.attr('data-max-allowed');
-            var errorMsg = "This field's value must not exceed +. [UI016]";
+            var errorMsg = "This field's value must not exceed +.";
+            // code: UI016
 
             return errorMsg.replace('~',fieldID).replace('+', maxAllowed);
 
@@ -638,7 +672,8 @@ define(['jquery', 'kind'], function ($, kind) {
 
             return false;
         },
-        errorMsg: "This field's value must be a valid phone number. [UI017]"
+        errorMsg: "This field's value must be a valid phone number.",
+        code: "UI017"
     };
 
     _rules.isForeignPhone = {
@@ -669,7 +704,8 @@ define(['jquery', 'kind'], function ($, kind) {
                 return false;
             }
         },
-        errorMsg: "This field's value must be a valid foreign phone number. [UI018]"
+        errorMsg: "This field's value must be a valid foreign phone number.",
+        code: "UI018"
     };
 
     _rules.checkSpecialChars = {
@@ -739,7 +775,8 @@ define(['jquery', 'kind'], function ($, kind) {
         errorMsg: function _check_special_chars_error($field, fieldID) {
 
             var maxAllowed = $field.attr('data-max-allowed');
-            var errorMsg = "This field's value must not exceed +. [UI019]";
+            var errorMsg = "This field's value must not exceed +.";
+            // code: UI019
 
             return errorMsg.replace('~',fieldID).replace('+', maxAllowed);
         }
@@ -772,7 +809,8 @@ define(['jquery', 'kind'], function ($, kind) {
                 return false;
             }
         },
-        errorMsg: "This field's value must be a valid solcial security number (SSN). [UI020]"
+        errorMsg: "This field's value must be a valid solcial security number (SSN)",
+        code: "UI020"
     };
 
     _rules.isEIN = {
@@ -794,7 +832,8 @@ define(['jquery', 'kind'], function ($, kind) {
             }
 
         },
-        errorMsg: "This field's value must be a valid EIN. [UI021]"
+        errorMsg: "This field's value must be a valid EIN.",
+        code: "UI021"
     };
 
     _rules.isDosId = {
@@ -816,7 +855,8 @@ define(['jquery', 'kind'], function ($, kind) {
             }
 
         },
-        errorMsg: "DOS IDs nust be a 'D' followed by 8 digits. [UI022]"
+        errorMsg: "DOS IDs nust be a 'D' followed by 8 digits.",
+        code: "UI022"
     };
 
     _rules.validateZip = {
@@ -865,10 +905,11 @@ define(['jquery', 'kind'], function ($, kind) {
 
         },
         errorMsg: {
-            "zip": "This field's value must be a valid zip code. [UI023]",
-            "char": "This field's value must be a valid zip code. [UI024]",
-            "format": "Zip codes must be in #####-#### format [UI025]"
+            "zip": "This field's value must be a valid zip code.",
+            "char": "This field's value must be a valid zip code.",
+            "format": "Zip codes must be in #####-#### format."
         }
+        // codes: zip - UI023, char - UI024, format - UI025
     };
 
     _rules.isWebSite = {
@@ -890,7 +931,8 @@ define(['jquery', 'kind'], function ($, kind) {
                 return false;
             }
         },
-        errorMsg: "This field's value must be a valid website URL. [UI026]"
+        errorMsg: "This field's value must be a valid website URL.",
+        code: "UI026"
     };
 
     _rules.isCurrencySpecial = {
@@ -942,7 +984,8 @@ define(['jquery', 'kind'], function ($, kind) {
             }
 
         },
-        errorMsg: "This field's value must be a valid special currency. [UI027]"
+        errorMsg: "This field's value must be a valid special currency.",
+        code: "UI027"
     };
 
     _rules.isNumericWithDecimal = {
@@ -981,7 +1024,8 @@ define(['jquery', 'kind'], function ($, kind) {
 
             return true;
         },
-        errorMsg: "This field's value must be in proper decimal format. [UI028]"
+        errorMsg: "This field's value must be in proper decimal format.",
+        code: "UI028"
     };
 
     _rules.isWithinRange = {
@@ -1088,18 +1132,18 @@ define(['jquery', 'kind'], function ($, kind) {
         errorMsg: {
             "range": function _range_error($field){
 
-                var errorMsg = "Value must be within + and -. [UI029]";
+                var errorMsg = "Value must be within + and -.";
 
                 var minVal = $field.attr('data-min-val');
                 var maxVal = $field.attr('data-max-val');
 
                 return errorMsg.replace('+', minVal).replace('-', maxVal);
             },
-            "setup": "Required parameters are missing to properly validate value. [UI030]",
-            "invalidRange": "Minimum range value is larger than defined maximum. [UI031]",
+            "setup": "Required parameters are missing to properly validate value.",
+            "invalidRange": "Minimum range value is larger than defined maximum.",
             "overMax": function _overMax_error($field){
 
-                var errorMsg = "Value must not exceed +. [UI032]";
+                var errorMsg = "Value must not exceed +.";
 
                 var maxVal = $field.attr('data-max-val');
 
@@ -1107,14 +1151,15 @@ define(['jquery', 'kind'], function ($, kind) {
 
             },
             "underMin": function _underMin_error($field){
-                
-                var errorMsg = "Value must be larger than + [UI033]";
+
+                var errorMsg = "Value must be larger than +";
 
                 var minVal = $field.attr('data-min-val');
 
                 return errorMsg.replace('+', minVal);
             }
         }
+        //codes: range - UI029, setup - UI030, invalidRange - UI031, overMax - UI032, underMin - UI033
     };
 
     _rules.isLengthWithinRange = {
@@ -1218,12 +1263,12 @@ define(['jquery', 'kind'], function ($, kind) {
 
         },
         errorMsg: {
-            "range": "Must be within specified range [UI034]",
-            "setup": "Required parameters are missing to properly validate value. [UI035]",
-            "invalidRange": "Minimum range value is larger than defined maximum. [UI036]",
+            "range": "Must be within specified range",
+            "setup": "Required parameters are missing to properly validate value",
+            "invalidRange": "Minimum range value is larger than defined maximum.",
             "overMax": function _overMax_error($field){
 
-                var errorMsg = "Must not exceed ~ characters. [UI037]";
+                var errorMsg = "Must not exceed ~ characters.";
 
                 var maxVal = $field.attr('data-max-val');
 
@@ -1232,13 +1277,14 @@ define(['jquery', 'kind'], function ($, kind) {
             },
             "underMin": function _underMin_error($field){
 
-                var errorMsg = "Must be larger than ~ characters. [UI038]";
+                var errorMsg = "Must be larger than ~ characters.";
 
                 var minVal = $field.attr('data-min-val');
 
                 return errorMsg.replace('~', minVal);
             }
         }
+        //codes: range - UI034, setup - UI035, invalidRange - UI036, overMax - UI037, underMin - UI038
     };
 
     _rules.dateCompare = {
@@ -1294,18 +1340,19 @@ define(['jquery', 'kind'], function ($, kind) {
 
         },
         errorMsg: {
-            "same": "UI036: The two dates supplied are the same date.",
+            "same": "The two dates supplied are the same date.",
             "sooner": function _sooner_error($field, fieldID) {
 
                 var date1 = $field.attr('data-start-date');
                 var date2 = $field.attr('data-end-date');
-                var errorMsg = "Date must fall between + and -. [UI039]";
+                var errorMsg = "Date must fall between + and -.";
 
                 return errorMsg.replace('~',fieldID).replace('+', date2).replace('-', date1);
 
             }
 
         }
+        // code: same - UI039, sooner - UI040
     };
 
     _rules.tableSelect = {
@@ -1358,7 +1405,8 @@ define(['jquery', 'kind'], function ($, kind) {
                 }
 
                 //var errorMsg = "UI037: The ~ table is invalid. Please select a row(s).";
-                var errorMsg = "Please select a row. [UI040]";
+                var errorMsg = "Please select a row.";
+                // code: UI040
 
                 return errorMsg.replace('~', tableTitle);
             }
@@ -1458,8 +1506,16 @@ define(['jquery', 'kind'], function ($, kind) {
             // Create a test spaced
             fieldObj.tests.required = {};
 
-            // Add results object
-            fieldObj.tests.required.result = _priv.testRunner("required", $field);
+            if ($field[0].nodeName === "FIELDSET") {
+
+                fieldObj.tests.required.result = _priv.testRunner("requiredFieldSet", $field);
+            }
+            else {
+
+                // Add results object
+                fieldObj.tests.required.result = _priv.testRunner("required", $field);
+            }
+
         }
 
         // Check for validation functions
@@ -1638,13 +1694,24 @@ define(['jquery', 'kind'], function ($, kind) {
 
         // Get field demographics
         var $field = resultsObj.$reference;
-        var fieldId = $field.attr('id');
+        var fieldID = false;
         var fieldName;
 
-        var $fieldLabel = $('label[for="' + fieldId + '"]');
+        if ($field[0].nodeName === "FIELDSET") {
+            $subRef = $field.find('.emp-fieldset-contents').eq(0);
+            fieldID = $subRef.attr('aria-labelledby');
+        }
+        else {
+            fieldID = $field.attr('id');
+        }
+
+        var $fieldLabel = $('label[for="' + fieldID + '"]');
 
         if ($fieldLabel.length === 1) {
             fieldName = $fieldLabel.text();
+        }
+        else if ($field[0].nodeName === "FIELDSET") {
+            fieldName = $('#' + fieldID).text();
         }
         else {
             fieldName = fieldId;
@@ -1686,7 +1753,7 @@ define(['jquery', 'kind'], function ($, kind) {
 
     var field = function _field(field) {
 
-        var acceptableFields = ['INPUT', 'SELECT', 'TEXTAREA', 'TABLE'];
+        var acceptableFields = ['INPUT', 'SELECT', 'TEXTAREA', 'TABLE', 'FIELDSET'];
 
         // Test reference to ensure its valid.
         $field = _priv.findReference(field);
@@ -1696,7 +1763,17 @@ define(['jquery', 'kind'], function ($, kind) {
             // Check to see if the field has either of the aria-required or data-validation attributes
             if ($field.attr('aria-required') || $field.attr('data-validation')) {
 
-                journal.log({type: 'info', owner: 'UI', module: 'validation', func: 'field'}, "Form field being validated:", $field.attr('id'));
+                var fieldID = false;
+
+                if($field[0].nodeName==="FIELDSET") {
+                    $subRef = $field.find('.emp-fieldset-contents').eq(0);
+                    fieldID = $subRef.attr('aria-labelledby');
+                }
+                else {
+                    fieldID = $field.attr('id');
+                }
+
+                journal.log({ type: 'info', owner: 'UI', module: 'validation', func: 'field' }, "Form field being validated:", fieldID);
 
                 // Test the field
                 var fieldTest = _priv.validateField($field);
@@ -1789,10 +1866,10 @@ define(['jquery', 'kind'], function ($, kind) {
         if ($form.length === 1 && $form[0].nodeName === "FORM") {
 
             // Find all of the inputs in this form
-            var inputs = $form.find('input, select, textarea, table.emp-selectionRequired').not(':hidden');
+            var inputs = $form.find('input, select, textarea, table.emp-selectionRequired, fieldset.emp-yes-no-component').not(':hidden');
 
             //Add inputs that could be within hidden section resulting in display:none.
-            inputs = inputs.add($form.find('input[aria-required="true"], select[aria-required="true"], textarea[aria-required="true"], table.emp-selectionRequired[aria-required="true"]'));
+            inputs = inputs.add($form.find('input[aria-required="true"], select[aria-required="true"], textarea[aria-required="true"], table.emp-selectionRequired[aria-required="true"], fieldset.emp-yes-no-component[aria-required="true"]'));
 
             // Check to see if anything inputs were even found.
             if (inputs.length > 0) {
