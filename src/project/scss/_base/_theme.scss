@@ -177,6 +177,12 @@ $sectionHeaderBackgroundColor: #e7e7e6;
         }
 
         .cui-messages.emp-messages{
+            margin-left: 16px !important;
+            margin-right: 16px !important;
+
+            li{
+                width: 100%; //IE fix
+            }
 
             margin-bottom: 10px;
         }
@@ -401,17 +407,17 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
 		.cui-label.emp-top-align-label {
 
-	    	grid-column: 1/-1;
+	    	//grid-column: 1/-1;
 	    	text-align: left !important;
 
-	    	-ms-grid-column: 1 !important;
-	    	-ms-grid-column-span:2 !important;
+	    	//-ms-grid-column: 1 !important;
+	    	//-ms-grid-column-span:2 !important;
 
 	        & + .cui-data{
-	        	grid-column: 1/-1;
-	        	-ms-grid-column:1 !important;
-	        	-ms-grid-row:2 !important;
-	        	-ms-grid-column-span:2 !important;
+	        	//grid-column: 1/-1;
+	        	//-ms-grid-column:1 !important;
+	        	//-ms-grid-row:2 !important;
+	        	//-ms-grid-column-span:2 !important;
 	        }
 	    }
 

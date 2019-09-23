@@ -301,18 +301,22 @@
     vertical-align: top;
 }
 
-@mixin twoColGrid {
+@mixin displayFlex {
+    display: flex;
+}
+
+@mixin calcHalf {
+    width: calc(50% - 5px);
+    min-width: calc(50% - 5px);
+}
+//----------------------------------------------------------
+/* @mixin twoColGrid {
     display: -ms-grid;
     display: grid;
     
     -ms-grid-columns: calc(50% - 5px) calc(50% - 5px);
     grid-template-columns: repeat(2, calc(50% - 5px));
     
-}
-
-@mixin calcHalf {
-    width: calc(50% - 5px);
-    min-width: calc(50% - 5px);
 }
 
 @mixin displayGrid{
@@ -343,4 +347,4 @@
 @mixin gridRow($row){
 	grid-row: $row !important;
 	-ms-grid-row:$row !important;
-}
+} */
