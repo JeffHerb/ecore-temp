@@ -3944,6 +3944,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             }
             else {
 
+                // Forces validation to false!
+                validation = false;
+
                 // Check to see if the form can be validated
                 if (validation) {
 

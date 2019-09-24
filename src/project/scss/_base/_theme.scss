@@ -159,6 +159,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                     display: inline-block;
                 }
 
+                margin-bottom: 10px;
             }
         }
 
@@ -942,6 +943,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 .footer-logo {
                     flex: 0 0 15%;
                     -ms-flex: 0 0 30%;
+
                 }
 
                 .footer-links {
@@ -964,6 +966,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                                 text-decoration: none;
                                 padding: 3px 12px 3px 0;
                                 width: 100%;
+                                white-space: nowrap;
 
                                 &:hover {
                                     text-decoration: underline;
@@ -974,8 +977,10 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                     @include pointbreak('786px') {
                         ul {
+                            justify-content: space-between;
                             li {
-                                flex: 1 0 0;
+                                flex: 0 1 0;
+                                flex-wrap: nowrap;
                             }
                         }
                     }
@@ -983,6 +988,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             }
 
             span.unav-footer-logo {
+                background: url(../images/external-logo-footer.png) no-repeat 0 0 transparent;
                 display: inline-block;
                 height: 49px;
                 width: 80px;
