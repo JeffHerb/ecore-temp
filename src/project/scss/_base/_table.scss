@@ -384,6 +384,12 @@
                 input:not([type="checkbox"]), select{
                     min-height: 27px;
                 }
+
+                button.cui-icon.cui-c-datepicker{
+                    vertical-align: baseline;
+                    margin-top: 0px !important;
+                }
+
             }
 
             .cui-data-left {

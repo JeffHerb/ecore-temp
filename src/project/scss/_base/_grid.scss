@@ -246,7 +246,7 @@ section.emp-tabs div.emp-tab-contents {
 
     [class*="emp-col"] .cui-data{
         > button.cui-icon.cui-c-datepicker{
-            vertical-align: -webkit-baseline-middle;
+            //vertical-align: -webkit-baseline-middle;
         }
     }
 
@@ -735,6 +735,7 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 
 .emp-input-collection button.cui-c-datepicker{
     margin-top: -3px !important;
+    //margin-left: -3px !important;
 }
 
 .emp-field-instructions {
