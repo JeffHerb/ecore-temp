@@ -246,7 +246,7 @@ section.emp-tabs div.emp-tab-contents {
 
     [class*="emp-col"] .cui-data{
         > button.cui-icon.cui-c-datepicker{
-            vertical-align: -webkit-baseline-middle;
+            //vertical-align: -webkit-baseline-middle;
         }
     }
 
@@ -358,7 +358,7 @@ section.emp-tabs div.emp-tab-contents {
             .cui-label {
                 min-height: 24px;
                 label, span{
-                    vertical-align: sub;
+                    //vertical-align: sub;
                 }
             }
 
@@ -402,21 +402,21 @@ section.emp-tabs div.emp-tab-contents {
             .emp-select-other-selectbox .emp-field,
             .emp-check-other-describe .emp-field,
             .emp-select-other-describe .emp-field{
-                @include twoColGrid();
+                //@include twoColGrid();
 
                 align-items:baseline;
 
                 .cui-label{
-                    width: auto;
+                    //width: auto;
                     text-align: right;
-                    -ms-grid-column: 1;
-                    -ms-grid-row: 1;
+                    //-ms-grid-column: 1;
+                    //-ms-grid-row: 1;
 
                 }
 
                 .cui-data{
-                    -ms-grid-column: 2;
-                    -ms-grid-row: 1;
+                    //-ms-grid-column: 2;
+                    //-ms-grid-row: 1;
                 }
 
                 &.cui-data-left .cui-label{
@@ -425,39 +425,39 @@ section.emp-tabs div.emp-tab-contents {
             }
 
             >.emp-field.cui-data-left, .emp-check-other-checkbox .cui-data-left{
-                @include twoColGrid();
-
-                .cui-data{
-                    width: auto;
-                    -ms-grid-column: 1;
-                    -ms-grid-row: 1;
-                    text-align: right;
-                }
+                //@include twoColGrid();
 
                 .cui-label{
-                    -ms-grid-column: 2;
-                    -ms-grid-row: 1;
+                    //-ms-grid-column: 2;
+                    //-ms-grid-row: 1;
+                }
+
+                .cui-data{
+                    //width: auto;
+                    //-ms-grid-column: 1;
+                    //-ms-grid-row: 1;
+                    text-align: right;
                 }
             }
 
             .emp-composite.emp-search-composite.emp-validation-error{
-                @include twoColGrid();
+                //@include twoColGrid();
                 .cui-label{
-                    width: auto !important;
-                    -ms-grid-column: 1;
-                    -ms-grid-row: 1;
+                    //width: auto !important;
+                    //-ms-grid-column: 1;
+                    //-ms-grid-row: 1;
                 }
 
                 .cui-data{
-                    -ms-grid-column: 2;
-                    -ms-grid-row: 1;
+                    //-ms-grid-column: 2;
+                    //-ms-grid-row: 1;
                 }
 
                 .emp-composite-message{
-                    grid-column-start: 2;
-                    -ms-grid-column: 2;
-                    -ms-grid-row: 2;
-                    margin-left: 0px;
+                    //grid-column-start: 2;
+                    //-ms-grid-column: 2;
+                    //-ms-grid-row: 2;
+                    //margin-left: 0px;
                 }
 
             }
@@ -466,7 +466,7 @@ section.emp-tabs div.emp-tab-contents {
             .emp-composite.emp-search-composite,
             fieldset.emp-search-composite{
                 .cui-label, .cui-data{
-                    @include calcHalf();
+                    //@include calcHalf();
                 }
 
                 .emp-field button.emp-icon-popup-view-list{
@@ -497,7 +497,7 @@ section.emp-tabs div.emp-tab-contents {
 
             fieldset{
                 .cui-label, .cui-data{
-                    @include calcHalf();
+                    //@include calcHalf();
                 }
 
                 .cui-label{
@@ -549,7 +549,7 @@ section.emp-tabs div.emp-tab-contents {
 
         @include pointbreak("720px"){
             .cui-label label,span{
-                vertical-align: sub;
+                //vertical-align: sub;
             }
 
             .cui-label,
@@ -766,12 +766,14 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 
 			.emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,
 			.emp-col-full > fieldset:not(.emp-selection-list)  > .emp-fieldset-contents,
-			.emp-col-half > .emp-composite:not(.emp-selection-list) ,
-			.emp-col-full > .emp-composite:not(.emp-selection-list) ,
+			.emp-col-half > .emp-composite:not(.emp-selection-list),
+            .emp-col-full > .emp-composite:not(.emp-selection-list),
+            .emp-col-half > .emp-check-other-checkbox .cui-data-left,
+			.emp-col-full > .emp-check-other-checkbox .cui-data-left,
 			.emp-col-half > .emp-field,
 			.emp-col-full > .emp-field{
-
-				@include twoColGrid();
+                @include displayFlex;
+				//@include twoColGrid();
 
 				line-height: 0 !important;
 				align-items:baseline !important;
@@ -779,15 +781,15 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
                 overflow: visible;
 
 				& > .cui-label{
-
-					@include gridColumn(1);
-					@include gridRow(1);
+                    @include calcHalf();
+					//@include gridColumn(1);
+					//@include gridRow(1);
 
 					// Reset any defined widths
-					width: auto !important;
-					min-width:auto !important;
+					//width: auto !important;
+					//min-width:auto !important;
 
-					display: inline-flex !important;
+					display: inline-block !important;
 					align-items: baseline !important;
 					line-height: normal !important;
                 	min-height: 1.5em;
@@ -798,20 +800,21 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
                     }
 
                     &.emp-top-align-label{
-                    	grid-column-start: 1 !important;
-  						grid-column-end: -1 !important;
-  						-ms-grid-span: 2 !important;
+                    	//grid-column-start: 1 !important;
+  						//grid-column-end: -1 !important;
+  						//-ms-grid-span: 2 !important;
                     }
 				}
 
 				& > .cui-data{
 
-					// Reset any defined widths
-					width: auto !important;
-					min-width:auto !important;
+                    // Reset any defined widths
+                    @include calcHalf();
+					//width: auto !important;
+					//min-width:auto !important;
 
-					@include gridColumn(2);
-					@include gridRow(1);
+					//@include gridColumn(2);
+					//@include gridRow(1);
 
 					display: inline-flex !important;
                     flex-wrap: wrap;
@@ -827,7 +830,7 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 						max-width:100%;
 					}
 
-					input,
+					input:not([type="checkbox"]),
 					select{
 						margin-right:6px !important;
 					}
@@ -869,32 +872,46 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 				}
 
  				& > .emp-top-align-label + .cui-data{
-                	grid-column-start: 1 !important;
-					grid-column-end: -1 !important;
-					-ms-grid-span: 2 !important;
-                	@include gridRow(2);
+                	//grid-column-start: 1 !important;
+					//grid-column-end: -1 !important;
+					//-ms-grid-span: 2 !important;
+                	//@include gridRow(2);
                 }
 
 				& > .emp-composite-message{
-					@include gridColumn(2);
-					@include gridRow(2);
+					//@include gridColumn(2);
+                    //@include gridRow(2);
+                    margin-left: calc(50% - 5px);
 				}
 
 				&.cui-data-left{
 					& > .cui-label{
-						@include gridColumn(2);
-						@include gridRow(1);
+						//@include gridColumn(2);
+                        //@include gridRow(1);
+                        text-align: left;
 						justify-content:flex-start !important;
 					}
 
 					& > .cui-data{
-						@include gridColumn(1);
-						@include gridRow(1);
+						//@include gridColumn(1);
+						//@include gridRow(1);
 						justify-content:flex-end !important;
-						align-self:normal !important;
+                        align-self:normal !important;
 					}
 				}
-			}
+            }
+            
+            .emp-field.emp-top-align-label{
+                flex-direction: column;
+
+                .cui-label{
+                    text-align: left !important;
+                }
+                
+                .cui-label, .cui-data{
+                    width: 100% !important;
+                }
+            }
 		}
 	}
 
@@ -914,6 +931,10 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
                         label, span.emp-label {
                             display: none !important;
                         }
+                    }
+
+                    span.emp-label{
+                        display: inline-block;
                     }
                 }
             }
