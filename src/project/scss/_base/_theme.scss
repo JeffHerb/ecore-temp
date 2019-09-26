@@ -309,6 +309,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                     flex-direction: row;
                     display: inline-flex;
                     margin-top:5px;
+
                     .emp-field {
                         display: inline-block !important;
                         position: relative;
@@ -316,6 +317,23 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         // .emp-icon-help {
                         //     margin: 0 !important;
                         // }
+
+                        input[type="radio"] {
+                            position: absolute;
+
+                            &+label {
+                                padding: 2px 20px 4px 23px;
+                            }
+                        }
+                    }
+
+                    .emp-field:last-child {
+                        input[type="radio"] {
+
+                        	&+label {
+                        		padding: 2px 6px 4px 23px;
+                        	}
+                        }
                     }
                 }
 
@@ -332,7 +350,8 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 .emp-input-collection input[type="checkbox"]+label,
                 .cui-selection-group input[type="radio"]+label {
                     position: relative;
-                    padding: 2px 6px 4px 26px;
+                    padding: 2px 6px 4px 23px;
+                    //left: -21px;
                     @media (min-width: 720px){
                     	// margin-top:-4px;
                    	}
