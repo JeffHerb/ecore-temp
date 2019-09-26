@@ -21,12 +21,12 @@
             {{#unless this.noFieldWrap~}}
 
                 {{#if this.ignoreRequired~}}
-                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' federal=this.input.federal validationError=this.message.type scope="field" state=this.state)) }}>
+                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' federal=this.input.federal style=this.input.style validationError=this.message.type scope="field" state=this.state)) }}>
                         {{~> _fieldLayout this ~}}
                     </div>
                 {{~else~}}
 
-                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' required=this.input federal=this.input.federal total=this.input validationError=this.message.type scope="field" state=this.state)) }}>
+                    <div {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className": "emp-field"}' required=this.input federal=this.input.federal style=this.input.style total=this.input validationError=this.message.type scope="field" state=this.state)) }}>
                         {{~> _fieldLayout this ~}}
                     </div>
                 {{/if~}}
