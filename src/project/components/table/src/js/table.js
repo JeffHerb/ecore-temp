@@ -271,7 +271,7 @@ define(['jquery', 'dataStore', 'tableBase', 'tableSort', 'tableSelection', 'tabl
     }
     else {
 
-        _priv.extend([base, sort, filter, responsive, pivot, breakout, menuButton, mobile, selection, error]);
+        _priv.extend([base, sort, filter, responsive, menuButton, mobile, selection, error, pivot, breakout]);
     }
 
     // Define and Expose the table component to jQeury

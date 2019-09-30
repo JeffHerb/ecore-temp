@@ -53,26 +53,26 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
         }
         else {
 
-            if (data.attributes && !data.attributes['data-filter']) {
-                data.attributes['data-filter'] = false;
-            }
+            // if (data.attributes && !data.attributes['data-filter']) {
+            //     data.attributes['data-filter'] = false;
+            // }
 
-            if (data.attributes && !data.attributes['data-resize']) {
-                data.attributes['data-resize'] = false;
-            }
+            // if (data.attributes && !data.attributes['data-resize']) {
+            //     data.attributes['data-resize'] = false;
+            // }
 
-            if (data.attributes && !data.attributes['data-responsive']) {
-                data.attributes['data-responsive'] = false;
-            }
+            // if (data.attributes && !data.attributes['data-responsive']) {
+            //     data.attributes['data-responsive'] = false;
+            // }
 
-            if (data.attributes && !data.attributes['data-changereturn']) {
-                data.attributes['data-changereturn'] = true;
-            }
+            // if (data.attributes && !data.attributes['data-changereturn']) {
+            //     data.attributes['data-changereturn'] = true;
+            // }
 
-            if (data.attributes && !data.attributes['data-sticky']) {
+            // if (data.attributes && !data.attributes['data-sticky']) {
 
-                data.attributes['data-sticky'] = false;
-            }
+            //     data.attributes['data-sticky'] = false;
+            // }
         }
 
         var buttonMenuIndex = false;

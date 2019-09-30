@@ -59,92 +59,96 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
         var tableRef = emp.reference.tables[id];
 
-        printData.tables[id] = {
-            title: false,
-            columns: [],
-            buttons: [],
-            notifiers: false
-        };
+        if (tableRef) {
 
-        var buttonList = [];
-        var notifierList = {};
+            printData.tables[id] = {
+                title: false,
+                columns: [],
+                buttons: [],
+                notifiers: false
+            };
 
-        if (emp.reference.tables && emp.reference.tables[id] && emp.reference.tables[id].dataStore.title) {
+            var buttonList = [];
+            var notifierList = {};
 
-            printData.tables[id].title = emp.reference.tables[id].dataStore.title;
-        }
-        else {
+            if (emp.reference.tables && emp.reference.tables[id] && emp.reference.tables[id].dataStore.title) {
 
-            $section = emp.reference.tables[id].$self.parents('section').eq(0);
+                printData.tables[id].title = emp.reference.tables[id].dataStore.title;
+            }
+            else {
 
-            headerText = $section.find('h3').text();
+                $section = emp.reference.tables[id].$self.parents('section').eq(0);
 
-            printData.tables[id].title = headerText;
-        }
+                headerText = $section.find('h3').text();
 
-        var notAllowedType = ['button', 'buttonMenu'];
-
-        for (var c = 0, cLen = tableRef.dataStore.head.rows[0].columns.length; c < cLen; c++) {
-
-            if (tableRef.dataStore.head.rows[0].columns[c].attributes && tableRef.dataStore.head.rows[0].columns[c].attributes['data-type'] && notAllowedType.indexOf(tableRef.dataStore.head.rows[0].columns[c].attributes['data-type']) === -1) {
-
-                printData.tables[id].columns.push(tableRef.dataStore.head.rows[0].columns[c].text);
+                printData.tables[id].title = headerText;
             }
 
-        }
+            var notAllowedType = ['button', 'buttonMenu'];
 
-        if (tableRef.dataStore.body && tableRef.dataStore.body.rows) {
+            for (var c = 0, cLen = tableRef.dataStore.head.rows[0].columns.length; c < cLen; c++) {
 
-            bodyRow:
-            for (var r = 0, rLen = tableRef.dataStore.body.rows.length; r < rLen; r++) {
+                if (tableRef.dataStore.head.rows[0].columns[c].attributes && tableRef.dataStore.head.rows[0].columns[c].attributes['data-type'] && notAllowedType.indexOf(tableRef.dataStore.head.rows[0].columns[c].attributes['data-type']) === -1) {
 
-                if (tableRef.dataStore.body.rows[r].columns.length) {
+                    printData.tables[id].columns.push(tableRef.dataStore.head.rows[0].columns[c].text);
+                }
 
-                    rowColumns:
-                    for (var rc = 0, rcLen = tableRef.dataStore.body.rows[r].columns.length; rc < rcLen; rc++) {
+            }
 
-                        if (tableRef.dataStore.body.rows[r].columns[rc].contents && tableRef.dataStore.body.rows[r].columns[rc].contents.length) {
+            if (tableRef.dataStore.body && tableRef.dataStore.body.rows) {
 
-                            rowColumnContents:
-                            for (var rcc = 0, rccLen = tableRef.dataStore.body.rows[r].columns[rc].contents.length; rcc < rccLen; rcc++) {
+                bodyRow:
+                for (var r = 0, rLen = tableRef.dataStore.body.rows.length; r < rLen; r++) {
 
-                                if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "field" &&
-                                    tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].type === "button") {
+                    if (tableRef.dataStore.body.rows[r].columns.length) {
 
-                                        var buttonText = tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].input.text;
+                        rowColumns:
+                        for (var rc = 0, rcLen = tableRef.dataStore.body.rows[r].columns.length; rc < rcLen; rc++) {
 
-                                        if (buttonList.indexOf(buttonText) === -1 && buttonText !== "Button Menu") {
-                                            buttonList.push(buttonText);
-                                        }
+                            if (tableRef.dataStore.body.rows[r].columns[rc].contents && tableRef.dataStore.body.rows[r].columns[rc].contents.length) {
 
-                                }
-                                else if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "notifier") {
+                                rowColumnContents:
+                                for (var rcc = 0, rccLen = tableRef.dataStore.body.rows[r].columns[rc].contents.length; rcc < rccLen; rcc++) {
 
-                                    if (!notifierList[tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].text]) {
+                                    if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "field" &&
+                                        tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].type === "button") {
 
-                                        notifierList[tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].text] = {
-                                            text: tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].text,
-                                            title: tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].attributes.title
-                                        };
+                                            var buttonText = tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].input.text;
+
+                                            if (buttonList.indexOf(buttonText) === -1 && buttonText !== "Button Menu") {
+                                                buttonList.push(buttonText);
+                                            }
 
                                     }
-                                }
-                                else {
+                                    else if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "notifier") {
 
-                                    //console.log(tableRef.dataStore.body.rows[r].columns[rc].contents[rcc]);
-                                }
+                                        if (!notifierList[tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].text]) {
 
+                                            notifierList[tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].text] = {
+                                                text: tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].text,
+                                                title: tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].attributes.title
+                                            };
+
+                                        }
+                                    }
+                                    else {
+
+                                        //console.log(tableRef.dataStore.body.rows[r].columns[rc].contents[rcc]);
+                                    }
+
+                                }
                             }
                         }
                     }
                 }
+
+
+
+                printData.tables[id].buttons = buttonList.concat();
+                printData.tables[id].notifiers = notifierList;
             }
-
-
-
-            printData.tables[id].buttons = buttonList.concat();
-            printData.tables[id].notifiers = notifierList;
         }
+
     };
 
     var createHeaderIDList = function _createHeaderIDList () {

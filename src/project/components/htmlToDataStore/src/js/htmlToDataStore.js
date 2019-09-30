@@ -1226,7 +1226,7 @@ define(['kind', 'dataStore'], function (kind, ds) {
                                 var blankOptionAttr = $input.attr('data-blank-option');
 
                                 if(blankOptionAttr ==='false'){
-                                    
+
                                     data.input.noBlankOption = true;
                                 }
 
@@ -1316,8 +1316,6 @@ define(['kind', 'dataStore'], function (kind, ds) {
                     }
 
                 }
-
-                console.log(data);
 
                 return data;
             }

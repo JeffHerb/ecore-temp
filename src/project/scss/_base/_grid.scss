@@ -670,35 +670,15 @@ section.emp-tabs div.emp-tab-contents {
 
     section {
 
-        // &.emp-instructional-header {
-
-        //     header {
-        //         flex-wrap: wrap;
-
-        //         div {
-        //             width: 100%;
-        //         }
-
-        //         @include pointbreak("720px") {
-        //             div.emp-section-instructions {
-        //                 margin-left: 5em;
-        //             }
-        //         }
-        //     }
-        // }
-
         section.emp-instructional-header {
 
-            div.emp-section-title {
-                order: 0;
-            }
+            header {
+                display: flex;
+                flex-direction: column;
 
-            div.emp-section-instructions {
-                order: 1;
-            }
-
-            div.emp-section-controls {
-                order: 2;
+                div.emp-section-controls {
+                    flex: 0 1 auto !important;
+                }
             }
 
         }
