@@ -461,6 +461,7 @@ fieldset {
 
             .emp-field {
                 display: inline-block !important;  // This is required to ensure proper row wrapping in ie
+                margin-bottom: 5px;
             }
 
             @include pointbreak($cui-bp-large) {

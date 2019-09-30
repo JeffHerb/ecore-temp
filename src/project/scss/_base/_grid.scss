@@ -530,7 +530,7 @@ section.emp-tabs div.emp-tab-contents {
         @include pointbreak("720px", true){
             padding: 0px 15px;
         }
-        
+
     }
 
     .emp-col-half{
@@ -670,21 +670,37 @@ section.emp-tabs div.emp-tab-contents {
 
     section {
 
-        &.emp-instructional-header {
+        // &.emp-instructional-header {
 
-            header {
-                flex-wrap: wrap;
+        //     header {
+        //         flex-wrap: wrap;
 
-                div {
-                    width: 100%;
-                }
+        //         div {
+        //             width: 100%;
+        //         }
 
-                @include pointbreak("720px") {
-                    div.emp-section-instructions {
-                        margin-left: 5em;
-                    }
-                }
+        //         @include pointbreak("720px") {
+        //             div.emp-section-instructions {
+        //                 margin-left: 5em;
+        //             }
+        //         }
+        //     }
+        // }
+
+        section.emp-instructional-header {
+
+            div.emp-section-title {
+                order: 0;
             }
+
+            div.emp-section-instructions {
+                order: 1;
+            }
+
+            div.emp-section-controls {
+                order: 2;
+            }
+
         }
 
     }
@@ -900,14 +916,14 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 					}
 				}
             }
-            
+
             .emp-field.emp-top-align-label{
                 flex-direction: column;
 
                 .cui-label{
                     text-align: left !important;
                 }
-                
+
                 .cui-label, .cui-data{
                     width: 100% !important;
                 }
