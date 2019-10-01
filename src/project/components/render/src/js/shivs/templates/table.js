@@ -6,9 +6,29 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
 	_priv.fixData = function _fix_data(data, external) {
 
+        console.log(data);
+
         // Ensure a type attribute is set on the table
-        if (data.attributes && data.attributes['data-type'] && !data.type) {
+        if (data.type) {
+            if (!data.attributes) {
+                data.attributes = {};
+            }
+
+            data.attributes['data-type'] = data.type;
+        }
+        else if (!data.type && data.attributes && data.attributes['data-type']) {
             data.type = data.attributes['data-type'];
+        }
+        else {
+
+            data.type = "pivot";
+
+            if (!data.attributes) {
+            	data.attributes = {};
+            }
+
+            data.attributes['data-type'] = 'pivot';
+
         }
 
         // Now explode out the style attributes

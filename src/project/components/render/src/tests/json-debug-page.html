@@ -209,6 +209,15 @@
     "page": {
         "contents": [
             {
+                "template": "message",
+                "list": [
+                    {
+                        "text": "You must enter a valid combination of search fields.",
+                        "type": "error"
+                    }
+                ]
+            },
+            {
                 "template": "external-pageinfo",
                 "instructions": [
                     {
@@ -306,7 +315,6 @@
                                                                 "onchange": "emp.functionCall(event, 'emp.dropdown', ['EC_LEVY_YEAR',{'url':'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/getLevyYears','data':{'_fw_flowSessionKey':'EIVP_MAIN:EIVP_MAIN:search','EC_SWIS_CODE_I':'EC_SWIS_CODE_I','appDataBean.prptySrchCriteria.swissCd':'EC_SWIS_CODE_I'}},'ajax'])",
                                                                 "id": "EC_SWIS_CODE_I"
                                                             },
-                                                            "value": "473601",
                                                             "required": true
                                                         },
                                                         "help": [
@@ -322,7 +330,15 @@
                                                             },
                                                             "text": "SWIS code:"
                                                         },
-                                                        "type": "select"
+                                                        "type": "select",
+                                                        "message": {
+                                                            "list": [
+                                                                {
+                                                                    "text": "You must select a SWIS code from the drop-down.",
+                                                                    "type": "error"
+                                                                }
+                                                            ]
+                                                        }
                                                     }
                                                 ],
                                                 "width": "full",
@@ -342,18 +358,12 @@
                                                     {
                                                         "template": "field",
                                                         "input": {
-                                                            "options": [
-                                                                {
-                                                                    "text": "2020",
-                                                                    "value": "2020"
-                                                                }
-                                                            ],
+                                                            "options": [],
                                                             "attributes": {
                                                                 "name": "appDataBean.prptySrchCriteria.levyYr",
                                                                 "aria-required": true,
                                                                 "id": "EC_LEVY_YEAR"
                                                             },
-                                                            "value": "2020",
                                                             "required": true
                                                         },
                                                         "label": {
@@ -362,7 +372,15 @@
                                                             },
                                                             "text": "Levy year:"
                                                         },
-                                                        "type": "select"
+                                                        "type": "select",
+                                                        "message": {
+                                                            "list": [
+                                                                {
+                                                                    "text": "You must select a Levy year from the drop-down.",
+                                                                    "type": "error"
+                                                                }
+                                                            ]
+                                                        }
                                                     }
                                                 ],
                                                 "width": "full",
@@ -565,8 +583,7 @@
                                                                 "name": "appDataBean.prptySrchCriteria.ownrLN",
                                                                 "aria-required": false,
                                                                 "id": "EC_OWNERS_LAST_NAME",
-                                                                "type": "text",
-                                                                "value": "Smith"
+                                                                "type": "text"
                                                             }
                                                         },
                                                         "label": {
@@ -877,212 +894,6 @@
                                         "optimize": false,
                                         "attributes": {
                                             "id": "prptyListModelId"
-                                        },
-                                        "body": {
-                                            "rows": [
-                                                {
-                                                    "selection": {},
-                                                    "columns": [
-                                                        {
-                                                            "contents": [],
-                                                            "text": "003.000-0001-042.002"
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "12 MASHOMUCK DR, NY"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "JAMES S SMITH"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "Roll Record"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": [
-                                                                {
-                                                                    "template": "field",
-                                                                    "input": {
-                                                                        "style": "action",
-                                                                        "attributes": {
-                                                                            "type": "button",
-                                                                            "title": "Button Menu"
-                                                                        },
-                                                                        "text": "Actions"
-                                                                    },
-                                                                    "options": [
-                                                                        {
-                                                                            "template": "field",
-                                                                            "input": {
-                                                                                "attributes": {
-                                                                                    "data-validation": false,
-                                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/addEnrollment'}]}})",
-                                                                                    "name": "EC_BTN_NEW_ENROLL_0",
-                                                                                    "id": "EC_BTN_NEW_ENROLL_0",
-                                                                                    "label": "New Enrollment",
-                                                                                    "type": "button",
-                                                                                    "title": "New Enrollment"
-                                                                                },
-                                                                                "text": "New Enrollment"
-                                                                            },
-                                                                            "type": "button"
-                                                                        },
-                                                                        {
-                                                                            "template": "field",
-                                                                            "input": {
-                                                                                "attributes": {
-                                                                                    "data-validation": false,
-                                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/mergeEnrollment'}]}})",
-                                                                                    "name": "EC_BTN_MERGE_0",
-                                                                                    "id": "EC_BTN_MERGE_0",
-                                                                                    "label": "Merge",
-                                                                                    "type": "button",
-                                                                                    "title": "Merge"
-                                                                                },
-                                                                                "text": "Merge"
-                                                                            },
-                                                                            "type": "button"
-                                                                        },
-                                                                        {
-                                                                            "template": "field",
-                                                                            "input": {
-                                                                                "attributes": {
-                                                                                    "data-validation": false,
-                                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/splitEnrollment'}]}})",
-                                                                                    "name": "EC_BTN_SPLIT_0",
-                                                                                    "id": "EC_BTN_SPLIT_0",
-                                                                                    "label": "Split",
-                                                                                    "type": "button",
-                                                                                    "title": "Split"
-                                                                                },
-                                                                                "text": "Split"
-                                                                            },
-                                                                            "type": "button"
-                                                                        }
-                                                                    ],
-                                                                    "style": "min-width",
-                                                                    "type": "button"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "key": "0"
-                                                },
-                                                {
-                                                    "selection": {},
-                                                    "columns": [
-                                                        {
-                                                            "contents": [],
-                                                            "text": "004.000-0001-007.007"
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "8 CEDAR HAVEN LN, NY"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "ELIZABETH SMITH-JOHANNSEN"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "Roll Record"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        },
-                                                        {
-                                                            "contents": [
-                                                                {
-                                                                    "template": "field",
-                                                                    "input": {
-                                                                        "style": "action",
-                                                                        "attributes": {
-                                                                            "type": "button",
-                                                                            "title": "Button Menu"
-                                                                        },
-                                                                        "text": "Actions"
-                                                                    },
-                                                                    "options": [
-                                                                        {
-                                                                            "template": "field",
-                                                                            "input": {
-                                                                                "attributes": {
-                                                                                    "data-validation": false,
-                                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/addEnrollment'}]}})",
-                                                                                    "name": "EC_BTN_NEW_ENROLL_1",
-                                                                                    "id": "EC_BTN_NEW_ENROLL_1",
-                                                                                    "label": "New Enrollment",
-                                                                                    "type": "button",
-                                                                                    "title": "New Enrollment"
-                                                                                },
-                                                                                "text": "New Enrollment"
-                                                                            },
-                                                                            "type": "button"
-                                                                        },
-                                                                        {
-                                                                            "template": "field",
-                                                                            "input": {
-                                                                                "attributes": {
-                                                                                    "data-validation": false,
-                                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/mergeEnrollment'}]}})",
-                                                                                    "name": "EC_BTN_MERGE_1",
-                                                                                    "id": "EC_BTN_MERGE_1",
-                                                                                    "label": "Merge",
-                                                                                    "type": "button",
-                                                                                    "title": "Merge"
-                                                                                },
-                                                                                "text": "Merge"
-                                                                            },
-                                                                            "type": "button"
-                                                                        },
-                                                                        {
-                                                                            "template": "field",
-                                                                            "input": {
-                                                                                "attributes": {
-                                                                                    "data-validation": false,
-                                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','prptyListModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/splitEnrollment'}]}})",
-                                                                                    "name": "EC_BTN_SPLIT_1",
-                                                                                    "id": "EC_BTN_SPLIT_1",
-                                                                                    "label": "Split",
-                                                                                    "type": "button",
-                                                                                    "title": "Split"
-                                                                                },
-                                                                                "text": "Split"
-                                                                            },
-                                                                            "type": "button"
-                                                                        }
-                                                                    ],
-                                                                    "style": "min-width",
-                                                                    "type": "button"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ],
-                                                    "key": "1"
-                                                }
-                                            ]
                                         }
                                     }
                                 ],

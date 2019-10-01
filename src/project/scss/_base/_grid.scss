@@ -846,11 +846,15 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 					}
 
     				.cui-messages{
-    					width:100% !important;
+    					//width:100% !important;
     					display: flex;
     					flex:0 1 100%;
     					flex-direction:column;
-    					align-items:flex-start;
+                        align-items:flex-start;
+
+                        .cui-error {
+                            width: auto !important;
+                        }
     				}
 
     				&.cui-currency{

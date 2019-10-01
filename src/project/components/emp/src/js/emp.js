@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, rating, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, session) {
 
     if (!Element.prototype.matches) {
     	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -55,7 +55,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var $dateCalenders = $('.cui-c-datepicker');
         var $selectOtherBoxes = $('.emp-select-other-selectbox select');
         var $selectOtherCheckbox = $('.emp-check-other-checkbox input');
-        var $ratingContainers = $('.emp-rating-stars-container');
         var $fileUploads = $('.emp-file-upload');
         var $viewDocumentSections = $('.emp-document-viewer');
         var $entityLookup = $('.emp-entity-lookup .emp-entity-lookup-toggle select');
@@ -641,7 +640,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         var $dateInputs;
         var $dateCalenders;
         var $selectOtherBoxes;
-        var $ratingContainers;
         var $fileUploads;
         var $frameworkErrors;
         var $tooltips;
@@ -782,7 +780,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
             $dateInputs = $section.find('.emp-date');
             $dateCalenders = $section.find('.cui-c-datepicker');
             $selectOtherBoxes = $section.find('.emp-select-other-selectbox select');
-            $ratingContainers = $section.find('.emp-rating-stars-container');
             $fileUploads = $section.find('.emp-file-upload');
             $frameworkErrors = $section.find('.emp-icon-ghost');
             $tooltips = $section.find('.emp-tooltip');
@@ -825,11 +822,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'rating', 'date
         // Employee Search
         if ($employeeSearch && $employeeSearch.length) {
             setupEmployeeSearch($employeeSearch, options);
-        }
-
-        // Rating Search
-        if ($ratingContainers && $ratingContainers.length) {
-            setupRatingContainers($ratingContainers, options);
         }
 
         // File Uploads
