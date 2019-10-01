@@ -383,16 +383,32 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         position: absolute;
                     }
 
-                    &:checked + label::after {
+                    &:checked+label::after {
                         background: #454545;
-					    border-radius: 12px;
-					    content: "";
-					    display: inline-block;
-					    height: 10px;
-					    left: 3px;
-					    position: absolute;
-					    top: 5px;
-					    width: 10px;
+                        border-radius: 12px;
+                        content: "";
+                        display: inline-block;
+                        height: 10px;
+                        left: 3px;
+                        position: absolute;
+                        top: 7px;
+                        width: 10px;
+                    }
+
+                    @media (min-width: $cui-bp-medium) {
+
+                        &:checked + label::after {
+                            background: #454545;
+                            border-radius: 12px;
+                            content: "";
+                            display: inline-block;
+                            height: 10px;
+                            left: 3px;
+                            position: absolute;
+                            top: 5px;
+                            width: 10px;
+                        }
+
                     }
                 }
             }

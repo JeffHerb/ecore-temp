@@ -67,8 +67,6 @@ define([], function() {
 
     _events.breakout = function _resize_pivot(evt, table) {
 
-        console.log("breakout");
-
         if (table.config.plugins.breakout.fullView) {
 
             evt.data = {
