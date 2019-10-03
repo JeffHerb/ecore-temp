@@ -522,6 +522,10 @@
                 border-right: 1px solid #707070;
                 border-top: 1px solid #707070;
 
+                &:last-child {
+                    border-bottom: 1px solid #707070;
+                }
+
                 .emp-button-menu-column {
 
                     // text-align: center;
@@ -548,6 +552,7 @@
                     background: #FFF;
                     border: 0;
                     height: auto;
+                    width: auto;
                     font-weight: bold;
                     padding-bottom: 10px;
 
