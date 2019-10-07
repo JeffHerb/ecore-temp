@@ -436,3 +436,82 @@ $table-responsive-close-button-padding: 3px 20px;
         top: 10px;
     }
 }
+
+
+.emp-table-selectable.emp-pivot-table:not(.unpivot){   
+
+    .table-control-col{
+        display:block;
+        position: absolute;
+        background:none;
+        border:none;
+
+        & label{
+            display: block !important;
+            position: absolute !important;
+            clip: auto !important;
+            top: 11px !important;
+            bottom: 0 !important;
+            left: 8px !important;
+            right: 0 !important;
+            height: 40px !important;
+            width: 40px !important;
+            overflow: hidden !important;
+            z-index: 10;
+            padding: 0;
+            margin: 0;
+            text-indent: 999px;
+            white-space: nowrap;
+
+            &:before{
+                border: 3px solid #aaaaaa;
+                border-radius: 3px;
+                content: " ";
+                display: block;
+                height: 30px;
+                left: 5px;
+                position: absolute;
+                top: 5px;
+                width: 30px;
+            }
+        }    
+
+        & input{
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;    
+        }
+    }
+
+    .expandable-header{
+        margin-left:54px;
+        border-left: 1px solid #707070;
+    }
+
+    .emp-checked-row{
+        .table-control-col{
+            & label:after{
+                border-bottom: 5px solid #007681;
+                content: " ";
+                display: block;
+                height: 25px;
+                left: 16px;
+                position: absolute;
+                top: 2px;
+                width: 16px;
+                border-right: 5px solid #007681;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .emp-responsive-toggle-active{
+        .table-control-col{
+            & label{
+                top: 10px !important;
+                left: 7px !important;            
+            }
+        }
+    }
+}
