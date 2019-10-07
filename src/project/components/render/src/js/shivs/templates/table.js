@@ -6,9 +6,29 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
 	_priv.fixData = function _fix_data(data, external) {
 
+        console.log(data);
+
         // Ensure a type attribute is set on the table
-        if (data.attributes && data.attributes['data-type'] && !data.type) {
+        if (data.type) {
+            if (!data.attributes) {
+                data.attributes = {};
+            }
+
+            data.attributes['data-type'] = data.type;
+        }
+        else if (!data.type && data.attributes && data.attributes['data-type']) {
             data.type = data.attributes['data-type'];
+        }
+        else {
+
+            data.type = "pivot";
+
+            if (!data.attributes) {
+            	data.attributes = {};
+            }
+
+            data.attributes['data-type'] = 'pivot';
+
         }
 
         // Now explode out the style attributes
@@ -53,26 +73,26 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
         }
         else {
 
-            if (data.attributes && !data.attributes['data-filter']) {
-                data.attributes['data-filter'] = false;
-            }
+            // if (data.attributes && !data.attributes['data-filter']) {
+            //     data.attributes['data-filter'] = false;
+            // }
 
-            if (data.attributes && !data.attributes['data-resize']) {
-                data.attributes['data-resize'] = false;
-            }
+            // if (data.attributes && !data.attributes['data-resize']) {
+            //     data.attributes['data-resize'] = false;
+            // }
 
-            if (data.attributes && !data.attributes['data-responsive']) {
-                data.attributes['data-responsive'] = false;
-            }
+            // if (data.attributes && !data.attributes['data-responsive']) {
+            //     data.attributes['data-responsive'] = false;
+            // }
 
-            if (data.attributes && !data.attributes['data-changereturn']) {
-                data.attributes['data-changereturn'] = true;
-            }
+            // if (data.attributes && !data.attributes['data-changereturn']) {
+            //     data.attributes['data-changereturn'] = true;
+            // }
 
-            if (data.attributes && !data.attributes['data-sticky']) {
+            // if (data.attributes && !data.attributes['data-sticky']) {
 
-                data.attributes['data-sticky'] = false;
-            }
+            //     data.attributes['data-sticky'] = false;
+            // }
         }
 
         var buttonMenuIndex = false;
@@ -442,6 +462,46 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
                         if (columnObj.text && columnObj.text.length) {
                             tempNewValue += columnObj.text.trim() + " ";
+                        }
+
+                        if (columnObj.contents && columnObj.contents.length) {
+
+                            for (var cc = 0, ccLen = columnObj.contents.length; cc < ccLen; cc++) {
+
+                                var columnContents = columnObj.contents[cc];
+
+                                if (columnContents.template) {
+
+                                    switch (columnContents.template) {
+
+                                        case "link":
+
+                                            if (columnContents.text && columnContents.text.length) {
+                                                tempNewValue += columnContents.text.trim() + " ";
+                                            }
+                                            break;
+
+                                        case "field":
+
+                                            switch (columnContents.type) {
+
+                                                case "button":
+
+                                                    if (columnContents.input && columnContents.input.text && columnContents.input.text.length) {
+                                                        tempNewValue += columnContents.input.text.trim() + " ";
+                                                    }
+                                                    break;
+
+                                            }
+
+                                            break;
+
+                                    }
+
+                                }
+
+                            }
+
                         }
 
                         if (c < PrimaryLength) {

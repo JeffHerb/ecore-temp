@@ -530,7 +530,7 @@ section.emp-tabs div.emp-tab-contents {
         @include pointbreak("720px", true){
             padding: 0px 15px;
         }
-        
+
     }
 
     .emp-col-half{
@@ -674,21 +674,17 @@ section.emp-tabs div.emp-tab-contents {
 
     section {
 
-        &.emp-instructional-header {
+        section.emp-instructional-header {
 
             header {
-                flex-wrap: wrap;
+                display: flex;
+                flex-direction: column;
 
-                div {
-                    width: 100%;
-                }
-
-                @include pointbreak("720px") {
-                    div.emp-section-instructions {
-                        margin-left: 5em;
-                    }
+                div.emp-section-controls {
+                    flex: 0 1 auto !important;
                 }
             }
+
         }
 
     }
@@ -855,11 +851,15 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 					}
 
     				.cui-messages{
-    					width:100% !important;
+    					//width:100% !important;
     					display: flex;
     					flex:0 1 100%;
     					flex-direction:column;
-    					align-items:flex-start;
+                        align-items:flex-start;
+
+                        .cui-error {
+                            width: auto !important;
+                        }
     				}
 
     				&.cui-currency{
@@ -905,14 +905,14 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 					}
 				}
             }
-            
+
             .emp-field.emp-top-align-label{
                 flex-direction: column;
 
                 .cui-label{
                     text-align: left !important;
                 }
-                
+
                 .cui-label, .cui-data{
                     width: 100% !important;
                 }

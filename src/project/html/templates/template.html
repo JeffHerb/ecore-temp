@@ -76,7 +76,9 @@
 				<!-- PAGE TITLE           -->
 				<!-- ==================== -->
 				<div class="emp-page-title">
-					<h2>Page Title</h2>
+                    <div class="emp-text">
+                        <h2>Page Title <span>Subtitle</span></h2>
+                    </div>
 				</div>
 				<!-- ==================== -->
 				<!-- PAGE INSTRUCTIONS    -->
@@ -100,17 +102,17 @@
 						<button class="cui-icon emp-icon-help emp-page-itags" title="More information" type="button">More information</button>
 						<span>To learn more about a particular field</span>
 					</div>
-				</div>
+                </div>
+                <ul class="cui-messages emp-messages">
+                    <li class="cui-error">Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</li>
+                    <li class="cui-warning">Warning message. Displays information about certain things that need to be considered before continuing.</li>
+                    <li class="cui-informational">Informational message. Provide some information to assist in making the right decisions or something.</li>
+                    <li class="cui-success">Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this type of message shows per page submission.</li>
+                </ul>
 			</div>
 			<!-- ==================== -->
 			<!-- PAGE MESSAGES        -->
 			<!-- ==================== -->
-			<ul class="cui-messages emp-messages">
-				<li class="cui-error">Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</li>
-				<li class="cui-warning">Warning message. Displays information about certain things that need to be considered before continuing.</li>
-				<li class="cui-informational">Informational message. Provide some information to assist in making the right decisions or something.</li>
-				<li class="cui-success">Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this type of message shows per page submission.</li>
-			</ul>
 			<form action="tax.ny.gov" autocomplete="off" method="post">
 				<!-- ==================== -->
 				<!-- PAGE CONTENT         -->
@@ -200,7 +202,7 @@
 								<div class="cui-data">
 									<input class="emp-date" id="MOCKUP_DATE" size="11" maxlength="10" type="text" aria-required="true"/>
 									<!-- Temp: cui-c-datepicker component should render the code below -->
-									<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+									<button class="cui-icon cui-c-datepicker" id="cal_MOCKUP_DATE" title="Date picker" type="button">Date picker</button>
 									<button class="cui-icon emp-icon-help" data-tooltip-source="iMockup" title="More information" type="button">More information</button>
 								</div>
 							</div>
@@ -218,7 +220,7 @@
 											<div class="emp-field">
 												<label for="MOCKUP_DATE_BEGIN" class="cui-hide-from-screen">Begin date</label>
 												<input type="text" class="emp-date" id="MOCKUP_DATE_BEGIN" size="11" maxlength="10" />
-												<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+												<button class="cui-icon cui-c-datepicker" id="cal_MOCKUP_DATE_BEGIN" title="Date picker" type="button">Date picker</button>
 											</div>
 											<div class="emp-field">
 												<span>to</span>
@@ -226,7 +228,7 @@
 											<div class="emp-field">
 												<label for="MOCKUP_DATE_END" class="cui-hide-from-screen">End date</label>
 												<input type="text" class="emp-date" id="MOCKUP_DATE_END" size="11" maxlength="10" />
-												<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+												<button class="cui-icon cui-c-datepicker" id="cal_MOCKUP_DATE_END" title="Date picker" type="button">Date picker</button>
 											</div>
 											<div class="emp-field">
 												<button class="cui-icon emp-icon-help" data-tooltip-source="iMockup" title="More information" type="button">More information</button>
@@ -1265,7 +1267,7 @@
 								<div class="cui-data">
 									<input class="emp-date" id="EC_LIABILITY_PERIOD_BEGIN" size="11" maxlength="10"  type="text" aria-required="true">
 									<!-- Temp: cui-c-datepicker component should render the code below -->
-									<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+									<button class="cui-icon cui-c-datepicker" id="cal_EC_LIABILITY_PERIOD_BEGIN" title="Date picker" type="button">Date picker</button>
 									<button class="cui-icon emp-icon-help" data-tooltip-source="iLiabilityPeriod" title="More information" type="button">More information</button>
 								</div>
 							</div>
@@ -1280,7 +1282,7 @@
 								<div class="cui-data">
 									<input class="emp-date" id="EC_LIABILITY_PERIOD_END" size="11" maxlength="10" type="text">
 									<!-- Temp: cui-c-datepicker component should render the code below -->
-									<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+									<button class="cui-icon cui-c-datepicker" id="cal_EC_LIABILITY_PERIOD_END" title="Date picker" type="button">Date picker</button>
 								</div>
 							</div>
 						</div>
@@ -1297,15 +1299,15 @@
 											<div class="emp-field">
 												<label for="EC_BEGIN_DATE" class="cui-hide-from-screen">Begin date</label>
 												<input type="text" class="emp-date" id="EC_BEGIN_DATE" size="11" maxlength="10" />
-												<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+												<button class="cui-icon cui-c-datepicker" id="cal_EC_BEGIN_DATE" title="Date picker" type="button">Date picker</button>
 											</div>
 											<div class="emp-field">
 												<span>to</span>
 											</div>
 											<div class="emp-field">
 												<label for="EC_END_DATE" class="cui-hide-from-screen">End date</label>
-												<input type="text" class="emp-date" id="EC_END_DATE" size="11" maxlength="10"/>
-												<button class="cui-icon cui-c-datepicker" title="Date picker" type="button">Date picker</button>
+												<input type="text" class="emp-date" id="EC_END_DATE" size="11" maxlength="10" />
+												<button class="cui-icon cui-c-datepicker" id="cal_EC_END_DATE" title="Date picker" type="button">Date picker</button>
 											</div>
 										</div>
 									</div>
@@ -2282,7 +2284,7 @@
                         </div>
                     </div>
 				</section>
-				
+
 				<section>
 					<header>
 						<div class="emp-section-title">
@@ -2369,7 +2371,9 @@
 		<div class="unav-footer">
 			<div class="unav-footer-contents clearfix">
 				<div class="unav-flex-row">
-					<div class="footer-logo clearfix"></div>
+					<div class="footer-logo clearfix">
+                         <span class="nys-logo unav-footer-logo"></span>
+                    </div>
 					<div class="footer-links clearfix">
 						<ul>
 							<li>

@@ -177,8 +177,7 @@
 	</div>
 
 	<script>
-        var fwData =
-        {
+		var fwData = {
 			"preferences": false,
 			"footer": {
 				"contents": [{
@@ -196,16 +195,69 @@
 					"type": "page"
 				}
 			},
-			"header": {
-				"contents": [{
-						"template": "external-universal-header"
-					},
-					{
-						"template": "external-agency-header",
-						"title": "Enhanced STAR Income Verification Program Report"
-					}
-				]
-			},
+    "header": {
+        "contents": [
+            {
+                "template": "universal-header"
+            },
+            {
+                "template": "agency-header",
+                "userAcct": {
+                    "popover": {
+                        "contents": [
+                            {
+                                "template": "popover",
+                                "contents": [
+                                    {
+                                        "template": "tree",
+                                        "items": [
+                                            {
+                                                "template": "field",
+                                                "attributes": {
+                                                    "onclick": "emp.form.virtual({'newWindow':false,'attributes':{'name':'virtual','action':'\\/EIVP\\/EIVP_MAIN\\/EIVP_02\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}})",
+                                                    "name": "EC_LOGOUT",
+                                                    "id": "EC_LOGOUT"
+                                                },
+                                                "text": "logout",
+                                                "type": "button"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "text": "Joseph McCormick",
+                    "type": "interactive"
+                },
+                "title": "Enhanced STAR Income Verification Program",
+                "support": {
+                    "popover": {
+                        "contents": [
+                            {
+                                "template": "popover",
+                                "contents": [
+                                    {
+                                        "template": "tree",
+                                        "items": [
+                                            {
+                                                "template": "link",
+                                                "attributes": {
+                                                    "href": "http://www.help.com"
+                                                },
+                                                "text": "Help"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "text": "Get Support"
+                }
+            }
+        ]
+    },
     "page": {
         "contents": [
             {
@@ -214,18 +266,11 @@
                     {
                         "template": "output",
                         "raw": true,
-                        "text": "<p>To reactivate the enrollment shown below, first verify the <em>Property information</em> and <em>Owner Summary</em> sections. When finished, select <strong>Add Enrollment</strong>.</p>"
-                    }
-                ],
-                "help": [
-                    {
-                        "template": "output",
-                        "raw": true
+                        "text": "<p>Complete and verify the fields below. When finished, select <strong>Update Enrollment</strong> to save your changes.</p>"
                     }
                 ],
                 "pageLegend": {
-                    "SHOW_HELP_TEXT_IND": true,
-                    "SHOW_REQUIRED_IND": true
+                    "helpText": true
                 },
                 "title": "Property Details"
             },
@@ -253,7 +298,7 @@
                                                                 "aria-required": false,
                                                                 "id": "EC_SWIS_CODE",
                                                                 "type": "text",
-                                                                "value": "473689"
+                                                                "value": "030200"
                                                             },
                                                             "readOnly": true
                                                         },
@@ -290,7 +335,7 @@
                                                                 "aria-required": false,
                                                                 "id": "EC_PRINT_KEY",
                                                                 "type": "text",
-                                                                "value": "187.000-0002-027.000"
+                                                                "value": "159.36-1-16"
                                                             },
                                                             "readOnly": true
                                                         },
@@ -363,7 +408,7 @@
                                                                 "aria-required": false,
                                                                 "id": "EC_PROPERTY_ADDRESS",
                                                                 "type": "text",
-                                                                "value": "WA HARRIMAN CAMPUS, NY"
+                                                                "value": "WA HARRIMAN CAMPUS ALBANY, NY 12227"
                                                             },
                                                             "readOnly": true
                                                         },
@@ -433,6 +478,7 @@
                                                             "input": {
                                                                 "attributes": {
                                                                     "name": "enrollment.property.lifeTrustInd",
+                                                                    "checked": "checked",
                                                                     "id": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_NO",
                                                                     "type": "radio",
                                                                     "value": "N"
@@ -474,12 +520,7 @@
                                                             },
                                                             "type": "radio"
                                                         },
-                                                        "name": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST",
-                                                        "required": true,
-                                                        "message": {
-                                                            "type": "error",
-                                                            "text": "This field is required!"
-                                                        }
+                                                        "name": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST"
                                                     }
                                                 ],
                                                 "width": "full",
@@ -535,54 +576,54 @@
                                                 ],
                                                 "attributes": {},
                                                 "type": "row"
-                                            }
-                                        ],
-                                        "attributes": {
-                                            "id": "trustLifeEstateRegion"
-                                        },
-                                        "collapse": true
-                                    },
-                                    {
-                                        "template": "region",
-                                        "contents": [
+                                            },
                                             {
-                                                "template": "grid",
+                                                "template": "region",
                                                 "contents": [
                                                     {
                                                         "template": "grid",
                                                         "contents": [
                                                             {
-                                                                "template": "field",
-                                                                "input": {
-                                                                    "attributes": {
-                                                                        "size": 100,
-                                                                        "maxlength": 100,
-                                                                        "name": "enrollment.property.lifeTrustDesc",
-                                                                        "aria-required": false,
-                                                                        "id": "EC_LEGAL_NAME_TRUST",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "template": "field",
+                                                                        "input": {
+                                                                            "attributes": {
+                                                                                "size": 100,
+                                                                                "maxlength": 100,
+                                                                                "name": "enrollment.property.lifeTrustDesc",
+                                                                                "aria-required": false,
+                                                                                "id": "EC_LEGAL_NAME_TRUST",
+                                                                                "type": "text"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "attributes": {
+                                                                                "for": "EC_LEGAL_NAME_TRUST"
+                                                                            },
+                                                                            "text": "Legal name of trust:"
+                                                                        },
                                                                         "type": "text"
                                                                     }
-                                                                },
-                                                                "label": {
-                                                                    "attributes": {
-                                                                        "for": "EC_LEGAL_NAME_TRUST"
-                                                                    },
-                                                                    "text": "Legal name of trust:"
-                                                                },
-                                                                "type": "text"
+                                                                ],
+                                                                "width": "full",
+                                                                "attributes": {},
+                                                                "type": "column"
                                                             }
                                                         ],
-                                                        "width": "full",
                                                         "attributes": {},
-                                                        "type": "column"
+                                                        "type": "row"
                                                     }
                                                 ],
-                                                "attributes": {},
-                                                "type": "row"
+                                                "attributes": {
+                                                    "id": "trustNameRegion"
+                                                },
+                                                "collapse": true
                                             }
                                         ],
                                         "attributes": {
-                                            "id": "trustNameRegion"
+                                            "id": "trustLifeEstateRegion"
                                         },
                                         "collapse": true
                                     }
@@ -666,72 +707,64 @@
                                         "footerControls": {
                                             "contents": [
                                                 {
-                                                    "template": "grid",
-                                                    "contents": [
-                                                        {
-                                                            "template": "composite",
-                                                            "parts": {
-                                                                "button": {
-                                                                    "template": "field",
-                                                                    "input": {
-                                                                        "attributes": {
-                                                                            "data-validation": false,
-                                                                            "onclick": "emp.functionCall(event, {0:{'function':'emp.confirm','args':['Are you sure you want to remove this owner?\\n\\n']},1:{'function':'emp.form.submit','args':[{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/removeOwner'}]}})",
-                                                                            "name": "EC_BTN_REMOVE",
-                                                                            "id": "EC_BTN_REMOVE",
-                                                                            "type": "button",
-                                                                            "title": "Remove"
-                                                                        },
-                                                                        "text": "Remove"
-                                                                    },
-                                                                    "type": "button"
+                                                    "template": "composite",
+                                                    "parts": {
+                                                        "button": {
+                                                            "template": "field",
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "data-validation": false,
+                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.confirm','args':['Are you sure you want to remove this owner?\\n\\n']},1:{'function':'emp.form.submit','args':[{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/removeOwner'}]}})",
+                                                                    "name": "EC_BTN_REMOVE",
+                                                                    "id": "EC_BTN_REMOVE",
+                                                                    "label": "Remove",
+                                                                    "type": "button",
+                                                                    "title": "Remove"
                                                                 },
-                                                                "text": {
-                                                                    "template": "field",
-                                                                    "input": {
-                                                                        "options": [
-                                                                            {
-                                                                                "text": "No longer owner\u001as primary residence",
-                                                                                "value": "01"
-                                                                            },
-                                                                            {
-                                                                                "text": "Deceased",
-                                                                                "value": "02"
-                                                                            },
-                                                                            {
-                                                                                "text": "Property sold",
-                                                                                "value": "03"
-                                                                            },
-                                                                            {
-                                                                                "text": "Not age qualified",
-                                                                                "value": "04"
-                                                                            }
-                                                                        ],
-                                                                        "attributes": {
-                                                                            "name": "rsnToRemove",
-                                                                            "aria-required": false,
-                                                                            "id": "EC_REASON_REMOVE_OWNERS"
-                                                                        }
+                                                                "text": "Remove"
+                                                            },
+                                                            "type": "button"
+                                                        },
+                                                        "text": {
+                                                            "template": "field",
+                                                            "input": {
+                                                                "options": [
+                                                                    {
+                                                                        "text": "No longer owner\u001as primary residence",
+                                                                        "value": "01"
                                                                     },
-                                                                    "label": {
-                                                                        "visibility": "hidden",
-                                                                        "attributes": {
-                                                                            "for": "EC_REASON_REMOVE_OWNERS"
-                                                                        },
-                                                                        "text": "Reason for removing owner(s):",
-                                                                        "hasLayout": "false"
+                                                                    {
+                                                                        "text": "Deceased",
+                                                                        "value": "02"
                                                                     },
-                                                                    "type": "select"
+                                                                    {
+                                                                        "text": "Property sold",
+                                                                        "value": "03"
+                                                                    },
+                                                                    {
+                                                                        "text": "Not age qualified",
+                                                                        "value": "04"
+                                                                    }
+                                                                ],
+                                                                "attributes": {
+                                                                    "name": "rsnToRemove",
+                                                                    "aria-required": false,
+                                                                    "id": "EC_REASON_REMOVE_OWNERS"
                                                                 }
                                                             },
-                                                            "type": "search",
-                                                            "properties": {}
+                                                            "label": {
+                                                                "visibility": "hidden",
+                                                                "attributes": {
+                                                                    "for": "EC_REASON_REMOVE_OWNERS"
+                                                                },
+                                                                "text": "Reason for removing owner(s):",
+                                                                "hasLayout": "false"
+                                                            },
+                                                            "type": "select"
                                                         }
-                                                    ],
-                                                    "width": "full",
-                                                    "attributes": {},
-                                                    "type": "column",
-                                                    "push": "align-left"
+                                                    },
+                                                    "type": "search",
+                                                    "properties": {}
                                                 }
                                             ]
                                         },
@@ -749,17 +782,18 @@
                                                                     "template": "link",
                                                                     "attributes": {
                                                                         "role": "button",
+                                                                        "data-validation": false,
                                                                         "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','ownersSumryModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/updateOwner'}]}})",
                                                                         "href": "#",
                                                                         "title": "Edit Owner"
                                                                     },
-                                                                    "text": "Joe, Joe"
+                                                                    "text": "Honey, Oats"
                                                                 }
                                                             ]
                                                         },
                                                         {
                                                             "contents": [],
-                                                            "text": "XXX-XX-1111"
+                                                            "text": "796-34-1256"
                                                         },
                                                         {
                                                             "contents": [],
@@ -767,7 +801,7 @@
                                                         },
                                                         {
                                                             "contents": [],
-                                                            "text": "01/01/1950"
+                                                            "text": "05/13/1972"
                                                         },
                                                         {
                                                             "contents": []
@@ -792,6 +826,7 @@
                                                                 "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/addOwner'}])",
                                                                 "name": "EC_BTN_ADD_OWNER",
                                                                 "id": "EC_BTN_ADD_OWNER",
+                                                                "label": "Add Owner",
                                                                 "type": "button",
                                                                 "title": "Add Owner"
                                                             },
@@ -837,13 +872,14 @@
                                                 "input": {
                                                     "attributes": {
                                                         "data-validation": true,
-                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/reactivateEnrollment'}])",
-                                                        "name": "EC_BTN_REACT_ENROLL",
-                                                        "id": "EC_BTN_REACT_ENROLL",
+                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/updateEnrollment'}])",
+                                                        "name": "EC_BTN_UPDATE_ENROLL",
+                                                        "id": "EC_BTN_UPDATE_ENROLL",
+                                                        "label": "Update Enrollment",
                                                         "type": "button",
-                                                        "title": "Reactivate Enrollment"
+                                                        "title": "Update Enrollment"
                                                     },
-                                                    "text": "Reactivate Enrollment",
+                                                    "text": "Update Enrollment",
                                                     "primary": true
                                                 },
                                                 "type": "button"

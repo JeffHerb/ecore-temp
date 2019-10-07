@@ -131,10 +131,8 @@ define(['render'], function (render) {
                     var windowsWidth = emp.$window.width();
                     var menuWidth = $menu.width();
                     var buttonWidth = $button.outerWidth();
-
-                    console.log(windowsWidth, menuWidth);
-                    console.log(buttonOffset);
-
+                    var buttonHeight = $button.outerHeight();
+                    var arrowPosition;
                     var menuPos = {
                         top: false,
                         left: false,
@@ -149,18 +147,24 @@ define(['render'], function (render) {
                         menuPos.top = buttonOffset.top;
                         menuPos.right = (windowsWidth - buttonOffset.left + 5);
                     }
+                    //Right
                     else if ((menuWidth + 5 + buttonOffset.left + buttonWidth) < (windowsWidth)) {
 
                         menuPos.top = buttonOffset.top;
                         menuPos.left = buttonOffset.left + buttonWidth + 5;
                         menuPos.right = "auto";
+                        arrowPosition = "left";
 
+                    }
+                    //Bottom
+                    else{
+                        menuPos.top = buttonOffset.top + buttonHeight + 5;
+                        menuPos.left = buttonOffset.left;
+                        menuPos.right = "auto";
+                        arrowPosition = "top";
                     }
 
                     if (menuPos.top && menuPos.right && (menuPos.right !== "auto")) {
-
-                        console.log("from right");
-
                         // position the menu
                         $menu.css({
                             top: (menuPos.top),
@@ -185,6 +189,22 @@ define(['render'], function (render) {
                             });
                         }
                     }
+
+
+                    $menu.removeClass('emp-responsive-button-menu-arrow-left');
+                    $menu.removeClass('emp-responsive-button-menu-arrow-top');
+                    switch(arrowPosition){
+                        case "left":
+                            $menu.addClass('emp-responsive-button-menu-arrow-left');
+                        break;
+
+                        case "top":
+                            $menu.addClass('emp-responsive-button-menu-arrow-top');
+                        break;
+
+                        default:                        
+                    }
+
 
                     $menu.addClass('emp-selected');
 

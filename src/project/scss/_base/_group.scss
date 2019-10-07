@@ -43,7 +43,7 @@ section {
         // @import "../_theme_teal.scss";
         // border-top: $emp-group-border;
         // border-bottom: $emp-group-border;
-    // }   
+    // }
 
     // Need an extra tag to override the specificity in the default CUI styles
     body & {
@@ -68,7 +68,7 @@ section {
             // border-right: $emp-group-border;
             // border-radius: $emp-group-border-radius;
         // }
-      
+
     }
 
     & > header {
@@ -79,7 +79,7 @@ section {
         border-bottom: $emp-group-header-border-bottom;
         background-color: $emp-group-header-bg-color;
         color: $emp-group-header-color;
-        
+
         //prevent cut-off at bottom of page.
         @media print{
             page-break-inside: avoid;
@@ -104,7 +104,7 @@ section {
                 // @import "../_theme_teal.scss";
                 // color: $emp-group-header-color;
             // }
-           
+
         }
 
         &:not(.emp-flex-header) {
@@ -394,7 +394,7 @@ section {
                 // .theme-teal & {
                     // @import "../_theme_teal.scss";
                     // color: $emp-subgroup-header-color;
-                // }               
+                // }
             }
         }
     }
@@ -408,7 +408,7 @@ section {
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // border: $emp-group-border;
-            // }          
+            // }
         }
 
         // Top-level sections
@@ -435,7 +435,7 @@ section {
 
     // Section next to another section should keep its padding
     section + section {
-        padding: $emp-group-row-padding;
+        //padding: $emp-group-row-padding;
         margin-bottom: 0.75em;
 
         @include pointbreak($cui-bp-medium) {
@@ -463,7 +463,7 @@ section {
             // @import "../_theme_teal.scss";
             // background-color: $emp-group-header-bg-color-collapsed;
             // border-color: $emp-group-header-border-color-collapsed;
-        // }       
+        // }
     }
 
     section.emp-collapse & {
@@ -499,7 +499,7 @@ body section.emp-collapse { // `body` was added to give this selector specificit
         // .theme-teal & {
             // @import "../_theme_teal.scss";
             // border: $emp-group-border;
-        // }      
+        // }
     }
 
     // @media print {

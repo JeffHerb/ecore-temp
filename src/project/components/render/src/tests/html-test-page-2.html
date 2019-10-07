@@ -75,317 +75,222 @@
 		</header>
 	</div>
 	<div id="body-wrapper">
-		<main>
+		<!-- Accessibility cues -->
+		<div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+		<!-- ==================== -->
+		<!-- PAGE TITLE           -->
+		<!-- ==================== -->
 
+		<!-- ####################### -->
+		<!-- DEVELOPER'S CODE (JSP)  -->
+		<!-- ####################### -->
+		<main role="main">
+			<!-- ==================== -->
+			<!-- PAGE INFORMATION     -->
+			<!-- ==================== -->
 			<div class="emp-page-info">
-				<!-- ==================== -->
-				<!-- PAGE TITLE           -->
 				<div class="emp-page-title">
-					<h2>Park Information</h2>
-				</div>
-				<!-- ==================== -->
-				<!-- PAGE INSTRUCTIONS    -->
-				<!-- ==================== -->
-				<div class="emp-page-instructions" id="emp-page-instructions">
-					<p>Enter the requested information below and select <strong>Continue</strong>.</p>
-				</div>
-				<!-- ==================== -->
-				<!-- PAGE LEGEND          -->
-				<!-- ==================== -->
-				<div class="emp-page-legend">
-					<div class="emp-legend">
-						<span>Required field</span>
-					</div>
-					<div class="emp-legend">
-						<span>Row containing errors</span>
-					</div>
-					<div class="emp-legend">
-						<button class="cui-icon emp-icon-help" title="More information" type="button">More information</button> <span>To learn more about a particular field</span>
-					</div>
+					<h2>Enhanced STAR Daily IVP Edit Report</h2>
 				</div>
 			</div>
+
 			<!-- ==================== -->
 			<!-- PAGE CONTENT         -->
 			<!-- ==================== -->
-			
-		
-			<section class="emp-no-collapse">
-				<header>
-					<div class="emp-section-title">
-						<h3>Park details</h3>
-					</div>
-				</header>
-			
+			<form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post">
+				<section class="emp-no-collapse">
+					<header>
+						<div class="emp-section-title">
+							<h3>Search</h3>
+						</div>
+					</header>
 					<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Registration for:</label>
-							</div>
-							<div class="cui-data">
-								<select id="" aria-required="true">
-									<option value="0">January 2020</option>
-									<option value="0">June 2020</option>
-									
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Division of housing and community renewal facility code:</label>
-							</div>
-							<div class="cui-data">
-								<input maxlength="16" size="6" type="text" id="" aria-required="true" value="">
+						<div class="emp-col-full">
+							<div class="emp-field cui-required">
+								<div class="cui-label">
+									<label for="EC_SWIS_CODE">SWIS code:</label>
+								</div>
+								<div class="cui-data">
+									<select id="EC_SWIS_CODE" aria-required="true">
+										<option value="">Select one</option>
+										<option value="1">010100</option>
+										<option value="2">012000</option>
+
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-						<div class="cui-row">
+
+					<div class="cui-row">
 						<div class="emp-col-full">
 							<div class="emp-field">
 								<div class="cui-label">
-									<span class="emp-label">Division of housing and community renewal facility code:</span>
+									<label for="EC_MBLHM_CO_OP">Mobile home or co-op:</label>
 								</div>
 								<div class="cui-data">
-									<span class="emp-data">00374</span>
+									<select id="EC_MBLHM_CO_OP">
+										<option value="">Select one</option>
+										<option value="1">All</option>
+										<option value="2">Mobile Home</option>
+										<option value="3">Co-op</option>
+									</select>
 								</div>
 							</div>
 						</div>
 					</div>
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Park Name:</label>
-							</div>
-							<div class="cui-data">
-								<input maxlength="35" size="35" type="text" id="" aria-required="true" value="">
-							</div>
-						</div>
-					</div>
-				</div>
-						<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Park ownership:</label>
-							</div>
-							<div class="cui-data">
-								<select id="" aria-required="true">
-									<option value="1">Individual</option>
-									<option value="2">Partnership</option>
-									<option value="3">Corporation</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-		<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Park emergency phone number:</label>
-							</div>
-							<div class="cui-data">
-								<input id="" maxlength="14" size="14" type="text" value="" aria-required="true">
-								<button class="cui-icon emp-icon-help" data-tooltip-source="i1" title="More information" type="button">More information</button>
-							</div>
-						</div>
-					</div>
-				</div>
-						<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Total number of lots:</label>
-							</div>
-							<div class="cui-data">
-								<input maxlength="4" size="4" type="text" id="" aria-required="true" value="">
-							</div>
-						</div>
-					</div>
-				</div>
-							<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">Number of filled lots:</label>
-							</div>
-							<div class="cui-data">
-								<input maxlength="4" size="4" type="text" id="" aria-required="true" value="">
-							</div>
-						</div>
-					</div>
-				</div>
-								<div class="cui-row">
-						<div class="emp-col-full">
-							<fieldset class="emp-yes-no-component emp-boolean-input-group">
-								<div class="emp-fieldset-contents" role="group" aria-labelledby="fieldset-radio-button-field">
-									<div class="cui-label">
-										<legend id="fieldset-radio-button-field">Does the manufactured home park owner offer a rent-to-own program?</legend>
-									</div>
-									<div class="cui-data">
-										<div class="emp-input-collection">
-											<div class="emp-field cui-data-left">
-												<input id="MOCKUP_RADIO_YES" name="MOCKUP_RADIO" type="radio" value="">
-												<label for="MOCKUP_RADIO_YES">Yes</label>
-											</div>
-											<div class="emp-field cui-data-left">
-												<input checked="checked" id="MOCKUP_RADIO_NO" name="MOCKUP_RADIO" type="radio" value="2">
-												<label for="MOCKUP_RADIO_NO">No</label>
-											</div>
-										</div>
-										<button class="cui-icon emp-icon-help" data-tooltip-source="iMockup" title="More information" type="button">More information</button>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-									<div class="cui-row">
-						<div class="emp-col-full">
-							<fieldset class="emp-yes-no-component emp-boolean-input-group">
-								<div class="emp-fieldset-contents" role="group" aria-labelledby="fieldset-radio-button-field">
-									<div class="cui-label">
-										<legend id="fieldset-radio-button-field">Does the manufactured home park owner provide financing for the purchase of homes in the park?</legend>
-									</div>
-									<div class="cui-data">
-										<div class="emp-input-collection">
-											<div class="emp-field cui-data-left">
-												<input id="MOCKUP_RADIO_YES" name="MOCKUP_RADIO" type="radio" value="">
-												<label for="MOCKUP_RADIO_YES">Yes</label>
-											</div>
-											<div class="emp-field cui-data-left">
-												<input checked="checked" id="MOCKUP_RADIO_NO" name="MOCKUP_RADIO" type="radio" value="2">
-												<label for="MOCKUP_RADIO_NO">No</label>
-											</div>
-										</div>
-										<button class="cui-icon emp-icon-help" data-tooltip-source="iMockup" title="More information" type="button">More information</button>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-							<div class="cui-row">
-						<div class="emp-col-full">
-							<fieldset class="emp-yes-no-component emp-boolean-input-group">
-								<div class="emp-fieldset-contents" role="group" aria-labelledby="fieldset-radio-button-field">
-									<div class="cui-label">
-										<legend id="fieldset-radio-button-field">Does this park have a permanent residence on the property?</legend>
-									</div>
-									<div class="cui-data">
-										<div class="emp-input-collection">
-											<div class="emp-field cui-data-left">
-												<input id="MOCKUP_RADIO_YES" name="MOCKUP_RADIO" type="radio" value="">
-												<label for="MOCKUP_RADIO_YES">Yes</label>
-											</div>
-											<div class="emp-field cui-data-left">
-												<input id="MOCKUP_RADIO_NO" name="MOCKUP_RADIO" type="radio" value="2">
-												<label for="MOCKUP_RADIO_NO">No</label>
-											</div>
-										</div>
-										<button class="cui-icon emp-icon-help" data-tooltip-source="iMockup" title="More information" type="button">More information</button>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				</section>
-					<section class="emp-no-collapse">
-				<header>
-					<div class="emp-section-title">
-						<h3>Park location</h3>
-					</div>
-				</header>
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="EC_STREET_NMBR">Street number:</label>
-							</div>
-							<div class="cui-data">
-								<input type="text" size="5" id="EC_STREET_NMBR" aria-required="true" maxlength="5" value="">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="EC_STREET_NAME">Street name:</label>
-							</div>
-							<div class="cui-data">
-								<input type="text" size="35" id="EC_STREET_NAME" aria-required="true" maxlength="35" value="">
-							</div>
-						</div>
-					</div>
-				</div>
-	
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="EC_CITY">City:</label>
-							</div>
-							<div class="cui-data">
-								<input type="text" size="30" id="EC_CITY" aria-required="true" maxlength="30" value="">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field">
-							<div class="cui-label">
-								<span class="emp-label" id="EC_US_STATE">U.S. State:</span>
-							</div>
-							<div class="cui-data">
-								<span class="emp-data">New York</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-reuqired">
-							<div class="cui-label">
-								<label for="EC_ZIP_POSTAL_CODE">ZIP/Postal code:</label>
-							</div>
-							<div class="cui-data">
-								<input type="text" size="5" id="EC_ZIP_POSTAL_CODE" aria-required="true" maxlength="5" value="">
-							</div>
-						</div>
-					</div>
-				</div>
 					<div class="cui-row">
-					<div class="emp-col-full">
-						<div class="emp-field cui-required">
-							<div class="cui-label">
-								<label for="">County:</label>
-							</div>
-							<div class="cui-data">
-								<input type="text" size="5" id="" aria-required="true" maxlength="5" value="">
+						<div class="emp-col-full">
+							<div class="emp-field">
+								<div class="cui-label">
+									<label for="EC_LAST_UPDATED_SEARCH_BEGIN">Last updated search begin:</label>
+								</div>
+								<div class="cui-data">
+									<input type="text" id="EC_LAST_UPDATED_SEARCH_BEGIN" class="emp-date" size="10" maxlength="10">
+									<!-- Temp: cui-c-datepicker component should render the code below -->
+									<button type="button" class="cui-icon cui-c-datepicker" id="cal_EC_LAST_UPDATED_SEARCH_BEGIN" title="Date picker">Date picker</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-						
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field">
+								<div class="cui-label">
+									<label for="EC_LAST_UPDATED_SEARCH_END">Last updated search end:</label>
+								</div>
+								<div class="cui-data">
+									<input type="text" id="EC_LAST_UPDATED_SEARCH_END" class="emp-date" size="10" maxlength="10">
+									<!-- Temp: cui-c-datepicker component should render the code below -->
+									<button type="button" class="cui-icon cui-c-datepicker" id="cal_EC_LAST_UPDATED_SEARCH_END" title="Date picker">Date picker</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<fieldset class="emp-sort-on">
+								<div class="cui-label">
+									<legend id="EC_SORT">Sort:</legend>
+								</div>
+								<div class="cui-data">
+									<div class="emp-input-collection">
+										<div class="emp-field">
+											<label for="EC_ORDER" class="cui-hide-from-screen">Order</label>
+											<select id="EC_ORDER">
+												<option value="">Ascending</option>
+												<option value="">Descending</option>
+											</select>
+										</div>
+										<div class="emp-field">
+											<span class="emp-label">on</span>
+										</div>
+										<div class="emp-field">
+											<label for="EC_ON" class="cui-hide-from-screen">on</label>
+											<select id="EC_ON">
+												<option value="" selected="selected">Print Key</option>
+												<option value="">Street number</option>
+												<option value="">Street name</option>
+												<option value="">Unit number</option>
+												<option value="">MH-Co-op</option>
+											</select>
+
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+
+					<div class="cui-row emp-button-row">
+						<div class="emp-col-full button-col emp-button-group cui-align-center">
+							<button type="button" name="EC_BTN_CLEAR" title="Clear">Clear</button>
+							<button type="button" name="EC_BTN_SEARCH" class="cui-button-primary" title="Search">Search</button>
+						</div>
+					</div>
 				</section>
-				
-				
-			</section>
-			<div class="cui-row emp-button-row">
-				<div class="emp-col-full button-col emp-button-group cui-align-center">
-					<button name="EC_BTN_BACK" title="Back" type="button">Back</button>
-					<button class="cui-button-primary" name="EC_BTN_CONTINUE" title="Continue" type="button">Continue</button>
+
+				<!-- ==================== -->
+				<!-- Reports            -->
+				<!-- ==================== -->
+				<section class="emp-no-collapse">
+					<header>
+						<div class="emp-section-title">
+							<h3>Reports</h3>
+						</div>
+					</header>
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field">
+								<div class="cui-label"> <span class="emp-label">Date:</span> </div>
+								<div class="cui-data"> <span class="emp-data" id="EC_DATE">10/31/2018 01:49 PM</span> </div>
+							</div>
+						</div>
+					</div>
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-field">
+								<div class="cui-label"> <span class="emp-label">Created for:</span> </div>
+								<div class="cui-data"> <span class="emp-data" id="EC_CREATED_FOR">Smart Tester</span> </div>
+							</div>
+						</div>
+					</div>
+
+					<div class="cui-row emp-button-row">
+						<div class="emp-col-full button-col emp-button-group cui-align-right">
+							<button type="button" name="E_BTN_CLEAR" title="Down Report">Download Report</button>
+						</div>
+					</div>
+					<div class="emp-table">
+						<table id="property-lookup" data-limit="20" data-paging="true" data-paging-extend="true" data-paging-text="1 through 50 of 250" data-resize="false" data-filter="false" data-type="breakout-priority">
+							<thead>
+								<tr>
+									<th data-sort="alpha" data-table-column-priority="1" data-type="alpha" class="emp-sortable table-structure-cell"> School tax year </th>
+									<th data-sort="alpha" data-table-column-priority="2" data-type="alpha" class="emp-sortable table-structure-cell" data-table-responsive-type="primary">Print key </th>
+									<th data-sort="alpha" data-table-column-priority="3" data-type="alpha" class="emp-sortable table-structure-cell"> Mobile home co-op </th>
+									<th data-sort="alpha" data-table-column-priority="4" data-type="alpha" class="emp-sortable table-structure-cell">Address </th>
+									<th data-sort="alpha" data-table-column-priority="7" data-type="alpha" class="emp-sortable table-structure-cell"> Name </th>
+									<th data-sort="alpha" data-table-column-priority="12" data-type="alpha" class="emp-sortable table-structure-cell"> Action </th>
+									<th data-sort="numeric" data-table-column-priority="13" data-type="alpha" class="emp-sortable table-structure-cell"> Confirmation number </th>
+									<th data-sort="numeric" data-table-column-priority="14" data-type="alpha" class="emp-sortable table-structure-cell"> Last updated by </th>
+									<th data-sort="numeric" data-table-column-priority="15" data-type="alpha" class="emp-sortable table-structure-cell"> Last updated by date </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2019</td>
+									<td>12.23.2.23.1</td>
+									<td>Co-op</td>
+									<td>123 Thornberry Ln, Unit 32</td>
+									<td class="cui-no-wrap">Bestha Shruti (111-22-6789)</td>
+									<td>Removed</td>
+									<td><a href="">12348675309</a></td>
+									<td>Assessor A</td>
+									<td>12/3/2018 03:13 PM</td>
+								</tr>
+								<tr>
+									<td>2019</td>
+									<td>12.23.2.23.2</td>
+									<td>Mobile home</td>
+									<td>123 Thornberry Ln, Unit 32</td>
+									<td class="cui-no-wrap">Antony Roma (222-33-7779)</td>
+									<td>Add/Update</td>
+									<td><a href="">12348675309</a></td>
+									<td>Assessor A</td>
+									<td>12/3/2018 03:13 PM</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<div class="cui-row emp-button-row">
+					<div class="emp-col-full button-col emp-button-group cui-align-center">
+						<button type="button" name="EC_BTN_BACK" title="Back">Back</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</main>
 	</div>
 	<div id="footer-wrapper">

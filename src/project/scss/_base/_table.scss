@@ -200,7 +200,7 @@
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // color: $cui-color-dark-gray-alt;
-            // }          
+            // }
         }
     }
 
@@ -352,7 +352,7 @@
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // border-bottom: 1px $emp-data-has-title-underline-style $emp-data-has-title-underline-color;
-            // }           
+            // }
         }
 
         &.cui-align-right {
@@ -419,7 +419,7 @@
         // .theme-teal & {
             // @import "../_theme_teal.scss";
             border-top: 3px $cui-table-cell-border-style $emp-table-cell-border-color;
-        // }      
+        // }
 
     }
 
@@ -444,7 +444,7 @@
                 // .theme-teal & {
                     // @import "../_theme_teal.scss";
                     // background: $emp-table-highlight !important;
-                // }               
+                // }
 
                 &:hover,
                 &:hover th {
@@ -453,7 +453,7 @@
                     // .theme-teal & {
                         // @import "../_theme_teal.scss";
                         // background: $emp-table-highlight-hover !important;
-                    // }                  
+                    // }
                 }
 
                 th {
@@ -462,40 +462,40 @@
                     // .theme-teal & {
                         // @import "../_theme_teal.scss";
                         // background: $emp-table-highlight !important;
-                    // }                   
+                    // }
                 }
             }
 
-            &.emp-checked-row {
+            // &.emp-checked-row {
 
-                box-shadow:
-                    inset 2px 2px 0 0 #A97227,
-                    inset -1px -1px 0 0 #A97227;
+            //     box-shadow:
+            //         inset 2px 2px 0 0 #A97227,
+            //         inset -1px -1px 0 0 #A97227;
 
-                .ie & {
-                    box-shadow: 0 0 0;
-                    border-color: #A97227;
+            //     .ie & {
+            //         box-shadow: 0 0 0;
+            //         border-color: #A97227;
 
-                    td {
-                        border-color: #A97227 !important;
-                        box-shadow: 0px 1px 0 0 #A97227 inset, 0px -1px 0 0 #A97227 inset;
-                    }
-                    td:first-child {
-                        border-left-color: #A97227;
-                        box-shadow: 1px 1px 0 0 #A97227 inset, 0px -1px 0 0 #A97227 inset;
-                    }
-                    td:last-child {
-                        border-right-color: #A97227;
-                        box-shadow: 0px 1px 0 0 #A97227 inset, -1px -1px 0 0 #A97227 inset;
-                    }
-                }
+            //         td {
+            //             border-color: #A97227 !important;
+            //             box-shadow: 0px 1px 0 0 #A97227 inset, 0px -1px 0 0 #A97227 inset;
+            //         }
+            //         td:first-child {
+            //             border-left-color: #A97227;
+            //             box-shadow: 1px 1px 0 0 #A97227 inset, 0px -1px 0 0 #A97227 inset;
+            //         }
+            //         td:last-child {
+            //             border-right-color: #A97227;
+            //             box-shadow: 0px 1px 0 0 #A97227 inset, -1px -1px 0 0 #A97227 inset;
+            //         }
+            //     }
 
-            }
+            // }
 
             td.emp-negative-number {
                 color: $cui-color-error-text !important;
 
-                &.cui-numeric, 
+                &.cui-numeric,
                 &.cui-currency {
                     input {
                         color: $cui-color-error-text !important;
@@ -523,7 +523,7 @@
             color: $cui-color-error-text;
         }
 
-        .cui-numeric, 
+        .cui-numeric,
         .cui-currency {
             //min-width: 162px; Removed per danielle and jill 11/13/2017
             white-space: nowrap;
@@ -545,7 +545,7 @@
 
     }
 
-    td.cui-numeric, 
+    td.cui-numeric,
     td.cui-currency {
         text-align: right;
 
@@ -583,7 +583,7 @@
                     // @import "../_theme_teal.scss";
                     // border: 1px solid $emp-table-cell-border-color;
                     // border-top: 3px solid $emp-table-cell-border-color;
-                // }               
+                // }
             }
         }
     }
@@ -606,7 +606,7 @@
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // color: $cui-color-dark-gray;
-            // }           
+            // }
         }
 
         [class*="emp-table-paging-prev"]:before {
@@ -615,7 +615,7 @@
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            // }           
+            // }
         }
 
         [class*="emp-table-paging-next"]:before {
@@ -624,7 +624,7 @@
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            // }           
+            // }
         }
     }
 
@@ -667,7 +667,7 @@ table:not([class*="cui-no-stripes"]) tbody tr:not(.cui-hidden):not(.cui-ui-only)
     // .theme-teal & {
         // @import "../_theme_teal.scss";
         // background-color: $cui-table-row-bg-alt-color;
-    // }   
+    // }
 }
 
 table.cui-no-stripes tr.manual-strip {
@@ -676,7 +676,7 @@ table.cui-no-stripes tr.manual-strip {
     // .theme-teal & {
         // @import "../_theme_teal.scss";
         // background-color: $cui-table-row-bg-alt-color;
-    // }   
+    // }
 }
 
 tbody tr:hover,
@@ -686,7 +686,7 @@ table tbody tr:nth-child(even):hover {
     // .theme-teal & {
         // @import "../_theme_teal.scss";
         // background-color: $cui-table-row-bg-hover-color;
-    // }   
+    // }
 }
 
 // Selection Popups

@@ -1467,8 +1467,6 @@ define(['stylesheet', 'render'], function (stylesheet, render) {
 
     _setup.responsive = function _responsive (table, next) {
 
-        //console.log(table);
-
         // start by defining some style sheets These we will keep for the long haul
         table.config.plugins.responsive.stylesheet = stylesheet.newSheet(table.id + "-screen");
         table.config.plugins.responsive.printStyleSheet = stylesheet.newSheet(table.id + '-print', 'print');
@@ -1480,7 +1478,7 @@ define(['stylesheet', 'render'], function (stylesheet, render) {
 
         var responsiveOption = table.$self.attr('data-responsive');
 
-        if (responsiveOption === "false") {
+        if (responsiveOption && responsiveOption === "false") {
 
             table.config.setup.responsive = false;
         }
@@ -1558,75 +1556,6 @@ define(['stylesheet', 'render'], function (stylesheet, render) {
 
                     // Now that the column definitions have been created create the show/hide order
                     _priv.priorityOrder(table);
-
-                    if (table.config.setup.responsive) {
-
-                        if (!table.dataStore.isExternal) {
-
-                            var userTablePreferences = emp.prefs.getPage('tables.' + table.id + '.columns');
-                            var invalidTablePref = false;
-
-                            table.config.plugins.responsive.localPrefs = userTablePreferences;
-
-                            if (!table.config.plugins.responsive.localPrefs || typeof table.config.plugins.responsive.localPrefs !== "object" || (typeof table.config.plugins.responsive.localPrefs === "object" && !Object.keys(table.config.plugins.responsive.localPrefs).length) ) {
-                                table.config.plugins.responsive.localPrefs = false;
-                            }
-
-                            // Additional column test if table preferences are found
-                            if (typeof userTablePreferences === "object" && (userTablePreferences.visible || userTablePreferences.hidden)) {
-
-                                var userPrefVisibleCount = (userTablePreferences.visible && Array.isArray(userTablePreferences.visible) && userTablePreferences.visible.length) ? userTablePreferences.visible.length : 0;
-                                var userPrefHiddenCount = (userTablePreferences.hidden && Array.isArray(userTablePreferences.hidden) && userTablePreferences.hidden.length) ? userTablePreferences.hidden.length : 0;
-                                var userTotalPrefCount = userPrefVisibleCount + userPrefHiddenCount;
-
-                                if (userTotalPrefCount !== table.config.plugins.responsive.order.length) {
-                                    invalidTablePref = true;
-                                }
-
-                                // Continue test in case the column count matches.
-                                if (!invalidTablePref) {
-
-                                    var hiddenColZero, visibleColZero = false;
-
-                                    if (!invalidTablePref && userTablePreferences && userTablePreferences.hidden && userTablePreferences.visible && (userTablePreferences.hidden.length >= 1 || userTablePreferences.visible.length >=1)) {
-
-                                        table.config.plugins.responsive.savedConfig = true;
-
-                                        table.config.plugins.responsive.menuConfig = userTablePreferences;
-                                    }
-                                }
-                            }
-                            else {
-
-                                journal.log({type: 'info', owner: 'UI', module: 'table', submodule: 'responsive', func: 'setup'}, 'No table preferences were found for' + ' table: ' + table.id);
-                            }
-
-                            if (invalidTablePref) {
-
-                                journal.log({type: 'warning', owner: 'UI', module: 'table', submodule: 'responsive', func: 'setup'}, 'Table saved preferences were considered invalid and removed!');
-
-                                userTablePreferences = false;
-
-                                table.config.plugins.responsive.localPrefs = false;
-
-                                table.config.plugins.responsive.savedConfig = false;
-
-                                table.config.plugins.responsive.menuConfig = {
-                                    hidden: [],
-                                    visible: []
-                                };
-
-                                emp.empMessage.createMessage({text:"Your saved table preferences were removed because the table structure no longer matches. Please recreate and save your table preferences.", type:"warning"}, {pageNotifier: false, scroll:false, field:table.$self});
-
-                                emp.prefs.setPage('tables.' + table.id + '.columns', false);
-                            }
-
-                        }
-                        else {
-                            journal.log({ type: 'info', owner: 'UI', module: 'table', submodule: 'responsive', func: 'setup' }, 'skipping table preferences for external');
-                        }
-
-                    }
 
                     fastdom.measure(function() {
 

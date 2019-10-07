@@ -159,6 +159,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                     display: inline-block;
                 }
 
+                margin-bottom: 10px;
             }
         }
 
@@ -314,6 +315,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                     flex-direction: row;
                     display: inline-flex;
                     margin-top:5px;
+
                     .emp-field {
                         display: inline-block !important;
                         position: relative;
@@ -321,6 +323,23 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         // .emp-icon-help {
                         //     margin: 0 !important;
                         // }
+
+                        input[type="radio"] {
+                            position: absolute;
+
+                            &+label {
+                                padding: 2px 20px 4px 23px;
+                            }
+                        }
+                    }
+
+                    .emp-field:last-child {
+                        input[type="radio"] {
+
+                        	&+label {
+                        		padding: 2px 6px 4px 23px;
+                        	}
+                        }
                     }
                 }
 
@@ -337,7 +356,8 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 .emp-input-collection input[type="checkbox"]+label,
                 .cui-selection-group input[type="radio"]+label {
                     position: relative;
-                    padding: 2px 6px 4px 26px;
+                    padding: 2px 6px 4px 23px;
+                    //left: -21px;
                     @media (min-width: 720px){
                     	// margin-top:-4px;
                    	}
@@ -363,16 +383,32 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         position: absolute;
                     }
 
-                    &:checked + label::after {
+                    &:checked+label::after {
                         background: #454545;
-					    border-radius: 12px;
-					    content: "";
-					    display: inline-block;
-					    height: 10px;
-					    left: 3px;
-					    position: absolute;
-					    top: 5px;
-					    width: 10px;
+                        border-radius: 12px;
+                        content: "";
+                        display: inline-block;
+                        height: 10px;
+                        left: 3px;
+                        position: absolute;
+                        top: 7px;
+                        width: 10px;
+                    }
+
+                    @media (min-width: $cui-bp-medium) {
+
+                        &:checked + label::after {
+                            background: #454545;
+                            border-radius: 12px;
+                            content: "";
+                            display: inline-block;
+                            height: 10px;
+                            left: 3px;
+                            position: absolute;
+                            top: 5px;
+                            width: 10px;
+                        }
+
                     }
                 }
             }
@@ -948,6 +984,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 .footer-logo {
                     flex: 0 0 15%;
                     -ms-flex: 0 0 30%;
+
                 }
 
                 .footer-links {
@@ -970,6 +1007,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                                 text-decoration: none;
                                 padding: 3px 12px 3px 0;
                                 width: 100%;
+                                white-space: nowrap;
 
                                 &:hover {
                                     text-decoration: underline;
@@ -980,8 +1018,10 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                     @include pointbreak('786px') {
                         ul {
+                            justify-content: space-between;
                             li {
-                                flex: 1 0 0;
+                                flex: 0 1 0;
+                                flex-wrap: nowrap;
                             }
                         }
                     }
@@ -989,6 +1029,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             }
 
             span.unav-footer-logo {
+                background: url(../images/external-logo-footer.png) no-repeat 0 0 transparent;
                 display: inline-block;
                 height: 49px;
                 width: 80px;

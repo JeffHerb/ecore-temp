@@ -8,7 +8,7 @@ Handlebars.registerHelper('tableClientSideControls', function(attributes){
     }
 
     // Responsive Columns Control
-    if (!attributes.hasOwnProperty('data-responsive') || attributes['data-responsive'] === "true") {
+    if ((!attributes.hasOwnProperty('data-responsive') || attributes['data-responsive'] === "true") || (attributes['data-type'] && (attributes['data-type'] === "breakout" || attributes['data-type'] === "breakout-priority"))) {
 
         // Check if breakout was defined an place that button in instead
         if (attributes['data-type']  && (attributes['data-type'] === "breakout" || attributes['data-type'] === "breakout-priority")) {
@@ -23,9 +23,9 @@ Handlebars.registerHelper('tableClientSideControls', function(attributes){
         }
     }
 
-    if (attributes['data-type'] && attributes['data-breakout'] === "true" && (attributes['data-type'] !== "breakout" && attributes['data-type'] !== "breakout-priority")) {
-        buttons += '<button type="button" title="View all columns regardless of device width" class="emp-icon-table-breakout"></button>';
-    }
+    // if (attributes['data-type'] && (attributes['data-type'] === "breakout" || attributes['data-type'] === "breakout-priority")) {
+    //     buttons += '<button type="button" title="View all columns regardless of device width" class="emp-icon-table-breakout"></button>';
+    // }
 
     // Filter Control
     if (!attributes.hasOwnProperty('data-filter') || attributes['data-filter'] === "true") {

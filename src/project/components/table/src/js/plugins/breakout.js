@@ -18,8 +18,6 @@ define([], function() {
 
     _priv.checkColumnStatus = function(table) {
 
-        var hidden = false;
-
         for (var i = 0, len = table.config.plugins.responsive.columns.length; i < len; i++) {
 
             var colDef = table.config.plugins.responsive.columns[i];
@@ -27,13 +25,14 @@ define([], function() {
             // Filter out all of the columns that are hidden but can be showen
             if (!colDef.visibility && colDef.togglable) {
 
-                hidden = true;
-                break;
+                table.config.plugins.breakout.columnsHidden = true;
+                return true;
             }
 
         }
 
-        table.config.plugins.breakout.columnsHidden = hidden;
+        table.config.plugins.breakout.columnsHidden = false;
+
     };
 
     _priv.showHideWarning = function _show_hide_warning(table) {
@@ -49,15 +48,16 @@ define([], function() {
 
     _priv.showHideBreakoutControl = function _show_hidw_breakout(table) {
 
+
         if (table.config.plugins.breakout.fullView) {
 
         }
         else {
 
-            if (table.config.plugins.breakout.columnsHidden) {
+            if (table.obj.$breakOutControl && table.config.plugins.breakout.columnsHidden) {
                 table.obj.$breakOutControl[0].classList.remove('cui-hide-from-screen');
             }
-            else {
+            else if (table.obj.$breakOutControl && !table.config.plugins.breakout.columnsHidden) {
                 table.obj.$breakOutControl[0].classList.add('cui-hide-from-screen');
             }
 
@@ -147,34 +147,43 @@ define([], function() {
 
         if ((table.dataStore && table.dataStore.attributes['data-type'] && (table.dataStore.attributes['data-type'] === "breakout" || table.dataStore.attributes['data-type'] === "breakout-priority")) || (table.dataStore.attributes['data-breakout'] === "true") ) {
 
-            table.obj.$breakOutControl = table.obj.$tableWrapper.find('.emp-table-breakout-control');
+            setTimeout(function() {
 
-            table.obj.$MessageContainer = $('<div>', { class: 'cui-messages'});
-            table.obj.$breakOutWarning = $('<p>', {class:'cui-warning cui-hide-from-screen'}).text('Table columns have been hidden due to the size of your display. To see all columns press the "Show All Columns" button.');
+                table.obj.$breakOutControl = table.obj.$tableWrapper.find('.emp-table-breakout-control');
 
-            table.obj.$MessageContainer.append(table.obj.$breakOutWarning);
-            table.obj.$controlRow.prepend(table.obj.$MessageContainer);
+                table.obj.$MessageContainer = $('<div>', { class: 'cui-messages'});
+                table.obj.$breakOutWarning = $('<p>', {class:'cui-warning cui-hide-from-screen'}).text('Table columns have been hidden due to the size of your display. To see all columns press the "Show All Columns" button.');
 
+                table.obj.$MessageContainer.append(table.obj.$breakOutWarning);
+                table.obj.$controlRow.prepend(table.obj.$MessageContainer);
 
-            if (table.obj.$breakOutControl) {
+                if (table.obj.$breakOutControl && table.obj.$breakOutControl.length) {
 
-                table.obj.$breakOutControl.on('click', function(evt) {
-                    _events.breakout(evt, table);
-                });
+                    table.obj.$breakOutControl.on('click', function(evt) {
 
-                // do an initial check
-                _priv.checkColumnStatus(table);
+                        _events.breakout(evt, table);
+                    });
 
-                // Execute the first initial show hides
-                _priv.showHideWarning(table);
-                _priv.showHideBreakoutControl(table);
+                    // do an initial check
+                    _priv.checkColumnStatus(table);
 
-                table.$self.on('reflow.table', { table: table }, _events.resize);
-            }
+                    // Execute the first initial show hides
+                    _priv.showHideWarning(table);
+                    _priv.showHideBreakoutControl(table);
+
+                    table.$self.on('reflow.table', { table: table }, _events.resize);
+                }
+
+                next();
+            }, 500);
+
 
         }
+        else {
 
-        next();
+            next();
+        }
+
     };
 
     return {

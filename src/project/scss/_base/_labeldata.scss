@@ -461,6 +461,7 @@ fieldset {
 
             .emp-field {
                 display: inline-block !important;  // This is required to ensure proper row wrapping in ie
+                margin-bottom: 5px;
             }
 
             @include pointbreak($cui-bp-large) {
@@ -834,11 +835,12 @@ fieldset.emp-search-composite.emp-employee-search {
     overflow: visible;
 }
 
-.emp-field.cui-in-error {
+.emp-field.cui-in-error,
+.emp-field.cui-error {
 
     .cui-label label,
     .cui-label span {
-        color: $cui-color-error-text;
+        color: $cui-color-error-text !important;
     }
 }
 
