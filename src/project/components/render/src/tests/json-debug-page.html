@@ -214,7 +214,7 @@
                                             {
                                                 "template": "field",
                                                 "attributes": {
-                                                    "onclick": "emp.form.virtual({'newWindow':false,'attributes':{'name':'virtual','action':'\\/EIVP\\/EIVP_MAIN\\/EIVP_02\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}})",
+                                                    "onclick": "emp.form.virtual({'newWindow':false,'attributes':{'name':'virtual','action':'\\/RIVP\\/RIVP_MAIN\\/RIVP_04\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}})",
                                                     "name": "EC_LOGOUT",
                                                     "id": "EC_LOGOUT"
                                                 },
@@ -227,34 +227,10 @@
                             }
                         ]
                     },
-                    "text": "Joseph McCormick",
+                    "text": "Jeffrey Herb",
                     "type": "interactive"
                 },
-                "title": "Enhanced STAR Income Verification Program",
-                "support": {
-                    "popover": {
-                        "contents": [
-                            {
-                                "template": "popover",
-                                "contents": [
-                                    {
-                                        "template": "tree",
-                                        "items": [
-                                            {
-                                                "template": "link",
-                                                "attributes": {
-                                                    "href": "http://www.help.com"
-                                                },
-                                                "text": "Help"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "text": "Get Support"
-                }
+                "title": "Reports"
             }
         ]
     },
@@ -265,14 +241,13 @@
                 "instructions": [
                     {
                         "template": "output",
-                        "raw": true,
-                        "text": "<p>Complete and verify the fields below. When finished, select <strong>Update Enrollment</strong> to save your changes.</p>"
+                        "raw": true
                     }
                 ],
                 "pageLegend": {
-                    "helpText": true
+                    "required": true
                 },
-                "title": "Property Details"
+                "title": "Enhanced STAR Summary IVP Edit Report"
             },
             {
                 "template": "pagebody",
@@ -291,16 +266,67 @@
                                                     {
                                                         "template": "field",
                                                         "input": {
+                                                            "options": [
+                                                                {
+                                                                    "text": "030200 Binghamton",
+                                                                    "value": "030200"
+                                                                },
+                                                                {
+                                                                    "text": "052800 Fleming",
+                                                                    "value": "052800"
+                                                                },
+                                                                {
+                                                                    "text": "473600 Southampton",
+                                                                    "value": "473600"
+                                                                },
+                                                                {
+                                                                    "text": "473601 North Haven",
+                                                                    "value": "473601"
+                                                                },
+                                                                {
+                                                                    "text": "473603 Quogue",
+                                                                    "value": "473603"
+                                                                },
+                                                                {
+                                                                    "text": "473605 Southampton",
+                                                                    "value": "473605"
+                                                                },
+                                                                {
+                                                                    "text": "473607 Westhampton Beach",
+                                                                    "value": "473607"
+                                                                },
+                                                                {
+                                                                    "text": "473611 Pine Valley",
+                                                                    "value": "473611"
+                                                                },
+                                                                {
+                                                                    "text": "473613 West Hampton Dunes",
+                                                                    "value": "473613"
+                                                                },
+                                                                {
+                                                                    "text": "473615 Sagaponack",
+                                                                    "value": "473615"
+                                                                },
+                                                                {
+                                                                    "text": "554800 Rye",
+                                                                    "value": "554800"
+                                                                },
+                                                                {
+                                                                    "text": "554801 Port Chester",
+                                                                    "value": "554801"
+                                                                },
+                                                                {
+                                                                    "text": "554805 Rye Brook",
+                                                                    "value": "554805"
+                                                                }
+                                                            ],
                                                             "attributes": {
-                                                                "size": 6,
-                                                                "maxlength": 6,
-                                                                "name": "enrollment.property.swisCd",
-                                                                "aria-required": false,
-                                                                "id": "EC_SWIS_CODE",
-                                                                "type": "text",
-                                                                "value": "030200"
+                                                                "name": "appDataBean.rptCriteria.swissCd",
+                                                                "aria-required": true,
+                                                                "onchange": "emp.functionCall(event, 'emp.dropdown', ['EC_LEVY_YEAR',{'url':'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/getLevyYears','data':{'_fw_flowSessionKey':'RIVP_MAIN:RIVP_MAIN:summary','appDataBean.rptCriteria.swissCd':'EC_SWIS_CODE','EC_SWIS_CODE':'EC_SWIS_CODE'}},'ajax'])",
+                                                                "id": "EC_SWIS_CODE"
                                                             },
-                                                            "readOnly": true
+                                                            "required": true
                                                         },
                                                         "label": {
                                                             "attributes": {
@@ -308,7 +334,7 @@
                                                             },
                                                             "text": "SWIS code:"
                                                         },
-                                                        "type": "text"
+                                                        "type": "select"
                                                     }
                                                 ],
                                                 "width": "full",
@@ -328,24 +354,30 @@
                                                     {
                                                         "template": "field",
                                                         "input": {
+                                                            "options": [
+                                                                {
+                                                                    "text": "2019",
+                                                                    "value": "2019"
+                                                                },
+                                                                {
+                                                                    "text": "2020",
+                                                                    "value": "2020"
+                                                                }
+                                                            ],
                                                             "attributes": {
-                                                                "size": 35,
-                                                                "maxlength": 35,
-                                                                "name": "enrollment.property.prntKey",
-                                                                "aria-required": false,
-                                                                "id": "EC_PRINT_KEY",
-                                                                "type": "text",
-                                                                "value": "159.36-1-16"
+                                                                "name": "appDataBean.rptCriteria.levyYr",
+                                                                "aria-required": true,
+                                                                "id": "EC_LEVY_YEAR"
                                                             },
-                                                            "readOnly": true
+                                                            "required": true
                                                         },
                                                         "label": {
                                                             "attributes": {
-                                                                "for": "EC_PRINT_KEY"
+                                                                "for": "EC_LEVY_YEAR"
                                                             },
-                                                            "text": "Print key:"
+                                                            "text": "Levy year:"
                                                         },
-                                                        "type": "text"
+                                                        "type": "select"
                                                     }
                                                 ],
                                                 "width": "full",
@@ -365,96 +397,33 @@
                                                     {
                                                         "template": "field",
                                                         "input": {
+                                                            "options": [
+                                                                {
+                                                                    "text": "All",
+                                                                    "value": "A"
+                                                                },
+                                                                {
+                                                                    "text": "Co-op",
+                                                                    "value": "C"
+                                                                },
+                                                                {
+                                                                    "text": "Mobile Home",
+                                                                    "value": "M"
+                                                                }
+                                                            ],
                                                             "attributes": {
-                                                                "size": 10,
-                                                                "maxlength": 10,
-                                                                "name": "enrollment.property.ownrUnitNmbr",
+                                                                "name": "appDataBean.rptCriteria.mobileCoopInd",
                                                                 "aria-required": false,
-                                                                "id": "EC_UNIT_NMBR",
-                                                                "type": "text"
-                                                            },
-                                                            "readOnly": true
+                                                                "id": "EC_MOBILE_HOME_CO_OP"
+                                                            }
                                                         },
                                                         "label": {
                                                             "attributes": {
-                                                                "for": "EC_UNIT_NMBR"
-                                                            },
-                                                            "text": "Unit number:"
-                                                        },
-                                                        "type": "text"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "size": 76,
-                                                                "maxlength": 76,
-                                                                "name": "EC_PROPERTY_ADDRESS",
-                                                                "aria-required": false,
-                                                                "id": "EC_PROPERTY_ADDRESS",
-                                                                "type": "text",
-                                                                "value": "WA HARRIMAN CAMPUS ALBANY, NY 12227"
-                                                            },
-                                                            "readOnly": true
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_PROPERTY_ADDRESS"
-                                                            },
-                                                            "text": "Property address:"
-                                                        },
-                                                        "type": "text"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "size": 11,
-                                                                "maxlength": 11,
-                                                                "name": "EC_MBLHM_CO_OP",
-                                                                "aria-required": false,
-                                                                "id": "EC_MBLHM_CO_OP",
-                                                                "type": "text"
-                                                            },
-                                                            "readOnly": true
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_MBLHM_CO_OP"
+                                                                "for": "EC_MOBILE_HOME_CO_OP"
                                                             },
                                                             "text": "Mobile home or co-op:"
                                                         },
-                                                        "type": "text"
+                                                        "type": "select"
                                                     }
                                                 ],
                                                 "width": "full",
@@ -472,55 +441,36 @@
                                                 "template": "grid",
                                                 "contents": [
                                                     {
-                                                        "template": "yesno",
-                                                        "no": {
-                                                            "template": "field",
-                                                            "input": {
-                                                                "attributes": {
-                                                                    "name": "enrollment.property.lifeTrustInd",
-                                                                    "checked": "checked",
-                                                                    "id": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_NO",
-                                                                    "type": "radio",
-                                                                    "value": "N"
-                                                                }
-                                                            },
-                                                            "label": {
-                                                                "attributes": {
-                                                                    "for": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_NO"
-                                                                },
-                                                                "text": "No"
-                                                            },
-                                                            "type": "radio"
-                                                        },
-                                                        "help": [
-                                                            {
-                                                                "template": "output",
-                                                                "raw": "true",
-                                                                "text": "<p>If you're unsure whether the property is held in a trust or life estate, refer to the deed.</p>"
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "name": "FMT_lastUpdateSearchBegin",
+                                                                "id": "FMT_lastUpdateSearchBegin",
+                                                                "type": "hidden",
+                                                                "value": "DATE"
                                                             }
-                                                        ],
-                                                        "legend": "Is this property held in a trust or life estate?",
-                                                        "yes": {
-                                                            "template": "field",
-                                                            "input": {
-                                                                "attributes": {
-                                                                    "name": "enrollment.property.lifeTrustInd",
-                                                                    "id": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_YES",
-                                                                    "type": "radio",
-                                                                    "value": "Y"
-                                                                },
-                                                                "style": "expandable-control",
-                                                                "expands": "trustLifeEstateRegion"
-                                                            },
-                                                            "label": {
-                                                                "attributes": {
-                                                                    "for": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST_YES"
-                                                                },
-                                                                "text": "Yes"
-                                                            },
-                                                            "type": "radio"
                                                         },
-                                                        "name": "EC_PROPERTY_HELD_TRUST_OR_LIFE_EST"
+                                                        "type": "hidden"
+                                                    },
+                                                    {
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "data-validation": "dateValidator(document.form.name)",
+                                                                "name": "lastUpdateSearchBegin",
+                                                                "aria-required": false,
+                                                                "id": "EC_LAST_UPDATED_SEARCH_BEGIN",
+                                                                "type": "text",
+                                                                "value": "09/08/2019"
+                                                            }
+                                                        },
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "EC_LAST_UPDATED_SEARCH_BEGIN"
+                                                            },
+                                                            "text": "Last updated search begin:"
+                                                        },
+                                                        "type": "date"
                                                     }
                                                 ],
                                                 "width": "full",
@@ -532,285 +482,127 @@
                                         "type": "row"
                                     },
                                     {
-                                        "template": "region",
+                                        "template": "grid",
                                         "contents": [
                                             {
                                                 "template": "grid",
                                                 "contents": [
                                                     {
-                                                        "template": "grid",
-                                                        "contents": [
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "name": "FMT_lastUpdateSearchEnd",
+                                                                "id": "FMT_lastUpdateSearchEnd",
+                                                                "type": "hidden",
+                                                                "value": "DATE"
+                                                            }
+                                                        },
+                                                        "type": "hidden"
+                                                    },
+                                                    {
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "data-validation": "dateValidator(document.form.name)",
+                                                                "name": "lastUpdateSearchEnd",
+                                                                "aria-required": false,
+                                                                "id": "EC_LAST_UPDATED_SEARCH_END",
+                                                                "type": "text",
+                                                                "value": "10/08/2019"
+                                                            }
+                                                        },
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "EC_LAST_UPDATED_SEARCH_END"
+                                                            },
+                                                            "text": "Last updated search end:"
+                                                        },
+                                                        "type": "date"
+                                                    }
+                                                ],
+                                                "width": "full",
+                                                "attributes": {},
+                                                "type": "column"
+                                            }
+                                        ],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "inputGroup",
+                                                        "legend": "Sort:",
+                                                        "options": [
                                                             {
                                                                 "template": "field",
                                                                 "input": {
                                                                     "options": [
                                                                         {
-                                                                            "text": "Life estate",
-                                                                            "value": "L"
+                                                                            "text": "Ascending",
+                                                                            "value": "A"
                                                                         },
                                                                         {
-                                                                            "text": "Trust",
-                                                                            "expands": "trustNameRegion",
-                                                                            "value": "T"
+                                                                            "text": "Descending",
+                                                                            "value": "D"
                                                                         }
                                                                     ],
                                                                     "attributes": {
-                                                                        "name": "enrollment.property.lifeTrustCd",
+                                                                        "name": "appDataBean.rptCriteria.sortType",
                                                                         "aria-required": false,
-                                                                        "id": "EC_TRUST_LIFE_EST"
-                                                                    }
+                                                                        "id": "EC_ORDER"
+                                                                    },
+                                                                    "value": "A"
+                                                                },
+                                                                "type": "select"
+                                                            },
+                                                            {
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "options": [
+                                                                        {
+                                                                            "text": "Name",
+                                                                            "value": "N"
+                                                                        },
+                                                                        {
+                                                                            "text": "Print Key",
+                                                                            "value": "P"
+                                                                        },
+                                                                        {
+                                                                            "text": "Street Address",
+                                                                            "value": "A"
+                                                                        }
+                                                                    ],
+                                                                    "attributes": {
+                                                                        "name": "appDataBean.rptCriteria.sortOn",
+                                                                        "aria-required": false,
+                                                                        "id": "EC_ON"
+                                                                    },
+                                                                    "value": "P"
                                                                 },
                                                                 "label": {
                                                                     "attributes": {
-                                                                        "for": "EC_TRUST_LIFE_EST"
+                                                                        "for": "EC_ON"
                                                                     },
-                                                                    "text": "Trust or life estate:"
+                                                                    "text": "On:"
                                                                 },
                                                                 "type": "select"
                                                             }
                                                         ],
-                                                        "width": "full",
-                                                        "attributes": {},
-                                                        "type": "column"
+                                                        "type": "inputs"
                                                     }
                                                 ],
+                                                "width": "full",
                                                 "attributes": {},
-                                                "type": "row"
-                                            },
-                                            {
-                                                "template": "region",
-                                                "contents": [
-                                                    {
-                                                        "template": "grid",
-                                                        "contents": [
-                                                            {
-                                                                "template": "grid",
-                                                                "contents": [
-                                                                    {
-                                                                        "template": "field",
-                                                                        "input": {
-                                                                            "attributes": {
-                                                                                "size": 100,
-                                                                                "maxlength": 100,
-                                                                                "name": "enrollment.property.lifeTrustDesc",
-                                                                                "aria-required": false,
-                                                                                "id": "EC_LEGAL_NAME_TRUST",
-                                                                                "type": "text"
-                                                                            }
-                                                                        },
-                                                                        "label": {
-                                                                            "attributes": {
-                                                                                "for": "EC_LEGAL_NAME_TRUST"
-                                                                            },
-                                                                            "text": "Legal name of trust:"
-                                                                        },
-                                                                        "type": "text"
-                                                                    }
-                                                                ],
-                                                                "width": "full",
-                                                                "attributes": {},
-                                                                "type": "column"
-                                                            }
-                                                        ],
-                                                        "attributes": {},
-                                                        "type": "row"
-                                                    }
-                                                ],
-                                                "attributes": {
-                                                    "id": "trustNameRegion"
-                                                },
-                                                "collapse": true
+                                                "type": "column"
                                             }
                                         ],
-                                        "attributes": {
-                                            "id": "trustLifeEstateRegion"
-                                        },
-                                        "collapse": true
-                                    }
-                                ],
-                                "attributes": {},
-                                "title": "Property Information"
-                            },
-                            {
-                                "template": "external-group",
-                                "contents": [
-                                    {
-                                        "template": "table",
-                                        "head": {
-                                            "rows": [
-                                                {
-                                                    "columns": [
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "ownersSumryModelId_name",
-                                                                "data-type": "link"
-                                                            },
-                                                            "text": "Name",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "ownersSumryModelId_ssn",
-                                                                "data-type": "ssn"
-                                                            },
-                                                            "text": "Social Security number (SSN)",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "ownersSumryModelId_ownrType",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "Owner/spouse",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "ownersSumryModelId_dob",
-                                                                "data-type": "date"
-                                                            },
-                                                            "text": "Date of birth",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "ownersSumryModelId_relShips",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "Relationships",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        "selectionType": "multiple",
-                                        "selectAll": true,
-                                        "prechecked": [],
-                                        "optimize": false,
-                                        "selectable": true,
-                                        "footerControls": {
-                                            "contents": [
-                                                {
-                                                    "template": "composite",
-                                                    "parts": {
-                                                        "button": {
-                                                            "template": "field",
-                                                            "input": {
-                                                                "attributes": {
-                                                                    "data-validation": false,
-                                                                    "onclick": "emp.functionCall(event, {0:{'function':'emp.confirm','args':['Are you sure you want to remove this owner?\\n\\n']},1:{'function':'emp.form.submit','args':[{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/removeOwner'}]}})",
-                                                                    "name": "EC_BTN_REMOVE",
-                                                                    "id": "EC_BTN_REMOVE",
-                                                                    "label": "Remove",
-                                                                    "type": "button",
-                                                                    "title": "Remove"
-                                                                },
-                                                                "text": "Remove"
-                                                            },
-                                                            "type": "button"
-                                                        },
-                                                        "text": {
-                                                            "template": "field",
-                                                            "input": {
-                                                                "options": [
-                                                                    {
-                                                                        "text": "No longer owner\u001as primary residence",
-                                                                        "value": "01"
-                                                                    },
-                                                                    {
-                                                                        "text": "Deceased",
-                                                                        "value": "02"
-                                                                    },
-                                                                    {
-                                                                        "text": "Property sold",
-                                                                        "value": "03"
-                                                                    },
-                                                                    {
-                                                                        "text": "Not age qualified",
-                                                                        "value": "04"
-                                                                    }
-                                                                ],
-                                                                "attributes": {
-                                                                    "name": "rsnToRemove",
-                                                                    "aria-required": false,
-                                                                    "id": "EC_REASON_REMOVE_OWNERS"
-                                                                }
-                                                            },
-                                                            "label": {
-                                                                "visibility": "hidden",
-                                                                "attributes": {
-                                                                    "for": "EC_REASON_REMOVE_OWNERS"
-                                                                },
-                                                                "text": "Reason for removing owner(s):",
-                                                                "hasLayout": "false"
-                                                            },
-                                                            "type": "select"
-                                                        }
-                                                    },
-                                                    "type": "search",
-                                                    "properties": {}
-                                                }
-                                            ]
-                                        },
-                                        "attributes": {
-                                            "id": "ownersSumryModelId"
-                                        },
-                                        "body": {
-                                            "rows": [
-                                                {
-                                                    "selection": {},
-                                                    "columns": [
-                                                        {
-                                                            "contents": [
-                                                                {
-                                                                    "template": "link",
-                                                                    "attributes": {
-                                                                        "role": "button",
-                                                                        "data-validation": false,
-                                                                        "onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','ownersSumryModelId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/updateOwner'}]}})",
-                                                                        "href": "#",
-                                                                        "title": "Edit Owner"
-                                                                    },
-                                                                    "text": "Honey, Oats"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "796-34-1256"
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "Owner"
-                                                        },
-                                                        {
-                                                            "contents": [],
-                                                            "text": "05/13/1972"
-                                                        },
-                                                        {
-                                                            "contents": []
-                                                        }
-                                                    ],
-                                                    "key": "0"
-                                                }
-                                            ]
-                                        }
+                                        "attributes": {},
+                                        "type": "row"
                                     },
                                     {
                                         "template": "buttonGroup",
@@ -823,14 +615,32 @@
                                                         "input": {
                                                             "attributes": {
                                                                 "data-validation": false,
-                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/addOwner'}])",
-                                                                "name": "EC_BTN_ADD_OWNER",
-                                                                "id": "EC_BTN_ADD_OWNER",
-                                                                "label": "Add Owner",
+                                                                "accessKey": "C",
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/clear'}])",
+                                                                "name": "E_BTN_CLEAR",
+                                                                "id": "E_BTN_CLEAR",
+                                                                "label": "Clear",
                                                                 "type": "button",
-                                                                "title": "Add Owner"
+                                                                "title": "Clear"
                                                             },
-                                                            "text": "Add Owner"
+                                                            "text": "Clear"
+                                                        },
+                                                        "type": "button"
+                                                    },
+                                                    {
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "data-validation": true,
+                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/search'}])",
+                                                                "name": "E_BTN_SEARCH",
+                                                                "id": "E_BTN_SEARCH",
+                                                                "label": "Search",
+                                                                "type": "button",
+                                                                "title": "Search"
+                                                            },
+                                                            "text": "Search",
+                                                            "primary": true
                                                         },
                                                         "type": "button"
                                                     }
@@ -843,7 +653,159 @@
                                     }
                                 ],
                                 "attributes": {},
-                                "title": "Owner summary"
+                                "title": "Search"
+                            },
+                            {
+                                "template": "external-group",
+                                "contents": [
+                                    {
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "size": 19,
+                                                                "maxlength": 19,
+                                                                "name": "date",
+                                                                "aria-required": false,
+                                                                "id": "EC_DATE",
+                                                                "type": "text"
+                                                            },
+                                                            "readOnly": true
+                                                        },
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "EC_DATE"
+                                                            },
+                                                            "text": "Date:"
+                                                        },
+                                                        "type": "text"
+                                                    }
+                                                ],
+                                                "width": "full",
+                                                "attributes": {},
+                                                "type": "column"
+                                            }
+                                        ],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "template": "field",
+                                                        "input": {
+                                                            "attributes": {
+                                                                "size": 30,
+                                                                "maxlength": 30,
+                                                                "name": "createdFor",
+                                                                "aria-required": false,
+                                                                "id": "EC_CREATED_FOR",
+                                                                "type": "text",
+                                                                "value": "Jeffrey Herb"
+                                                            },
+                                                            "readOnly": true
+                                                        },
+                                                        "label": {
+                                                            "attributes": {
+                                                                "for": "EC_CREATED_FOR"
+                                                            },
+                                                            "text": "Created for:"
+                                                        },
+                                                        "type": "text"
+                                                    }
+                                                ],
+                                                "width": "full",
+                                                "attributes": {},
+                                                "type": "column"
+                                            }
+                                        ],
+                                        "attributes": {},
+                                        "type": "row"
+                                    },
+                                    {
+                                        "template": "table",
+                                        "head": {
+                                            "rows": [
+                                                {
+                                                    "columns": [
+                                                        {
+                                                            "responsive": {},
+                                                            "attributes": {
+                                                                "data-colmap": "table__schoolTaxYear",
+                                                                "data-type": "alphaNumeric"
+                                                            },
+                                                            "text": "School tax year",
+                                                            "sortable": true,
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "responsive": {},
+                                                            "attributes": {
+                                                                "data-colmap": "table__printKey",
+                                                                "data-type": "alphaNumeric"
+                                                            },
+                                                            "text": "Print key",
+                                                            "sortable": true,
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "responsive": {},
+                                                            "attributes": {
+                                                                "data-colmap": "table__mobileOrCoop",
+                                                                "data-type": "alphaNumeric"
+                                                            },
+                                                            "text": "Mobile home co-op",
+                                                            "sortable": true,
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "responsive": {},
+                                                            "attributes": {
+                                                                "data-colmap": "table__address",
+                                                                "data-type": "alphaNumeric"
+                                                            },
+                                                            "text": "Address",
+                                                            "sortable": true,
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        },
+                                                        {
+                                                            "responsive": {},
+                                                            "attributes": {
+                                                                "data-colmap": "table__name",
+                                                                "data-type": "alphaNumeric"
+                                                            },
+                                                            "text": "Name",
+                                                            "sortable": true,
+                                                            "type": "header",
+                                                            "hideLabel": false
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "prechecked": [],
+                                        "optimize": false,
+                                        "attributes": {
+                                            "id": "table_"
+                                        },
+                                        "type": "breakout"
+                                    }
+                                ],
+                                "attributes": {},
+                                "title": "Reports"
                             },
                             {
                                 "template": "buttonGroup",
@@ -856,31 +818,14 @@
                                                 "input": {
                                                     "attributes": {
                                                         "data-validation": false,
-                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN.flow/prev'}])",
-                                                        "name": "EC_BTN_RTN_TO_SRCH",
-                                                        "action": "search",
-                                                        "id": "EC_BTN_RTN_TO_SRCH",
+                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/back'}])",
+                                                        "name": "E_BTN_BACK",
+                                                        "id": "E_BTN_BACK",
+                                                        "label": "Back",
                                                         "type": "button",
-                                                        "title": "Return to Search"
+                                                        "title": "Back"
                                                     },
-                                                    "text": "Return to Search"
-                                                },
-                                                "type": "button"
-                                            },
-                                            {
-                                                "template": "field",
-                                                "input": {
-                                                    "attributes": {
-                                                        "data-validation": true,
-                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'property',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page/updateEnrollment'}])",
-                                                        "name": "EC_BTN_UPDATE_ENROLL",
-                                                        "id": "EC_BTN_UPDATE_ENROLL",
-                                                        "label": "Update Enrollment",
-                                                        "type": "button",
-                                                        "title": "Update Enrollment"
-                                                    },
-                                                    "text": "Update Enrollment",
-                                                    "primary": true
+                                                    "text": "Back"
                                                 },
                                                 "type": "button"
                                             }
@@ -896,9 +841,9 @@
                                 "input": {
                                     "attributes": {
                                         "name": "_fw_flowSessionKey",
-                                        "id": "property__fw_flowSessionKey",
+                                        "id": "form_content__fw_flowSessionKey",
                                         "type": "hidden",
-                                        "value": "EIVP_MAIN:EIVP_MAIN:property"
+                                        "value": "RIVP_MAIN:RIVP_MAIN:summary"
                                     }
                                 },
                                 "type": "hidden"
@@ -906,9 +851,9 @@
                         ],
                         "attributes": {
                             "method": "post",
-                            "name": "property",
-                            "action": "/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_02.page",
-                            "id": "property"
+                            "name": "form_content",
+                            "action": "/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page",
+                            "id": "form_content"
                         },
                         "type": "form"
                     }

@@ -6,8 +6,6 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
 	_priv.fixData = function _fix_data(data, external) {
 
-        console.log(data);
-
         // Ensure a type attribute is set on the table
         if (data.type) {
             if (!data.attributes) {
@@ -565,6 +563,12 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
             }
 
+        }
+
+        if (external && data.type && data.type === "breakout") {
+            data.attributes['data-filter'] = false;
+            data.attributes['data-resize'] = false;
+            data.attributes['data-sticky'] = false;
         }
 
         // Do not remove, this may still be needed, but can be disabled for naw - JAH - 08222019

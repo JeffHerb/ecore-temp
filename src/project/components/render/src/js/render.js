@@ -1,11 +1,12 @@
-define(['processTemplates', 'tableShiv', 'sectionShiv', 'fieldEvent', 'compositeEvent'], function(procTemplates, tableShiv, sectionShiv, fieldEvent, compositeEvent) {
+define(['processTemplates', 'tableShiv', 'sectionShiv', 'agencyHeaderShiv', 'fieldEvent', 'compositeEvent'], function(procTemplates, tableShiv, sectionShiv, agencyHeaderShiv, fieldEvent, compositeEvent) {
 
     var _priv = {
         setup: false
     };
 
     var dataShivs = {
-        "section": sectionShiv.data
+        "section": sectionShiv.data,
+        "agency-header": agencyHeaderShiv.data
     };
 
     var templateShivs = {

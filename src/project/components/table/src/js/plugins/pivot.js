@@ -43,38 +43,18 @@ define([], function() {
 
         var tableWidth = tableWrapper.offsetWidth + 20;
 
-        //if (!table.config.setup.breakout) {
+        if (tableWidth >= (table.config.plugins.pivot.toggleWidth + _priv.tolerance)) {
 
-            if (tableWidth >= (table.config.plugins.pivot.toggleWidth + _priv.tolerance)) {
-
-                if (!table.elem.classList.contains('unpivot')) {
-                    table.elem.classList.add('unpivot');
-                }
+            if (!table.elem.classList.contains('unpivot')) {
+                table.elem.classList.add('unpivot');
             }
-            else {
+        }
+        else {
 
-                if (table.elem.classList.contains('unpivot')) {
-                    table.elem.classList.remove('unpivot');
-                }
+            if (table.elem.classList.contains('unpivot')) {
+                table.elem.classList.remove('unpivot');
             }
-        //}
-        // else if (manual) {
-
-
-        //     if (tableWidth >= (table.config.plugins.pivot.toggleWidth + _priv.tolerance)) {
-
-        //         if (!table.elem.classList.contains('unpivot')) {
-        //             table.elem.classList.add('unpivot');
-        //         }
-        //     }
-        //     else {
-
-        //         if (table.elem.classList.contains('unpivot')) {
-        //             table.elem.classList.remove('unpivot');
-        //         }
-        //     }
-
-        // }
+        }
 
     };
 
