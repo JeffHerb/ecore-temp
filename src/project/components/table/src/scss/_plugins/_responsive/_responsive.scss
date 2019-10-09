@@ -515,3 +515,13 @@ $table-responsive-close-button-padding: 3px 20px;
         }
     }
 }
+
+.emp-pivot-table:not(.unpivot){
+    .emp-empty-table-message{
+        display:block;    
+        padding-top:10px;  
+        padding-bottom:10px;          
+        height:auto;
+        min-height:40px;        
+    }
+}
