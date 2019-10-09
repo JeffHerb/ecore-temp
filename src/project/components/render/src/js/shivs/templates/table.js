@@ -1415,7 +1415,7 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                             {
                                 "attributes": {
                                     'colSpan': count,
-                                    'class': 'cui-align-center'
+                                    'class': 'cui-align-center emp-empty-table-message'
                                 },
                                 "text": "There is no data to display."
                             }
