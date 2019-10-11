@@ -219,7 +219,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             margin-bottom: 10px !important;
             padding: 0px;
 
-        	.cui-label{
+        	.cui-label {
         		span,
         		label{
         			// min-height:24px;
@@ -1152,6 +1152,30 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             }
         }
 
+    }
+
+    .ie {
+
+        #body-wrapper {
+
+            .cui-row {
+
+                .emp-field {
+
+                    .cui-data {
+
+                        .cui-messages {
+
+                            li {
+                                width: 100% !important;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
     }
 }
 

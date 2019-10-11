@@ -195,672 +195,694 @@
 					"type": "page"
 				}
 			},
-    "header": {
-        "contents": [
-            {
-                "template": "universal-header"
-            },
-            {
-                "template": "agency-header",
-                "userAcct": {
-                    "popover": {
-                        "contents": [
-                            {
-                                "template": "popover",
-                                "contents": [
-                                    {
-                                        "template": "tree",
-                                        "items": [
-                                            {
-                                                "template": "field",
-                                                "attributes": {
-                                                    "onclick": "emp.form.virtual({'newWindow':false,'attributes':{'name':'virtual','action':'\\/RIVP\\/RIVP_MAIN\\/RIVP_04\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}})",
-                                                    "name": "EC_LOGOUT",
-                                                    "id": "EC_LOGOUT"
-                                                },
-                                                "text": "logout",
-                                                "type": "button"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "text": "Jeffrey Herb",
-                    "type": "interactive"
-                },
-                "title": "Reports"
-            }
-        ]
-    },
-    "page": {
-        "contents": [
-            {
-                "template": "external-pageinfo",
-                "instructions": [
-                    {
-                        "template": "output",
-                        "raw": true
-                    }
-                ],
-                "pageLegend": {
-                    "required": true
-                },
-                "title": "Enhanced STAR Summary IVP Edit Report"
-            },
-            {
-                "template": "pagebody",
-                "contents": [
-                    {
-                        "contents": [
-                            {
-                                "template": "external-group",
-                                "contents": [
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "options": [
-                                                                {
-                                                                    "text": "030200 Binghamton",
-                                                                    "value": "030200"
-                                                                },
-                                                                {
-                                                                    "text": "052800 Fleming",
-                                                                    "value": "052800"
-                                                                },
-                                                                {
-                                                                    "text": "473600 Southampton",
-                                                                    "value": "473600"
-                                                                },
-                                                                {
-                                                                    "text": "473601 North Haven",
-                                                                    "value": "473601"
-                                                                },
-                                                                {
-                                                                    "text": "473603 Quogue",
-                                                                    "value": "473603"
-                                                                },
-                                                                {
-                                                                    "text": "473605 Southampton",
-                                                                    "value": "473605"
-                                                                },
-                                                                {
-                                                                    "text": "473607 Westhampton Beach",
-                                                                    "value": "473607"
-                                                                },
-                                                                {
-                                                                    "text": "473611 Pine Valley",
-                                                                    "value": "473611"
-                                                                },
-                                                                {
-                                                                    "text": "473613 West Hampton Dunes",
-                                                                    "value": "473613"
-                                                                },
-                                                                {
-                                                                    "text": "473615 Sagaponack",
-                                                                    "value": "473615"
-                                                                },
-                                                                {
-                                                                    "text": "554800 Rye",
-                                                                    "value": "554800"
-                                                                },
-                                                                {
-                                                                    "text": "554801 Port Chester",
-                                                                    "value": "554801"
-                                                                },
-                                                                {
-                                                                    "text": "554805 Rye Brook",
-                                                                    "value": "554805"
-                                                                }
-                                                            ],
-                                                            "attributes": {
-                                                                "name": "appDataBean.rptCriteria.swissCd",
-                                                                "aria-required": true,
-                                                                "onchange": "emp.functionCall(event, 'emp.dropdown', ['EC_LEVY_YEAR',{'url':'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/getLevyYears','data':{'_fw_flowSessionKey':'RIVP_MAIN:RIVP_MAIN:summary','appDataBean.rptCriteria.swissCd':'EC_SWIS_CODE','EC_SWIS_CODE':'EC_SWIS_CODE'}},'ajax'])",
-                                                                "id": "EC_SWIS_CODE"
-                                                            },
-                                                            "required": true
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_SWIS_CODE"
-                                                            },
-                                                            "text": "SWIS code:"
-                                                        },
-                                                        "type": "select"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "options": [
-                                                                {
-                                                                    "text": "2019",
-                                                                    "value": "2019"
-                                                                },
-                                                                {
-                                                                    "text": "2020",
-                                                                    "value": "2020"
-                                                                }
-                                                            ],
-                                                            "attributes": {
-                                                                "name": "appDataBean.rptCriteria.levyYr",
-                                                                "aria-required": true,
-                                                                "id": "EC_LEVY_YEAR"
-                                                            },
-                                                            "required": true
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_LEVY_YEAR"
-                                                            },
-                                                            "text": "Levy year:"
-                                                        },
-                                                        "type": "select"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "options": [
-                                                                {
-                                                                    "text": "All",
-                                                                    "value": "A"
-                                                                },
-                                                                {
-                                                                    "text": "Co-op",
-                                                                    "value": "C"
-                                                                },
-                                                                {
-                                                                    "text": "Mobile Home",
-                                                                    "value": "M"
-                                                                }
-                                                            ],
-                                                            "attributes": {
-                                                                "name": "appDataBean.rptCriteria.mobileCoopInd",
-                                                                "aria-required": false,
-                                                                "id": "EC_MOBILE_HOME_CO_OP"
-                                                            }
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_MOBILE_HOME_CO_OP"
-                                                            },
-                                                            "text": "Mobile home or co-op:"
-                                                        },
-                                                        "type": "select"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "name": "FMT_lastUpdateSearchBegin",
-                                                                "id": "FMT_lastUpdateSearchBegin",
-                                                                "type": "hidden",
-                                                                "value": "DATE"
-                                                            }
-                                                        },
-                                                        "type": "hidden"
-                                                    },
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "data-validation": "dateValidator(document.form.name)",
-                                                                "name": "lastUpdateSearchBegin",
-                                                                "aria-required": false,
-                                                                "id": "EC_LAST_UPDATED_SEARCH_BEGIN",
-                                                                "type": "text",
-                                                                "value": "09/08/2019"
-                                                            }
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_LAST_UPDATED_SEARCH_BEGIN"
-                                                            },
-                                                            "text": "Last updated search begin:"
-                                                        },
-                                                        "type": "date"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "name": "FMT_lastUpdateSearchEnd",
-                                                                "id": "FMT_lastUpdateSearchEnd",
-                                                                "type": "hidden",
-                                                                "value": "DATE"
-                                                            }
-                                                        },
-                                                        "type": "hidden"
-                                                    },
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "data-validation": "dateValidator(document.form.name)",
-                                                                "name": "lastUpdateSearchEnd",
-                                                                "aria-required": false,
-                                                                "id": "EC_LAST_UPDATED_SEARCH_END",
-                                                                "type": "text",
-                                                                "value": "10/08/2019"
-                                                            }
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_LAST_UPDATED_SEARCH_END"
-                                                            },
-                                                            "text": "Last updated search end:"
-                                                        },
-                                                        "type": "date"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "inputGroup",
-                                                        "legend": "Sort:",
-                                                        "options": [
-                                                            {
-                                                                "template": "field",
-                                                                "input": {
-                                                                    "options": [
-                                                                        {
-                                                                            "text": "Ascending",
-                                                                            "value": "A"
-                                                                        },
-                                                                        {
-                                                                            "text": "Descending",
-                                                                            "value": "D"
-                                                                        }
-                                                                    ],
-                                                                    "attributes": {
-                                                                        "name": "appDataBean.rptCriteria.sortType",
-                                                                        "aria-required": false,
-                                                                        "id": "EC_ORDER"
-                                                                    },
-                                                                    "value": "A"
-                                                                },
-                                                                "type": "select"
-                                                            },
-                                                            {
-                                                                "template": "field",
-                                                                "input": {
-                                                                    "options": [
-                                                                        {
-                                                                            "text": "Name",
-                                                                            "value": "N"
-                                                                        },
-                                                                        {
-                                                                            "text": "Print Key",
-                                                                            "value": "P"
-                                                                        },
-                                                                        {
-                                                                            "text": "Street Address",
-                                                                            "value": "A"
-                                                                        }
-                                                                    ],
-                                                                    "attributes": {
-                                                                        "name": "appDataBean.rptCriteria.sortOn",
-                                                                        "aria-required": false,
-                                                                        "id": "EC_ON"
-                                                                    },
-                                                                    "value": "P"
-                                                                },
-                                                                "label": {
-                                                                    "attributes": {
-                                                                        "for": "EC_ON"
-                                                                    },
-                                                                    "text": "On:"
-                                                                },
-                                                                "type": "select"
-                                                            }
-                                                        ],
-                                                        "type": "inputs"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "buttonGroup",
-                                        "contents": [
-                                            {
-                                                "template": "buttonGroup",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "data-validation": false,
-                                                                "accessKey": "C",
-                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/clear'}])",
-                                                                "name": "E_BTN_CLEAR",
-                                                                "id": "E_BTN_CLEAR",
-                                                                "label": "Clear",
-                                                                "type": "button",
-                                                                "title": "Clear"
-                                                            },
-                                                            "text": "Clear"
-                                                        },
-                                                        "type": "button"
-                                                    },
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "data-validation": true,
-                                                                "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/search'}])",
-                                                                "name": "E_BTN_SEARCH",
-                                                                "id": "E_BTN_SEARCH",
-                                                                "label": "Search",
-                                                                "type": "button",
-                                                                "title": "Search"
-                                                            },
-                                                            "text": "Search",
-                                                            "primary": true
-                                                        },
-                                                        "type": "button"
-                                                    }
-                                                ],
-                                                "type": "column",
-                                                "align": "center"
-                                            }
-                                        ],
-                                        "type": "row"
-                                    }
-                                ],
-                                "attributes": {},
-                                "title": "Search"
-                            },
-                            {
-                                "template": "external-group",
-                                "contents": [
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "size": 19,
-                                                                "maxlength": 19,
-                                                                "name": "date",
-                                                                "aria-required": false,
-                                                                "id": "EC_DATE",
-                                                                "type": "text"
-                                                            },
-                                                            "readOnly": true
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_DATE"
-                                                            },
-                                                            "text": "Date:"
-                                                        },
-                                                        "type": "text"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "grid",
-                                        "contents": [
-                                            {
-                                                "template": "grid",
-                                                "contents": [
-                                                    {
-                                                        "template": "field",
-                                                        "input": {
-                                                            "attributes": {
-                                                                "size": 30,
-                                                                "maxlength": 30,
-                                                                "name": "createdFor",
-                                                                "aria-required": false,
-                                                                "id": "EC_CREATED_FOR",
-                                                                "type": "text",
-                                                                "value": "Jeffrey Herb"
-                                                            },
-                                                            "readOnly": true
-                                                        },
-                                                        "label": {
-                                                            "attributes": {
-                                                                "for": "EC_CREATED_FOR"
-                                                            },
-                                                            "text": "Created for:"
-                                                        },
-                                                        "type": "text"
-                                                    }
-                                                ],
-                                                "width": "full",
-                                                "attributes": {},
-                                                "type": "column"
-                                            }
-                                        ],
-                                        "attributes": {},
-                                        "type": "row"
-                                    },
-                                    {
-                                        "template": "table",
-                                        "head": {
-                                            "rows": [
-                                                {
-                                                    "columns": [
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "table__schoolTaxYear",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "School tax year",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "table__printKey",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "Print key",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "table__mobileOrCoop",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "Mobile home co-op",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "table__address",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "Address",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        },
-                                                        {
-                                                            "responsive": {},
-                                                            "attributes": {
-                                                                "data-colmap": "table__name",
-                                                                "data-type": "alphaNumeric"
-                                                            },
-                                                            "text": "Name",
-                                                            "sortable": true,
-                                                            "type": "header",
-                                                            "hideLabel": false
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        "prechecked": [],
-                                        "optimize": false,
-                                        "attributes": {
-                                            "id": "table_"
-                                        },
-                                        "type": "breakout"
-                                    }
-                                ],
-                                "attributes": {},
-                                "title": "Reports"
-                            },
-                            {
-                                "template": "buttonGroup",
-                                "contents": [
-                                    {
-                                        "template": "buttonGroup",
-                                        "contents": [
-                                            {
-                                                "template": "field",
-                                                "input": {
-                                                    "attributes": {
-                                                        "data-validation": false,
-                                                        "onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'form_content',action:'/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page/back'}])",
-                                                        "name": "E_BTN_BACK",
-                                                        "id": "E_BTN_BACK",
-                                                        "label": "Back",
-                                                        "type": "button",
-                                                        "title": "Back"
-                                                    },
-                                                    "text": "Back"
-                                                },
-                                                "type": "button"
-                                            }
-                                        ],
-                                        "type": "column",
-                                        "align": "center"
-                                    }
-                                ],
-                                "type": "row"
-                            },
-                            {
-                                "template": "field",
-                                "input": {
-                                    "attributes": {
-                                        "name": "_fw_flowSessionKey",
-                                        "id": "form_content__fw_flowSessionKey",
-                                        "type": "hidden",
-                                        "value": "RIVP_MAIN:RIVP_MAIN:summary"
-                                    }
-                                },
-                                "type": "hidden"
-                            }
-                        ],
-                        "attributes": {
-                            "method": "post",
-                            "name": "form_content",
-                            "action": "/RIVP/gateway/RIVP/RIVP_MAIN/RIVP_04.page",
-                            "id": "form_content"
-                        },
-                        "type": "form"
-                    }
-                ]
-            }
-        ]
-    }
+			"header": {
+				"contents": [{
+						"template": "universal-header"
+					},
+					{
+						"template": "agency-header",
+						"userAcct": {
+							"popover": {
+								"contents": [{
+									"template": "popover",
+									"contents": [{
+										"template": "tree",
+										"items": [{
+											"template": "field",
+											"input": {
+												"attributes": {
+													"onclick": "emp.form.virtual({'newWindow':false,'attributes':{'name':'virtual','action':'\\/EIVP\\/EIVP_MAIN\\/EIVP_01\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}})",
+													"name": "EC_LOGOUT",
+													"id": "EC_LOGOUT"
+												},
+												"text": "logout"
+											},
+											"type": "button"
+										}]
+									}]
+								}]
+							},
+							"text": "Jeffrey Herb",
+							"type": "interactive"
+						},
+						"title": "Enhanced STAR Income Verification Program"
+					}
+				]
+			},
+			"page": {
+				"contents": [{
+						"template": "message",
+						"list": []
+					},
+					{
+						"template": "external-pageinfo",
+						"instructions": [{
+							"template": "output",
+							"raw": true,
+							"text": "<p>Complete the information below about the property and select <strong>Search</strong>. The information you enter will be used to identify the best match on our database. In addition to the <em>SWIS code</em> and <em>Levy year</em>, enter the information as it appears on the assessment roll in one of these field combinations:</p>\n\t\t\t\t\t<ul>\n\t\t\t\t\t<li>Print key</li>\n\t\t\t\t\t<li>Street number <strong>and</strong> Street name</li>\n\t\t\t\t\t<li>Owner's last name</li>\n\t\t\t\t\t</ul>\n\t\t\t\t\t<p>Note: You can add <em>Unit number</em> and <em>ZIP/Postal code</em> to any search to improve your results.</p>"
+						}],
+						"pageLegend": {
+							"helpText": true,
+							"required": true
+						},
+						"title": "Property Search"
+					},
+					{
+						"template": "pagebody",
+						"contents": [{
+							"contents": [{
+									"template": "external-group",
+									"contents": [{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"options": [{
+																"text": "030200 Binghamton",
+																"value": "030200"
+															},
+															{
+																"text": "052800 Fleming",
+																"value": "052800"
+															},
+															{
+																"text": "473600 Southampton",
+																"value": "473600"
+															},
+															{
+																"text": "473601 North Haven",
+																"value": "473601"
+															},
+															{
+																"text": "473603 Quogue",
+																"value": "473603"
+															},
+															{
+																"text": "473605 Southampton",
+																"value": "473605"
+															},
+															{
+																"text": "473607 Westhampton Beach",
+																"value": "473607"
+															},
+															{
+																"text": "473611 Pine Valley",
+																"value": "473611"
+															},
+															{
+																"text": "473613 West Hampton Dunes",
+																"value": "473613"
+															},
+															{
+																"text": "473615 Sagaponack",
+																"value": "473615"
+															},
+															{
+																"text": "554800 Rye",
+																"value": "554800"
+															},
+															{
+																"text": "554801 Port Chester",
+																"value": "554801"
+															},
+															{
+																"text": "554805 Rye Brook",
+																"value": "554805"
+															}
+														],
+														"attributes": {
+															"name": "appDataBean.prptySrchCriteria.swissCd",
+															"aria-required": true,
+															"onchange": "emp.functionCall(event, 'emp.dropdown', ['EC_LEVY_YEAR',{'url':'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/getLevyYears','data':{'_fw_flowSessionKey':'EIVP_MAIN:EIVP_MAIN:search','EC_SWIS_CODE_I':'EC_SWIS_CODE_I','appDataBean.prptySrchCriteria.swissCd':'EC_SWIS_CODE_I'}},'ajax'])",
+															"id": "EC_SWIS_CODE_I"
+														},
+														"style": "error",
+														"required": true
+													},
+													"help": [{
+														"template": "output",
+														"raw": "true",
+														"text": "\t<p>The SWIS codes listed are those you have rights to access. If you feel you should have access to other SWIS codes, please call (518)591-5233 or email <a href=\"mailto:Real.Property@tax.ny.gov\" target=\"_blank\" title=\"This will open a new window for more information.\">Real.Property@tax.ny.gov</a>.</p>"
+													}],
+													"label": {
+														"attributes": {
+															"for": "EC_SWIS_CODE_I"
+														},
+														"text": "SWIS code:"
+													},
+													"type": "select",
+													"message": {
+														"list": [{
+															"text": "You must select a SWIS code from the drop-down.",
+															"type": "error"
+														}]
+													}
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"options": [],
+														"attributes": {
+															"name": "appDataBean.prptySrchCriteria.levyYr",
+															"aria-required": true,
+															"id": "EC_LEVY_YEAR"
+														},
+														"style": "error",
+														"required": true
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_LEVY_YEAR"
+														},
+														"text": "Levy year:"
+													},
+													"type": "select",
+													"message": {
+														"list": [{
+															"text": "You must select a Levy year from the drop-down.",
+															"type": "error"
+														}]
+													}
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"size": 35,
+															"maxlength": 35,
+															"name": "appDataBean.prptySrchCriteria.printKey",
+															"aria-required": false,
+															"id": "EC_PRINT_KEY",
+															"type": "text"
+														}
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_PRINT_KEY"
+														},
+														"text": "Print key:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"size": 10,
+															"maxlength": 10,
+															"name": "appDataBean.prptySrchCriteria.unitNo",
+															"aria-required": false,
+															"id": "EC_UNIT_NMBR",
+															"type": "text"
+														}
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_UNIT_NMBR"
+														},
+														"text": "Unit number:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"data-validation": "isAlphaNumeric(document.form.name)",
+															"size": 10,
+															"maxlength": 10,
+															"name": "appDataBean.prptySrchCriteria.streetNo",
+															"aria-required": false,
+															"id": "EC_STREET_NMBR",
+															"type": "text"
+														}
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_STREET_NMBR"
+														},
+														"text": "Street number:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"size": 35,
+															"maxlength": 35,
+															"name": "appDataBean.prptySrchCriteria.streetName",
+															"aria-required": false,
+															"id": "EC_STREET_NAME",
+															"type": "text"
+														}
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_STREET_NAME"
+														},
+														"text": "Street name:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"data-validation": "isAlphaNumeric(document.form.name)",
+															"size": 5,
+															"maxlength": 5,
+															"name": "appDataBean.prptySrchCriteria.zipCode",
+															"aria-required": false,
+															"id": "EC_ZIP_POSTAL_CODE",
+															"type": "text"
+														}
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_ZIP_POSTAL_CODE"
+														},
+														"text": "ZIP/Postal code:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"size": 30,
+															"maxlength": 30,
+															"name": "appDataBean.prptySrchCriteria.ownrLN",
+															"aria-required": false,
+															"id": "EC_OWNERS_LAST_NAME",
+															"type": "text",
+															"value": "///"
+														},
+														"style": "error"
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_OWNERS_LAST_NAME"
+														},
+														"text": "Owner's last name:"
+													},
+													"type": "text",
+													"message": {
+														"list": [{
+															"text": "You must enter a last name that begins with a letter and contains only letters and no more than one of each of these special characters: hyphen, space, or apostrophe.",
+															"type": "error"
+														}]
+													}
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "inputGroup",
+													"legend": "Sort:",
+													"options": [{
+															"template": "field",
+															"input": {
+																"noBlankOption": true,
+																"options": [{
+																		"text": "Ascending",
+																		"value": "A"
+																	},
+																	{
+																		"text": "Descending",
+																		"value": "D"
+																	}
+																],
+																"attributes": {
+																	"name": "appDataBean.prptySrchCriteria.sortType",
+																	"aria-required": false,
+																	"id": "EC_ORDER"
+																},
+																"value": "A"
+															},
+															"label": {
+																"visibility": "hidden",
+																"attributes": {
+																	"for": "EC_ORDER"
+																},
+																"text": "Order:",
+																"hasLayout": "false"
+															},
+															"type": "select"
+														},
+														{
+															"template": "field",
+															"input": {
+																"noBlankOption": true,
+																"options": [{
+																		"text": "Print Key",
+																		"value": "P"
+																	},
+																	{
+																		"text": "Street Address",
+																		"value": "A"
+																	}
+																],
+																"attributes": {
+																	"name": "appDataBean.prptySrchCriteria.sortOn",
+																	"aria-required": false,
+																	"id": "EC_ON"
+																},
+																"value": "P"
+															},
+															"label": {
+																"attributes": {
+																	"for": "EC_ON"
+																},
+																"text": "On:"
+															},
+															"type": "select"
+														}
+													],
+													"type": "inputs"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"noBlankOption": true,
+														"options": [{
+																"text": "All",
+																"value": "A"
+															},
+															{
+																"text": "Closed",
+																"value": "C"
+															},
+															{
+																"text": "Open",
+																"value": "O"
+															}
+														],
+														"attributes": {
+															"name": "appDataBean.prptySrchCriteria.viewType",
+															"aria-required": true,
+															"id": "EC_VIEW"
+														},
+														"value": "A",
+														"required": true
+													},
+													"label": {
+														"attributes": {
+															"for": "EC_VIEW"
+														},
+														"text": "View:"
+													},
+													"type": "select"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "buttonGroup",
+											"contents": [{
+												"template": "buttonGroup",
+												"contents": [{
+														"template": "field",
+														"input": {
+															"attributes": {
+																"data-validation": true,
+																"onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/clear'}])",
+																"name": "EC_BTN_CLEAR",
+																"id": "EC_BTN_CLEAR",
+																"label": "Clear",
+																"type": "button",
+																"title": "Clear"
+															},
+															"text": "Clear"
+														},
+														"type": "button"
+													},
+													{
+														"template": "field",
+														"input": {
+															"attributes": {
+																"data-validation": true,
+																"onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'reg',action:'/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page/search'}])",
+																"name": "EC_BTN_SEARCH",
+																"id": "EC_BTN_SEARCH",
+																"label": "Search",
+																"type": "button",
+																"title": "Search"
+															},
+															"text": "Search",
+															"primary": true
+														},
+														"type": "button"
+													}
+												],
+												"type": "column",
+												"align": "center"
+											}],
+											"type": "row"
+										},
+										{
+											"template": "table",
+											"head": {
+												"rows": [{
+													"columns": [{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_prntKey",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Print key",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_prptyAddress",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Street address",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_ownrUnitNmbr",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Unit number",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_ownerNames",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Owner names",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_Field24",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Mobile home or co-op",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_levyYr",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Levy year",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_Field25",
+																"data-type": "alphaNumeric"
+															},
+															"text": "Source",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_Field26",
+																"data-type": "date"
+															},
+															"text": "Closed date",
+															"sortable": true,
+															"type": "header",
+															"hideLabel": false
+														},
+														{
+															"responsive": {},
+															"attributes": {
+																"data-colmap": "prptyListModelId_Field27",
+																"data-type": "buttonMenu"
+															},
+															"style": "min-width",
+															"text": "Button Menu",
+															"sortable": false,
+															"type": "header",
+															"hideLabel": true
+														}
+													]
+												}]
+											},
+											"prechecked": [],
+											"optimize": false,
+											"attributes": {
+												"id": "prptyListModelId"
+											}
+										}
+									],
+									"attributes": {},
+									"title": "Property Information"
+								},
+								{
+									"template": "field",
+									"input": {
+										"attributes": {
+											"name": "_fw_flowSessionKey",
+											"id": "reg__fw_flowSessionKey",
+											"type": "hidden",
+											"value": "EIVP_MAIN:EIVP_MAIN:search"
+										}
+									},
+									"type": "hidden"
+								}
+							],
+							"attributes": {
+								"method": "post",
+								"name": "reg",
+								"action": "/EIVP/gateway/EIVP/EIVP_MAIN/EIVP_01.page",
+								"id": "reg"
+							},
+							"type": "form"
+						}]
+					}
+				]
+			}
 		}
 	</script>
 
