@@ -1,6 +1,6 @@
+const sass = require('node-sass');
 
-
-    module.exports = function(grunt) {
+module.exports = function(grunt) {
     // Banner for JavaScript files
     // The info comes from package.json -- see http://gruntjs.com/configuring-tasks#templates for more about pulling in data from files
     // Insert the Live Reload script
@@ -317,6 +317,7 @@
         sass: {
             main: {
                 options: {
+                    implementation: sass,
                     sourceMap: true,
                     outputStyle: 'nested', // Options: "nested", "compressed" (i.e. minified)
                 },

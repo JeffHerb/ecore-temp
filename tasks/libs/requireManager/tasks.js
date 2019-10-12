@@ -32,14 +32,21 @@ _priv.addTask = function _add_task (currentConfig, taskList, cb) {
     })(taskList.concat());
 };
 
+const sass = require('node-sass');
+
 var tasks = function _tasks () {
     var setOrder = function _set_order (rm, next) {
-        console.log('setOrder');
+        //console.log('setOrder');
+
+
+        //console.log(rm.options);
 
         var options = rm.options;
         var grunt = rm.grunt;
 
         var currentConfig = grunt.config.get();
+
+        //console.log(currentConfig);
 
         var prodBuild = currentConfig.prod;
         var testBuild = currentConfig.test;
@@ -109,8 +116,11 @@ var tasks = function _tasks () {
                         (function nextTask (tasks) {
                             var taskObj = tasks.shift();
 
+                            
                             // Add the task to the execute queue
+                            
                             grunt.task.run(taskObj.fullName);
+                            
 
                             // Add this task to the list of task we called.
                             taskCallOrder.push(taskObj.fullName);
@@ -157,9 +167,20 @@ var tasks = function _tasks () {
 
                 // Check and run any remaining tasks other than the last run list.
                 if (remainingTasks.length !== 0) {
+
+                    console.log(remainingTasks);
+
                     // Loop though any remaining unclaimed tasks
                     (function nextTasks (tasks) {
                         var task = tasks.shift();
+
+                        console.log("========================");
+                        console.log("========================");
+                        console.log("========================");
+                        console.log(task);
+                        console.log("========================");
+                        console.log("========================");
+                        console.log("========================");
 
                         if (typeof currentConfig[task] === 'object' && options.runAll.indexOf(task) === -1) {
                             var subTasks = Object.keys(currentConfig[task]);
@@ -170,7 +191,9 @@ var tasks = function _tasks () {
 
                                     if (subTask !== 'options') {
 
+                                        
                                         grunt.task.run(task + ':' + subTask);
+                                        
 
                                         // Add subtask to the task call array
                                         taskCallOrder.push(task + ':' + subTask);
@@ -187,7 +210,9 @@ var tasks = function _tasks () {
 
                         // Double check to see if this is a task that we only allow an all or nothing build to be created
                         if (options.runAll.indexOf(task) !== -1 && currentConfig[task]) {
+                            
                             grunt.task.run(task);
+                            
 
                             // Add all related tasks to the task call array
                             taskCallOrder.push(task);
@@ -209,7 +234,9 @@ var tasks = function _tasks () {
                                             var subTask = subTasks.shift();
 
                                             if (subTask !== 'options') {
+                                                
                                                 grunt.task.run(task + ':' + subTask);
+                                                
 
                                                 // Add subtask to the task call array
                                                 taskCallOrder.push(task + ':' + subTask);
@@ -224,7 +251,9 @@ var tasks = function _tasks () {
 
                                 // Double check to see if this is a task that we only allow an all or nothing build to be created
                                 if (options.runAll.indexOf(task) !== -1 && currentConfig[task]) {
+                                    
                                     grunt.task.run(task);
+                                    
 
                                     // Add all related tasks to the task call array
                                     taskCallOrder.push(task);
@@ -274,7 +303,10 @@ var tasks = function _tasks () {
                                         var subTask = subTasks.shift();
 
                                         if (subTask !== 'options') {
+
+                                            
                                             grunt.task.run(task + ':' + subTask);
+                                            
 
                                             // Add subtask to the task call array
                                             taskCallOrder.push(task + ':' + subTask);
@@ -289,7 +321,10 @@ var tasks = function _tasks () {
 
                             // Double check to see if this is a task that we only allow an all or nothing build to be created
                             if (options.runAll.indexOf(task) !== -1 && currentConfig[task]) {
+
+                                
                                 grunt.task.run(task);
+                                
 
                                 // Add all related tasks to the task call array
                                 taskCallOrder.push(task);
@@ -313,6 +348,8 @@ var tasks = function _tasks () {
                         })(options.configOrder.last);
                     }
                 }
+
+                console.log(taskCallOrder);
 
                 rm.options.taskRunList = taskCallOrder;
 

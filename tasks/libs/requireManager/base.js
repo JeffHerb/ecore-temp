@@ -9,6 +9,36 @@ var base = function _base () {
 
         delete gruntConfig.componentFinder;
 
+        if (gruntConfig.sass) {
+
+            for (var sassTask in gruntConfig.sass)  {
+
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log(sassTask);
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+                // console.log("=========================");
+
+                if (gruntConfig.sass[sassTask].implementation) {
+                    delete gruntConfig.sass[sassTask].implementation;
+                }
+
+                // if (!gruntConfig.sass[sassTask].options.implementation) {
+                //     gruntConfig.sass[sassTask].options.implementation = 
+                // }
+
+            }
+
+        }
+
         // Save it off for debug reasons.
         fs.writeJSON('tasks/libs/requireManager/logs/dynamic-config.json', gruntConfig);
 

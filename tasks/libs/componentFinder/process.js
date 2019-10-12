@@ -69,7 +69,7 @@ var process = function _process() {
                         // Remove package json if its part of the file:
                         fileContents = fileContents.replace(/pkg\: grunt.file.readJSON\([\'\"]package.json[\'\"]\)\,/g, '');
 
-                        fileContents = "module.exports = function() { return " + fileContents;
+                        fileContents = "const sass = require('node-sass'); module.exports = function() { return " + fileContents;
                         fileContents += ";}";
 
                         var newFilePath = fs.pathJoin("tasks/libs/componentFinder/temp/", componentName + ".js");
@@ -155,6 +155,8 @@ var process = function _process() {
 
                 // we have som config updates
                 rm.options['buildComponents'] = buildComponents;
+
+                console.log("Finished process");
 
                 next(rm);
             }

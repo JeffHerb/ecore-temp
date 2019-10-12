@@ -104,61 +104,23 @@ var process = function _process () {
                     // Loop through the returned results looking for key actions
                     var resultKeys = Object.keys(resultObject);
 
-                    if (componentName === "appScripts") {
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                        console.log("=======================================");
-                    }
-
                     // Sketchy fix for now as we have more important fixes to too.... JH 1/4/2017
-                    if ((componentName === "pageScripts") || (componentName === "appScripts")) {
+                    if (componentName === "pageScripts") {
 
-                        if (componentName === "pageScripts") {
+                        if (resultObject.gruntTasks.hasOwnProperty('pageScripts_dist-task_scripts')) {
 
-                            if (resultObject.gruntTasks.hasOwnProperty('pageScripts_dist-task_scripts')) {
-
-                                resultObject.gruntTasks['pageScripts_dist-task_scripts'].files = [
-                                    {
-                                        "expand": true,
-                                        "dest": "dist/js/scripts",
-                                        "filter": "isFile",
-                                        "cwd": "src/project/components/pageScripts/dist/js/",
-                                        "src": [
-                                            "**/*.*"
-                                        ]
-                                    }
-                                ];
-                            }
+                            resultObject.gruntTasks['pageScripts_dist-task_scripts'].files = [
+                                {
+                                    "expand": true,
+                                    "dest": "dist/js/scripts",
+                                    "filter": "isFile",
+                                    "cwd": "src/project/components/pageScripts/dist/js/",
+                                    "src": [
+                                        "**/*.*"
+                                    ]
+                                }
+                            ];
                         }
-                        else {
-
-                            if (resultObject.gruntTasks.hasOwnProperty('appScripts_dist-task_scripts')) {
-
-                                resultObject.gruntTasks['appScripts_dist-task_scripts'].files = [
-                                    {
-                                        "expand": true,
-                                        "dest": "dist/js/scripts",
-                                        "filter": "isFile",
-                                        "cwd": "src/project/components/appScripts/dist/js/",
-                                        "src": [
-                                            "**/*.*"
-                                        ]
-                                    }
-                                ];
-                            }
-                        }
-
                     }
 
                     (function nextKey(keys) {
