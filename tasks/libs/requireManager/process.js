@@ -64,8 +64,6 @@ var process = function _process () {
 
     var components = function _components (rm, next) {
 
-        console.log("Got to process");
-
         var options = rm.options;
         var grunt = rm.grunt;
         var global = {};
