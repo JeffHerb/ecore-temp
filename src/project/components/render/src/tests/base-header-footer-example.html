@@ -209,43 +209,35 @@
                     {
                         "type": "tax",
                         "template": "agency-header",
-                        "bannerLink": "http://tax.ny.gov",
-                        "support": {
-                            "text": "Get Support",
-                            "popover": {
-                                "contents": [
-                                    {
-                                        "template": "popover",
-                                        "contents": [
-                                            {
-                                                "template": "tree",
-                                                "items": [
-                                                    {
-                                                        "template": "link",
-                                                        "attributes": {
-                                                            "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
-                                                        },
-                                                        "text": "Contact Us"
-                                                    }
-                                                    {
-                                                        "template": "link",
-                                                        "attributes": {
-                                                            "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
-                                                        },
-                                                        "text": "Contact Us"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
+                        "bannerLink": "http://tax.ny.gov"
                     }
                 ]
             },
             "page": {
-                "contents": []
+                "contents": [
+					{
+                        "instructions": [
+                            {
+                                "raw": true,
+                                "template": "output"
+                            }
+                        ],
+                        "title": "Enhanced STAR Summary IVP Edit Report",
+                        "template": "pageInfo",
+                        "pageLegend": {
+                            "required": true
+                        },
+                        "messages":{
+                            "template": "message",
+                            "list": [
+                                {
+                                    "type": "warn",
+                                    "text": "No data found for current search criteria."
+                                }
+                            ]
+                        }
+					},
+                ]
             },
             "footer": {
                 "contents": [

@@ -1167,7 +1167,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         .cui-messages {
 
                             li {
-                                width: 100% !important;
+                                max-width: 99%;
                             }
                         }
                     }
