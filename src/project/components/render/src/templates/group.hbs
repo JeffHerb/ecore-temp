@@ -31,23 +31,76 @@
     {{else}}
     {{/ifCond}}
 {{else}}
-    <section>
+    <section
+        {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{}' addClass=this.addClass style=this.style collapse=this.collapse)) }}>
         <header>
-            <div class="emp-section-title">
+            <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-title"}') }}>
                 <h3>
                     {{this.title}}
+
+                    {{#if this.header.titleEnhancements~}}
+                    {{#each this.header.titleEnhancements.contents~}}
+                    {{~> (getPartialName this.template) this ~}}
+                    {{/each~}}
+                    {{/if~}}
+
                     {{#if this.help}}
                         {{~> _itag this.help}}
+                    {{else}}
+                        {{#if this.header.help}}
+                            {{~> _itag this.header.help}}
+                        {{/if}}
                     {{/if}}
+
+
                 </h3>
             </div>
+
+            {{#each this.columns~}}
+                <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-field"}') }}>
+
+                    {{#if this.contents~}}
+
+                        {{#each this.contents~}}
+
+                            {{#if this.template~}}
+                                {{~> (getPartialName this.template) this sectionHeader="true"~}}
+                            {{~else~}}
+                                {{~this.text~}}
+                            {{/if~}}
+
+                        {{/each~}}
+
+                    {{~else~}}
+
+                        {{#if this.template~}}
+                            {{~> (getPartialName this.template) this sectionHeader="true"~}}
+                        {{~else~}}
+                            {{~this.text~}}
+                        {{/if~}}
+
+                    {{/if~}}
+                </div>
+            {{/each~}}
+
+            {{#unless this.header.hideControls}}
+            <div class="emp-section-controls">
+                <ul>
+                    <li>
+                        <button type="button" class="emp-icon-section-toggle-collapse"
+                            title="{{#if this.isCollapsed}}Show section{{else}}Hide section{{/if}}" tabindex="1"></button>
+                    </li>
+                </ul>
+            </div>
+            {{/unless}}
         </header>
         {{#if this.instructions}}
-            <div class="emp-section-instructions">
-                {{#each this.instructions}}
-                    {{> _output this raw=true}}
-                {{/each}}
-            </div>
+        <div class="emp-section-instructions">
+            {{#each this.instructions}}
+                {{> _output this raw=true}}
+            {{/each}}
+        </div>
         {{/if}}
+
     </section>
 {{/if}}
