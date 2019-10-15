@@ -5,6 +5,7 @@
  * ===================================================================
  * As these projects structure and style inspired this managers design
  */
+const sass = require('node-sass');
 module.exports = function (grunt) {
 	'use strict';
 

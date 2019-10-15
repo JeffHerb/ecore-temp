@@ -174,6 +174,7 @@ var build = function _build () {
             // Check to see if the component has a build process
             if (componentDef.build) {
                 // Load the temp module create from the original task grunt file
+
                 componentDef.build = require('./temp/' + componentName)();
 
                 if (!componentDef.buildTask) {
@@ -185,6 +186,7 @@ var build = function _build () {
                 var tasks = Object.keys(componentDef.build);
 
                 if (tasks.length !== 0) {
+
                     (function nextTask (tasks) {
                         // Pull the task name
                         var taskName = tasks.shift();
@@ -412,6 +414,8 @@ var build = function _build () {
                         grunt.task.run(newTasks[i]);
                     }
                 }
+
+                console.log("Finished build");
 
                 next(rm);
             }
