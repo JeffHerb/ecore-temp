@@ -159,7 +159,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                     display: inline-block;
                 }
 
-                margin-bottom: 10px;
+                margin-bottom: 16px;
             }
         }
 
@@ -178,14 +178,14 @@ $sectionHeaderBackgroundColor: #e7e7e6;
         }
 
         .cui-messages.emp-messages{
-            margin-left: 16px !important;
-            margin-right: 16px !important;
+            // margin-left: 16px !important;
+            // margin-right: 16px !important;
 
             li{
                 width: 100%; //IE fix
             }
 
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         section {

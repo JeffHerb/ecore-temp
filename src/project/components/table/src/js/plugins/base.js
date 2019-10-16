@@ -526,6 +526,7 @@ define(['render', 'spin'], function (render, spin) {
             table.obj.$thead.replaceWith($newHeader);
 
             fastdom.measure(function () {
+
                 // Call the function that sets the headers height
                 _priv.stickyHeaderHeight(table, true);
             });
@@ -538,35 +539,38 @@ define(['render', 'spin'], function (render, spin) {
     // Function cleans up and redefined table header row hieght
     _priv.stickyHeaderHeight = function _sticky_header_height(table, init) {
 
-        // Start by getting the width of all the table cells by looking at the div.stickyCell > span.
-        fastdom.measure(function () {
-            var headerCellHeights = [];
+        if (table.config.setup.sticky) {
 
-            var empTableParentElem = table.obj.$tableContainer.parent();
+            // Start by getting the width of all the table cells by looking at the div.stickyCell > span.
+            fastdom.measure(function () {
+                var headerCellHeights = [];
 
-            for (var i = 0, len = table.obj.$stickyCells.length; i < len; i++) {
-                var $header = $(table.obj.$stickyCells[i]).children('span');
+                var empTableParentElem = table.obj.$tableContainer.parent();
 
-                var height = ($header[0].offsetHeight) ? $header[0].offsetHeight : $header[0].clientHeight;
-                    headerCellHeights.push(height + 20);
-            }
+                for (var i = 0, len = table.obj.$stickyCells.length; i < len; i++) {
+                    var $header = $(table.obj.$stickyCells[i]).children('span');
 
-            // Save of this measurement
-            table.config.plugins.sticky.newHeight = Math.max.apply(null, headerCellHeights) + 'px';
-
-            // Check to see if we need to mutate the DOM
-            fastdom.mutate(function () {
-
-                // If the new height does not match the old on, update
-                if (table.config.plugins.sticky.rowHeight !== table.config.plugins.sticky.newHeight) {
-                    // Update the header row height
-                    table.obj.$thead.children('tr')[0].style.height = table.config.plugins.sticky.newHeight;
-                    // Update the config
-                    table.config.plugins.sticky.rowHeight = table.config.plugins.sticky.newHeight;
+                    var height = ($header[0].offsetHeight) ? $header[0].offsetHeight : $header[0].clientHeight;
+                        headerCellHeights.push(height + 20);
                 }
 
+                // Save of this measurement
+                table.config.plugins.sticky.newHeight = Math.max.apply(null, headerCellHeights) + 'px';
+
+                // Check to see if we need to mutate the DOM
+                fastdom.mutate(function () {
+
+                    // If the new height does not match the old on, update
+                    if (table.config.plugins.sticky.rowHeight !== table.config.plugins.sticky.newHeight) {
+                        // Update the header row height
+                        table.obj.$thead.children('tr')[0].style.height = table.config.plugins.sticky.newHeight;
+                        // Update the config
+                        table.config.plugins.sticky.rowHeight = table.config.plugins.sticky.newHeight;
+                    }
+
+                });
             });
-        });
+        }
     };
 
     _priv.setScrollInfo = function(table) {

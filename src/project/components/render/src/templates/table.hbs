@@ -19,6 +19,7 @@
 
         {{#unless this.noControls}}
 
+
             {{#if this.paging}}
 
                 {{#ifCond v1=this.paging op="emptyObject"}}
@@ -31,8 +32,8 @@
                 {{else}}
 
                     <div class="table-control-row">
-                        {{#if this.paging}}
-                            {{#ifCond v1=this.paging op="hasAnyProperties" v2="first,last"}}
+
+                            {{!-- {{#ifCond v1=this.paging op="hasAnyProperties" v2="first,last"}} --}}
 
                                 <div class="emp-paging-container-advance emp-table-pagination">
                                     {{#if this.paging.first}}
@@ -40,14 +41,14 @@
                                     {{else}}
                                     	{{#if this.paging.last}}
                                         	<span class="emp-paging-spacer"></span>
-                                    	{{/if}} 
+                                    	{{/if}}
                                     {{/if}}
                                     {{#if this.paging.previous}}
                                         {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
                                     {{else}}
                                         {{#if this.paging.next}}
                                         	<span class="emp-paging-spacer"></span>
-                                    	{{/if}}    
+                                    	{{/if}}
                                     {{/if}}
                                     <span class="emp-page-cursor">
                                         {{this.pagingText}}
@@ -57,36 +58,36 @@
                                     {{else}}
                                     	{{#if this.paging.previous}}
                                         	<span class="emp-paging-spacer"></span>
-                                    	{{/if}} 
+                                    	{{/if}}
                                     {{/if}}
                                     {{#if this.paging.last}}
                                         {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
                                     {{else}}
                                     	{{#if this.paging.first}}
                                         	<span class="emp-paging-spacer"></span>
-                                    	{{/if}} 
+                                    	{{/if}}
                                     {{/if}}
                                 </div>
 
-                            {{else}}
+                            {{!-- {{else}}
                                 <div class="emp-table-pagination">
                                     {{#if this.paging.previous}}
                                         {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
                                     {{else}}
                                     	{{#if this.paging.next}}
                                         	<span class="emp-paging-spacer"></span>
-                                    	{{/if}} 
+                                    	{{/if}}
                                     {{/if}}
                                     {{#if this.paging.next}}
                                         {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
                                     {{else}}
                                     	{{#if this.paging.previous}}
                                         	<span class="emp-paging-spacer"></span>
-                                    	{{/if}} 
+                                    	{{/if}}
                                     {{/if}}
                                 </div>
-                            {{/ifCond}}
-                        {{/if}}
+                            {{/ifCond}} --}}
+
                         <div class="emp-table-client-side-controls">
                             {{#tableClientSideControls this.attributes }}{{/tableClientSideControls}}
                         </div>
@@ -95,11 +96,52 @@
 
             {{else}}
 
-                <div class="table-control-row emp-table-no-paging">
-                    <div class="emp-table-client-side-controls">
-                        {{#tableClientSideControls this.attributes }}{{/tableClientSideControls}}
+                {{#if this.pagingText}}
+
+                    <div class="table-control-row">
+                        <div class="emp-paging-container-advance emp-table-pagination">
+                            {{#if this.paging.first}}
+                            {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
+                            {{else}}
+                            {{#if this.paging.last}}
+                            <span class="emp-paging-spacer"></span>
+                            {{/if}}
+                            {{/if}}
+                            {{#if this.paging.previous}}
+                            {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                            {{else}}
+                            {{#if this.paging.next}}
+                            <span class="emp-paging-spacer"></span>
+                            {{/if}}
+                            {{/if}}
+                            <span class="emp-page-cursor">
+                                {{this.pagingText}}
+                            </span>
+                            {{#if this.paging.next}}
+                            {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                            {{else}}
+                            {{#if this.paging.previous}}
+                            <span class="emp-paging-spacer"></span>
+                            {{/if}}
+                            {{/if}}
+                            {{#if this.paging.last}}
+                            {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
+                            {{else}}
+                            {{#if this.paging.first}}
+                            <span class="emp-paging-spacer"></span>
+                            {{/if}}
+                            {{/if}}
+                        </div>
                     </div>
-                </div>
+
+                {{else}}
+
+                    <div class="table-control-row emp-table-no-paging">
+                        <div class="emp-table-client-side-controls">
+                            {{#tableClientSideControls this.attributes }}{{/tableClientSideControls}}
+                        </div>
+                    </div>
+                {{/if}}
             {{/if}}
 
         {{/unless}}
