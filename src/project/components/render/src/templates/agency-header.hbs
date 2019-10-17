@@ -7,7 +7,7 @@
         </button>
     </div>
     <div class="agency-title">
-        <a href="{{this.bannerLink}}">
+        <a href="{{#if this.bannerLink}}{{this.bannerLink}}{{else}}https://tax.ny.gov{{/if}}">
             <span>Department of</span>
             <span>Taxation and Finance</span>
         </a>

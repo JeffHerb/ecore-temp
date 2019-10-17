@@ -20,3 +20,11 @@
 .cui-align-center {
     @include align-center;
 }
+
+.cui-no-wrap {
+    white-space: nowrap;
+}
+
+.cui-no-padding {
+    padding: 0;
+}

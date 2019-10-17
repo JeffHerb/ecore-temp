@@ -91,6 +91,10 @@ nav > header {
     .cui-hide-col-large {
         display: block;
     }
+
+    .cui-hide-col-medium {
+        display: none;
+    }
 }
 
 // Large (desktop) column widths
@@ -98,6 +102,10 @@ nav > header {
     .cui-hide-col-small,
     .cui-hide-col-medium {
         display: block;
+    }
+
+    .cui-hide-col-large {
+        display: none;
     }
 }
 

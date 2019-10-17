@@ -39,9 +39,9 @@
                     {{this.title}}
 
                     {{#if this.header.titleEnhancements~}}
-                    {{#each this.header.titleEnhancements.contents~}}
-                    {{~> (getPartialName this.template) this ~}}
-                    {{/each~}}
+                        {{#each this.header.titleEnhancements.contents~}}
+                            {{~> (getPartialName this.template) this ~}}
+                        {{/each~}}
                     {{/if~}}
 
                     {{#if this.help}}
@@ -56,7 +56,7 @@
                 </h3>
             </div>
 
-            {{#each this.columns~}}
+            {{#each this.header.columns~}}
                 <div {{attribute (mergeAttributes this.attributes defaults='{"className":"emp-section-field"}') }}>
 
                     {{#if this.contents~}}
