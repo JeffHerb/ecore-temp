@@ -682,7 +682,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 }
 
                 @include pointbreak('830px') {
-                    display: none;
+                    //display: none;
                     speak: none;
 
                     &.active {
@@ -693,8 +693,8 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         &:before,
                         &:after {
                             display: none;
-                }
-            }
+                        }
+                    }
                 }
             }
 
