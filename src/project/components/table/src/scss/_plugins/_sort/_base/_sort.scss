@@ -93,17 +93,35 @@
                 }
             }
         }
+
+        &[data-type="pivot"],
+        &.emp-pivot-table {
+            thead {
+
+                th[data-sort],
+                th.emp-sortable {
+
+                    background-clip: unset;
+
+                    .ie & {
+                        background-clip: padding-box;
+                    }
+
+                }
+            }
+        }
+
     }
 }
 
-.emp-orpts-subtheme{ 
+.emp-orpts-subtheme{
     .emp-table {
 
         table {
-    
+
             // Normal Tables
             thead {
-    
+
                 th[data-sort],
                 th.emp-sortable {
 
@@ -113,31 +131,31 @@
                     span{
                         padding-left: 10px;
                     }
-    
+
                     &:before {
                         border-left: 7.5px solid transparent;
                         border-right: 7.5px solid transparent;
                         border-top: 7.5px solid #84827B;
-    
+
                         left: $emp-table-header-cell-padding-top - 2px;
                         top: $emp-table-header-cell-padding-top + 10px;
                     }
-    
+
                     &:after {
                         border-left: 7.5px solid transparent;
                         border-right: 7.5px solid transparent;
                         border-bottom: 7.5px solid #84827B;
-    
+
                         left: $emp-table-header-cell-padding-top - 2px;
                         top: $emp-table-header-cell-padding-top;
                     }
-    
+
                     &.table-structure-cell {
                         padding: 0;
                     }
                 }
 
-                th[data-sortdir="ASC"] {                    
+                th[data-sortdir="ASC"] {
                     &:after {
                         border-bottom-color: #007681 !important;
                     }
@@ -146,15 +164,15 @@
                 th[data-sortdir="DESC"] {
                     &:before {
                         border-top-color: #007681 !important;
-                    }                    
-                }    
+                    }
+                }
             }
-    
+
             // Sticky Tables
             &.sticky {
-    
+
                 th[data-sort],
-                .emp-sortable {    
+                .emp-sortable {
                     .sticky-cell {
 
                     	padding-left:18px;
@@ -162,7 +180,7 @@
                         span{
                             padding-left: 10px;
                         }
-    
+
                         &:before {
                             border-left: 7.5px solid transparent;
                             border-right: 7.5px solid transparent;
@@ -170,12 +188,12 @@
                             left: $emp-table-header-cell-padding-top - 2px;
                             top: $emp-table-header-cell-padding-top + 10px;
                         }
-    
+
                         &:after {
                             border-left: 7.5px solid transparent;
                             border-right: 7.5px solid transparent;
                             border-bottom: 7.5px solid #84827B;
-    
+
                             left: $emp-table-header-cell-padding-top - 2px;
                             top: $emp-table-header-cell-padding-top;
                         }

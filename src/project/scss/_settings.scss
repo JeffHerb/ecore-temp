@@ -12,7 +12,8 @@
 // * --------------------------------------------------------
 $emp-fore-color:   black !default;
 $emp-bg-color:     white !default;
-$emp-accent-color: #888 !default;
+//$emp-accent-color: #888 !default;
+$emp-accent-color: #0b5d66 !default;
 
 $emp-red-1: #ee3300; // Required asterisk, icons
 $emp-red-2: rgb(163,  46,  42); // Notifiers, indicators, notifications badge
@@ -298,8 +299,8 @@ $emp-input-date-width:         6.6em;
 $emp-input-currency-width:     13em;
 $emp-read-only-currency-width: 14.3em;
 
-$cui-button-primary-bg-color:  $emp-accent-color;
-$cui-button-primary-bg-color-hover:  $emp-bg-color;
+$cui-button-primary-bg-color: #0b5d66; //$emp-accent-color;
+$cui-button-primary-bg-color-hover: #444; //$emp-bg-color
 
 $emp-search-box-button-retrieve-bg-color:         $cui-button-primary-bg-color;
 $emp-search-box-button-retrieve-bg-color-hover:   $cui-button-primary-bg-color-hover;
