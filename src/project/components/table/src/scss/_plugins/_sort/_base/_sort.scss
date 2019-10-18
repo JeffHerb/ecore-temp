@@ -97,6 +97,11 @@
         &[data-type="pivot"],
         &.emp-pivot-table {
             thead {
+
+                tr {
+                    background: #DDD;
+                }
+
                 th[data-sort],
                 th.emp-sortable {
 
