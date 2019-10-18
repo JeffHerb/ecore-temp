@@ -585,7 +585,11 @@
 
             thead {
                 display: table-header-group;
-                position: initial;
+                position: inherit;
+
+                tr {
+                    background: #DDD;
+                }
             }
 
             tbody {
