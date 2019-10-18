@@ -272,9 +272,12 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             padding:2px 0px;
         }
 
-        #form_search .emp-search-buttons .cui-row:first-child button, .cui-button-primary{
+        #form_search .emp-search-buttons .cui-row:first-child button,
+        .cui-button-primary{
+            background: #0b5d66;
+
             &:hover, &:focus{
-                background: #00474e;
+                background: #444;
                 border: 1px solid #285E8E;
             }
         }

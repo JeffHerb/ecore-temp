@@ -25,7 +25,7 @@ button {
             // @import "../_theme_teal.scss";
             // border-color: $cui-button-border-color;
             // background-color: $cui-button-bg-color;
-        // }    
+        // }
     }
 }
 
@@ -34,16 +34,16 @@ button {
         // @import "../_theme_teal.scss";
         color: $cui-button-primary-color;
         border: $cui-button-primary-border;
-        background-color: $cui-button-primary-bg-color;
+        background-color: #0b5d66;
         text-shadow: $cui-button-primary-text-shadow;
     // }
 
     &:hover {
         // .theme-teal & {
             // @import "../_theme_teal.scss";
-            border-color: $cui-button-primary-border-hover-color;
-            background-color: $cui-button-primary-bg-color-hover;
-        // }      
+            border-color: 444;
+            background-color: 444;
+        // }
     }
 
     // Override to disable primary button styles in tables.
