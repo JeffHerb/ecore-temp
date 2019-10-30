@@ -908,10 +908,430 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
     };
 
+
+    var createRegistrationJSON = function _createRegistrationJSON () {
+        var registrationJSON = {
+            "pageID": "",
+            "pageTitle": "",
+            "sections": [],
+            "fields": [],
+            "buttons": []            
+        };
+
+        var removeDuplicatesFromList = function _removeDuplicatesFromList(list){
+            var keyRef = {};
+            list.reverse();
+
+            for(var i = list.length-1; i >= 0; i--){
+                var currentItem = list[i];
+                
+                if(currentItem.label && currentItem.label !== ""){
+                
+                    if(!keyRef[currentItem.label]){
+                        keyRef[currentItem.label] = [];
+                        keyRef[currentItem.label].push(currentItem);
+                    }
+                    else{
+                        //Label exists in our reference object. Compare at each object. 
+                        var currentProperties = Object.getOwnPropertyNames(currentItem);
+                        var keyExists = true;
+
+                        for(var j = 0; j < keyRef[currentItem.label].length; j++){
+                            var comparisonKey = keyRef[currentItem.label][j];
+                            var keyArrayProperties = Object.getOwnPropertyNames(comparisonKey);
+
+                            if(currentProperties.length !== keyArrayProperties.length){
+                                keyExists = false;
+                            }
+                            else{
+                                for (var k = 0; k < currentProperties.length; k++) {
+                                    var propName = currentProperties[k];
+
+                                    // If values of same property are not equal,
+                                    // objects are not equivalent
+                                    if (currentItem[propName] !== comparisonKey[propName]) {
+                                        keyExists = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        if(keyExists){
+                            // Remove from list
+                            list.splice(i, 1);
+                        }
+                        else{
+                            // Add to reference object
+                            keyRef[currentItem.label].push(currentItem);
+                        }
+                    }
+                }
+            }
+
+            list.reverse();
+
+            return list;
+        };
+
+        var getPageID = function _getPageID(){
+            var pageID = "";
+
+            try{
+                pageID = fwData.context.screen.id;
+                
+                //Cleanup page ID if starts with number(filename)                
+                if(parseInt(pageID.slice(0, 1)) >= 0){
+                    var pieces = pageID.split('_');
+
+                    pageID = pieces[0] + "_" + pieces[1] + "_" + pieces[2].substring(0,2);
+                }
+
+            } catch(evt){
+                
+                journal.log({ type: 'error', owner: 'UI', module: 'uimockup', submodule: 'createRegistrationJSON', func: 'getPageID' }, 'Error parsing page id' + evt);
+            }
+
+            return pageID;
+        };
+
+        var getPageTitle = function _getPageTitle(){
+            var titleElem = document.querySelector(".emp-page-title h2");        
+            var pageTitle = titleElem.textContent.trim();
+
+            return pageTitle;
+        };
+
+        var getSectionListJSON = function _getSectionListJSON(){
+            var sectionList = [];
+            var sections = document.querySelectorAll('main section');
+
+            for(var i=0; i<sections.length;i++){
+                var sectionJSON = {};
+                
+                // Section Title Content
+                var sectionTitleElement = sections[i].querySelector('.emp-section-title h3');
+                
+                if(sectionTitleElement && sectionTitleElement.innerHTML !== "" && sectionTitleElement.closest('section') === sections[i]){
+                    sectionJSON.title = sectionTitleElement.innerHTML.trim();
+                }
+
+                // Section Instruction Content
+                var sectionInstructionElement = sections[i].querySelector('.emp-section-instructions');
+                
+                if(sectionInstructionElement && sectionInstructionElement.innerHTML !== "" && sectionInstructionElement.closest('section') === sections[i]){
+
+                    sectionJSON.instructionText = sectionInstructionElement.innerHTML.trim();
+                    sectionJSON.instructionType = "HTML";
+                }
+
+                if(Object.keys(sectionJSON).length > 0){
+                    sectionList.push(sectionJSON);
+                }
+            }
+
+            sectionList = removeDuplicatesFromList(sectionList);
+
+            return sectionList;
+        };
+
+        var revealRegions = function _revealRegions(){
+            //Expand all regions (otherwise they are hidden)
+            var expandableRegions = document.querySelectorAll('.emp-expandable-region');
+            
+            for(var i = 0; i < expandableRegions.length; i++){
+                expandableRegions[i].style.display ="block";
+            }
+        };
+
+        var revertRegions = function _revertRegions(){
+            //Revert all regions. The style property isn't used during normal rendering so it should be save to remove. 
+            var expandableRegions = document.querySelectorAll('.emp-expandable-region');
+            
+            for(var i = 0; i < expandableRegions.length; i++){
+                expandableRegions[i].style.removeProperty("display");
+            }
+        };
+
+        var getItagTextFromButton = function _getItagTextFromButton(button){
+            var tooltipSource = button.dataset.tooltipSource;
+
+            if(tooltipSource){
+                var tooltipContent = document.getElementById(tooltipSource);
+                
+                if(tooltipContent){
+                    return tooltipContent.innerHTML;
+                }
+            }
+            
+            return "";
+        };
+
+        var trimFieldID = function _trimFieldID(id){
+            //Cleanup any prefix/suffix
+            if(id.indexOf(':')>-1){
+                var pieces = id.split(':');                
+
+                for(var p=0; p<pieces.length;p++){
+
+                    if(pieces[p].indexOf("EC_") > -1){                    
+                       return pieces[p];                 
+                    }                  
+                }                
+            }
+
+            return id;
+        };
+
+        var getFieldListJSON = function _getFieldListJSON(){
+            var fieldList = [];
+
+            var viewKeys = [];
+
+            var dataWrappers = document.querySelectorAll('main .emp-field, main .emp-composite');
+
+            for (var i = 0; i < dataWrappers.length; i++){
+                
+                var readOnlyLabels = dataWrappers[i].querySelectorAll(".emp-label");               
+
+                for (var j = 0; j<readOnlyLabels.length; j++){
+                    var readOnlyLabel = readOnlyLabels[j];                    
+                    var readOnlyJSON = {};
+
+                    if(readOnlyLabel.textContent !== ""){
+                        readOnlyJSON.label = readOnlyLabel.textContent.replace(":","");
+                    }
+
+                    if(readOnlyLabel.id !== ""){
+                        readOnlyJSON.name = trimFieldID(readOnlyLabel.id);
+                    }
+
+                    //Handle read only fields with iTags. 
+                    var wrapperItags = dataWrappers[i].querySelectorAll("button.emp-icon-help");
+                    // Only process if there is only one itag. 
+                    if(wrapperItags.length == 1){
+                        readOnlyJSON.helpText = getItagTextFromButton(wrapperItags[0]);
+                    }
+
+                    if(Object.keys(readOnlyJSON).length > 0){
+                        fieldList.push(readOnlyJSON);
+                    }
+                }
+
+                /* jshint ignore:start */
+                var labels = dataWrappers[i].querySelectorAll("label");
+                
+                for (var j = 0; j<labels.length; j++){
+                    var label = labels[j];                    
+                    var fieldJSON = {};
+
+                    if(label.textContent !== ""){
+                        fieldJSON.label = label.textContent.replace(":","");
+                    }
+
+                    if(label.htmlFor != ""){
+                        var input = document.querySelector("#"+label.htmlFor.replace(":","\\:"));
+
+                        fieldJSON.name = trimFieldID(label.htmlFor);
+
+                        if(input){
+                            
+                            if(input.type !== "radio" && input.type !== "checkbox"){
+                                if(input.size){
+                                    fieldJSON.size = input.size;
+                                }
+                                if(input.maxLength){
+                                    fieldJSON.maxLength = input.maxLength;
+                                }                           
+                            }
+
+                            var siblingHelpButton = input.parentNode.querySelector("button.emp-icon-help");
+
+                            if(siblingHelpButton){
+                                fieldJSON.helpText = getItagTextFromButton(siblingHelpButton);
+                            }
+                        }
+                    }
+
+                    if(Object.keys(fieldJSON).length > 0){
+                        fieldList.push(fieldJSON);
+                    }
+                }
+                /* jshint ignore:end */
+            }
+
+            //Get any legend viewkeys.
+            /* jshint ignore:start */
+            var legendElements = document.querySelectorAll('main legend');
+            for (var i = 0; i < legendElements.length; i++){
+                var fieldJSON = {};
+
+                if(legendElements[i].textContent && legendElements[i].textContent !== ""){
+                    fieldJSON.label = legendElements[i].textContent;
+                }
+
+                if(legendElements[i].id && legendElements[i].id !== ""){
+                    fieldJSON.name = legendElements[i].id;
+                }
+
+                if(Object.keys(fieldJSON).length > 0){
+                    fieldList.push(fieldJSON);
+                }
+            }
+            /* jshint ignore:end */
+            fieldList = removeDuplicatesFromList(fieldList);
+
+            return fieldList;
+        };
+
+        var getButtonListJSON = function _getButtonListJSON(){
+            
+            var processHtmlButton = function _processHtmlButton(button){
+                var buttonJSON = {};
+                
+                if(button.id){
+                    buttonJSON.id = button.id;
+                }
+
+                if(button.label && button.label !== ""){
+                    buttonJSON.label = button.label;    
+                }
+                else if(button.textContent && button.textContent !== ""){
+                    buttonJSON.label = button.textContent;    
+                }
+
+                if(button.type && button.type !== ""){
+                    buttonJSON.type = button.type;    
+                }
+
+                if(button.title && button.title !== ""){
+                    buttonJSON.tooltip = button.title;    
+                }                    
+
+                if(button.accessKey){
+                    // buttonJSON.accessKey = "";    
+                }
+
+                if(button.physicalType){
+                    // buttonJSON.physicalType = "";    
+                }
+
+                if(Object.keys(buttonJSON).length > 0){
+                    return buttonJSON;
+                }
+
+                return false;
+            };
+
+            var buttonList = [];
+            
+            //Button row buttons
+            var buttonRows = document.querySelectorAll('.emp-button-row .emp-button-group, .emp-button-group');
+
+            for (var i = 0; i < buttonRows.length; i++){
+                
+                var buttons = buttonRows[i].querySelectorAll('button');
+
+                for (var j = 0; j < buttons.length; j++){
+                    var buttonJSON = processHtmlButton(buttons[j]);
+                    if(buttonJSON){
+                        buttonList.push(buttonJSON);     
+                    }                   
+                }
+            }
+
+            //Field buttons
+            var fieldButtons = document.querySelectorAll('.emp-field button:not(.emp-icon-help):not(.cui-c-datepicker):not(.emp-password-toggle)');
+            /* jshint ignore:start */
+            for(var i = 0; i < fieldButtons.length; i++){
+                var buttonJSON = processHtmlButton(fieldButtons[i]);
+                if(buttonJSON){
+                    buttonList.push(buttonJSON);     
+                }
+            }
+            /* jshint ignore:end */
+
+            //Table buttons
+            var tableDataStoreKeys = emp.ds.getStoreType("table");
+            /* jshint ignore:start */
+            for(var i = 0; i < tableDataStoreKeys.length; i++){
+                
+                tableData = emp.ds.getStore(tableDataStoreKeys[i]);
+                
+                //Get button columns / action drop down items. 
+                if(tableData.head 
+                    && tableData.head.rows
+                    && tableData.head.rows[0]
+                    && tableData.head.rows[0].columns
+                    && tableData.head.rows[0].columns.length > 0 ){
+
+                    var tableHeaderColumnsData = tableData.head.rows[0].columns;
+
+                    for(var j = 0; j < tableHeaderColumnsData.length; j++){
+                        var columnData = tableHeaderColumnsData[j];
+
+                        if(columnData.attributes 
+                            && columnData.attributes["data-type"] 
+                            && columnData.attributes["data-type"] == "button"){
+
+                            var tableButtonJSON = {};
+
+                            if(columnData.text){
+                                tableButtonJSON.label = columnData.text;
+                            }
+
+                            if(Object.keys(tableButtonJSON).length > 0){
+                                buttonList.push(tableButtonJSON);
+                            }
+                        }
+                    }
+                }
+            }
+            /* jshint ignore:end */
+
+            buttonList = removeDuplicatesFromList(buttonList);
+
+            return buttonList;
+        };
+
+        var createModal = function _createModal(text) {
+            var regModal = $.modal({
+                autoOpen: true,
+                html: text,
+                closeDestroy: true,
+            });
+        };
+
+        revealRegions();
+        registrationJSON.pageID = getPageID();        
+        registrationJSON.pageTitle = getPageTitle();
+        registrationJSON.sections = getSectionListJSON();
+        registrationJSON.fields = getFieldListJSON();
+        registrationJSON.buttons = getButtonListJSON();
+        revertRegions();      
+
+        var modalContent = JSON.stringify(registrationJSON);
+        modalContent = modalContent.replace(/</g, "&lt;");
+        modalContent = modalContent.replace(/>/g, "&gt;");
+        
+        // Check to see if the require module
+        if (require.defined('modal')) {
+
+            // Create the modal
+            createModal(modalContent);
+        }
+        else {
+            // Load the require module and then create the modal
+            cui.load('modal', function _selection_modal() {
+                createModal(modalContent);
+            });
+        }
+    };
+
     // Public methods of the `uimockup` object
     return {
         createPageDataStore: createPageDataStore,
         createElementDataStore: createElementDataStore,
-        createPageMetaData: createPageMetaData
+        createPageMetaData: createPageMetaData,
+        createRegistrationJSON: createRegistrationJSON
     };
 });
