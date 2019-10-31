@@ -2,6 +2,10 @@
 @media print{
     .external-app.emp-orpts-subtheme{
 
+        body{
+            background:none;
+        }
+
     	#body-wrapper,
     	#body-wrapper main{
     		display: block;
