@@ -74,8 +74,10 @@ define(['render', 'spin'], function (render, spin) {
 
         fastdom.measure(function() {
 
-            // Fix the style headers
-            _priv.stickyHeaderHeight(table);
+            if(table.config.sticky){
+                // Fix the style headers
+                _priv.stickyHeaderHeight(table);
+            }
 
             fastdom.mutate(function() {
 
