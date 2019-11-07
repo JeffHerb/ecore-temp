@@ -983,7 +983,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                 if(parseInt(pageID.slice(0, 1)) >= 0){
                     var pieces = pageID.split('_');
 
-                    pageID = pieces[0] + "_" + pieces[1] + "_" + pieces[2].substring(0,2);
+                    pageID = pieces[1] + "_" + pieces[2].substring(0,2);
                 }
 
             } catch(evt){
@@ -999,6 +999,13 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             var pageTitle = titleElem.textContent.trim();
 
             return pageTitle;
+        };
+
+        var getEnvironment = function _getEnvironment(){
+            var htmlElem = document.querySelector("html");        
+            var environment = htmlElem.dataset.environment;
+
+            return environment;
         };
 
         var getSectionListJSON = function _getSectionListJSON(){
@@ -1302,6 +1309,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
         };
 
         revealRegions();
+        registrationJSON.environment = getEnvironment();
         registrationJSON.pageID = getPageID();        
         registrationJSON.pageTitle = getPageTitle();
         registrationJSON.sections = getSectionListJSON();
