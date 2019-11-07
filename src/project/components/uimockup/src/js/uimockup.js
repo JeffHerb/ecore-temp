@@ -849,7 +849,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                             // Now build out the mockup column and button lists
                             createTableColumnList(id);
 
-                        }, 300);
+                        }, 700);
 
                     });
                 }
