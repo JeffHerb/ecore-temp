@@ -723,6 +723,28 @@ section.emp-tabs div.emp-tab-contents {
     p {
         padding: 0;
     }
+
+    p:not(:last-child){
+        margin-bottom:10px;
+    }
+    ol,
+    ul{
+        clear: both;
+        padding-left: 1.6em;        
+        line-height: 1.2em;
+        
+        &:not(:last-child){
+            margin-bottom:10px;
+        }        
+
+        li{
+            margin: 0.5em 0 0 1.2em;
+        }
+    }
+
+    ul{
+        list-style-type: disc;
+    }
 }
 
 span.cui-input-append + button.cui-icon.emp-icon-help{
