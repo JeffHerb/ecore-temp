@@ -23,6 +23,31 @@ body {
     margin-left: 10px;
 }
 
+.emp-print-only{
+    .emp-ui-mockup-table-print-containers{
+        margin:5px 16px;
+        padding:3px;
+        font-size:12px;    
+        border:solid thin #ccc;
+        display: flex;
+        flex-wrap:wrap;
+
+        p{
+            font-size:12px;             
+            box-sizing: border-box;           
+            padding-bottom:4px;
+            flex:0 1 50%;
+            line-height: normal;
+        }
+
+        .emp-ui-mockup-table-print-header{
+            font-weight: bold;
+            margin-bottom:5px;
+            flex:0 1 100%;
+        }
+    }
+}
+
 .emp-ui-mockup-table-print-header {
     margin-bottom: 10px;
 }

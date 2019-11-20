@@ -388,8 +388,11 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableColumnHeaderResults.setAttributeNode(tableColumnHeaderResultsClass);
 
-                    var tableColumnTextResults = document.createTextNode("Columns: " + columns);
+                    var tableColumnTextResultsLabel = document.createElement('strong');
+                    tableColumnTextResultsLabel.textContent = "Columns: ";
+                    var tableColumnTextResults = document.createTextNode(columns);
 
+                    tableColumnHeaderResults.appendChild(tableColumnTextResultsLabel);
                     tableColumnHeaderResults.appendChild(tableColumnTextResults);
 
                     // Append table column header results to table container
@@ -420,8 +423,12 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableButtonHeaderResults.setAttributeNode(tableButtonHeaderResultsClass);
 
-                    var tableButtonTextResults = document.createTextNode("Buttons: " + buttons);
+                    var tableButtonTextResultsLabel = document.createElement('strong');
+                    tableButtonTextResultsLabel.textContent = "Buttons: ";
 
+                    var tableButtonTextResults = document.createTextNode(buttons);
+
+                    tableButtonHeaderResults.appendChild(tableButtonTextResultsLabel);
                     tableButtonHeaderResults.appendChild(tableButtonTextResults);
 
                     // Append table column header results to table container
@@ -453,8 +460,12 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableActionHeaderResults.setAttributeNode(tableActionHeaderResultsClass);
 
-                    var tableActionTextResults = document.createTextNode("Actions: " + actions);
+                    var tableActionTextResultsLabel = document.createElement('strong');
+                    tableActionTextResultsLabel.textContent = "Actions: ";
+                    
+                    var tableActionTextResults = document.createTextNode(actions);
 
+                    tableActionHeaderResults.appendChild(tableActionTextResultsLabel);
                     tableActionHeaderResults.appendChild(tableActionTextResults);
 
                     // Append table column header results to table container
@@ -486,8 +497,12 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableNotifierHeaderResults.setAttributeNode(tableNotifierHeaderResultsClass);
 
-                    var tableNotifierTextResults = document.createTextNode("Notifiers: " + notifiers);
+                    var tableNotifierTextResultsLabel = document.createElement('strong');
+                    tableNotifierTextResultsLabel.textContent = "Notifiers: ";
 
+                    var tableNotifierTextResults = document.createTextNode(notifiers);
+
+                    tableNotifierHeaderResults.appendChild(tableNotifierTextResultsLabel);
                     tableNotifierHeaderResults.appendChild(tableNotifierTextResults);
 
                     // Append table column header results to table container
