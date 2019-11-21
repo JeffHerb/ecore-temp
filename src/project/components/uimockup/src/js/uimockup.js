@@ -70,6 +70,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
             var buttonList = [];
             var notifierList = {};
+            var actionList = [];
 
             if (emp.reference.tables && emp.reference.tables[id] && emp.reference.tables[id].dataStore.title) {
 
@@ -109,16 +110,28 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                                 rowColumnContents:
                                 for (var rcc = 0, rccLen = tableRef.dataStore.body.rows[r].columns[rc].contents.length; rcc < rccLen; rcc++) {
-
+                                    
                                     if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "field" &&
                                         tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].type === "button") {
 
-                                            var buttonText = tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].input.text;
+                                        var buttonText = tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].input.text;
 
-                                            if (buttonList.indexOf(buttonText) === -1 && buttonText !== "Button Menu") {
-                                                buttonList.push(buttonText);
+                                        if (buttonList.indexOf(buttonText) === -1 && buttonText !== "Button Menu") {
+                                            buttonList.push(buttonText);
+                                        }
+                                        else if(buttonText === "Button Menu"){
+                                            
+                                            var buttonMenu = tableRef.dataStore.body.rows[r].columns[rc].contents[rcc];
+
+                                            if(buttonMenu.options && buttonMenu.options.length > 0){
+                                                
+                                                for(var ai = 0; ai < buttonMenu.options.length; ai++){
+                                                    if(actionList.indexOf(buttonMenu.options[ai].text) === -1){
+                                                        actionList.push(buttonMenu.options[ai].text);
+                                                    }
+                                                }
                                             }
-
+                                        }
                                     }
                                     else if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "notifier") {
 
@@ -142,10 +155,9 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                     }
                 }
 
-
-
                 printData.tables[id].buttons = buttonList.concat();
                 printData.tables[id].notifiers = notifierList;
+                printData.tables[id].actions = actionList.concat();
             }
         }
 
@@ -334,7 +346,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     // get table info;
                     var tableInfo = printData.tables[tableObject[t]];
-
+                    
                     // Create the table container
                     var tableContainer = document.createElement('div');
                     var tableContainerClass = document.createAttribute('class');
@@ -376,8 +388,11 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableColumnHeaderResults.setAttributeNode(tableColumnHeaderResultsClass);
 
-                    var tableColumnTextResults = document.createTextNode("Columns: " + columns);
+                    var tableColumnTextResultsLabel = document.createElement('strong');
+                    tableColumnTextResultsLabel.textContent = "Columns: ";
+                    var tableColumnTextResults = document.createTextNode(columns);
 
+                    tableColumnHeaderResults.appendChild(tableColumnTextResultsLabel);
                     tableColumnHeaderResults.appendChild(tableColumnTextResults);
 
                     // Append table column header results to table container
@@ -408,12 +423,53 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableButtonHeaderResults.setAttributeNode(tableButtonHeaderResultsClass);
 
-                    var tableButtonTextResults = document.createTextNode("Buttons: " + buttons);
+                    var tableButtonTextResultsLabel = document.createElement('strong');
+                    tableButtonTextResultsLabel.textContent = "Buttons: ";
 
+                    var tableButtonTextResults = document.createTextNode(buttons);
+
+                    tableButtonHeaderResults.appendChild(tableButtonTextResultsLabel);
                     tableButtonHeaderResults.appendChild(tableButtonTextResults);
 
                     // Append table column header results to table container
                     tableContainer.appendChild(tableButtonHeaderResults);
+
+
+                     // ===== Table Actions ======
+
+                    var actions = false;
+
+                    if (tableInfo.actions.length) {
+
+                        for (var ta = 0, taLen = tableInfo.actions.length; ta < taLen; ta++) {
+                            if (actions) {
+                                actions += ", " + tableInfo.actions[ta];
+                            }
+                            else {
+                                actions = tableInfo.actions[ta];
+                            }
+                        }
+                    }
+                    else {
+                        actions = "No actions" ;
+                    }
+
+                    var tableActionHeaderResults = document.createElement('p');
+                    var tableActionHeaderResultsClass = document.createAttribute('class');
+                    tableActionHeaderResultsClass.value = 'emp-ui-mockup-table-print-containers-info';
+
+                    tableActionHeaderResults.setAttributeNode(tableActionHeaderResultsClass);
+
+                    var tableActionTextResultsLabel = document.createElement('strong');
+                    tableActionTextResultsLabel.textContent = "Actions: ";
+                    
+                    var tableActionTextResults = document.createTextNode(actions);
+
+                    tableActionHeaderResults.appendChild(tableActionTextResultsLabel);
+                    tableActionHeaderResults.appendChild(tableActionTextResults);
+
+                    // Append table column header results to table container
+                    tableContainer.appendChild(tableActionHeaderResults);
 
                     // ===== Table Notifiers ======
 
@@ -441,8 +497,12 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     tableNotifierHeaderResults.setAttributeNode(tableNotifierHeaderResultsClass);
 
-                    var tableNotifierTextResults = document.createTextNode("Notifiers: " + notifiers);
+                    var tableNotifierTextResultsLabel = document.createElement('strong');
+                    tableNotifierTextResultsLabel.textContent = "Notifiers: ";
 
+                    var tableNotifierTextResults = document.createTextNode(notifiers);
+
+                    tableNotifierHeaderResults.appendChild(tableNotifierTextResultsLabel);
                     tableNotifierHeaderResults.appendChild(tableNotifierTextResults);
 
                     // Append table column header results to table container
@@ -849,7 +909,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                             // Now build out the mockup column and button lists
                             createTableColumnList(id);
 
-                        }, 300);
+                        }, 700);
 
                     });
                 }
@@ -983,7 +1043,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                 if(parseInt(pageID.slice(0, 1)) >= 0){
                     var pieces = pageID.split('_');
 
-                    pageID = pieces[0] + "_" + pieces[1] + "_" + pieces[2].substring(0,2);
+                    pageID = pieces[1] + "_" + pieces[2].substring(0,2);
                 }
 
             } catch(evt){
@@ -999,6 +1059,13 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             var pageTitle = titleElem.textContent.trim();
 
             return pageTitle;
+        };
+
+        var getEnvironment = function _getEnvironment(){
+            var htmlElem = document.querySelector("html");        
+            var environment = htmlElem.dataset.environment;
+
+            return environment;
         };
 
         var getSectionListJSON = function _getSectionListJSON(){
@@ -1302,6 +1369,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
         };
 
         revealRegions();
+        registrationJSON.environment = getEnvironment();
         registrationJSON.pageID = getPageID();        
         registrationJSON.pageTitle = getPageTitle();
         registrationJSON.sections = getSectionListJSON();

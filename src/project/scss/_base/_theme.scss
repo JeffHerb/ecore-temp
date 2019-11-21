@@ -897,7 +897,9 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             overflow: hidden;
 
             @include pointbreak("830px", true){
-                height: 39px;
+                min-height: 39px;
+                height: auto;
+                display: flex;                
             }
 
             button.menu-button {
@@ -911,6 +913,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                 @include pointbreak("830px", true){
 	                padding: 10px 10px 9px 12px;
+                    flex:0 0 auto;
 	            }
 
                 svg{
@@ -939,6 +942,45 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
                 @include pointbreak('830px', true){
                     font-size: 16px;
+                    flex:1 1 auto;
+                    height:auto;
+                }
+            }
+
+            .application-header-link{
+                height: 100%;
+                float:right;
+                padding: 13px 10px 12px 12px;
+                border: 0;
+                border-left: 1px solid rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex:0 1 auto;
+                align-items: center;
+                position: relative;
+                
+                &:hover{
+                    background: whitesmoke;
+                    border-left: 1px solid rgba(0, 0, 0, 0.1);
+                }
+
+                @include pointbreak('830px', true){
+                    font-size: 14px;
+                }
+            }
+
+            a.application-header-link{
+                text-decoration: none;
+                color:#000;
+            }
+
+            button.application-header-link{
+                border-radius:0;
+                background: transparent;                  
+
+                @include pointbreak('830px', true){                    
+                    white-space:normal;
+                    height:auto;
+                    text-align:left;
                 }
             }
         }
