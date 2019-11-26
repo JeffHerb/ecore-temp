@@ -154,7 +154,7 @@
             }
 
             @include pointbreak("720px", true) {
-                flex-direction: column;
+                display: block;
 
                 .emp-paging-view-limit{
                     text-align: center;
