@@ -249,7 +249,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
         .emp-asof, .emp-composite,
         .emp-button-group,
         .emp-input-collection,
-        .emp-table-pagination,
+        .emp-table-pagination .emp-paging-advance-controls,
         .emp-add-remove-list{
             button:not(.cui-button-primary):not(.cui-button-selected):not(.cui-icon):not(.emp-icon-popup-view-list){
                 background-color: #e9e9e8;

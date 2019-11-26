@@ -36,36 +36,60 @@
                             {{!-- {{#ifCond v1=this.paging op="hasAnyProperties" v2="first,last"}} --}}
 
                                 <div class="emp-paging-container-advance emp-table-pagination">
-                                    {{#if this.paging.first}}
-                                        {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
-                                    {{else}}
-                                    	{{#if this.paging.last}}
-                                        	<span class="emp-paging-spacer"></span>
-                                    	{{/if}}
+                                    {{#if this.pagingCursor}}
+                                        <div class="emp-paging-view-limit"></div>
                                     {{/if}}
-                                    {{#if this.paging.previous}}
-                                        {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
-                                    {{else}}
+
+                                    <div class="emp-paging-advance-controls">
+                                        {{#if this.paging.first}}
+                                            {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
+                                        {{else}}
+                                            {{#if this.paging.last}}
+                                                <span class="emp-paging-spacer"></span>
+                                            {{/if}}
+                                        {{/if}}
+                                        {{#if this.paging.previous}}
+                                            {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                                        {{else}}
+                                            {{#if this.paging.next}}
+                                                <span class="emp-paging-spacer"></span>
+                                            {{/if}}
+                                        {{/if}}
+                                        <span class="emp-page-cursor">
+                                            {{this.pagingText}}
+                                        </span>
                                         {{#if this.paging.next}}
-                                        	<span class="emp-paging-spacer"></span>
-                                    	{{/if}}
-                                    {{/if}}
-                                    <span class="emp-page-cursor">
-                                        {{this.pagingText}}
-                                    </span>
-                                    {{#if this.paging.next}}
-                                        {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
-                                    {{else}}
-                                    	{{#if this.paging.previous}}
-                                        	<span class="emp-paging-spacer"></span>
-                                    	{{/if}}
-                                    {{/if}}
-                                    {{#if this.paging.last}}
-                                        {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
-                                    {{else}}
-                                    	{{#if this.paging.first}}
-                                        	<span class="emp-paging-spacer"></span>
-                                    	{{/if}}
+                                            {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                                        {{else}}
+                                            {{#if this.paging.previous}}
+                                                <span class="emp-paging-spacer"></span>
+                                            {{/if}}
+                                        {{/if}}
+                                        {{#if this.paging.last}}
+                                            {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
+                                        {{else}}
+                                            {{#if this.paging.first}}
+                                                <span class="emp-paging-spacer"></span>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    {{!Paging view limit}}
+                                    {{#if this.pagingCursor}}
+                                        <div class="emp-paging-view-limit">
+                                            <span>View:</span>
+                                            {{#each this.pagingCursor.limit}}
+
+                                                {{!Display span instead of button for current cursor limit}}
+                                                {{#ifCond v1=../this.pagingCursor.currentLimit op="===" v2=this.input.text}}
+                                                    
+                                                    <span class="emp-current-cursor">{{this.input.text}}</span>
+                                                {{else}}
+                                                    
+                                                    {{~> _button this ~}}
+                                                {{/ifCond}}
+                                            {{/each}}
+                                        </div>
                                     {{/if}}
                                 </div>
 
@@ -100,37 +124,39 @@
 
                     <div class="table-control-row">
                         <div class="emp-paging-container-advance emp-table-pagination">
-                            {{#if this.paging.first}}
-                            {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
-                            {{else}}
-                            {{#if this.paging.last}}
-                            <span class="emp-paging-spacer"></span>
-                            {{/if}}
-                            {{/if}}
-                            {{#if this.paging.previous}}
-                            {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
-                            {{else}}
-                            {{#if this.paging.next}}
-                            <span class="emp-paging-spacer"></span>
-                            {{/if}}
-                            {{/if}}
-                            <span class="emp-page-cursor">
-                                {{this.pagingText}}
-                            </span>
-                            {{#if this.paging.next}}
-                            {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
-                            {{else}}
-                            {{#if this.paging.previous}}
-                            <span class="emp-paging-spacer"></span>
-                            {{/if}}
-                            {{/if}}
-                            {{#if this.paging.last}}
-                            {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
-                            {{else}}
-                            {{#if this.paging.first}}
-                            <span class="emp-paging-spacer"></span>
-                            {{/if}}
-                            {{/if}}
+                            <div class="emp-paging-advance-controls">
+                                {{#if this.paging.first}}
+                                {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_header"}}
+                                {{else}}
+                                {{#if this.paging.last}}
+                                <span class="emp-paging-spacer"></span>
+                                {{/if}}
+                                {{/if}}
+                                {{#if this.paging.previous}}
+                                {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_header"}}
+                                {{else}}
+                                {{#if this.paging.next}}
+                                <span class="emp-paging-spacer"></span>
+                                {{/if}}
+                                {{/if}}
+                                <span class="emp-page-cursor">
+                                    {{this.pagingText}}
+                                </span>
+                                {{#if this.paging.next}}
+                                {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_header"}}
+                                {{else}}
+                                {{#if this.paging.previous}}
+                                <span class="emp-paging-spacer"></span>
+                                {{/if}}
+                                {{/if}}
+                                {{#if this.paging.last}}
+                                {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_header"}}
+                                {{else}}
+                                {{#if this.paging.first}}
+                                <span class="emp-paging-spacer"></span>
+                                {{/if}}
+                                {{/if}}
+                            </div>
                         </div>
                     </div>
 
@@ -186,20 +212,44 @@
             {{#ifCond v1=this.paging op="hasAnyProperties" v2="first,last"}}
 
                 <div class="emp-paging-container-advance emp-table-pagination">
-                    {{#if this.paging.first}}
-                        {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_footer"}}
+                    {{#if this.pagingCursor}}
+                        <div class="emp-paging-view-limit"></div>
                     {{/if}}
-                    {{#if this.paging.previous}}
-                        {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_footer"}}
-                    {{/if}}
-                    <span>
-                        {{this.pagingText}}
-                    </span>
-                    {{#if this.paging.next}}
-                        {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_footer"}}
-                    {{/if}}
-                    {{#if this.paging.last}}
-                        {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_footer"}}
+
+                    <div class="emp-paging-advance-controls">
+                        {{#if this.paging.first}}
+                            {{> (getPartialName this.paging.first.template) this.paging.first specialIcon="first" idSuffix="_footer"}}
+                        {{/if}}
+                        {{#if this.paging.previous}}
+                            {{> (getPartialName this.paging.previous.template) this.paging.previous specialIcon="previous" idSuffix="_footer"}}
+                        {{/if}}
+                        <span>
+                            {{this.pagingText}}
+                        </span>
+                        {{#if this.paging.next}}
+                            {{> (getPartialName this.paging.next.template) this.paging.next specialIcon="next" idSuffix="_footer"}}
+                        {{/if}}
+                        {{#if this.paging.last}}
+                            {{> (getPartialName this.paging.last.template) this.paging.last specialIcon="last" idSuffix="_footer"}}
+                        {{/if}}
+                    </div>
+
+                    {{!Paging view limit}}
+                    {{#if this.pagingCursor}}
+                        <div class="emp-paging-view-limit">
+                            <span>View:</span>
+                            {{#each this.pagingCursor.limit}}
+
+                                {{!Display span instead of button for current cursor limit}}
+                                {{#ifCond v1=../this.pagingCursor.currentLimit op="===" v2=this.input.text}}
+                                    
+                                    <span class="emp-current-cursor">{{this.input.text}}</span>
+                                {{else}}
+                                    
+                                    {{~> _button this ~}}
+                                {{/ifCond}}
+                            {{/each}}
+                        </div>
                     {{/if}}
                 </div>
 
