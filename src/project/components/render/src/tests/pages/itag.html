@@ -558,6 +558,21 @@
                                                         "data-type": "alpha",
                                                         "data-sort": "alpha"
                                                     }
+                                                },
+                                                {
+                                                    "type": "header",
+                                                    "text": "Header with help tag",
+                                                    "attributes":{
+                                                        "data-type": "alpha",
+                                                        "data-sort": "alpha"
+                                                    },
+                                                    "help": [
+                                                        {
+                                                            "template": "output",
+                                                            "raw": true,
+                                                            "text": "<p>This is a header itag</p>"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
@@ -571,10 +586,7 @@
                                                     "contents": [
                                                         {
                                                             "template": "text",
-                                                            "text": "Some text value"
-                                                        },
-                                                        {
-                                                            "template": "itag",
+                                                            "text": "Some text value",
                                                             "help": [
                                                                 {
                                                                     "template": "output",
@@ -592,10 +604,7 @@
                                                             "attributes": {
                                                                 "href": "#"
                                                             },
-                                                            "text": "A link"
-                                                        },
-                                                        {
-                                                            "template": "itag",
+                                                            "text": "A link",
                                                             "help": [
                                                                 {
                                                                     "template": "output",
@@ -625,10 +634,7 @@
                                                                     "size": 15,
                                                                     "maxlength": 15
                                                                 }
-                                                            }
-                                                        },
-                                                        {
-                                                            "template": "itag",
+                                                            },
                                                             "help": [
                                                                 {
                                                                     "template": "output",
@@ -656,10 +662,7 @@
                                                                 "attributes": {
                                                                     "id": "EC_DATE",
                                                                 }
-                                                            }
-                                                        },
-                                                        {
-                                                            "template": "itag",
+                                                            },
                                                             "help": [
                                                                 {
                                                                     "template": "output",
@@ -669,6 +672,107 @@
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "text":"Normal value"
+                                                }
+                                            ]
+                                        },
+                                         {
+                                            "columns": [
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "template": "text",
+                                                            "text": "Some text value",
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column plain text help text</p>"
+                                                                }
+                                                            ]
+                                                        }                                                        
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "template": "link",
+                                                            "attributes": {
+                                                                "href": "#"
+                                                            },
+                                                            "text": "A link",
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column link help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "text",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "EC_FIELD"
+                                                                },
+                                                                "text": "Field:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "EC_FIELD",
+                                                                    "size": 15,
+                                                                    "maxlength": 15
+                                                                }
+                                                            },
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column text field help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "contents": [
+                                                        {
+                                                            "type": "date",
+                                                            "template": "field",
+                                                            "label": {
+                                                                "attributes": {
+                                                                    "for": "EC_DATE"
+                                                                },
+                                                                "text": "Date:",
+                                                                "visibility": "hidden",
+                                                                "hasLayout": false
+                                                            },
+                                                            "input": {
+                                                                "attributes": {
+                                                                    "id": "EC_DATE",
+                                                                }
+                                                            },
+                                                            "help": [
+                                                                {
+                                                                    "template": "output",
+                                                                    "raw": true,
+                                                                    "text": "<p>This is a column date field help text</p>"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "text":"Normal value"
                                                 }
                                             ]
                                         }

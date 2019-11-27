@@ -648,6 +648,9 @@ define(['kind', 'dataStore'], function (kind, ds) {
                     };
 
                     data.head.rows = rowsDefintion($thead, $rows, skipIndex, settings);
+                    /*DEBUG: START*/
+                    console.log(data.head.rows);
+                    /*DEBUG: END*/
                 }
 
                 // Work the table body

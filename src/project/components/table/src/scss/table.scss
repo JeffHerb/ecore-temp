@@ -438,6 +438,25 @@
 
 .external-app {
 
+    table{
+
+        thead{
+            th{
+                 &.emp-help-column{
+                    padding-right: 34px;
+                    position: relative;
+
+                    .emp-icon-help{
+                        position: absolute;
+                        right: 6px;
+                        top: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+
     table.emp-pivot-table {
 
         thead {

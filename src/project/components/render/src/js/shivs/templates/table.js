@@ -731,6 +731,9 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                     case 'uppercase':
                         _priv.attributes(data, 'class', 'emp-force-uppercase');
                         break;
+                    case 'help-header':
+                        _priv.attributes(data, 'class', 'emp-help-column');
+                        break;
                 }
             }
         }
@@ -1277,10 +1280,41 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
                 }
 
+                
+
+
+                if(newCell.help){
+                    if(newCell.type && newCell.type === "header"){
+
+                        
+                        var helpContents = newCell.help;
+                        helpContents.template = "_itag";
+                    
+                        /*DEBUG: START*/
+                        console.log(helpContents);
+                        /*DEBUG: END*/
+
+                        procTemplates.render(helpContents, 'table', function(cellContents) {
+                            if (cellContents !== false) {
+                                cellElm.appendChild(cellContents);
+                            }
+
+                            if(newCell.style){
+                                newCell.style += ",help-header";
+                            }
+                            else{
+                                newCell.style = "help-header";
+                            }
+
+                        });
+                    }                    
+                }
+
                 if (newCell.style && (!newCell.visibility || newCell.visibility !== "hidden")) {
 
                     _priv.styles(newCell);
                 }
+
 
 	    		// Merge attribute into cell element
 	    		_priv.mergeAttributes(cellElm, newCell);
