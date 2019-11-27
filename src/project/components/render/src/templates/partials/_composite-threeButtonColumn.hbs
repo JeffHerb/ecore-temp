@@ -1,0 +1,37 @@
+<div class="emp-composite emp-threeButtonColumn">
+	<div class="cui-row">
+		<div class="cui-col-medium-4">
+			{{#if this.left}}
+				<div class="cui-row emp-button-row">
+					<div class="emp-col-full button-col emp-button-group">
+						{{#each this.left~}}			
+			   				{{#rendererHook this ""}}{{/rendererHook~}}
+			            {{/each~}}   
+		        	</div>
+		       	</div>
+	        {{/if}}		
+		</div>
+		<div class="cui-col-medium-4">
+			{{#if this.center}}
+				<div class="cui-row emp-button-row">
+					<div class="emp-col-full button-col emp-button-group cui-align-center">
+						{{#each this.center~}}
+			   				{{#rendererHook this ""}}{{/rendererHook~}}
+			            {{/each~}}   
+		        	</div>
+		       	</div>
+	        {{/if}}		
+		</div>
+		<div class="cui-col-medium-4">
+			{{#if this.right}}
+				<div class="cui-row emp-button-row">
+					<div class="emp-col-full button-col emp-button-group cui-align-right">
+						{{#each this.right~}}
+			   				{{#rendererHook this ""}}{{/rendererHook~}}
+			            {{/each~}}   
+		        	</div>
+		       	</div>
+	        {{/if}}		
+		</div>
+	</div>
+</div>
