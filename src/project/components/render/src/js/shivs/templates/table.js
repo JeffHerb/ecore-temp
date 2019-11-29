@@ -1280,19 +1280,15 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
                 }
 
-                
+
 
 
                 if(newCell.help){
                     if(newCell.type && newCell.type === "header"){
 
-                        
+
                         var helpContents = newCell.help;
                         helpContents.template = "_itag";
-                    
-                        /*DEBUG: START*/
-                        console.log(helpContents);
-                        /*DEBUG: END*/
 
                         procTemplates.render(helpContents, 'table', function(cellContents) {
                             if (cellContents !== false) {
@@ -1307,7 +1303,7 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                             }
 
                         });
-                    }                    
+                    }
                 }
 
                 if (newCell.style && (!newCell.visibility || newCell.visibility !== "hidden")) {

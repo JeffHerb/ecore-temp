@@ -81,6 +81,8 @@ define(['jquery', 'popover'], function ($, popover) {
 
     _events.click = function _clicked_tooltit(evt) {
 
+        evt.stopPropagation();
+
         var defualts = {
             html: '',
             display: {

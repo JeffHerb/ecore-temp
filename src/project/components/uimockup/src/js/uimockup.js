@@ -110,7 +110,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                                 rowColumnContents:
                                 for (var rcc = 0, rccLen = tableRef.dataStore.body.rows[r].columns[rc].contents.length; rcc < rccLen; rcc++) {
-                                    
+
                                     if (tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].template === "field" &&
                                         tableRef.dataStore.body.rows[r].columns[rc].contents[rcc].type === "button") {
 
@@ -120,11 +120,11 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                                             buttonList.push(buttonText);
                                         }
                                         else if(buttonText === "Button Menu"){
-                                            
+
                                             var buttonMenu = tableRef.dataStore.body.rows[r].columns[rc].contents[rcc];
 
                                             if(buttonMenu.options && buttonMenu.options.length > 0){
-                                                
+
                                                 for(var ai = 0; ai < buttonMenu.options.length; ai++){
                                                     if(actionList.indexOf(buttonMenu.options[ai].text) === -1){
                                                         actionList.push(buttonMenu.options[ai].text);
@@ -346,7 +346,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     // get table info;
                     var tableInfo = printData.tables[tableObject[t]];
-                    
+
                     // Create the table container
                     var tableContainer = document.createElement('div');
                     var tableContainerClass = document.createAttribute('class');
@@ -462,7 +462,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                     var tableActionTextResultsLabel = document.createElement('strong');
                     tableActionTextResultsLabel.textContent = "Actions: ";
-                    
+
                     var tableActionTextResults = document.createTextNode(actions);
 
                     tableActionHeaderResults.appendChild(tableActionTextResultsLabel);
@@ -975,7 +975,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             "pageTitle": "",
             "sections": [],
             "fields": [],
-            "buttons": []            
+            "buttons": []
         };
 
         var removeDuplicatesFromList = function _removeDuplicatesFromList(list){
@@ -984,15 +984,15 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
             for(var i = list.length-1; i >= 0; i--){
                 var currentItem = list[i];
-                
+
                 if(currentItem.label && currentItem.label !== ""){
-                
+
                     if(!keyRef[currentItem.label]){
                         keyRef[currentItem.label] = [];
                         keyRef[currentItem.label].push(currentItem);
                     }
                     else{
-                        //Label exists in our reference object. Compare at each object. 
+                        //Label exists in our reference object. Compare at each object.
                         var currentProperties = Object.getOwnPropertyNames(currentItem);
                         var keyExists = true;
 
@@ -1038,8 +1038,8 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
             try{
                 pageID = fwData.context.screen.id;
-                
-                //Cleanup page ID if starts with number(filename)                
+
+                //Cleanup page ID if starts with number(filename)
                 if(parseInt(pageID.slice(0, 1)) >= 0){
                     var pieces = pageID.split('_');
 
@@ -1047,7 +1047,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                 }
 
             } catch(evt){
-                
+
                 journal.log({ type: 'error', owner: 'UI', module: 'uimockup', submodule: 'createRegistrationJSON', func: 'getPageID' }, 'Error parsing page id' + evt);
             }
 
@@ -1055,14 +1055,14 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
         };
 
         var getPageTitle = function _getPageTitle(){
-            var titleElem = document.querySelector(".emp-page-title h2");        
+            var titleElem = document.querySelector(".emp-page-title h2");
             var pageTitle = titleElem.textContent.trim();
 
             return pageTitle;
         };
 
         var getEnvironment = function _getEnvironment(){
-            var htmlElem = document.querySelector("html");        
+            var htmlElem = document.querySelector("html");
             var environment = htmlElem.dataset.environment;
 
             return environment;
@@ -1074,17 +1074,17 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
             for(var i=0; i<sections.length;i++){
                 var sectionJSON = {};
-                
+
                 // Section Title Content
                 var sectionTitleElement = sections[i].querySelector('.emp-section-title h3');
-                
+
                 if(sectionTitleElement && sectionTitleElement.innerHTML !== "" && sectionTitleElement.closest('section') === sections[i]){
                     sectionJSON.title = sectionTitleElement.innerHTML.trim();
                 }
 
                 // Section Instruction Content
                 var sectionInstructionElement = sections[i].querySelector('.emp-section-instructions');
-                
+
                 if(sectionInstructionElement && sectionInstructionElement.innerHTML !== "" && sectionInstructionElement.closest('section') === sections[i]){
 
                     sectionJSON.instructionText = sectionInstructionElement.innerHTML.trim();
@@ -1104,16 +1104,16 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
         var revealRegions = function _revealRegions(){
             //Expand all regions (otherwise they are hidden)
             var expandableRegions = document.querySelectorAll('.emp-expandable-region');
-            
+
             for(var i = 0; i < expandableRegions.length; i++){
                 expandableRegions[i].style.display ="block";
             }
         };
 
         var revertRegions = function _revertRegions(){
-            //Revert all regions. The style property isn't used during normal rendering so it should be save to remove. 
+            //Revert all regions. The style property isn't used during normal rendering so it should be save to remove.
             var expandableRegions = document.querySelectorAll('.emp-expandable-region');
-            
+
             for(var i = 0; i < expandableRegions.length; i++){
                 expandableRegions[i].style.removeProperty("display");
             }
@@ -1124,26 +1124,26 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
             if(tooltipSource){
                 var tooltipContent = document.getElementById(tooltipSource);
-                
+
                 if(tooltipContent){
                     return tooltipContent.innerHTML;
                 }
             }
-            
+
             return "";
         };
 
         var trimFieldID = function _trimFieldID(id){
             //Cleanup any prefix/suffix
             if(id.indexOf(':')>-1){
-                var pieces = id.split(':');                
+                var pieces = id.split(':');
 
                 for(var p=0; p<pieces.length;p++){
 
-                    if(pieces[p].indexOf("EC_") > -1){                    
-                       return pieces[p];                 
-                    }                  
-                }                
+                    if(pieces[p].indexOf("EC_") > -1){
+                       return pieces[p];
+                    }
+                }
             }
 
             return id;
@@ -1157,11 +1157,11 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             var dataWrappers = document.querySelectorAll('main .emp-field, main .emp-composite');
 
             for (var i = 0; i < dataWrappers.length; i++){
-                
-                var readOnlyLabels = dataWrappers[i].querySelectorAll(".emp-label");               
+
+                var readOnlyLabels = dataWrappers[i].querySelectorAll(".emp-label");
 
                 for (var j = 0; j<readOnlyLabels.length; j++){
-                    var readOnlyLabel = readOnlyLabels[j];                    
+                    var readOnlyLabel = readOnlyLabels[j];
                     var readOnlyJSON = {};
 
                     if(readOnlyLabel.textContent !== ""){
@@ -1172,9 +1172,9 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                         readOnlyJSON.name = trimFieldID(readOnlyLabel.id);
                     }
 
-                    //Handle read only fields with iTags. 
+                    //Handle read only fields with iTags.
                     var wrapperItags = dataWrappers[i].querySelectorAll("button.emp-icon-help");
-                    // Only process if there is only one itag. 
+                    // Only process if there is only one itag.
                     if(wrapperItags.length == 1){
                         readOnlyJSON.helpText = getItagTextFromButton(wrapperItags[0]);
                     }
@@ -1186,9 +1186,9 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
                 /* jshint ignore:start */
                 var labels = dataWrappers[i].querySelectorAll("label");
-                
+
                 for (var j = 0; j<labels.length; j++){
-                    var label = labels[j];                    
+                    var label = labels[j];
                     var fieldJSON = {};
 
                     if(label.textContent !== ""){
@@ -1201,14 +1201,14 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                         fieldJSON.name = trimFieldID(label.htmlFor);
 
                         if(input){
-                            
+
                             if(input.type !== "radio" && input.type !== "checkbox"){
                                 if(input.size){
                                     fieldJSON.size = input.size;
                                 }
                                 if(input.maxLength){
                                     fieldJSON.maxLength = input.maxLength;
-                                }                           
+                                }
                             }
 
                             var siblingHelpButton = input.parentNode.querySelector("button.emp-icon-help");
@@ -1251,35 +1251,35 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
         };
 
         var getButtonListJSON = function _getButtonListJSON(){
-            
+
             var processHtmlButton = function _processHtmlButton(button){
                 var buttonJSON = {};
-                
+
                 if(button.id){
                     buttonJSON.id = button.id;
                 }
 
                 if(button.label && button.label !== ""){
-                    buttonJSON.label = button.label;    
+                    buttonJSON.label = button.label;
                 }
                 else if(button.textContent && button.textContent !== ""){
-                    buttonJSON.label = button.textContent;    
+                    buttonJSON.label = button.textContent;
                 }
 
                 if(button.type && button.type !== ""){
-                    buttonJSON.type = button.type;    
+                    buttonJSON.type = button.type;
                 }
 
                 if(button.title && button.title !== ""){
-                    buttonJSON.tooltip = button.title;    
-                }                    
+                    buttonJSON.tooltip = button.title;
+                }
 
                 if(button.accessKey){
-                    // buttonJSON.accessKey = "";    
+                    // buttonJSON.accessKey = "";
                 }
 
                 if(button.physicalType){
-                    // buttonJSON.physicalType = "";    
+                    // buttonJSON.physicalType = "";
                 }
 
                 if(Object.keys(buttonJSON).length > 0){
@@ -1290,19 +1290,19 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             };
 
             var buttonList = [];
-            
+
             //Button row buttons
             var buttonRows = document.querySelectorAll('.emp-button-row .emp-button-group, .emp-button-group');
 
             for (var i = 0; i < buttonRows.length; i++){
-                
+
                 var buttons = buttonRows[i].querySelectorAll('button');
 
                 for (var j = 0; j < buttons.length; j++){
                     var buttonJSON = processHtmlButton(buttons[j]);
                     if(buttonJSON){
-                        buttonList.push(buttonJSON);     
-                    }                   
+                        buttonList.push(buttonJSON);
+                    }
                 }
             }
 
@@ -1312,7 +1312,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             for(var i = 0; i < fieldButtons.length; i++){
                 var buttonJSON = processHtmlButton(fieldButtons[i]);
                 if(buttonJSON){
-                    buttonList.push(buttonJSON);     
+                    buttonList.push(buttonJSON);
                 }
             }
             /* jshint ignore:end */
@@ -1321,11 +1321,11 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             var tableDataStoreKeys = emp.ds.getStoreType("table");
             /* jshint ignore:start */
             for(var i = 0; i < tableDataStoreKeys.length; i++){
-                
+
                 tableData = emp.ds.getStore(tableDataStoreKeys[i]);
-                
-                //Get button columns / action drop down items. 
-                if(tableData.head 
+
+                //Get button columns / action drop down items.
+                if(tableData.head
                     && tableData.head.rows
                     && tableData.head.rows[0]
                     && tableData.head.rows[0].columns
@@ -1336,8 +1336,8 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                     for(var j = 0; j < tableHeaderColumnsData.length; j++){
                         var columnData = tableHeaderColumnsData[j];
 
-                        if(columnData.attributes 
-                            && columnData.attributes["data-type"] 
+                        if(columnData.attributes
+                            && columnData.attributes["data-type"]
                             && columnData.attributes["data-type"] == "button"){
 
                             var tableButtonJSON = {};
@@ -1370,17 +1370,17 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 
         revealRegions();
         registrationJSON.environment = getEnvironment();
-        registrationJSON.pageID = getPageID();        
+        registrationJSON.pageID = getPageID();
         registrationJSON.pageTitle = getPageTitle();
         registrationJSON.sections = getSectionListJSON();
         registrationJSON.fields = getFieldListJSON();
         registrationJSON.buttons = getButtonListJSON();
-        revertRegions();      
+        revertRegions();
 
         var modalContent = JSON.stringify(registrationJSON);
         modalContent = modalContent.replace(/</g, "&lt;");
         modalContent = modalContent.replace(/>/g, "&gt;");
-        
+
         // Check to see if the require module
         if (require.defined('modal')) {
 

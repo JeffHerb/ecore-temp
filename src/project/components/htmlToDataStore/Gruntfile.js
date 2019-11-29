@@ -40,22 +40,22 @@ module.exports = function(grunt) {
             ],
         },
 
-        watch: {
-            options: {
-                livereload: 35728,
-                interrupt: true,
-            },
+        // watch: {
+        //     options: {
+        //         livereload: 35728,
+        //         interrupt: true,
+        //     },
 
-            scripts: {
-                files: [
-                    'src/**/*.js',
-                ],
-                tasks: [
-                    'jshint',
-                    'copy',
-                ],
-            },
-        },
+        //     scripts: {
+        //         files: [
+        //             'src/**/*.js',
+        //         ],
+        //         tasks: [
+        //             'jshint',
+        //             'copy',
+        //         ],
+        //     },
+        // },
 
     });
 
@@ -69,5 +69,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean', 'jshint', 'copy']);
 
     // Development
-    grunt.registerTask('dev', ['default', 'watch']);
+    grunt.registerTask('dev', ['default']);
 };

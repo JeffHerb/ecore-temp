@@ -231,6 +231,40 @@ define(['kind', 'dataStore'], function (kind, ds) {
                                         col.responsive.type = attributes['data-table-responsive-type'];
                                     }
 
+                                    // Help
+                                    if (attributes.hasOwnProperty('data-help')) {
+
+                                        if(attributes.hasOwnProperty('data-help') != "" && !col.help){
+
+                                            var helpId = attributes['data-help'];
+                                            var itagElem = document.getElementById(helpId);
+                                            var helpText = "";
+
+                                            if(itagElem && itagElem.childNodes && itagElem.childNodes.length > 0){
+
+                                                for(var j = 0; j < itagElem.childNodes.length; j++){
+
+                                                    var itagChildNode = itagElem.childNodes[j];
+
+
+                                                    if (itagChildNode.tagName !== "HEADER") {
+                                                        helpText += itagChildNode.outerHTML;
+                                                    }
+                                                }
+                                            }
+
+                                            if(helpText != ""){
+                                                col.help = [
+                                                    {
+                                                        "template": "output",
+                                                        "raw": true,
+                                                        "text": helpText
+                                                    }
+                                                ];
+                                            }
+                                        }
+                                    }
+
                                     col.attributes = attributes;
                                 }
 
@@ -648,9 +682,6 @@ define(['kind', 'dataStore'], function (kind, ds) {
                     };
 
                     data.head.rows = rowsDefintion($thead, $rows, skipIndex, settings);
-                    /*DEBUG: START*/
-                    console.log(data.head.rows);
-                    /*DEBUG: END*/
                 }
 
                 // Work the table body
