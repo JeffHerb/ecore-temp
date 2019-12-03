@@ -172,6 +172,9 @@ Handlebars.registerHelper('tableHiddenInputs', function(context, options) {
 
     finalOutput += '<input type="hidden" name="' + tableId + '_selected_index_previous" id="' + tableId + '_selected_index_previous" value=""/>';
 
+    //page view limit/size
+    finalOutput += '<input type="hidden" name="' + tableId + '_paging_view_limit" id="' + tableId + '_page_view_limit" value=""/>';
+
     return new Handlebars.SafeString(finalOutput);
 
 });
