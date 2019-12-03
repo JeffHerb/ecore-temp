@@ -267,6 +267,7 @@
     .emp-icon-help{
         background-image: url($emp-images-path + "external-help.svg");
         background-size: 16px;
+        background-color: transparent;
     }
 
     @media print {
