@@ -461,6 +461,7 @@ define(['kind', 'dataStore'], function (kind, ds) {
                 var paging = $table.attr('data-paging');
                 var pagingExtend = $table.attr('data-paging-extend');
                 var pagingText = $table.attr('data-paging-text');
+                var pagingCursor = $table.attr('data-pagingCursor');
 
                 if (paging === "true") {
 
@@ -529,6 +530,41 @@ define(['kind', 'dataStore'], function (kind, ds) {
                         }
 
                     }
+
+                    if(pagingCursor){
+
+                        data.pagingCursor = {};
+
+                        data.pagingCursor.limit = [];
+
+                        var pagingCursorLimit = pagingCursor.split(',');
+
+                        data.pagingCursor.currentLimit = pagingCursorLimit[0];
+
+                        for(var l = 0; l < pagingCursorLimit.length; l++){
+
+                            var button = {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "type": "button",
+                                        "name": "",
+                                        "id": "",
+                                        "title": ""
+                                    },
+                                    "text": "All"
+                                }
+                            };
+
+                            button.input.attributes.name = 'BTN_' + pagingCursorLimit[l];
+                            button.input.attributes.id = 'BTN_' + pagingCursorLimit[l];
+                            button.input.attributes.title = 'View ' + pagingCursorLimit[l] + ' items';
+                            button.input.text =  pagingCursorLimit[l];
+                            
+                            data.pagingCursor.limit.push(button);
+                        }
+                    } 
 
                     settings.paging = true;
                 }
