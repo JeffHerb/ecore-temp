@@ -482,6 +482,7 @@
         thead{
             th{
                  &.emp-help-column{
+                    background-clip:padding-box;
                     padding-right: 34px;
                     position: relative;
 
