@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="external-app"
+      lang="en">
+<head>
+  <meta content="IE=edge"
+        http-equiv="X-UA-Compatible">
+  <meta charset="utf-8">
+  <title>Template - Core UI</title>
+  <link href="../../../dist/css/main.css"
+        media="all"
+        rel="stylesheet"
+        type="text/css"><!-- Removed the html 5 shiv for testing purposes -->
+</head>
+<body>
+  <div id="header-wrapper"></div>
+  <div id="body-wrapper"></div>
+  <div id="footer-wrapper"></div>
+  <script>
+        var fwData =
+        {
+            "preferences": false,
+            "footer": {
+                "contents": [
+                    {
+                        "template": "external-universal-footer"
+                    }
+                ]
+            },
+            "header": {
+                "contents": [
+                    {
+                        "template": "external-universal-header"
+                    },
+                    {
+                        "title": "Application Title",
+                        "template": "external-agency-header"
+                    }
+                ]
+            },
+            "context": {
+                "ui": {
+                    "css": "css/main.css",
+                    "domain": "http://dvm.int.nystax.gov/ecore/",
+                    "version": "v0.0",
+                    "js": "js/main.js"
+                },
+                "screen": {
+                    "type": "page"
+                }
+            },
+            "page": {
+        "contents": [
+            {
+                "template": "pageInfo",
+                
+                "pageLegend": {
+                    "helpText": false,
+                    "required": false
+                },
+                "title": "Composite - ThreeButtonColumn"
+            },
+            {
+                "template": "pagebody",
+                "contents": [
+                    {
+                        "contents": [
+                            {
+                                "template": "group",
+                                "contents": [                                  
+                                    {
+                                        "type": "threeButtonColumn",
+                                        "template": "composite",
+                                        "parts": {
+                                            "left": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_RIGHT_BUTTON",
+                                                            "type": "button"
+                                                        },
+                                                        "text": "Left 1",
+                                                    }
+                                                },
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_RIGHT_BUTTON",
+                                                            "type": "button"
+                                                        },
+                                                        "text": "Left 2",
+                                                    }
+                                                }
+                                            ],
+                                            "center": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_RIGHT_BUTTON",
+                                                            "type": "button"
+                                                        },
+                                                        "text": "Center 1",
+                                                    }
+                                                },
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_RIGHT_BUTTON",
+                                                            "type": "button"
+                                                        },
+                                                        "text": "Center 2",
+                                                    }
+                                                }
+                                            ],
+                                            "right": [
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_RIGHT_BUTTON",
+                                                            "type": "button"
+                                                        },
+                                                        "text": "Right 1",
+                                                    }
+                                                },
+                                                {
+                                                    "type": "button",
+                                                    "template": "field",
+                                                    "input": {
+                                                        "attributes": {
+                                                            "id": "E_RIGHT_BUTTON",
+                                                            "type": "button"
+                                                        },
+                                                        "text": "Right 2",
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                   
+                                ],
+                                "attributes": {
+                                    "id": "S1"
+                                },
+                                "title": "Property Information"
+                            },
+                            
+                        ],                        
+                        "type": "form"
+                    }
+                ]
+            }
+        ]
+    }
+        }
+  </script>
+  <script id="require"
+        src="../../../dist/js/main.js"></script>
+  <script>
+
+
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+  </script>
+</body>
+</html>
