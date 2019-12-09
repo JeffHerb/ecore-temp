@@ -60,14 +60,39 @@ define(['jquery', 'popover'], function ($, popover) {
 
             }
 
-        }
+        }  
         else if(tooltipContentContainer) {
 
-            var tooltipContent = tooltipContentContainer.firstElementChild;
+            while (tooltipContentContainer.firstChild) {
 
-            if(tooltipContent && tooltipContent.nodeType === 1){
+                var childContent = tooltipContentContainer.firstChild;
 
-                newTooltip.appendChild(tooltipContent);
+                var cloneNode = false;
+
+                if (childContent.nodeType === 1) {
+
+                    if (childContent.nodeName !== "HEADER") {
+
+                        cloneNode = childContent.cloneNode(true);
+
+                        newTooltip.appendChild(cloneNode);
+                    }
+                    else {
+
+                        // if (!firstHeader) {
+                        //     firstHeader = true;
+                        // }
+                        // else {
+
+                        //     cloneNode = childContent.cloneNode(true);
+
+                        //     newTooltip.appendChild(cloneNode);
+                        // }
+                    }
+
+                }
+
+                tooltipContentContainer.removeChild(tooltipContentContainer.firstChild);
             }
 
             return newTooltip;
