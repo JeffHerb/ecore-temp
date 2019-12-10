@@ -4506,6 +4506,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         lStorage.set('tabsetPrefs', customObj);
     };
 
+    if (!window.cui) {
+        window.cui = cui;
+    }
+
     ////////////////
     // Public API //
     ////////////////

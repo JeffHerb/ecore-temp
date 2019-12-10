@@ -649,6 +649,8 @@ define(['jquery', 'render', 'guid', 'process'], function ($, render, guid, proce
                                 //data.attributes['data-responsive'] = "false";
                             }
 
+                            data.type = "breakout";
+
                             if (settings.selectReturn) {
 
                                 if (!data.attributes) {
@@ -794,6 +796,8 @@ define(['jquery', 'render', 'guid', 'process'], function ($, render, guid, proce
             };
 
             res.fail = function _selection_popup_res_fail(data) {
+
+                console.log(data);
 
                 journal.log({type: 'error', owner: 'UI', module: 'emp', submodule: 'selectionPopup'}, 'Selection Popup failed to get a response from the url. "' + data + '"');
 
