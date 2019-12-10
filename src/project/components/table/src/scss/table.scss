@@ -580,6 +580,10 @@
                     display: none;
                 }
 
+                .emp-pivote-table-expand{
+                    white-space:normal;
+                }
+
                 &:hover {
                     background: transparent;
                 }
@@ -631,6 +635,10 @@
                         font-weight: normal;
                         margin-bottom: 5px;
                         overflow: visible;
+
+                        .emp-icon-help{
+                            vertical-align: baseline;
+                        }
                     }
                 }
 

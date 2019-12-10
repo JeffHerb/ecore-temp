@@ -368,9 +368,11 @@ define(['kind', 'dataStore'], function (kind, ds) {
 
                                             });
 
-                                            // This is a catch function because of some contents not always setup to return contents.
-                                            col.text = $col.text().trim().replace(/\s{2,}/,' ');
-
+                                            if(col.contents.lencth > 0){
+                                                // This is a catch function because of some contents not always setup to return contents.
+                                                col.text = $col.text().trim().replace(/\s{2,}/,' ');    
+                                            }
+                                            
                                         }
 
                                     }
