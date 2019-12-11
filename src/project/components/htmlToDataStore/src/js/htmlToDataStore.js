@@ -247,12 +247,18 @@ define(['kind', 'dataStore'], function (kind, ds) {
                                                     var itagChildNode = itagElem.childNodes[j];
 
 
-                                                    if (itagChildNode.tagName !== "HEADER") {
-                                                        helpText += itagChildNode.outerHTML;
+                                                    if (itagChildNode.tagName !== "HEADER") {                                                        
+
+                                                        if(itagChildNode.nodeType == Node.TEXT_NODE){
+                                                            helpText += itagChildNode.textContent.trim();
+                                                        }
+                                                        else{
+                                                            helpText += itagChildNode.outerHTML;    
+                                                        }
                                                     }
                                                 }
                                             }
-
+                                            
                                             if(helpText != ""){
                                                 col.help = [
                                                     {
