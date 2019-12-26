@@ -1004,6 +1004,7 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
                 var headerColumn = tableData.head.rows[0].columns[c];
                 var headerColumnText = false;
+                var headerColumnHelp = false;
 
                 if (!headerColumn.skip) {
 
@@ -1015,6 +1016,16 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                     }
                     else {
                         headerColumnText = "Header Column " + c + " Title not set!";
+                    }
+
+                    if(headerColumn.help){
+                        var helpContents = headerColumn.help;
+                        helpContents.template = "_itag";
+                        procTemplates.render(helpContents, 'table', function(cellContents) {
+                            if (cellContents !== false) {
+                                headerColumnHelp = cellContents;
+                            }
+                        });
                     }
                 }
 
@@ -1048,6 +1059,10 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
                     var cellResponsiveColumnHeader = document.createElement('span');
                     cellResponsiveColumnHeader.appendChild(document.createTextNode(headerColumnText));
                     cellResponsiveColumnHeader.classList.add('emp-responsive-cell-header');
+
+                    if(headerColumnHelp){
+                        cellResponsiveColumnHeader.appendChild(headerColumnHelp);
+                    }
 
                     cellElm.appendChild(cellResponsiveColumnHeader);
                 }
