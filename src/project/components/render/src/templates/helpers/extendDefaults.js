@@ -538,6 +538,10 @@ Handlebars.registerHelper('extendDefaults', function (params) {
                 iconClass = 'edit';
                 break;
 
+            case 'help':
+                iconClass="help";
+                break;
+
             case 'letters-tx':
                 iconClass = 'letters-tx';
                 break;

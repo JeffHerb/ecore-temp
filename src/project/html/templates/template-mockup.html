@@ -117,7 +117,7 @@
 				<!-- ==================== -->
 				<!-- PAGE CONTENT         -->
 				<!-- ==================== -->
-			
+
 				<!-- ++++++++++++++++++++++++++++++++ -->
 				<!-- SECTION: .Mockup                 -->
 				<!-- ++++++++++++++++++++++++++++++++ -->
@@ -347,7 +347,7 @@
 					</div>
 
 				</section>
-			
+
 				<!-- ++++++++++++++++++++++++++++++++ -->
 				<!-- SECTION: .Address read only      -->
 				<!-- ++++++++++++++++++++++++++++++++ -->
@@ -460,9 +460,9 @@
 					</div>
 				</section>
 
-				
 
-		
+
+
 				<!-- +++++++++++++++++++++++++++++++ -->
 				<!-- SECTION: Sample Pivot Table -->
 				<!-- +++++++++++++++++++++++++++++++ -->
@@ -471,19 +471,22 @@
 					<header>
 						<div class="emp-section-title">
 							<h3>Sample table - pivot</h3>
-						</div>						
+						</div>
 					</header>
 					<div class="emp-table">
-						<table data-sticky="false" data-type="pivot" id="responsive-example">
+						<table data-sticky="false" data-buttonMenu="false" data-type="pivot" id="responsive-example">
 							<thead>
 								<tr>
 									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="1" data-type="alpha">Text</th>
-									<th class="emp-sortable" data-sort="date" data-table-column-priority="2" data-type="alpha">	Text with help tags</th>
+									<th class="emp-sortable" data-sort="date" data-table-column-priority="2" data-type="alpha" data-help="iMockup">	Text with help tags</th>
 									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="3" data-table-responsive-type="primary" data-type="alpha">Link</th>
 									<th class="emp-sortable" data-sort="numeric" data-table-column-priority="4" data-table-responsive-type="secondary" data-type="alpha">Link with help tag</th>
 									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="5" data-type="alpha">Date</th>
 									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="6" data-type="alpha">Taxpayer ID</th>
-									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="7" data-type="numeric" data-help="iMockup" class="cui-currency">Amount($)</th>
+									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="7" data-type="numeric" class="cui-currency">Amount($)</th>
+                                    <th data-type="button" title="Remove" class="emp-min-width">
+                                        <span class="cui-hide-from-screen">Remove</span>
+                                    </th>
 								</tr>
 							</thead>
 							<tbody>
@@ -491,16 +494,19 @@
 									<td>John</td>
 									<td>Smith</td>
 									<td><a href="#">QWE-543</a></td>
-									<td><a href="#">QWE-543</a></td>
+									<td><a href="#">QWE-543</a><button class="cui-icon emp-icon-help" data-tooltip-source="iMockup" title="More information" type="button">More information</button></td>
 									<td>03/04/1986</td>
 									<td>XXX-XXX-1234</td>
-									<td class="cui-currency">1,750.00</td>									
-								</tr>								
+									<td class="cui-currency">1,750.00</td>
+                                    <td class="emp-min-width">
+                                        <button class="emp-icon-delete" id="MOCKUP_REMOVE">Remove</button>
+                                    </td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
 				</section>
-				
+
 			</form>
 		</main>
 	</div>
