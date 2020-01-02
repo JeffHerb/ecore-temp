@@ -103,11 +103,8 @@
 						<span>To learn more about a particular field</span>
 					</div>
                 </div>
-                <ul class="cui-messages emp-messages">
-                    <li class="cui-error">Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</li>
-                    <li class="cui-warning">Warning message. Displays information about certain things that need to be considered before continuing.</li>
-                    <li class="cui-informational">Informational message. Provide some information to assist in making the right decisions or something.</li>
-                    <li class="cui-success">Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this type of message shows per page submission.</li>
+                <ul class="cui-messages emp-messages cui-hide-from-screen">
+                   
                 </ul>
 			</div>
 			<!-- ==================== -->
@@ -460,9 +457,6 @@
 					</div>
 				</section>
 
-
-
-
 				<!-- +++++++++++++++++++++++++++++++ -->
 				<!-- SECTION: Sample Pivot Table -->
 				<!-- +++++++++++++++++++++++++++++++ -->
@@ -477,13 +471,13 @@
 						<table data-sticky="false" data-buttonMenu="false" data-type="pivot" id="responsive-example">
 							<thead>
 								<tr>
-									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="1" data-type="alpha">Text</th>
-									<th class="emp-sortable" data-sort="date" data-table-column-priority="2" data-type="alpha" data-help="iMockup">	Text with help tags</th>
-									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="3" data-table-responsive-type="primary" data-type="alpha">Link</th>
-									<th class="emp-sortable" data-sort="numeric" data-table-column-priority="4" data-table-responsive-type="secondary" data-type="alpha">Link with help tag</th>
-									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="5" data-type="alpha">Date</th>
-									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="6" data-type="alpha">Taxpayer ID</th>
-									<th class="emp-sortable" data-sort="alpha" data-table-column-priority="7" data-type="numeric" class="cui-currency">Amount($)</th>
+									<th data-type="alpha">Text</th>
+									<th data-type="alpha" data-help="iMockup">Text with help tags</th>
+									<th data-type="alpha" data-table-responsive-type="primary">Link</th>
+									<th data-type="alpha">Link with help tag</th>
+									<th data-type="alpha">Date</th>
+									<th data-type="alpha">Taxpayer ID</th>
+									<th data-type="numeric" data-table-responsive-type="secondary">Amount ($)</th>
                                     <th data-type="button" title="Remove" class="emp-min-width">
                                         <span class="cui-hide-from-screen">Remove</span>
                                     </th>
