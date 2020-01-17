@@ -5,6 +5,7 @@ define(['render', 'guid'], function(render, guid) {
 
     _priv.isGenerated = false;
     _priv.isOpen = false;
+    _priv.isCatalogSwitchOpen = false;
     _priv.inputTimeout = false;
     _priv.filterTolerance = 400;
     _priv.oCatalogMenu = false;
@@ -13,10 +14,17 @@ define(['render', 'guid'], function(render, guid) {
     _priv.bMenuChanged = false;
     _priv.init = false;
 
+    // Menu currently used in rendering
+    _priv.aCurrentMenu = false;
+
     _priv.generateMenuContents = function _generate_menu_contents(fragment, menuItems, level) {
 
         if (!level) {
             level = 1;
+        }
+
+        if (_priv.aCurrentMenu === false && level === 1) {
+            _priv.currentMenu = [].concat(menuItems);
         }
 
         var menuSection = document.createElement('ul');
@@ -69,7 +77,7 @@ define(['render', 'guid'], function(render, guid) {
 
             if (menuItem.items) {
 
-                _priv.generateMenuContents(dMenuItem, menuItem.items, level++);
+                _priv.generateMenuContents(dMenuItem, menuItem.items, (level + 1));
 
                 // Now check to see if this menu should be expanded
                 var subSpan = dMenuItem.querySelector('span');
@@ -82,8 +90,6 @@ define(['render', 'guid'], function(render, guid) {
             menuSection.appendChild(dMenuItem);
 
         }
-
-        //console.log()
 
         fragment.appendChild(menuSection);
 
@@ -135,7 +141,7 @@ define(['render', 'guid'], function(render, guid) {
             globalFilterInput.addEventListener('keyup', function(evt) {
 
                 if (_priv.inputTimeout) {
-                    clearInterval(_priv.inputTimeout);
+                    clearTimeout(_priv.inputTimeout);
                 }
 
                 _priv.inputTimeout = setTimeout(function() {
@@ -274,6 +280,8 @@ define(['render', 'guid'], function(render, guid) {
 
     _priv.filterMenu = function _filter_menu(slug) {
 
+        console.log(_priv.currentMenu);
+
         function searchItems(regex, menuArray) {
 
             var newMenuLevelArray = [];
@@ -325,10 +333,10 @@ define(['render', 'guid'], function(render, guid) {
             return newMenuLevelArray;
         }
 
-        var customRegEx = new RegExp(slug, 'g');
+        var customRegEx = new RegExp(slug.toLowerCase(), 'g');
 
         // Make a copy of the current menu
-        var currentMenu = [].concat(window.fwData.menus.global.items);
+        var currentMenu = [].concat(_priv.currentMenu);
 
         var newMenu = searchItems(customRegEx, currentMenu);
 
@@ -353,17 +361,76 @@ define(['render', 'guid'], function(render, guid) {
             _priv.bMenuChanged = false;
         }
 
-        //reset focus	
-        _priv.menuControl.focus();
+        // Remove the body click event
+        document.body.removeEventListener('click', _events.openMenuBodyClick, true);
     };
 
     _priv.openMenu = function _open_global_menu (){
     	_priv.isOpen = true;
 		_priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
-    	_priv.menuElem.classList.add('active');
+        _priv.menuElem.classList.add('active');
+        
+        document.body.addEventListener('click', _events.openMenuBodyClick, true);
 
     	// set focus    	
     	_priv.menuElem.focus();
+    };
+
+    _events.openMenuBodyClick = function _open_menu_body_click(evt) {
+
+        var dClickedElement = evt.target;
+        var dLastParent = false;
+
+        var aDOMTree = [];
+
+        var bForceClose = true;
+
+        aDOMTree.push(dClickedElement);
+
+        // Get all elements to parent
+        while(true) {
+
+            var dNextParent = false;
+
+            if (dLastParent) {
+
+                dNextParent = dLastParent.parentNode;
+            }
+            else {
+
+                dNextParent = dClickedElement.parentNode;
+            }
+
+            if (dNextParent.nodeName !== "BODY") {
+
+                aDOMTree.push(dNextParent);
+                dLastParent = dNextParent;
+            }
+            else {
+
+                break;
+            }
+
+        }
+
+        for (var d = 0, dLen = aDOMTree.length; d < dLen; d++) {
+
+            if (aDOMTree[d].classList.contains('emp-active-catalog') || aDOMTree[d].classList.contains('emp-cataloge-popup-container') || aDOMTree[d].classList.contains('emp-global-menu-wrapper')) {
+
+                bForceClose = false;
+                break;
+            }   
+
+        }
+        
+
+        if (_priv.isOpen && bForceClose) {
+            _priv.closeMenu();
+        }
+        else if (!bForceClose) {
+
+            //console.log("Force close stopped!");
+        }
     };
 
     _events.menuClick = function _menu_click(evt) {
@@ -431,14 +498,10 @@ define(['render', 'guid'], function(render, guid) {
 
         var updatedJSON = _priv.filterMenu(inputValue);
 
-        console.log(updatedJSON);
-
         _priv.generate(false, updatedJSON);
     };
 
     _events.catalogClick = function _catalog_click(evt) {
-
-        console.log("catalog click!");
 
         var oCatalogPopover = {
             "template": "popover",
@@ -501,12 +564,15 @@ define(['render', 'guid'], function(render, guid) {
                 catalogButtons.addEventListener('click', _events.catalogSelected);
     
                 _priv.$generatedCatalogMenu.show();
-    
+                
+                _priv.isCatalogSwitchOpen = true;
             });
         }
         else {
 
             _priv.$generatedCatalogMenu.show();
+
+            _priv.isCatalogSwitchOpen = true;
         }
 
 
@@ -570,7 +636,6 @@ define(['render', 'guid'], function(render, guid) {
 
             _priv.bMenuChanged = true;
 
-            console.log(oNewMenu);
         }
 
     };
