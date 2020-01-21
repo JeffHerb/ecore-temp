@@ -43,8 +43,13 @@ define(['render', 'guid'], function(render, guid) {
             var dMenuControl = false;
 
             if (menuItem.href) {
+
                 dMenuControl = document.createElement('a');
                 dMenuControl.setAttribute('href', menuItem.href);
+
+                if (menuItem.onclick) {
+                    dMenuControl.setAttribute('onclick', menuItem.onclick);
+                }
             }
             else if (menuItem.items) {
 
