@@ -126,7 +126,7 @@ main {
             // border: $emp-menu-border;
             // background-color: $emp-menu-bg-color;
             // color: $cui-color-white;
-        // }        
+        // }
     }
 
     #emp-header-favorites {
@@ -139,7 +139,7 @@ main {
 
             // Same background color as the logo, otherwise it looks like the star goes with the main menu
             // Must be transparent so that it's not noticeable when the star spins (when clicked)
-            background-color: transparent;           
+            background-color: transparent;
         }
     }
 
@@ -165,7 +165,7 @@ main {
 
             // Same background color as the logo, otherwise it looks like the star goes with the main menu
             // Must be transparent so that it's not noticeable when the star spins (when clicked)
-            background-color: transparent;            
+            background-color: transparent;
         }
     }
 
@@ -193,7 +193,7 @@ main {
         // .theme-teal & {
             // @import "../_theme_teal.scss";
             // min-height: $cui-touch-min-height;
-        // }        
+        // }
 
         // Tabset title
         h1 {
@@ -268,14 +268,14 @@ main {
                     // @import "../_theme_teal";
                     // color: $emp-header-links-color;
                 // }
-               
+
                 &:hover {
                     color: $emp-header-links-color-hover;
 
                     // .theme-teal & {
                         // @import "../_theme_teal";
                         // color: $emp-header-links-color-hover;
-                    // }                    
+                    // }
                 }
             }
         }
@@ -299,20 +299,22 @@ main {
     font-family: $cui-font-heading;
 
     .emp-text {
-        @include grid-col(12);
-        @include col-fluid($width: auto, $breakpointName: "medium");
+    	@include grid-col(12);
+    	@include col-fluid($width: auto, $breakpointName: "medium");
 
-        // Title text container
-        h2 {
-            // A `<span>` is used to render a separator between the page title and page mode
-            // Only create the pseudo-element if one has been defind
-            @if $emp-page-title-separator-content != "" {
-                span:before {
-                    content: "\00BB";
-                    margin: $emp-page-title-separator-margin;
-                }
-            }
-        }
+    }
+
+    // Title text container
+    h2 {
+
+    	// A `<span>` is used to render a separator between the page title and page mode
+    	// Only create the pseudo-element if one has been defind
+    	@if $emp-page-title-separator-content !="" {
+    		span:before {
+    			content: "\00BB";
+    			margin: $emp-page-title-separator-margin;
+    		}
+    	}
     }
 
     .emp-actions {
@@ -359,7 +361,7 @@ main {
             // @import "../_theme_teal";
             // padding: $emp-tp-header-padding;
             // background-color: $emp-tp-header-bg-color;
-        // }        
+        // }
 
         // Shared styles between main and joint
         .emp-tp-info-main,
@@ -380,7 +382,7 @@ main {
                 // @import "../_theme_teal.scss";
                 padding: $emp-padding;
                 padding-top: $emp-tp-header-separator-padding-top-small;
-            // }           
+            // }
         }
 
         .emp-tp-info-main {
@@ -413,7 +415,7 @@ main {
 
             @include pointbreak($cui-bp-large) {
                 border-top-width: 0;
-            }            
+            }
 
         }
 
@@ -438,7 +440,7 @@ main {
                 // @import "../_theme_teal.scss";
                 // background-color: $emp-tp-info-joint-bg-color;
                 // border-top: $emp-tp-info-joint-border;
-            // }           
+            // }
 
             .emp-tp-indicators {
                 // Vertically align with the data side
@@ -518,7 +520,7 @@ main {
         // @import "../_theme_teal.scss";
         // background-color: $emp-workflow-bg-color;
     // }
-   
+
     .emp-workflow-options,
     .emp-workflow-actions {}
 
@@ -578,7 +580,7 @@ main {
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // background-color: $emp-tabset-bg-color-hover;
-            // }           
+            // }
 
             a {
                 text-decoration: none;
@@ -613,7 +615,7 @@ main {
                     // @import "../_theme_teal.scss";
                     // border: $emp-tabset-item-border-selected;
                     // background-color: $emp-tabset-item-bg-color-selected;
-                // }                
+                // }
 
             }
 
@@ -626,7 +628,7 @@ main {
                 // .theme-teal & {
                     // @import "../_theme_teal.scss";
                     // color: $emp-tabset-color-hover;
-                // }               
+                // }
             }
         }
 
@@ -667,7 +669,7 @@ main {
         // @import "../_theme_teal.scss";
         // background-color: $emp-tabset-bg-color;
     // }
-   
+
     &:focus {
         outline: none;
     }
@@ -678,7 +680,7 @@ main {
         // .theme-teal & {
             // @import "../_theme_teal.scss";
             // background-color: $emp-tabset-toggle-bg-color-hover;
-        // }        
+        // }
     }
 }
 

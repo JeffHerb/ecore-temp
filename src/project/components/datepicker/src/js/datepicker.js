@@ -168,15 +168,24 @@ define(['jquery', 'cui'], function ($, cui) {
         // Add events to date inputs
         if ($icons.length) {
             $icons.each(function () {
-                var $input = $('#' + (this.id.substring(this.id.indexOf(ID_PREFIXES.calIcon) + 4)));
 
-                if ($input.length) {
-                    $input.on('blur', _events._inputBlur);
-                    $input.on('keyup', _events._inputKeyup);
+                var iconSelector = '#' + (this.id.substring(this.id.indexOf(ID_PREFIXES.calIcon) + 4));
+
+                //console.log('#' + (this.id.substring(this.id.indexOf(ID_PREFIXES.calIcon) + 4)));
+
+                if (iconSelector !== "#" && iconSelector.length > 1) {
+
+                    var $input = $('#' + (this.id.substring(this.id.indexOf(ID_PREFIXES.calIcon) + 4)));
+
+                    if ($input.length) {
+                        $input.on('blur', _events._inputBlur);
+                        $input.on('keyup', _events._inputKeyup);
+                    }
+
+                    // Icon
+                    $(this).attr('title', ICON_TOOLTIP.show);
                 }
 
-                // Icon
-                $(this).attr('title', ICON_TOOLTIP.show);
             });
         }
         // No icons found, so get the input manually by looking for a sibling
@@ -358,7 +367,7 @@ define(['jquery', 'cui'], function ($, cui) {
             // Add keydown event to handle keystrokes like 'esc'
             .on('keydown', '.dp', _events._calKeydown);
 
-        
+
 
         return $cal.get(0);
     };
@@ -715,7 +724,7 @@ define(['jquery', 'cui'], function ($, cui) {
     };
 
     _priv.showHideOptions = function _showHideOptions (elem, opts, forceHide) {
-        
+
         var inputId = opts.id.substring(opts.id.indexOf('_') + 1);
         var $opts = $(opts);
         var cal = document.getElementById(ID_PREFIXES.datePicker + inputId);
@@ -1873,7 +1882,7 @@ define(['jquery', 'cui'], function ($, cui) {
             }
 
             parent = parent.parentNode;
-            
+
         }
 
         if (clickElem) {
@@ -1889,7 +1898,7 @@ define(['jquery', 'cui'], function ($, cui) {
                     break;
 
                 case 'monthYear':
-                
+
                     _priv.showHideOptions(clickElem, document.getElementById('dpOptions_' + parent.id.substring(parent.id.indexOf(ID_PREFIXES.datePicker + '_') + (ID_PREFIXES.datePicker.length + 1))));
                     break;
 

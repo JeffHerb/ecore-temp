@@ -806,8 +806,9 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 	        	var pageLegendElem = pageInfoElem.querySelector('.emp-page-legend');
 
 	        	var renderJSON = {
-	                "template": "external-pageinfo",
-	                "title": "",
+	                "template": "pageInfo",
+                    "title": "",
+                    "mode": "test",
 	                "instructions": [
 	                    {
 	                        "template": "output",
@@ -821,9 +822,24 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 	            };
 
 	            if(pageTitleHeaderElem){
-	            	if(pageTitleHeaderElem.textContent !== ""){
-	            		renderJSON.title = pageTitleHeaderElem.textContent;
-	            	}
+
+                    var modeElem = pageTitleHeaderElem.querySelector('span');
+
+                    if (modeElem) {
+
+                        renderJSON.mode = modeElem.textContent;
+
+                        pageTitleHeaderElem.removeChild(modeElem);
+
+                        renderJSON.title = pageTitleHeaderElem.textContent;
+                    }
+                    else {
+
+                        if(pageTitleHeaderElem.textContent !== ""){
+                            renderJSON.title = pageTitleHeaderElem.textContent;
+                        }
+                    }
+
 	            }
 
 	        	if(pageInstructionElem){
@@ -841,7 +857,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
 		        	if(pageLegendElem.querySelector('.emp-icon-help')){
 		        		renderJSON.pageLegend.helpText = true;
 		        	}
-	        	}
+                }
 
 	        	render.section(undefined, renderJSON, 'return', function(html, store) {
 	            	pageInfoElem.parentNode.replaceChild(html, pageInfoElem);
@@ -963,6 +979,7 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
             cb(result);
         }
         else {
+
             return result;
         }
 

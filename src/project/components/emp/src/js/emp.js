@@ -205,7 +205,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         // Bind the date picker to all date inputs.
         $dateCalenders.datepicker();
 
-
         // Just do a body binding for the tooltips.
         $body.on('click', '.emp-tooltip, td span[title]', function (evt) {
 
@@ -2072,6 +2071,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                             }, 1000);
 
+                            console.log("Finished setup!");
+
                         });
 
                     });
@@ -2099,6 +2100,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                 cb();
             }
+
         }
     };
 
