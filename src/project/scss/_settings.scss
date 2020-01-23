@@ -156,7 +156,7 @@ $emp-page-title-padding-bottom: 0.5em;
 $emp-page-title-padding-left:   0.5em; // 0;
 $emp-page-title-padding:        $emp-page-title-padding-top $emp-page-title-padding-right $emp-page-title-padding-bottom $emp-page-title-padding-left;
 $emp-page-title-separator-content: "\00BB"; // "";
-$emp-page-title-separator-margin: 0 0.5em 0 0.25em; // Left margin is smaller because we are assuming there is whitespace between the page title and the `<span>`
+$emp-page-title-separator-margin: 0 0.1em 0 0.25em; // Left margin is smaller because we are assuming there is whitespace between the page title and the `<span>`
 
 
 // * @section    Tabset

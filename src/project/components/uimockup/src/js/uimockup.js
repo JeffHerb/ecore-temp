@@ -835,6 +835,8 @@ define(['jquery', 'cui', 'htmlToDataStore', 'dataStore', 'render'], function ($,
                     }
                     else {
 
+                        renderJSON.mode = false;
+
                         if(pageTitleHeaderElem.textContent !== ""){
                             renderJSON.title = pageTitleHeaderElem.textContent;
                         }
