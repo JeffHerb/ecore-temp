@@ -2446,7 +2446,7 @@
 			uiMockup.createPageDataStore(function(results) {
                 emp.init(undefined, function() {
 
-                    // Put in the ORPTS Menu
+                     // Put in the ORPTS Menu
                     fwData.menus.global = {
                         "display": "emp",
                         "catalogs": [
@@ -2464,57 +2464,30 @@
                                 "menuSource": "directorMenu"
                             }
                         ],
-                        "items": [
-                            {
-                                "text": "Death Report",
-                                "href": "#",
-                                "onclick": "javascript:function()"
-                            },
-                            {
-                                "text": "Senior Income Limit",
-                                "href": "#"
-                            },
-                            {
-                                "text": "Sales Web",
-                                "href": "#"
-                            },
-                            {
-                                "text": "Data Warehouse Query",
-                                "href": "#"
-                            },
-                            {
-                                "text": "Sales Reporting",
-                                "href": "#"
-                            },
-                        ]
-                    }
-
-                    fwData.data = {
-                        "assessorMenu": {
-                            "items": [
-                                {
-                                    "text": "Star IVP Tool",
-                                    "href": "#"
-                                },
-                                {
-                                    "text": "Star IVP Reports",
+						"items": [
+								{
+									"text":"Enhanced STAR Income Verification Program",
+									"href":"#"
+								},
+								{
+                                    "text": "Enhanced STAR Edit Reports",
                                     "items": [
                                         {
-                                            "text": "IVP Summary Report",
+                                            "text": "Summary Report",
                                             "href": "#"
                                         },
                                         {
-                                            "text": "IVP Edit Report",
-                                            "href": "#"
+                                            "text": "Daily Report",
+                                            "href": "#",
                                         },
                                         {
-                                            "text": "IVP Deleted Report",
+                                            "text": "Closed Report",
                                             "href": "#"
                                         }
                                     ]
                                 },
-                                {
-                                    "text": "Star Credit Reports",
+								{
+                                    "text": "STAR Credit Reports",
                                     "items": [
                                         {
                                             "text": "Credit Eligible Report",
@@ -2522,27 +2495,159 @@
                                         },
                                         {
                                             "text": "Check Issued Report",
+                                            "href": "#",
+                                        },                                 
+                                    ]
+                                },
+								{
+                                    "text": "STAR IVP Status Reports",
+                                    "items": [
+                                        {
+                                            "text": "Final Roll Corrections Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "IVP Checks and Bills Issued Report",
+                                            "href": "#",
+                                        },  
+										{
+                                            "text": "STAR IVP Eligibility Report",
+                                            "href": "#",
+                                        },     
+										{
+                                            "text": "Tentative Roll Corrections Report",
+                                            "href": "#",
+                                        },                                    
+                                    ]
+                                },
+								{
+                                    "text": "Other STAR Reports",
+                                    "items": [
+                                        {
+                                            "text": "Senior Income Level Report",
+                                            "href": "#"
+                                        },
+										{
+                                            "text": "Deceased Report",
+                                            "href": "#"
+                                        },           
+										{
+                                            "text": "Basic STAR Status Report",
+                                            "href": "#"
+                                        },           
+										{
+                                            "text": "STAR Voluntary Exemption Removal Report",
+                                            "href": "#"
+                                        },                                                                                  
+                                    ]
+                                },
+                                {
+                                    "text": "SalesWeb",
+                                    "href": "#"
+                                },
+								{
+                                    "text": "State Owned Land",
+                                    "href": "#"
+                                },
+								{
+                                    "text": "Data Warehouse Query",
+                                    "href": "#"
+                                },
+								{
+                                    "text": "Sales Reporting",
+                                    "href": "#"
+                                },
+                            ]
+                    }
+
+                    fwData.data = {
+                        "assessorMenu": {
+                            "items": [
+								{
+									"text":"Enhanced STAR Income Verification Program",
+									"href":"#"
+								},
+								{
+                                    "text": "Enhanced STAR Edit Reports",
+                                    "items": [
+                                        {
+                                            "text": "Summary Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "Daily Report",
+                                            "href": "#",
+                                        },
+                                        {
+                                            "text": "Closed Report",
                                             "href": "#"
                                         }
                                     ]
                                 },
-                                {
-                                    "text": "Senior Income Limit",
-                                    "href": "#"
+								{
+                                    "text": "STAR Credit Reports",
+                                    "items": [
+                                        {
+                                            "text": "Credit Eligible Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "Check Issued Report",
+                                            "href": "#",
+                                        },                                 
+                                    ]
+                                },
+								{
+                                    "text": "STAR IVP Status Reports",
+                                    "items": [
+                                        {
+                                            "text": "Final Roll Corrections Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "IVP Checks and Bills Issued Report",
+                                            "href": "#",
+                                        },  
+										{
+                                            "text": "STAR IVP Eligibility Report",
+                                            "href": "#",
+                                        },     
+										{
+                                            "text": "Tentative Roll Corrections Report",
+                                            "href": "#",
+                                        },                                    
+                                    ]
+                                },
+								{
+                                    "text": "Other STAR Reports",
+                                    "items": [
+                                        {
+                                            "text": "Senior Income Level Report",
+                                            "href": "#"
+                                        },										
+										{
+                                            "text": "Basic STAR Status Report",
+                                            "href": "#"
+                                        },           
+										{
+                                            "text": "STAR Voluntary Exemption Removal Report",
+                                            "href": "#"
+                                        },                                                                                  
+                                    ]
                                 },
                                 {
-                                    "text": "Sales Web",
+                                    "text": "SalesWeb",
                                     "href": "#"
                                 },
-                                {
+								{
                                     "text": "State Owned Land",
                                     "href": "#"
                                 },
-                                {
+								{
                                     "text": "Data Warehouse Query",
                                     "href": "#"
                                 },
-                                {
+								{
                                     "text": "Sales Reporting",
                                     "href": "#"
                                 },
@@ -2550,29 +2655,102 @@
                         },
                         "directorMenu": {
                             "items": [
-                                {
-                                    "text": "Death Report",
-                                    "href": "#"
+								{
+									"text":"Enhanced STAR Income Verification Program",
+									"href":"#"
+								},
+								{
+                                    "text": "Enhanced STAR Edit Reports",
+                                    "items": [
+                                        {
+                                            "text": "Summary Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "Daily Report",
+                                            "href": "#",
+                                        },
+                                        {
+                                            "text": "Closed Report",
+                                            "href": "#"
+                                        }
+                                    ]
+                                },
+								{
+                                    "text": "STAR Credit Reports",
+                                    "items": [
+                                        {
+                                            "text": "Credit Eligible Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "Check Issued Report",
+                                            "href": "#",
+                                        },                                 
+                                    ]
+                                },
+								{
+                                    "text": "STAR IVP Status Reports",
+                                    "items": [
+                                        {
+                                            "text": "Final Roll Corrections Report",
+                                            "href": "#"
+                                        },
+                                        {
+                                            "text": "IVP Checks and Bills Issued Report",
+                                            "href": "#",
+                                        },  
+										{
+                                            "text": "STAR IVP Eligibility Report",
+                                            "href": "#",
+                                        },     
+										{
+                                            "text": "Tentative Roll Corrections Report",
+                                            "href": "#",
+                                        },                                    
+                                    ]
+                                },
+								{
+                                    "text": "Other STAR Reports",
+                                    "items": [
+                                        {
+                                            "text": "Senior Income Level Report",
+                                            "href": "#"
+                                        },
+										{
+                                            "text": "Deceased Report",
+                                            "href": "#"
+                                        },           
+										{
+                                            "text": "Basic STAR Status Report",
+                                            "href": "#"
+                                        },           
+										{
+                                            "text": "STAR Voluntary Exemption Removal Report",
+                                            "href": "#"
+                                        },                                                                                  
+                                    ]
                                 },
                                 {
-                                    "text": "Senior Income Limit",
+                                    "text": "SalesWeb",
                                     "href": "#"
                                 },
-                                {
-                                    "text": "Sales Web",
+								{
+                                    "text": "State Owned Land",
                                     "href": "#"
                                 },
-                                {
+								{
                                     "text": "Data Warehouse Query",
                                     "href": "#"
                                 },
-                                {
+								{
                                     "text": "Sales Reporting",
                                     "href": "#"
                                 },
                             ]
                         }
                     }
+
 
                 });
                 

@@ -548,7 +548,9 @@ define(['render', 'guid'], function(render, guid) {
         }
 
         _priv.oCatalogMenu = oCatalogPopover;
-
+        /*DEBUG: START*/
+        console.log(_priv.$generatedCatalogMenu);
+        /*DEBUG: END*/
         if (!_priv.$generatedCatalogMenu) {
 
             render.section(undefined, _priv.oCatalogMenu, 'return', function(html) {
@@ -568,10 +570,16 @@ define(['render', 'guid'], function(render, guid) {
 
                 catalogButtons.addEventListener('click', _events.catalogSelected);
     
-                _priv.$generatedCatalogMenu.show();
+                // _priv.$generatedCatalogMenu.show();
                 
-                _priv.isCatalogSwitchOpen = true;
+                // _priv.isCatalogSwitchOpen = true;
             });
+        }
+
+
+        if(_priv.isCatalogSwitchOpen){
+            _priv.$generatedCatalogMenu.hide();
+            _priv.isCatalogSwitchOpen = false;
         }
         else {
 
