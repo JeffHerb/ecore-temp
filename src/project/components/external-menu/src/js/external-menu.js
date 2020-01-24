@@ -191,12 +191,12 @@ define(['render', 'guid'], function(render, guid) {
                     var oActiveCatalog = false;
 
                     for (var c = 0, cLen = fwData.menus.global.catalogs.length; c < cLen; c++) {
-                     
+
                         if (fwData.menus.global.catalogs[c].active) {
                             oActiveCatalog = fwData.menus.global.catalogs[c];
                             break;
                         }
-                        
+
                     }
 
                     catalogInnerWrapper.classList.add('emp-interactive-catalog-title');
@@ -356,7 +356,7 @@ define(['render', 'guid'], function(render, guid) {
         if (_priv.bMenuChanged) {
 
             var dOldMenu = document.querySelector('#emp-global-menu-wrapper');
-            
+
             dOldMenu.parentNode.removeChild(dOldMenu);
 
             fwData.menus.global = JSON.parse(JSON.stringify(_priv.oOriginalMenu));
@@ -374,10 +374,10 @@ define(['render', 'guid'], function(render, guid) {
     	_priv.isOpen = true;
 		_priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
         _priv.menuElem.classList.add('active');
-        
+
         document.body.addEventListener('click', _events.openMenuBodyClick, true);
 
-    	// set focus    	
+    	// set focus
     	_priv.menuElem.focus();
     };
 
@@ -424,10 +424,10 @@ define(['render', 'guid'], function(render, guid) {
 
                 bForceClose = false;
                 break;
-            }   
+            }
 
         }
-        
+
 
         if (_priv.isOpen && bForceClose) {
             _priv.closeMenu();
@@ -459,11 +459,11 @@ define(['render', 'guid'], function(render, guid) {
             _priv.isOpen = !_priv.isOpen;
 
             if (_priv.isOpen) {
-                _priv.openMenu();                
+                _priv.openMenu();
             }
             else {
-                _priv.closeMenu();                
-            }                       
+                _priv.closeMenu();
+            }
         }
         else {
 
@@ -554,7 +554,7 @@ define(['render', 'guid'], function(render, guid) {
         if (!_priv.$generatedCatalogMenu) {
 
             render.section(undefined, _priv.oCatalogMenu, 'return', function(html) {
-    
+
                 var catalogButtons = html.querySelector('button');
 
                 _priv.$generatedCatalogMenu = $.popover($(evt.target), {
@@ -569,9 +569,9 @@ define(['render', 'guid'], function(render, guid) {
                 });
 
                 catalogButtons.addEventListener('click', _events.catalogSelected);
-    
+
                 // _priv.$generatedCatalogMenu.show();
-                
+
                 // _priv.isCatalogSwitchOpen = true;
             });
         }
@@ -596,60 +596,64 @@ define(['render', 'guid'], function(render, guid) {
         var dSelectedCatalog = evt.target;
         var sSelectedCatalog = dSelectedCatalog.getAttribute('data-catalog-selected');
 
-        var oNewMenu = false;
-        var oCatalog = false;
+        // var oNewMenu = false;
+        // var oCatalog = false;
 
-        var dCatalogToggleButton = document.querySelector('#emp-global-menu-wrapper button.emp-active-catalog .emp-active-catalog-title-wrapper');
+        // var dCatalogToggleButton = document.querySelector('#emp-global-menu-wrapper button.emp-active-catalog .emp-active-catalog-title-wrapper');
 
-        // Find catalog menu
+        // // Find catalog menu
         for (var c = 0, cLen = fwData.menus.global.catalogs.length; c < cLen; c++) {
 
             if (fwData.menus.global.catalogs[c].name === sSelectedCatalog) {
 
                 oCatalog = fwData.menus.global.catalogs[c];
 
-                if (fwData.menus.global.catalogs[c].menu) {
-
-                }
-                else if (typeof fwData.menus.global.catalogs[c].menuSource  === "string") {
-                    oNewMenu = fwData.data[fwData.menus.global.catalogs[c].menuSource];
+                if(oCatalog.switchFunc){
+                    emp.functionCall(oCatalog.switchFunc);
                 }
 
-                fwData.menus.global.catalogs[c].active = true;
+                // if (fwData.menus.global.catalogs[c].menu) {
+
+                // }
+                // else if (typeof fwData.menus.global.catalogs[c].menuSource  === "string") {
+                //     oNewMenu = fwData.data[fwData.menus.global.catalogs[c].menuSource];
+                // }
+
+                // fwData.menus.global.catalogs[c].active = true;
 
             }
             else {
-            
-                fwData.menus.global.catalogs[c].active = false;
+
+                // fwData.menus.global.catalogs[c].active = false;
             }
 
         }
 
-        if (oNewMenu) {
+        // if (oNewMenu) {
 
-            // Destroy the current popover!
-            _priv.$generatedCatalogMenu.destroy();
-            _priv.$generatedCatalogMenu = false;
+        //     // Destroy the current popover!
+        //     _priv.$generatedCatalogMenu.destroy();
+        //     _priv.$generatedCatalogMenu = false;
 
-            // Get the main menu
-            var dGlobalMenu = document.querySelector('#emp-global-menu-wrapper .emp-menu-contents ul');
+        //     // Get the main menu
+        //     var dGlobalMenu = document.querySelector('#emp-global-menu-wrapper .emp-menu-contents ul');
 
-            var dLastMenuChild = dGlobalMenu.lastElementChild;
+        //     var dLastMenuChild = dGlobalMenu.lastElementChild;
 
-            var dGlobalMenuContainer = dGlobalMenu.parentNode;
+        //     var dGlobalMenuContainer = dGlobalMenu.parentNode;
 
-            // Destory the main menu!
-            dGlobalMenuContainer.removeChild(dGlobalMenu);
+        //     // Destory the main menu!
+        //     dGlobalMenuContainer.removeChild(dGlobalMenu);
 
-            // Paint the new menu!
-            _priv.generateMenuContents(dGlobalMenuContainer, oNewMenu.items);
+        //     // Paint the new menu!
+        //     _priv.generateMenuContents(dGlobalMenuContainer, oNewMenu.items);
 
-            // Update the catalog toggle button
-            dCatalogToggleButton.textContent = oCatalog.text;
+        //     // Update the catalog toggle button
+        //     dCatalogToggleButton.textContent = oCatalog.text;
 
-            _priv.bMenuChanged = true;
+        //     _priv.bMenuChanged = true;
 
-        }
+        // }
 
     };
 
