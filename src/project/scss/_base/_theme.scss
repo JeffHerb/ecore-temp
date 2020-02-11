@@ -109,12 +109,13 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
             .emp-page-instructions{
 
+                margin-bottom:16px;
+
                 p{
-                    padding-bottom: 2px;
+                    padding-bottom: 0px;
                 }
 
                 ul{
-                    margin-bottom: 10px;
                     padding-left: 1.6em;
                     list-style-type: disc;
                     line-height: 1.2em;
@@ -123,6 +124,12 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                         margin: 0.5em 0 0 1.2em;
                         list-style-position: outside;
                     }
+                }
+
+                p:not(:last-child),
+                ul:not(:last-child),
+                ol:not(:last-child){
+                     margin-bottom:10px;
                 }
             }
 
