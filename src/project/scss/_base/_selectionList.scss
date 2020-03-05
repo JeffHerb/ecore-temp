@@ -45,12 +45,11 @@
 				}
 			}
 
-			.emp-selection-list-field-body{		
-
-				margin-bottom:15px;
+			.emp-selection-list-field-body{						
 
 				.cui-row:last-child{
-					margin-bottom:0;
+					margin-bottom:0 !important;
+					padding-bottom:10px;
 				}
 			}
 		}
@@ -67,10 +66,10 @@
 			}
 			.emp-selection-list-field-body{
 				border-radius: 0 0 4px 4px;
-				padding: 5px 10px 0px;
+				padding: 10px 10px 0px;					
 
 				@include pointbreak($cui-bp-large) {
-					padding: 10px 10px 5px;					
+					padding: 10px 10px 0px;					
 				}
 
 		    	background-color: #f1f1f0;

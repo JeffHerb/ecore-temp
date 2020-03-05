@@ -99,6 +99,35 @@
                                             "type": "column",
                                             "template": "grid",
                                             "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "template": "field",
+                                                    "label": {
+                                                        "attributes": {
+                                                            "for": "E_SOTHER_2"
+                                                        },
+                                                        "text": "Something:"
+                                                    },
+                                                    "input": {
+                                                        "attributes": {
+                                                            "name": "E_SOTHER_2",
+                                                            "id": "E_SOTHER_2",
+                                                            "value": "100.00"
+                                                        },
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "row",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "column",
+                                            "template": "grid",
+                                            "contents": [
 
 // Selection list start
 {
@@ -141,6 +170,7 @@
                 },
                 "help":{}                 
             },
+            
             {
             	"type": "radio",
                 "template": "field",
@@ -155,11 +185,13 @@
                         "name": "E_SELECTION_GROUP_NAME",
                         "id": "E_PIN_2",
                         "type": "radio",
-                        "value": "pin2"
+                        "value": "pin2",
+                        "checked": true
                     }
                 },
                 "help":{}                 
             },
+
             {
 		        "type": "selectionListField",
 		        "template": "composite",
@@ -179,7 +211,7 @@
 	                            "id": "E_NONE_OF_ABOVE",
 	                            "type": "radio",
 	                            "value": "na",
-	                            "checked":true,	
+	                            
 	                        },
 	                        
 	                        "expands":"E_NONE_OF_ABOVE_container"
@@ -222,9 +254,127 @@
 	                            }
 	                        ]
 	                    },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_TEST_TEXT_REQUIRED_2"
+                                                },
+                                                "text": "Test Text:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "name": "E_TEST_TEXT_REQUIRED_2",
+                                                    "id": "E_TEST_TEXT_REQUIRED_2",
+                                                    "type": "text",
+                                                    "value": "required value",
+                                                    "aria-required": "true"
+                                                },
+                                                "required": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
 	                ]
 		        }		        
-		    }
+		    },
+            
+            {
+                "type": "selectionListField",
+                "template": "composite",
+                "parts": {
+                    "field": {
+                        "type": "radio",
+                        "template": "field",
+                        "label": {
+                            "text": "None of the above 2",
+                            "attributes": {
+                                "for": "E_NONE_OF_ABOVE_2"
+                            }
+                        },
+                        "input": {
+                            "attributes": {
+                                "name": "E_SELECTION_GROUP_NAME",
+                                "id": "E_NONE_OF_ABOVE_2",
+                                "type": "radio",
+                                "value": "na2",                                
+                            },
+                            
+                            "expands":"E_NONE_OF_ABOVE_2_container"
+                        },
+                        "help":{
+
+                        }
+                    },
+                    "container":[
+                        //Dynamic field contents here
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_TEST_TEXT_REQUIRED_3"
+                                                },
+                                                "text": "Test Text:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "name": "E_TEST_TEXT_REQUIRED_3",
+                                                    "id": "E_TEST_TEXT_REQUIRED_3",
+                                                    "type": "text",
+                                                    "value": "required value",
+                                                    "aria-required": "true"
+                                                },
+                                                "required": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                }               
+            },
+
+            {
+                "type": "radio",
+                "template": "field",
+                "label": {
+                    "text": "Another five-digit PIN",
+                    "attributes": {
+                        "for": "E_PIN_3"
+                    }
+                },
+                "input": {
+                    "attributes": {
+                        "name": "E_SELECTION_GROUP_NAME",
+                        "id": "E_PIN_3",
+                        "type": "radio",
+                        "value": "pin2",
+                        "checked": true
+                    }
+                },
+                "help":{}                 
+            },
 		]	    
 	},
 	"properties": {}
