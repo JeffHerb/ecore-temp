@@ -118,11 +118,13 @@ define([], function () {
 
                                 for (var a = 0, aLen = allAriaControls.length; a < aLen; a++) {
 
-                                    if (allAriaControls.indexOf(ariaControls2[a]) !== -1) {
-                                        ariaExpand.push(ariaControls2[a]);
+                                    var currentControl = allAriaControls[a];
+
+                                    if(ariaControls2.indexOf(currentControl) !== -1){
+                                        ariaExpand.push(currentControl);
                                     }
                                     else {
-                                        ariaCollapse.push(ariaControls2[a]);
+                                        ariaCollapse.push(currentControl);
                                     }
                                 }
 
@@ -173,7 +175,7 @@ define([], function () {
 
                                     var collapseSection = document.querySelector('#' + activeRadio.collapse[c]);
 
-                                    if (!collapseSection.classList.contains('emp-collapse')) {
+                                     if (!collapseSection.classList.contains('emp-collapse')) {
                                         collapseSection.classList.add('emp-collapse');
                                     }
                                 }
