@@ -34,6 +34,78 @@
 
     }
 
+    .emp-catalog-outer-wrapper {
+
+        span.emp-active-catalog {
+            color: #FFF;
+            display: inline-block;
+            font-size: 24px;
+            padding: 7px 5px 7px 25px; 
+            width: 100%;
+        }
+
+        button.emp-active-catalog {
+            background: transparent;
+            border: 0;
+            color: #FFF;
+            display: flex;
+            flex-direction: row;
+            font-size: 24px;
+            padding: 7px 5px 7px 25px; 
+            position: relative;
+            text-align: left;
+            width: 100%;
+
+            align-items: center;
+
+            .emp-active-catalog-icon {
+                display: inline-block;
+                height: 32px;
+                position: relative;
+                width: 32px;
+                
+                .sqr-1,
+                .sqr-2,
+                .sqr-3,
+                .sqr-4 {
+                    background: #FFF;
+                    display: inline-block;
+                    height: 9px;
+                    width: 9px;
+                    position: absolute;
+                }
+
+                .sqr-1 {
+                    top: 3px;
+                }
+
+                .sqr-2 {
+                    left: 17px;
+                    top: 3px;
+                }
+
+                .sqr-3{
+                    bottom: 3px;
+                }
+
+                .sqr-4 {
+                    left: 17px;
+                    bottom: 2px;
+                    border-radius: 5px;
+                    height: 11px;
+                    width: 11px;
+                }
+
+            }
+
+            .emp-active-catalog-title-wrapper {
+                margin-left: 7px;
+            }
+
+        }
+
+    }
+
     .emp-menu-contents {
 
         ul {
@@ -124,7 +196,7 @@
         }
 
     }
-
+    
     &.active {
         box-shadow: 2px 2px 5px #000;
         height: auto;
@@ -132,3 +204,39 @@
     }
 
 }
+
+.emp-cataloge-popup-container {
+    box-shadow: 2px 2px 5px #000;
+    left: 50px !important;
+    min-width: 250px;
+    z-index: 200;
+
+    .emp-catalog-menu-title {
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .emp-popover {
+        margin-bottom: 5px;
+
+        ul {
+            margin-left: 0;
+
+            li {
+                button {
+                    padding: 12px 15px;
+                    text-align: left;
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+
+    .cui-popover-arrow.up-arrow {
+        background: #FFF;
+        border-color: #FFF;
+        left: 20px !important;
+    }
+}
+

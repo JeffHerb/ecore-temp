@@ -1,4 +1,3 @@
-{{log this}}
 {{#ifCond v1=this.type op="===" v2="draggable"}}
     <ul {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-draggable-tree"}' treeRoot=this.root)) }}>
         {{#ifCond v1=this op="hasProperty" v2="items"}}
