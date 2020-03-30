@@ -33,7 +33,7 @@
         // background-color: $emp-indicator-bg-color;
         // border: $emp-indicator-border;
         // color: $cui-color-white;
-    // }    
+    // }
 }
 
 // Indicators in the header
@@ -114,7 +114,7 @@
             // @import "../_theme_teal.scss";
             // background-color: $emp-indicator-bg-color;
             // color: $emp-indicator-color;
-        // }       
+        // }
     }
 
     .emp-indicator.emp-federal-data {
@@ -204,7 +204,7 @@
         // .theme-teal & {
             // @import "../_theme_teal.scss";
             // border-color: $emp-icon-redcheck-color;
-        // }      
+        // }
     }
 }
 
@@ -278,6 +278,12 @@
         }
     }
 
+    &.emp-hide-itags{
+        .emp-icon-help{
+            display:none !important;
+        }
+    }
+
     .emp-icon-delete {
         background-image: url($emp-images-path + "external-Trash.png");
         background-size: 16px 16px;
@@ -306,7 +312,7 @@
         // .theme-teal & {
             // @import "../_theme_teal.scss";
             // border-color: $emp-icon-greencheck-color;
-        // }       
+        // }
     }
 }
 
@@ -319,7 +325,7 @@
             // .theme-teal & {
                 // @import "../_theme_teal.scss";
                 // color: $emp-icon-redcheck-color-group-header;
-            // }           
+            // }
         }
     }
 }
