@@ -23,6 +23,22 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'agencyHeaderShiv', 'fie
     // This is the specific function that should only be used to generate the initial page.
     var page = function _page(target, data, cb) {
 
+         //Tempory method to hide itags on page.
+        if(data.page && data.page.style && data.page.style.indexOf('remove-itag') > -1){
+
+            // Add global style to page
+            document.documentElement.classList.add('emp-remove-itag');
+
+            // Disable legend icon. If present should be first object of page contents array.
+            if(data.page.contents && data.page.contents.length > 1){
+                if(data.page.contents[0].pageLegend){
+                    data.page.contents[0].pageLegend.helpText = false;
+                }
+            }
+
+            journal.log({ type: 'info', owner: 'UI', module: 'render', func: 'page' }, 'Itags are being hidden by page style.');
+        }
+
         // Check to see if we have an older rendering page
         if (!target.header) {
 

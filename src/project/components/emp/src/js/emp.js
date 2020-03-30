@@ -2003,24 +2003,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             // Start by rendering the global page
             if (window.fwData && (window.fwData.page || window.fwData.header || window.fwData.footer)) {
 
-
-                //Tempory method to hide itags on page.
-                if(renderData.page && renderData.page.style && renderData.page.style.indexOf('hide-itags') > -1){
-
-                    // Add global style to page
-                    document.documentElement.classList.add('emp-hide-itags');
-
-                    // Disable legend icon
-                    if(renderData.page.contents && renderData.page.contents.length > 1){
-                        if(renderData.page.contents[0].pageLegend){
-                            renderData.page.contents[0].pageLegend.helpText = false;
-                        }
-                    }
-
-                    journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Itags are being hidden by page style.');
-                }
-
-
                 if (fwData.screen && fwData.screen.id && scripts[fwData.screen.id]) {
 
                     cui.load(fwData.screen.id, function (script) {
