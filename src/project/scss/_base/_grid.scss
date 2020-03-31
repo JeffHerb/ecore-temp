@@ -730,12 +730,12 @@ section.emp-tabs div.emp-tab-contents {
     ol,
     ul{
         clear: both;
-        padding-left: 1.6em;        
+        padding-left: 1.6em;
         line-height: 1.2em;
-        
+
         &:not(:last-child){
             margin-bottom:10px;
-        }        
+        }
 
         li{
             margin: 0.5em 0 0 1.2em;
@@ -773,6 +773,14 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
         display: block;
     }
 
+}
+
+.emp-field.emp-hidden-field{
+    min-height:0px;
+    height:0px;
+    padding:0px;
+    margin:0px !important;
+    overflow:hidden;
 }
 
 // .emp-page-title {
