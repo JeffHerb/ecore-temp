@@ -110,7 +110,13 @@
 
         {{! No label to speak of so make the requested input }}
         {{#if this.attributes ~}}
-            <div {{attribute (mergeAttributes this.attributes defaults='{"className": "emp-field"}') }}>
+
+            {{#ifCond v1=this.type op="==" v2="hidden"}}
+                <div {{attribute (mergeAttributes this.attributes defaults='{"className": "emp-field emp-hidden-field"}') }}>
+            {{~else~}}
+                <div {{attribute (mergeAttributes this.attributes defaults='{"className": "emp-field"}') }}>
+            {{/ifCond}}
+
                 {{~> _input this ~}}
 
                 {{!Sort on inputGroup}}
