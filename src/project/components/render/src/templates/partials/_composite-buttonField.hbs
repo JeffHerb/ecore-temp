@@ -1,0 +1,13 @@
+<div class="emp-field emp-composite emp-buttonField-composite">
+
+    {{~> _label this.label readOnly=true scope="buttonField-composite" ~}}
+
+    <div class="cui-data">
+        {{#if this.button~}}
+            <div class="emp-field">
+                {{~> (getPartialName this.button.template) this.button noWrap=true~}}
+            </div>
+        {{/if~}}
+    </div>
+</div>
+

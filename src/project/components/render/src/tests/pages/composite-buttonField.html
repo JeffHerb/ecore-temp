@@ -1,0 +1,74 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <title>Template - Core UI</title>
+        <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+    <script>
+        var fwData = {
+            "page": {
+                "contents": [
+                    // STANDARD BUTTON COMPOSITE
+                    {
+                        "type": "row",
+                        "template": "grid",
+                        "contents": [
+                            {
+                                "type": "column",
+                                "template": "grid",
+                                "contents": [
+                                    {
+                                        "type": "buttonField",
+                                        "template": "composite",
+                                        "attributes": {
+                                            "id": "E_STANDARD_SEARCH_COMPOSITE"
+                                        },
+                                        "parts": {
+                                            "label": {
+                                                "template": "field",
+                                                "label": {
+                                                    "attributes": {
+                                                        "for": "E_STANDARD_SEARCH"
+                                                    },
+                                                    "text": "Standard Search:"
+                                                }
+                                            },
+                                            "button": {
+                                                "type": "button",
+                                                "template": "field",
+                                                "input": {
+                                                    "attributes": {
+                                                        "type": "button",
+                                                        "name": "EC_BTN_VIEW"
+                                                    },
+                                                    "text": "View"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script id="require" src="../../../dist/js/main.js"></script>
+    <script>
+        require(['domReady!'], function() {
+
+            console.log("page is done");
+
+        });
+    </script>
+
+</html>
