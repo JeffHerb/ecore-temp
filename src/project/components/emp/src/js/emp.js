@@ -3827,6 +3827,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         }
     };
 
+    var print = function _print(evt) {
+    	window.print();
+    };
 
     /**
      * Adds masking (automatic slashes) to a date input
@@ -4579,6 +4582,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         uiPopup: uiPopup,
 
         defaultErrorMessage: "Our system can't display these contents at this time.",
+
+        print: print,
 
         pageScripts: pageScripts,
         sectionSetup: sectionSetup,
