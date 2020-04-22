@@ -87,33 +87,46 @@ define(['render'], function (render) {
             var dHeaderWrapper = document.querySelector('#header-wrapper');
             var dUniversalBar = document.querySelector('#header-wrapper .unav-header');
 
-            dUnavBannerToggle.addEventListener('click', function() {
+            if (dUnavBannerToggle) {
 
-                if (dUnavBannerToggle.classList.contains('active')) {
-                    dHeaderWrapper.classList.remove('active-unav-bar');
-                    dUnavBannerToggle.classList.remove('active');
-                }
-                else {
-                    dHeaderWrapper.classList.add('active-unav-bar');
-                    dUnavBannerToggle.classList.add('active');
-                }
+                dUnavBannerToggle.addEventListener('click', function() {
 
-            });
+                    if (dUnavBannerToggle.classList.contains('active')) {
+                        dHeaderWrapper.classList.remove('active-unav-bar');
+                        dUnavBannerToggle.classList.remove('active');
+                    }
+                    else {
+                        dHeaderWrapper.classList.add('active-unav-bar');
+                        dUnavBannerToggle.classList.add('active');
+                    }
 
-            dUnavBannerMobileToggle.addEventListener('click', function(e) {
+                });
 
-                event.preventDefault();
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Banner toogle event not setup because element is missing.');
+            }
 
-                if (dHeaderWrapper.classList.contains('active-unav-menu')) {
-                    dHeaderWrapper.classList.remove('active-unav-menu');
-                    dUnavBannerMobileToggle.classList.remove('active');
-                }
-                else {
-                    dHeaderWrapper.classList.add('active-unav-menu');
-                    dUnavBannerMobileToggle.classList.add('active');
-                }
+            if (dUnavBannerMobileToggle) {
 
-            });
+                dUnavBannerMobileToggle.addEventListener('click', function(e) {
+
+                    event.preventDefault();
+
+                    if (dHeaderWrapper.classList.contains('active-unav-menu')) {
+                        dHeaderWrapper.classList.remove('active-unav-menu');
+                        dUnavBannerMobileToggle.classList.remove('active');
+                    }
+                    else {
+                        dHeaderWrapper.classList.add('active-unav-menu');
+                        dUnavBannerMobileToggle.classList.add('active');
+                    }
+
+                });
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Banner mobile toogle event not setup because element is missing.');
+            }
 
             if (fwData.header && fwData.header.contents) {
 
@@ -127,7 +140,7 @@ define(['render'], function (render) {
                 for (var hc = 0, hcLen = fwData.header.contents.length; hc < hcLen; hc++) {
 
                     if (fwData.header.contents[hc].template && fwData.header.contents[hc].template === "agency-header") {
-                        
+
                         // Save off the user account information
                         if (fwData.header.contents[hc].userAcct) {
                             userAccountJSON = fwData.header.contents[hc].userAcct;
@@ -142,14 +155,14 @@ define(['render'], function (render) {
                     }
 
                 }
-    
+
                 if (dUserAccountButton && userAccountJSON) {
-    
+
                     dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountJSON));
                 }
 
                 if (dSupportButton && supportJSON) {
-    
+
                     dSupportButton.addEventListener('click', _events.getSupportPopover.bind(null, supportJSON));
                 }
             }

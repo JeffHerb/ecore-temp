@@ -183,6 +183,7 @@ Handlebars.registerHelper('extendDefaults', function (params) {
                         break;
 
                     case 'bold':
+
                         addValue('className', 'emp-bold');
                         break;
 

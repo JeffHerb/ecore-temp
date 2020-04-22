@@ -8,6 +8,8 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
         console.log("Agency Data");
         console.log(data);
 
+        console.log(fwData.menus.global);
+
         if (!fwData.menus || (fwData.menus && !fwData.menus.global) || (fwData.menus && fwData.menus.global && Object.keys(fwData.menus.global).length === 0)) {
             data.showMenu = false;
         }

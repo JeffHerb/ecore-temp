@@ -1378,6 +1378,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             window.fwData.menus = {};
             window.fwData.menus.global = {};
         }
+        else {
+
+            console.log("Men already exists!");
+        }
 
     };
 
