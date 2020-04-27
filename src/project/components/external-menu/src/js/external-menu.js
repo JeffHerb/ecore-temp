@@ -4,7 +4,7 @@ define(['render', 'guid'], function(render, guid) {
     var _events = {};
 
     _priv.isGenerated = false;
-    _priv.isOpen = false;    
+    _priv.isOpen = false;
     _priv.inputTimeout = false;
     _priv.filterTolerance = 400;
     _priv.oCatalogMenu = false;
@@ -228,7 +228,7 @@ define(['render', 'guid'], function(render, guid) {
                     interCatalogTitleWrapper.appendChild(interCatalogTitle);
 
                     interCatalogControl.addEventListener('click', _events.catalogClick);
-                    
+
                     interCatalogControl.appendChild(interCatalogTitleWrapper);
                     catalogInnerWrapper.appendChild(interCatalogControl);
                 }
@@ -352,8 +352,8 @@ define(['render', 'guid'], function(render, guid) {
     };
 
     _priv.closeMenu = function _close_global_menu (){
-        
-    	_priv.isOpen = false;        
+
+    	_priv.isOpen = false;
         _priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
         _priv.menuElem.classList.remove('active');
 
@@ -375,7 +375,7 @@ define(['render', 'guid'], function(render, guid) {
     };
 
     _priv.openMenu = function _open_global_menu (){
-        
+
     	_priv.isOpen = true;
 		_priv.menuControl.setAttribute('aria-expanded', _priv.isOpen);
         _priv.menuElem.classList.add('active');
@@ -469,7 +469,7 @@ define(['render', 'guid'], function(render, guid) {
     };
 
     _events.closeMenu = function _close_global_menu_event(evt) {
-    	var control = evt.target;     
+    	var control = evt.target;
         if (control.classList.contains('emp-global-menu-close')) {
         	_priv.closeMenu();
         }
@@ -504,19 +504,19 @@ define(['render', 'guid'], function(render, guid) {
     };
 
     _events.catalogClick = function _catalog_click(evt) {
-        
+
         if (!_priv.$generatedCatalogMenu) {
 
             var dCatalogTrigger = evt.target;
 
             if(!dCatalogTrigger.classList.contains(_priv.CLASSLIST.changeCatalogToggle)){
-                
+
                 var $catalogToggle = $(dCatalogTrigger).closest("."+_priv.CLASSLIST.changeCatalogToggle);
 
                 if($catalogToggle.length > 0){
-                    dCatalogTrigger = $catalogToggle.get(0);    
+                    dCatalogTrigger = $catalogToggle.get(0);
                 }
-                
+
             }
 
             var oCatalogPopover = {
@@ -539,20 +539,19 @@ define(['render', 'guid'], function(render, guid) {
 
                 var oCatalog = fwData.menus.global.catalogs[c];
 
+                console.log(oCatalog);
+
                 var oMenuButton = {
-                    "type": "button",
-                    "template": "field",
-                    "input": {
-                        "attributes": {
-                            "data-catalog-selected": false
-                        },
-                        "text": ""
-                    }
+                    "template": "link",
+                    "attributes": {
+                        "href": false
+                    },
+                    "text": false
                 };
 
                 if (!oCatalog.active) {
-                    oMenuButton.input.text = oCatalog.text;
-                    oMenuButton.input.attributes['data-catalog-selected'] = oCatalog.name;
+                    oMenuButton.text = oCatalog.text;
+                    oMenuButton.attributes.href = oCatalog.href;
 
                     oCatalogPopover.contents[1].items.push(oMenuButton);
                 }
@@ -562,7 +561,7 @@ define(['render', 'guid'], function(render, guid) {
 
             render.section(undefined, _priv.oCatalogMenu, 'return', function(html) {
 
-                var catalogButtons = html.querySelector('button');
+                var catalogButtons = html.querySelector('a');
 
                 _priv.$generatedCatalogMenu = $.popover($(dCatalogTrigger), {
                     html: html,
@@ -577,7 +576,7 @@ define(['render', 'guid'], function(render, guid) {
 
                 catalogButtons.addEventListener('click', _events.catalogSelected);
 
-                _priv.$generatedCatalogMenu.show();                
+                _priv.$generatedCatalogMenu.show();
             });
         }
     };
@@ -596,11 +595,11 @@ define(['render', 'guid'], function(render, guid) {
 
                 if(oCatalog.switchFunc){
                     emp.functionCall(oCatalog.switchFunc);
-                }              
+                }
 
-            }            
+            }
 
-        }      
+        }
 
     };
 

@@ -4,17 +4,25 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
 	var data = function _agency_header_data_shiv(data, parentList) {
 
-        // console.log(fwData);
-        // console.log("Agency Data");
-        // console.log(data);
-
-        //console.log(fwData.menus.global);
-
         if (!fwData.menus || (fwData.menus && !fwData.menus.global) || (fwData.menus && fwData.menus.global && Object.keys(fwData.menus.global).length === 0)) {
             data.showMenu = false;
         }
         else {
             data.showMenu = true;
+        }
+
+        if (!fwData.menus || (fwData.menus && !fwData.menus.global) || (fwData.menus && fwData.menus.userAcct && Object.keys(fwData.menus.userAcct).length === 0)) {
+        	data.showUserAcct = false;
+        }
+        else {
+        	data.showUserAcct = true;
+        }
+
+        if (!fwData.menus || (fwData.menus && !fwData.menus.global) || (fwData.menus && fwData.menus.support && Object.keys(fwData.menus.support).length === 0)) {
+        	data.showSupportMenu = false;
+        }
+        else {
+        	data.showSupportMenu = true;
         }
 
 		return data;

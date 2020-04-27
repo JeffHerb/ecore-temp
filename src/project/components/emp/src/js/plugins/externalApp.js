@@ -128,45 +128,42 @@ define(['render'], function (render) {
                 journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Banner mobile toogle event not setup because element is missing.');
             }
 
-            if (fwData.header && fwData.header.contents) {
+            // Find user and support controls
+            var dUserAccountButton = document.querySelector('#userAcct');
+            var dSupportButton = document.querySelector('#agencyHelp');
 
-                // Find user and support controls
-                var dUserAccountButton = document.querySelector('#userAcct');
-                var dSupportButton = document.querySelector('#agencyHelp');
+            // var userAccountJSON = false;
+            // var supportJSON = false;
 
-                var userAccountJSON = false;
-                var supportJSON = false;
+            // Save off the user account information
+            // if (fwData.menus.userAcct) {
+            //     userAccountJSON = fwData.menus.userAcct;
+            // }
 
-                for (var hc = 0, hcLen = fwData.header.contents.length; hc < hcLen; hc++) {
+            // // Save off the support button information
+            // if (fwData.menus.support) {
+            //     supportJSON = fwData.menus.support;
+            // }
 
-                    if (fwData.header.contents[hc].template && fwData.header.contents[hc].template === "agency-header") {
+            if (dUserAccountButton && fwData.menus.userAcct) {
 
-                        // Save off the user account information
-                        if (fwData.header.contents[hc].userAcct) {
-                            userAccountJSON = fwData.header.contents[hc].userAcct;
-                        }
+                dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, fwData.menus.userAcct));
 
-                        // Save off the support button information
-                        if (fwData.header.contents[hc].support) {
-                            supportJSON = fwData.header.contents[hc].support;
-                        }
-
-                        break;
-                    }
-
-                }
-
-                if (dUserAccountButton && userAccountJSON) {
-
-                    dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountJSON));
-                }
-
-                if (dSupportButton && supportJSON) {
-
-                    dSupportButton.addEventListener('click', _events.getSupportPopover.bind(null, supportJSON));
-                }
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu setup');
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu not setup because something is missing');
             }
 
+            if (dSupportButton && fwData.menus.support) {
+
+                dSupportButton.addEventListener('click', _events.getSupportPopover.bind(null, fwData.menus.support));
+
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Support Menu setup');
+            }
+            else {
+            	journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Support Menu not setup because something is missing');
+            }
 
             _priv.isInit = true;
         }

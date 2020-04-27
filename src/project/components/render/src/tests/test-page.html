@@ -174,11 +174,6 @@
 	<script>
 		var fwData = {
 			"preferences": false,
-			"footer": {
-				"contents": [{
-					"template": "external-universal-footer"
-				}]
-			},
 			"context": {
 				"ui": {
 					"css": "css\/main.css",
@@ -190,86 +185,104 @@
 					"type": "page"
 				}
 			},
-			"header": {
-				"contents": [{
-					"title": "ECore Application Launcher",
-					"template": "agency-header",
-					"userAcct": {
-						"popover": {
-							"contents": [{
-								"contents": [{
-									"items": [{
-										"input": {
-											"attributes": {
-												"onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':false,'attributes':{'method':'POST','action':'\\/FETL\\/gateway\\/FETL\\/FETL_MAIN\\/ETL_01\\/appmgr.wg\\/logout','id':'virtual','name':'virtual'},'map':{'_fw_popup_request':'false'}}])",
-												"name": "EC_LOGOUT",
-												"id": "EC_LOGOUT"
-											},
-											"text": "Logout"
-										},
-										"template": "field",
-										"type": "button"
-									}],
-									"template": "tree"
-								}],
-								"template": "popover"
-							}]
-						},
-						"type": "interactive"
-					}
-				}]
-			},
 			"menus": {
 				"global": {
 					"items": [{
-						"href": "FETL",
-						"text": "FETL"
-					}],
+							"href": "/store-web/gateway/assessor_cat/EIVP",
+							"text": "Enhanced STAR Income Verification Program"
+						},
+						{
+							"href": "/store-web/gateway/assessor_cat/FETL",
+							"text": "Added for framework local testing.."
+						},
+						{
+							"items": [{
+								"href": "/store-web/gateway/assessor_cat/RSTG",
+								"text": "STAR General Reports"
+							}],
+							"text": "Reports"
+						}
+					],
 					"style": "folder-app",
 					"template": "tree",
 					"catalogs": [{
 							"active": true,
-							"href": "/gateway//assessor",
-							"text": "assessor"
+							"href": "/store-web/gateway/assessor_cat",
+							"text": "Assessor"
 						},
 						{
 							"active": false,
-							"href": "/gateway//dircat",
-							"text": "dircat"
+							"href": "/store-web/gateway/dir_cat",
+							"text": "Director"
 						}
 					]
 				}
+			},
+			"footer": {
+				"contents": [{
+						"template": "agency-footer"
+					},
+					{
+						"template": "universal-footer"
+					}
+				]
+			},
+			"header": {
+				"contents": [{
+						"template": "universal-header"
+					},
+					{
+						"title": "Assessor Summary",
+						"template": "agency-header",
+						"userAcct": {
+							"popover": {
+								"contents": [{
+									"contents": [{
+										"items": [{
+											"input": {
+												"attributes": {
+													"onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':false,'attributes':{'method':'POST','action':'\\/THOME\\/gateway\\/THOMEV01\\/THOME_MAIN\\/THOME_\\/appmgr.wg\\/logout','id':'virtual','name':'virtual'},'map':{'_fw_popup_request':'false'}}])",
+													"name": "EC_LOGOUT",
+													"id": "EC_LOGOUT"
+												},
+												"text": "Logout"
+											},
+											"template": "field",
+											"type": "button"
+										}],
+										"template": "tree"
+									}],
+									"template": "popover"
+								}]
+							},
+							"type": "interactive",
+							"text": "ram"
+						}
+					}
+				]
 			},
 			"page": {
 				"contents": [{
 						"instructions": [{
 							"raw": true,
-							"template": "output"
+							"template": "output",
+							"text": "Welcome to Store One."
 						}],
-						"title": "Target Details",
 						"template": "pageInfo",
-						"pageLegend": {
-							"required": true
-						}
+						"pageLegend": {}
 					},
 					{
 						"contents": [{
 							"attributes": {
 								"method": "post",
-								"action": "/FETL/gateway/FETL/FETL_MAIN/ETL_01.page",
-								"id": "reg",
-								"name": "reg"
+								"action": "/THOME/gateway/THOMEV01/THOME_MAIN/THOME_.page",
+								"id": "main",
+								"name": "main"
 							},
 							"contents": [{
-									"instructions": [{
-										"raw": true,
-										"template": "output",
-										"text": "Choose the target environment and the application to launch"
-									}],
 									"attributes": {
-										"id": "S1"
+										"id": "s1"
 									},
-									"title": "Application Details",
 									"contents": [{
 											"attributes": {},
 											"contents": [{
@@ -278,35 +291,24 @@
 												"contents": [{
 													"label": {
 														"attributes": {
-															"for": "E_ENVIRONMENT"
+															"for": "I_USER_NAME"
 														},
-														"text": "Environment:"
+														"text": "User Name:"
 													},
 													"input": {
-														"value": "localhost",
+														"readOnly": true,
 														"attributes": {
-															"aria-required": true,
-															"name": "request.environment",
-															"id": "E_ENVIRONMENT"
-														},
-														"noBlankOption": true,
-														"options": [{
-																"value": "https://utmv6.int.nystax.gov",
-																"text": "UTM"
-															},
-															{
-																"value": "https://dvm.int.nystax.gov",
-																"text": "DVM"
-															},
-															{
-																"value": "http://localhost:9080",
-																"text": "localhost"
-															}
-														],
-														"required": true
+															"value": "ram",
+															"size": 1,
+															"aria-required": false,
+															"maxlength": 1,
+															"type": "text",
+															"name": "userName",
+															"id": "I_USER_NAME"
+														}
 													},
 													"template": "field",
-													"type": "select"
+													"type": "text"
 												}],
 												"template": "grid",
 												"type": "column"
@@ -320,44 +322,27 @@
 												"width": "full",
 												"attributes": {},
 												"contents": [{
-														"label": {
-															"attributes": {
-																"for": "E_APPLICATION_NAME"
-															},
-															"text": "Application Name:"
+													"label": {
+														"attributes": {
+															"for": "E_ROLE"
 														},
-														"input": {
-															"attributes": {
-																"size": 35,
-																"aria-required": false,
-																"maxlength": 35,
-																"type": "text",
-																"name": "request.applicationName",
-																"id": "E_APPLICATION_NAME",
-																"data-validation": "isAlphaNumeric(document.form.name)"
-															}
-														},
-														"template": "field",
-														"type": "text"
+														"text": "Role:"
 													},
-													{
-														"input": {
-															"attributes": {
-																"title": "Select from List",
-																"onclick": "emp.functionCall(event, 'emp.selectionPopup', [{'request':{'url':'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/browseApps', 'data':{'_fw_flowSessionKey':'fw_default_session_id:FETL_MAIN:appinfo','E_ENVIRONMENT':'E_ENVIRONMENT','_fw_popup_request':'true'}},'mapping':{'E_APPLICATION_NAME':'1'},'selectReturn':false,'prefilter':false}])",
-																"type": "button",
-																"name": "E_BTN_POPUP",
-																"id": "E_BTN_POPUP",
-																"data-validation": true
-															},
-															"icon": "ipopup.gif",
-															"popup": true,
-															"text": "Select from List"
-														},
-														"template": "field",
-														"type": "button"
-													}
-												],
+													"input": {
+														"readOnly": true,
+														"attributes": {
+															"value": "assessor",
+															"size": 30,
+															"aria-required": false,
+															"maxlength": 30,
+															"type": "text",
+															"name": "roleStr",
+															"id": "E_ROLE"
+														}
+													},
+													"template": "field",
+													"type": "text"
+												}],
 												"template": "grid",
 												"type": "column"
 											}],
@@ -368,1016 +353,47 @@
 									"template": "group"
 								},
 								{
-									"instructions": [{
-										"raw": true,
-										"template": "output",
-										"text": "Enter the 'User ID' (from QA LDAP) of the person supposedly launching this application. This doesn't need to be the same as the person using this application."
-									}],
 									"attributes": {
-										"id": "S2"
+										"id": "s2"
 									},
-									"title": "User Deails",
-									"contents": [{
-										"attributes": {},
-										"contents": [{
-											"width": "full",
-											"attributes": {},
-											"contents": [{
-												"label": {
-													"attributes": {
-														"for": "E_USER_ID"
-													},
-													"text": "User ID:"
-												},
-												"input": {
-													"attributes": {
-														"value": "r123",
-														"size": 16,
-														"aria-required": true,
-														"maxlength": 16,
-														"type": "text",
-														"name": "request.userId",
-														"id": "E_USER_ID",
-														"data-validation": "isAlphaNumeric(document.form.name)"
-													},
-													"required": true
-												},
-												"template": "field",
-												"type": "text"
-											}],
-											"template": "grid",
-											"type": "column"
-										}],
-										"template": "grid",
-										"type": "row"
-									}],
-									"template": "group"
-								},
-								{
-									"instructions": [{
-										"raw": true,
-										"template": "output",
-										"text": "Enter the 'User ID' (from QA LDAP) of the person supposedly launching this application. This doesn't need to be the same as the person using this application."
-									}],
-									"attributes": {
-										"id": "S2"
-									},
-									"title": "User Deails",
 									"contents": [{
 										"head": {
 											"rows": [{
 												"columns": [{
-														"hideLabel": false,
-														"responsive": {},
-														"attributes": {
-															"data-type": "alphaNumeric",
-															"data-colmap": "tableId_aid"
-														},
-														"sortable": false,
-														"type": "header",
-														"text": "ID"
+													"hideLabel": true,
+													"responsive": {},
+													"attributes": {
+														"data-type": "link",
+														"data-colmap": "favorites_Field5"
 													},
-													{
-														"hideLabel": false,
-														"responsive": {},
-														"attributes": {
-															"data-type": "alphaNumeric",
-															"data-colmap": "tableId_dec"
-														},
-														"sortable": false,
-														"type": "header",
-														"text": "Description"
-													},
-													{
-														"hideLabel": false,
-														"responsive": {},
-														"attributes": {
-															"data-type": "link",
-															"data-colmap": "tableId_link"
-														},
-														"sortable": false,
-														"type": "header",
-														"text": "link"
-													}
-												]
+													"sortable": false,
+													"type": "header",
+													"text": "applink"
+												}]
 											}]
 										},
 										"body": {
 											"rows": [{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "CP01"
-														},
-														{
-															"contents": [],
-															"text": "CP01 - Contact Person Management"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "0"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "CP02"
-														},
-														{
-															"contents": [],
-															"text": "CP02 - Standalone Contact Person Management Wizard"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "1"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "EC10"
-														},
-														{
-															"contents": [],
-															"text": "Test Ecore Application"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "2"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "EIVP"
-														},
-														{
-															"contents": [],
-															"text": "Enhanced STAR Income Verification Program"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "3"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "EIVP-TEST"
-														},
-														{
-															"contents": [],
-															"text": "Test Virtual App 2"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "4"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "EIVPV01"
-														},
-														{
-															"contents": [],
-															"text": "ORPST Enhanced STAR Income Verification Program"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "5"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "EMPTST"
-														},
-														{
-															"contents": [],
-															"text": "Empire Test Wizard"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "6"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "FETL"
-														},
-														{
-															"contents": [],
-															"text": "ECore Application Launcher Test Tool"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "7"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "FTEST"
-														},
-														{
-															"contents": [],
-															"text": "Framework Test App"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "8"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "FWRK"
-														},
-														{
-															"contents": [],
-															"text": "Test Framework Application"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "9"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "FWRKV01"
-														},
-														{
-															"contents": [],
-															"text": "Test Framework Virtual Application"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "10"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "GREG"
-														},
-														{
-															"contents": [],
-															"text": "Greg"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "11"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "MHPA"
-														},
-														{
-															"contents": [],
-															"text": "MHPA - Manufactured Home Parks Administration"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "12"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "MHPR"
-														},
-														{
-															"contents": [],
-															"text": "MHPR - Manufactured Home Parks Registration"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "13"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RIVP"
-														},
-														{
-															"contents": [],
-															"text": "RIVP - Reports (STAR)"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "14"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RIVPV01"
-														},
-														{
-															"contents": [],
-															"text": "RIVP - ORPTS Reports"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "15"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RIVPV02"
-														},
-														{
-															"contents": [],
-															"text": "RIVP - Reports (STAR) - Enhanced STAR Daily IVP Edit Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "16"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RIVPV03"
-														},
-														{
-															"contents": [],
-															"text": "RIVP - Reports (STAR) - Enhanced STAR Closed IVP Edit Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "17"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RIVPV04"
-														},
-														{
-															"contents": [],
-															"text": "RIVP - Reports (STAR) - Enhanced STAR Summary IVP Edit Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "18"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSCP"
-														},
-														{
-															"contents": [],
-															"text": "RSCP - STAR Credit Program Reports"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "19"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSCPV01"
-														},
-														{
-															"contents": [],
-															"text": "RSCP - STAR Credit Program Reports - STAR Credit Issued Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "20"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSCPV02"
-														},
-														{
-															"contents": [],
-															"text": "RSCP - STAR Credit Program Reports - STAR Credit Eligible Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "21"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSIS"
-														},
-														{
-															"contents": [],
-															"text": "RSIS - STAR IVP Status Reports"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "22"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSISV01"
-														},
-														{
-															"contents": [],
-															"text": "RSIS - STAR IVP Status Reports - Final Roll Corrections Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "23"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSISV02"
-														},
-														{
-															"contents": [],
-															"text": "RSIS - STAR IVP Status Reports - IVP Checks and Bills Issued Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "24"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSISV03"
-														},
-														{
-															"contents": [],
-															"text": "RSIS - STAR IVP Status Reports - Enhanced STAR Eligibility Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "25"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSISV04"
-														},
-														{
-															"contents": [],
-															"text": "RSIS - STAR IVP Status Reports - Tentative Roll Corrections Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "26"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSTG"
-														},
-														{
-															"contents": [],
-															"text": "RSTG - STAR General Reports"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "27"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSTGV01"
-														},
-														{
-															"contents": [],
-															"text": "RSTG - STAR General Reports - NYS Tax Return Deceased Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "28"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSTGV02"
-														},
-														{
-															"contents": [],
-															"text": "RSTG - STAR General Reports - Income Greater than $250,000 Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "29"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSTGV03"
-														},
-														{
-															"contents": [],
-															"text": "RSTG - STAR General Reports - Low Income Seniors Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "30"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "RSTGV04"
-														},
-														{
-															"contents": [],
-															"text": "RSTG - STAR General Reports - Voluntary Exemption Removal Report"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "31"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "TEST"
-														},
-														{
-															"contents": [],
-															"text": "UI Test"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "32"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "TL01"
-														},
-														{
-															"contents": [],
-															"text": "TL01 - Audit Division Trip Log"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "33"
-												},
-												{
-													"selection": {},
-													"columns": [{
-															"contents": [],
-															"text": "UV01"
-														},
-														{
-															"contents": [],
-															"text": "UV01 - Utility Company Inventory Transfer Wizard"
-														},
-														{
-															"contents": [{
-																"attributes": {
-																	"role": "button",
-																	"title": "Submit",
-																	"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','tableId','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/download'}]}})",
-																	"href": "#",
-																	"data-validation": false
-																},
-																"template": "link",
-																"text": "try"
-															}]
-														}
-													],
-													"key": "34"
-												}
-											]
+												"selection": {},
+												"columns": [{
+													"contents": [{
+														"attributes": {
+															"role": "button",
+															"title": "Submit",
+															"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','favorites','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'main',action:'http://localhost:9080/store-web/gateway/assessor_cat/RSTG'}]}})",
+															"href": "#",
+															"data-validation": false
+														},
+														"template": "link",
+														"text": "STAR General Reports"
+													}]
+												}],
+												"key": "0"
+											}]
 										},
 										"prechecked": [],
 										"attributes": {
-											"id": "tableId"
+											"id": "favorites"
 										},
 										"template": "table",
 										"optimize": false
@@ -1385,43 +401,12 @@
 									"template": "group"
 								},
 								{
-									"contents": [{
-											"align": "right",
-											"template": "buttonGroup",
-											"type": "column"
-										},
-										{
-											"align": "right",
-											"contents": [{
-												"input": {
-													"primary": true,
-													"attributes": {
-														"title": "Continue",
-														"onclick": "emp.functionCall(event, 'emp.form.submit', [{id:'reg',action:'/FETL/gateway/FETL/FETL_MAIN/ETL_01.page/continue'}])",
-														"type": "button",
-														"name": "EC_BTN_CONTINUE",
-														"id": "EC_BTN_CONTINUE",
-														"data-validation": true
-													},
-													"text": "Continue"
-												},
-												"template": "field",
-												"type": "button"
-											}],
-											"template": "buttonGroup",
-											"type": "column"
-										}
-									],
-									"template": "buttonGroup",
-									"type": "row"
-								},
-								{
 									"input": {
 										"attributes": {
-											"value": "fw_default_session_id:FETL_MAIN:appinfo",
+											"value": "fw_default_session_id:THOME_MAIN:summary",
 											"type": "hidden",
 											"name": "_fw_flowSessionKey",
-											"id": "reg__fw_flowSessionKey"
+											"id": "main__fw_flowSessionKey"
 										}
 									},
 									"template": "field",

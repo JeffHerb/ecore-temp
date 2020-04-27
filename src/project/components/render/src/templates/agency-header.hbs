@@ -13,7 +13,7 @@
         </a>
     </div>
     <ul class="agency-support-login">
-        {{#if this.userAcct}}
+        {{#if this.showUserAcct}}
         <li>
             <button id="userAcct" role="button">
                 <span class="user-icon"></span>
@@ -21,7 +21,7 @@
             </button>
         </li>
         {{/if}}
-        {{#if this.support}}
+        {{#if this.showSupportMenu}}
         <li>
             <button id="agencyHelp" role="button">
                 <span class="support-icon"></span>
