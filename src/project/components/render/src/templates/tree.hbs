@@ -41,9 +41,15 @@
         {{#each this.items}}
             <li>
                 {{#if this.items}}
-                    <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-expanding-control"}' collapseChildren=this.collapse scope="expandable-control")) }}>
-                        {{this.text}}
-                    </span>
+                    {{#unless this.collapse}}
+                        <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-expandable-control emp-collapse-children"}' collapseChildren=this.collapse scope="expandable-control")) }}>
+                            {{this.text}}
+                        </span>
+                    {{else}}
+                        <span {{attribute (mergeAttributes this.attributes defaults=(extendDefaults defaults='{"className":"emp-expandable-control"}' collapseChildren=this.collapse scope="expandable-control")) }}>
+                            {{this.text}}
+                        </span>
+                    {{/unless}}
                     {{> _tree this scope="tree" root=false }}
                 {{else}}
                     {{~> (getPartialName this.template) this scope="treeItem" ~}}

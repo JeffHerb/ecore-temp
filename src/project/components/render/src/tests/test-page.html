@@ -182,28 +182,20 @@
 					"version": "dist"
 				},
 				"screen": {
-					"type": "page"
+					"type": "page",
+					"userInfo": {
+						"realName": "John Smith",
+                		"companyName": "ABC Company",
+                		"userid": "123-45-6789"
+					},
+					"accountInfo": {
+						"account": "Tax Professioal",
+						"role": "Administrator"
+					}
 				}
 			},
 			"menus": {
 				"global": {
-					"items": [{
-							"href": "/store-web/gateway/assessor_cat/EIVP",
-							"text": "Enhanced STAR Income Verification Program"
-						},
-						{
-							"href": "/store-web/gateway/assessor_cat/FETL",
-							"text": "Added for framework local testing.."
-						},
-						{
-							"items": [{
-								"href": "/store-web/gateway/assessor_cat/RSTG",
-								"text": "STAR General Reports"
-							}],
-							"text": "Reports"
-						}
-					],
-					"style": "folder-app",
 					"template": "tree",
 					"catalogs": [{
 							"active": true,
@@ -214,6 +206,113 @@
 							"active": false,
 							"href": "/store-web/gateway/dir_cat",
 							"text": "Director"
+						}
+					],
+					"items": [{
+							"href": "/store-web/gateway/assessor_cat/EIVP",
+							"text": "Enhanced STAR Income Verification Program"
+						},
+						{
+							"href": "/store-web/gateway/assessor_cat/FETL",
+							"text": "Added for framework local testing.."
+						},
+						{
+							"items": [
+								{
+									"href": "/store-web/gateway/assessor_cat/RSTG",
+									"text": "STAR General Reports"
+								}
+							],
+							"text": "Reports"
+						}
+					],
+				},
+				"userAccount": {
+					"template": "tree",
+					"items": [
+						{
+							"text": "Preferences",
+							"items": [
+								{
+									"template": "link",
+									"attributes": {
+										"href": "#",
+									},
+									"text": "Preference Application 1",
+								},
+								{
+									"template": "link",
+									"attributes": {
+										"href": "#",
+									},
+									"text": "Preference Application 2",
+								},
+								{
+									"template": "link",
+									"attributes": {
+										"href": "#",
+									},
+									"text": "Preference Application 3",
+								}
+							]
+						}
+					]
+				},
+				"addHelp": {
+					"type": "interactive",
+					"template": "tree",
+					"items": [
+						{
+							"template": "link",
+							"attributes": {
+								"href": "#",
+							},
+							"text": "Application Specific Help 1",
+						},
+						{
+							"template": "link",
+							"attributes": {
+								"href": "#",
+							},
+							"text": "Application Specific Help 2",
+						},
+						{
+							"template": "link",
+							"attributes": {
+								"href": "#",
+							},
+							"text": "Application Specific Help 3",
+						}
+					]
+				},
+				"system": {
+					"template": "tree",
+					"items": [
+						{
+							"template": "link",
+							"attributes": {
+								"href": "#",
+							},
+							"text": "Logout",
+						}
+					]
+				},
+				"supportContact": {
+					"template": "tree",
+					"items": [
+						{
+							"template": "link",
+							"attributes": {
+								"href": "#",
+							},
+							"text": "Support",
+						},
+						{
+							"template": "link",
+							"attributes": {
+								"href": "#",
+							},
+							"text": "Contact Us",
 						}
 					]
 				}
@@ -235,26 +334,6 @@
 						"title": "Assessor Summary",
 						"template": "agency-header",
 						"userAcct": {
-							"popover": {
-								"contents": [{
-									"contents": [{
-										"items": [{
-											"input": {
-												"attributes": {
-													"onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':false,'attributes':{'method':'POST','action':'\\/THOME\\/gateway\\/THOMEV01\\/THOME_MAIN\\/THOME_\\/appmgr.wg\\/logout','id':'virtual','name':'virtual'},'map':{'_fw_popup_request':'false'}}])",
-													"name": "EC_LOGOUT",
-													"id": "EC_LOGOUT"
-												},
-												"text": "Logout"
-											},
-											"template": "field",
-											"type": "button"
-										}],
-										"template": "tree"
-									}],
-									"template": "popover"
-								}]
-							},
 							"type": "interactive",
 							"text": "ram"
 						}

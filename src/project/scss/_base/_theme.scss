@@ -1195,12 +1195,15 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
             .emp-popover {
 
-                .emp-popover-group {
+                .emp-static-tree.emp-tree-root {
+                    border-bottom: solid 1px #ccc;
+                    margin-left: 0;
 
                     &:last-child {
                         border-bottom: 0;
                     }
                 }
+
             }
         }
 

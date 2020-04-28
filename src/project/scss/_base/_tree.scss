@@ -99,7 +99,7 @@ li.emp-tree-branch-close { // `li` needed for specifity for `:before { content }
             }
         }
 
-        span.emp-expanding-control {
+        span.emp-expandable-control {
             position: relative;
 
             &:before {
@@ -107,11 +107,11 @@ li.emp-tree-branch-close { // `li` needed for specifity for `:before { content }
                 content: " ";
                 width: 0; 
                 height: 0; 
-                border-top: 5px solid transparent;
-                border-bottom: 5px solid transparent;
-                border-left: 5px solid #1484b4;
-                left: 5px;
-                top: 15px;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #1484b4;
+                left: 2px;
+                top: 17px;
                 position: absolute;
             }
 
@@ -122,11 +122,11 @@ li.emp-tree-branch-close { // `li` needed for specifity for `:before { content }
                     content: " ";
                     width: 0; 
                     height: 0; 
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-top: 5px solid #1484b4;
-                    left: 2px;
-                    top: 17px;
+                    border-top: 5px solid transparent;
+                    border-bottom: 5px solid transparent;
+                    border-left: 5px solid #1484b4;
+                    left: 5px;
+                    top: 15px;
                     position: absolute;
                 }
 
