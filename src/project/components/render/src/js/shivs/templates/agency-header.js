@@ -11,18 +11,18 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
             data.showMenu = true;
         }
 
-        if (!fwData.menus || (fwData.menus && !fwData.menus.global) || (fwData.menus && fwData.menus.userAcct && Object.keys(fwData.menus.userAcct).length === 0)) {
-        	data.showUserAcct = false;
+        if (fwData && fwData.menus && (fwData.menus.userAccount || fwData.menus.system) ) {
+            data.showUserAcct = true;
         }
         else {
-        	data.showUserAcct = true;
+            data.showUserAcct = false;
         }
 
-        if (!fwData.menus || (fwData.menus && !fwData.menus.global) || (fwData.menus && fwData.menus.support && Object.keys(fwData.menus.support).length === 0)) {
-        	data.showSupportMenu = false;
+        if (fwData && fwData.menus && (fwData.menus.appHelp || fwData.menus.supportContact) ) {
+            data.showSupportMenu = true;
         }
         else {
-        	data.showSupportMenu = true;
+            data.showSupportMenu = false;
         }
 
 		return data;

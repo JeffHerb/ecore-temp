@@ -17,7 +17,6 @@ define(['render'], function (render) {
 
             render.section(undefined, supportJSON.popover, 'return', function(html) {
 
-                console.log(html);
                 _priv.$supportPopover = $.popover($supportButton, {
                     html: html,
                     display: {
@@ -185,8 +184,6 @@ define(['render'], function (render) {
             var dUserAccountButton = document.querySelector('#userAcct');
             var dSupportButton = document.querySelector('#agencyHelp');
 
-            console.log(fwData.menus);
-
             if (dUserAccountButton && fwData.menus.userAccount) {
 
                 var userAccountPopover = {
@@ -252,38 +249,6 @@ define(['render'], function (render) {
 
             if (dSupportButton && fwData.menus.supportContact) {
 
-                // {
-                //     "template": "tree",
-                //     "items": [
-                //         {
-                //             "template": "link",
-                //             "attributes": {
-                //                 "href": "[LINK DEFINED BY HELO LINKS INPUT]"
-                //             },
-                //             "text": "Help Link"
-                //         }
-                //     ]
-                // },
-                // {
-                //     "template": "tree",
-                //     "items": [
-                //         {
-                //             "template": "link",
-                //             "attributes": {
-                //                 "href": "[LINK DEFINED BY SUPPORT LINK INPUT]"
-                //             },
-                //             "text": "Support"
-                //         },
-                //         {
-                //             "template": "link",
-                //             "attributes": {
-                //                 "href": "[LINK DEFINED BY CONTACT US LINK INPUT]"
-                //             },
-                //             "text": "Contact Us"
-                //         }
-                //     ]
-                // }
-
                 var supportPopover = {
                     "popover": {
                         "contents": [
@@ -297,8 +262,8 @@ define(['render'], function (render) {
                 };
 
                 // Add the account menu if it exists
-                if (fwData && fwData.menus && fwData.menus.addHelp) {
-                    supportPopover.popover.contents[0].contents.push(fwData.menus.addHelp);
+                if (fwData && fwData.menus && fwData.menus.appHelp) {
+                    supportPopover.popover.contents[0].contents.push(fwData.menus.appHelp);
                 }
 
                 // Add the account menu if it exists
