@@ -45,10 +45,12 @@ define(['render', 'guid'], function(render, guid) {
             var dMenuControlText = document.createTextNode(menuItem.text);
             var dMenuControl = false;
 
-            if (menuItem.href) {
+            if (menuItem.href || (menuItem.attributes && menuItem.attributes.href)) {
+
+                var href = (menuItem.href) ? menuItem.href : menuItem.attributes.href;
 
                 dMenuControl = document.createElement('a');
-                dMenuControl.setAttribute('href', menuItem.href);
+                dMenuControl.setAttribute('href', href);
 
                 if (menuItem.onclick) {
                     dMenuControl.setAttribute('onclick', menuItem.onclick);

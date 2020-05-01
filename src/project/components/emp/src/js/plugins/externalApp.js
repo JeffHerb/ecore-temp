@@ -63,7 +63,10 @@ define(['render'], function (render) {
             if (!_priv.$userPopover) {
                 generatePopver();
 
-                _priv.setUpExpandables(_priv.$userPopover.$popover[0]);
+                if (_priv.$userPopover) {
+
+                    _priv.setUpExpandables(_priv.$userPopover.$popover[0]);
+                }
 
                 _priv.$userPopover.show();
             }
@@ -97,7 +100,7 @@ define(['render'], function (render) {
         if (dCurrentNode) {
 
             dSpan = dCurrentNode;
-    
+
             if (dSpan.classList.contains('emp-collapse-children')) {
                 dSpan.classList.remove('emp-collapse-children');
             }
@@ -184,11 +187,19 @@ define(['render'], function (render) {
             var dUserAccountButton = document.querySelector('#userAcct');
             var dSupportButton = document.querySelector('#agencyHelp');
 
+            var bInlineMenu = false;
+
+            if (dUserAccountButton) {
+                bInlineMenu = (dUserAccountButton.getAttribute('data-inlinemenu')) ? true : false;
+            }
+
+            var userAccountPopover = false;
+
             if (dUserAccountButton && fwData.menus.userAccount) {
 
-                var userAccountPopover = {
+                userAccountPopover = {
                     "popover": {
-                        "contents": [                                
+                        "contents": [
                             {
                                 "template": "popover",
                                 "contents": [
@@ -200,7 +211,7 @@ define(['render'], function (render) {
 
                 // Construct the user info section if it exists
                 if (fwData && fwData.context && fwData.context.screen && fwData.context.screen.userInfo) {
-                    
+
                     var oUserInfo = {
                         "type": "external-auth-user",
                         "template": "composite",
@@ -216,7 +227,7 @@ define(['render'], function (render) {
 
                 // Construct the account info section if it exists
                 if (fwData && fwData.context && fwData.context.screen && fwData.context.screen.accountInfo) {
-                    
+
                     var oUserAcctInfo = {
                         "type": "external-account-demo",
                         "template": "composite",
@@ -242,6 +253,37 @@ define(['render'], function (render) {
                 dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountPopover));
 
                 journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu setup');
+            }
+            else if (dUserAccountButton && bInlineMenu) {
+
+                var oAgencyHeader = false;
+
+                for (var h = 0, hLen = fwData.header.contents.length; h < hLen; h++) {
+
+                    var oHeader = fwData.header.contents[h];
+
+                    if (oHeader && oHeader.template && oHeader.template === "agency-header") {
+                        oAgencyHeader = oHeader;
+                        break;
+                    }
+
+                }
+
+                if (oAgencyHeader) {
+
+                    userAccountPopover = {
+                        popover: {
+                            contents: false
+                        }
+                    };
+
+                    userAccountPopover.popover.contents = oAgencyHeader.userAcct.popover.contents;
+
+                    dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountPopover));
+                }
+
+                journal.log({ type: 'warn', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu setup, but is using the old spec via the agency header template!');
+
             }
             else {
                 journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu not setup because something is missing');

@@ -14,6 +14,34 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
         if (fwData && fwData.menus && (fwData.menus.userAccount || fwData.menus.system) ) {
             data.showUserAcct = true;
         }
+        else if (fwData.header && fwData.header.contents && fwData.header.contents.length) {
+
+            var oAgencyHeader = false;
+
+            for (var a = 0, aLen = fwData.header.contents.length; a < aLen; a++) {
+
+                var oHeader = fwData.header.contents[a];
+
+                if (oHeader && oHeader.template && oHeader.template === "agency-header") {
+
+                    oAgencyHeader = oHeader;
+
+                }
+
+            }
+
+            if (oAgencyHeader) {
+
+                if (oAgencyHeader.userAcct) {
+                    if (oAgencyHeader.userAcct.popover) {
+                        data.showUserAcct = true;
+                        data.inlineUserAcctMenu = true;
+                    }
+                }
+
+            }
+
+        }
         else {
             data.showUserAcct = false;
         }

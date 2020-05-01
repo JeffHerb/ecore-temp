@@ -15,7 +15,7 @@
     <ul class="agency-support-login">
         {{#if this.showUserAcct}}
         <li>
-            <button id="userAcct" role="button">
+            <button id="userAcct" role="button" {{#if this.inlineUserAcctMenu}}data-inlineMenu="true"{{/if}}>
                 <span class="user-icon"></span>
                 <span class="label">{{this.userAcct.text}}</span>
             </button>
