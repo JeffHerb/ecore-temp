@@ -173,348 +173,400 @@
 	</div>
 	<script>
 		var fwData = {
-				"preferences": false,
-				"context": {
-					"ui": {
-						"css": "css\/main.css",
-						"baseurl": "../../../../../",
-						"js": "js\/main.js",
-						"version": "dist"
-					},
-					"screen": {
-						"type": "page",
-						"userInfo": {
-							"realName": "John Smith",
-							"companyName": "ABC Company",
-							"userid": "123-45-6789"
-						},
-						"accountInfo": {
-							"account": "Tax Professioal",
-							"role": "Administrator"
-						}
-					}
+			"preferences": false,
+			"context": {
+				"ui": {
+					"css": "css\/main.css",
+					"baseurl": "../../../../../",
+					"js": "js\/main.js",
+					"version": "dist"
 				},
-				"footer": {
-					"contents": [{
-							"template": "agency-footer"
-						},
-						{
-							"template": "universal-footer"
-						}
-					]
-				},
-				"header": {
-					"contents": [{
-							"template": "universal-header"
-						},
-						{
-							"template": "agency-header",
-							"userAcct": {
-								"popover": {
-									"contents": [{
-										"template": "popover",
-										"contents": [{
-											"template": "tree",
-											"items": [{
-												"template": "field",
-												"input": {
-													"attributes": {
-														"onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':false,'attributes':{'name':'virtual','action':'\\/THOME\\/gateway\\/THOMEV01\\/THOME_MAIN\\/THOME_\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}}])",
-														"name": "EC_LOGOUT",
-														"id": "EC_LOGOUT"
-													},
-													"text": "Logout"
-												},
-												"type": "button"
-											}]
-										}]
-									}]
-								},
-								"text": "t55052",
-								"type": "interactive"
-							},
-							"title": "Assessor Summary"
-						}
-					]
-				},
-				"page": {
-					"contents": [{
-							"template": "pageInfo",
-							"instructions": [{
-								"template": "output",
-								"raw": true,
-								"text": "Welcome to Store One."
-							}],
-							"pageLegend": {}
-						},
-						{
-							"template": "pagebody",
-							"contents": [{
-								"contents": [{
-										"template": "group",
-										"contents": [{
-												"template": "grid",
-												"contents": [{
-													"template": "grid",
-													"contents": [{
-														"template": "field",
-														"input": {
-															"attributes": {
-																"size": 1,
-																"maxlength": 1,
-																"name": "userName",
-																"aria-required": false,
-																"id": "I_USER_NAME",
-																"type": "text",
-																"value": "t55052"
-															},
-															"readOnly": true
-														},
-														"label": {
-															"attributes": {
-																"for": "I_USER_NAME"
-															},
-															"text": "User Name:"
-														},
-														"type": "text"
-													}],
-													"width": "full",
-													"attributes": {},
-													"type": "column"
-												}],
-												"attributes": {},
-												"type": "row"
-											},
-											{
-												"template": "grid",
-												"contents": [{
-													"template": "grid",
-													"contents": [{
-														"template": "field",
-														"input": {
-															"attributes": {
-																"size": 30,
-																"maxlength": 30,
-																"name": "roleStr",
-																"aria-required": false,
-																"id": "E_ROLE",
-																"type": "text",
-																"value": "assessor"
-															},
-															"readOnly": true
-														},
-														"label": {
-															"attributes": {
-																"for": "E_ROLE"
-															},
-															"text": "Role:"
-														},
-														"type": "text"
-													}],
-													"width": "full",
-													"attributes": {},
-													"type": "column"
-												}],
-												"attributes": {},
-												"type": "row"
-											}
-										],
-										"attributes": {
-											"id": "s1"
-										}
-									},
-									{
-										"template": "group",
-										"contents": [{
-											"template": "table",
-											"head": {
-												"rows": [{
-													"columns": [{
-														"responsive": {},
-														"attributes": {
-															"data-colmap": "favorites_Field5",
-															"data-type": "link"
-														},
-														"text": "applink",
-														"sortable": false,
-														"type": "header",
-														"hideLabel": true
-													}]
-												}]
-											},
-											"prechecked": [],
-											"optimize": false,
-											"attributes": {
-												"id": "favorites"
-											},
-											"body": {
-												"rows": [{
-													"selection": {},
-													"columns": [{
-														"contents": [{
-															"template": "link",
-															"attributes": {
-																"role": "button",
-																"data-validation": false,
-																"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','favorites','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'main',action:'https://dvm.int.nystax.gov/store-web/gateway/assessor_cat/RSTG'}]}})",
-																"href": "#",
-																"title": "Submit"
-															},
-															"text": "STAR General Reports"
-														}]
-													}],
-													"key": "0"
-												}]
-											}
-										}],
-										"attributes": {
-											"id": "s2"
-										}
-									},
-									{
-										"template": "field",
-										"input": {
-											"attributes": {
-												"name": "_fw_flowSessionKey",
-												"id": "main__fw_flowSessionKey",
-												"type": "hidden",
-												"value": "fw_default_session_id:THOME_MAIN:summary"
-											}
-										},
-										"type": "hidden"
-									}
-								],
-								"attributes": {
-									"method": "post",
-									"name": "main",
-									"action": "/THOME/gateway/THOMEV01/THOME_MAIN/THOME_.page",
-									"id": "main"
-								},
-								"type": "form"
-							}]
-						}
-					]
-				},
-				"menus": {
-					"global": {
-						"template": "tree",
-						"catalogs": [{
-								"active": true,
-								"href": "/store-web/gateway/assessor_cat",
-								"text": "Assessor"
-							},
-							{
-								"active": false,
-								"href": "/store-web/gateway/dir_cat",
-								"text": "Director"
-							}
-						],
-						"items": [{
-								"template": "link",
-								"attributes": {
-									"href": "/store-web/gateway/assessor_cat/EIVP",
-								},
-								"text": "Enhanced STAR Income Verification Program"
-							},
-							{
-								"template": "link",
-								"attributes": {
-									"href": "/store-web/gateway/assessor_cat/FETL",
-								},
-								"text": "Added for framework local testing.."
-							},
-							{
-								"items": [{
-									"template": {
-										"attributes": {
-											"href": "/store-web/gateway/assessor_cat/RSTG",
-										},
-										"text": "STAR General Reports"
-									}
-								}],
-								"text": "Reports"
-							}
-						]
+				"screen": {
+					"type": "page",
+					"userInfo": {
+						"realName": "John Smith",
+						"companyName": "ABC Company",
+						"userid": "123-45-6789"
 					},
-					"userAccount": {
-						"template": "tree",
-						"items": [{
-							"text": "Preferences",
-							"items": [{
-									"template": "link",
-									"attributes": {
-										"href": "#"
-									},
-									"text": "Preference Application 1"
-								},
-								{
-									"template": "link",
-									"attributes": {
-										"href": "#"
-									},
-									"text": "Preference Application 2"
-								}, {
-									"template": "link",
-									"attributes": {
-										"href": "#"
-									},
-									"text": "Preference Application 3"
-								}
-							]
-						}]
-					},
-					"addHelp": {
-						"template": "tree",
-						"items": [{
-								"template": "link",
-								"attributes": {
-									"href": "#"
-								},
-								"text": "Application Specific Help 1"
-							},
-							{
-								"template": "link",
-								"attributes": {
-									"href": "#",
-								},
-								"text": "Application Specific Help 2"
-							},
-							{
-								"template": "link",
-								"attributes": {
-									"href": "#",
-								},
-								"text": "Application Specific Help 3"
-							}
-						]
-					},
-					"system": {
-						"template": "tree",
-						"items": [{
-							"template": "link",
-							"attributes": {
-								"href": "#"
-							},
-							"text": "Logout"
-						}]
-					},
-					"supportContact": {
-						"template": "tree",
-						"items": [{
-							"template": "link",
-							"attributes": {
-								"href": "#"
-							},
-							"text": "Support"
-						}, {
-							"template": "link",
-							"attributes": {
-								"href": "#"
-							},
-							"text": "Contact Us"
-						}]
+					"accountInfo": {
+						"account": "Tax Professioal",
+						"role": "Administrator"
 					}
 				}
+			},
+			"footer": {
+				"contents": [{
+						"template": "agency-footer"
+					},
+					{
+						"template": "universal-footer"
+					}
+				]
+			},
+			"header": {
+				"contents": [{
+						"template": "universal-header"
+					},
+					{
+						"template": "agency-header",
+						"userAcct": {
+							"popover": {
+								"contents": [{
+									"template": "popover",
+									"contents": [{
+										"template": "tree",
+										"items": [{
+											"template": "field",
+											"input": {
+												"attributes": {
+													"onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':false,'attributes':{'name':'virtual','action':'\\/THOME\\/gateway\\/THOMEV01\\/THOME_MAIN\\/THOME_\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}}])",
+													"name": "EC_LOGOUT",
+													"id": "EC_LOGOUT"
+												},
+												"text": "Logout"
+											},
+											"type": "button"
+										}]
+									}]
+								}]
+							},
+							"text": "ram",
+							"type": "interactive"
+						},
+						"title": "Assessor Summary",
+						"support": {
+							"popover": {
+								"contents": [{
+									"template": "popover",
+									"contents": [{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.google.com",
+													"target": "_blank"
+												},
+												"text": "Google It"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Support"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Contact Us"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Support"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Contact Us"
+											}]
+										}
+									]
+								}]
+							},
+							"text": "Get Support"
+						}
+					}
+				]
+			},
+			"page": {
+				"contents": [{
+						"template": "pageInfo",
+						"instructions": [{
+							"template": "output",
+							"raw": true,
+							"text": "Welcome to Store One."
+						}],
+						"pageLegend": {}
+					},
+					{
+						"template": "pagebody",
+						"contents": [{
+							"contents": [{
+									"template": "group",
+									"contents": [{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"size": 1,
+															"maxlength": 1,
+															"name": "userName",
+															"aria-required": false,
+															"id": "I_USER_NAME",
+															"type": "text",
+															"value": "t55052"
+														},
+														"readOnly": true
+													},
+													"label": {
+														"attributes": {
+															"for": "I_USER_NAME"
+														},
+														"text": "User Name:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										},
+										{
+											"template": "grid",
+											"contents": [{
+												"template": "grid",
+												"contents": [{
+													"template": "field",
+													"input": {
+														"attributes": {
+															"size": 30,
+															"maxlength": 30,
+															"name": "roleStr",
+															"aria-required": false,
+															"id": "E_ROLE",
+															"type": "text",
+															"value": "assessor"
+														},
+														"readOnly": true
+													},
+													"label": {
+														"attributes": {
+															"for": "E_ROLE"
+														},
+														"text": "Role:"
+													},
+													"type": "text"
+												}],
+												"width": "full",
+												"attributes": {},
+												"type": "column"
+											}],
+											"attributes": {},
+											"type": "row"
+										}
+									],
+									"attributes": {
+										"id": "s1"
+									}
+								},
+								{
+									"template": "group",
+									"contents": [{
+										"template": "table",
+										"head": {
+											"rows": [{
+												"columns": [{
+													"responsive": {},
+													"attributes": {
+														"data-colmap": "favorites_Field5",
+														"data-type": "link"
+													},
+													"text": "applink",
+													"sortable": false,
+													"type": "header",
+													"hideLabel": true
+												}]
+											}]
+										},
+										"prechecked": [],
+										"optimize": false,
+										"attributes": {
+											"id": "favorites"
+										},
+										"body": {
+											"rows": [{
+												"selection": {},
+												"columns": [{
+													"contents": [{
+														"template": "link",
+														"attributes": {
+															"role": "button",
+															"data-validation": false,
+															"onclick": "emp.functionCall(event, {0:{'function':'emp.referenceCall','args':['tables','favorites','setFocus',[]]},1:{'function':'emp.form.submit','args':[{id:'main',action:'https://dvm.int.nystax.gov/store-web/gateway/assessor_cat/RSTG'}]}})",
+															"href": "#",
+															"title": "Submit"
+														},
+														"text": "STAR General Reports"
+													}]
+												}],
+												"key": "0"
+											}]
+										}
+									}],
+									"attributes": {
+										"id": "s2"
+									}
+								},
+								{
+									"template": "field",
+									"input": {
+										"attributes": {
+											"name": "_fw_flowSessionKey",
+											"id": "main__fw_flowSessionKey",
+											"type": "hidden",
+											"value": "fw_default_session_id:THOME_MAIN:summary"
+										}
+									},
+									"type": "hidden"
+								}
+							],
+							"attributes": {
+								"method": "post",
+								"name": "main",
+								"action": "/THOME/gateway/THOMEV01/THOME_MAIN/THOME_.page",
+								"id": "main"
+							},
+							"type": "form"
+						}]
+					}
+				]
+			},
+			"menus": {
+				"supportContact": {
+					"items": [{
+							"attributes": {
+								"target": "_blank",
+								"href": "http://www.tax.ny.gov"
+							},
+							"template": "link",
+							"text": "Support"
+						},
+						{
+							"attributes": {
+								"target": "_blank",
+								"href": "http://www.tax.ny.gov"
+							},
+							"template": "link",
+							"text": "Contact Us"
+						}
+					],
+					"template": "tree"
+				},
+				"appHelp": {
+					"items": [{
+						"attributes": {
+							"target": "_blank",
+							"href": "http://www.google.com"
+						},
+						"template": "link",
+						"text": "Google It"
+					}],
+					"template": "tree",
+					"text": "addHelp"
+				},
+				"userAccount": {
+					"items": [{
+						"items": [{
+							"template": "link",
+							"text": "Placeholder preference"
+						}],
+						"text": "preferences"
+					}],
+					"template": "tree"
+				},
+				"global": {
+					"items": [{
+							"attributes": {
+								"href": "/store-web/gateway/cat/dir_cat"
+							},
+							"template": "link",
+							"text": "Enhanced STAR Income Verification Program"
+						},
+						{
+							"attributes": {
+								"href": "/store-web/gateway/cat/dir_cat"
+							},
+							"template": "link",
+							"text": "Added for framework local testing.."
+						},
+						{
+							"items": [{
+									"attributes": {
+										"href": "/store-web/gateway/cat/dir_cat"
+									},
+									"template": "link",
+									"text": "STAR General Reports"
+								},
+								{
+									"attributes": {
+										"href": "/store-web/gateway/cat/dir_cat"
+									},
+									"template": "link",
+									"text": "ORPTS Reports"
+								},
+								{
+									"attributes": {
+										"href": "/store-web/gateway/cat/dir_cat"
+									},
+									"template": "link",
+									"text": "STAR Credit Program Reports"
+								}
+							],
+							"text": "Reports"
+						}
+					],
+					"catalogs": [{
+							"active": false,
+							"href": "/store-web/gateway/cat/assessor_cat",
+							"text": "Assessor"
+						},
+						{
+							"active": true,
+							"href": "/store-web/gateway/cat/dir_cat",
+							"text": "Director"
+						}
+					],
+					"template": "tree"
+				},
+				"system": {
+					"items": [{
+						"attributes": {
+							"href": "/THOME/gateway/THOME/THOME_MAIN/THOME_/appmgr.wg/logout"
+						},
+						"template": "link",
+						"text": "Logout"
+					}],
+					"template": "tree"
+				}
+			},
 		};
 	</script>
 	<script>
