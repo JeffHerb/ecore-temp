@@ -204,6 +204,25 @@
                     width: 100%;
                 }
 
+                a {
+                  
+                    &.emp-active-menu-item {
+                        font-weight: 600;
+                        position: relative;
+
+                        &:before {
+                            content: "\00BB";
+                            color: #FFF;
+                            display: inline-block;
+                            left: 10px;
+                            font-size: 16px;
+                            position: absolute;
+                            top: 6px;
+                        }
+                    }
+                    
+                }
+
                 button:before {
                     content: ' ';
                     display: block;

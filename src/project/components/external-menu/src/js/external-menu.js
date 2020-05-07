@@ -51,6 +51,18 @@ define(['render', 'guid'], function(render, guid) {
 
                 dMenuControl = document.createElement('a');
                 dMenuControl.setAttribute('href', href);
+                
+                if (menuItem.attributes && menuItem.attributes['data-appId']) {
+
+                    dMenuControl.setAttribute('data-appId', menuItem.attributes['data-appId']);
+
+                    if (fwData && fwData.context && fwData.context.app && fwData.context.app.id)
+
+                    if (menuItem.attributes['data-appId'] === fwData.context.app.id) {
+                        dMenuControl.classList.add('emp-active-menu-item');
+                    }
+
+                }
 
                 if (menuItem.onclick) {
                     dMenuControl.setAttribute('onclick', menuItem.onclick);
