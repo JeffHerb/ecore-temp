@@ -5,7 +5,7 @@ $footerBorderColor: #63666a;
 $footerUNavBackgroundColor: #333333;
 $sectionHeaderBackgroundColor: #e7e7e6;
 
-.external-app {
+html {
     background: $footerUNavBackgroundColor;
     height: 100vh;
 
@@ -906,7 +906,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
             @include pointbreak("830px", true){
                 min-height: 39px;
                 height: auto;
-                display: flex;                
+                display: flex;
             }
 
             button.menu-button {
@@ -964,7 +964,7 @@ $sectionHeaderBackgroundColor: #e7e7e6;
                 flex:0 1 auto;
                 align-items: center;
                 position: relative;
-                
+
                 &:hover{
                     background: whitesmoke;
                     border-left: 1px solid rgba(0, 0, 0, 0.1);
@@ -982,9 +982,9 @@ $sectionHeaderBackgroundColor: #e7e7e6;
 
             button.application-header-link{
                 border-radius:0;
-                background: transparent;                  
+                background: transparent;
 
-                @include pointbreak('830px', true){                    
+                @include pointbreak('830px', true){
                     white-space:normal;
                     height:auto;
                     text-align:left;

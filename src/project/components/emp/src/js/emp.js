@@ -21,6 +21,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
     var $body = $(document.body);
     var $window = $(window);
 
+    var dHtml = document.querySelector('html');
+
+    if (dHtml && !dHtml.classList.contains('external-app')) {
+        dHtml.classList.add('external-app');
+    }
+
     var hostname = window.location.hostname;
 
     var pageScripts = false;

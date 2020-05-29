@@ -1,6 +1,6 @@
 
 @media print{
-    .external-app.emp-orpts-subtheme{
+    html.emp-orpts-subtheme{
 
         body{
             background:none;
@@ -9,7 +9,7 @@
     	#body-wrapper,
     	#body-wrapper main{
     		display: block;
-    		min-width:0px;	
+    		min-width:0px;
     		top:0;
     		overflow:hidden;
     	}
@@ -38,7 +38,7 @@
 			}
 
 			.cui-data{
-	    		overflow: visible;	    		
+	    		overflow: visible;
 	    	}
 		}
 
@@ -49,9 +49,9 @@
 
         body:not(.ie){
         	display: block;
-            .cui-row{        
+            .cui-row{
                 .emp-col-full{
-                    > .emp-field, 
+                    > .emp-field,
                     .emp-composite.emp-search-composite:not(.emp-validation-error),
                     .emp-composite.emp-search-composite.emp-seach-composite-dynamic-label,
                     .emp-composite.emp-search-composite.emp-validation-error,
@@ -82,7 +82,7 @@
                         .cui-selection-group{
                             display: inline;
                         }
-                    }                    
+                    }
                 }
             }
         }
@@ -90,7 +90,7 @@
 
     // firefox
     @media(min--moz-device-pixel-ratio:0) {
-        .external-app.emp-orpts-subtheme body{
+        html.emp-orpts-subtheme body{
             // display: unset !important;
             // position: unset !important;
 

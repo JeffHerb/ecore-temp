@@ -791,7 +791,7 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 
 // ===START: Form grid alignment using GRID===
 @media (min-width: 720px){
-	.external-app{
+	html {
 
 		.cui-row{
 
@@ -950,7 +950,7 @@ span.cui-input-append + button.cui-icon.emp-icon-help{
 		}
 	}
 
-	.external-app{
+	html {
 
         .cui-row{
             .emp-col-half > fieldset:not(.emp-selection-list) > .emp-fieldset-contents,

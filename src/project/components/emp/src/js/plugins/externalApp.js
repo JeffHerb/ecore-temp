@@ -195,7 +195,7 @@ define(['render'], function (render) {
 
             var userAccountPopover = false;
 
-            if (dUserAccountButton && fwData.menus.userAccount) {
+            if (dUserAccountButton && (fwData.menus.system || fwData.menus.userAccount)) {
 
                 userAccountPopover = {
                     "popover": {
@@ -289,7 +289,9 @@ define(['render'], function (render) {
                 journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu not setup because something is missing');
             }
 
-            if (dSupportButton && fwData.menus.supportContact) {
+            var bSupportMenuLinksExist = false;
+
+            if (dSupportButton && (fwData.menus.supportContact || fwData.menus.appHelp)) {
 
                 var supportPopover = {
                     "popover": {
@@ -304,18 +306,29 @@ define(['render'], function (render) {
                 };
 
                 // Add the account menu if it exists
-                if (fwData && fwData.menus && fwData.menus.appHelp) {
+                if (fwData && fwData.menus && fwData.menus.appHelp && fwData.menus.appHelp.items && fwData.menus.appHelp.items.length) {
                     supportPopover.popover.contents[0].contents.push(fwData.menus.appHelp);
+
+                    bSupportMenuLinksExist = true;
                 }
 
                 // Add the account menu if it exists
-                if (fwData && fwData.menus && fwData.menus.supportContact) {
+                if (fwData && fwData.menus && fwData.menus.supportContact && fwData.menus.supportContact.items && fwData.menus.supportContact.items.length) {
                     supportPopover.popover.contents[0].contents.push(fwData.menus.supportContact);
+
+                    bSupportMenuLinksExist = true;
                 }
 
-                dSupportButton.addEventListener('click', _events.getSupportPopover.bind(null, supportPopover));
+                if (bSupportMenuLinksExist) {
 
-                journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Support Menu setup');
+                    dSupportButton.addEventListener('click', _events.getSupportPopover.bind(null, supportPopover));
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Support Menu setup');
+                }
+                else {
+
+                    journal.log({ type: 'warning', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Support Menu setup skipped, no items');
+                }
+
             }
             else {
             	journal.log({ type: 'error', owner: 'UI', module: 'emp', function: 'externalApp' }, 'Support Menu not setup because something is missing');

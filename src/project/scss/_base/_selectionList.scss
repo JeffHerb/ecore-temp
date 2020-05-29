@@ -1,7 +1,7 @@
 
 
 
-.external-app #body-wrapper{
+html #body-wrapper{
 
 	.emp-selection-list{
 		legend{
@@ -15,10 +15,10 @@
 
 			& > .emp-field.cui-data-left,
 			& > .emp-selection-list-field-header > .emp-field.cui-data-left{
-				
+
 				padding:10px 10px 3px 10px;
 				grid-template-columns: 20px auto;
-				display: flex;								
+				display: flex;
 
 				.cui-label{
 					width:auto;
@@ -45,7 +45,7 @@
 				}
 			}
 
-			.emp-selection-list-field-body{						
+			.emp-selection-list-field-body{
 
 				.cui-row:last-child{
 					margin-bottom:0 !important;
@@ -59,21 +59,21 @@
 				overflow:hidden;
 				background-color:#d5e3e4;
 				border-radius: 4px 4px 0 0;
-			    
+
 			    -webkit-box-shadow: inset 0px 0px 0px 1px #d6d6d4;
 			    -moz-box-shadow: inset 0px 0px 0px 1px #d6d6d4;
-			    box-shadow: inset 0px 0px 0px 1px #d6d6d4;			    
+			    box-shadow: inset 0px 0px 0px 1px #d6d6d4;
 			}
 			.emp-selection-list-field-body{
 				border-radius: 0 0 4px 4px;
-				padding: 10px 10px 0px;					
+				padding: 10px 10px 0px;
 
 				@include pointbreak($cui-bp-large) {
-					padding: 10px 10px 0px;					
+					padding: 10px 10px 0px;
 				}
 
 		    	background-color: #f1f1f0;
-    			
+
     			-webkit-box-shadow: inset 0px 0px 0px 1px #d6d6d4;
 				-moz-box-shadow: inset 0px 0px 0px 1px #d6d6d4;
 				box-shadow: inset 0px 0px 0px 1px #d6d6d4;
