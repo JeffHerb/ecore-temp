@@ -240,17 +240,43 @@ define(['render'], function (render) {
                     userAccountPopover.popover.contents[0].contents.push(oUserAcctInfo);
                 }
 
-                // Add the account menu if it exists
-                if (fwData && fwData.menus && fwData.menus.userAccount) {
+                // Add the user account menu if it exists
+                if (fwData && fwData.menus && fwData.menus.userAccount && fwData.menus.userAccount.items && fwData.menus.userAccount.items.length) {
                     userAccountPopover.popover.contents[0].contents.push(fwData.menus.userAccount);
                 }
 
                 // Add the system menu if it exists
-                if (fwData && fwData.menus && fwData.menus.system) {
-                    userAccountPopover.popover.contents[0].contents.push(fwData.menus.system);
+                if (fwData && fwData.menus && fwData.menus.system && fwData.menus.system.items && fwData.menus.system.items.length) {
+
+                    var logoutIndex = false;
+
+                    for (var sm = 0, smLen = fwData.menus.system.items.length; sm < smLen; sm++) {
+                        var menuItem = fwData.menus.system.items[sm];
+
+                        if (menuItem.text.toLowerCase() === "logout") {
+                            logoutIndex = sm;
+                        }
+
+                    }
+
+                    if (logoutIndex > -1) {
+                        fwData.menus.system.items.splice(logoutIndex, 1);
+                    }
+
+                    if (fwData.menus.system.items && fwData.menus.system.items.length) {
+
+                        userAccountPopover.popover.contents[0].contents.push(fwData.menus.system);
+                    }
+
                 }
 
-                dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountPopover));
+                if (userAccountPopover.popover.contents[0].contents.length) {
+                    dUserAccountButton.addEventListener('click', _events.userAccountPopover.bind(null, userAccountPopover));
+                }
+                else {
+
+                    dUserAccountButton.classList.add('emp-disabled-user-menu');
+                }
 
                 journal.log({ type: 'info', owner: 'UI', module: 'emp', function: 'externalApp' }, 'User Account Menu setup');
             }

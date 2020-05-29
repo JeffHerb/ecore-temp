@@ -775,6 +775,13 @@ html {
                         }
                     }
 
+                    &#userAcct.emp-disabled-user-menu {
+                        cursor: inherit;
+                        .user-icon {
+                            display: none;
+                        }
+                    }
+
                     .support-icon {
                         background: #FFF;
                         border-color: $emp-themecolor-1;
