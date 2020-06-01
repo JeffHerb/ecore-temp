@@ -248,20 +248,20 @@ define(['render'], function (render) {
                 // Add the system menu if it exists
                 if (fwData && fwData.menus && fwData.menus.system && fwData.menus.system.items && fwData.menus.system.items.length) {
 
-                    var logoutIndex = false;
+                    // var logoutIndex = false;
 
-                    for (var sm = 0, smLen = fwData.menus.system.items.length; sm < smLen; sm++) {
-                        var menuItem = fwData.menus.system.items[sm];
+                    // for (var sm = 0, smLen = fwData.menus.system.items.length; sm < smLen; sm++) {
+                    //     var menuItem = fwData.menus.system.items[sm];
 
-                        if (menuItem.text.toLowerCase() === "logout") {
-                            logoutIndex = sm;
-                        }
+                    //     if (menuItem.text.toLowerCase() === "logout") {
+                    //         logoutIndex = sm;
+                    //     }
 
-                    }
+                    // }
 
-                    if (logoutIndex > -1) {
-                        fwData.menus.system.items.splice(logoutIndex, 1);
-                    }
+                    // if (logoutIndex > -1) {
+                    //     fwData.menus.system.items.splice(logoutIndex, 1);
+                    // }
 
                     if (fwData.menus.system.items && fwData.menus.system.items.length) {
 
