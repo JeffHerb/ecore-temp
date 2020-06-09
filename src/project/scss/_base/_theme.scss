@@ -131,6 +131,12 @@ html {
                 ol:not(:last-child){
                      margin-bottom:10px;
                 }
+
+                p.emp-indent,
+                em.emp-indent {
+                    display: inline-block;
+                    margin-left: 2em;
+                }
             }
 
             .emp-page-legend{

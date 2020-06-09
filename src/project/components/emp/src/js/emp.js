@@ -73,12 +73,23 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
         var dApplicationTitle = document.querySelector('.application-title');
         var dPageTitle = document.querySelector('title');
-        var sApplicationTitle = dApplicationTitle.textContent.trim();
-        var sPageTitle = dPageTitle.textContent.trim();
+        var sApplicationTitle = null;
+        var sPageTitle = null;
 
-        if (sApplicationTitle.length === 0) {
-            dApplicationTitle.textContent = dPageTitle.textContent;
+        if (dPageTitle) {
+
+            sPageTitle = (dPageTitle.textContent) ? dPageTitle.textContent.trim() : dPageTitle.textContent.trim();
         }
+
+        if (dApplicationTitle) {
+
+            sApplicationTitle = (dApplicationTitle.textContent) ? dApplicationTitle.textContent.trim() : dApplicationTitle.innerText.trim();
+
+            if (sApplicationTitle.length === 0 && sPageTitle && sPageTitle.length) {
+                dApplicationTitle.textContent = dPageTitle.textContent;
+            }
+        }
+
 
         analytics.init();
         analytics.trackEvent('app', 'Page view', sApplicationTitle + ' | ' + sPageTitle, null, true);
