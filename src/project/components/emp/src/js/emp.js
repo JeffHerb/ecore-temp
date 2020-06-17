@@ -95,6 +95,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         analytics.trackEvent('app', 'Page view', sApplicationTitle + ' | ' + sPageTitle, null, true);
 
         session.setup();
+        
         showHidePassword.init();
 
         var detectIntE = detectIE();
