@@ -78,7 +78,7 @@ define(['render', 'keepAlive', 'store'], function (render, keepAlive, store) {
                                 "contents": [
                                     {
                                         "template": "output",
-                                        "text": "You session will expire in 5 minutes. Would you like to extend it?"
+                                        "text": "Your session will expire in 5 minutes. Would you like to extend it?"
                                     }
                                 ]
                             }
@@ -217,7 +217,7 @@ define(['render', 'keepAlive', 'store'], function (render, keepAlive, store) {
                             "contents": [
                                 {
                                     "template": "output",
-                                    "text": "Your Empire session has expired. You can close this modal, but any other action buttons on this page will no longer work."
+                                    "text": "Your session has expired. You can close this modal, but any other action buttons on this page will no longer work."
                                 }
                             ]
                         }
