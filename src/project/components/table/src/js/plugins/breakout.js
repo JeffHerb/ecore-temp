@@ -150,12 +150,22 @@ define([], function() {
             setTimeout(function() {
 
                 table.obj.$breakOutControl = table.obj.$tableWrapper.find('.emp-table-breakout-control');
+                table.obj.$tableLegend = table.obj.$tableWrapper.find('.emp-table-legend');
 
                 table.obj.$MessageContainer = $('<div>', { class: 'cui-messages'});
                 table.obj.$breakOutWarning = $('<p>', {class:'cui-warning cui-hide-from-screen'}).text('Table columns have been hidden due to the size of your display. To see all columns press the "Show All Columns" button.');
 
                 table.obj.$MessageContainer.append(table.obj.$breakOutWarning);
-                table.obj.$controlRow.prepend(table.obj.$MessageContainer);
+
+                //display breakout message below table legend
+                if(table.obj.$tableLegend[0] !== undefined){
+
+                    table.obj.$tableWrapper.prepend(table.obj.$MessageContainer);
+                }else{
+
+                    table.obj.$controlRow.prepend(table.obj.$MessageContainer);
+                }
+                
 
                 if (table.obj.$breakOutControl && table.obj.$breakOutControl.length) {
 

@@ -130,15 +130,19 @@
 					</header>
 					<div class="cui-row">
 						<div class="emp-col-full">
-							<p>Completed<br>
-								Not completed<br>
-								Delete<br>
-								Credit claimed<br>
-								Expand all rows<br>
-								Collapse all rows<br>
-								Switch to expanded view<br>
-								Switch to normal view<br>
-								More information<br></p>
+							<p>
+								<i class="emp-icon-greencheck" title="Completed"></i>Completed<br>
+								<i class="emp-icon-redcheck" title="Completed"></i>Completed<br>
+								<i class="emp-icon-stop" title="Not Completed"></i>Not completed<br>
+								<i class="emp-icon-delete" title="Delete/Remove"></i>Delete/Remove<br>
+								<i class="emp-icon-credits-claimed" title="Credit Claimed"></i>Credit claimed<br>
+								<i class="emp-icon-table-expand" title="Expand all rows"></i>Expand all rows<br>
+								<i class="emp-icon-table-collapse" title="Collapse all rows"></i>Collapse all rows<br>
+								<i class="emp-icon-table-expand-view" title="Switch to expanded view"></i>Switch to expanded view<br>
+								<i class="emp-icon-table-collapse-view" title="Switch to normal view"></i>Switch to normal view<br>
+								<i class="emp-icon-help" title="More information"></i>More information<br>
+								<i class="emp-icon-error" title="Error"></i>Error<br>
+							</p>
 						</div>
 					</div>
 				</section>
@@ -2036,6 +2040,142 @@
 									<td>12/3/2018 03:13 PM</td>
 								</tr>
 								<tr>
+									<td>12.23.2.22.2</td>
+									<td>xxx-xx-6528</td>
+									<td>Roma</td>
+									<td>Anthony</td>
+									<td>A</td>
+									<td></td>
+									<td>xxx-xx-7779</td>
+									<td>Roma</td>
+									<td>Somesillylongname</td>
+									<td>A</td>
+									<td></td>
+									<td>123</td>
+									<td>Thornberry</td>
+									<td>Unit 56</td>
+									<td>Co-op</td>
+									<td>Updated</td>
+									<td>XXXX8675309</td>
+									<td>Assessor A</td>
+									<td>12/3/2018 03:13 PM</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<!-- +++++++++++++++++++++++++++++++ -->
+				<!-- SECTION: Legend Table -->
+				<!-- +++++++++++++++++++++++++++++++ -->
+				<section>
+					<header>
+						<div class="emp-section-title">
+							<h3>Legend table</h3>
+						</div>
+						<div class="emp-section-controls">
+							<ul>
+								<li><button class="emp-icon-section-toggle-collapse" title="Hide section" type="button">Hide section</button></li>
+							</ul>
+						</div>
+					</header>
+					<div class="emp-table">
+						<div class="emp-table-legend"> 
+							<ul>
+								<li>Blank - Optional</li>
+								<li>
+									<i class="emp-icon-redcheck" title="To be Determined"> </i> 
+									<span>To be Determined</span>
+								</li> 
+								<li>
+									<i class="emp-icon-error" title="Error"> </i>
+									<span>Error</span>
+								</li> 
+								<li>
+									<i class="emp-icon-greencheck" title="Completed"></i>
+									<span>Completed</span>
+								</li> 
+								<li>
+									<i class="emp-icon-stop" title="Not Completed"></i>
+									<span>Not Completed</span>
+								</li> 
+								<li>
+									<i class="emp-icon-credits-claimed" title="Credits Claimed"></i>
+									<span>Credits Claimed</span>
+								</li> 
+							</ul> 
+						</div>
+						<table id="break-out-table" data-limit="20" data-paging="true" data-paging-extend="true" data-paging-text="1 through 50 of 250" data-resize="false" data-filter="false" data-type="breakout-priority">
+							<thead>
+								<tr>
+									<th data-sort="date" data-table-column-priority="1" data-type="alpha" class="emp-sortable table-structure-cell">Status</th>
+									<th data-sort="alpha" data-table-column-priority="2" data-type="alpha" class="emp-sortable table-structure-cell" data-table-responsive-type="primary">Print Key </th>
+									<th data-sort="date" data-table-column-priority="3" data-type="alpha" class="emp-sortable table-structure-cell">Owner 1 taxpayer ID</th>
+									<th data-sort="date" data-table-column-priority="4" data-type="alpha" class="emp-sortable table-structure-cell">Owner 1 last name</th>
+									<th data-sort="date" data-table-column-priority="5" data-type="alpha" class="emp-sortable table-structure-cell">Owner 1 first name</th>
+									<th data-sort="date" data-table-column-priority="6" data-type="alpha" class="emp-sortable table-structure-cell">Owner 1 middle initial</th>
+									<th data-sort="date" data-table-column-priority="7" data-type="alpha" class="emp-sortable table-structure-cell">Owner 1 suffix</th>
+									<th data-sort="date" data-table-column-priority="8" data-type="alpha" class="emp-sortable table-structure-cell">Owner 2 taxpayer ID</th>
+									<th data-sort="date" data-table-column-priority="9" data-type="alpha" class="emp-sortable table-structure-cell">Owner 2 last name</th>
+									<th data-sort="date" data-table-column-priority="10" data-type="alpha" class="emp-sortable table-structure-cell">Owner 2 first name</th>
+									<th data-sort="date" data-table-column-priority="11" data-type="alpha" class="emp-sortable table-structure-cell">Owner 2 middle initial</th>
+									<th data-sort="date" data-table-column-priority="12" data-type="alpha" class="emp-sortable table-structure-cell">Owner 2 suffix</th>
+									<th data-sort="alpha" data-table-column-priority="13" data-type="alpha" class="emp-sortable table-structure-cell">Street number </th>
+									<th data-sort="numeric" data-table-column-priority="14" data-type="alpha" class="emp-sortable table-structure-cell" data-table-responsive-type="secondary">Street name </th>
+									<th data-sort="alpha" data-table-column-priority="15" data-type="alpha" class="emp-sortable table-structure-cell"> Unit number </th>
+									<th data-sort="alpha" data-table-column-priority="16" data-type="alpha" class="emp-sortable table-structure-cell"> Mobile home co-op </th>
+									<th data-sort="alpha" data-table-column-priority="17" data-type="alpha" class="emp-sortable table-structure-cell"> Action </th>
+									<th data-sort="numeric" data-table-column-priority="18" data-type="alpha" class="emp-sortable table-structure-cell"> Confirmation # </th>
+									<th data-sort="numeric" data-table-column-priority="19" data-type="alpha" class="emp-sortable table-structure-cell"> Last updated by </th>
+									<th data-sort="numeric" data-table-column-priority="20" data-type="alpha" class="emp-sortable table-structure-cell"> Last updated by date </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><i class="emp-icon-greencheck" title="To be determined"> </i></td>
+									<td>12.23.2.23.1</td>
+									<td>xxx-xx-6789</td>
+									<td>Bestha</td>
+									<td>Shruti</td>
+									<td>A</td>
+									<td></td>
+									<td>xxx-xx-5587</td>
+									<td>Bestha</td>
+									<td>Sally</td>
+									<td>A</td>
+									<td></td>
+									<td>123</td>
+									<td>Thornberry</td>
+									<td>Unit 32</td>
+									<td>Co-op</td>
+									<td>Removed</td>
+									<td>XXXX8675309</td>
+									<td>Assessor A</td>
+									<td>12/3/2018 03:13 PM</td>
+								</tr>
+								<tr>
+									<td><i class="emp-icon-error" title="Error"> </i></td>
+									<td>12.23.2.22.2</td>
+									<td>xxx-xx-6528</td>
+									<td>Roma</td>
+									<td>Anthony</td>
+									<td>A</td>
+									<td></td>
+									<td>xxx-xx-7779</td>
+									<td>Roma</td>
+									<td>Somesillylongname</td>
+									<td>A</td>
+									<td></td>
+									<td>123</td>
+									<td>Thornberry</td>
+									<td>Unit 56</td>
+									<td>Co-op</td>
+									<td>Updated</td>
+									<td>XXXX8675309</td>
+									<td>Assessor A</td>
+									<td>12/3/2018 03:13 PM</td>
+								</tr>
+								<tr>
+									<td><i class="emp-icon-credits-claimed" title="Credits Claimed"> </i></td>
 									<td>12.23.2.22.2</td>
 									<td>xxx-xx-6528</td>
 									<td>Roma</td>

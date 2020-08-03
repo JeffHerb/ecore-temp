@@ -1,6 +1,13 @@
 <div class="emp-table" {{#ifCond v1=this.type op="===" v2="css"}}id="{{this.attributes.id}}_table_root"{{/ifCond}}>
 
-    <div class="emp-table-wrapper">
+    {{log this}}
+
+    {{#ifCond v1=this.title op="&&" v2=this.legend}}
+        <div class="emp-table-wrapper emp-caption-legend">
+        
+        {{~else~}}
+            <div class="emp-table-wrapper">
+    {{/ifCond}}
 
         {{#if this.headerControls~}}
             <div class="emp-table-controls">
@@ -17,8 +24,15 @@
             <div class="emp-sticky-caption">{{this.title}}</div>
         {{/if}}
 
-        {{#unless this.noControls}}
+        {{#if this.legend}}
+            <div class="emp-table-legend">
+                <ul>
+                    {{~> _legend this.legend.contents}}
+                </ul>
+            </div>
+        {{/if}}
 
+        {{#unless this.noControls}}
 
             {{#if this.paging}}
 

@@ -922,6 +922,70 @@ define(['kind', 'dataStore'], function (kind, ds) {
                     });
                 }
 
+                //Table legend check
+                var $tableLegend = $table.parents('.emp-table').eq(0).find('.emp-table-legend');
+
+                if($tableLegend.length){
+
+                    var legendObj = {
+                        contents: []
+                    };
+
+                    var legendsContainer = $tableLegend.find('ul')[0];
+
+                    for(var lC = 0; lC < legendsContainer.children.length; lC++){
+
+                        var liElem = legendsContainer.children[lC];
+
+                        if(liElem.children.length){
+
+                            var iconlegend = {
+                                "contents": [
+                                    {
+                                        "template": "icon",
+                                        "attributes": {
+                                            "title": ""
+                                        },
+                                        "icon": ""
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ]
+                            };
+
+                            var iconElem = liElem.querySelector('i');
+
+                            //icon title
+                            var legendIconTitle = iconElem.getAttribute('title');
+
+                            //icon
+                            var legendIcon = iconElem.getAttribute('class');
+                                legendIcon = legendIcon.substr(legendIcon.indexOf('icon-') + 5);
+
+                            //legend text
+                            var legendText = liElem.querySelector('span').innerHTML.trim();
+
+                            iconlegend.contents[0].attributes.title = legendIconTitle;
+                            iconlegend.contents[0].icon = legendIcon;
+                            iconlegend.contents[1].text = legendText;
+
+                            legendObj.contents.push(iconlegend);
+
+                        //No icon
+                        }else{
+
+                            var noIconLegend = {};
+
+                            noIconLegend.text = liElem.textContent.trim();
+
+                            legendObj.contents.push(noIconLegend);
+                        }
+                    }
+
+                    data.legend = legendObj;
+                }
+
                 data.htmlToDataStore = true;
 
                 return data;

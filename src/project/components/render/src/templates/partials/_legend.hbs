@@ -1,0 +1,24 @@
+{{#each this~}}
+    <li class="emp-legend-item">
+        {{#if this.text}}
+            {{! --- Plain text - No icon ---}}
+            <span>{{this.text}}</span>
+
+        {{~else~}}
+            {{!--- Icon contents ---}}
+            {{#each this.contents}}
+
+                {{#if this.template}}
+                    {{~> _icon this}}
+
+                {{!--- Legend text ---}}
+                {{~else~}}
+                    <span> - {{this.text}}</span>
+
+                {{/if~}}
+            
+            {{/each~}}
+
+        {{/if}}
+    </li>
+{{/each~}}
