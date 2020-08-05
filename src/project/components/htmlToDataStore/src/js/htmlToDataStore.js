@@ -939,19 +939,13 @@ define(['kind', 'dataStore'], function (kind, ds) {
 
                         if(liElem.children.length){
 
-                            var iconlegend = {
-                                "contents": [
-                                    {
-                                        "template": "icon",
-                                        "attributes": {
-                                            "title": ""
-                                        },
-                                        "icon": ""
-                                    },
-                                    {
-                                        "text": ""
-                                    }
-                                ]
+                            var legend = {
+                                "template": "icon",
+                                "attributes": {
+                                    "title": ""
+                                },
+                                "icon": "",
+                                "text": "" 
                             };
 
                             var iconElem = liElem.querySelector('i');
@@ -966,11 +960,11 @@ define(['kind', 'dataStore'], function (kind, ds) {
                             //legend text
                             var legendText = liElem.querySelector('span').innerHTML.trim();
 
-                            iconlegend.contents[0].attributes.title = legendIconTitle;
-                            iconlegend.contents[0].icon = legendIcon;
-                            iconlegend.contents[1].text = legendText;
+                            legend.attributes.title = legendIconTitle;
+                            legend.icon = legendIcon;
+                            legend.text = legendText;
 
-                            legendObj.contents.push(iconlegend);
+                            legendObj.contents.push(legend);
 
                         //No icon
                         }else{
