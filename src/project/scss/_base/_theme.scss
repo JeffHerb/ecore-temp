@@ -1121,6 +1121,25 @@ html {
             & > p:last-child {
                 padding-bottom: 0;
             }
+
+            // Styles for ecore landing app pages
+            .emp-landing-wrapper{
+                padding:0px 20px; 
+
+                .espot{
+                    margin-top:20px;
+                    border:solid thin #ccc;
+                    padding:16px 16px 20px;
+                    background-color:#eee;
+                    margin-left:0px;
+
+                    .espot-title{
+                        font-size:20px;
+                        font-weight:600;
+                        margin-bottom:16px;
+                    }       
+                }        
+            }
         }
     }
 
