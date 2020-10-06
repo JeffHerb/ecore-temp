@@ -1,0 +1,17 @@
+{{#each this~}}
+    <li class="emp-legend-item">
+        
+        {{#if this.template}}
+            {{~> _icon this}}
+        {{/if}}
+
+        {{#if this.text}}
+            {{#if this.icon}}
+                {{!Add dash after icon}}
+                <span> - {{this.text}}</span>
+            {{else}}
+                <span>{{this.text}}</span>
+            {{/if}}
+        {{/if}}
+    </li>
+{{/each~}}

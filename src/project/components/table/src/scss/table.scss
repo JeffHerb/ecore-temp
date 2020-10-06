@@ -243,6 +243,34 @@
             }
         }
 
+        .emp-table-legend{
+            float: left;
+            margin-top: 5px;
+
+            ul{
+                list-style: none;
+
+                .emp-legend-item{
+                   display: inline-block;
+                   margin-right: 1em;
+                   vertical-align: middle;
+
+                    [class^="emp-icon-"]{
+                        width: 21px;
+                        height: 16px;
+                        background-size: 16px;
+                    }
+
+                }
+            }
+        }
+
+        &.emp-caption-legend{
+            .emp-sticky-caption{
+                float: none;
+            }
+        }
+
         .emp-table-message {
             display: none;
             font-size: 12px;

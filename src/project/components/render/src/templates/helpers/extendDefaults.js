@@ -466,6 +466,19 @@ Handlebars.registerHelper('extendDefaults', function (params) {
                 iconClass = 'redcheck';
                 break;
 
+            case 'green-check':
+            case 'greencheck':
+                iconClass = 'greencheck';
+                break;
+
+            case 'credits-claimed':
+                iconClass = 'credits-claimed'
+                break;
+    
+            case 'error':
+                iconClass = 'error';
+                break;
+
             case 'stop':
             case 'not-applicable':
                 iconClass = 'stop';
