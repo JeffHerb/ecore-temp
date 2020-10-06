@@ -1,87 +1,48 @@
 define(['fetchWrapper'], function (fw) {
 
-    var e1 = function _empire_1_keep_alive(e1Url, cb) {
+    var platform = function _platform(pltfrmUrl, cb, pltfrm) {
 
         var req = {
-            url: e1Url
+            url: false,
+            ignoreResponse: true
         };
+
+        if (pltfrmUrl.indexOf('http') === -1) {
+
+            req.url = window.location.protocol + "//" + window.location.hostname + pltfrmUrl;
+        }
+        else {
+
+            req.url = pltfrmUrl;
+        }
+
+        //We need to pass an object in some instances for journal log
+        if(typeof pltfrm === 'object'){
+
+            var pltfrmName = pltfrm.name;
+        }
 
         var res = {
             "done": function (data) {
-                //journal.log({ type: 'error', owner: 'FW', module: 'notifications', func: 'updateView' }, 'Requested data!: ');
 
-                if (data.status && data.status === "success") {
+                if (data) {
 
-                    data = data.result;
-
-                    if (data.length && data[0].body && data[0].body.notifications) {
-                        data = data[0].body.notifications;
-
-                        globals.messages = data;
-                    }
+                    // Since empire 1 does not return any page json or standard ajax we just assume its fine by done being called.
+                    journal.log({ type: 'info', owner: 'FW', module: 'keepAlive', func: 'flatform' }, pltfrmName + ' successfully refreshed from ' + pltfrmName + ' ajax endpoint');
 
                     if (typeof cb === "function") {
-                        cb(true);
-                    }
-
-                }
-                else {
-                    journal.log({ type: 'error', owner: 'FW', module: 'keepAlive', func: 'e1' }, 'Error returned successfully from e1 ajax endpoint.');
-
-                    if (typeof cb === "function") {
-                        cb(false);
+                        cb(true, pltfrm);
                     }
                 }
 
             },
             "fail": function (err) {
 
-                journal.log({ type: 'error', owner: 'FW', module: 'keepAlive', func: 'e1' }, 'Error occured when attempting to refresh e1 endpoint');
+                journal.log({ type: 'error', owner: 'FW', module: 'keepAlive', func: 'flatform' }, 'Error occured when attempting to refresh ' + pltfrmName + ' endpoint');
 
                 if (typeof cb === "function") {
-                    cb(false);
+                    cb(false, pltfrm);
                 }
-            }
-        };
-
-        // Send request
-        emp.fw.request(req, res);
-
-    };
-
-    var e2 = function _empire_2_keep_alive(e2Url, cb) {
-
-        var req = {
-            url: e2Url
-        };
-
-        var res = {
-            "done": function (data) {
-                //journal.log({ type: 'error', owner: 'FW', module: 'notifications', func: 'updateView' }, 'Requested data!: ');
-
-                if (data.status && data.status === "success") {
-
-                    data = data.result;
-
-                    if (data.length && data[0].body && data[0].body.notifications) {
-                        data = data[0].body.notifications;
-
-                        globals.messages = data;
-                    }
-
-                    if (typeof cb === "function") {
-                        cb(true);
-                    }
-
-                }
-                else {
-                    journal.log({ type: 'error', owner: 'FW', module: 'keepAlive', func: 'e2' }, 'Error returned successfully from e2 ajax endpoint.');
-                }
-
-            },
-            "fail": function (err) {
-
-                journal.log({ type: 'error', owner: 'FW', module: 'keepAlive', func: 'e2' }, 'Error occured when attempting to refresh e2 endpoint');
             }
         };
 
@@ -91,8 +52,7 @@ define(['fetchWrapper'], function (fw) {
     };
 
     return {
-        e1: e1,
-        e2: e2
+        platform: platform
     };
 
 });
