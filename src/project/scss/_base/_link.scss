@@ -68,3 +68,22 @@ a {
 
     }
 }
+
+a[target="blank"] {
+    display: inline-block;
+    padding-right: 20px;
+    position: relative;
+
+    &:after {
+        background: url('../../dist/images/new-window.svg');
+        background-size: 18px 18px;
+        background-repeat: no-repeat;
+        content: " ";
+        display: block;
+        height: 20px;
+        position: absolute;
+        right: -1px;
+        top: 4px;
+        width: 20px;
+    }
+}
