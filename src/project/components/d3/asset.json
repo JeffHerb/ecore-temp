@@ -1,0 +1,7 @@
+{
+    "name": "d3",
+    "lazy": true,
+    "sources": [
+        "script"
+    ]
+}
