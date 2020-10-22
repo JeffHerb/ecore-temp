@@ -1,0 +1,7 @@
+{
+    "name": "topoClient",
+    "lazy": true,
+    "sources": [
+        "script"
+    ]
+}

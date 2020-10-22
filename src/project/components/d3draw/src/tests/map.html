@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en" class="">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Cache-control" content="no-cache" />
+	<meta name="expires" content="0" />
+	<meta charset="utf-8">
+    <title></title>
+    
+    <style>
+
+        .county {
+          stroke: #fff;
+          fill:#005DAA;
+        } 
+    </style>
+
+</head>
+
+<body>
+	<div id="header-wrapper"></div>
+	<div id="body-wrapper"></div>
+	<div id="footer-wrapper"></div>
+	<div id="emp-page-loading">
+		<div class="message" style="z-index:900; height: 100%; width: 100%; position: fixed;">
+			<style type='text/css'>
+				@-webkit-keyframes uil-default-anim {
+					0% {
+						opacity: 1
+					}
+
+					100% {
+						opacity: 0
+					}
+				}
+
+				@keyframes uil-default-anim {
+					0% {
+						opacity: 1
+					}
+
+					100% {
+						opacity: 0
+					}
+				}
+
+				.uil-default-css>div:nth-of-type(0) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.5s;
+					animation-delay: -0.5s;
+				}
+
+				.uil-default-css>div:nth-of-type(1) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.5s;
+					animation-delay: -0.5s;
+				}
+
+				.uil-default-css>div:nth-of-type(2) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.4166666666666667s;
+					animation-delay: -0.4166666666666667s;
+				}
+
+				.uil-default-css>div:nth-of-type(3) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.33333333333333337s;
+					animation-delay: -0.33333333333333337s;
+				}
+
+				.uil-default-css>div:nth-of-type(4) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.25s;
+					animation-delay: -0.25s;
+				}
+
+				.uil-default-css>div:nth-of-type(5) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.16666666666666669s;
+					animation-delay: -0.16666666666666669s;
+				}
+
+				.uil-default-css>div:nth-of-type(6) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: -0.08333333333333331s;
+					animation-delay: -0.08333333333333331s;
+				}
+
+				.uil-default-css>div:nth-of-type(7) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: 0s;
+					animation-delay: 0s;
+				}
+
+				.uil-default-css>div:nth-of-type(8) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: 0.08333333333333337s;
+					animation-delay: 0.08333333333333337s;
+				}
+
+				.uil-default-css>div:nth-of-type(9) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: 0.16666666666666663s;
+					animation-delay: 0.16666666666666663s;
+				}
+
+				.uil-default-css>div:nth-of-type(10) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: 0.25s;
+					animation-delay: 0.25s;
+				}
+
+				.uil-default-css>div:nth-of-type(11) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: 0.33333333333333337s;
+					animation-delay: 0.33333333333333337s;
+				}
+
+				.uil-default-css>div:nth-of-type(12) {
+					-webkit-animation: uil-default-anim 1s linear infinite;
+					animation: uil-default-anim 1s linear infinite;
+					-webkit-animation-delay: 0.41666666666666663s;
+					animation-delay: 0.41666666666666663s;
+				}
+
+				.uil-default-css {
+					position: relative;
+					background: none;
+					width: 40px;
+					height: 40px;
+					left: -16px;
+					top: -16px;
+				}
+			</style>
+			<div class="container" style="height: 65px;position:absolute;white-space: nowrap;display: inline-block;top: 50%;margin: -34.5px 0 0 -70px;width: 140px;left: 50%;">
+				<div class="spinner" style="height: 40px; width: 40px; margin: auto;">
+					<div class='uil-default-css' style='transform:scale(0.20);'>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+						<div style='top:80px;left:93px;width:14px;height:40px;background:#000000;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'>
+						</div>
+					</div>
+				</div>
+				<p>Loading, Please Wait.</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		var fwData = {
+			"preferences": false,
+			"context": {
+				"fw": {
+					"server":"uprwas12_E_1",
+					"popup":false,
+					"tpFullName":"STANLEY SPIEGEL ",
+					"externalTpID":"117186321",
+					"internalTpIdSeqNumber":"00",
+					"requestedURL":"\/CREPRI01.tabset\/CHPA02S\/CHPA02S_SELECT_TP_DOC",
+					"tabsetId":"CREPRI01",
+					"bus_ind_Indicator":"P",
+					"pageId":"mapTest",
+					"headerId":"117186321",
+					"timestamp":1601304951343,
+					"internalTpId":"117186321"
+				},
+				"ui": {
+					"css": "css\/main.css",
+					"baseurl": "../../../../../",
+					"js": "js\/main.js",
+					"version": "dist"
+				},
+				"screen": {
+					"mode":"edit",
+					"session":"QOo2aE9rvSON8stl9YPYi8W",
+					"validSearchBox":"false",
+					"id":"mapTest",
+					"type":"ecore"
+				},
+				"app": {
+					"id": "EIVP",
+					"store": "ORPTS",
+					"type": "wizard"
+				}
+			},
+			"footer": {
+				"contents": [{
+						"template": "agency-footer"
+					},
+					{
+						"template": "universal-footer"
+					}
+				]
+			},
+			"header": {
+				"contents": [{
+						"template": "universal-header"
+					},
+					{
+						"template": "agency-header",
+						"userAcct": {
+							"popover": {
+								"contents": [{
+									"template": "popover",
+									"contents": [{
+										"template": "tree",
+										"items": [{
+											"template": "field",
+											"input": {
+												"attributes": {
+													"onclick": "emp.functionCall(event, 'emp.form.virtual', [{'newWindow':false,'attributes':{'name':'virtual','action':'\\/THOME\\/gateway\\/THOMEV01\\/THOME_MAIN\\/THOME_\\/appmgr.wg\\/logout','id':'virtual','method':'POST'},'map':{'_fw_popup_request':'false'}}])",
+													"name": "EC_LOGOUT",
+													"id": "EC_LOGOUT"
+												},
+												"text": "Logout"
+											},
+											"type": "button"
+										}]
+									}]
+								}]
+							},
+							"text": "ram",
+							"type": "interactive"
+						},
+						"title": "Assessor Summary",
+						"support": {
+							"popover": {
+								"contents": [{
+									"template": "popover",
+									"contents": [{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.google.com",
+													"target": "_blank"
+												},
+												"text": "Google It"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Support"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Contact Us"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Support"
+											}]
+										},
+										{
+											"template": "tree",
+											"items": [{
+												"template": "link",
+												"attributes": {
+													"href": "http://www.tax.ny.gov",
+													"target": "_blank"
+												},
+												"text": "Contact Us"
+											}]
+										}
+									]
+								}]
+							},
+							"text": "Get Support"
+						}
+					}
+				]
+			},
+			"page": {
+				"contents": [{
+					"template": "pagebody",
+					"contents": [
+                        {
+                            "template": "output",
+                            "text": "Example Outline Map!"
+                        },
+                        {
+                            "template": "region",
+                            "attributes": {
+                                "id": "emp-map"
+                            }
+						},
+						{
+                            "template": "output",
+                            "text": "Example Outline Map cleaned up at "
+                        },
+                        {
+                            "template": "region",
+                            "attributes": {
+                                "id": "emp-map-test"
+                            }
+                        }
+                    ]
+				}]
+			},
+			"menus": {
+				"supportContact": {
+					"items": [{
+							"attributes": {
+								"target": "_blank",
+								"href": "http://www.tax.ny.gov"
+							},
+							"template": "link",
+							"text": "Support"
+						},
+						{
+							"attributes": {
+								"target": "_blank",
+								"href": "http://www.tax.ny.gov"
+							},
+							"template": "link",
+							"text": "Contact Us"
+						}
+					],
+					"template": "tree"
+				},
+				"appHelp": {
+					"items": [{
+						"attributes": {
+							"target": "_blank",
+							"href": "http://www.google.com"
+						},
+						"template": "link",
+						"text": "Google It"
+					}],
+					"template": "tree",
+					"text": "addHelp"
+				},
+				"global": {
+					"items": [{
+							"attributes": {
+								"href": "/store-web/gateway/cat/dir_cat",
+								"data-appId": "EIVP"
+							},
+							"template": "link",
+							"text": "Enhanced STAR Income Verification Program"
+						},
+						{
+							"attributes": {
+								"href": "/store-web/gateway/cat/dir_cat",
+								"data-appId": "FWTS"
+							},
+							"template": "link",
+							"text": "Added for framework local testing.."
+						},
+						{
+							"items": [{
+									"attributes": {
+										"href": "/store-web/gateway/cat/dir_cat",
+										"data-appId": "STGR"
+									},
+									"template": "link",
+									"text": "STAR General Reports"
+								},
+								{
+									"attributes": {
+										"href": "/store-web/gateway/cat/dir_cat",
+										"data-appId": "ORRS"
+									},
+									"template": "link",
+									"text": "ORPTS Reports"
+								},
+								{
+									"attributes": {
+										"href": "/store-web/gateway/cat/dir_cat",
+										"data-appId": "STCR"
+									},
+									"template": "link",
+									"text": "STAR Credit Program Reports"
+								}
+							],
+							"text": "Reports"
+						}
+					],
+					"catalogs": [{
+							"active": false,
+							"href": "/store-web/gateway/cat/assessor_cat",
+							"text": "Assessor"
+						},
+						{
+							"active": true,
+							"href": "/store-web/gateway/cat/dir_cat",
+							"text": "Director"
+						}
+					],
+					"template": "tree"
+				},
+				"system": {
+					"items": [{
+						"attributes": {
+							"href": "/THOME/gateway/THOME/THOME_MAIN/THOME_/appmgr.wg/logout"
+						},
+						"template": "link",
+						"text": "Logout"
+					}],
+					"template": "tree"
+				}
+			},
+		};
+	</script>
+	<script>
+		(function() {
+
+			var hostname = window.location.hostname;
+
+			var assetVersion = false;
+			var overrideJSON = false;
+
+			if (fwData) {
+
+				// Only run these function in localhost or DEVM.
+				if (hostname === "localhost" || hostname === "dvm.int.nystax.gov") {
+
+					assetVersion = localStorage.getItem("asset-version");
+
+					// Check for a framework data overwrite
+					overrideJSON = localStorage.getItem("override-json");
+
+					if (overrideJSON !== null && overrideJSON !== undefined) {
+
+						if (overrideJSON && typeof overrideJSON === "string") {
+
+							try {
+
+								overrideJSON = JSON.parse(overrideJSON);
+
+								if (overrideJSON.screen && overrideJSON.screen.id === fwData.screen.id) {
+									fwData = overrideJSON;
+
+									console.warn("===============================================\nTHIS PAGE IS OVERRIDING THE RETURNED PAGE JSON!\n===============================================");
+								}
+								else {
+
+									console.log("Override JSON ignored!");
+								}
+
+							}
+							catch (e) {
+
+								console.log(e);
+								console.log("override ignored because parse error!");
+							}
+
+						}
+					}
+				}
+
+				if (typeof assetVersion !== "string") {
+
+					assetVersion = fwData.context.ui.version;
+				}
+
+				var cssPath = fwData.context.ui.baseurl + assetVersion + "/" + "css/main.css?cid=" + fwData.context.ui.cid;
+				var jsPath = fwData.context.ui.baseurl + assetVersion + "/" + "js/main.js?cid=" + fwData.context.ui.cid;
+
+				var loadCSS = function _load_css() {
+					var link = document.createElement('link');
+					link.setAttribute('href', cssPath);
+					link.setAttribute('rel', 'stylesheet');
+					link.setAttribute('type', 'text/css');
+
+					link.addEventListener('load', function() {
+
+						loadJS();
+					}, false);
+
+					document.getElementsByTagName('head')[0].appendChild(link);
+				}
+
+				var loadJS = function _load_js() {
+					var script = document.createElement('script');
+					script.setAttribute('id', "require");
+					script.setAttribute('src', jsPath);
+
+					script.addEventListener('load', function() {
+
+						//require(['jquery', 'emp', 'domReady!'], function ($, emp) { });
+					}, false);
+
+					document.body.appendChild(script);
+				}
+
+				loadCSS();
+			}
+			else {
+
+				console.log("No fwData found!");
+			}
+
+		})();
+	</script>
+</body>
+
+</html>

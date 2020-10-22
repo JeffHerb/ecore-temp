@@ -1396,10 +1396,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             window.fwData.menus = {};
             window.fwData.menus.global = {};
         }
-        else {
-
-            console.log("Men already exists!");
-        }
 
     };
 
@@ -2025,9 +2021,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             // Start by rendering the global page
             if (window.fwData && (window.fwData.page || window.fwData.header || window.fwData.footer)) {
 
-                if (fwData.screen && fwData.screen.id && scripts[fwData.screen.id]) {
 
-                    cui.load(fwData.screen.id, function (script) {
+                if (fwData && fwData.context && fwData.context.screen && fwData.context.screen.id && scripts[fwData.context.screen.id]) {
+
+                    cui.load(fwData.context.screen.id, function (script) {
 
                         // Expose all the scripts
                         emp.pageScripts = script;
@@ -2041,7 +2038,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                                 // Check for an init function
                                 if (pageScript.init) {
 
-                                    script.init();
+                                    pageScript.init();
 
                                     journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
                                 }
@@ -2051,15 +2048,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                                     _priv.removeLoadingSplash();
 
                                 }, 1000);
-
-                                // Initialize main menu
-                                // cui.load('menujs', function _loadMenujs() {
-
-                                //     // Create the menu definition
-                                //     var menuDefinition = $.extend(true, {}, fwData.menus.global, { display: { className: 'emp' } });
-
-                                //     $('#emp-header-menu-main').menujs(menuDefinition);
-                                // });
 
                             });
 

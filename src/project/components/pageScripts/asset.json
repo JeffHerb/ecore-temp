@@ -2,19 +2,8 @@
     "name": "pageScripts",
     "lazy": true,
     "registerFiles": {
-        "CMFW01S": "CMFW01S",
-        "CMFW01S-UA": "CMFW01S",
-        "CMFW02S": "CMFW02S",
-        "CMFW03S": "CMFW03S",
-        "CMFW10S": "CMFW10S",
-        "TB0725N": "TB0725N",
-        "MDZ013S": "MDZ013S",
-        "MDZ802S": "MDZ802S",
-        "MDZ807S": "MDZ807S",
-        "MDZ808S": "MDZ808S",
-        "RS2100S": "RS2100S",
-        "RS4010S": "RS4010S",
-        "MI3164S": "MI3164S"
+        "mapTest": "mapTest",
+        "_map_nys_counties": "_map_nys_counties"
     },
     "pageScripts": true
 }
