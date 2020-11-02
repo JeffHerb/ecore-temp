@@ -3,7 +3,9 @@
     "lazy": true,
     "registerFiles": {
         "mapTest": "mapTest",
-        "_map_nys_counties": "_map_nys_counties"
+        "mapTest2": "mapTest2",
+        "_map_nys_counties": "_map_nys_counties",
+        "_map_nys_albany_county": "_map_nys_albany_county"
     },
     "pageScripts": true
 }

@@ -126,6 +126,7 @@ module.exports = function(grunt) {
                         'processTemplates': 'plugins/processTemplates',
                         'tableShiv': 'shivs/templates/table',
                         'sectionShiv': 'shivs/templates/section',
+                        'groupShiv': 'shivs/templates/group',
                         'agencyHeaderShiv': 'shivs/templates/agency-header',
                         'fieldEvent': 'shivs/event/field',
                         'compositeEvent': 'shivs/event/composite',

@@ -23,7 +23,7 @@ define([], function() {
     };
 
     // Example function creating the counties map
-    var drawCounties = function() {
+    var drawCounty = function() {
 
         var oMetaSize = {
             iWidth: 640,
@@ -48,30 +48,10 @@ define([], function() {
                 dShape.transition()
                 .duration(200)
                 .style("fill", "#FFF");
-            },
-            click: function _onClick(evt, d, dShape) {
-
-                console.log(d);
-
-                if (d.properties.NAME === "Albany") {
-
-                    console.log(window.location);
-
-                    var curPath = window.location.href;
-
-                    window.location = curPath.replace('map.html', 'map2.html');
-
-                }
-                else {
-
-                    console.log("Ah, ah ah. You didnt say the magic word!")
-
-                }
-
             }
         }
 
-        _priv.d3Draw.drawMap('counties', oMetaSize, '#nys-counties', oInteractions );
+        _priv.d3Draw.drawMap('albany_county', oMetaSize, '#nys-counties', oInteractions );
     };
 
     var init = function _init() {
@@ -87,9 +67,10 @@ define([], function() {
 
             dMapCountiesContainer = document.querySelector('#counties-map');
 
-            _priv.d3Draw.loadMaps(['counties'], function() {
+            _priv.d3Draw.loadMaps(['albany_county'], function() {
 
-                drawCounties();
+
+                drawCounty();
 
             });
 

@@ -4,6 +4,10 @@
             {{#ifCond v1=this.type op="===" v2="section"}}
                  {{#rendererHook (extendData this) scope="inlineSection"}}{{/rendererHook}}
             {{/ifCond}}
+        {{else}}
+            {{#ifCond v1=this.template op="===" v2="group"}}
+                {{#rendererHook (extendData this) scope="inlineSection"}}{{/rendererHook}}
+            {{/ifCond}}
         {{/if}}
     {{/each}}
 </div>

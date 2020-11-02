@@ -1,4 +1,4 @@
-define(['processTemplates', 'tableShiv', 'sectionShiv', 'agencyHeaderShiv', 'fieldEvent', 'compositeEvent'], function(procTemplates, tableShiv, sectionShiv, agencyHeaderShiv, fieldEvent, compositeEvent) {
+define(['processTemplates', 'tableShiv', 'sectionShiv', 'groupShiv', 'agencyHeaderShiv', 'fieldEvent', 'compositeEvent'], function(procTemplates, tableShiv, sectionShiv, groupShiv, agencyHeaderShiv, fieldEvent, compositeEvent) {
 
     var _priv = {
         setup: false
@@ -6,6 +6,7 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'agencyHeaderShiv', 'fie
 
     var dataShivs = {
         "section": sectionShiv.data,
+        "group": groupShiv.data,
         "agency-header": agencyHeaderShiv.data
     };
 

@@ -4,6 +4,9 @@ define(['dataStore', 'processTemplates', 'handlebars', 'handlebars-templates', '
 
     var data = function _section_data_shiv(data, parentList) {
 
+        // console.log("group shiv");
+        // console.log(data, parentList);
+
         var isCollapsed = false;
 
         if (data.collapse) {
