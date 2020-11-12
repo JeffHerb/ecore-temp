@@ -1,9 +1,16 @@
 <div class="error-page-overrides">
     <div class="cui-row">
         <div class="cui-col-small-1"></div>
-        <div class="cui-col-small-10 cui-align-center">
-            Your session has been closed. To reaccess your application, please <a href="{{url}}">login</a> again.
+        <div class="cui-col-small-10">
+            Your session has expired and was for security reason, you were logged out. Please use the login button below to reconnect.
         </div>
         <div class="cui-col-small-1"></div>
+    </div>
+</div>
+<div class="cui-row button-row">
+    <div class="cui-col-small-12 cui-align-center">
+        <button type="button" onClick="javascript:window.location='{{url}}" class="cui-button-primary">
+            Login
+        </button>
     </div>
 </div>
