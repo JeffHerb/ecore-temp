@@ -25,6 +25,13 @@ define([], function() {
     // Example function creating the counties map
     var drawCounty = function() {
 
+        var dMapCountiesContainer = document.querySelector('#nys-counties');
+
+        var dTooltip = document.createElement('div');
+        dTooltip.classList.add('emp-map-tooltip');
+        
+        dMapCountiesContainer.appendChild(dTooltip);
+
         var oMetaSize = {
             iWidth: 640,
             iHeight: 480,
@@ -39,16 +46,34 @@ define([], function() {
         var oInteractions = {
             mouseover: function _onMouseOver(evt, d, dShape) {
 
+                var dTooltip = document.querySelector('.emp-map-tooltip');
+
+                dTooltip.innerHTML = d.properties.NAME;
+
                 dShape.transition()
                 .duration(200)
                 .style("fill", "#09464c");
+
+                dTooltip.style.display = 'block';
             },
             mouseleave: function _onMouseLeave(evt, d, dShape) {
+
+                var dTooltip = document.querySelector('.emp-map-tooltip');
 
                 dShape.transition()
                 .duration(200)
                 .style("fill", "#FFF");
-            }
+
+                dTooltip.style.display = null;
+            },
+            mousemove: function _onMouseMove(evt, d, dShape) {
+
+                var dTooltip = document.querySelector('.emp-map-tooltip');
+
+                dTooltip.style.left = evt.pageX + 20 + 'px';
+                dTooltip.style.top = (evt.pageY - 240) + 20 + 'px';
+
+            },
         }
 
         _priv.d3Draw.drawMap('albany_county', oMetaSize, '#nys-counties', oInteractions );
@@ -65,10 +90,7 @@ define([], function() {
             // State outline map
             dMapContainer = document.querySelector('#nys-counties');
 
-            dMapCountiesContainer = document.querySelector('#counties-map');
-
             _priv.d3Draw.loadMaps(['albany_county'], function() {
-
 
                 drawCounty();
 

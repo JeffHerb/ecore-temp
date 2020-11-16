@@ -25,6 +25,14 @@ define([], function() {
     // Example function creating the counties map
     var drawCounties = function() {
 
+        var dMapCountiesContainer = document.querySelector('#nys-counties');
+
+        var dTooltip = document.createElement('div');
+        dTooltip.classList.add('emp-map-tooltip');
+        
+
+        dMapCountiesContainer.appendChild(dTooltip);
+
         var oMetaSize = {
             iWidth: 640,
             iHeight: 480,
@@ -39,23 +47,37 @@ define([], function() {
         var oInteractions = {
             mouseover: function _onMouseOver(evt, d, dShape) {
 
+                var dTooltip = document.querySelector('.emp-map-tooltip');
+
+                dTooltip.innerHTML = d.properties.NAME;
+
                 dShape.transition()
                 .duration(200)
                 .style("fill", "#09464c");
+
+                dTooltip.style.display = 'block';
             },
             mouseleave: function _onMouseLeave(evt, d, dShape) {
+
+                var dTooltip = document.querySelector('.emp-map-tooltip');
 
                 dShape.transition()
                 .duration(200)
                 .style("fill", "#FFF");
+
+                dTooltip.style.display = null;
+            },
+            mousemove: function _onMouseMove(evt, d, dShape) {
+
+                var dTooltip = document.querySelector('.emp-map-tooltip');
+
+                dTooltip.style.left = evt.pageX + 20 + 'px';
+                dTooltip.style.top = (evt.pageY - 240) + 20 + 'px';
+
             },
             click: function _onClick(evt, d, dShape) {
 
-                console.log(d);
-
                 if (d.properties.NAME === "Albany") {
-
-                    console.log(window.location);
 
                     var curPath = window.location.href;
 
@@ -85,7 +107,7 @@ define([], function() {
             // State outline map
             dMapContainer = document.querySelector('#nys-counties');
 
-            dMapCountiesContainer = document.querySelector('#counties-map');
+            //dMapCountiesContainer = document.querySelector('#counties-map');
 
             _priv.d3Draw.loadMaps(['counties'], function() {
 

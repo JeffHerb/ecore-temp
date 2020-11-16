@@ -130,6 +130,18 @@ define(['d3', 'topoClient'], function(d3, topojson) {
 
                         }
 
+                        if (oInteractive.mousemove) {
+
+                            p.on("mousemove", function(evt, d) {
+
+                                var dShape = d3.select(this);
+
+                                oInteractive["mousemove"](evt, d, dShape);
+
+                            });
+
+                        }
+
                         if (oInteractive.click) {
 
                             p.on("click", function(evt, d) {
