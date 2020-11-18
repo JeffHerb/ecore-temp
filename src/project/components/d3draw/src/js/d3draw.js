@@ -1,6 +1,11 @@
 // The d3 library needs to be custom build from source in the AMD output format to get it to work!
 define(['d3', 'topoClient'], function(d3, topojson) {
 
+    console.log("Draw3d");
+
+    console.log("d3");
+    console.log(d3);
+
     var _priv = {
         bInit: false,
         oLoadedMaps: {},
