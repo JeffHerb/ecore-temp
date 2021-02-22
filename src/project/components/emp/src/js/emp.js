@@ -2952,6 +2952,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             case 'emp.ajaxSection':
                             case 'emp.link.newWindow':
                             case 'emp.form.virtual':
+                            case 'emp.uploadFile':
 
                                 args.unshift(evt);
                                 break;
@@ -3199,6 +3200,14 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         };
 
         ajax.request(req, res, false);
+    };
+
+    /*
+    * File upload with progress bar
+    */
+    var uploadFile = function _upload_file(url){
+
+        console.log(url);
     };
 
     /*
@@ -4612,6 +4621,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         //Message Plugin exposed for testing pages
         empMessage: empMessage,
         store: store,
+
+        uploadFile: uploadFile
 
         //manualInit: manualInit
     };

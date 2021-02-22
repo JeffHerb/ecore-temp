@@ -94,7 +94,8 @@ module.exports = function(grunt) {
                         'fetchWrapper': 'empty:',
                         'deepmerge': 'empty:',
                         'staticTree': 'empty:',
-                        'analytics': 'empty:'
+                        'analytics': 'empty:',
+                        //'uploadFile': 'empty:'
                     },
                     optimize: 'none',
                     out: 'dist/js/emp.js',

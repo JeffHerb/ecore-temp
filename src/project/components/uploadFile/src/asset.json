@@ -1,0 +1,5 @@
+{
+    "name": "uploadFile",
+    "lazy": false,
+    "sources": ["script", "style"]
+}
