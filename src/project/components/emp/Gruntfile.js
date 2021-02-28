@@ -95,7 +95,7 @@ module.exports = function(grunt) {
                         'deepmerge': 'empty:',
                         'staticTree': 'empty:',
                         'analytics': 'empty:',
-                        //'uploadFile': 'empty:'
+                        'uploadFile': 'empty:'
                     },
                     optimize: 'none',
                     out: 'dist/js/emp.js',

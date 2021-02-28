@@ -22,25 +22,67 @@
             "contents": [
                 // Basic button
                 {
-                    "type": "row",
-                    "template": "grid",
+                    "type": "form",
+                    "attributes": {
+                        "id": "test-form1",
+                        "encode": "multipart/form-data",
+                        "method": "POST",
+                    },
                     "contents": [
                         {
-                            "type": "column",
+                            "type": "row",
                             "template": "grid",
                             "contents": [
                                 {
-                                    "type": "button",
-                                    "template": "field",
-                                    "input": {
-                                        "attributes": {
-                                            "id": "E_TEST_BUTTON",
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "template":"field",
+                                            "input":{
+                                                "attributes":{
+                                                    "size":50,
+                                                    "name":"E_SCREENSHOPT_PATH",
+                                                    "aria-required":true,
+                                                    "id":"E_SCREENSHOPT_PATH",
+                                                    "type":"file"
+                                                },
+                                                "required":true
+                                            },
+                                            "label":{
+                                                "attributes":{
+                                                    "for":"E_SCREENSHOPT_PATH"
+                                                },
+                                                "text":"Screenshot Path:"
+                                            },
+                                            "type":"file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
                                             "type": "button",
-                                            //"onclick": "emp.functionCall(event, 'emp.uploadFile', 'arg':[{'url':'http://localhost:3000/uploadFile'}])"
-                                            "onclick": "emp.functionCall(event, {0:{ 'function':'emp.uploadFile', 'args': ['http://localhost:3000/uploadFile'] }})"
-                                        },
-                                        "text": "Upload File"
-                                    }
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_TEST_BUTTON",
+                                                    "type": "button",
+                                                    //"onclick": "emp.functionCall(event, 'emp.uploadFile', 'arg':[{'url':'http://localhost:3000/uploadFile'}])"
+                                                    "onclick": "emp.functionCall(event, {0:{ 'function':'emp.upload.uploadFile', 'args': [{'url':'http://localhost:3000/uploads'}] }})"
+                                                },
+                                                "text": "Upload File"
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         }

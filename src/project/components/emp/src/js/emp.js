@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'uploadFile', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, uploadFile, session) {
 
     if (!Element.prototype.matches) {
     	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -2353,7 +2353,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                 journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request' }, 'Request method being forced to "GET"');
 
-                req.method = 'GET';
+                //req.method = 'GET';
             }
             else {
 
@@ -2365,6 +2365,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                     request.method = "POST";
                 }
             }
+
+            console.log(req.method);
 
             if (!_disableAjax) {
 
@@ -2952,7 +2954,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             case 'emp.ajaxSection':
                             case 'emp.link.newWindow':
                             case 'emp.form.virtual':
-                            case 'emp.uploadFile':
+                            case 'emp.upload.uploadFile':
 
                                 args.unshift(evt);
                                 break;
@@ -3203,11 +3205,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
     };
 
     /*
-    * File upload with progress bar
-    */
-    var uploadFile = function _upload_file(url){
+     * Uploads file and displays progress bar modal.
+     */
+    var upload = {};
 
-        console.log(url);
+    upload.uploadFile = function _upload_file(evt, url){
+        uploadFile.setup(evt, url);
     };
 
     /*
@@ -4622,7 +4625,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         empMessage: empMessage,
         store: store,
 
-        uploadFile: uploadFile
+        upload: {
+            uploadFile: upload.uploadFile
+        }
 
         //manualInit: manualInit
     };
