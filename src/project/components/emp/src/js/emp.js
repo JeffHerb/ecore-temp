@@ -2353,7 +2353,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                 journal.log({ type: 'warning', owner: 'UI', module: 'emp', submodule: 'ajax', func: 'request' }, 'Request method being forced to "GET"');
 
-                //req.method = 'GET';
+                req.method = 'GET';
             }
             else {
 
@@ -2365,8 +2365,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                     request.method = "POST";
                 }
             }
-
-            console.log(req.method);
 
             if (!_disableAjax) {
 
