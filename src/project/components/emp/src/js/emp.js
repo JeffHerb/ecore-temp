@@ -1,5 +1,5 @@
 /*jshint loopfunc: true, quotmark: false, sub: true */
-define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'uploadFile', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, uploadFile, session) {
+define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', 'tooltip', 'showHidePassword', 'validation', 'kind', 'external-menu', 'spin', 'detectIE', 'guid', 'store', 'clickblocker', 'empMessage', 'selectionPopup', 'addRemove', 'forms', 'getCookie', 'refresh', 'dynamicDropDown', 'fetchWrapper', 'uiPopup', 'process', 'events', 'windows', 'expandables', 'staticTree', 'externalApp', 'expandingTextArea', 'keepAlive', 'analytics', 'fileUploadProgressModal', 'session', 'badge', 'getCursorPosition', 'fastdom', 'journal'], function($, cui, ds, render, table, tabs, datepicker, tooltip, showHidePassword, validation, kind, externalMenu, spin, detectIE, guid, store, clkblocker, empMessage, selectionPopup, addRemove, forms, getCookie, refresh, dyncDD, fw, uiPopup, processM, events, windowsM, expandables, staticTree, externalApp, expandingTextArea, keepAlive, analytics, fileUploadProgressModal, session) {
 
     if (!Element.prototype.matches) {
     	Element.prototype.matches = Element.prototype.msMatchesSelector ||
@@ -2952,7 +2952,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             case 'emp.ajaxSection':
                             case 'emp.link.newWindow':
                             case 'emp.form.virtual':
-                            case 'emp.upload.uploadFile':
+                            case 'emp.fileUploadModal.fileUploadRequest':
 
                                 args.unshift(evt);
                                 break;
@@ -3203,12 +3203,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
     };
 
     /*
-     * Uploads file and displays progress bar modal.
+     * Displays upload file progress modal
      */
-    var upload = {};
+    var fileUploadModal = {};
 
-    upload.uploadFile = function _upload_file(evt, url){
-        uploadFile.setup(evt, url);
+    fileUploadModal.fileUploadRequest = function _file_upload_request(evt, url){
+        fileUploadProgressModal.setup(evt, url);
     };
 
     /*
@@ -4623,10 +4623,16 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         empMessage: empMessage,
         store: store,
 
-        upload: {
-            uploadFile: upload.uploadFile
+        fileUploadModal: {
+            fileUploadRequest: fileUploadModal.fileUploadRequest
         }
 
         //manualInit: manualInit
     };
 });
+
+/* var fileUploadModal = {};
+
+fileUploadModal.fileUploadRequest = function _file_upload_request(evt, url){
+    fileUploadProgressModal.setup(evt, url);
+}; */

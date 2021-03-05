@@ -75,7 +75,7 @@
     //progress bar
     .cui-modal-progress-bar-body{
         height: 35px;
-        width: 350px;
+        width: 100%;
         border: 2px solid #e7e7e6;
         margin-top: 5px;
         margin-bottom: 10px;
@@ -99,6 +99,14 @@
             font-weight: 600;
             line-height: 2;
             color: #ffffff;
+        }
+    }
+
+    .cui-modal-progress-bar-action-text{
+        display: inline-block;
+
+        @include pointbreak($cui-bp-medium){
+            min-width: 370px;
         }
     }
 }

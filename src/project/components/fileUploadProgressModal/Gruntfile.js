@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 
             cui: {
                 files: {
-                    'dist/css/uploading.css': ['src/scss/uploading.scss']
+                    'dist/css/progressModal.css': ['src/scss/progressModal.scss']
                 },
             },
         },

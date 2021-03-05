@@ -41,6 +41,51 @@
                                             "template":"field",
                                             "input":{
                                                 "attributes":{
+                                                    "name":"E_ROLL_YEAR",
+                                                    "aria-required":true,
+                                                    "id":"E_ROLL_YEAR",
+                                                },
+                                                "options": [
+                                                    {
+                                                        "text": "",
+                                                        "value": ""
+                                                    },
+                                                    {
+                                                        "text": "Workflow actions",
+                                                        "value": "1"
+                                                    },
+                                                    {
+                                                        "text": "Workflow actions B",
+                                                        "value": "2"
+                                                    }
+                                                ],
+                                                "required":true,
+                                                "noBlankOption": true
+                                            },
+                                            "label":{
+                                                "attributes":{
+                                                    "for":"E_ROLL_YEAR"
+                                                },
+                                                "text":"Screenshot Path:"
+                                            },
+                                            "type":"select"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "template":"field",
+                                            "input":{
+                                                "attributes":{
                                                     "size":50,
                                                     "name":"E_SCREENSHOPT_PATH",
                                                     "aria-required":true,
@@ -77,7 +122,7 @@
                                                     "id": "E_TEST_BUTTON",
                                                     "type": "button",
                                                     //"onclick": "emp.functionCall(event, 'emp.uploadFile', 'arg':[{'url':'http://localhost:3000/uploadFile'}])"
-                                                    "onclick": "emp.functionCall(event, {0:{ 'function':'emp.upload.uploadFile', 'args': [{'url':'http://localhost:3000/uploads'}] }})"
+                                                    "onclick": "emp.functionCall(event, {0:{ 'function':'emp.fileUploadModal.fileUploadRequest', 'args': [{'url':'http://localhost:3000/upload'}] }})"
                                                 },
                                                 "text": "Upload File"
                                             }
