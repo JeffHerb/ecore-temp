@@ -71,6 +71,44 @@
 
 .cui-modal-body-content {
     padding: 10px;
+
+    //progress bar
+    .cui-modal-progress-bar-body{
+        height: 35px;
+        width: 100%;
+        border: 2px solid #e7e7e6;
+        margin-top: 5px;
+        margin-bottom: 10px;
+
+        &+.cui-row.emp-button-row{
+            .button-col.emp-button-group{
+                padding-right: 0px;
+            }
+        }
+    }
+
+    .cui-modal-progress-bar-fill{
+        height: 100%;
+        width: 0%;
+        max-width: 100%;
+        background-color: #0b5d66;
+        text-align: center;
+        transition: width 0.25s;
+
+        .cui-modal-progress-bar-percentage{
+            font-weight: 600;
+            line-height: 2;
+            color: #ffffff;
+        }
+    }
+
+    .cui-modal-progress-bar-action-text{
+        display: inline-block;
+
+        @include pointbreak($cui-bp-medium){
+            min-width: 370px;
+        }
+    }
 }
 
 .cui-modal-use-header {

@@ -1,0 +1,150 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Template - Core UI</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Removed the html 5 shiv for testing purposes -->
+
+</head>
+
+<body>
+
+    <div id="body-wrapper"></div>
+
+<script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script></body>
+<script>
+    var fwData = {
+        "page": {
+            "contents": [
+                // Basic button
+                {
+                    "type": "form",
+                    "attributes": {
+                        "id": "test-form1",
+                        "encode": "multipart/form-data",
+                        "method": "POST",
+                    },
+                    "contents": [
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "template":"field",
+                                            "input":{
+                                                "attributes":{
+                                                    "name":"E_ROLL_YEAR",
+                                                    "aria-required":true,
+                                                    "id":"E_ROLL_YEAR",
+                                                },
+                                                "options": [
+                                                    {
+                                                        "text": "",
+                                                        "value": ""
+                                                    },
+                                                    {
+                                                        "text": "Workflow actions",
+                                                        "value": "1"
+                                                    },
+                                                    {
+                                                        "text": "Workflow actions B",
+                                                        "value": "2"
+                                                    }
+                                                ],
+                                                "required":true,
+                                                "noBlankOption": true
+                                            },
+                                            "label":{
+                                                "attributes":{
+                                                    "for":"E_ROLL_YEAR"
+                                                },
+                                                "text":"Screenshot Path:"
+                                            },
+                                            "type":"select"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "template":"field",
+                                            "input":{
+                                                "attributes":{
+                                                    "size":50,
+                                                    "name":"E_SCREENSHOPT_PATH",
+                                                    "aria-required":true,
+                                                    "id":"E_SCREENSHOPT_PATH",
+                                                    "type":"file"
+                                                },
+                                                "required":true
+                                            },
+                                            "label":{
+                                                "attributes":{
+                                                    "for":"E_SCREENSHOPT_PATH"
+                                                },
+                                                "text":"Screenshot Path:"
+                                            },
+                                            "type":"file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "row",
+                            "template": "grid",
+                            "contents": [
+                                {
+                                    "type": "column",
+                                    "template": "grid",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_TEST_BUTTON",
+                                                    "type": "button",
+                                                    //"onclick": "emp.functionCall(event, 'emp.uploadFile', 'arg':[{'url':'http://localhost:3000/uploadFile'}])"
+                                                    "onclick": "emp.functionCall(event, {0:{ 'function':'emp.fileUploadModal.fileUploadRequest', 'args': [{'url':'http://localhost:3000/upload'}] }})"
+                                                },
+                                                "text": "Upload File"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+</script>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+
+    require(['domReady!'], function () {
+
+        console.log("page is done");
+
+    });
+</script>
+
+</html>

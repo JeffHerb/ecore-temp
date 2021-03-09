@@ -1,0 +1,5 @@
+{
+    "name": "fileUploadProgressModal",
+    "lazy": false,
+    "sources": ["script", "style"]
+}

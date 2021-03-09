@@ -22,6 +22,12 @@ define(['jquery', 'cui', 'guid', 'uiBox', 'uiPosition', 'css!modal'], function (
         modalBody: 'cui-' + NAMESPACE + '-body',
         modalBodyContent: 'cui-' + NAMESPACE + '-body-content',
 
+        //progress bar
+        modalProgressBarBody: 'cui-' + NAMESPACE + '-progress-bar-body',
+        modalProgressBarActionText: 'cui-' + NAMESPACE + '-progress-bar-action-text',
+        modalProgressBarFill: 'cui-' + NAMESPACE + '-progress-bar-fill',
+        modalProgressBarPercentage: 'cui-' + NAMESPACE + '-progress-bar-percentage',
+
         modalUseFooter: 'cui-' + NAMESPACE + '-use-footer',
         modalFooter: 'cui-' + NAMESPACE + '-footer',
         modalFooterContent: 'cui-' + NAMESPACE + '-footer-content',
@@ -629,6 +635,36 @@ define(['jquery', 'cui', 'guid', 'uiBox', 'uiPosition', 'css!modal'], function (
                                     'class': CLASSES.modalBodyContent
                                 });
 
+                //progress bar
+                if(modal.config.progressBar){
+                                        
+                    var progressBarContent = $('<div\>',{
+                        'class': CLASSES.modalProgressBarBody
+                    });
+
+                    var progressBarActionText = $('<span\>',{
+                        'class': CLASSES.modalProgressBarActionText,
+                        'text': 'Uploading...'
+                    });
+
+                    var progressBarFill = $('<div\>',{
+                        'class': CLASSES.modalProgressBarFill
+                    });
+
+                    var progressBarPercentage = $('<span\>',{
+                        'class': CLASSES.modalProgressBarPercentage,
+                        'text': '0%'
+                    });
+
+                    //progress bar contents
+                    bodyContent.append(progressBarActionText);
+                    progressBarFill.append(progressBarPercentage);
+                    progressBarContent.append(progressBarFill);
+
+                    //progress bar contents to main content
+                    bodyContent.append(progressBarContent);
+                }
+
                 bodyContent.append(modal.config.html);
 
                 boxOptions.body.html = bodyContent;
@@ -644,7 +680,7 @@ define(['jquery', 'cui', 'guid', 'uiBox', 'uiPosition', 'css!modal'], function (
 
                 var headerContent = $('<div/>', {
                                     'class': CLASSES.modalHeaderContent
-                                });
+                                });                
 
                 if (modal.config.header && modal.config.header.html) {
                     headerContent.append(modal.config.header.html);
