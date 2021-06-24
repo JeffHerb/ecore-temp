@@ -1,0 +1,58 @@
+<div class="ec-add-group-component emp-collapse">
+    <div class="ec-group-wrapper">
+        <header>
+            {{sTitle}}
+        </header>
+        <div class="ec-add-group-header">
+            <div class="ec-sub-header">
+                {{sSubTitle}}
+            </div>
+        </div>
+        <div class="ec-add-group-contents">
+            <div class="ec-add-group-open-header">
+                <header>{{sContentHeader}}</header>
+                <ul class="ec-pill-list">
+                    {{#unless this.aItems}}
+                        <li class="ec-not-content-item">
+                            <em>{{sNoItemsText}}</em>
+                        </li>
+                    {{else}}
+                        <li class="ec-not-content-item cui-hide-from-screen">
+                            <em>{{sNoItemsText}}</em>
+                        </li>
+                        {{#each this.aItems}}
+                            <li>
+                                <span class="ec-pill">
+                                    <span class="ec-pill-item-text">{{this.text}}</span>
+                                    <button type="button">
+                                        <span>&times;</span>
+                                    </button>
+                                </span>
+                            </li>
+                        {{/each}}
+                    {{/unless}}
+                </ul>
+                <div class="cui-row">
+                    <div class="emp-col-full">
+                        <div class="emp-composite emp-search-composite">
+                            <div class="cui-label">
+                                <label for="{{sAddId}}">{{sAddLabel}}</label>
+                            </div>
+                            <div class="cui-data emp-search">
+                                <div class="emp-field">
+                                    <input type="text" size="20" class="add-input" id="{{sAddId}}" />
+                                </div>
+                                <div class="emp-field">
+                                    <button type="button" class="add-button">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ec-header-control">
+            <a href="#" role="button" class="ec-add-edit-control">Edit</a>
+        </div>
+    </div>
+</div>

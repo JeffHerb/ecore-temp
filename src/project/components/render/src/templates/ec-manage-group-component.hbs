@@ -1,0 +1,141 @@
+<div class="ec-manage-group-component emp-collapse">
+    <div class="ec-header-group-wrapper">
+        <div class="ec-title-instructions">
+            <header>
+                <span class="ec-header-title">{{sTitle}}</span>
+                <div class="ec-short-instructions"></div>
+                <div class="ec-long-instructions"></div>
+            </header>
+        </div>
+        <div class="ec-header-icons">
+            <div class="ec-icon-container">
+                {{#unless aEmails}}
+                    <i class="ec-has-emails-icon reserve-space"></i>
+                {{else}}
+                    <i class="ec-has-emails-icon"></i>
+                {{/unless}}
+
+                {{#unless aPhones}}
+                    <i class="ec-has-phones-icon reserve-space"></i>
+                {{else}}
+                    <i class="ec-has-phones-icon"></i>
+                {{/unless}}
+                
+            </div>
+        </div>
+        <div class="ec-header-edit">
+            <a role="button" href="#" class="ec-manage-edit-control">Edit</a>
+        </div>
+    </div>
+    <div class="ec-manage-content-wrapper">
+        <header>
+            Where you receive these notifications
+        </header>
+        <div class="email-text-row">
+            <div class="email-text-columns">
+                <div class="email-text-header">
+                    <div class="header-icon-wrapper">
+                        <i class="ec-has-emails-icon"></i>
+                        <span>Email</span>
+                    </div>
+                </div>
+                <div class="email-text-subscriptions">
+                    <ul class="email-subscriptions">
+                        {{#unless aEmails}}
+                            <li class="no-email-subscribed">
+                                <em>No emails subscribed</em>
+                            </li>
+                        {{else}}
+                            <li class="no-email-subscribed cui-hide-from-screen">
+                                <em>No emails subscribed</em>
+                            </li>
+                            {{#each this.aEmails}}
+                                <li>
+                                    <span class="ec-pill">
+                                        <span class="ec-pill-item-text">{{this.text}}</span>
+                                        <button type="button" data-id="{{this.id}}">
+                                            <span>&times;</span>
+                                        </button>
+                                    </span>
+                                </li>
+                            {{/each}}
+                        {{/unless}}
+                    </ul>
+                    <div class="ec-email-text-add-row">
+                        <div class="emp-composite emp-search-composite">
+                            <div class="cui-label">
+                                <label for="">Add email:</label>
+                            </div>
+                            <div class="cui-data emp-search">
+                                <div class="emp-field">
+                                    <select class="add-email-input">
+                                        <option></option>
+                                        {{#each this.aEmailAvaliable}}
+                                            <option id="{{this.id}}">{{this.text}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="emp-field">
+                                    <button type="button" class="add-email-button">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="email-text-row">
+            <div class="email-text-columns">
+                <div class="email-text-header">
+                    <div class="header-icon-wrapper">
+                        <i class="ec-has-phones-icon"></i>
+                        <span>SMS</span>
+                    </div>
+                </div>
+                <div class="email-text-subscriptions">
+                    <ul class="phone-subscriptions">
+                        {{#unless aPhones}}
+                            <li class="no-phones-subscribed">
+                                <em>No phone numbers subscribed</em>
+                            </li>
+                        {{else}}
+                            <li class="no-phones-subscribed cui-hide-from-screen">
+                                <em>No phone numbers subscribed</em>
+                            </li>
+                            {{#each this.aPhones}}
+                                <li>
+                                    <span class="ec-pill">
+                                        <span class="ec-pill-item-text">{{this.text}}</span>
+                                        <button type="button" data-id="{{this.id}}">
+                                            <span>&times;</span>
+                                        </button>
+                                    </span>
+                                </li>
+                            {{/each}}
+                        {{/unless}}
+                    </ul>
+                    <div class="ec-email-text-add-row">
+                        <div class="emp-composite emp-search-composite">
+                            <div class="cui-label">
+                                <label for="">Add Phone:</label>
+                            </div>
+                            <div class="cui-data emp-search">
+                                <div class="emp-field">
+                                    <select class="add-phone-input">
+                                        <option></option>
+                                        {{#each this.aPhoneAvaliable}}
+                                            <option id="{{this.id}}">{{this.text}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="emp-field">
+                                    <button type="button" class="add-phone-button">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -242,6 +242,10 @@ Handlebars.registerHelper('extendDefaults', function (params) {
                         addValue('className', 'emp-boolean-input-group');
                         break;
 
+                    case "hidden":
+                        addValue('className', 'cui-hide-from-screen');
+                        break;
+
                     // Expandable Text Areas
                     case "expanding":
                         addValue('className', 'emp-expanding');
@@ -261,6 +265,23 @@ Handlebars.registerHelper('extendDefaults', function (params) {
 
                     case "actions":
                         addValue('className', 'emp-external-actions-menu');
+                        break;
+
+                    case "light-header":
+                        addValue('className', 'emp-light-header');
+                        break;
+
+                    // EC COMPONENTS
+                    case 'ecSubComp':
+                        addValue('className', "ec-sub-component-source");
+                        break;
+
+                    case 'ec-short-section':
+                        addValue('className', 'ec-short-section');
+                        break;
+
+                    case 'ec-long-section':
+                        addValue('className', 'ec-long-section');
                         break;
 
                     // EMP TEST STYLES NOT FOR PRODUCTION USE

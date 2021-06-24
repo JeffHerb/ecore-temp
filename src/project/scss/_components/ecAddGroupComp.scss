@@ -1,0 +1,117 @@
+.ec-add-group-component {
+
+    .ec-group-wrapper {
+        display: flex;
+        border-bottom: 1px solid #DDD;
+        padding: 1em;
+
+        header {
+            background: transparent !important;
+            border: 0 !important;
+            flex: 0 0 200px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 !important;
+        }
+        
+        .ec-add-group-header {
+            display: none;
+        }
+
+        .ec-add-group-contents {
+            flex: 2;
+
+            header {
+                color: #A2A2A2;
+                font-size: 16px;
+                margin-bottom: 1em !important;
+            }
+
+            ul {
+                border-bottom: 1px solid #A2A2A2;
+                list-style: none;
+
+                li {
+                    padding-bottom: 5px;
+
+                    .ec-pill {
+                        align-items: center;
+                        background: #A2A2A2;
+                        border-radius: 25px;
+                        display: inline-flex;
+                        font-weight: 600;
+                        justify-content: center;
+                        padding: 5px 10px;
+
+                        .ec-pill-item-text {
+                            padding-right: 6px;
+                        }
+    
+                        button {
+                            background: transparent;
+                            border: 0;
+                            font-size: 24px;
+                            font-weight: 600;
+                            padding: 0 7px;
+
+                            &:hover {
+                                border: 0;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .emp-search-composite {
+                margin-top: 10px !important;
+                .cui-label {
+                    flex-basis: auto;
+                    min-width: auto !important;
+                    width: auto !important;
+                }
+            }
+
+        }
+
+    }
+
+    &.emp-collapse {
+
+        .ec-group-wrapper {
+
+            header {
+                background: transparent !important;
+                border: 0 !important;
+                flex: 0 0 200px;
+                font-size: 18px;
+                font-weight: 600;
+                margin: 0 !important;
+            }
+
+            .ec-add-group-header {
+                display: flex;
+                flex: 2;
+
+                .ec-sub-header {
+                    color: #A2A2A2;
+                    font-weight: 600;
+                    flex: 1;
+                }
+
+                .ec-add-edit-control {
+                    flex: 0 0 75px;
+                }
+
+            }
+            
+            .ec-add-group-contents {
+                display: none;
+            }
+        }
+
+    }
+
+    
+
+}

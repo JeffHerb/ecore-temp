@@ -442,6 +442,13 @@ section {
             padding: 0 0 $emp-padding 0;
         }
     }
+
+    &.emp-light-header {
+        border: 0 !important;
+        & > header {
+            background: transparent !important;
+        } 
+    }
 }
 
 .emp-icon-section-toggle-collapse {

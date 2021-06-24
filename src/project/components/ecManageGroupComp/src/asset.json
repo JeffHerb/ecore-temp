@@ -1,0 +1,6 @@
+{
+    "name": "ecManageGroupComp",
+    "lazy": false,
+    "comment": "Styles are baked into the large project because lack of consulting with UI to make this application/component work!",
+    "sources": ["script"]
+}

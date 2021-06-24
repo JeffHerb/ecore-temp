@@ -194,6 +194,23 @@ define(['processTemplates', 'tableShiv', 'sectionShiv', 'groupShiv', 'agencyHead
                         }
 
                     }
+                    else if (method === "append") {
+
+                        var contents = html.childNodes;
+
+                        for (var c = 0, cLen = contents.length; c < cLen; c++) {
+
+                            if (contents[c] && contents[c].nodeType && contents[c].nodeType === 1) {
+
+                                target.appendChild(contents[c]);
+                            }
+
+                        }
+
+                        if (typeof cb === "function") {
+                            cb(html);
+                        }
+                    }
                     else {
 
                         console.log("Uknown render function passed: " + method);
