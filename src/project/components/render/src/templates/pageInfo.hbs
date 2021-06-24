@@ -12,7 +12,7 @@
         </div>
     {{/if}}
 
-    {{#if this.pageLegend}}
+    {{#ifCond v1=this.pageLegend.required op="||" v2=this.pageLegend.helpText}}
         <div class="emp-page-legend">
             {{#if this.pageLegend.required}}
                 <div class="emp-legend">
@@ -27,7 +27,7 @@
                 </div>
             {{/if}}
         </div>
-    {{/if}}
+    {{/ifCond}}
 
     {{#if this.messages}}
         {{> _message this.messages section="globalHeader"}}

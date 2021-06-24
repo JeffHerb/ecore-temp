@@ -19,6 +19,7 @@
         border-radius: 5px;
         min-height: 100px;
         min-width: 100px;
+        max-width: 500px;
         overflow: hidden;
         z-index: 1100;
 
@@ -28,8 +29,9 @@
         }
 
         .emp-modal-2-content {
-            p {
-                margin: 10px;
+            p, ul {
+                margin: 1em;
+                padding: 0;
             }
         }
 
@@ -39,7 +41,7 @@
             text-align: right;
 
             button {
-                margin-left: 5px;    
+                margin-left: 5px;
             }
         }
 

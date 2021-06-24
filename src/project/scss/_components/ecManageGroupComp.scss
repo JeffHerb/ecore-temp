@@ -12,7 +12,7 @@
                 background: transparent !important;
                 border: 0 !important;
                 margin: 0 !important;
-    
+
                 span.ec-header-title {
                     display: inline-block;
                     font-size: 18px;
@@ -24,7 +24,7 @@
                 .ec-short-instructions,
                 .ec-long-instructions {
                     p, span, div {
-                        color: #A2A2A2;
+                        color: #757575;
                         font-weight: 600;
                     }
                 }
@@ -133,12 +133,12 @@
 
             .ec-pill {
                 align-items: center;
-                background: #A2A2A2;
+                background: #DFDFE5;
                 border-radius: 25px;
                 display: inline-flex;
                 font-weight: 600;
                 justify-content: center;
-                padding: 5px 10px;
+                padding: 1px 10px;
 
                 .ec-pill-item-text {
                     padding-right: 6px;
@@ -178,7 +178,7 @@
                 }
 
             }
-    
+
         }
 
         .ec-short-instructions {

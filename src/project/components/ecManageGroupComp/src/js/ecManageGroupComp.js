@@ -17,29 +17,29 @@ define(['render'], function(render) {
         var _priv = {
             _this: null
         };
-    
+
         _priv.stringReplace = function _sub_header_replace(sBase, sCount, sReplaceChar, bRemoveLast) {
-    
+
             var sReturn = sBase.replace(sReplaceChar, sCount).trim();
-    
+
             if (bRemoveLast) {
                 sReturn = sReturn.slice(0, sReturn.length -1);
             }
-    
+
             return sReturn;
         }
 
         _priv.newPill = function _create_new_pill(sValue, bEmail) {
-    
+
             var dNewPill = document.createElement('li');
-    
+
             var dNewPillWrapper = document.createElement('span');
                 dNewPillWrapper.classList.add('ec-pill');
-    
+
             var dNewPillTextWrapper = document.createElement('span');
                 dNewPillTextWrapper.classList.add('ec-pill-item-text');
                 dNewPillTextWrapper.appendChild(document.createTextNode(sValue));
-    
+
             var dNewButton = document.createElement('button');
                 dNewButtonText = document.createElement('span');
                 dNewButtonText.innerHTML = '&times;';
@@ -60,7 +60,7 @@ define(['render'], function(render) {
 
             return dNewPill;
         }
-    
+
         _priv.generateShell = function(oConfig, oData, dTarget, cb) {
 
             let oRenderTemplate = {
@@ -137,7 +137,7 @@ define(['render'], function(render) {
                 if (oConfig.adShortInstructions.children) {
 
                     while (oConfig.adShortInstructions.firstElementChild) {
-                        
+
                         dShortContainer.appendChild(oConfig.adShortInstructions.firstElementChild.cloneNode(true));
                         oConfig.adShortInstructions.removeChild(oConfig.adShortInstructions.firstElementChild);
                     }
@@ -149,7 +149,7 @@ define(['render'], function(render) {
                 if (oConfig.adLongInstructions.children) {
 
                     while (oConfig.adLongInstructions.firstElementChild) {
-                        
+
                         dLongContainer.appendChild(oConfig.adLongInstructions.firstElementChild.cloneNode(true));
                         oConfig.adLongInstructions.removeChild(oConfig.adLongInstructions.firstElementChild);
                     }
@@ -167,7 +167,7 @@ define(['render'], function(render) {
                 dAddEmailInput = dActualComponent.querySelector('.add-email-input');
                 dAddEmailButton = dActualComponent.querySelector('.add-email-button');
                 dEmailPillList = dActualComponent.querySelector('.email-subscriptions');
-                
+
                 dAddEmailButton.addEventListener('click', _events.clickAddEmailButton);
 
                 var adPills = dActualComponent.querySelectorAll('.email-subscriptions .ec-pill button');
@@ -190,7 +190,7 @@ define(['render'], function(render) {
                 }
 
             });
-    
+
         }
 
         var _events = {};
@@ -214,7 +214,7 @@ define(['render'], function(render) {
         _events.clickAddEmailButton = function _click_add_email_button(evt) {
 
             sValue = dAddEmailInput.value;
-            
+
             if (sValue && sValue.length) {
 
                 oSettings = {
@@ -236,7 +236,7 @@ define(['render'], function(render) {
                     }
                 }
 
-                var sEmailModal = "You are about to add a new email subscriptions. You should recieve a welcome email shortly.";
+                var sEmailModal = "You are about to add a new email subscription. You should receive a welcome email shortly.";
 
                 if (require.s.contexts._.defined['modal2']) {
 
@@ -251,12 +251,12 @@ define(['render'], function(render) {
                 else {
 
                     emp.load('modal2', function(modal2) {
-    
+
                         var dModalContents = document.createElement('p');
                         dModalContents.appendChild(document.createTextNode(sEmailModal));
-    
+
                         new modal2(evt.target, oSettings, dModalContents);
-    
+
                     })
 
                 }
@@ -268,7 +268,7 @@ define(['render'], function(render) {
         _events.clickAddPhoneButton = function _click_add_phone_button(evt) {
 
             sValue = dAddPhoneInput.value;
-            
+
             if (sValue && sValue.length) {
 
                 oSettings = {
@@ -290,7 +290,7 @@ define(['render'], function(render) {
                     }
                 }
 
-                var sPhoneModal = "You you sure you want to add this phone subscription?. You are accepting that all data rates and fees that may apply. Shortly after adding this phone number, a conformation will be sent.";
+                var sPhoneModal = "By adding this phone subscription you agree to receive SMS reminders sent to this phone number " + dAddPhoneInput.value + ". Data rates and fees may apply. A confirmation will be sent after subscription is added.";
 
                 if (require.s.contexts._.defined['modal2']) {
 
@@ -305,12 +305,12 @@ define(['render'], function(render) {
                 else {
 
                     emp.load('modal2', function(modal2) {
-    
+
                         var dModalContents = document.createElement('p');
                         dModalContents.appendChild(document.createTextNode(sPhoneModal));
-    
+
                         new modal2(evt.target, oSettings, dModalContents);
-    
+
                     })
 
                 }
@@ -364,7 +364,7 @@ define(['render'], function(render) {
 
                 }
                 else if (!dPillList) {
-                   
+
                     if (dCurrentElem.nodeName !== "UL") {
                         dCurrentElem = dCurrentElem.parentNode;
                     }
@@ -372,7 +372,7 @@ define(['render'], function(render) {
                         dPillList = dCurrentElem;
                         bContinue = true;
                     }
-                    
+
                 }
 
             }
@@ -389,7 +389,7 @@ define(['render'], function(render) {
 
                         if (dEmailPillList.children.length === 1) {
                             dEmailPillList.firstElementChild.classList.remove('cui-hide-from-screen');
-                        } 
+                        }
                     }
                 }
 
@@ -408,12 +408,12 @@ define(['render'], function(render) {
                 else {
 
                     emp.load('modal2', function(modal2) {
-    
+
                         var dModalContents = document.createElement('p');
                         dModalContents.appendChild(document.createTextNode(sRemoveMessage));
-    
+
                         new modal2(evt.target, oSettings, dModalContents);
-    
+
                     })
 
                 }
@@ -467,7 +467,7 @@ define(['render'], function(render) {
 
                 }
                 else if (!dPillList) {
-                   
+
                     if (dCurrentElem.nodeName !== "UL") {
                         dCurrentElem = dCurrentElem.parentNode;
                     }
@@ -475,7 +475,7 @@ define(['render'], function(render) {
                         dPillList = dCurrentElem;
                         bContinue = true;
                     }
-                    
+
                 }
 
             }
@@ -492,7 +492,7 @@ define(['render'], function(render) {
 
                         if (dEmailPillList.children.length === 1) {
                             dEmailPillList.firstElementChild.classList.remove('cui-hide-from-screen');
-                        } 
+                        }
                     }
                 }
 
@@ -511,12 +511,12 @@ define(['render'], function(render) {
                 else {
 
                     emp.load('modal2', function(modal2) {
-    
+
                         var dModalContents = document.createElement('p');
                         dModalContents.appendChild(document.createTextNode(sRemoveMessage));
-    
+
                         new modal2(evt.target, oSettings, dModalContents);
-    
+
                     })
 
                 }
@@ -551,7 +551,7 @@ define(['render'], function(render) {
                     adShortInstructions: dShortSection.querySelector('.emp-section-instructions').cloneNode(true),
                     sSubId: sSubId
                 }
-        
+
                 new ecManageGroupComp(oConfig, oData, adSubscriptions[s]);
             }
 

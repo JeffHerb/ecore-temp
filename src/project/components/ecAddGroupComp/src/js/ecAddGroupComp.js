@@ -14,29 +14,29 @@ define(['render'], function(render) {
         var _priv = {
             _this: null
         };
-    
+
         _priv.stringReplace = function _sub_header_replace(sBase, sCount, sReplaceChar, bRemoveLast) {
-    
+
             var sReturn = sBase.replace(sReplaceChar, sCount).trim();
-    
+
             if (bRemoveLast) {
                 sReturn = sReturn.slice(0, sReturn.length -1);
             }
-    
+
             return sReturn;
         }
-    
+
         _priv.newPill = function _create_new_pill(sValue) {
-    
+
             var dNewPill = document.createElement('li');
-    
+
             var dNewPillWrapper = document.createElement('span');
                 dNewPillWrapper.classList.add('ec-pill');
-    
+
             var dNewPillTextWrapper = document.createElement('span');
                 dNewPillTextWrapper.classList.add('ec-pill-item-text');
                 dNewPillTextWrapper.appendChild(document.createTextNode(sValue));
-    
+
             var dNewButton = document.createElement('button');
                 dNewButtonText = document.createElement('span');
                 dNewButtonText.innerHTML = '&times;';
@@ -50,9 +50,9 @@ define(['render'], function(render) {
 
             return dNewPill;
         }
-    
+
         _priv.generateShell = function(oConfig, aData, dTarget, cb) {
-    
+
             let oRenderTemplate = {
                 "template": "ec-add-group-component",
                 "sAddLabel": _priv.stringReplace("Add $", oConfig.sNotItemName, '$', true) + ":",
@@ -63,17 +63,17 @@ define(['render'], function(render) {
                 "sNoItemsText": _priv.stringReplace("No $ provided", oConfig.sNotItemName, '$'),
                 "aItems": aData
             }
-    
+
             render.section(dTarget, oRenderTemplate, 'append', function (html) {
                 cb(dTarget.firstElementChild);
             });
-    
+
         }
 
         var _events = {};
 
         _events.clickEditLink = function _click_edit_link(evt) {
-            
+
             evt.preventDefault();
 
             if (dActualComponent.classList.contains('emp-collapse')) {
@@ -86,7 +86,7 @@ define(['render'], function(render) {
                 dActualComponent.classList.add('emp-collapse');
                 evt.target.textContent = "Edit";
             }
-            
+
         };
 
         _events.removePill = function _click_remove_pill(evt) {
@@ -134,7 +134,7 @@ define(['render'], function(render) {
 
                 }
                 else if (!dPillList) {
-                   
+
                     if (dCurrentElem.nodeName !== "UL") {
                         dCurrentElem = dCurrentElem.parentNode;
                     }
@@ -142,7 +142,7 @@ define(['render'], function(render) {
                         dPillList = dCurrentElem;
                         bContinue = true;
                     }
-                    
+
                 }
 
             }
@@ -159,34 +159,54 @@ define(['render'], function(render) {
                     }
                 }
 
-                var sRemoveMessage = "Are you sure you want to remove " + sPillText + "?";
+                var dModalContents = null;
+
+                // Fake out a check for the demo
+                if (sPillText === "jsmith1950@gmail.com") {
+
+                    var sRemoveMessage = "Are you sure you want to remove " + sPillText + "?";
+
+                    dModalContents = document.createElement('p');
+                    dModalContents.appendChild(document.createTextNode(sRemoveMessage));
+                }
+                else {
+
+                    var dP1 = document.createElement('p');
+                        dP1.appendChild(document.createTextNode("Are you sure you want to remove " + sPillText + "? This email is currently being used for the following subscriptions:"));
+
+                    var dUl = document.createElement('ul');
+                    var dLi = document.createElement('li');
+                        dLi.appendChild(document.createTextNode('Installment payment agreement'));
+                        dUl.appendChild(dLi);
+
+                    dModalContents = document.createElement('div');
+
+                    dModalContents.appendChild(dP1);
+                    dModalContents.appendChild(dUl);
+
+
+                }
+
 
                 if (require.s.contexts._.defined['modal2']) {
 
                     var modal2 = require.s.contexts._.defined['modal2'];
 
-                    var dModalContents = document.createElement('p');
-                    dModalContents.appendChild(document.createTextNode(sRemoveMessage));
-
                     new modal2(evt.target, oSettings, dModalContents);
-
                 }
                 else {
 
-                    emp.load('modal2', function(modal2) {
-    
-                        var dModalContents = document.createElement('p');
-                        dModalContents.appendChild(document.createTextNode(sRemoveMessage));
-    
+                    emp.load('modal2', function(modal2) {;
+
                         new modal2(evt.target, oSettings, dModalContents);
-    
+
                     })
 
                 }
 
                 if (dPillList.children.length === 1) {
                     dPillList.firstElementChild.classList.remove('cui-hide-from-screen');
-                } 
+                }
 
             }
 
@@ -230,16 +250,16 @@ define(['render'], function(render) {
                 else {
 
                     emp.load('modal2', function(modal2) {
-    
+
                         var dModalContents = document.createElement('p');
                         dModalContents.appendChild(document.createTextNode(oConfig.sAddParagraph));
-    
+
                         var dModal = new modal2(evt.target, oSettings, dModalContents);
-    
+
                     })
 
                 }
-                
+
             }
 
         };
