@@ -6,7 +6,8 @@
         "mapTest2": "mapTest2",
         "elec-comm-spa": "elec-comm-spa",
         "_map_nys_counties": "_map_nys_counties",
-        "_map_nys_albany_county": "_map_nys_albany_county"
+        "_map_nys_albany_county": "_map_nys_albany_county",
+        "ORLA_01":"ORLA_01"
     },
     "pageScripts": true
 }
