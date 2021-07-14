@@ -64,6 +64,10 @@ define(['render', 'guid'], function(render, guid) {
 
                 }
 
+                if (menuItem.attributes && menuItem.attributes.target) {
+                    dMenuControl.setAttribute('target', menuItem.attributes.target);
+                }
+
                 if (menuItem.onclick) {
                     dMenuControl.setAttribute('onclick', menuItem.onclick);
                 }

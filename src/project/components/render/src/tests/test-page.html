@@ -199,131 +199,304 @@
 					}
 				]
 			},
-			"header": {
-				"contents": [{
-						"template": "universal-header"
-					},
-					{
-						"template": "agency-header",
-						"userAcct": {
-							"text": "ram"
-						},
-						"title": "Assessor Summary"
-					}
-				]
-			},
-			"page": {
-				"contents": [{
-					"template": "pagebody",
-					"contents": [{
-						"template": "closed-session"
-					}]
-				}]
-			},
-			"menus": {
-				"supportContact": {
-					"items": [{
-							"attributes": {
-								"target": "_blank",
-								"href": "http://www.tax.ny.gov"
-							},
-							"template": "link",
-							"text": "Support"
-						},
-						{
-							"attributes": {
-								"target": "_blank",
-								"href": "http://www.tax.ny.gov"
-							},
-							"template": "link",
-							"text": "Contact Us"
-						}
-					],
-					"template": "tree"
-				},
-				"appHelp": {
-					"items": [{
-						"attributes": {
-							"target": "_blank",
-							"href": "http://www.google.com"
-						},
-						"template": "link",
-						"text": "Google It"
-					}],
-					"template": "tree",
-					"text": "addHelp"
-				},
-				"global": {
-					"items": [{
-							"attributes": {
-								"href": "/store-web/gateway/cat/dir_cat",
-								"data-appId": "EIVP"
-							},
-							"template": "link",
-							"text": "Enhanced STAR Income Verification Program"
-						},
-						{
-							"attributes": {
-								"href": "/store-web/gateway/cat/dir_cat",
-								"data-appId": "FWTS"
-							},
-							"template": "link",
-							"text": "Added for framework local testing.."
-						},
-						{
-							"items": [{
-									"attributes": {
-										"href": "/store-web/gateway/cat/dir_cat",
-										"data-appId": "STGR"
-									},
-									"template": "link",
-									"text": "STAR General Reports"
-								},
-								{
-									"attributes": {
-										"href": "/store-web/gateway/cat/dir_cat",
-										"data-appId": "ORRS"
-									},
-									"template": "link",
-									"text": "ORPTS Reports"
-								},
-								{
-									"attributes": {
-										"href": "/store-web/gateway/cat/dir_cat",
-										"data-appId": "STCR"
-									},
-									"template": "link",
-									"text": "STAR Credit Program Reports"
-								}
-							],
-							"text": "Reports"
-						}
-					],
-					"catalogs": [{
-							"active": false,
-							"href": "/store-web/gateway/cat/assessor_cat",
-							"text": "Assessor"
-						},
-						{
-							"active": true,
-							"href": "/store-web/gateway/cat/dir_cat",
-							"text": "Director"
-						}
-					],
-					"template": "tree"
-				},
-				"system": {
-					"items": [{
-						"attributes": {
-							"href": "/THOME/gateway/THOME/THOME_MAIN/THOME_/appmgr.wg/logout"
-						},
-						"template": "link",
-						"text": "Logout"
-					}],
-					"template": "tree"
-				}
-			},
-		};
+            "header": {
+                "contents": [
+                    {
+                        "template": "universal-header"
+                    },
+                    {
+                        "template": "agency-header",
+                        "userAcct": {
+                            "text": "C Tester"
+                        },
+                        "title": "Online Assessment Community",
+                        "showMenu": true,
+                        "showUserAcct": true,
+                        "showSupportMenu": true
+                    }
+                ]
+            },
+            "page": {
+                "contents": [
+                    {
+                        "template": "pageInfo",
+                        "instructions": [
+                            {
+                                "template": "output",
+                                "raw": true
+                            }
+                        ],
+                        "pageLegend": {},
+                        "title": "Assessment Community"
+                    },
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "contents": [
+                                    {
+                                        "template": "group",
+                                        "instructions": [
+                                            {
+                                                "template": "output",
+                                                "raw": true,
+                                                "text": "<div class=\"emp-landing-wrapper\">\n\t<p>To access reports and tools, select <em>Menu</em> in the upper left-hand corner of this page.</p>\n\n\t<div class=\"espot espot-contact\">\n\t\t<div class=\"espot-title\">Help us keep your locality's contact information up to date</div>\n\t\t<div class=\"espot-content\">Check the contact information for your jurisdiction in <a href=\"http://orps1.orpts.ny.gov/cfapps/MuniPro/\" target=\"_blank\" title=\"This will open a new window for more information.\">Municipal Profiles</a>. If the email address or contact information changed for you or others in your town, email <a href=\"mailto:real.property@tax.ny.gov\">real.property@tax.ny.gov</a></div>\n\t</div>\n\n\t<div class=\"espot espot-announce\">\n\t\t<div class=\"espot-title\">Subscribe to the Assessment Community Weekly newsletter</div>\n\t\t<div class=\"espot-content\">If you're not already receiving the newsletter, or you would like to change your email address, you can <a href=\"https://public.govdelivery.com/accounts/NYTAX/subscriber/new?topic_id=NYTAX_17\" target=\"_blank\" title=\"This will open a new window for more information.\">add a new email address or update your preferences</a>.</div>\n\t</div>\n\n\t<div class=\"espot espot-announce\">\n\t\t<div class=\"espot-title\">Looking for recent announcements?</div>\n\t\t<div class=\"espot-content\">Visit the <a href=\"https://www.tax.ny.gov/research/property/acw/default.htm\" target=\"_blank\" title=\"This will open a new window for more information.\">Assessment Community Weekly archive</a> to search newsletters from the past three years.\t\t\t\t\t\t\t\t\t\n\t\t</div>\n\t</div>\n\n\t<div class=\"espot espot-learn\">\n\t\t<div class=\"espot-title\">Need help?</div>\n\t\t<div class=\"espot-content\">Our liaisons are available to assist and answer your questions. Visit <a href=\"https://www.tax.ny.gov/research/property/regional/crmlist.htm\" target=\"_blank\" title=\"This will open a new window for more information.\">ORPTS customer service teams</a> and select the name of your county to start an email to your team. </div>\n\t</div>\n</div>"
+                                            }
+                                        ],
+                                        "attributes": {
+                                            "id": "S1"
+                                        },
+                                        "title": "Welcome to the ORPTS Online Assessment Community"
+                                    },
+                                    {
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "name": "_fw_flowSessionKey",
+                                                "id": "form_content__fw_flowSessionKey",
+                                                "type": "hidden",
+                                                "value": "fw_default_session_id:ORLA_MAIN:assessor"
+                                            }
+                                        },
+                                        "type": "hidden",
+                                        "attributes": {
+                                            "data-store-id": "4946"
+                                        }
+                                    }
+                                ],
+                                "attributes": {
+                                    "method": "post",
+                                    "name": "form_content",
+                                    "action": "/ORLA/gateway/ORLA/ORLA_MAIN/ORLA_02.page",
+                                    "id": "form_content"
+                                },
+                                "type": "form",
+                                "template": "universal"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "menus": {
+                "supportContact": {
+                    "template": "tree",
+                    "items": [
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "https://www.tax.ny.gov/e-services/otc/help/tips_os.htm",
+                                "href": "https://www.tax.ny.gov/e-services/otc/help/tips_os.htm",
+                                "target": "_blank"
+                            },
+                            "text": "Support"
+                        },
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "https://www.tax.ny.gov/help/contact/",
+                                "href": "https://www.tax.ny.gov/help/contact/",
+                                "target": "_blank"
+                            },
+                            "text": "Contact Us"
+                        }
+                    ]
+                },
+                "system": {
+                    "template": "tree",
+                    "items": [
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "logout",
+                                "href": "/ORLA/gateway/ORLA.app/fw_logout"
+                            },
+                            "text": "Logout"
+                        }
+                    ]
+                },
+                "appHelp": {
+                    "template": "tree",
+                    "text": "appHelp"
+                },
+                "userAccount": {
+                    "template": "tree",
+                    "text": "CTester4"
+                },
+                "global": {
+                    "template": "tree",
+                    "catalogs": [
+                        {
+                            "active": false,
+                            "text": "Local Staff",
+                            "href": "https://dvm.tax.ny.gov/real-property/gateway/cat/5"
+                        },
+                        {
+                            "active": true,
+                            "text": "County Director",
+                            "href": "https://dvm.tax.ny.gov/real-property/gateway/cat/2"
+                        }
+                    ],
+                    "text": "County Director Menu",
+                    "items": [
+                        {
+                            "text": "Star Reports",
+                            "items": [
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSISV03",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSISV03"
+                                    },
+                                    "text": "Report 1: Enhanced STAR Eligibility Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSTGV02",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSTGV02"
+                                    },
+                                    "text": "Report 2: Income Greater than $250,000 Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSTGV04",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSTGV04"
+                                    },
+                                    "text": "Report 3: Voluntary Exemption Removal Report – Initial"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSISV04",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSISV04"
+                                    },
+                                    "text": "Report 4: Tentative Roll Corrections Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSCPV03",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSCPV03"
+                                    },
+                                    "text": "Report 5: STAR Delinquency Report (no 2021 report)"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSTGV05",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSTGV05"
+                                    },
+                                    "text": "Report 6: Voluntary Exemption Removal Report – Final"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSISV01",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSISV01"
+                                    },
+                                    "text": "Report 7: Final Roll Corrections Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSCPV02",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSCPV02"
+                                    },
+                                    "text": "Report 8: STAR Credit Eligible Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSTGV03",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSTGV03"
+                                    },
+                                    "text": "Report 9: Senior Income Level Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSTGV01",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSTGV01"
+                                    },
+                                    "text": "Report 10: NYS Tax Return Deceased Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RSCPV01",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RSCPV01"
+                                    },
+                                    "text": "Report 11: STAR Credit Issued Report"
+                                }
+                            ]
+                        },
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "EIVP",
+                                "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/EIVP"
+                            },
+                            "text": "IVP Tool"
+                        },
+                        {
+                            "text": "IVP Tool Reports",
+                            "items": [
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RIVPV04",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RIVPV04"
+                                    },
+                                    "text": "Enhanced STAR Summary IVP Edit Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RIVPV02",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RIVPV02"
+                                    },
+                                    "text": "Enhanced STAR Daily IVP Edit Report"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "data-id": "RIVPV03",
+                                        "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RIVPV03"
+                                    },
+                                    "text": "Enhanced STAR Closed IVP Edit Report"
+                                }
+                            ]
+                        },
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "UPLD",
+                                "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/UPLD"
+                            },
+                            "text": "Upload Documents"
+                        },
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "RPSR",
+                                "href": "https://dvm.tax.ny.gov/real-property/gateway/app/2/RPSR"
+                            },
+                            "text": "RPSV4 Updates"
+                        },
+                        {
+                            "template": "link",
+                            "attributes": {
+                                "data-id": "ORPTS_CFSR",
+                                "href": "https://dvm.tax.ny.gov/real-property/gateway/extapp/2/ORPTS_CFSR",
+                                "target": "_blank"
+                            },
+                            "text": "Sales Reports"
+                        }
+                    ]
+                }
+            }
+        }
 	</script>
 	<script>
 		(function() {
