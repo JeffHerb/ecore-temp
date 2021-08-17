@@ -364,15 +364,18 @@
         }
 
         a span.emp-popup {
-            display: inline-block;
-            position: absolute;
-            transform: rotate(45deg);
-            border-bottom: 10px solid #888 !important;
+            background: url(../../dist/images/new-window.svg);
+            background-size: 18px 18px;
+            background-repeat: no-repeat;
+            background-position: 0px 2px;
             content: " ";
-            border-right: 10px solid transparent;
-            border-left: 10px solid transparent;
-            top: -2px;
-            right: -7px;
+            
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+
+            vertical-align:top;
+            margin-left:2px;            
         }
 
         .emp-field {
