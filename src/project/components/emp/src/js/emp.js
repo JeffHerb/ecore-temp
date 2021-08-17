@@ -4622,6 +4622,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         //Message Plugin exposed for testing pages
         empMessage: empMessage,
         store: store,
+        platform: "ecore",
 
         fileUploadModal: {
             fileUploadRequest: fileUploadModal.fileUploadRequest
