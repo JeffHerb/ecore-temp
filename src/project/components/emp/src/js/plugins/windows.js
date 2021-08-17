@@ -269,13 +269,13 @@ define(['guid', 'getCookie', 'clickblocker', 'store', 'utils'], function(guid, g
 
             if (fwData && fwData.context && fwData.context.screen && fwData.context.screen.session) {
 
-                sessionId = "win_" + fwData.context.screen.session.replace(/\:|\-|\_|\&|\$|\!|\%/g, '');
+                sessionId = emp.platform + "_win_" + fwData.context.screen.session.replace(/\:|\-|\_|\&|\$|\!|\%/g, '');
 
                 journal.log({ type: 'info', owner: 'UI', module: 'windows', func: 'open' }, 'Using session id from framework for all unammed default windows');
             }
             else {
 
-                sessionId = "win_" + guid();
+                sessionId = emp.platform + "_win_" + guid();
 
                 journal.log({ type: 'info', owner: 'UI', module: 'windows', func: 'open' }, 'No server-side session exists, generating page level default window name');
             }
@@ -326,7 +326,7 @@ define(['guid', 'getCookie', 'clickblocker', 'store', 'utils'], function(guid, g
 
         var newWindow = false;
 
-        console.log(arguments);
+        //console.log(arguments);
 
         // Check to see if the window name has been reference was reserved.
         if (_priv.windows[name]) {
