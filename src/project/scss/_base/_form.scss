@@ -114,3 +114,44 @@ form > .cui-row {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute;
 }
+
+
+
+// Temporary styles for file upload modal
+.upload-modal-progress-bar-body{
+    height: 35px;
+    width: 100%;
+    border: 2px solid #e7e7e6;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.upload-modal-progress-bar-fill-percent{
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);    
+    padding-top:10px;    
+}
+
+.upload-modal-progress-bar-fill{
+    height: 100%;
+    width: 0%;
+    max-width: 100%;
+    background-color: #b6cfd0;
+    text-align: center;
+    transition: width 0.25s;        
+}
+
+.upload-modal-progress-bar-text{
+    display: inline-block;
+    min-width:200px;
+
+    @include pointbreak($cui-bp-medium){
+        min-width: 370px;
+    }
+}
+
+.upload-modal-footer-wrapper{
+    text-align:right;
+}
