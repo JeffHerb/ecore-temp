@@ -1714,7 +1714,7 @@ define(['jquery', 'kind'], function ($, kind) {
             fieldName = $('#' + fieldID).text();
         }
         else {
-            fieldName = fieldId;
+            fieldName = fieldID;
         }
 
         if (typeof _rules[test].errorMsg === "string") {
@@ -1878,6 +1878,14 @@ define(['jquery', 'kind'], function ($, kind) {
                 inputs.each(function(i) {
 
                     var $field = $(this);
+                    /*DEBUG: START*/
+                    console.log($field.closest(".emp-collapse"));
+                    /*DEBUG: END*/
+
+                    if($field.closest(".emp-collapse").length > 0){
+                        return;
+                    }
+
 
                     var fieldResult = field($field);
 

@@ -118,12 +118,25 @@ form > .cui-row {
 
 
 // Temporary styles for file upload modal
+.upload-modal.cui-modal-use-header .cui-modal-header-content{
+    padding: 1em;
+}
+
+.upload-modal .cui-modal-body-content{
+    padding: 1em 1em 0 1em;
+}
+
+.upload-modal.cui-modal-use-footer .cui-modal-footer{
+    background:#ffffff;
+    padding: 0 1em 1em 1em;
+}
+
 .upload-modal-progress-bar-body{
     height: 35px;
     width: 100%;
     border: 2px solid #e7e7e6;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
 }
 
 .upload-modal-progress-bar-fill-percent{
@@ -143,7 +156,7 @@ form > .cui-row {
     transition: width 0.25s;        
 }
 
-.upload-modal-progress-bar-text{
+.upload-modal-progress-bar-text-wrapper{
     display: inline-block;
     min-width:200px;
 

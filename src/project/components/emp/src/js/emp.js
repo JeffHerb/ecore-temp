@@ -2031,28 +2031,44 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                         pageScript = script;
 
-                        render.page(targets, renderData, function _renderPage() {
+                        function renderPage() {
+                            render.page(targets, renderData, function _renderPage() {
 
-                            _priv.pageSetup(options, function() {
+                                _priv.pageSetup(options, function() {
 
-                                // Check for an init function
-                                if (pageScript.init) {
+                                    // Check for an init function
+                                    if (pageScript.init) {
 
-                                    pageScript.init();
+                                        pageScript.init();
 
-                                    journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
-                                }
+                                        journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
+                                    }
 
-                                setTimeout(function() {
+                                    setTimeout(function() {
 
-                                    _priv.removeLoadingSplash();
+                                        _priv.removeLoadingSplash();
 
-                                }, 1000);
+                                    }, 1000);
+
+                                });
+                            });
+                        }
+
+                        
+                        /*DEBUG: START*/
+                        console.log(pageScript);
+                        /*DEBUG: END*/
+                        if (pageScript.preRender) {
+
+                            pageScript.preRender(function() {
+                                renderPage();
 
                             });
 
-
-                        });
+                        }
+                        else{
+                            renderPage();
+                        }
 
                     });
 
@@ -2913,6 +2929,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             // Functions that need to include the event.
                             case 'emp.form.submit':
                             case 'emp.form.uploadProgressSubmit':
+                            case 'emp.form.preSubmitAjax':
 
                                 // Check to make sure only one argument (the submit options object) is currently in places
                                 if (args.length === 1) {
@@ -4164,6 +4181,314 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                              var submitForm = function(){
 
+                                var fileInput = frm.querySelector("input[type=file]");
+
+                                if(!fileInput || !fileInput.files || !fileInput.files[0]){
+                                    return;
+                                }
+
+                                var fileName = fileInput.files[0].name;
+                                var fileSize = fileInput.files[0].size;
+
+                                var $confirm;
+
+                                var progressBar = document.createElement('span');
+                                progressBar.id = 'upload-modal-progress-bar';
+                                progressBar.classList.add('upload-modal-progress-bar');
+
+                                var progressBarWrapper = document.createElement('div');
+                                progressBarWrapper.id = "upload-modal-progress-bar-wrapper";
+                                progressBarWrapper.classList.add("upload-modal-progress-bar-wrapper");
+                                
+                                var progressBarFileName = document.createElement('span');
+                                progressBarFileName.id = "upload-modal-progress-bar-text";
+                                progressBarFileName.classList.add("upload-modal-progress-bar-text");
+                                progressBarFileName.textContent = "File name: " + fileName;
+
+                                var progressBarLoadedAmount = document.createElement('span');
+                                progressBarLoadedAmount.id = "upload-modal-progress-bar-loaded-amount";
+                                progressBarLoadedAmount.classList.add("upload-modal-progress-bar-loaded-amount");
+                                progressBarLoadedAmount.textContent = "100kb";
+
+                                var progressBarFileSize = document.createElement('span');
+                                progressBarFileSize.id = "upload-modal-progress-bar-file-size";
+                                progressBarFileSize.classList.add("upload-modal-progress-bar-file-size");
+                                progressBarFileSize.textContent = fileSize;
+                                
+                                var progressBarTextWrapper = document.createElement('div');
+                                progressBarTextWrapper.id = "upload-modal-progress-bar-text-wrapper";
+                                progressBarTextWrapper.classList.add("upload-modal-progress-bar-text-wrapper");
+                                progressBarTextWrapper.appendChild(progressBarFileName);
+                                // progressBarTextWrapper.appendChild(progressBarLoadedAmount);
+                                // progressBarTextWrapper.appendChild(progressBarFileSize);
+
+
+                                var progressBarBody = document.createElement('div');        
+                                progressBarBody.id = "upload-modal-progress-bar-body";                        
+                                progressBarBody.classList.add("upload-modal-progress-bar-body");                        
+
+                                var progressBarFillPercent = document.createElement('div');
+                                progressBarFillPercent.id = "upload-modal-progress-bar-fill-percent";
+                                progressBarFillPercent.classList.add("upload-modal-progress-bar-fill-percent");
+                                progressBarFillPercent.textContent = "0.00%";
+                                
+                                var progressBarFill = document.createElement('div');
+                                progressBarFill.id = "upload-modal-progress-bar-fill";
+                                progressBarFill.classList.add("upload-modal-progress-bar-fill");
+
+                                progressBarBody.appendChild(progressBarFillPercent);
+                                progressBarBody.appendChild(progressBarFill);
+                                progressBarWrapper.appendChild(progressBarTextWrapper);
+                                progressBarWrapper.appendChild(progressBarBody);
+
+                                var cancelButton = document.createElement('button');
+                                cancelButton.textContent = "Cancel Upload";
+                                cancelButton.type = "button";
+
+                                cancelButton.onclick = function(){
+                                    request.abort();       
+                                    clkblocker.remove();        
+                                    $confirm.hide();               
+                                };
+
+                                var footerWrapper = document.createElement('div');
+                                footerWrapper.classList.add('upload-modal-footer-wrapper');
+                                footerWrapper.appendChild(cancelButton);
+
+                                var headerText = document.createElement('span');
+                                headerText.textContent = "Uploading...";
+
+                                var headerWrapper = document.createElement('div');
+                                headerWrapper.classList.add('upload-modal-header-wrapper');
+                                headerWrapper.appendChild(headerText);
+
+                                $confirm = $.modal({
+                                    html: progressBarWrapper,
+                                    header:{
+                                        "html": headerWrapper
+                                    },
+                                    footer: {
+                                        "html": footerWrapper
+                                    },
+                                    hideOnEscape: false,
+                                    display:{
+                                        closeButton:false
+                                    },
+                                    overlay:{
+                                        closeOnClick: false
+                                    },
+                                    hideDestroy: true,
+                                    modalClass:"upload-modal"
+                                });
+
+                                $confirm.show();
+
+                                // Need to use xhr request to track progress instead of native form submit.
+                                // make an xhr object
+                                var request = new XMLHttpRequest();
+
+                                // track progress
+                                request.upload.addEventListener('progress', progressHandler, false);
+
+                                request.onload = function () {
+                                    var progressBarFillPercent = document.getElementById('upload-modal-progress-bar-fill-percent');
+                                    progressBarFillPercent.textContent = "100%";
+
+                                    var progressBarFill = document.getElementById('upload-modal-progress-bar-fill');
+                                    progressBarFill.style.width = "100%";
+                                };
+
+                                // request.onabort = function (){
+                                    
+                                // };
+
+                                // setup request method and url
+                                request.open("POST", frm.action);
+
+                                // send the request
+                                request.send(new FormData(frm));
+                             };
+
+                            // check and load modal if needed
+                            if (require.defined('modal')) {
+                                submitForm();
+                            }
+                            else{
+                                cui.load('modal', function _error_report_modal() {
+                                    submitForm();
+                                });
+                            }
+
+                            return true;
+                        }
+                        else {
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion blocked by developer, form:", options.id);
+
+                            _priv.printFormContents($(frm));
+
+                            clkblocker.remove();
+
+                            return true;
+                        }
+                    }
+                    else {
+
+                        clkblocker.remove();
+
+                        return true;
+                    }
+                }
+                else {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Validation skipped!");
+
+                    if (!_disableForms) {
+
+                        _priv.printFormContents($(frm));
+
+                        journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+
+                        frm.submit();
+
+                        return true;
+                    }
+                    else {
+                        journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion blocked by developer, form settings:", options.id);
+
+                        _priv.printFormContents($(frm));
+
+                        clkblocker.remove();
+
+                        return true;
+                    }
+                }
+
+            }
+
+        }
+        else {
+            // Log the error and quit
+            if (submitSettings.id !== '') {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'No form with ID "', submitSettings.id, '"');
+            }
+            else if (evt instanceof Event) {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'Unable to find form related to "#', evt.target.id, '" from element ', evt.target);
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'Unable to find form ', submitSettings);
+            }
+
+            return false;
+        }
+    };
+
+    form.preSubmitAjax = function _submit(evt, options, settings){
+         journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submit called: ", arguments);
+
+        var frm = false;
+        var validation = true;
+
+        if (evt && evt.target) {
+
+            if (!evt.target.hasAttribute('data-skip-blocker')) {
+                clkblocker.add($(evt.target));
+            }
+            else {
+                journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Click blocker skipped per developer as data-skip-blocker attribute on element.");
+            }
+        }
+        else {
+
+            clkblocker.add();
+        }
+
+        // Look over the event object and verify that it is not an event type object or a jquery event object.
+        if (!(evt instanceof Event) && typeof evt !== 'object' && (typeof evt === 'object' && !evt.hasOwnProperty('target'))) {
+            options = evt;
+            evt = undefined;
+        }
+
+        // Extend setting wit options
+        var submitSettings = $.extend({}, { id: '', action: '' }, options);
+
+        // Identify the proper form by option id or by the buttons native form
+        if (options.id && typeof options.id === 'string') {
+
+            frm = document.getElementById(options.id);
+        }
+        else if (evt instanceof Event) {
+
+            frm = evt.target.form;
+
+            // default blocker incase the
+            evt.preventDefault();
+        }
+
+        // Get the event type and use it to get a reference to what was just clicked.
+        if (evt instanceof Event || evt instanceof jQuery.Event) {
+            var validAttr = $(evt.target).attr('data-validation');
+
+            if (validAttr === false || validAttr === 'false') {
+                validation = false;
+            }
+        }
+
+        if (frm) {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submitting form:", frm);
+
+            if (submitSettings.action && submitSettings.action !== '') {
+
+                frm.setAttribute('action', submitSettings.action);
+            }
+
+            if (submitSettings.preventSubmit) {
+
+                clkblocker.remove();
+
+                // Report that the action still completed.
+                return true;
+            }
+            else {
+
+                // Forces validation to false!
+                // validation = false;
+
+                // Check to see if the form can be validated
+                if (validation) {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Running validation on form.");
+
+                    // validate the form
+                    var formValidation = validate.form(frm);
+
+                    // If the results passed, allow the form to submit.
+                    if (formValidation) {
+
+                        if (!_disableForms) {
+
+                            _priv.printFormContents($(frm));
+
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+                          
+                            var progressHandler = function(evt){
+                                var progressBarText = document.getElementById('upload-modal-progress-bar-text');                                
+                                var progressBarFill = document.getElementById('upload-modal-progress-bar-fill');
+                                var progressBarFillPercent = document.getElementById('upload-modal-progress-bar-fill-percent');
+                                var totalSize = evt.total;
+                                var loadedAmount = evt.loaded;
+                                
+                                if(loadedAmount < totalSize){                                
+                                    var progressPercent = loadedAmount / totalSize * 100;
+
+                                    progressBarFillPercent.textContent = progressPercent.toFixed(0) + "%";
+                                    progressBarFill.style.width = progressPercent.toFixed(0)+"%";                                    
+                                }                                
+                             };
+
+
+                             var submitForm = function(){
+
                                 var $confirm;
 
                                 var progressBar = document.createElement('span');
@@ -4862,6 +5187,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             externalSubmit: form.externalSubmit,
             submit: form.submit,
             uploadProgressSubmit: form.uploadProgressSubmit,
+            preSubmitAjax: form.preSubmitAjax,
             virtual: form.virtual,
         },
         disable: {
