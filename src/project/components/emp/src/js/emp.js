@@ -2031,28 +2031,40 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                         pageScript = script;
 
-                        render.page(targets, renderData, function _renderPage() {
+                        function renderPage() {
+                            render.page(targets, renderData, function _renderPage() {
 
-                            _priv.pageSetup(options, function() {
+                                _priv.pageSetup(options, function() {
 
-                                // Check for an init function
-                                if (pageScript.init) {
+                                    // Check for an init function
+                                    if (pageScript.init) {
 
-                                    pageScript.init();
+                                        pageScript.init();
 
-                                    journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
-                                }
+                                        journal.log({ type: 'info', owner: 'UI', module: 'emp', func: 'init' }, 'Page script was executed!');
+                                    }
 
-                                setTimeout(function() {
+                                    setTimeout(function() {
 
-                                    _priv.removeLoadingSplash();
+                                        _priv.removeLoadingSplash();
 
-                                }, 1000);
+                                    }, 1000);
+
+                                });
+                            });
+                        }
+                        
+                        if (pageScript.preRender) {
+
+                            pageScript.preRender(function() {
+                                renderPage();
 
                             });
 
-
-                        });
+                        }
+                        else{
+                            renderPage();
+                        }
 
                     });
 
@@ -2911,7 +2923,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                         switch (funcName) {
 
                             // Functions that need to include the event.
-                            case 'emp.form.submit':
+                            case 'emp.form.submit':                            
+                            case 'emp.form.preSubmitAjax':
 
                                 // Check to make sure only one argument (the submit options object) is currently in places
                                 if (args.length === 1) {
@@ -3947,6 +3960,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
             journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submitting form:", frm);
 
+
+            
+
             if (submitSettings.action && submitSettings.action !== '') {
 
                 frm.setAttribute('action', submitSettings.action);
@@ -3982,6 +3998,760 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
 
                             frm.submit();
+
+                            return true;
+                        }
+                        else {
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion blocked by developer, form:", options.id);
+
+                            _priv.printFormContents($(frm));
+
+                            clkblocker.remove();
+
+                            return true;
+                        }
+                    }
+                    else {
+
+                        clkblocker.remove();
+
+                        return true;
+                    }
+                }
+                else {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Validation skipped!");
+
+                    if (!_disableForms) {
+
+                        if(evt.target && evt.target.dataset.uploadAjax == 'true'){
+                            var fileInput = frm.querySelector('input[type=file]');
+
+                            if(fileInput && fileInput.dataset.uploadUrl && fileInput.dataset.uploadUrl !== ""){
+                               
+                               //Call function to handle the ajax file chunking and continue with the rest of the form submit. 
+                                form.processFileUploadAjax(frm);
+
+                                return true;
+                            }
+                            else{
+                                _priv.printFormContents($(frm));
+
+                                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+
+                                frm.submit();
+                            }
+                        }                       
+                        
+                        else{
+                            _priv.printFormContents($(frm));
+
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+
+                            frm.submit();
+                        }
+
+                        return true;
+                    }
+                    else {
+                        journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion blocked by developer, form settings:", options.id);
+
+                        _priv.printFormContents($(frm));
+
+                        clkblocker.remove();
+
+                        return true;
+                    }
+                }
+
+            }
+
+        }
+        else {
+            // Log the error and quit
+            if (submitSettings.id !== '') {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'No form with ID "', submitSettings.id, '"');
+            }
+            else if (evt instanceof Event) {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'Unable to find form related to "#', evt.target.id, '" from element ', evt.target);
+            }
+            else {
+                journal.log({ type: 'error', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, 'Unable to find form ', submitSettings);
+            }
+
+            return false;
+        }
+    };
+
+     /**
+     * Called in the middle of standard form submission where input fields and upload URL are detected. 
+     *
+     * @param   {Event}   evt      User event (click, etc)
+     * @param   {Object}  options  Includes the form's ID and action
+     *
+     * @return  {boolean}          Success/failure
+     */
+    form.processFileUploadAjax = function _processFileUploadAjax(frm){
+        var fileUploadIdList = [];
+        var fileInputs = frm.querySelectorAll("input[type=file");
+        var fileList = [];        
+        
+        var uploadUrl; //Derived from data attribute on file input, should only need to pull value from one as all inputs should be using the same end point.  
+        var uploadAbortUrl; //Derived from data attribute on file input, should only need to pull value from one as all inputs should be using the same end point.  
+
+        var progressBarEnabled = false; // Should eventually come from a property on the form/input. 
+        var progressBarOverrideInputCount = 2;
+        var progressBarOverrideFileCount = 2;
+        var progressBarOverrideFileSize = 100;
+
+        var chunkSize = 1024 * 1024 * 1024;        
+        var requestList = [];        
+        var retryLimit = 3;
+        var uploadSuccess = false;
+        var $confirm;       
+
+        var checkProgressBarOverride = function _checkProgressBarOverride(fileInputs){ 
+            if(fileInputs.length > progressBarOverrideInputCount){
+                return true;
+            } 
+            else{
+                for(var i = 0; i < fileInputs.length; i++){
+                    var fileInput = fileInputs[i];
+                        
+                    if(fileInput.files && fileInput.files.length > 0){                
+
+                        if(fileInput.files.length > progressBarOverrideFileCount){
+                            return true;
+                        }
+                        else{
+                            for(var f=0; f<fileInput.files.length; f++){                    
+                                if(fileInput.files[f].size > progressBarOverrideFileSize){
+                                    return true;
+                                }
+                            }    
+                        }                        
+                    }
+                }        
+            }
+
+            return false;
+        };
+
+        var processFileInputs = function _processFileInputs(fileInputs){  
+            //Set upload urls based off first file input in form. 
+            uploadUrl = fileInputs[0].dataset.uploadUrl;
+            uploadAbortUrl = fileInputs[0].dataset.uploadAbortUrl;
+
+            for(var i = fileInputs.length-1; i >= 0 ; i--){
+                var fileInput = fileInputs[i];
+                    
+                if(fileInput.files && fileInput.files.length > 0){                
+                    for(var f=fileInput.files.length-1; f>=0; f--){          
+                        fileList.push(fileInput.files[f]);
+                    }   
+                }
+            }   
+
+            if(fileList.length > 0){
+                sendFile(fileList.pop());
+            }
+        };
+
+        var sendFile = function _sendFile(file){
+            var chunkCount = 0;
+            var totalChunks;
+            var retryCount = 0;            
+            var fileSize = file.size;
+            var fileName = file.name;
+            var fileId;
+            var transferComplete = false;
+            var requestAborted = false;
+
+            var calculateChunks = function _calculateChunks(){
+                totalChunks = Math.ceil(fileSize / chunkSize);              
+            };
+
+            var uploadFileChunks = function _uploadFileChunks(){
+                var chunk;
+                var formData = new FormData();
+                var start = (chunkCount == 0) ? 0 : (chunkCount * chunkSize +1);
+                var end = ((start + chunkSize) < fileSize) ? (start + chunkSize) : fileSize;
+
+                chunk = file.slice(start, end);
+                formData.append('file', chunk, fileName);
+
+                if(fileId){
+                    formData.append("fileId", fileId);
+                }
+
+                chunkCount++;
+
+                makeAjaxRequest(formData, start, end);
+            };
+
+            var makeAjaxRequest = function _makeAjaxRequest(formData, blobStart, blobEnd){
+               
+                function handleResponseMessages(messages){
+                    var messageType = "message";
+                    var messageOptions = {
+                        scroll: false,
+                        // field: $ajaxTooltip,
+                        pageNotifier: false
+                    };
+                    var messageDisplayed = false;
+
+                    for (var m = 0; m < messages.length; m++) {
+
+                        if (messages[m].text && (messages[m].text !== "" && messages[m].text !== null)) {
+
+                            messageType = "message";
+
+                            //Set Message Type
+                            if (messages[m].type) {
+                                messageType = messages[m].type;
+                            }
+
+                            //Create Message
+                            empMessage.createMessage({ text: messages[m].text, type: messageType }, messageOptions);
+                            messageDisplayed = true;
+                        }
+                    }
+
+                    if(messageDisplayed){
+                        if(clkblocker){
+                            clkblocker.remove();            
+                        }
+
+                        if($confirm){
+                            $confirm.destroy();  
+                            $confirm = null;  
+                        }
+                    }
+                }
+
+                function updateProgressPopup(){
+                    if(!$confirm){
+                        initProgressPopup();
+                    }
+                    else{
+                        // Update the file name and file count. 
+                        var progressBarFileName = document.getElementById('upload-modal-progress-bar-text');
+                        progressBarFileName.textContent = "File name: " + fileName;
+                    }
+                }
+
+                function initProgressPopup(){
+                    var progressBar = document.createElement('span');
+                    progressBar.id = 'upload-modal-progress-bar';
+                    progressBar.classList.add('upload-modal-progress-bar');
+
+                    var progressBarWrapper = document.createElement('div');
+                    progressBarWrapper.id = "upload-modal-progress-bar-wrapper";
+                    progressBarWrapper.classList.add("upload-modal-progress-bar-wrapper");
+                    
+                    var progressBarFileName = document.createElement('span');
+                    progressBarFileName.id = "upload-modal-progress-bar-text";
+                    progressBarFileName.classList.add("upload-modal-progress-bar-text");
+                    progressBarFileName.textContent = "File name: " + fileName;
+                    
+                    var progressBarTextWrapper = document.createElement('div');
+                    progressBarTextWrapper.id = "upload-modal-progress-bar-text-wrapper";
+                    progressBarTextWrapper.classList.add("upload-modal-progress-bar-text-wrapper");
+                    progressBarTextWrapper.appendChild(progressBarFileName);
+
+                    var progressBarBody = document.createElement('div');        
+                    progressBarBody.id = "upload-modal-progress-bar-body";                        
+                    progressBarBody.classList.add("upload-modal-progress-bar-body");                        
+
+                    var progressBarFillPercent = document.createElement('div');
+                    progressBarFillPercent.id = "upload-modal-progress-bar-fill-percent";
+                    progressBarFillPercent.classList.add("upload-modal-progress-bar-fill-percent");
+                    progressBarFillPercent.textContent = "0.00%";
+                    
+                    var progressBarFill = document.createElement('div');
+                    progressBarFill.id = "upload-modal-progress-bar-fill";
+                    progressBarFill.classList.add("upload-modal-progress-bar-fill");
+
+                    progressBarBody.appendChild(progressBarFillPercent);
+                    progressBarBody.appendChild(progressBarFill);
+                    progressBarWrapper.appendChild(progressBarTextWrapper);
+                    progressBarWrapper.appendChild(progressBarBody);
+
+                    var cancelButton = document.createElement('button');
+                    cancelButton.textContent = "Cancel Upload";
+                    cancelButton.type = "button";
+
+                    cancelButton.onclick = function(){
+                        for(var i=0;i<requestList.length;i++){
+                            if(requestList[i].status == 0){
+                                requestList[i].abort();
+                            }                           
+                        }
+                        
+                        clkblocker.remove();        
+                        $confirm.hide();    
+                        requestAborted = true;           
+                    };
+
+                    var footerWrapper = document.createElement('div');
+                    footerWrapper.classList.add('upload-modal-footer-wrapper');
+                    footerWrapper.appendChild(cancelButton);
+
+                    var headerText = document.createElement('span');
+                    headerText.textContent = "Uploading...";
+
+                    var headerWrapper = document.createElement('div');
+                    headerWrapper.classList.add('upload-modal-header-wrapper');
+                    headerWrapper.appendChild(headerText);
+
+                    $confirm = $.modal({
+                        html: progressBarWrapper,
+                        header:{
+                            "html": headerWrapper
+                        },
+                        footer: {
+                            "html": footerWrapper
+                        },
+                        hideOnEscape: false,
+                        display:{
+                            closeButton:false
+                        },
+                        overlay:{
+                            closeOnClick: false
+                        },
+                        hideDestroy: true,
+                        modalClass:"upload-modal"
+                    });
+
+                    $confirm.show();
+                }
+
+
+                function retryUpload(){
+                    if(requestAborted){
+                        return;
+                    }
+
+                    if(retryCount < retryLimit){
+                        journal.log({ type: 'info', owner: 'UI', module: 'form', submodule: 'processFileUploadAjax' }, 'Retrying file upload.');                   
+                        retryCount++;
+                        makeAjaxRequest(formData, blobStart, blobEnd);
+                    }
+                    else{
+                        journal.log({ type: 'info', owner: 'UI', module: 'form', submodule: 'processFileUploadAjax' }, 'Retry limit reached.');                   
+                    }
+                }
+
+                function requestLoad(evt){
+                    
+                    try{
+                        var response = this.responseText;
+                       
+                        if(response){
+                            response = JSON.parse(response);
+                        }
+                       
+                        if(response.status == "success"){
+
+                            if(response.result && response.result.length > 0){
+
+                                if(response.result[0].messages && response.result[0].messages.length > 0){
+                                    handleResponseMessages(response.result[0].messages);
+                                }
+                                else{ 
+
+                                    if(response.result[0].body && response.result[0].body.fileId){
+                                        if(!fileId){
+                                            fileId = response.result[0].body.fileId;    
+                                        }
+                                    } 
+                                    if(!requestAborted){
+                                        if(chunkCount < totalChunks){
+                                            uploadFileChunks();    
+                                        }
+                                        else{         
+
+                                            addUploadedFileId(fileId);
+                                            
+                                            finishFileUpload();
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            // Display any server messages
+                            if(response.messages && response.messages.length > 0){
+                                handleResponseMessages(response.messages);
+                            }
+                        }
+                    }
+                    catch(e){
+                        journal.log({ type: 'error', owner: 'UI', module: 'form', submodule: 'processFileUploadAjax' }, 'Failed to handle file upload response.', e);  
+                        retryUpload();                        
+                    }
+                }
+
+                function requestProgress (evt) {
+                    var progressBarText = document.getElementById('upload-modal-progress-bar-text');
+                    var progressBarFill = document.getElementById('upload-modal-progress-bar-fill');
+                    var progressBarFillPercent = document.getElementById('upload-modal-progress-bar-fill-percent');
+                    var totalSize = evt.total;
+                    var loadedAmount = evt.loaded;
+                    
+                    if (evt.lengthComputable) {  
+                        if(loadedAmount < totalSize){       
+
+                            var chunkValue = 1/totalChunks;
+                            var fileTransferProgress = loadedAmount / totalSize; 
+
+                            var completedChunkProgress = ((chunkCount -1)*chunkValue);
+                            var currentChunkProgess = fileTransferProgress * chunkValue;
+
+                            var totalProgressPercentage = (completedChunkProgress + currentChunkProgess) * 100;
+                          
+                            progressBarFillPercent.textContent = totalProgressPercentage.toFixed(0) + "%";
+                            progressBarFill.style.width = totalProgressPercentage.toFixed(0)+"%";                                    
+                        } 
+                    }                    
+                }
+
+                function requestError(evt){
+                    /*DEBUG: START*/
+                    console.log('oReq - requestError');
+                    /*DEBUG: END*/                    
+                }
+
+                function requestAbort(evt){
+                    /*DEBUG: START*/
+                    console.log('oReq - requestAbort');
+                    /*DEBUG: END*/
+                }
+
+                updateProgressPopup();
+
+                var oReq = new XMLHttpRequest();
+                
+                // Add events
+                oReq.upload.addEventListener("progress", requestProgress);
+                oReq.addEventListener('loadend', requestLoad);
+                oReq.addEventListener('progress', requestProgress);
+                oReq.addEventListener('error', requestError);
+                oReq.addEventListener('abort', requestAbort);
+
+                // Open request
+                oReq.open("POST", uploadUrl, true);  
+
+                // Set any additional properties
+                var contentRange = "bytes " + blobStart + "-" + blobEnd + "/" + file.size;
+                oReq.setRequestHeader("Content-Range", contentRange);
+                
+                if(!requestAborted){
+                    requestList.push(oReq);
+                    oReq.send(formData);
+                }
+            };
+
+            calculateChunks();            
+
+            // check and load modal if needed
+            if (require.defined('modal')) {
+                uploadFileChunks();
+            }
+            else{
+                cui.load('modal', function _error_report_modal() {
+                    uploadFileChunks();
+                });
+            }
+        };
+
+        var addUploadedFileId = function _addUploadedFileId(fileId){
+            fileUploadIdList.push(fileId);
+        };
+
+        var finishFileUpload = function _finishFileUpload(){
+            if(fileList.length >0){
+                sendFile(fileList.pop());
+            }
+            else{
+                fileInputCleanup();
+            }
+        };
+
+
+        var fileInputCleanup = function _fileInputCleanup(){
+            //Check if progress bar is still active, if so max the value while the form finshes submitting.
+            var progressBarFill = document.getElementById('upload-modal-progress-bar-fill');
+            var progressBarFillPercent = document.getElementById('upload-modal-progress-bar-fill-percent');
+
+            if(progressBarFill && progressBarFillPercent){
+                progressBarFillPercent.textContent = "100%";    
+                progressBarFill.style.width = "100%";   
+            }
+
+            // May also want to disable cancel upload button at this stage. 
+
+            //Remove files from file inputs
+            for(var i = fileInputs.length-1; i >= 0 ; i--){
+                var fileInput = fileInputs[i];
+                fileInput.value = null;
+            }
+
+            //Create hidden field and append to form. 
+            var hiddenUploadIds = document.createElement('input');
+            hiddenUploadIds.type = "hidden";
+            hiddenUploadIds.id = "uploaded-file-ids";
+            hiddenUploadIds.value = fileUploadIdList.join(',');
+
+            frm.appendChild(hiddenUploadIds);
+
+            submitForm();
+        };
+
+
+        var submitForm = function _submitForm(){
+            _priv.printFormContents($(frm));
+
+            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+
+            frm.submit();                          
+        };
+
+        var checkValidateForm = function _checkValidForm(){
+            var formValidation = validate.form(frm);
+
+            return formValidation;
+        };
+
+        //If progress bar isn't enabled by default, crawl all file inputs and determine if it should be displayed based on override values. 
+        if(!progressBarEnabled){
+            if(checkProgressBarOverride(fileInputs)){
+                progressBarEnabled = true;
+
+                journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'processFileUploadAjax' }, '"Progress bar display overridden');
+            }
+        }
+
+        if(clkblocker){
+            clkblocker.remove();            
+        }
+
+        if($confirm){
+            $confirm.destroy();  
+            $confirm = null;  
+        }
+
+        if(checkValidateForm()){
+            processFileInputs(fileInputs);
+        }        
+    };
+
+    form.preSubmitAjax = function _submit(evt, options, settings){
+        journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submit called: ", arguments);
+
+        var frm = false;
+        var validation = true;
+
+        if (evt && evt.target) {
+
+            if (!evt.target.hasAttribute('data-skip-blocker')) {
+                clkblocker.add($(evt.target));
+            }
+            else {
+                journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Click blocker skipped per developer as data-skip-blocker attribute on element.");
+            }
+        }
+        else {
+
+            clkblocker.add();
+        }
+
+        // Look over the event object and verify that it is not an event type object or a jquery event object.
+        if (!(evt instanceof Event) && typeof evt !== 'object' && (typeof evt === 'object' && !evt.hasOwnProperty('target'))) {
+            options = evt;
+            evt = undefined;
+        }
+
+        // Extend setting wit options
+        var submitSettings = $.extend({}, { id: '', action: '' }, options);
+
+        // Identify the proper form by option id or by the buttons native form
+        if (options.id && typeof options.id === 'string') {
+
+            frm = document.getElementById(options.id);
+        }
+        else if (evt instanceof Event) {
+
+            frm = evt.target.form;
+
+            // default blocker incase the
+            evt.preventDefault();
+        }
+
+        // Get the event type and use it to get a reference to what was just clicked.
+        if (evt instanceof Event || evt instanceof jQuery.Event) {
+            var validAttr = $(evt.target).attr('data-validation');
+
+            if (validAttr === false || validAttr === 'false') {
+                validation = false;
+            }
+        }
+
+        if (frm) {
+
+            journal.log({ type: 'info', owner: 'Developer', module: 'emp', submodule: 'form', func: 'submit' }, "Submitting form:", frm);
+
+            if (submitSettings.action && submitSettings.action !== '') {
+
+                frm.setAttribute('action', submitSettings.action);
+            }
+
+            if (submitSettings.preventSubmit) {
+
+                clkblocker.remove();
+
+                // Report that the action still completed.
+                return true;
+            }
+            else {
+
+                // Forces validation to false!
+                // validation = false;
+
+                // Check to see if the form can be validated
+                if (validation) {
+
+                    journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Running validation on form.");
+
+                    // validate the form
+                    var formValidation = validate.form(frm);
+
+                    // If the results passed, allow the form to submit.
+                    if (formValidation) {
+
+                        if (!_disableForms) {
+
+                            _priv.printFormContents($(frm));
+
+                            journal.log({ type: 'info', owner: 'UI', module: 'emp', submodule: 'form', func: 'submit' }, "Form Submittion Executing!");
+                          
+                            var progressHandler = function(evt){
+                                var progressBarText = document.getElementById('upload-modal-progress-bar-text');                                
+                                var progressBarFill = document.getElementById('upload-modal-progress-bar-fill');
+                                var progressBarFillPercent = document.getElementById('upload-modal-progress-bar-fill-percent');
+                                var totalSize = evt.total;
+                                var loadedAmount = evt.loaded;
+                                
+                                if(loadedAmount < totalSize){                                
+                                    var progressPercent = loadedAmount / totalSize * 100;
+
+                                    progressBarFillPercent.textContent = progressPercent.toFixed(0) + "%";
+                                    progressBarFill.style.width = progressPercent.toFixed(0)+"%";                                    
+                                }                                
+                             };
+
+
+                             var submitForm = function(){
+
+                                var $confirm;
+
+                                var progressBar = document.createElement('span');
+                                progressBar.id = 'upload-modal-progress-bar';
+                                progressBar.classList.add('upload-modal-progress-bar');
+
+                                var progressBarWrapper = document.createElement('div');
+                                progressBarWrapper.id = "upload-modal-progress-bar-wrapper";
+                                progressBarWrapper.classList.add("upload-modal-progress-bar-wrapper");
+                                
+                                var progressBarText = document.createElement('span');
+                                progressBarText.id = "upload-modal-progress-bar-text";
+                                progressBarText.classList.add("upload-modal-progress-bar-text");
+                                progressBarText.textContent = "Uploading...";
+                                
+                                var progressBarBody = document.createElement('div');        
+                                progressBarBody.id = "upload-modal-progress-bar-body";                        
+                                progressBarBody.classList.add("upload-modal-progress-bar-body");                        
+
+                                var progressBarFillPercent = document.createElement('div');
+                                progressBarFillPercent.id = "upload-modal-progress-bar-fill-percent";
+                                progressBarFillPercent.classList.add("upload-modal-progress-bar-fill-percent");
+                                progressBarFillPercent.textContent = "0.00%";
+                                
+                                var progressBarFill = document.createElement('div');
+                                progressBarFill.id = "upload-modal-progress-bar-fill";
+                                progressBarFill.classList.add("upload-modal-progress-bar-fill");
+
+                                progressBarBody.appendChild(progressBarFillPercent);
+                                progressBarBody.appendChild(progressBarFill);
+                                progressBarWrapper.appendChild(progressBarText);
+                                progressBarWrapper.appendChild(progressBarBody);
+
+                                var cancelButton = document.createElement('button');
+                                cancelButton.textContent = "Cancel Upload";
+                                cancelButton.type = "button";
+
+                                cancelButton.onclick = function(){
+                                    request.abort();       
+                                    clkblocker.remove();        
+                                    $confirm.hide();               
+                                };
+
+                                var footerWrapper = document.createElement('div');
+                                footerWrapper.classList.add('upload-modal-footer-wrapper');
+                                footerWrapper.appendChild(cancelButton);
+
+                                $confirm = $.modal({
+                                    html: progressBarWrapper,
+                                    footer: {
+                                        "html": footerWrapper
+                                    },
+                                    hideOnEscape: false,
+                                    display:{
+                                        closeButton:false
+                                    },
+                                    overlay:{
+                                        closeOnClick: false
+                                    },
+                                    hideDestroy: true
+                                });
+
+                                $confirm.show();
+
+                                // Need to use xhr request to track progress instead of native form submit.
+                                // make an xhr object
+                                var request = new XMLHttpRequest();
+
+                                // track progress
+                                request.upload.addEventListener('progress', progressHandler, false);
+
+                                request.onload = function () {
+                                    var progressBarFillPercent = document.getElementById('upload-modal-progress-bar-fill-percent');
+                                    progressBarFillPercent.textContent = "100%";
+
+                                    var progressBarFill = document.getElementById('upload-modal-progress-bar-fill');
+                                    progressBarFill.style.width = "100%";
+                                };
+
+                                // request.onabort = function (){
+                                    
+                                // };
+
+                                // setup request method and url
+                                request.open("POST", frm.action);
+
+                                // send the request
+                                request.send(new FormData(frm));
+                             };
+
+                            // check and load modal if needed
+                            if (require.defined('modal')) {
+                                submitForm();
+                            }
+                            else{
+                                cui.load('modal', function _error_report_modal() {
+                                    submitForm();
+                                });
+                            }
 
                             return true;
                         }
@@ -4579,7 +5349,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         processMap: processM.directMap,
         form: {
             externalSubmit: form.externalSubmit,
-            submit: form.submit,
+            submit: form.submit,            
+            preSubmitAjax: form.preSubmitAjax,
             virtual: form.virtual,
         },
         disable: {
