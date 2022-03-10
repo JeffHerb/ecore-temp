@@ -4175,7 +4175,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                 var chunk;
                 var formData = new FormData();
                 var start = (chunkCount == 0) ? 0 : (chunkCount * chunkSize +1);
-                var end = ((start + chunkSize) < fileSize) ? (start + chunkSize) : fileSize;
+                var end = ((start + chunkSize) < fileSize) ? (start + chunkSize) : (fileSize - 1);
 
                 chunk = file.slice(start, end);
                 formData.append('file', chunk, fileName);
