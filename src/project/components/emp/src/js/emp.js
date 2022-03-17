@@ -4104,7 +4104,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
         var progressBarOverrideFileCount = 2;
         var progressBarOverrideFileSize = 100;
 
-        var chunkSize = 1024 * 1024 * 1024;        
+        var chunkSize = 1024 * 1024 * 1024; 
+        
+        /*DEBUG: START*/
+        chunkSize = 1024 * 1024; // for debugging
+        /*DEBUG: END*/
+
         var requestList = [];        
         var retryLimit = 3;
         var uploadSuccess = false;
@@ -4237,6 +4242,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                         // Update the file name and file count. 
                         var progressBarFileName = document.getElementById('upload-modal-progress-bar-text');
                         progressBarFileName.textContent = "File name: " + fileName;
+                        var cancelButton = document.getElementById('upload-modal-cancel-button');
+                        cancelButton.dataset.fileId = fileId;
                     }
                 }
 
@@ -4278,6 +4285,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                     progressBarWrapper.appendChild(progressBarBody);
 
                     var cancelButton = document.createElement('button');
+                    cancelButton.id = "upload-modal-cancel-button";
                     cancelButton.textContent = "Cancel Upload";
                     cancelButton.type = "button";
 
@@ -4290,7 +4298,17 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                         
                         clkblocker.remove();        
                         $confirm.hide();    
-                        requestAborted = true;           
+                        requestAborted = true;                                
+
+                        var cancelButton = document.getElementById('upload-modal-cancel-button');
+                        var fileId = cancelButton.dataset.fileId;
+
+                        var abortFormData = new FormData();
+                        abortFormData.append("fileId", fileId);      
+
+                        var oAbortReq = new XMLHttpRequest();
+                        oAbortReq.open("POST", uploadAbortUrl, true);  
+                        oAbortReq.send(abortFormData);
                     };
 
                     var footerWrapper = document.createElement('div');
@@ -4362,7 +4380,11 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                                     if(response.result[0].body && response.result[0].body.fileId){
                                         if(!fileId){
-                                            fileId = response.result[0].body.fileId;    
+                                            fileId = response.result[0].body.fileId;  
+
+                                            //Update file ID in   
+                                            var cancelButton = document.getElementById('upload-modal-cancel-button');
+                                            cancelButton.dataset.fileId = response.result[0].body.fileId;
                                         }
                                     } 
                                     if(!requestAborted){
@@ -4400,8 +4422,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                     var loadedAmount = evt.loaded;
                     
                     if (evt.lengthComputable) {  
-                        if(loadedAmount < totalSize){       
-
+                        if(loadedAmount <= totalSize){       
+                            
                             var chunkValue = 1/totalChunks;
                             var fileTransferProgress = loadedAmount / totalSize; 
 
@@ -4413,7 +4435,11 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             progressBarFillPercent.textContent = totalProgressPercentage.toFixed(0) + "%";
                             progressBarFill.style.width = totalProgressPercentage.toFixed(0)+"%";                                    
                         } 
-                    }                    
+                    }               
+
+                    /*DEBUG: START*/
+                    console.groupEnd();
+                    /*DEBUG: END*/     
                 }
 
                 function requestError(evt){
