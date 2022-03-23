@@ -1923,8 +1923,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
         // Check to see if a file was selected
         if (evt.target.value) {
-
-            elms.$span.text(evt.target.value);
+            //Using files[0].name instead of value to resolve fakepath issue.
+            elms.$span.text(evt.target.files[0].name);
 
             elms.$button.text("Clear");
             elms.$button.val(true);
@@ -4106,10 +4106,6 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
         var chunkSize = 1024 * 1024 * 1024; 
         
-        /*DEBUG: START*/
-        chunkSize = 1024 * 1024; // for debugging
-        /*DEBUG: END*/
-
         var requestList = [];        
         var retryLimit = 3;
         var uploadSuccess = false;
@@ -4147,19 +4143,37 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             uploadUrl = fileInputs[0].dataset.uploadUrl;
             uploadAbortUrl = fileInputs[0].dataset.uploadAbortUrl;
 
+            var messages = [];
+
             for(var i = fileInputs.length-1; i >= 0 ; i--){
                 var fileInput = fileInputs[i];
+                var fileInputMaxSize = fileInput.dataset.uploadMaxFileSize;
                     
+
                 if(fileInput.files && fileInput.files.length > 0){                
-                    for(var f=fileInput.files.length-1; f>=0; f--){          
-                        fileList.push(fileInput.files[f]);
+                    for(var f=fileInput.files.length-1; f>=0; f--){    
+                        if(fileInputMaxSize && (fileInput.files[f].size > fileInputMaxSize)){      
+                            messages.push({"type":"error","text": "This online service only accepts files with a max size of "+fileInputMaxSize+" bytes."});
+                        }
+                        else if(fileInput.files[f].name.indexOf('.')==-1){
+                            messages.push({"type":"error","text": "This online service only accepts files that have a file extension."});
+                        }
+                        else{
+                            fileList.push(fileInput.files[f]);    
+                        }                        
                     }   
                 }
             }   
-
-            if(fileList.length > 0){
-                sendFile(fileList.pop());
+            if(messages.length>0){
+                for(var m=0; m<messages.length;m++){
+                    empMessage.createMessage(messages[m]);
+                }
             }
+            else{
+                if(fileList.length > 0){
+                    sendFile(fileList.pop());
+                }    
+            }            
         };
 
         var sendFile = function _sendFile(file){
@@ -4182,7 +4196,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                 var start = (chunkCount == 0) ? 0 : (chunkCount * chunkSize +1);
                 var end = ((start + chunkSize) < fileSize) ? (start + chunkSize) : (fileSize - 1);
 
-                chunk = file.slice(start, end);
+                chunk = file.slice(start, end+1);
                 formData.append('file', chunk, fileName);
 
                 if(fileId){
@@ -4190,7 +4204,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                 }
 
                 chunkCount++;
-
+          
                 makeAjaxRequest(formData, start, end);
             };
 
@@ -4356,7 +4370,12 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                         makeAjaxRequest(formData, blobStart, blobEnd);
                     }
                     else{
-                        journal.log({ type: 'info', owner: 'UI', module: 'form', submodule: 'processFileUploadAjax' }, 'Retry limit reached.');                   
+                        journal.log({ type: 'info', owner: 'UI', module: 'form', submodule: 'processFileUploadAjax' }, 'Retry limit reached.');
+                        
+                        handleResponseMessages([{
+                           "type":"error",
+                           "text":"There was an issue with the upload. Please try again later."
+                        }]);          
                     }
                 }
 
@@ -4365,7 +4384,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                     try{
                         var response = this.responseText;
                        
-                        if(response){
+                        if(response){                            
                             response = JSON.parse(response);
                         }
                        
@@ -4436,22 +4455,13 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             progressBarFill.style.width = totalProgressPercentage.toFixed(0)+"%";                                    
                         } 
                     }               
-
-                    /*DEBUG: START*/
-                    console.groupEnd();
-                    /*DEBUG: END*/     
                 }
 
                 function requestError(evt){
-                    /*DEBUG: START*/
-                    console.log('oReq - requestError');
-                    /*DEBUG: END*/                    
+                    retryUpload();                
                 }
 
-                function requestAbort(evt){
-                    /*DEBUG: START*/
-                    console.log('oReq - requestAbort');
-                    /*DEBUG: END*/
+                function requestAbort(evt){                
                 }
 
                 updateProgressPopup();
@@ -4549,6 +4559,21 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             return formValidation;
         };
 
+        var clearErrorMessages = function _clearErrorMessages(){
+            
+            if(emp.reference && emp.reference.message && emp.reference.message.length > 0){
+                messageList = emp.reference.message;    
+
+                for(var i=0; i<messageList.length; i++){
+                    var message = messageList[i];
+                    
+                    if(message.ref[0].classList.contains('cui-error')){
+                        empMessage.removeMessage((message.ref));
+                    }
+                }
+            }         
+        };
+
         //If progress bar isn't enabled by default, crawl all file inputs and determine if it should be displayed based on override values. 
         if(!progressBarEnabled){
             if(checkProgressBarOverride(fileInputs)){
@@ -4566,6 +4591,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             $confirm.destroy();  
             $confirm = null;  
         }
+
+        clearErrorMessages();
 
         if(checkValidateForm()){
             processFileInputs(fileInputs);

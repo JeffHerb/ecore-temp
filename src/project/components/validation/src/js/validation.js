@@ -1878,10 +1878,7 @@ define(['jquery', 'kind'], function ($, kind) {
                 inputs.each(function(i) {
 
                     var $field = $(this);
-                    /*DEBUG: START*/
-                    console.log($field.closest(".emp-collapse"));
-                    /*DEBUG: END*/
-
+                   
                     if($field.closest(".emp-collapse").length > 0){
                         return;
                     }
