@@ -4537,6 +4537,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             var hiddenUploadIds = document.createElement('input');
             hiddenUploadIds.type = "hidden";
             hiddenUploadIds.id = "uploaded-file-ids";
+            hiddenUploadIds.name = "uploaded-file-ids";
             hiddenUploadIds.value = fileUploadIdList.join(',');
 
             frm.appendChild(hiddenUploadIds);
