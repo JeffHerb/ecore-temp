@@ -4193,10 +4193,10 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             var uploadFileChunks = function _uploadFileChunks(){
                 var chunk;
                 var formData = new FormData();
-                var start = (chunkCount == 0) ? 0 : (chunkCount * chunkSize +1);
-                var end = ((start + chunkSize) < fileSize) ? (start + chunkSize) : (fileSize - 1);
+                var start = (chunkCount == 0) ? 0 : (chunkCount * chunkSize);
+                var end = ((start + chunkSize) < fileSize-1) ? (start + chunkSize) : (fileSize);
 
-                chunk = file.slice(start, end+1);
+                chunk = file.slice(start, end);
                 formData.append('file', chunk, fileName);
 
                 if(fileId){
@@ -4479,7 +4479,7 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                 oReq.open("POST", uploadUrl, true);  
 
                 // Set any additional properties
-                var contentRange = "bytes " + blobStart + "-" + blobEnd + "/" + file.size;
+                var contentRange = "bytes " + blobStart + "-" + (blobEnd-1) + "/" + file.size;
                 oReq.setRequestHeader("Content-Range", contentRange);
                 
                 if(!requestAborted){
