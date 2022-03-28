@@ -4138,6 +4138,20 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
             return false;
         };
 
+        var getFormattedFileSize = function _getFormattedFileSize(bytes){
+            //Reurns display formatted filesize. If less than 10 units will include one decimal place. 
+            var units = ['bytes', 'KB', 'MB', 'GB'];
+           
+            var l = 0;
+            var n = parseInt(bytes, 10) || 0;
+
+            while(n >= 1024 && ++l){
+                n = n/1024;
+            }
+          
+            return(n.toFixed(n < 10 && l > 0 ? 1 : 0) + ' ' + units[l]);        
+        };
+
         var processFileInputs = function _processFileInputs(fileInputs){  
             //Set upload urls based off first file input in form. 
             uploadUrl = fileInputs[0].dataset.uploadUrl;
@@ -4152,8 +4166,8 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
 
                 if(fileInput.files && fileInput.files.length > 0){                
                     for(var f=fileInput.files.length-1; f>=0; f--){    
-                        if(fileInputMaxSize && (fileInput.files[f].size > fileInputMaxSize)){      
-                            messages.push({"type":"error","text": "This online service only accepts files with a max size of "+fileInputMaxSize+" bytes."});
+                        if(fileInputMaxSize && (fileInput.files[f].size > fileInputMaxSize)){    
+                            messages.push({"type":"error","text": "The file you have selected exceeds the "+getFormattedFileSize(fileInputMaxSize)+" limit."});
                         }
                         else if(fileInput.files[f].name.indexOf('.')==-1){
                             messages.push({"type":"error","text": "This online service only accepts files that have a file extension."});
@@ -4424,6 +4438,9 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             // Display any server messages
                             if(response.messages && response.messages.length > 0){
                                 handleResponseMessages(response.messages);
+                            }
+                            else if(response.result && response.result.length > 0 && response.result[0].messages && response.result[0].messages.length > 0){
+                                handleResponseMessages(response.result[0].messages);   
                             }
                         }
                     }
