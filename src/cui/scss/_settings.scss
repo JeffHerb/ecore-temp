@@ -188,8 +188,8 @@ $cui-grid-flex-row-wrap: wrap !default;
 // Grid appearance
 $cui-grid-column-min-height:   1.5em !default;
 $cui-grid-gutter-width:        0 !default;
-$cui-grid-gutter-width-half:   $cui-grid-gutter-width / 2 !default;
-$cui-grid-gutter-width-double: $cui-grid-gutter-width * 2 !default;
+$cui-grid-gutter-width-half:   calc($cui-grid-gutter-width / 2) !default;
+$cui-grid-gutter-width-double: calc($cui-grid-gutter-width * 2) !default;
 $cui-grid-row-margin:          0 auto $cui-grid-gutter-width auto !default;
 $cui-grid-column-padding:      0 $cui-grid-gutter-width !default;
 

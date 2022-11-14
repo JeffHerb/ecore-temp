@@ -69,7 +69,7 @@ var process = function _process() {
                         // Remove package json if its part of the file:
                         fileContents = fileContents.replace(/pkg\: grunt.file.readJSON\([\'\"]package.json[\'\"]\)\,/g, '');
 
-                        fileContents = "const sass = require('node-sass'); module.exports = function() { return " + fileContents;
+                        fileContents = "const sass = require('sass'); module.exports = function() { return " + fileContents;
                         fileContents += ";}";
 
                         var newFilePath = fs.pathJoin("tasks/libs/componentFinder/temp/", componentName + ".js");

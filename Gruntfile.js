@@ -1,4 +1,4 @@
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = function(grunt) {
     // Banner for JavaScript files
@@ -319,7 +319,7 @@ module.exports = function(grunt) {
                 options: {
                     implementation: sass,
                     sourceMap: true,
-                    outputStyle: 'nested', // Options: "nested", "compressed" (i.e. minified)
+                    outputStyle: 'compressed', // Options: "nested", "compressed" (i.e. minified)
                 },
                 files: {
                     'dist/css/main.css': 'src/project/scss/project.scss',
@@ -428,7 +428,7 @@ module.exports = function(grunt) {
 
     // Load local tasks in the task folder.
     grunt.loadTasks('tasks');
-    grunt.loadNpmTasks('intern');
+    //grunt.loadNpmTasks('intern');
 
     grunt.registerTask('prod', 'Production', function (args) {
 

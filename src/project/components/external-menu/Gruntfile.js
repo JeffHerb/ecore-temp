@@ -1,4 +1,5 @@
-const sass = require('node-sass');
+const sass = require('sass');
+
 module.exports = function(grunt) {
 
     // Project configuration.
@@ -32,7 +33,7 @@ module.exports = function(grunt) {
             options: {
                 implementation: sass,
                 sourceMap: true,
-                outputStyle: 'nested', // Options: nested, compressed
+                outputStyle: 'compressed', // Options: nested, compressed
             },
 
             main: {

@@ -68,26 +68,6 @@ module.exports = function (grunt) {
             files: [
                 'src/js/**/*.js',
             ],
-        },
-
-        "intern": {
-            functional: {
-                options: {
-                    cwd: './',
-                    runType: 'runner',
-                    config: 'tests/intern',
-                    reporters: [ 'Console' ],
-                    basePath: './tests/table/functional/',
-                    functionalSuites: [
-                        'selection',
-                        'sort',
-                        'filter',
-                        'responsive'
-                    ],
-                    tunnel: 'NullTunnel',
-                    environments: [{ browserName: 'chrome'}]
-                }
-            }
         }
 
     });

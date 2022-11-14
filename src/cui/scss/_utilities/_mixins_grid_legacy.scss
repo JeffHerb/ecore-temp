@@ -32,7 +32,7 @@
     @if $breakpointName == "small" {
         @include legacy-row;
     }
-    @elseif $breakpointName == "medium" {
+   @else if $breakpointName == "medium" {
         @include pointbreak($cui-bp-medium) {
             @include legacy-row;
         }
@@ -118,7 +118,7 @@
 
 // Return width for a single division (column) as a percentage of the total container (row)
 @function legacy-column-width-calc($colNumber, $colTotal) {
-    @return percentage($colNumber / $colTotal);
+    @return percentage(calc($colNumber / $colTotal));
 }
 
 // Generates column classes for all breakpoint sizes
@@ -196,7 +196,7 @@
     @if $breakpointName == "small" {
         @include grid-col-flex-helper($breakpointName, $width);
     }
-    @elseif $breakpointName == "medium" {
+   @else if $breakpointName == "medium" {
         @include pointbreak($cui-bp-medium) {
             @include grid-col-flex-helper($breakpointName, $width);
         }

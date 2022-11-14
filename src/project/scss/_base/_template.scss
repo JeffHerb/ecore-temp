@@ -71,7 +71,7 @@ body {
                 content: "";
                 position: absolute;
                 top: $cui-button-padding-top;
-                left: ($cui-button-icon-width / 2) - 2;
+                left: calc(calc(getNumber($cui-button-icon-width) / 2) - 2)px;
                 display: inline-block;
                 padding: 0;
                 line-height: $cui-line-height;
@@ -129,32 +129,32 @@ body {
 
         .emp-fontsize-10 & {
             @include triangle($dir: "left", $size: 6px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 -1) !important;
+            left: calc(calc(getNumber($cui-button-icon-width) / 2) - 1)px !important;
         }
 
         .emp-fontsize-16 & {
             @include triangle($dir: "left", $size: 9px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2)px !important;
         }
 
         .emp-fontsize-18 & {
             @include triangle($dir: "left", $size: 10px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 2) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 2)px !important;
         }
 
         .emp-fontsize-20 & {
             @include triangle($dir: "left", $size: 12px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 3) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 3)px !important;
         }
 
         .emp-fontsize-22 & {
             @include triangle($dir: "left", $size: 13px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 3) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 3)px !important;
         }
 
         .emp-fontsize-24 & {
             @include triangle($dir: "left", $size: 14px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 4) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 4)px !important;
         }
     }
 }
@@ -165,32 +165,32 @@ body {
 
         .emp-fontsize-10 & {
             @include triangle($dir: "right", $size: 6px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 -1) !important;
+            left: calc(calc(getNumber($cui-button-icon-width) / 2) - 1)px !important;
         }
 
         .emp-fontsize-16 & {
             @include triangle($dir: "right", $size: 9px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2)px !important;
         }
 
         .emp-fontsize-18 & {
             @include triangle($dir: "right", $size: 10px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 2) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 2)px !important;
         }
 
         .emp-fontsize-20 & {
             @include triangle($dir: "right", $size: 12px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 3) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 3)px !important;
         }
 
         .emp-fontsize-22 & {
             @include triangle($dir: "right", $size: 13px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 3) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 3)px !important;
         }
 
         .emp-fontsize-24 & {
             @include triangle($dir: "right", $size: 14px, $color: $cui-color-dark-gray-alt);
-            left: ($cui-button-icon-width / 2 + 5) !important;
+            left: calc(getNumber($cui-button-icon-width) / 2 + 5)px !important;
         }
 
     }
@@ -214,7 +214,7 @@ body {
 
     @include pointbreak($cui-bp-large) {
         justify-content: flex-end;
-        margin-right: $cui-font-size / 2;
+        margin-right: calc($cui-font-size / 2);
         margin-left: 0;
 
         li {
@@ -230,7 +230,7 @@ body {
 
     // Inside a group
     section & {
-        margin: $cui-font-size / 2;
+        margin: calc($cui-font-size / 2);
     }
 
     li > span,
@@ -370,7 +370,7 @@ body {
     display: none;
     height: 0;
 
-    & > div {
+    div {
         margin: 0;
     }
 }
@@ -382,7 +382,7 @@ body {
         height: auto;
     }
 
-    & > div {
+    div {
         margin: inherit;
     }
 }

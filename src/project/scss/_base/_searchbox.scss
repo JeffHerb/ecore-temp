@@ -71,7 +71,7 @@
     }
 
     .emp-search-toggle {
-        background: url($emp-images-path +"emp-triangle.svg") no-repeat 0px -6px transparent;
+        background: url("#{$emp-images-path}emp-triangle.png") no-repeat 0px -6px transparent;
         background-size: 24px 24px;
         position: absolute;
         bottom: 13px;
@@ -96,7 +96,7 @@
 
         @media print {
             .ie & {
-                background: url($emp-images-path +"emp-triangle.png") no-repeat 0 0 transparent;
+                background: url("#{$emp-images-path}emp-triangle.png") no-repeat 0 0 transparent;
                 background-size: contain;
             }
         }
@@ -109,7 +109,7 @@
 
             @media print {
                 .ie & {
-                    background: url($emp-images-path +"emp-triangle.png") no-repeat 0 3px transparent;
+                    background: url("#{$emp-images-path}emp-triangle.png") no-repeat 0 3px transparent;
                     background-size: contain;
                 }
             }

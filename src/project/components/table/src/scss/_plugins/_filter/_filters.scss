@@ -41,13 +41,13 @@ $emp-tablefilter-optionpane-close-bg-color: #ccc !default;
 $emp-tablefilter-optionpane-close-bg-color-hover: #ddd !default;
 
 .emp-icon-table-filter-toggle {
-    background: url($emp-images-path + "emp-filter.svg") no-repeat 0px 1px transparent;
+    background: url("#{$emp-images-path}emp-filter.svg") no-repeat 0px 1px transparent;
     display: inline-block;
 }
 
 @media print {
     .ie .emp-icon-table-filter-toggle {
-        background: url($emp-images-path + "emp-filter.png") no-repeat 2px 2px transparent;
+        background: url("#{$emp-images-path}emp-filter.png") no-repeat 2px 2px transparent;
     }
 }
 
@@ -221,7 +221,7 @@ button.emp-tablefilter-input {
                 &:before {
                     content: "";
                     position: absolute;
-                    top: calc(50% - #{($bullet-width / 2)});
+                    top: calc(50% - ($bullet-width / 2));
                     left: $bullet-width - 2;
                     display: block;
                     font-size: 36px;

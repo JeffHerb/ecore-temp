@@ -161,36 +161,6 @@ module.exports = function(grunt) {
                     'dist/js/partials.js': ['src/templates/partials/*.hbs']
                 }
             }
-        },
-
-        "intern": {
-            functional: {
-                options: {
-                    runType: 'runner',
-                    config: './tests/intern',
-                    reporters: [ 'Console' ],
-                    basePath: './tests/render/functional/',
-                    functionalSuites: [
-                        'button',
-                        'buttonGroup',
-                        'checkbox',
-                        'checkboxGroup',
-                        'col',
-                        'composite-asof',
-                        'composite-search',
-                        'date',
-                        'group',
-                        'form',
-                        'frameworkError',
-                        'selectbox',
-                        'table',
-                        'text',
-                        'textarea'
-                    ],
-                    tunnel: 'NullTunnel',
-                    environments: [{ browserName: 'chrome'}]
-                }
-            }
         }
 
     });

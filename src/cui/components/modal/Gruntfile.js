@@ -1,4 +1,5 @@
-const sass = require('node-sass');
+const sass = require('sass');
+
 module.exports = function (grunt) {
     // Project configuration
     grunt.initConfig({
@@ -53,7 +54,7 @@ module.exports = function (grunt) {
             options: {
                 implementation: sass,
                 sourceMap: true,
-                outputStyle: 'nested', // Options: nested, compressed
+                outputStyle: 'compressed', // Options: nested, compressed
             },
 
             styles: {
@@ -136,23 +137,6 @@ module.exports = function (grunt) {
                 ],
             },
         },
-
-        "intern": {
-            functional: {
-                options: {
-                    cwd: './',
-                    runType: 'runner',
-                    config: 'tests/intern',
-                    reporters: [ 'Console' ],
-                    basePath: './tests/modal/functional/',
-                    functionalSuites: [
-                        'modal',
-                    ],
-                    tunnel: 'NullTunnel',
-                    environments: [{ browserName: 'chrome'}]
-                }
-            }
-        }
     });
 
     // Load all Grunt plugins

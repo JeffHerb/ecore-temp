@@ -1,4 +1,4 @@
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = function(grunt) {
 
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
             options: {
                 implementation: sass,
                 sourceMap: true,
-                outputStyle: 'nested', // Options: nested, compressed
+                outputStyle: 'compressed', // Options: nested, compressed
             },
 
             cui: {
@@ -130,29 +130,6 @@ module.exports = function(grunt) {
             files: [
                 'src/js/**/*.js',
             ],
-        },
-
-        "intern": {
-            functional: {
-                options: {
-                    runType: 'runner',
-                    config: './tests/intern',
-                    reporters: [ 'Console' ],
-                    basePath: './tests/emp/functional/',
-                    functionalSuites: [
-                        'button-lib',
-                        'confirm',
-                        'section-setup',
-                        'pageMessages',
-                        'fieldMessages',
-                        'processMap',
-                        'associate'
-
-                    ],
-                    tunnel: 'NullTunnel',
-                    environments: [{ browserName: 'chrome'}]
-                }
-            }
         }
 
     });

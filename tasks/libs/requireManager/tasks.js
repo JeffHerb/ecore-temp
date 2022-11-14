@@ -82,8 +82,7 @@ _priv.fixTaskOrder = function _fix_task_order (taskCallOrder) {
     }
     
 }
-
-const sass = require('node-sass');
+const sass = require('sass');
 
 var tasks = function _tasks () {
     var setOrder = function _set_order (rm, next) {

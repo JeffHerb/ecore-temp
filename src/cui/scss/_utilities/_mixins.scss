@@ -3,6 +3,9 @@
 // * @see        https://github.com/ny/coreui
 //   ========================================================
 
+@use "sass:meta";
+@use "sass:string";
+
 @import "_mixins_grid";
 @import "_mixins_grid_legacy";
 
@@ -168,13 +171,13 @@
         border-right:  $size solid transparent;
         border-top:  none;
     }
-    @elseif $dir == "right" {
+   @else if $dir == "right" {
         border-left:   $size solid $color;
         border-top:    $size solid transparent;
         border-bottom: $size solid transparent;
         border-right:  none;
     }
-    @elseif $dir == "left" {
+   @else if $dir == "left" {
         border-right:  $size solid $color;
         border-top:    $size solid transparent;
         border-bottom: $size solid transparent;
@@ -322,10 +325,17 @@
     $unit: "";
 
     // Make sure we're working with a string before checking the units
-    $str: quote($val);
+    //$str: quote($val);
 
-    @if str-index($str, "pc") {
-        $unit: "%";
+    @if meta.type-of($val) == string {
+
+        @if str-index($val, "pc") {
+            $unit: "%";
+        }
+        @else {
+            $unit: unit($val);
+        }
+        
     }
     @else {
         $unit: unit($val);
@@ -338,7 +348,10 @@
 // Adopted and slightly modified from http://hugogiraudel.com/2014/01/15/sass-string-to-number/
 @function toNumber($string) {
     // Make sure it's actually a string so the string methods below don't fail
-    $string: quote($string);
+    @if meta.type-of($string) != string {
+        //$string: string.quote($string)
+        $string: "#{$string}"
+    }
 
     // Matrices
     $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
@@ -396,10 +409,10 @@
 
     // Handle special values that should have repeating units
     @if $value == 33 {
-        $value: (1 / 3) * 100;
+        $value: calc(calc(1 / 3) * 100);
     }
-    @elseif $value == 67 or $value == 66 {
-        $value: (2 / 3) * 100;
+    @else if $value == 67 or $value == 66 {
+        $value: calc(calc(2 / 3) * 100);
     }
 
     @return ($value, $unit);

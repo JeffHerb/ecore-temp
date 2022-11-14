@@ -1,4 +1,4 @@
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = function(grunt) {
 
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             options: {
                 implementation: sass,
                 sourceMap: true,
-                outputStyle: 'nested', // Options: nested, compressed
+                outputStyle: 'compressed', // Options: nested, compressed
             },
 
             main: {
@@ -126,22 +126,6 @@ module.exports = function(grunt) {
                     'copy',
                 ],
             },
-        },
-
-        "intern": {
-            functional: {
-                options: {
-                    runType: 'runner',
-                    config: './tests/intern',
-                    reporters: [ 'Console' ],
-                    basePath: './tests/datepicker/functional/',
-                    functionalSuites: [
-                        'datepicker',
-                    ],
-                    tunnel: 'NullTunnel',
-                    environments: [{ browserName: 'chrome'}]
-                }
-            }
         }
 
     });

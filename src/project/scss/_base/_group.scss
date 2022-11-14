@@ -127,7 +127,7 @@ section {
                     order: 1;
                     flex: 0 1 100%;
                     max-width: calc(100% - 96px);
-                    padding-left: $emp-padding / 2;
+                    padding-left: calc($emp-padding / 2);
                 }
 
                 // Remove the popup icon on flower buttons that appear in the header
@@ -141,13 +141,13 @@ section {
                 @include col-fluid($width: 100%, $breakpointName: "medium");
                 white-space: nowrap;
                 line-height: $emp-group-header-min-height;
-                margin: ($emp-group-header-font-size - $cui-font-size - $emp-group-field-padding-top)/2 0;
+                margin: calc(($emp-group-header-font-size - $cui-font-size - $emp-group-field-padding-top)/2) 0;
                 padding-top: 3px !important;
 
                 @include pointbreak($cui-bp-medium, true) {
                     order: 3;
-                    padding-left: $emp-padding / 2;
-                    padding-right: $emp-padding / 2;
+                    padding-left: calc($emp-padding / 2);
+                    padding-right: calc($emp-padding / 2);
                 }
 
                 .emp-field {

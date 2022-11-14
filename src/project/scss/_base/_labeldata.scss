@@ -192,7 +192,7 @@ section {
     // Wonder if I should use this or let it go... On smaller devices though a bunch of labels will wrap so I may use a different approach.
     .emp-long-wrapping-label {
         line-height: normal;
-        margin-top: $cui-font-size / 3;
+        margin-top: calc($cui-font-size / 3);
 
         // .theme-teal & {
             // @import "../_theme_teal.scss";
