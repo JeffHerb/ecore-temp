@@ -2,7 +2,10 @@
   "name": "empire",
   "title": "Empire 2",
   "version": "0.1.0",
-  "description": "Empire",
+  "engine": {
+      "node": "18.10.0"
+  },
+  "description": "eCore",
   "author": {
     "name": "New York State Office of Information Technology Services",
     "email": "tax.dl.UISupport@its.ny.gov"
