@@ -2054,16 +2054,27 @@ define(['jquery', 'cui', 'dataStore', 'render', 'table', 'tabs', 'datepicker', '
                             });
                         }
                         
-                        if (pageScript.preRender) {
+                        if (pageScript && pageScript.preRender) {
 
                             pageScript.preRender(function() {
                                 renderPage();
+                                
+                                if (pageScript && pageScript.postRender()) {
 
+                                    pageScript.postRender();
+                                }
+                                
                             });
 
                         }
                         else{
                             renderPage();
+
+                            if (pageScript && pageScript.postRender()) {
+
+                                pageScript.postRender();
+                            }
+
                         }
 
                     });

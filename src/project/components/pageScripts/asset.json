@@ -7,6 +7,8 @@
         "elec-comm-spa": "elec-comm-spa",
         "_map_nys_counties": "_map_nys_counties",
         "_map_nys_albany_county": "_map_nys_albany_county",
+        "QRUP_O1": "camera",
+        "QRUP_O2": "camera",
         "ORLA_01":"ORLA_01"  
     },
     "pageScripts": true
