@@ -69,7 +69,7 @@ _priv.fixTaskOrder = function _fix_task_order (taskCallOrder) {
         for (var nto = 0, ntoLen = taskCallOrder.length; nto < ntoLen; nto++) {
 
             var taskName = taskCallOrder[nto];
-            
+
             console.log(taskName);
         }
 
@@ -80,8 +80,9 @@ _priv.fixTaskOrder = function _fix_task_order (taskCallOrder) {
 
         return taskCallOrder;
     }
-    
+
 }
+
 const sass = require('sass');
 
 var tasks = function _tasks () {
@@ -94,6 +95,7 @@ var tasks = function _tasks () {
 
         var prodBuild = currentConfig.prod;
         var testBuild = currentConfig.test;
+        var deployableBuild = currentConfig.deployable;
 
         // Variable to keep track of the tasks as they are added back to the queue
         var taskCallOrder = [];
@@ -131,6 +133,10 @@ var tasks = function _tasks () {
             }
         }
 
+        if (deployableBuild) {
+            options.configOrder.last.splice(2, 0, 'string-replace');
+        }
+
         // Start by looping through and finding all the tasks that need to be executed.
         (function nextComponent (components) {
             var componentName = components.shift();
@@ -160,11 +166,11 @@ var tasks = function _tasks () {
                         (function nextTask (tasks) {
                             var taskObj = tasks.shift();
 
-                            
+
                             // Add the task to the execute queue
-                            
+
                             grunt.task.run(taskObj.fullName);
-                            
+
 
                             // Add this task to the list of task we called.
                             taskCallOrder.push(taskObj.fullName);
@@ -225,9 +231,9 @@ var tasks = function _tasks () {
 
                                     if (subTask !== 'options') {
 
-                                        
+
                                         grunt.task.run(task + ':' + subTask);
-                                        
+
 
                                         // Add subtask to the task call array
                                         taskCallOrder.push(task + ':' + subTask);
@@ -244,9 +250,9 @@ var tasks = function _tasks () {
 
                         // Double check to see if this is a task that we only allow an all or nothing build to be created
                         if (options.runAll.indexOf(task) !== -1 && currentConfig[task]) {
-                            
+
                             grunt.task.run(task);
-                            
+
 
                             // Add all related tasks to the task call array
                             taskCallOrder.push(task);
@@ -268,9 +274,9 @@ var tasks = function _tasks () {
                                             var subTask = subTasks.shift();
 
                                             if (subTask !== 'options') {
-                                                
+
                                                 grunt.task.run(task + ':' + subTask);
-                                                
+
 
                                                 // Add subtask to the task call array
                                                 taskCallOrder.push(task + ':' + subTask);
@@ -285,9 +291,9 @@ var tasks = function _tasks () {
 
                                 // Double check to see if this is a task that we only allow an all or nothing build to be created
                                 if (options.runAll.indexOf(task) !== -1 && currentConfig[task]) {
-                                    
+
                                     grunt.task.run(task);
-                                    
+
 
                                     // Add all related tasks to the task call array
                                     taskCallOrder.push(task);
@@ -352,9 +358,9 @@ var tasks = function _tasks () {
 
                                         if (subTask !== 'options') {
 
-                                            
+
                                             grunt.task.run(task + ':' + subTask);
-                                            
+
 
                                             // Add subtask to the task call array
                                             taskCallOrder.push(task + ':' + subTask);
@@ -371,7 +377,7 @@ var tasks = function _tasks () {
                             if (options.runAll.indexOf(task) !== -1 && currentConfig[task]) {
 
                                 grunt.task.run(task);
-                                
+
                                 // Add all related tasks to the task call array
                                 taskCallOrder.push(task);
                             }

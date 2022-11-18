@@ -476,6 +476,53 @@ module.exports = function(grunt) {
         ]);
     });
 
+    grunt.registerTask('deployable', 'Production', function (args) {
+
+        // Change some setting to optimize the build
+
+        // =================
+        // == Build Flag ===
+        // =================
+        grunt.config.set('prod', true);
+        grunt.config.set('deployable', true);
+
+        // ===========
+        // == SASS ===
+        // ===========
+        var sass = grunt.config.get('sass');
+
+        sass.main.options.sourceMap = false;
+        sass.main.options.outputStyle = "compressed";
+
+        grunt.config.set('sass', sass);
+
+        // ================
+        // == RequireJS ===
+        // ================
+
+        var requireJS = grunt.config.get('requirejs');
+
+        requireJS.main.options.generateSourceMaps = false;
+        requireJS.main.options.optimize = "uglify2";
+
+        grunt.config.set('requirejs', requireJS);
+
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // Other tasks like uglify and cssmin are handled by the requireManager build process.
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        grunt.task.run([
+            'componentFinder',
+            'clean',
+            'copy',
+            'svgmin',
+            'sass',
+            'requirejs',
+            'concat',
+            'usebanner'
+        ]);
+    });
+
     // Alias for production build
     grunt.registerTask('dist', 'prod');
 
